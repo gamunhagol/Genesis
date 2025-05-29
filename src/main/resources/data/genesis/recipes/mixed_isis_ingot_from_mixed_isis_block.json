@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:mixed_isis_block"
+    }
+  ],
+  "result": {
+    "item": "genesis:mixed_isis_ingot",
+    "count": 9
+  }
+}

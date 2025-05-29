@@ -1,0 +1,6 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "genesis:item/remnants_of_a_dream"
+  }
+}

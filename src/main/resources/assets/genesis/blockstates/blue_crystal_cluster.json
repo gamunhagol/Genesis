@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "genesis:block/blue_crystal_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "genesis:block/blue_crystal_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "genesis:block/blue_crystal_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "genesis:block/blue_crystal_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "genesis:block/blue_crystal_cluster"
+    },
+    "facing=west": {
+      "model": "genesis:block/blue_crystal_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

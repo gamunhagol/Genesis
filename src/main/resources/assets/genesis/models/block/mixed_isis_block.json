@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "genesis:block/mixed_isis_block"
+  }
+}

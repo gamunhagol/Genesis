@@ -1,0 +1,27 @@
+{
+  "values": [
+    "genesis:silver_ore",
+    "genesis:deepslate_silver_ore",
+    "genesis:silver_block",
+    "genesis:isis_ore",
+    "genesis:turbid_isis",
+    "genesis:mixed_isis_block",
+    "genesis:isis_alloy_block",
+    "genesis:isis_crystal_block",
+    "genesis:blue_crystal_cluster",
+    "genesis:small_blue_crystal_bud",
+    "genesis:medium_blue_crystal_bud",
+    "genesis:large_blue_crystal_bud",
+    "genesis:blue_crystal_block",
+    "genesis:citrine_cluster",
+    "genesis:small_citrine_bud",
+    "genesis:medium_citrine_bud",
+    "genesis:large_citrine_bud",
+    "genesis:citrine_block",
+    "genesis:red_crystal_cluster",
+    "genesis:small_red_crystal_bud",
+    "genesis:medium_red_crystal_bud",
+    "genesis:large_red_crystal_bud",
+    "genesis:red_crystal_block"
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "item.genesis.dream_powder": "꿈의 가루",
+  "item.genesis.dream_dango": "꿈의 경단",
+  "item.genesis.remnants_of_a_dream": "꿈의 잔재",
+  "item.genesis.fragment_of_memory": "기억의 편린",
+
+  "item.genesis.blue_crystal_shard": "청수정 조각",
+  "item.genesis.citrine_shard": "황수정 조각",
+  "item.genesis.red_crystal_shard": "적수정 조각",
+  "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
+
+  "item.genesis.raw_silver": "은 원석",
+  "item.genesis.silver_ingot": "은 주괴",
+
+  "item.genesis.isis_ore_piece": "이시스 광석 파편",
+  "item.genesis.mixed_isis_ingot": "뒤섞인 이시스 주괴",
+  "item.genesis.isis_piece": "이시스 파편",
+  "item.genesis.isis_alloy": "이시스 합금",
+  "item.genesis.isis_fragment": "이시스 조각",
+  "item.genesis.isis_crystal": "이시스 결정",
+
+  "item.genesis.amethyst_needle": "자수정 바늘",
+
+
+  "block.genesis.silver_ore": "은 광석",
+  "block.genesis.deepslate_silver_ore": "심층암 은 광석",
+  "block.genesis.silver_block": "은 블럭",
+
+  "block.genesis.isis_ore": "이시스 광석",
+  "block.genesis.turbid_isis": "혼탁한 이시스",
+  "block.genesis.mixed_isis_block": "뒤섞인 이시스 블럭",
+  "block.genesis.isis_alloy_block": "이시스 합금 블럭",
+  "block.genesis.isis_crystal_block": "이시스 결정 블럭",
+
+  "block.genesis.blue_crystal_block": "청수정 블럭",
+  "block.genesis.blue_crystal_cluster": "청수정 군집",
+  "block.genesis.large_blue_crystal_bud": "큰 청수정 봉오리",
+  "block.genesis.medium_blue_crystal_bud": "중간 청수정 봉오리",
+  "block.genesis.small_blue_crystal_bud": "작은 청수정 봉오리",
+
+  "block.genesis.citrine_block": "황수정 블럭",
+  "block.genesis.citrine_cluster": "황수정 군집",
+  "block.genesis.large_citrine_bud": "큰 황수정 봉오리",
+  "block.genesis.medium_citrine_bud": "중간 황수정 봉오리",
+  "block.genesis.small_citrine_bud": "작은 황수정 봉오리",
+
+  "block.genesis.red_crystal_block": "적수정 블럭",
+  "block.genesis.red_crystal_cluster": "적수정 군집",
+  "block.genesis.large_red_crystal_bud": "큰 적수정 봉오리",
+  "block.genesis.medium_red_crystal_bud": "중간 적수정 봉오리",
+  "block.genesis.small_red_crystal_bud": "작은 적수정 봉오리",
+
+
+  "itemGroup.genesis.items": "창세기",
+  "itemGroup.genesis_block.blocks": "창세기 블럭"
+}

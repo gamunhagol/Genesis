@@ -1,5 +1,8 @@
-package net.gamunhagol.genesismod;
+package com.gamunhagol.genesismod;
 
+import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
+import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -14,10 +17,10 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 
-@Mod(GenesisMod.MOD_ID)
+@Mod(GenesisMod.MODID)
 public class GenesisMod
 {
-    public static final String MOD_ID = "genesismod";
+    public static final String MODID = "genesis";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
@@ -28,6 +31,11 @@ public class GenesisMod
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+
+        GenesisItems.ITEMS.register(modEventBus);
+        GenesisBlocks.BLOCKS.register(modEventBus);
+        GenesisCreativeTabs.TABS.register(modEventBus);
+
 
     }
 
@@ -45,7 +53,7 @@ public class GenesisMod
 
     }
 
-    @Mod.EventBusSubscriber(modid = MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static class ClientModEvents
     {
         @SubscribeEvent

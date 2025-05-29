@@ -1,0 +1,57 @@
+{
+  "item.genesis.dream_powder": "Dream Powder",
+  "item.genesis.dream_dango": "Dream Dango",
+  "item.genesis.remnants_of_a_dream": "Remnants of a Dream",
+  "item.genesis.fragment_of_memory": "Fragment of Memory",
+
+  "item.genesis.blue_crystal_shard": "Blue Crystal Shard",
+  "item.genesis.citrine_shard": "Citrine Shard",
+  "item.genesis.red_crystal_shard": "Red Crystal Shard",
+  "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
+
+  "item.genesis.raw_silver": "Raw Silver",
+  "item.genesis.silver_ingot": "Silver Ingot",
+
+  "item.genesis.isis_ore_piece": "Isis Ore Piece",
+  "item.genesis.mixed_isis_ingot": "Mixed Isis Ingot",
+  "item.genesis.isis_piece": "Isis Piece",
+  "item.genesis.isis_alloy": "Isis Alloy",
+  "item.genesis.isis_fragment": "Isis Fragment",
+  "item.genesis.isis_crystal": "Isis Crystal",
+
+  "item.genesis.amethyst_needle": "Amethyst Needle",
+
+
+  "block.genesis.silver_ore": "Silver Ore",
+  "block.genesis.deepslate_silver_ore": "Deepslate Silver Ore",
+  "block.genesis.silver_block": "Silver Block",
+
+  "block.genesis.isis_ore": "Isis Ore",
+  "block.genesis.turbid_isis": "Turbid Isis",
+  "block.genesis.mixed_isis_block": "Mixed Isis Block",
+  "block.genesis.isis_alloy_block": "Isis Alloy Block",
+  "block.genesis.isis_crystal_block": "Isis Crystal Block",
+
+  "block.genesis.blue_crystal_block": "Blue Crystal Block",
+  "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",
+  "block.genesis.large_blue_crystal_bud": "Large Blue Crystal Bud",
+  "block.genesis.medium_blue_crystal_bud": "Medium Blue Crystal Bud",
+  "block.genesis.small_blue_crystal_bud": "Small Blue Crystal Bud",
+
+  "block.genesis.citrine_block": "Citrine Block",
+  "block.genesis.citrine_cluster": "Citrine Cluster",
+  "block.genesis.large_citrine_bud": "Large Citrine Bud",
+  "block.genesis.medium_citrine_bud": "Medium Citrine Bud",
+  "block.genesis.small_citrine_bud": "Small Citrine Bud",
+
+  "block.genesis.red_crystal_block": "Red Crystal Block",
+  "block.genesis.red_crystal_cluster": "Red Crystal Cluster",
+  "block.genesis.large_red_crystal_bud": "Large Red Crystal Bud",
+  "block.genesis.medium_red_crystal_bud": "Medium Red Crystal Bud",
+  "block.genesis.small_red_crystal_bud": "Small Red Crystal Bud",
+
+
+
+  "itemGroup.genesis.items": "Genesis",
+  "itemGroup.genesis_block.blocks": "Genesis Blocks"
+}

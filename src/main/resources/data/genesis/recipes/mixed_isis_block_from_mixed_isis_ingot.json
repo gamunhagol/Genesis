@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key":
+  {
+    "a": {"item": "genesis:mixed_isis_ingot"}
+
+  },
+  "result":
+  {
+    "item": "genesis:mixed_isis_block",
+    "count": 1
+  }
+}

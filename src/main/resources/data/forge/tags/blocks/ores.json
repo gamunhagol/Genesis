@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "genesis:silver_ore",
+    "genesis:isis_ore"
+  ]
+}

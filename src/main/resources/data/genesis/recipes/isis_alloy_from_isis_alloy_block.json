@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:isis_alloy_block"
+    }
+  ],
+  "result": {
+    "item": "genesis:isis_alloy",
+    "count": 9
+  }
+}

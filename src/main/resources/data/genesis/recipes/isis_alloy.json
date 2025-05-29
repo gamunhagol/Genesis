@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+    "aa",
+    "ar"
+  ],
+  "key":
+  {
+    "a": {"item": "genesis:isis_piece"},
+    "r": {"item": "genesis:silver_ingot"}
+
+  },
+  "result":
+  {
+    "item": "genesis:isis_alloy",
+    "count": 1
+  }
+}

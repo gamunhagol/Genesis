@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:isis_fragment"
+  },
+  "base": {
+    "item": "genesis:isis_fragment"
+  },
+  "result": {
+    "item": "genesis:isis_crystal"
+  },
+  "template": {
+    "item": "genesis:amethyst_needle"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern":
+  [
+    "aaa",
+    "aaa",
+    "aaa"
+  ],
+  "key":
+  {
+    "a": {"item": "genesis:dream_dango"}
+
+  },
+  "result":
+  {
+    "item": "genesis:remnants_of_a_dream",
+    "count": 1
+  }
+}

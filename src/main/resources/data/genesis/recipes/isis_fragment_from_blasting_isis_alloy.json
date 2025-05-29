@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 5000,
+  "experience": 12.4,
+  "group": "isis_piece",
+  "ingredient": {
+    "item": "genesis:isis_alloy"
+  },
+  "result": "genesis:isis_fragment"
+}
