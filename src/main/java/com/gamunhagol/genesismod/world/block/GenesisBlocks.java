@@ -32,7 +32,7 @@ public class GenesisBlocks {
 
     public static final RegistryObject<Block> ISIS_ORE = register("isis_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(60.0F,1200.0F).requiresCorrectToolForDrops(), UniformInt.of(3,7)));
-    public static final RegistryObject<Block> turbid_isis = register("turbid_isis",
+    public static final RegistryObject<Block> TURBID_ISIS = register("turbid_isis",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(60.0F,1200.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> MIXED_ISIS_BLOCK = register("mixed_isis_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(30.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
