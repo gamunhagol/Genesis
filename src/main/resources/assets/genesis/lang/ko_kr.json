@@ -19,6 +19,12 @@
   "item.genesis.isis_fragment": "이시스 조각",
   "item.genesis.isis_crystal": "이시스 결정",
 
+  "item.genesis.empty_crystal_detector_stone": "빈 수정 탐지석",
+  "item.genesis.amethyst_detector_stone": "자수정 탐지석",
+  "item.genesis.blue_crystal_detector_stone": "청수정 탐지석",
+  "item.genesis.citrine_detector_stone": "황수정 탐지석",
+  "item.genesis.red_crystal_detector_stone": "적수정 탐지석",
+
   "item.genesis.amethyst_needle": "자수정 바늘",
 
 
@@ -49,6 +55,8 @@
   "block.genesis.large_red_crystal_bud": "큰 적수정 봉오리",
   "block.genesis.medium_red_crystal_bud": "중간 적수정 봉오리",
   "block.genesis.small_red_crystal_bud": "작은 적수정 봉오리",
+
+  "block.genesis.crystallized_sandstone": "결정화된 사암",
 
 
   "itemGroup.genesis.items": "창세기",

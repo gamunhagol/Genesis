@@ -30,5 +30,10 @@ public class GenesisItems {
     public static final RegistryObject<Item> ISIS_FRAGMENT = ITEMS.register("isis_fragment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_CRYSTAL = ITEMS.register("isis_crystal", () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> EMPTY_CRYSTAL_DETECTOR_STONE = ITEMS.register("empty_crystal_detector_stone", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_DETECTOR_STONE = ITEMS.register("amethyst_detector_stone", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BLUE_CRYSTAL_DETECTOR_STONE = ITEMS.register("blue_crystal_detector_stone", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CITRINE_DETECTOR_STONE = ITEMS.register("citrine_detector_stone", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RED_CRYSTAL_DETECTOR_STONE = ITEMS.register("red_crystal_detector_stone", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
 }

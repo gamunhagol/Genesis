@@ -23,6 +23,7 @@ import java.util.function.Supplier;
 public class GenesisBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, GenesisMod.MODID);
 
+    //natural acquisition
     public static final RegistryObject<Block> SILVER_ORE = register("silver_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3,3).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> DEEPSLATE_SILVER_ORE = register("deepslate_silver_ore",
@@ -73,6 +74,11 @@ public class GenesisBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.MEDIUM_AMETHYST_BUD)));
     public static final RegistryObject<Block> SMALL_RED_CRYSTAL_BUD = register("small_red_crystal_bud",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)));
+
+    //Get mob
+    public static final RegistryObject<Block> CRYSTALLIZED_SANDSTONE = register("crystallized_sandstone",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.GLASS)));
+
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -19,6 +19,12 @@
   "item.genesis.isis_fragment": "Isis Fragment",
   "item.genesis.isis_crystal": "Isis Crystal",
 
+  "item.genesis.empty_crystal_detector_stone": "Empty Crystal Detector Stone",
+  "item.genesis.amethyst_detector_stone": "Amethyst Detector Stone",
+  "item.genesis.blue_crystal_detector_stone": "Blue Crystal Detector Stone",
+  "item.genesis.citrine_detector_stone": "Citrine Detector Stone",
+  "item.genesis.red_crystal_detector_stone": "Red Crystal Detector Stone",
+
   "item.genesis.amethyst_needle": "Amethyst Needle",
 
 
@@ -49,6 +55,8 @@
   "block.genesis.large_red_crystal_bud": "Large Red Crystal Bud",
   "block.genesis.medium_red_crystal_bud": "Medium Red Crystal Bud",
   "block.genesis.small_red_crystal_bud": "Small Red Crystal Bud",
+
+  "block.genesis.crystallized_sandstone": "Crystallized Sandstone",
 
 
 
