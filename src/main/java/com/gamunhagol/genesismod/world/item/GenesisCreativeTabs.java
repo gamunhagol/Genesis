@@ -38,11 +38,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_FRAGMENT.get());
                 output.accept(GenesisItems.ISIS_CRYSTAL.get());
 
-                output.accept(GenesisItems.EMPTY_CRYSTAL_DETECTOR_STONE.get());
-                output.accept(GenesisItems.AMETHYST_DETECTOR_STONE.get());
-                output.accept(GenesisItems.BLUE_CRYSTAL_DETECTOR_STONE.get());
-                output.accept(GenesisItems.CITRINE_DETECTOR_STONE.get());
-                output.accept(GenesisItems.RED_CRYSTAL_DETECTOR_STONE.get());
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
             })

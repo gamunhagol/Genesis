@@ -10,9 +10,12 @@ public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GenesisMod.MODID);
 
     //item
-    public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder", () -> new Item(new Item.Properties()
+            .food(NightmareRelief.DREAM_POWDER)));
+    public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango", () -> new Item(new Item.Properties()
+            .food(NightmareRelief.DREAM_DANGO)));
+    public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream", () -> new Item(new Item.Properties()
+            .food(NightmareAggravated.REMNANTS_OF_A_DREAM)));
     public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
@@ -30,10 +33,5 @@ public class GenesisItems {
     public static final RegistryObject<Item> ISIS_FRAGMENT = ITEMS.register("isis_fragment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_CRYSTAL = ITEMS.register("isis_crystal", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> EMPTY_CRYSTAL_DETECTOR_STONE = ITEMS.register("empty_crystal_detector_stone", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> AMETHYST_DETECTOR_STONE = ITEMS.register("amethyst_detector_stone", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BLUE_CRYSTAL_DETECTOR_STONE = ITEMS.register("blue_crystal_detector_stone", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> CITRINE_DETECTOR_STONE = ITEMS.register("citrine_detector_stone", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> RED_CRYSTAL_DETECTOR_STONE = ITEMS.register("red_crystal_detector_stone", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
 }
