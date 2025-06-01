@@ -46,18 +46,6 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7,3,BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion().lightLevel((p_152632_) -> {
                 return 5;
             }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> LARGER_BLUE_CRYSTAL_BUD = register("large_blue_crystal_bud",
-            () -> new AmethystClusterBlock(5,3,BlockBehaviour.Properties.copy(Blocks.LARGE_AMETHYST_BUD).sound(SoundType.LARGE_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 4;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> MEDIUM_BLUE_CRYSTAL_BUD = register("medium_blue_crystal_bud",
-            () -> new AmethystClusterBlock(4,3,BlockBehaviour.Properties.copy(Blocks.MEDIUM_AMETHYST_BUD).sound(SoundType.MEDIUM_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 2;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> SMALL_BLUE_CRYSTAL_BUD = register("small_blue_crystal_bud",
-            () -> new AmethystClusterBlock(3,4,BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD).sound(SoundType.SMALL_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 1;
-            }).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> CITRINE_BLOCK = register("citrine_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
@@ -65,36 +53,12 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7,3,BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion().lightLevel((p_152632_) -> {
                 return 5;
             }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> LARGER_CITRINE_BUD = register("large_citrine_bud",
-            () -> new AmethystClusterBlock(5,3,BlockBehaviour.Properties.copy(Blocks.LARGE_AMETHYST_BUD).sound(SoundType.LARGE_AMETHYST_BUD).forceSolidOn().noOcclusion().lightLevel((p_152632_) -> {
-                return 4;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> MEDIUM_CITRINE_BUD = register("medium_citrine_bud",
-            () -> new AmethystClusterBlock(4,3,BlockBehaviour.Properties.copy(Blocks.MEDIUM_AMETHYST_BUD).sound(SoundType.MEDIUM_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 2;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> SMALL_CITRINE_BUD = register("small_citrine_bud",
-            () -> new AmethystClusterBlock(3,4,BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD).sound(SoundType.SMALL_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 1;
-            }).pushReaction(PushReaction.DESTROY)));
 
     public static final RegistryObject<Block> RED_CRYSTAL_BLOCK = register("red_crystal_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final RegistryObject<Block> RED_CRYSTAL_CLUSTER = register("red_crystal_cluster",
             () -> new AmethystClusterBlock(7,3,BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion().lightLevel((p_152632_) -> {
                 return 5;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> LARGER_RED_CRYSTAL_BUD = register("large_red_crystal_bud",
-            () -> new AmethystClusterBlock(5,3,BlockBehaviour.Properties.copy(Blocks.LARGE_AMETHYST_BUD).sound(SoundType.LARGE_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 4;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> MEDIUM_RED_CRYSTAL_BUD = register("medium_red_crystal_bud",
-            () -> new AmethystClusterBlock(4,3,BlockBehaviour.Properties.copy(Blocks.MEDIUM_AMETHYST_BUD).sound(SoundType.MEDIUM_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 2;
-            }).pushReaction(PushReaction.DESTROY)));
-    public static final RegistryObject<Block> SMALL_RED_CRYSTAL_BUD = register("small_red_crystal_bud",
-            () -> new AmethystClusterBlock(3,4,BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD).sound(SoundType.SMALL_AMETHYST_BUD).forceSolidOn().lightLevel((p_152632_) -> {
-                return 1;
             }).pushReaction(PushReaction.DESTROY)));
 
     //Get mob

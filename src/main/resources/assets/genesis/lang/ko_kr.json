@@ -40,21 +40,12 @@
 
   "block.genesis.blue_crystal_block": "청수정 블럭",
   "block.genesis.blue_crystal_cluster": "청수정 군집",
-  "block.genesis.large_blue_crystal_bud": "큰 청수정 봉오리",
-  "block.genesis.medium_blue_crystal_bud": "중간 청수정 봉오리",
-  "block.genesis.small_blue_crystal_bud": "작은 청수정 봉오리",
 
   "block.genesis.citrine_block": "황수정 블럭",
   "block.genesis.citrine_cluster": "황수정 군집",
-  "block.genesis.large_citrine_bud": "큰 황수정 봉오리",
-  "block.genesis.medium_citrine_bud": "중간 황수정 봉오리",
-  "block.genesis.small_citrine_bud": "작은 황수정 봉오리",
 
   "block.genesis.red_crystal_block": "적수정 블럭",
   "block.genesis.red_crystal_cluster": "적수정 군집",
-  "block.genesis.large_red_crystal_bud": "큰 적수정 봉오리",
-  "block.genesis.medium_red_crystal_bud": "중간 적수정 봉오리",
-  "block.genesis.small_red_crystal_bud": "작은 적수정 봉오리",
 
   "block.genesis.crystallized_sandstone": "결정화된 사암",
 
