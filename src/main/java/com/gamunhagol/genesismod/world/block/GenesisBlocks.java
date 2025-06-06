@@ -66,12 +66,8 @@ public class GenesisBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.GLASS)));
 
     //Unobtainable
-    public static final RegistryObject<Block> SANDSTONE_GATE = register("sandstone_gate",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(-1.0F, 3600000.0F).sound(SoundType.STONE).noLootTable()));
-    public static final RegistryObject<Block> SANDSTONE_GATE_CROSSING = register("sandstone_gate_crossing",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(-1.0F, 3600000.0F).sound(SoundType.STONE).noLootTable()));
-    public static final RegistryObject<Block> SANDSTONE_GATE_VERTICAL = register("sandstone_gate_vertical",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).strength(-1.0F, 3600000.0F).sound(SoundType.STONE).noLootTable()));
+    public static final RegistryObject<Block> SEAL_STELLAR_BLOCK = register("seal_stellar_block",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F).sound(SoundType.STONE).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

@@ -1,0 +1,3 @@
+{
+  "parent": "genesis:block/seal_stellar_block"
+}
