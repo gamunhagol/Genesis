@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "genesis:block/faded_pillar_top",
+    "side": "genesis:block/faded_pillar"
+  }
+}

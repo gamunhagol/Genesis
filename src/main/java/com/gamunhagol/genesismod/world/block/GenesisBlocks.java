@@ -34,11 +34,11 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> TURBID_ISIS = register("turbid_isis",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(60.0F,1200.0F).requiresCorrectToolForDrops()));
     public static final RegistryObject<Block> MIXED_ISIS_BLOCK = register("mixed_isis_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(30.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(40.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistryObject<Block> ISIS_ALLOY_BLOCK = register("isis_alloy_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(40.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(60.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
     public static final RegistryObject<Block> ISIS_CRYSTAL_BLOCK = register("isis_crystal_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(90.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(180.0F,1200.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
     public static final RegistryObject<Block> BLUE_CRYSTAL_BLOCK = register("blue_crystal_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
@@ -66,8 +66,16 @@ public class GenesisBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.GLASS)));
 
     //Unobtainable
-    public static final RegistryObject<Block> SEAL_STELLAR_BLOCK = register("seal_stellar_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(-1.0F, 3600000.0F).sound(SoundType.STONE).noLootTable()));
+    public static final RegistryObject<Block> FADED_STONE = register("faded_stone",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> FADED_GATEWAY = register("faded_gateway",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> FADED_BRICK = register("faded_brick",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> CHISELED_FADED_BRICK = register("chiseled_faded_brick",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> FADED_PILLAR = register("faded_pillar",
+            () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

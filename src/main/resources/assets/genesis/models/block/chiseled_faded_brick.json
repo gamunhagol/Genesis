@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "genesis:block/chiseled_faded_brick_top",
+    "side": "genesis:block/chiseled_faded_brick"
+  }
+}

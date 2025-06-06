@@ -49,6 +49,12 @@
 
   "block.genesis.crystallized_sandstone": "Crystallized Sandstone",
 
+  "block.genesis.faded_stone": "Faded Stone",
+  "block.genesis.faded_gateway": "Faded Gateway",
+  "block.genesis.faded_brick": "Faded Brick",
+  "block.genesis.chiseled_faded_brick": "Chiseled Faded Brick",
+  "block.genesis.faded_pillar": "Faded Pillar",
+
 
 
   "itemGroup.genesis.items": "Genesis",

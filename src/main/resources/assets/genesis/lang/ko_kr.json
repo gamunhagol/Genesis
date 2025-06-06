@@ -49,6 +49,11 @@
 
   "block.genesis.crystallized_sandstone": "결정화된 사암",
 
+  "block.genesis.faded_stone": "빛바랜 돌",
+  "block.genesis.faded_gateway": "빛바랜 관문",
+  "block.genesis.faded_brick": "빛바랜 벽돌",
+  "block.genesis.chiseled_faded_brick": "조각된 빛바랜 벽돌",
+  "block.genesis.faded_pillar": "빛바랜 기둥",
 
 
   "itemGroup.genesis.items": "창세기",
