@@ -55,6 +55,12 @@
   "block.genesis.chiseled_faded_brick": "조각된 빛바랜 벽돌",
   "block.genesis.faded_pillar": "빛바랜 기둥",
 
+  "block.genesis.faded_stone_slab": "빛바랜 돌 반블럭",
+  "block.genesis.faded_brick_slab": "빛바랜 돌 반블럭",
+  "block.genesis.faded_stone_stairs": "빛바랜 돌 계단",
+  "block.genesis.faded_brick_stairs": "빛바랜 돌 계단",
+  "block.genesis.faded_brick_wall": "빛바랜 돌 담장",
+
 
   "itemGroup.genesis.items": "창세기",
   "itemGroup.genesis_block.blocks": "창세기 블럭"

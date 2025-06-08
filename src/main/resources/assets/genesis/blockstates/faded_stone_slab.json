@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "genesis:block/faded_stone_slab"
+    },
+    "type=double": {
+      "model": "genesis:block/faded_stone"
+    },
+    "type=top": {
+      "model": "genesis:block/faded_stone_slab_top"
+    }
+  }
+}

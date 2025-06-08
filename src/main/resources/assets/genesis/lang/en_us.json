@@ -55,6 +55,12 @@
   "block.genesis.chiseled_faded_brick": "Chiseled Faded Brick",
   "block.genesis.faded_pillar": "Faded Pillar",
 
+  "block.genesis.faded_stone_slab": "Faded Stone Slab",
+  "block.genesis.faded_brick_slab": "Faded Brick Slab",
+  "block.genesis.faded_stone_stairs": "Faded Stone Stairs",
+  "block.genesis.faded_brick_stairs": "Faded Brick Stairs",
+  "block.genesis.faded_brick_wall": "Faded Brick Wall",
+
 
 
   "itemGroup.genesis.items": "Genesis",
