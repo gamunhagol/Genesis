@@ -16,7 +16,8 @@ public class GenesisItems {
             .food(NightmareRelief.DREAM_DANGO)));
     public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream", () -> new Item(new Item.Properties()
             .food(NightmareAggravated.REMNANTS_OF_A_DREAM)));
-    public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory", () -> new Item(new Item.Properties()
+            .stacksTo(16)));
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CITRINE_SHARD = ITEMS.register("citrine_shard", () -> new Item(new Item.Properties()));
