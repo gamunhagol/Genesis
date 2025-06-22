@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.mojang.logging.LogUtils;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -37,6 +38,10 @@ public class GenesisMod
         GenesisCreativeTabs.TABS.register(modEventBus);
 
 
+    }
+
+    public static ResourceLocation prefix(String tagName) {
+        return null;
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

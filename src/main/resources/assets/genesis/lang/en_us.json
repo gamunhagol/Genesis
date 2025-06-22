@@ -19,11 +19,11 @@
   "item.genesis.isis_fragment": "Isis Fragment",
   "item.genesis.isis_crystal": "Isis Crystal",
 
-  "item.genesis.empty_crystal_detector_stone": "Empty Crystal Detector Stone",
-  "item.genesis.amethyst_detector_stone": "Amethyst Detector Stone",
-  "item.genesis.blue_crystal_detector_stone": "Blue Crystal Detector Stone",
-  "item.genesis.citrine_detector_stone": "Citrine Detector Stone",
-  "item.genesis.red_crystal_detector_stone": "Red Crystal Detector Stone",
+  "item.genesis.isis_sword": "Isis Sword",
+  "item.genesis.isis_shovel": "Isis Shovel",
+  "item.genesis.isis_pickaxe": "Isis Pickaxe",
+  "item.genesis.isis_axe": "Isis Axe",
+  "item.genesis.isis_hoe": "Isis Hoe",
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
 

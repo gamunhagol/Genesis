@@ -1,10 +1,16 @@
 package com.gamunhagol.genesismod.world.item;
 
 import com.gamunhagol.genesismod.GenesisMod;
-import net.minecraft.world.item.Item;
+import com.gamunhagol.genesismod.util.GenesisItemTier;
+import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
+import static net.minecraft.world.item.Items.registerBlock;
+
 
 public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GenesisMod.MODID);
@@ -33,6 +39,18 @@ public class GenesisItems {
     public static final RegistryObject<Item> ISIS_ALLOY = ITEMS.register("isis_alloy", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_FRAGMENT = ITEMS.register("isis_fragment", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_CRYSTAL = ITEMS.register("isis_crystal", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ISIS_SWORD = ITEMS.register("isis_sword", () -> new SwordItem(GenesisItemTier.ISIS,3,-2.4f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> ISIS_SHOVEL = ITEMS.register("isis_shovel", () -> new ShovelItem(GenesisItemTier.ISIS,1.5f,-3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ISIS_PICKAXE = ITEMS.register("isis_pickaxe", () -> new PickaxeItem(GenesisItemTier.ISIS,1,-2.8f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ISIS_AXE = ITEMS.register("isis_axe", () -> new AxeItem(GenesisItemTier.ISIS,5,-3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ISIS_HOE = ITEMS.register("isis_hoe", () -> new HoeItem(GenesisItemTier.ISIS,-4,0.0f,
+            new Item.Properties()));
+
 
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
 }

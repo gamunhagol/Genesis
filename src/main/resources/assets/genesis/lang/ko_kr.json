@@ -19,11 +19,11 @@
   "item.genesis.isis_fragment": "이시스 조각",
   "item.genesis.isis_crystal": "이시스 결정",
 
-  "item.genesis.empty_crystal_detector_stone": "빈 수정 탐지석",
-  "item.genesis.amethyst_detector_stone": "자수정 탐지석",
-  "item.genesis.blue_crystal_detector_stone": "청수정 탐지석",
-  "item.genesis.citrine_detector_stone": "황수정 탐지석",
-  "item.genesis.red_crystal_detector_stone": "적수정 탐지석",
+  "item.genesis.isis_sword": "이시스 검",
+  "item.genesis.isis_shovel": "이시스 괭이",
+  "item.genesis.isis_pickaxe": "이시스 곡괭이",
+  "item.genesis.isis_axe": "이시스 도끼",
+  "item.genesis.isis_hoe": "이시스 삽",
 
   "item.genesis.amethyst_needle": "자수정 바늘",
 

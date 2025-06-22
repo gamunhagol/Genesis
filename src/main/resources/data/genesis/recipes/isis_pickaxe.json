@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "X": {
+      "item": "genesis:isis_crystal"
+    }
+  },
+  "pattern": [
+    "XXX",
+    " #",
+    " #"
+  ],
+  "result": {
+    "item": "genesis:isis_pickaxe"
+  },
+  "show_notification": true
+}
