@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "XX",
-    " #",
-    " #"
+    "X",
+    "#",
+    "#"
   ],
   "result": {
     "item": "genesis:isis_shovel"

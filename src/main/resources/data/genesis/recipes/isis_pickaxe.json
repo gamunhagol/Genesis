@@ -11,8 +11,8 @@
   },
   "pattern": [
     "XXX",
-    " #",
-    " #"
+    " # ",
+    " # "
   ],
   "result": {
     "item": "genesis:isis_pickaxe"

@@ -10,9 +10,9 @@
     }
   },
   "pattern": [
-    "X",
-    "#",
-    "#"
+    "XX",
+    " #",
+    " #"
   ],
   "result": {
     "item": "genesis:isis_hoe"
