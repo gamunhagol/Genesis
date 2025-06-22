@@ -29,8 +29,7 @@
       "tag": "forge:ingots/silver"
     }
   ],
-  "result":
-  {
+  "result": {
     "item": "genesis:silver_block",
     "count": 1
   }

@@ -1,19 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern":
-  [
+  "pattern": [
     "aaa",
     "aaa",
     "aaa"
   ],
-  "key":
-  {
-    "a": {"item": "genesis:isis_alloy"}
-
+  "key": {
+    "a": {
+      "item": "genesis:isis_alloy"
+    }
   },
-  "result":
-  {
+  "result": {
     "item": "genesis:isis_alloy_block",
     "count": 1
   }

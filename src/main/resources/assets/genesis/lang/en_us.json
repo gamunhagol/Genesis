@@ -27,11 +27,10 @@
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
 
-
   "block.genesis.silver_ore": "Silver Ore",
   "block.genesis.deepslate_silver_ore": "Deepslate Silver Ore",
-  "block.genesis.silver_block": "Silver Block",
 
+  "block.genesis.silver_block": "Silver Block",
   "block.genesis.isis_ore": "Isis Ore",
   "block.genesis.turbid_isis": "Turbid Isis",
   "block.genesis.mixed_isis_block": "Mixed Isis Block",
@@ -40,15 +39,12 @@
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
   "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",
-
   "block.genesis.citrine_block": "Citrine Block",
   "block.genesis.citrine_cluster": "Citrine Cluster",
-
   "block.genesis.red_crystal_block": "Red Crystal Block",
   "block.genesis.red_crystal_cluster": "Red Crystal Cluster",
 
   "block.genesis.crystallized_sandstone": "Crystallized Sandstone",
-
   "block.genesis.faded_stone": "Faded Stone",
   "block.genesis.faded_gateway": "Faded Gateway",
   "block.genesis.faded_brick": "Faded Brick",
@@ -60,8 +56,6 @@
   "block.genesis.faded_stone_stairs": "Faded Stone Stairs",
   "block.genesis.faded_brick_stairs": "Faded Brick Stairs",
   "block.genesis.faded_brick_wall": "Faded Brick Wall",
-
-
 
   "itemGroup.genesis.items": "Genesis",
   "itemGroup.genesis_block.blocks": "Genesis Blocks"

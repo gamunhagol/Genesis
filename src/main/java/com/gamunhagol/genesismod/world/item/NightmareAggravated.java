@@ -13,8 +13,9 @@ import net.minecraft.world.level.Level;
 
 public class NightmareAggravated {
     public static final FoodProperties REMNANTS_OF_A_DREAM = (new FoodProperties.Builder())
-            .nutrition(0).saturationMod(0.0f).fast().alwaysEat().effect(new MobEffectInstance(MobEffects.HUNGER, 200,4),1.0F)
-            .effect(new MobEffectInstance(MobEffects.CONFUSION,100,1),1.0F).build();
+            .nutrition(0).saturationMod(0.0f).fast().alwaysEat().effect(new MobEffectInstance(MobEffects.HUNGER, 200, 4), 1.0F)
+            .effect(new MobEffectInstance(MobEffects.CONFUSION, 100, 1), 1.0F).build();
+
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         pPlayer.awardStat(Stats.TIME_SINCE_REST, 216000);
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);

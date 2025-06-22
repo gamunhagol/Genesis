@@ -1,20 +1,20 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern":
-  [
+  "pattern": [
     "aaa",
     "aca",
     "aaa"
   ],
-  "key":
-  {
-    "a": {"item": "genesis:isis_ore_piece"},
-    "c": {"item": "minecraft:obsidian"}
-
+  "key": {
+    "a": {
+      "item": "genesis:isis_ore_piece"
+    },
+    "c": {
+      "item": "minecraft:obsidian"
+    }
   },
-  "result":
-  {
+  "result": {
     "item": "genesis:turbid_isis",
     "count": 1
   }

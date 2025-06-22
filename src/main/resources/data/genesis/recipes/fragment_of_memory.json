@@ -1,20 +1,23 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
-  "pattern":
-  [
+  "pattern": [
     "rcr",
     "rar",
     "rrr"
   ],
-  "key":
-  {
-    "a": {"item": "genesis:remnants_of_a_dream"},
-    "c": {"item": "minecraft:nether_star"},
-    "r": {"item": "minecraft:blaze_powder"}
+  "key": {
+    "a": {
+      "item": "genesis:remnants_of_a_dream"
+    },
+    "c": {
+      "item": "minecraft:nether_star"
+    },
+    "r": {
+      "item": "minecraft:blaze_powder"
+    }
   },
-  "result":
-  {
+  "result": {
     "item": "genesis:fragment_of_memory",
     "count": 1
   }
