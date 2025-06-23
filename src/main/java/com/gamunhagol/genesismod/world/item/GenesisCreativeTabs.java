@@ -38,6 +38,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_FRAGMENT.get());
                 output.accept(GenesisItems.ISIS_CRYSTAL.get());
 
+                output.accept(GenesisItems.SILVER_PLATED_IRON_HELMET.get());
+                output.accept(GenesisItems.SILVER_PLATED_IRON_CHESTPLATE.get());
+                output.accept(GenesisItems.SILVER_PLATED_IRON_LEGGINGS.get());
+                output.accept(GenesisItems.SILVER_PLATED_IRON_BOOTS.get());
+
                 output.accept(GenesisItems.ISIS_SWORD.get());
                 output.accept(GenesisItems.ISIS_SHOVEL.get());
                 output.accept(GenesisItems.ISIS_PICKAXE.get());

@@ -19,6 +19,12 @@
   "item.genesis.isis_fragment": "Isis Fragment",
   "item.genesis.isis_crystal": "Isis Crystal",
 
+
+  "item.genesis.silver_plated_iron_helmet": "Silver plated Iron Helmet",
+  "item.genesis.silver_plated_iron_chestplate": "Silver plated Iron Chestplate",
+  "item.genesis.silver_plated_iron_leggings": "Silver plated Iron Leggings",
+  "item.genesis.silver_plated_iron_boots": "Silver plated Iron Boots",
+
   "item.genesis.isis_sword": "Isis Sword",
   "item.genesis.isis_shovel": "Isis Shovel",
   "item.genesis.isis_pickaxe": "Isis Pickaxe",
@@ -26,6 +32,8 @@
   "item.genesis.isis_hoe": "Isis Hoe",
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
+
+
 
   "block.genesis.silver_ore": "Silver Ore",
   "block.genesis.deepslate_silver_ore": "Deepslate Silver Ore",
@@ -56,6 +64,8 @@
   "block.genesis.faded_stone_stairs": "Faded Stone Stairs",
   "block.genesis.faded_brick_stairs": "Faded Brick Stairs",
   "block.genesis.faded_brick_wall": "Faded Brick Wall",
+
+
 
   "itemGroup.genesis.items": "Genesis",
   "itemGroup.genesis_block.blocks": "Genesis Blocks"

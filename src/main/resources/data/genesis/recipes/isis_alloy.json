@@ -10,7 +10,7 @@
       "item": "genesis:isis_piece"
     },
     "r": {
-      "item": "genesis:silver_ingot"
+      "tag": "forge:ingots/silver"
     }
   },
   "result": {

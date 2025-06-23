@@ -19,6 +19,11 @@
   "item.genesis.isis_fragment": "이시스 조각",
   "item.genesis.isis_crystal": "이시스 결정",
 
+  "item.genesis.silver_plated_iron_helmet": "은덧댄 철투구",
+  "item.genesis.silver_plated_iron_chestplate": "은덧댄 철흉갑",
+  "item.genesis.silver_plated_iron_leggings": "은덧댄 철레깅스",
+  "item.genesis.silver_plated_iron_boots": "은덧댄 철부츠",
+
   "item.genesis.isis_sword": "이시스 검",
   "item.genesis.isis_shovel": "이시스 삽",
   "item.genesis.isis_pickaxe": "이시스 곡괭이",
@@ -26,10 +31,13 @@
   "item.genesis.isis_hoe": "이시스 괭이",
 
   "item.genesis.amethyst_needle": "자수정 바늘",
-  "block.genesis.silver_ore": "은 광석",
 
+
+
+  "block.genesis.silver_ore": "은 광석",
   "block.genesis.deepslate_silver_ore": "심층암 은 광석",
   "block.genesis.silver_block": "은 블럭",
+
   "block.genesis.isis_ore": "이시스 광석",
   "block.genesis.turbid_isis": "혼탁한 이시스",
   "block.genesis.mixed_isis_block": "뒤섞인 이시스 블럭",
@@ -55,6 +63,8 @@
   "block.genesis.faded_stone_stairs": "빛바랜 돌 계단",
   "block.genesis.faded_brick_stairs": "빛바랜 돌 계단",
   "block.genesis.faded_brick_wall": "빛바랜 돌 담장",
+
+
 
   "itemGroup.genesis.items": "창세기",
   "itemGroup.genesis_block.blocks": "창세기 블럭"
