@@ -20,18 +20,20 @@
   "item.genesis.isis_crystal": "Isis Crystal",
 
 
-  "item.genesis.silver_plated_iron_helmet": "Silver plated Iron Helmet",
-  "item.genesis.silver_plated_iron_chestplate": "Silver plated Iron Chestplate",
-  "item.genesis.silver_plated_iron_leggings": "Silver plated Iron Leggings",
-  "item.genesis.silver_plated_iron_boots": "Silver plated Iron Boots",
-
   "item.genesis.isis_sword": "Isis Sword",
   "item.genesis.isis_shovel": "Isis Shovel",
   "item.genesis.isis_pickaxe": "Isis Pickaxe",
   "item.genesis.isis_axe": "Isis Axe",
   "item.genesis.isis_hoe": "Isis Hoe",
 
+  "item.genesis.isis_helmet": "Isis Helmet",
+  "item.genesis.isis_chestplate": "Isis Chestplate",
+  "item.genesis.isis_leggings": "Isis Leggings",
+  "item.genesis.isis_boots": "Isis boots",
+
+
   "item.genesis.amethyst_needle": "Amethyst Needle",
+  "item.genesis.isis_upgrade_smithing_template": "Isis Upgrade Smithing Template",
 
 
 

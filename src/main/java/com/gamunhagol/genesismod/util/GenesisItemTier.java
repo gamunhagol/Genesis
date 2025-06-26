@@ -13,10 +13,6 @@ import java.util.List;
 
 public class GenesisItemTier {
 
-    public static final Tier SILVER_PLATED = TierSortingRegistry.registerTier(
-            new ForgeTier(2,260,6.0f,2.0f,15, BlockTags.create(GenesisMod.prefix("need_silver_tool")),
-                    () -> Ingredient.of(GenesisItems.SILVER_INGOT.get())),
-            GenesisMod.prefix("silver_plated"), List.of(Tiers.IRON), List.of());
 
     public static final Tier ISIS = TierSortingRegistry.registerTier(
             new ForgeTier(4, 2031, 9f, 4F, 16, BlockTags.create(GenesisMod.prefix("need_isis_tool")),

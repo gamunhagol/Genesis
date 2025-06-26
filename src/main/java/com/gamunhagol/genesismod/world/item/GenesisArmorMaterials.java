@@ -14,8 +14,8 @@ import java.util.function.Supplier;
 
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
-    SILVER_PLATED("silver_plated", 4, new int[]{1, 2, 3, 1}, 15, SoundEvents.ARMOR_EQUIP_IRON, 1.0F, 0.0F, () -> {
-        return Ingredient.of(Items.IRON_INGOT);
+    ISIS("isis", 29, new int[]{3, 6, 8, 3}, 16, SoundEvents.ARMOR_EQUIP_IRON,
+            3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.ISIS_CRYSTAL.get());
     })
     ;
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

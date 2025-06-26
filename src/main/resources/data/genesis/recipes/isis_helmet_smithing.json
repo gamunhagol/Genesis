@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:isis_crystal"
+  },
+  "base": {
+    "item": "minecraft:iron_helmet"
+  },
+  "result": {
+    "item": "genesis:isis_helmet"
+  },
+  "template": {
+    "item": "genesis:isis_upgrade_smithing_template"
+  }
+}

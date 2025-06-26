@@ -38,19 +38,21 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_FRAGMENT.get());
                 output.accept(GenesisItems.ISIS_CRYSTAL.get());
 
-                output.accept(GenesisItems.SILVER_PLATED_IRON_HELMET.get());
-                output.accept(GenesisItems.SILVER_PLATED_IRON_CHESTPLATE.get());
-                output.accept(GenesisItems.SILVER_PLATED_IRON_LEGGINGS.get());
-                output.accept(GenesisItems.SILVER_PLATED_IRON_BOOTS.get());
-
                 output.accept(GenesisItems.ISIS_SWORD.get());
                 output.accept(GenesisItems.ISIS_SHOVEL.get());
                 output.accept(GenesisItems.ISIS_PICKAXE.get());
                 output.accept(GenesisItems.ISIS_AXE.get());
                 output.accept(GenesisItems.ISIS_HOE.get());
 
+                output.accept(GenesisItems.ISIS_HELMET.get());
+                output.accept(GenesisItems.ISIS_CHESTPLATE.get());
+                output.accept(GenesisItems.ISIS_LEGGINGS.get());
+                output.accept(GenesisItems.ISIS_BOOTS.get());
+
+
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
+                output.accept(GenesisItems.ISIS_UPGRADE_SMITHING_TEMPLATE.get());
             })
             .title(Component.translatable("itemGroup.genesis.items"))
             .build()
