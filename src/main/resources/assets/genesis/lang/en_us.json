@@ -19,6 +19,8 @@
   "item.genesis.isis_fragment": "Isis Fragment",
   "item.genesis.isis_crystal": "Isis Crystal",
 
+  "item.genesis.pure_isis": "Pure Isis",
+
 
   "item.genesis.isis_sword": "Isis Sword",
   "item.genesis.isis_shovel": "Isis Shovel",
@@ -30,6 +32,11 @@
   "item.genesis.isis_chestplate": "Isis Chestplate",
   "item.genesis.isis_leggings": "Isis Leggings",
   "item.genesis.isis_boots": "Isis boots",
+
+  "item.genesis.isis_plate_helmet": "Isis Plate Helmet",
+  "item.genesis.isis_plate_chestplate": "Isis Plate Chestplate",
+  "item.genesis.isis_plate_leggings": "Isis Plate Leggings",
+  "item.genesis.isis_plate_boots": "Isis Plate boots",
 
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
