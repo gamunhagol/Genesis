@@ -108,13 +108,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> ISIS_BOOTS = ITEMS.register("isis_boots", () -> new ArmorItem(GenesisArmorMaterials.ISIS,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().durability(-1)));
 
-    public static final RegistryObject<Item> ISIS_PLATE_HELMET = ITEMS.register("isis_plate_helmet", () -> new ArmorItem(GenesisArmorMaterials.ISIS_PLATE,
+    public static final RegistryObject<Item> ISIS_PLATE_HELMET = ITEMS.register("isis_plate_helmet", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
             ArmorItem.Type.HELMET,new Item.Properties().fireResistant().durability(-1)));
-    public static final RegistryObject<Item> ISIS_PLATE_CHESTPLATE = ITEMS.register("isis_plate_chestplate", () -> new ArmorItem(GenesisArmorMaterials.ISIS_PLATE,
+    public static final RegistryObject<Item> ISIS_PLATE_CHESTPLATE = ITEMS.register("isis_plate_chestplate", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
             ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().durability(-1)));
-    public static final RegistryObject<Item> ISIS_PLATE_LEGGINGS = ITEMS.register("isis_plate_leggings", () -> new ArmorItem(GenesisArmorMaterials.ISIS_PLATE,
+    public static final RegistryObject<Item> ISIS_PLATE_LEGGINGS = ITEMS.register("isis_plate_leggings", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
             ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().durability(-1)));
-    public static final RegistryObject<Item> ISIS_PLATE_BOOTS = ITEMS.register("isis_plate_boots", () -> new ArmorItem(GenesisArmorMaterials.ISIS_PLATE,
+    public static final RegistryObject<Item> ISIS_PLATE_BOOTS = ITEMS.register("isis_plate_boots", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().durability(-1)));
 
     public static final RegistryObject<Item> ISIS_SWORD = ITEMS.register("isis_sword", () -> new SwordItem(GenesisItemTier.ISIS, 3, -2.4f,
