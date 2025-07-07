@@ -56,6 +56,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_PLATE_LEGGINGS.get());
                 output.accept(GenesisItems.ISIS_PLATE_BOOTS.get());
 
+                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_HELMET.get());
+                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_CHESTPLATE.get());
+                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_LEGGINGS.get());
+                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_BOOTS.get());
+
 
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
