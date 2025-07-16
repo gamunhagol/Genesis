@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:pure_isis"
+  },
+  "base": {
+    "item": "genesis:isis_boots"
+  },
+  "result": {
+    "item": "genesis:isis_holy_knight_boots"
+  },
+  "template": {
+    "item": "genesis:isis_upgrade_smithing_template"
+  }
+}

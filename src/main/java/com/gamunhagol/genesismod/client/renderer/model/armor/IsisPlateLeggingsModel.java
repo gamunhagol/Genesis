@@ -29,29 +29,16 @@ public class IsisPlateLeggingsModel <T extends LivingEntity> extends HumanoidMod
                 .texOffs(16,48).addBox(-4.0F,-24.0F,-2.0F,8.0F,12.0F,4.0F,
                         new CubeDeformation(0.7F)), PartPose.offset(0.0F,23.5F,0.0F));
 
-        PartDefinition back_waist_armor = body.addOrReplaceChild("back_waist_armor", CubeListBuilder.create()
-                .texOffs(16,18).addBox(0.0F,6.0F,-4.0F,8.0F,3.0F,1.0F,
-                        new CubeDeformation(0.9F)), PartPose.offsetAndRotation(-4.0F,0.5F,3.0F,12.955F,0.0F,0.0F));
-
-        PartDefinition back_waist_armor_u = body.addOrReplaceChild("back_waist_armor_u", CubeListBuilder.create()
-                .texOffs(16,18).addBox(0.0F,6.0F,-4.0F,8.0F,3.0F,1.0F,
-                        new CubeDeformation(1.1F)), PartPose.offsetAndRotation(-4.0F,3.5F,4.2F,12.955F,0.0F,0.0F));
-
         PartDefinition right_waist_armor = body.addOrReplaceChild("right_waist_armor", CubeListBuilder.create()
-                .texOffs(26,22).addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F,
-                        new CubeDeformation(0.9F)), PartPose.offsetAndRotation(0.7F,0.75F,-1.0F,0.0F,0.0F,-18.5F));
-
-        PartDefinition right_waist_armor_u = body.addOrReplaceChild("right_waist_armor_u", CubeListBuilder.create()
-                .texOffs(26,22).addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F,
-                        new CubeDeformation(1.1F)), PartPose.offsetAndRotation(-0.4F,3.75F,-1.0F,0.0F,0.0F,-18.5F));
+                .texOffs(43,22).addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F, new CubeDeformation(0.9F))
+                        .texOffs(53,20).addBox(-3.0F,8.0F,-1.0F,1.0F,5.0F,4.0F, new CubeDeformation(0.8F))
+                , PartPose.offsetAndRotation(0.7F,0.75F,-1.0F,0.0F,0.0F,-18.5F));
 
         PartDefinition left_waist_armor = body.addOrReplaceChild("left_waist_armor", CubeListBuilder.create()
-                .texOffs(26,22).mirror().addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F,
-                        new CubeDeformation(0.9F)).mirror(false), PartPose.offsetAndRotation(4.0F,-1.0F,-1.0F,0.0F,0.0F,18.5F));
+                .texOffs(43,22).mirror().addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F, new CubeDeformation(0.9F)).mirror(false)
+                        .texOffs(53,20).mirror().addBox(-3.0F,8.0F,-1.0F,1.0F,5.0F,4.0F, new CubeDeformation(0.8F)).mirror(false)
+                , PartPose.offsetAndRotation(4.0F,-1.0F,-1.0F,0.0F,0.0F,18.5F));
 
-        PartDefinition left_waist_armor_u = body.addOrReplaceChild("left_waist_armor_u", CubeListBuilder.create()
-                .texOffs(26,22).mirror().addBox(-3.0F,8.0F,-1.0F,1.0F,3.0F,4.0F,
-                        new CubeDeformation(1.1F)).mirror(false), PartPose.offsetAndRotation(5.1F,2.0F,-1.0F,0.0F,0.0F,18.5F));
 
         PartDefinition right_legging = right_leg.addOrReplaceChild("right_legging", CubeListBuilder.create()
                 .texOffs(0,48).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
