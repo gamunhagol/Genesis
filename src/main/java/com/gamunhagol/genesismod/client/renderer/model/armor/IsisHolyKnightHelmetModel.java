@@ -24,18 +24,18 @@ public class IsisHolyKnightHelmetModel<T extends LivingEntity> extends HumanoidM
         PartDefinition head = partDefinition.getChild("head");
 
         PartDefinition head_armor = head.addOrReplaceChild("head_armor", CubeListBuilder.create()
-                .texOffs(0,96).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
-                        .texOffs(32,96).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.0F))
+                .texOffs(0,96).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.5F))
+                        .texOffs(32,96).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.7F))
                         .texOffs(110,107).addBox(-0.0F,-10.0F,4.0F,0.0F,10.0F,2.0F, new CubeDeformation(0.0F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
         PartDefinition head_wing = head.addOrReplaceChild("head_wing", CubeListBuilder.create()
-                .texOffs(0,48).addBox(-5.0F,-7.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.1F))
-                        .texOffs(0,25).addBox(-5.0F,-7.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.05F))
-                        .texOffs(0,48).addBox(-5.0F,-10.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.2F))
-                        .texOffs(0,25).addBox(-5.0F,-10.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.15F))
-                        .texOffs(0,48).addBox(-5.0F,-13.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.3F))
-                        .texOffs(0,25).addBox(-5.0F,-13.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(0.25F))
+                .texOffs(0,48).addBox(-5.0F,-7.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.06F))
+                        .texOffs(0,25).addBox(-5.0F,-7.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.065F))
+                        .texOffs(0,48).addBox(-5.0F,-10.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.04F))
+                        .texOffs(0,25).addBox(-5.0F,-10.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.055F))
+                        .texOffs(0,48).addBox(-5.0F,-13.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.03F))
+                        .texOffs(0,25).addBox(-5.0F,-13.0F,-5.0F,10.0F,10.0F,12.0F, new CubeDeformation(-0.045F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
