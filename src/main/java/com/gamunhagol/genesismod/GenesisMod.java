@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod;
 
+import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -34,6 +35,8 @@ public class GenesisMod {
         GenesisItems.ITEMS.register(modEventBus);
         GenesisBlocks.BLOCKS.register(modEventBus);
         GenesisCreativeTabs.TABS.register(modEventBus);
+
+        GenesisLootTables.LOOT_MODIFIERS.register(modEventBus);
 
 
     }
