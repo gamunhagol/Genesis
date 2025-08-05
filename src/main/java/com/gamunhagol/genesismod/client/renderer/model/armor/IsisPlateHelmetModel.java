@@ -26,31 +26,10 @@ public class IsisPlateHelmetModel<T extends LivingEntity> extends HumanoidModel<
         PartDefinition head_armor = head.addOrReplaceChild("head_armor", CubeListBuilder.create()
                 .texOffs(0,0).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
                 .texOffs(32,0).addBox(-4.0F,-8.0F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.0F))
+                        .texOffs(0,32).addBox(-4.0F,-9.0F,-3.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.9F))
+                        .texOffs(0,32).addBox(-4.0F,-11.0F,-2.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.89F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
-        PartDefinition right_horn = head.addOrReplaceChild("right_horn", CubeListBuilder.create()
-                .texOffs(0,48).addBox(-5.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F,0.0F,0.0F,0.225F,-0.05F,-0.095F));
-
-        PartDefinition right_horn_a = head.addOrReplaceChild("right_horn_a", CubeListBuilder.create()
-                .texOffs(0,48).addBox(-5.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F,-2.0F,0.0F,0.225F,-0.05F,-0.095F));
-
-        PartDefinition right_horn_b = head.addOrReplaceChild("right_horn_b", CubeListBuilder.create()
-                .texOffs(0,48).addBox(-5.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)), PartPose.offsetAndRotation(0.0F,-4.0F,0.0F,0.225F,-0.05F,-0.095F));
-
-        PartDefinition left_horn = head.addOrReplaceChild("left_horn", CubeListBuilder.create()
-                .texOffs(0,48).mirror().addBox(4.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F,0.0F,0.0F,0.225F,0.05F,0.095F));
-
-        PartDefinition left_horn_a = head.addOrReplaceChild("left_horn_a", CubeListBuilder.create()
-                .texOffs(0,48).mirror().addBox(4.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F,-2.0F,0.0F,0.225F,0.05F,0.095F));
-
-        PartDefinition left_horn_b = head.addOrReplaceChild("left_horn_b", CubeListBuilder.create()
-                .texOffs(0,48).mirror().addBox(4.25F,-5.0F,-1.05F,1.0F,2.0F,7.0F
-                        ,new CubeDeformation(0.0F)).mirror(false), PartPose.offsetAndRotation(0.0F,-4.0F,0.0F,0.225F,0.05F,0.095F));
 
 
 

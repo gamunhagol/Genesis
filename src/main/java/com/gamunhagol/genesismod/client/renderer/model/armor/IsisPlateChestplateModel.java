@@ -28,23 +28,7 @@ public class IsisPlateChestplateModel <T extends LivingEntity> extends HumanoidM
 
         PartDefinition chest = body.addOrReplaceChild("chest", CubeListBuilder.create()
                 .texOffs(16,16).addBox(-4.0F,-24.0F,-2.0F, 8.0F,12.0F,4.0F
-                        , new CubeDeformation(0.8F)), PartPose.offset(0.0F,24.0F,0.0F));
-
-        PartDefinition right_rid = body.addOrReplaceChild("right_rid", CubeListBuilder.create()
-                .texOffs(0,39).addBox(-4.0F,0.0F,-2.0F,4.0F,2.0F,4.0F
-                        ,new CubeDeformation(1.0F)),PartPose.offsetAndRotation(-0.75F,4.0F,0.0F,0.0F,0.0F,-0.25F));
-
-        PartDefinition right_rid_u = body.addOrReplaceChild("right_rid_u", CubeListBuilder.create()
-                .texOffs(0,39).addBox(-4.0F,0.0F,-2.0F,4.0F,2.0F,4.0F
-                        ,new CubeDeformation(1.1F)),PartPose.offsetAndRotation(-0.75F,1.0F,0.0F,0.0F,0.0F,-0.25F));
-
-        PartDefinition left_rid = body.addOrReplaceChild("left_rid", CubeListBuilder.create()
-                .texOffs(0,39).mirror().addBox(0.0F,0.0F,-2.0F,4.0F,2.0F,4.0F
-                        ,new CubeDeformation(0.95F)).mirror(false),PartPose.offsetAndRotation(0.75F,4.0F,0.0F,0.0F,0.0F,0.25F));
-
-        PartDefinition left_rid_u = body.addOrReplaceChild("left_rid_u", CubeListBuilder.create()
-                .texOffs(0,39).mirror().addBox(0.0F,0.0F,-2.0F,4.0F,2.0F,4.0F
-                        ,new CubeDeformation(1.05F)).mirror(false),PartPose.offsetAndRotation(0.75F,1.0F,0.0F,0.0F,0.0F,0.25F));
+                        , new CubeDeformation(0.85F)), PartPose.offset(0.0F,24.0F,0.0F));
 
 
 

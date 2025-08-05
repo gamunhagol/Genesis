@@ -27,6 +27,7 @@ public class IsisHolyKnightChestplateModel<T extends LivingEntity> extends Human
 
         PartDefinition chest = body.addOrReplaceChild("chest", CubeListBuilder.create()
                 .texOffs(16,112).addBox(-4.0F,-24.0F,-2.0F, 8.0F,12.0F,4.0F, new CubeDeformation(0.8F))
+                        .texOffs(16,80).addBox(-4.0F,-24.0F,-2.0F, 8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
                         .texOffs(64,90).addBox(-1.0F,-24.0F,2.0F, 0.0F,12.0F,2.0F, new CubeDeformation(0.0F))
                         .texOffs(64,90).mirror().addBox(1.0F,-24.0F,2.0F, 0.0F,12.0F,2.0F, new CubeDeformation(0.0F)).mirror(false)
                 , PartPose.offset(0.0F,24.0F,0.0F));
@@ -36,31 +37,21 @@ public class IsisHolyKnightChestplateModel<T extends LivingEntity> extends Human
 
         PartDefinition right_armor = right_arm.addOrReplaceChild("right_armor", CubeListBuilder.create()
                 .texOffs(40,112).addBox(-3.25F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.6F))
-                        .texOffs(39,79).addBox(-3.25F,6.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.7F))
-                        .texOffs(39,79).addBox(-3.25F,4.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.75F))
-                        .texOffs(39,79).addBox(-3.25F,2.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.755F))
+                        .texOffs(40,80).addBox(-3.25F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.5F))
+                        .texOffs(80,114).addBox(-5.0F,1.0F,-1.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
+                        .texOffs(88,104).addBox(-5.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.0F))
+                        .texOffs(88,116).addBox(-5.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.2F))
                 , PartPose.offset(0.0F, -1.5F, 0.0F));
 
-        PartDefinition right_shoulder = right_arm.addOrReplaceChild("right_shoulder", CubeListBuilder.create()
-                .texOffs(23,81).addBox(-3.25F,-2.2F,-2.0F,4.0F,4.0F,4.0F, new CubeDeformation(1.2F))
-                        .texOffs(7,81).addBox(-3.25F,-4.0F,-2.0F,4.0F,4.0F,4.0F, new CubeDeformation(1.2F))
-                        .texOffs(21,73).addBox(-3.25F,-2.2F,-2.0F,6.0F,4.0F,4.0F, new CubeDeformation(1.3F))
-                        .texOffs(21,73).addBox(-3.25F,-4.2F,-2.0F,6.0F,4.0F,4.0F, new CubeDeformation(1.4F))
-                , PartPose.offset(-1.0F,0.0F,0.0F));
 
         PartDefinition left_armor = left_arm.addOrReplaceChild("left_armor", CubeListBuilder.create()
                 .texOffs(40,112).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.6F)).mirror(false)
-                        .texOffs(39,79).mirror().addBox(-1.75F,6.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.7F)).mirror(false)
-                        .texOffs(39,79).mirror().addBox(-1.75F,4.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.75F)).mirror(false)
-                        .texOffs(39,79).mirror().addBox(-1.75F,2.2F,-2.0F,5.0F,6.0F,4.0F, new CubeDeformation(0.755F)).mirror(false)
+                        .texOffs(40,80).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.5F)).mirror(false)
+                        .texOffs(80,114).mirror().addBox(3.0F,1.0F,-1.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
+                        .texOffs(88,104).mirror().addBox(-1.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.0F)).mirror(false)
+                        .texOffs(88,116).mirror().addBox(-1.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.2F)).mirror(false)
                 , PartPose.offset(0.0F, -1.5F, 0.0F));
 
-        PartDefinition left_shoulder = left_arm.addOrReplaceChild("left_shoulder", CubeListBuilder.create()
-                        .texOffs(23,81).mirror().addBox(-0.75F,-2.2F,-2.0F,4.0F,4.0F,4.0F, new CubeDeformation(1.2F)).mirror(false)
-                        .texOffs(7,81).mirror().addBox(-0.75F,-4.0F,-2.0F,4.0F,4.0F,4.0F, new CubeDeformation(1.2F)).mirror(false)
-                        .texOffs(21,73).mirror().addBox(-2.75F,-2.2F,-2.0F,6.0F,4.0F,4.0F, new CubeDeformation(1.3F)).mirror(false)
-                        .texOffs(21,73).mirror().addBox(-2.75F,-4.2F,-2.0F,6.0F,4.0F,4.0F, new CubeDeformation(1.4F)).mirror(false)
-                , PartPose.offset(1.0F,0.0F,0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }
