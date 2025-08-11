@@ -14,13 +14,13 @@ import java.util.function.Supplier;
 
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
-    ISIS("isis", 29, new int[]{3, 6, 8, 3}, 16, SoundEvents.ARMOR_EQUIP_IRON,
+    ISIS("isis", 44, new int[]{3, 6, 8, 3}, 16, SoundEvents.ARMOR_EQUIP_IRON,
             3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.ISIS_CRYSTAL.get());
     }),
-    ISIS_PLATE("isis_plate", 36, new int[]{5, 8, 10, 5}, 16, SoundEvents.ARMOR_EQUIP_IRON,
+    ISIS_PLATE("isis_plate", 62, new int[]{5, 8, 10, 5}, 16, SoundEvents.ARMOR_EQUIP_IRON,
             3.0F, 0.2F, () -> {return Ingredient.of(GenesisItems.ISIS_CRYSTAL.get());
     }),
-    ISIS_HOLY_KNIGHT("isis_holy_knight", 44, new int[]{4, 7, 9, 4}, 25, SoundEvents.ARMOR_EQUIP_IRON,
+    ISIS_HOLY_KNIGHT("isis_holy_knight", 96, new int[]{4, 7, 9, 4}, 24, SoundEvents.ARMOR_EQUIP_IRON,
             5.0F, 0.1F, () -> {return Ingredient.of(GenesisItems.PURE_ISIS.get());
     })
     ;

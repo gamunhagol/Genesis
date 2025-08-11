@@ -15,7 +15,7 @@ public class GenesisItemTier {
 
 
     public static final Tier ISIS = TierSortingRegistry.registerTier(
-            new ForgeTier(4, 2031, 9f, 4F, 16, BlockTags.create(GenesisMod.prefix("need_isis_tool")),
+            new ForgeTier(4, 2427, 9f, 4F, 16, BlockTags.create(GenesisMod.prefix("need_isis_tool")),
                     () -> Ingredient.of(GenesisItems.ISIS_CRYSTAL.get())),
             GenesisMod.prefix("isis"), List.of(Tiers.NETHERITE), List.of());
 }

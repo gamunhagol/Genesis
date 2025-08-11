@@ -36,6 +36,10 @@ public class IsisHolyKnightHelmetModel<T extends LivingEntity> extends HumanoidM
                         .texOffs(0,24).addBox(-7.0F,-4.0F,-5.0F,12.0F,8.0F,12.0F, new CubeDeformation(0.25F))
                 , PartPose.offsetAndRotation(0.0F,-8.0F,0.0F,0.0F,0.8F,0.0F));
 
+        PartDefinition head_feather = head.addOrReplaceChild("head_feather", CubeListBuilder.create()
+                .texOffs(104, 62).addBox(0.0F,-1.0F,2.5F,0.0F,18.0F,12.0F, new CubeDeformation(0.0F))
+                , PartPose.offsetAndRotation(0.0F,-8.0F,0.0F,0.5F,0.0F,0.0F));
+
 
 
         return LayerDefinition.create(meshDefinition, 128, 128);

@@ -101,44 +101,44 @@ public class GenesisItems {
 
 
     public static final RegistryObject<Item> ISIS_SWORD = ITEMS.register("isis_sword", () -> new SwordItem(GenesisItemTier.ISIS, 3, -2.4f,
-            new Item.Properties().fireResistant().durability(-1)));
+            new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_SHOVEL = ITEMS.register("isis_shovel", () -> new ShovelItem(GenesisItemTier.ISIS, 1.5f, -3.0f,
-            new Item.Properties().fireResistant().durability(-1)));
+            new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_PICKAXE = ITEMS.register("isis_pickaxe", () -> new PickaxeItem(GenesisItemTier.ISIS, 1, -2.8f,
-            new Item.Properties().fireResistant().durability(-1)));
+            new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_AXE = ITEMS.register("isis_axe", () -> new AxeItem(GenesisItemTier.ISIS, 5, -3.0f,
-            new Item.Properties().fireResistant().durability(-1)));
+            new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_HOE = ITEMS.register("isis_hoe", () -> new HoeItem(GenesisItemTier.ISIS, -4, 0.0f,
-            new Item.Properties().fireResistant().durability(-1)));
+            new Item.Properties().fireResistant()));
 
 
 
     public static final RegistryObject<Item> ISIS_HELMET = ITEMS.register("isis_helmet", () -> new ArmorItem(GenesisArmorMaterials.ISIS,
-            ArmorItem.Type.HELMET,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.HELMET,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_CHESTPLATE = ITEMS.register("isis_chestplate", () -> new ArmorItem(GenesisArmorMaterials.ISIS,
-            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_LEGGINGS = ITEMS.register("isis_leggings", () -> new ArmorItem(GenesisArmorMaterials.ISIS,
-            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_BOOTS = ITEMS.register("isis_boots", () -> new ArmorItem(GenesisArmorMaterials.ISIS,
-            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> ISIS_PLATE_HELMET = ITEMS.register("isis_plate_helmet", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
-            ArmorItem.Type.HELMET,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.HELMET,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_PLATE_CHESTPLATE = ITEMS.register("isis_plate_chestplate", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
-            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_PLATE_LEGGINGS = ITEMS.register("isis_plate_leggings", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
-            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_PLATE_BOOTS = ITEMS.register("isis_plate_boots", () -> new Isis_Plate_Armor(GenesisArmorMaterials.ISIS_PLATE,
-            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().durability(-1)));
+            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> ISIS_HOLY_KNIGHT_HELMET = ITEMS.register("isis_holy_knight_helmet", () -> new Isis_Holy_Knight_Armor(GenesisArmorMaterials.ISIS_HOLY_KNIGHT,
-            ArmorItem.Type.HELMET,new Item.Properties().fireResistant().durability(-1).rarity(Rarity.UNCOMMON)));
+            ArmorItem.Type.HELMET,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ISIS_HOLY_KNIGHT_CHESTPLATE = ITEMS.register("isis_holy_knight_chestplate", () -> new Isis_Holy_Knight_Armor(GenesisArmorMaterials.ISIS_HOLY_KNIGHT,
-            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().durability(-1).rarity(Rarity.UNCOMMON)));
+            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ISIS_HOLY_KNIGHT_LEGGINGS = ITEMS.register("isis_holy_knight_leggings", () -> new Isis_Holy_Knight_Armor(GenesisArmorMaterials.ISIS_HOLY_KNIGHT,
-            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().durability(-1).rarity(Rarity.UNCOMMON)));
+            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ISIS_HOLY_KNIGHT_BOOTS = ITEMS.register("isis_holy_knight_boots", () -> new Isis_Holy_Knight_Armor(GenesisArmorMaterials.ISIS_HOLY_KNIGHT,
-            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().durability(-1).rarity(Rarity.UNCOMMON)));
+            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
 
 

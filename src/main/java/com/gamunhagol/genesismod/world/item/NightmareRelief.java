@@ -13,7 +13,7 @@ public class NightmareRelief {
     public static final FoodProperties DREAM_POWDER = (new FoodProperties.Builder())
             .nutrition(1).saturationMod(0.2f).fast().alwaysEat().build();
     public static final FoodProperties DREAM_DANGO = (new FoodProperties.Builder())
-            .nutrition(2).saturationMod(0.6f).fast().alwaysEat().build();
+            .nutrition(4).saturationMod(0.8f).fast().alwaysEat().build();
 
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         pPlayer.resetStat(Stats.CUSTOM.get(Stats.TIME_SINCE_REST));
