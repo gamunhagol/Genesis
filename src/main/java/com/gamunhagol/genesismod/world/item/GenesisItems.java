@@ -88,9 +88,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> FADED_CRYSTAL_SHARD = ITEMS.register("faded_crystal_shard", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> RAW_SILVER = ITEMS.register("raw_silver", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", () -> new Item(new Item.Properties()));
-
     public static final RegistryObject<Item> ISIS_ORE_PIECE = ITEMS.register("isis_ore_piece", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SILVER_PIECE = ITEMS.register("silver_piece", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BRASS_INGOT = ITEMS.register("brass_ingot", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> MIXED_ISIS_INGOT = ITEMS.register("mixed_isis_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_PIECE = ITEMS.register("isis_piece", () -> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_ALLOY = ITEMS.register("isis_alloy", () -> new Item(new Item.Properties().fireResistant()));

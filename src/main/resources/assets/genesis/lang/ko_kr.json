@@ -10,9 +10,14 @@
   "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
 
   "item.genesis.raw_silver": "은 원석",
-  "item.genesis.silver_ingot": "은 주괴",
-
   "item.genesis.isis_ore_piece": "이시스 광석 파편",
+
+  "item.genesis.copper_piece": "구리 조각",
+  "item.genesis.silver_piece": "은 조각",
+
+  "item.genesis.silver_ingot": "은 주괴",
+  "item.genesis.brass_ingot": "황동 주괴",
+
   "item.genesis.mixed_isis_ingot": "뒤섞인 이시스 주괴",
   "item.genesis.isis_piece": "이시스 파편",
   "item.genesis.isis_alloy": "이시스 합금",

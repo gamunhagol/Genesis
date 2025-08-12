@@ -10,9 +10,14 @@
   "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
 
   "item.genesis.raw_silver": "Raw Silver",
-  "item.genesis.silver_ingot": "Silver Ingot",
-
   "item.genesis.isis_ore_piece": "Isis Ore Piece",
+
+  "item.genesis.copper_piece": "Copper Piece",
+  "item.genesis.silver_piece": "Silver Piece",
+
+  "item.genesis.silver_ingot": "Silver Ingot",
+  "item.genesis.brass_ingot": "Brass Ingot",
+
   "item.genesis.mixed_isis_ingot": "Mixed Isis Ingot",
   "item.genesis.isis_piece": "Isis Piece",
   "item.genesis.isis_alloy": "Isis Alloy",
