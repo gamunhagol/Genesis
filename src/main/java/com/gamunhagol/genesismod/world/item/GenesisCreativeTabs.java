@@ -29,9 +29,10 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.FADED_CRYSTAL_SHARD.get());
 
                 output.accept(GenesisItems.RAW_SILVER.get());
+                output.accept(GenesisItems.ISIS_ORE_PIECE.get());
+
                 output.accept(GenesisItems.SILVER_INGOT.get());
 
-                output.accept(GenesisItems.ISIS_ORE_PIECE.get());
                 output.accept(GenesisItems.MIXED_ISIS_INGOT.get());
                 output.accept(GenesisItems.ISIS_PIECE.get());
                 output.accept(GenesisItems.ISIS_ALLOY.get());
@@ -39,6 +40,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_CRYSTAL.get());
 
                 output.accept(GenesisItems.PURE_ISIS.get());
+
+                output.accept(GenesisItems.COPPER_COIN.get());
+                output.accept(GenesisItems.SILVER_COIN.get());
+                output.accept(GenesisItems.GOLD_COIN.get());
+                output.accept(GenesisItems.PLATINUM_COIN.get());
 
                 output.accept(GenesisItems.ISIS_SWORD.get());
                 output.accept(GenesisItems.ISIS_SHOVEL.get());

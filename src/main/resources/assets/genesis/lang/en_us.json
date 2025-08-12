@@ -21,6 +21,11 @@
 
   "item.genesis.pure_isis": "Pure Isis",
 
+  "item.genesis.copper_coin": "Copper coin",
+  "item.genesis.silver_coin": "Silver coin",
+  "item.genesis.gold_coin": "Gold coin",
+  "item.genesis.platinum_coin": "Platinum coin",
+
 
   "item.genesis.isis_sword": "Isis Sword",
   "item.genesis.isis_shovel": "Isis Shovel",

@@ -99,6 +99,11 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> PURE_ISIS = ITEMS.register("pure_isis", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
+    public static final RegistryObject<Item> COPPER_COIN = ITEMS.register("copper_coin", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SILVER_COIN = ITEMS.register("silver_coin", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_COIN = ITEMS.register("gold_coin", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_COIN = ITEMS.register("platinum_coin", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<Item> ISIS_SWORD = ITEMS.register("isis_sword", () -> new SwordItem(GenesisItemTier.ISIS, 3, -2.4f,
             new Item.Properties().fireResistant()));

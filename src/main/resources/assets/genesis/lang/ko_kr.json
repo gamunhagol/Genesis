@@ -21,6 +21,11 @@
 
   "item.genesis.pure_isis": "순수한 이시스",
 
+  "item.genesis.copper_coin": "동 동전",
+  "item.genesis.silver_coin": "은 동전",
+  "item.genesis.gold_coin": "금 동전",
+  "item.genesis.platinum_coin": "백금 동전 ",
+
 
   "item.genesis.isis_sword": "이시스 검",
   "item.genesis.isis_shovel": "이시스 삽",
