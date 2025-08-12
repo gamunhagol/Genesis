@@ -76,6 +76,8 @@
   "block.genesis.red_crystal_block": "Red Crystal Block",
   "block.genesis.red_crystal_cluster": "Red Crystal Cluster",
 
+  "block.genesis.collect_table": "Collect Table",
+
   "block.genesis.crystallized_sandstone": "Crystallized Sandstone",
   "block.genesis.faded_stone": "Faded Stone",
   "block.genesis.faded_gateway": "Faded Gateway",

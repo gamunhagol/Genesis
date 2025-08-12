@@ -78,6 +78,8 @@
   "block.genesis.red_crystal_block": "적수정 블럭",
   "block.genesis.red_crystal_cluster": "적수정 군집",
 
+  "block.genesis.collect_table": "징수탁자",
+
   "block.genesis.crystallized_sandstone": "결정화된 사암",
   "block.genesis.faded_stone": "빛바랜 돌",
   "block.genesis.faded_gateway": "빛바랜 관문",
