@@ -96,7 +96,6 @@ public class GenesisItems {
     public static final RegistryObject<Item> SILVER_PIECE = ITEMS.register("silver_piece", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> BRASS_INGOT = ITEMS.register("brass_ingot", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> MIXED_ISIS_INGOT = ITEMS.register("mixed_isis_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ISIS_PIECE = ITEMS.register("isis_piece", () -> new Item(new Item.Properties().fireResistant()));

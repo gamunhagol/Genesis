@@ -35,7 +35,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_PIECE.get());
 
                 output.accept(GenesisItems.SILVER_INGOT.get());
-                output.accept(GenesisItems.BRASS_INGOT.get());
 
                 output.accept(GenesisItems.MIXED_ISIS_INGOT.get());
 
