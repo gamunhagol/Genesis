@@ -9,8 +9,10 @@ import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+
+
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID)
-public class AddWanderingTrades {
+public class AddCustomTrades {
     @SubscribeEvent
     public static void addWanderingTrades(WandererTradesEvent event)
     {

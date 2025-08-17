@@ -62,8 +62,7 @@ public class GenesisBlocks {
             }).pushReaction(PushReaction.DESTROY)));
 
     //crafting
-    public static final RegistryObject<Block> COLLECT_TABLE = register("collect_table",
-            () -> new CraftingTableBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE)));
+
 
     //Get mob
     public static final RegistryObject<Block> CRYSTALLIZED_SANDSTONE = register("crystallized_sandstone",

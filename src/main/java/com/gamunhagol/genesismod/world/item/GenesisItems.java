@@ -47,8 +47,7 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> RED_CRYSTAL_CLUSTER = ITEMS.register("red_crystal_cluster",
             () -> new BlockItem(GenesisBlocks.RED_CRYSTAL_CLUSTER.get(), new Item.Properties()));
 
-    public static final RegistryObject<BlockItem> COLLECT_TABLE = ITEMS.register("collect_table",
-            () -> new BlockItem(GenesisBlocks.COLLECT_TABLE.get(), new Item.Properties()));
+
 
     public static final RegistryObject<BlockItem> CRYSTALLIZED_SANDSTONE = ITEMS.register("crystallized_sandstone",
             () -> new BlockItem(GenesisBlocks.CRYSTALLIZED_SANDSTONE.get(), new Item.Properties()));
