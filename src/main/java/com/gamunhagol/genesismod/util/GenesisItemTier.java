@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.util;
 
-import com.gamunhagol.genesismod.GenesisMod;
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.Tier;

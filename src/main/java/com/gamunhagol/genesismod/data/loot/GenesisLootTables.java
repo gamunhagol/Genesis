@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.data.loot;
 
-import com.gamunhagol.genesismod.GenesisMod;
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.mojang.serialization.Codec;
 import net.minecraft.world.level.storage.loot.BuiltInLootTables;

@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.events;
 
-import com.gamunhagol.genesismod.GenesisMod;
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;

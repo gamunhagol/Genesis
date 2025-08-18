@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.world.item;
 
-import com.gamunhagol.genesismod.GenesisMod;
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;

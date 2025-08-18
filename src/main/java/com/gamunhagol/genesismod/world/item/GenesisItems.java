@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.world.item;
 
-import com.gamunhagol.genesismod.GenesisMod;
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.world.item.*;

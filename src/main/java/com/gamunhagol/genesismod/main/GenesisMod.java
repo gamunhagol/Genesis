@@ -1,6 +1,7 @@
-package com.gamunhagol.genesismod;
+package com.gamunhagol.genesismod.main;
 
 import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
+import com.gamunhagol.genesismod.gameasset.GenesisSounds;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -31,11 +32,10 @@ public class GenesisMod {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
-
         GenesisItems.ITEMS.register(modEventBus);
         GenesisBlocks.BLOCKS.register(modEventBus);
         GenesisCreativeTabs.TABS.register(modEventBus);
-
+        GenesisSounds.SOUNDS.register(modEventBus);
         GenesisLootTables.LOOT_MODIFIERS.register(modEventBus);
 
 
