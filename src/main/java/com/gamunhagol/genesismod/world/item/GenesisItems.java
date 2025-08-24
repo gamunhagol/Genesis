@@ -8,7 +8,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import yesman.epicfight.world.item.DaggerItem;
+import yesman.epicfight.world.item.*;
 
 
 public class GenesisItems {
@@ -122,8 +122,21 @@ public class GenesisItems {
     public static final RegistryObject<Item> ISIS_HOE = ITEMS.register("isis_hoe", () -> new HoeItem(GenesisItemTier.ISIS, -4, 0.0f,
             new Item.Properties().fireResistant()));
 
+    public static final RegistryObject<Item> ISIS_GREATSWORD = ITEMS.register("isis_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.ISIS));
+
+    public static final RegistryObject<Item> ISIS_SPEAR = ITEMS.register("isis_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.ISIS));
+
+    public static final RegistryObject<Item> ISIS_TACHI = ITEMS.register("isis_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.ISIS));
+
+    public static final RegistryObject<Item> ISIS_LONGSWORD = ITEMS.register("isis_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.ISIS));
+
     public static final RegistryObject<Item> ISIS_DAGGER = ITEMS.register("isis_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
             , GenesisItemTier.ISIS));
+
 
 
 

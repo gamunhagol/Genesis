@@ -55,6 +55,14 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ISIS_AXE.get());
                 output.accept(GenesisItems.ISIS_HOE.get());
 
+                output.accept(GenesisItems.ISIS_GREATSWORD.get());
+
+                output.accept(GenesisItems.ISIS_SPEAR.get());
+
+                output.accept(GenesisItems.ISIS_TACHI.get());
+
+                output.accept(GenesisItems.ISIS_LONGSWORD.get());
+
                 output.accept(GenesisItems.ISIS_DAGGER.get());
 
                 output.accept(GenesisItems.ISIS_HELMET.get());
