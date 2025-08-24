@@ -8,6 +8,7 @@ import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import yesman.epicfight.world.item.DaggerItem;
 
 
 public class GenesisItems {
@@ -120,6 +121,9 @@ public class GenesisItems {
             new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> ISIS_HOE = ITEMS.register("isis_hoe", () -> new HoeItem(GenesisItemTier.ISIS, -4, 0.0f,
             new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> ISIS_DAGGER = ITEMS.register("isis_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.ISIS));
 
 
 
