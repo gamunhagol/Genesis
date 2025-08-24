@@ -4,7 +4,7 @@
     "item": "genesis:isis_crystal"
   },
   "base": {
-    "item": "genesis:iron_longsword"
+    "item": "epicfight:iron_longsword"
   },
   "result": {
     "item": "genesis:isis_longsword"

@@ -4,7 +4,7 @@
     "item": "genesis:isis_crystal"
   },
   "base": {
-    "item": "genesis:iron_dagger"
+    "item": "epicfight:iron_dagger"
   },
   "result": {
     "item": "genesis:isis_dagger"
