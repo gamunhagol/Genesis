@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "genesis:block/pewriese_crystal_block"
+  }
+}

@@ -13,14 +13,14 @@ import java.util.function.Supplier;
 
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
-    ISIS("isis", 44, new int[]{3, 6, 8, 3}, 16, SoundEvents.ARMOR_EQUIP_IRON,
-            3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.ISIS_CRYSTAL.get());
+    PEWRIESE("pewriese", 62, new int[]{4, 7, 9, 4}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+            4.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
     }),
-    ISIS_PLATE("isis_plate", 62, new int[]{5, 8, 10, 5}, 16, SoundEvents.ARMOR_EQUIP_IRON,
-            3.0F, 0.2F, () -> {return Ingredient.of(GenesisItems.ISIS_CRYSTAL.get());
+    PEWRIESE_PLATE("pewriese_plate", 85, new int[]{6, 9, 11, 6}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+            4.0F, 0.4F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
     }),
-    ISIS_HOLY_KNIGHT("isis_holy_knight", 96, new int[]{4, 7, 9, 4}, 24, SoundEvents.ARMOR_EQUIP_IRON,
-            5.0F, 0.1F, () -> {return Ingredient.of(GenesisItems.PURE_ISIS.get());
+    HOLY_KNIGHT("holy_knight", 132, new int[]{6, 8, 10, 5}, 24, SoundEvents.ARMOR_EQUIP_IRON,
+            6.0F, 0.2F, () -> {return Ingredient.of(GenesisItems.PYULITELA.get());
     })
     ;
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

@@ -12,31 +12,31 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RegisterModels {
 
-    public static IsisPlateHelmetModel<?> ISIS_PLATE_HELMET_MODEL = null;
-    public static IsisPlateChestplateModel<?> ISIS_PLATE_CHESTPLATE_MODEL = null;
-    public static IsisPlateLeggingsModel<?> ISIS_PLATE_LEGGINGS_MODEL = null;
-    public static IsisPlateBootsModel<?> ISIS_PLATE_BOOTS_MODEL = null;
+    public static PewriesePlateHelmetModel<?> PEWRIESE_PLATE_HELMET_MODEL = null;
+    public static PewriesePlateChestplateModel<?> PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
+    public static PewriesePlateLeggingsModel<?> PEWRIESE_PLATE_LEGGINGS_MODEL = null;
+    public static PewriesePlateBootsModel<?> PEWRIESE_PLATE_BOOTS_MODEL = null;
 
-    public static IsisHolyKnightHelmetModel<?> ISIS_HOLY_KNIGHT_HELMET_MODEL = null;
-    public static IsisHolyKnightChestplateModel<?> ISIS_HOLY_KNIGHT_CHESTPLATE_MODEL = null;
-    public static IsisHolyKnightLeggingsModel<?> ISIS_HOLY_KNIGHT_LEGGINGS_MODEL = null;
-    public static IsisHolyKnightBootsModel<?> ISIS_HOLY_KNIGHT_BOOTS_MODEL = null;
+    public static HolyKnightHelmetModel<?> HOLY_KNIGHT_HELMET_MODEL = null;
+    public static HolyKnightChestplateModel<?> HOLY_KNIGHT_CHESTPLATE_MODEL = null;
+    public static HolyKnightLeggingsModel<?> HOLY_KNIGHT_LEGGINGS_MODEL = null;
+    public static HolyKnightBootsModel<?> HOLY_KNIGHT_BOOTS_MODEL = null;
 
 
     public static void checkForInitModels(){
-        if (ISIS_PLATE_HELMET_MODEL != null) return;
+        if (PEWRIESE_PLATE_HELMET_MODEL != null) return;
 
         EntityModelSet mcModels = Minecraft.getInstance().getEntityModels();
 
-        ISIS_PLATE_HELMET_MODEL = new IsisPlateHelmetModel<>(mcModels.bakeLayer(IsisPlateHelmetModel.LAYER_LOCATION));
-        ISIS_PLATE_CHESTPLATE_MODEL = new IsisPlateChestplateModel<>(mcModels.bakeLayer(IsisPlateChestplateModel.LAYER_LOCATION));
-        ISIS_PLATE_LEGGINGS_MODEL = new IsisPlateLeggingsModel<>(mcModels.bakeLayer(IsisPlateLeggingsModel.LAYER_LOCATION));
-        ISIS_PLATE_BOOTS_MODEL = new IsisPlateBootsModel<>(mcModels.bakeLayer(IsisPlateBootsModel.LAYER_LOCATION));
+        PEWRIESE_PLATE_HELMET_MODEL = new PewriesePlateHelmetModel<>(mcModels.bakeLayer(PewriesePlateHelmetModel.LAYER_LOCATION));
+        PEWRIESE_PLATE_CHESTPLATE_MODEL = new PewriesePlateChestplateModel<>(mcModels.bakeLayer(PewriesePlateChestplateModel.LAYER_LOCATION));
+        PEWRIESE_PLATE_LEGGINGS_MODEL = new PewriesePlateLeggingsModel<>(mcModels.bakeLayer(PewriesePlateLeggingsModel.LAYER_LOCATION));
+        PEWRIESE_PLATE_BOOTS_MODEL = new PewriesePlateBootsModel<>(mcModels.bakeLayer(PewriesePlateBootsModel.LAYER_LOCATION));
 
-        ISIS_HOLY_KNIGHT_HELMET_MODEL = new IsisHolyKnightHelmetModel<>(mcModels.bakeLayer(IsisHolyKnightHelmetModel.LAYER_LOCATION));
-        ISIS_HOLY_KNIGHT_CHESTPLATE_MODEL = new IsisHolyKnightChestplateModel<>(mcModels.bakeLayer(IsisHolyKnightChestplateModel.LAYER_LOCATION));
-        ISIS_HOLY_KNIGHT_LEGGINGS_MODEL = new IsisHolyKnightLeggingsModel<>(mcModels.bakeLayer(IsisHolyKnightLeggingsModel.LAYER_LOCATION));
-        ISIS_HOLY_KNIGHT_BOOTS_MODEL = new IsisHolyKnightBootsModel<>(mcModels.bakeLayer(IsisHolyKnightBootsModel.LAYER_LOCATION));
+        HOLY_KNIGHT_HELMET_MODEL = new HolyKnightHelmetModel<>(mcModels.bakeLayer(HolyKnightHelmetModel.LAYER_LOCATION));
+        HOLY_KNIGHT_CHESTPLATE_MODEL = new HolyKnightChestplateModel<>(mcModels.bakeLayer(HolyKnightChestplateModel.LAYER_LOCATION));
+        HOLY_KNIGHT_LEGGINGS_MODEL = new HolyKnightLeggingsModel<>(mcModels.bakeLayer(HolyKnightLeggingsModel.LAYER_LOCATION));
+        HOLY_KNIGHT_BOOTS_MODEL = new HolyKnightBootsModel<>(mcModels.bakeLayer(HolyKnightBootsModel.LAYER_LOCATION));
 
 
     }
@@ -44,14 +44,14 @@ public class RegisterModels {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event){
 
-        event.registerLayerDefinition(IsisPlateHelmetModel.LAYER_LOCATION, IsisPlateHelmetModel::createArmorLayer);
-        event.registerLayerDefinition(IsisPlateChestplateModel.LAYER_LOCATION, IsisPlateChestplateModel::createArmorLayer);
-        event.registerLayerDefinition(IsisPlateLeggingsModel.LAYER_LOCATION, IsisPlateLeggingsModel::createArmorLayer);
-        event.registerLayerDefinition(IsisPlateBootsModel.LAYER_LOCATION, IsisPlateBootsModel::createArmorLayer);
+        event.registerLayerDefinition(PewriesePlateHelmetModel.LAYER_LOCATION, PewriesePlateHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(PewriesePlateChestplateModel.LAYER_LOCATION, PewriesePlateChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(PewriesePlateLeggingsModel.LAYER_LOCATION, PewriesePlateLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(PewriesePlateBootsModel.LAYER_LOCATION, PewriesePlateBootsModel::createArmorLayer);
 
-        event.registerLayerDefinition(IsisHolyKnightHelmetModel.LAYER_LOCATION, IsisHolyKnightHelmetModel::createArmorLayer);
-        event.registerLayerDefinition(IsisHolyKnightChestplateModel.LAYER_LOCATION, IsisHolyKnightChestplateModel::createArmorLayer);
-        event.registerLayerDefinition(IsisHolyKnightLeggingsModel.LAYER_LOCATION, IsisHolyKnightLeggingsModel::createArmorLayer);
-        event.registerLayerDefinition(IsisHolyKnightBootsModel.LAYER_LOCATION, IsisHolyKnightBootsModel::createArmorLayer);
+        event.registerLayerDefinition(HolyKnightHelmetModel.LAYER_LOCATION, HolyKnightHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(HolyKnightChestplateModel.LAYER_LOCATION, HolyKnightChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(HolyKnightLeggingsModel.LAYER_LOCATION, HolyKnightLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(HolyKnightBootsModel.LAYER_LOCATION, HolyKnightBootsModel::createArmorLayer);
     }
 }

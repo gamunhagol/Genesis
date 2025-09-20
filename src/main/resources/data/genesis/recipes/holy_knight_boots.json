@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:pyulitela"
+  },
+  "base": {
+    "item": "genesis:pewriese_boots"
+  },
+  "result": {
+    "item": "genesis:holy_knight_boots"
+  },
+  "template": {
+    "item": "genesis:pewriese_upgrade_smithing_template"
+  }
+}

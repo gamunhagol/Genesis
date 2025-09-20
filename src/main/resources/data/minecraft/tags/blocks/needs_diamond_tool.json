@@ -1,9 +1,6 @@
 {
   "values": [
-    "genesis:isis_ore",
-    "genesis:turbid_isis",
-    "genesis:mixed_isis_block",
-    "genesis:isis_alloy_block",
-    "genesis:isis_crystal_block"
+    "genesis:pewriese_ore",
+    "genesis:pewriese_crystal_block"
   ]
 }

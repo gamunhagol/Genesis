@@ -9,21 +9,12 @@
   "item.genesis.red_crystal_shard": "적수정 조각",
   "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
 
-  "item.genesis.raw_silver": "은 원석",
-  "item.genesis.isis_ore_piece": "이시스 광석 파편",
+  "item.genesis.pewriese_ore_piece": "퓨리즌 광석 파편",
 
-  "item.genesis.copper_piece": "구리 조각",
-  "item.genesis.silver_piece": "은 조각",
+  "item.genesis.pewriese_piece": "퓨리즌 파편",
+  "item.genesis.pewriese_crystal": "퓨리즌 결정",
 
-  "item.genesis.silver_ingot": "은 주괴",
-
-  "item.genesis.mixed_isis_ingot": "뒤섞인 이시스 주괴",
-  "item.genesis.isis_piece": "이시스 파편",
-  "item.genesis.isis_alloy": "이시스 합금",
-  "item.genesis.isis_fragment": "이시스 조각",
-  "item.genesis.isis_crystal": "이시스 결정",
-
-  "item.genesis.pure_isis": "순수한 이시스",
+  "item.genesis.pyulitela": "땅의순수",
 
   "item.genesis.copper_coin": "동 동전",
   "item.genesis.silver_coin": "은 동전",
@@ -31,54 +22,49 @@
   "item.genesis.platinum_coin": "백금 동전 ",
 
 
-  "item.genesis.isis_sword": "이시스 검",
-  "item.genesis.isis_shovel": "이시스 삽",
-  "item.genesis.isis_pickaxe": "이시스 곡괭이",
-  "item.genesis.isis_axe": "이시스 도끼",
-  "item.genesis.isis_hoe": "이시스 괭이",
+  "item.genesis.pewriese_sword": "퓨리즌 검",
+  "item.genesis.pewriese_shovel": "퓨리즌 삽",
+  "item.genesis.pewriese_pickaxe": "퓨리즌 곡괭이",
+  "item.genesis.pewriese_axe": "퓨리즌 도끼",
+  "item.genesis.pewriese_hoe": "퓨리즌 괭이",
 
-  "item.genesis.isis_greatsword": "이시스 대검",
+  "item.genesis.pewriese_greatsword": "퓨리즌 대검",
 
-  "item.genesis.isis_spear": "이시스 창",
+  "item.genesis.pewriese_spear": "퓨리즌 창",
 
-  "item.genesis.isis_tachi": "이시스 태도",
+  "item.genesis.pewriese_tachi": "퓨리즌 태도",
 
-  "item.genesis.isis_longsword": "이시스 장검",
+  "item.genesis.pewriese_longsword": "퓨리즌 장검",
 
-  "item.genesis.isis_dagger": "이시스 단검",
+  "item.genesis.pewriese_dagger": "퓨리즌 단검",
 
-  "item.genesis.isis_helmet": "이시스 투구",
-  "item.genesis.isis_chestplate": "이시스 흉갑",
-  "item.genesis.isis_leggings": "이시스 레깅스",
-  "item.genesis.isis_boots": "이시스 부츠",
+  "item.genesis.pewriese_helmet": "퓨리즌 투구",
+  "item.genesis.pewriese_chestplate": "퓨리즌 흉갑",
+  "item.genesis.pewriese_leggings": "퓨리즌 레깅스",
+  "item.genesis.pewriese_boots": "퓨리즌 부츠",
 
-  "item.genesis.isis_plate_helmet": "이시스 판금 투구",
-  "item.genesis.isis_plate_chestplate": "이시스 판금 흉갑",
-  "item.genesis.isis_plate_leggings": "이시스 판금 레깅스",
-  "item.genesis.isis_plate_boots": "이시스 판금 부츠",
+  "item.genesis.pewriese_plate_helmet": "퓨리즌 판금 투구",
+  "item.genesis.pewriese_plate_chestplate": "퓨리즌 판금 흉갑",
+  "item.genesis.pewriese_plate_leggings": "퓨리즌 판금 레깅스",
+  "item.genesis.pewriese_plate_boots": "퓨리즌 판금 부츠",
 
-  "item.genesis.isis_holy_knight_helmet": "이시스 신성기사 투구",
-  "item.genesis.isis_holy_knight_chestplate": "이시스 신성기사 흉갑",
-  "item.genesis.isis_holy_knight_leggings": "이시스 신성기사 레깅스",
-  "item.genesis.isis_holy_knight_boots": "이시스 신성기사 부츠",
+  "item.genesis.holy_knight_helmet": "신성기사 투구",
+  "item.genesis.holy_knight_chestplate": "신성기사 흉갑",
+  "item.genesis.holy_knight_leggings": "신성기사 레깅스",
+  "item.genesis.holy_knight_boots": "신성기사 부츠",
 
 
 
   "item.genesis.amethyst_needle": "자수정 바늘",
-  "item.genesis.isis_upgrade_smithing_template": "이시스 강화 형판",
+  "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
 
 
 
-  "block.genesis.silver_ore": "은 광석",
-  "block.genesis.deepslate_silver_ore": "심층암 은 광석",
-  "block.genesis.silver_block": "은 블럭",
 
-  "block.genesis.isis_ore": "이시스 광석",
-  "block.genesis.turbid_isis": "혼탁한 이시스",
-  "block.genesis.mixed_isis_block": "뒤섞인 이시스 블럭",
-  "block.genesis.isis_alloy_block": "이시스 합금 블럭",
-  "block.genesis.isis_crystal_block": "이시스 결정 블럭",
+  "block.genesis.pewriese_ore": "이시스 광석",
+
+  "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
 
   "block.genesis.blue_crystal_block": "청수정 블럭",
   "block.genesis.blue_crystal_cluster": "청수정 군집",

@@ -28,7 +28,7 @@ public class GenesisLootTables {
 
         if (event.getName().equals(BuiltInLootTables.ANCIENT_CITY)) {
             event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F,2.0F))
-                    .add(LootItem.lootTableItem(GenesisItems.ISIS_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(2).when(LootItemRandomChanceCondition.randomChance(0.3F)))
+                    .add(LootItem.lootTableItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(2).when(LootItemRandomChanceCondition.randomChance(0.15F)))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)) {

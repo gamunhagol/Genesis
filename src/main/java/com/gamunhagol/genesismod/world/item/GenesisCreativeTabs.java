@@ -28,69 +28,61 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.RED_CRYSTAL_SHARD.get());
                 output.accept(GenesisItems.FADED_CRYSTAL_SHARD.get());
 
-                output.accept(GenesisItems.RAW_SILVER.get());
-                output.accept(GenesisItems.ISIS_ORE_PIECE.get());
+                output.accept(GenesisItems.PEWRIESE_ORE_PIECE.get());
 
-                output.accept(GenesisItems.SILVER_PIECE.get());
-                output.accept(GenesisItems.ISIS_PIECE.get());
+                output.accept(GenesisItems.PEWRIESE_PIECE.get());
 
-                output.accept(GenesisItems.SILVER_INGOT.get());
+                output.accept(GenesisItems.PEWRIESE_CRYSTAL.get());
 
-                output.accept(GenesisItems.MIXED_ISIS_INGOT.get());
-
-                output.accept(GenesisItems.ISIS_ALLOY.get());
-                output.accept(GenesisItems.ISIS_FRAGMENT.get());
-                output.accept(GenesisItems.ISIS_CRYSTAL.get());
-
-                output.accept(GenesisItems.PURE_ISIS.get());
+                output.accept(GenesisItems.PYULITELA.get());
 
                 output.accept(GenesisItems.COPPER_COIN.get());
                 output.accept(GenesisItems.SILVER_COIN.get());
                 output.accept(GenesisItems.GOLD_COIN.get());
                 output.accept(GenesisItems.PLATINUM_COIN.get());
 
-                output.accept(GenesisItems.ISIS_SWORD.get());
-                output.accept(GenesisItems.ISIS_SHOVEL.get());
-                output.accept(GenesisItems.ISIS_PICKAXE.get());
-                output.accept(GenesisItems.ISIS_AXE.get());
-                output.accept(GenesisItems.ISIS_HOE.get());
+                output.accept(GenesisItems.PEWRIESE_SWORD.get());
+                output.accept(GenesisItems.PEWRIESE_SHOVEL.get());
+                output.accept(GenesisItems.PEWRIESE_PICKAXE.get());
+                output.accept(GenesisItems.PEWRIESE_AXE.get());
+                output.accept(GenesisItems.PEWRIESE_HOE.get());
 
-                output.accept(GenesisItems.ISIS_GREATSWORD.get());
+                output.accept(GenesisItems.PEWRIESE_GREATSWORD.get());
 
-                output.accept(GenesisItems.ISIS_SPEAR.get());
+                output.accept(GenesisItems.PEWRIESE_SPEAR.get());
 
-                output.accept(GenesisItems.ISIS_TACHI.get());
+                output.accept(GenesisItems.PEWRIESE_TACHI.get());
 
-                output.accept(GenesisItems.ISIS_LONGSWORD.get());
+                output.accept(GenesisItems.PEWRIESE_LONGSWORD.get());
 
-                output.accept(GenesisItems.ISIS_DAGGER.get());
+                output.accept(GenesisItems.PEWRIESE_DAGGER.get());
 
-                output.accept(GenesisItems.ISIS_HELMET.get());
-                output.accept(GenesisItems.ISIS_CHESTPLATE.get());
-                output.accept(GenesisItems.ISIS_LEGGINGS.get());
-                output.accept(GenesisItems.ISIS_BOOTS.get());
+                output.accept(GenesisItems.PEWRIESE_HELMET.get());
+                output.accept(GenesisItems.PEWRIESE_CHESTPLATE.get());
+                output.accept(GenesisItems.PEWRIESE_LEGGINGS.get());
+                output.accept(GenesisItems.PEWRIESE_BOOTS.get());
 
-                output.accept(GenesisItems.ISIS_PLATE_HELMET.get());
-                output.accept(GenesisItems.ISIS_PLATE_CHESTPLATE.get());
-                output.accept(GenesisItems.ISIS_PLATE_LEGGINGS.get());
-                output.accept(GenesisItems.ISIS_PLATE_BOOTS.get());
+                output.accept(GenesisItems.PEWRIESE_PLATE_HELMET.get());
+                output.accept(GenesisItems.PEWRIESE_PLATE_CHESTPLATE.get());
+                output.accept(GenesisItems.PEWRIESE_PLATE_LEGGINGS.get());
+                output.accept(GenesisItems.PEWRIESE_PLATE_BOOTS.get());
 
-                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_HELMET.get());
-                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_CHESTPLATE.get());
-                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_LEGGINGS.get());
-                output.accept(GenesisItems.ISIS_HOLY_KNIGHT_BOOTS.get());
+                output.accept(GenesisItems.HOLY_KNIGHT_HELMET.get());
+                output.accept(GenesisItems.HOLY_KNIGHT_CHESTPLATE.get());
+                output.accept(GenesisItems.HOLY_KNIGHT_LEGGINGS.get());
+                output.accept(GenesisItems.HOLY_KNIGHT_BOOTS.get());
                 
 
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
-                output.accept(GenesisItems.ISIS_UPGRADE_SMITHING_TEMPLATE.get());
+                output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
             })
             .title(Component.translatable("itemGroup.genesis.items"))
             .build()
     );
 
     public static final RegistryObject<CreativeModeTab> GENESIS_BLOCK_TAB = TABS.register("genesis_block", () -> CreativeModeTab.builder()
-            .icon(() -> new ItemStack(GenesisBlocks.MIXED_ISIS_BLOCK.get()))
+            .icon(() -> new ItemStack(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()))
             .withTabsBefore(GENESIS_ITEMS_TAB.getKey())
             .displayItems((params, output) -> {
                 GenesisBlocks.BLOCKS.getEntries().forEach(item -> {

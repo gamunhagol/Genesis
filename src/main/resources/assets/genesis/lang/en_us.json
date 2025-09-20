@@ -9,21 +9,12 @@
   "item.genesis.red_crystal_shard": "Red Crystal Shard",
   "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
 
-  "item.genesis.raw_silver": "Raw Silver",
-  "item.genesis.isis_ore_piece": "Isis Ore Piece",
+  "item.genesis.pewriese_ore_piece": "pewriese Ore Piece",
 
-  "item.genesis.copper_piece": "Copper Piece",
-  "item.genesis.silver_piece": "Silver Piece",
+  "item.genesis.pewriese_piece": "pewriese Piece",
+  "item.genesis.pewriese_crystal": "pewriese Crystal",
 
-  "item.genesis.silver_ingot": "Silver Ingot",
-
-  "item.genesis.mixed_isis_ingot": "Mixed Isis Ingot",
-  "item.genesis.isis_piece": "Isis Piece",
-  "item.genesis.isis_alloy": "Isis Alloy",
-  "item.genesis.isis_fragment": "Isis Fragment",
-  "item.genesis.isis_crystal": "Isis Crystal",
-
-  "item.genesis.pure_isis": "Pure Isis",
+  "item.genesis.pyulitela": "Pyulitela",
 
   "item.genesis.copper_coin": "Copper coin",
   "item.genesis.silver_coin": "Silver coin",
@@ -31,52 +22,47 @@
   "item.genesis.platinum_coin": "Platinum coin",
 
 
-  "item.genesis.isis_sword": "Isis Sword",
-  "item.genesis.isis_shovel": "Isis Shovel",
-  "item.genesis.isis_pickaxe": "Isis Pickaxe",
-  "item.genesis.isis_axe": "Isis Axe",
-  "item.genesis.isis_hoe": "Isis Hoe",
+  "item.genesis.pewriese_sword": "Pewriese Sword",
+  "item.genesis.pewriese_shovel": "Pewriese Shovel",
+  "item.genesis.pewriese_pickaxe": "Pewriese Pickaxe",
+  "item.genesis.pewriese_axe": "Pewriese Axe",
+  "item.genesis.pewriese_hoe": "Pewriese Hoe",
 
-  "item.genesis.isis_greatsword": "Isis Greatsword",
+  "item.genesis.pewriese_greatsword": "Pewriese Greatsword",
 
-  "item.genesis.isis_spear": "Isis Spear",
+  "item.genesis.pewriese_spear": "Pewriese Spear",
 
-  "item.genesis.isis_tachi": "Isis tachi",
+  "item.genesis.pewriese_tachi": "Pewriese tachi",
 
-  "item.genesis.isis_longsword": "Isis longsword",
+  "item.genesis.pewriese_longsword": "Pewriese longsword",
 
-  "item.genesis.isis_dagger": "Isis Dagger",
+  "item.genesis.pewriese_dagger": "Pewriese Dagger",
 
-  "item.genesis.isis_helmet": "Isis Helmet",
-  "item.genesis.isis_chestplate": "Isis Chestplate",
-  "item.genesis.isis_leggings": "Isis Leggings",
-  "item.genesis.isis_boots": "Isis boots",
+  "item.genesis.pewriese_helmet": "Pewriese Helmet",
+  "item.genesis.pewriese_chestplate": "Pewriese Chestplate",
+  "item.genesis.pewriese_leggings": "Pewriese Leggings",
+  "item.genesis.pewriese_boots": "Pewriese boots",
 
-  "item.genesis.isis_plate_helmet": "Isis Plate Helmet",
-  "item.genesis.isis_plate_chestplate": "Isis Plate Chestplate",
-  "item.genesis.isis_plate_leggings": "Isis Plate Leggings",
-  "item.genesis.isis_plate_boots": "Isis Plate boots",
+  "item.genesis.pewriese_plate_helmet": "Pewriese Plate Helmet",
+  "item.genesis.pewriese_plate_chestplate": "Pewriese Plate Chestplate",
+  "item.genesis.pewriese_plate_leggings": "Pewriese Plate Leggings",
+  "item.genesis.pewriese_plate_boots": "Pewriese Plate boots",
 
-  "item.genesis.isis_holy_knight_helmet": "Isis Holy Knight Helmet",
-  "item.genesis.isis_holy_knight_chestplate": "Isis Holy Knight Chestplate",
-  "item.genesis.isis_holy_knight_leggings": "Isis Holy Knight Leggings",
-  "item.genesis.isis_holy_knight_boots": "Isis Holy Knight boots",
+  "item.genesis.holy_knight_helmet": "Holy Knight Helmet",
+  "item.genesis.holy_knight_chestplate": "Holy Knight Chestplate",
+  "item.genesis.holy_knight_leggings": "Holy Knight Leggings",
+  "item.genesis.holy_knight_boots": "Holy Knight boots",
 
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
-  "item.genesis.isis_upgrade_smithing_template": "Isis Upgrade Smithing Template",
+  "item.genesis.pewriese_upgrade_smithing_template": "Pewriese Upgrade Smithing Template",
 
 
 
-  "block.genesis.silver_ore": "Silver Ore",
-  "block.genesis.deepslate_silver_ore": "Deepslate Silver Ore",
 
-  "block.genesis.silver_block": "Silver Block",
-  "block.genesis.isis_ore": "Isis Ore",
-  "block.genesis.turbid_isis": "Turbid Isis",
-  "block.genesis.mixed_isis_block": "Mixed Isis Block",
-  "block.genesis.isis_alloy_block": "Isis Alloy Block",
-  "block.genesis.isis_crystal_block": "Isis Crystal Block",
+  "block.genesis.pewriese_ore": "Pewriese Ore",
+
+  "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
   "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",
