@@ -26,17 +26,16 @@ public class HolyKnightBootsModel<T extends LivingEntity> extends HumanoidModel<
 
         PartDefinition right_boot = right_leg.addOrReplaceChild("right_boot", CubeListBuilder.create()
                         .texOffs(0,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F))
-                        .texOffs(56,114).addBox(-1.0F,1.0F,2.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
 
         PartDefinition left_boot = left_leg.addOrReplaceChild("left_boot", CubeListBuilder.create()
                         .texOffs(0,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F)).mirror(false)
-                        .texOffs(56,114).mirror().addBox(-1.0F,1.0F,2.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }
+
 }

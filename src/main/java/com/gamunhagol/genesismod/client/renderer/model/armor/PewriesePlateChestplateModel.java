@@ -32,20 +32,14 @@ public class PewriesePlateChestplateModel<T extends LivingEntity> extends Humano
 
 
 
-        PartDefinition right_armor = right_arm.addOrReplaceChild("right_armor", CubeListBuilder.create()
-                .texOffs(40,16).addBox(-3.25F,-0.2F,-2.0F,4.0F,12.0F,4.0F
-                        , new CubeDeformation(0.6F)), PartPose.offset(0.0F, -1.5F, 0.0F));
 
         PartDefinition right_shoulder = right_arm.addOrReplaceChild("right_shoulder", CubeListBuilder.create()
-                .texOffs(24,32).addBox(-3.25F,-0.2F,-2.0F,4.0F,4.0F,4.0F
+                .texOffs(40,32).addBox(-3.25F,-0.2F,-2.0F,4.0F,4.0F,4.0F
                         ,new CubeDeformation(1.3F)), PartPose.offset(0.0F,-1.5F,0.0F));
 
-        PartDefinition left_armor = left_arm.addOrReplaceChild("left_armor", CubeListBuilder.create()
-                .texOffs(40,16).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,12.0F,4.0F
-                        , new CubeDeformation(0.6F)).mirror(false), PartPose.offset(0.0F, -1.5F, 0.0F));
 
         PartDefinition left_shoulder = left_arm.addOrReplaceChild("left_shoulder", CubeListBuilder.create()
-                .texOffs(24,32).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,4.0F,4.0F
+                .texOffs(40,32).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,4.0F,4.0F
                         ,new CubeDeformation(1.3F)).mirror(false), PartPose.offset(0.0F,-1.5F,0.0F));
 
         return LayerDefinition.create(meshDefinition, 64, 64);

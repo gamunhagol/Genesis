@@ -27,7 +27,6 @@ public class HolyKnightChestplateModel<T extends LivingEntity> extends HumanoidM
 
         PartDefinition chest = body.addOrReplaceChild("chest", CubeListBuilder.create()
                 .texOffs(16,112).addBox(-4.0F,-24.0F,-2.0F, 8.0F,12.0F,4.0F, new CubeDeformation(0.8F))
-                        .texOffs(16,80).addBox(-4.0F,-24.0F,-2.0F, 8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
                         .texOffs(64,90).addBox(-1.0F,-24.0F,2.0F, 0.0F,12.0F,2.0F, new CubeDeformation(0.0F))
                         .texOffs(64,90).mirror().addBox(1.0F,-24.0F,2.0F, 0.0F,12.0F,2.0F, new CubeDeformation(0.0F)).mirror(false)
                 , PartPose.offset(0.0F,24.0F,0.0F));
@@ -36,20 +35,16 @@ public class HolyKnightChestplateModel<T extends LivingEntity> extends HumanoidM
 
 
         PartDefinition right_armor = right_arm.addOrReplaceChild("right_armor", CubeListBuilder.create()
-                .texOffs(40,112).addBox(-3.25F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.6F))
-                        .texOffs(40,80).addBox(-3.25F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.5F))
-                        .texOffs(80,114).addBox(-5.0F,1.0F,-1.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
-                        .texOffs(88,104).addBox(-5.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.0F))
-                        .texOffs(88,116).addBox(-5.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.2F))
+                .texOffs(40,112).addBox(-3.25F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.7F))
+                        .texOffs(84,88).addBox(-3.25F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F))
+                        .texOffs(68,88).addBox(-5.25F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.75F))
                 , PartPose.offset(0.0F, -1.5F, 0.0F));
 
 
         PartDefinition left_armor = left_arm.addOrReplaceChild("left_armor", CubeListBuilder.create()
-                .texOffs(40,112).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.6F)).mirror(false)
-                        .texOffs(40,80).mirror().addBox(-0.75F,-0.2F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.5F)).mirror(false)
-                        .texOffs(80,114).mirror().addBox(3.0F,1.0F,-1.0F,2.0F,12.0F,2.0F, new CubeDeformation(0.0F))
-                        .texOffs(88,104).mirror().addBox(-1.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.0F)).mirror(false)
-                        .texOffs(88,116).mirror().addBox(-1.0F,-3.2F,-3.0F,6.0F,6.0F,6.0F, new CubeDeformation(0.2F)).mirror(false)
+                .texOffs(40,112).mirror().addBox(-0.75F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.7F)).mirror(false)
+                        .texOffs(84,88).mirror().addBox(-0.75F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F)).mirror(false)
+                        .texOffs(68,88).mirror().addBox(1.25F,-0.7F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.75F)).mirror(false)
                 , PartPose.offset(0.0F, -1.5F, 0.0F));
 
 

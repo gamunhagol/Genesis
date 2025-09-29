@@ -27,7 +27,6 @@ public class PewriesePlateLeggingsModel<T extends LivingEntity> extends Humanoid
 
         PartDefinition waist_armor = body.addOrReplaceChild("waist_armor", CubeListBuilder.create()
                 .texOffs(16,16).addBox(-4.0F,-24.0F,-2.0F,8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
-                        .texOffs(40,32).addBox(-4.0F,-15.0F,-2.0F,8.0F,4.0F,4.0F, new CubeDeformation(1.15F))
                 , PartPose.offset(0.0F,23.5F,0.0F));
 
 
