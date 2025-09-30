@@ -28,12 +28,11 @@ public class HolyKnightHelmetModel<T extends LivingEntity> extends HumanoidModel
         MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
-        PartDefinition head = partDefinition.getChild("head");
-
-        PartDefinition head_armor = head.addOrReplaceChild("head_armor", CubeListBuilder.create()
-                .texOffs(0,96).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
+        PartDefinition head = partDefinition.getChild("head").addOrReplaceChild("head_armor", CubeListBuilder.create()
+                        .texOffs(0,96).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
                         .texOffs(32,94).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,10.0F, new CubeDeformation(1.0F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
+
 
         PartDefinition head_right_wing = head.addOrReplaceChild("head_right_wing", CubeListBuilder.create()
                 .texOffs(42,78).addBox(-3.6F,-13.5F,4.0F,0.0F,8.0F,8.0F, new CubeDeformation(1.0F))
