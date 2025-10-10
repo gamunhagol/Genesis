@@ -16,7 +16,7 @@ public class AddCustomTrades {
     @SubscribeEvent
     public static void addWanderingTrades(WandererTradesEvent event)
     {
-        event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD_BLOCK, 12), new ItemStack(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 1),3,64,1));
+        event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD_BLOCK, 16), new ItemStack(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 1),3,64,1));
     }
 
 }

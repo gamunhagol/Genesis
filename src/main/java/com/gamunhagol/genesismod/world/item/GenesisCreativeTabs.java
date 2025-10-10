@@ -41,6 +41,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.GOLD_COIN.get());
                 output.accept(GenesisItems.PLATINUM_COIN.get());
 
+
+
                 output.accept(GenesisItems.PEWRIESE_SWORD.get());
                 output.accept(GenesisItems.PEWRIESE_SHOVEL.get());
                 output.accept(GenesisItems.PEWRIESE_PICKAXE.get());
@@ -76,6 +78,7 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
+
             })
             .title(Component.translatable("itemGroup.genesis.items"))
             .build()

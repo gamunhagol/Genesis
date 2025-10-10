@@ -15,7 +15,7 @@ public class GenesisItemTier {
 
 
     public static final Tier PEWRIESE = TierSortingRegistry.registerTier(
-            new ForgeTier(5, 3663, 11f, 6F, 12, BlockTags.create(GenesisMod.prefix("need_pewriese_tool")),
+            new ForgeTier(5, 4431, 10f, 5F, 12, BlockTags.create(GenesisMod.prefix("need_pewriese_tool")),
                     () -> Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get())),
             GenesisMod.prefix("pewriese"), List.of(Tiers.NETHERITE), List.of());
 }

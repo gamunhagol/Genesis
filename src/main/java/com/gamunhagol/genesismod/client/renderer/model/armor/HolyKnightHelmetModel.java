@@ -19,6 +19,7 @@ public class HolyKnightHelmetModel<T extends LivingEntity> extends HumanoidModel
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(GenesisMod.MODID,"pewriese_holy_knight_helmet"),"main");
 
+
     public HolyKnightHelmetModel(ModelPart pRoot) {
         super(pRoot);
 

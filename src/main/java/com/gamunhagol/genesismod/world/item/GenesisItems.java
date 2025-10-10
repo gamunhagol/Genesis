@@ -91,6 +91,9 @@ public class GenesisItems {
     public static final RegistryObject<Item> PLATINUM_COIN = ITEMS.register("platinum_coin", () -> new Item(new Item.Properties()));
 
 
+
+//tool,armor
+
     public static final RegistryObject<Item> PEWRIESE_SWORD = ITEMS.register("pewriese_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
             new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> PEWRIESE_SHOVEL = ITEMS.register("pewriese_shovel", () -> new ShovelItem(GenesisItemTier.PEWRIESE, 1.5f, -3.0f,
@@ -152,4 +155,6 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
+
+
 }

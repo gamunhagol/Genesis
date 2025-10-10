@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
     PEWRIESE("pewriese", 62, new int[]{4, 7, 9, 4}, 12, SoundEvents.ARMOR_EQUIP_IRON,
-            4.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
+            3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
     }),
     PEWRIESE_PLATE("pewriese_plate", 85, new int[]{6, 9, 11, 6}, 12, SoundEvents.ARMOR_EQUIP_IRON,
             4.0F, 0.4F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
