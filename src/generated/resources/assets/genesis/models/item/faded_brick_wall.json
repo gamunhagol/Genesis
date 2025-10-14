@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "texture": "genesis:block/faded_brick"
+    "wall": "genesis:block/faded_brick"
   }
 }

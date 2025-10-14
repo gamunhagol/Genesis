@@ -30,6 +30,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.RED_CRYSTAL_SHARD);
         simpleItem(GenesisItems.FADED_CRYSTAL_SHARD);
 
+
         simpleItem(GenesisItems.PEWRIESE_ORE_PIECE);
 
         simpleItem(GenesisItems.PEWRIESE_PIECE);
@@ -49,7 +50,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
 
-        
+        evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_STAIRS);
+        evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_SLAB);
+        evenSimpleBlockItem(GenesisBlocks.FADED_STONE_STAIRS);
+        evenSimpleBlockItem(GenesisBlocks.FADED_STONE_SLAB);
+
+        pillarItem(GenesisBlocks.FADED_PILLAR);
 
 
 
@@ -63,6 +69,16 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     }
 
+    public void evenSimpleBlockItem(RegistryObject<Block> block) {
+        this.withExistingParent(GenesisMod.MODID + ":" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
+                modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
+    }
+
+    public void trapdoorItem(RegistryObject<Block> block) {
+        this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
+                modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath() + "_botton"));
+    }
+
     public void fenceItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/fence_inventory"))
                 .texture("texture", new ResourceLocation(GenesisMod.MODID,"block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
@@ -73,7 +89,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
     public void wallItem(RegistryObject<Block> block, RegistryObject<Block> baseBlock) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
-                .texture("texture", new ResourceLocation(GenesisMod.MODID,"block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+                .texture("wall", new ResourceLocation(GenesisMod.MODID,"block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
 
     private ItemModelBuilder simpleBlockItme(RegistryObject<Block> item) {
@@ -81,4 +97,10 @@ public class ModItemModelProvider extends ItemModelProvider {
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(GenesisMod.MODID, "item/" + item.getId().getPath()));
     }
+
+    public void pillarItem(RegistryObject<Block> block) {
+        this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
+                modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
+    }
+
 }
