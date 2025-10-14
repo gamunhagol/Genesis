@@ -49,8 +49,7 @@ public class GenesisBlocks {
 
 
     //Get mob
-    public static final RegistryObject<Block> CRYSTALLIZED_SANDSTONE = register("crystallized_sandstone",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.SAND).requiresCorrectToolForDrops().strength(0.9F).sound(SoundType.GLASS)));
+
 
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",

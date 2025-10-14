@@ -37,8 +37,7 @@ public class GenesisItems {
 
 
 
-    public static final RegistryObject<BlockItem> CRYSTALLIZED_SANDSTONE = ITEMS.register("crystallized_sandstone",
-            () -> new BlockItem(GenesisBlocks.CRYSTALLIZED_SANDSTONE.get(), new Item.Properties()));
+
 
     public static final RegistryObject<BlockItem> FADED_STONE = ITEMS.register("faded_stone",
             () -> new BlockItem(GenesisBlocks.FADED_STONE.get(), new Item.Properties().fireResistant()));
