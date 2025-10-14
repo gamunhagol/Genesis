@@ -1,0 +1,12 @@
+{
+  "values": [
+    "genesis:pewriese_ore",
+    "genesis:pewriese_crystal_block",
+    "genesis:red_crystal_block",
+    "genesis:citrine_block",
+    "genesis:blue_crystal_block",
+    "genesis:red_crystal_cluster",
+    "genesis:citrine_cluster",
+    "genesis:blue_crystal_cluster"
+  ]
+}

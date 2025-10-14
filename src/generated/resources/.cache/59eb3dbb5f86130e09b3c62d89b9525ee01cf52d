@@ -1,0 +1,9 @@
+// 1.20.1	2025-10-14T19:30:29.105196	Loot Tables
+22134778b7e41a3647cc0dd515a8eed7dbfbad70 data/genesis/loot_tables/blocks/blue_crystal_block.json
+4114da11cfaf527d27deca37e99ec78644440cc1 data/genesis/loot_tables/blocks/blue_crystal_cluster.json
+fe3f5fcac6f0aa9ce6627c7781b275cdbffef90d data/genesis/loot_tables/blocks/citrine_block.json
+5e39d7f7ce187d657c04c7c78ba253fb24c451a0 data/genesis/loot_tables/blocks/citrine_cluster.json
+d618eaef9ecc05bf38cfa0a65ce317ec0feded0d data/genesis/loot_tables/blocks/pewriese_crystal_block.json
+e5f40c181b819b717a9e051834331947a5edfa69 data/genesis/loot_tables/blocks/pewriese_ore.json
+50d8d20b07739c1fb685b3ac5c530bc1a2427d33 data/genesis/loot_tables/blocks/red_crystal_block.json
+16f6c2bd8b5cf7e3162bcf169e24d9890c55bd98 data/genesis/loot_tables/blocks/red_crystal_cluster.json
