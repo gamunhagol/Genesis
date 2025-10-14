@@ -54,20 +54,21 @@ public class GenesisBlocks {
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
-    public static final RegistryObject<Block> FADED_STONE_STAIRS = register("faded_stone_stairs",
-            () -> new StairBlock(() -> GenesisBlocks.FADED_STONE.get().defaultBlockState(),
-                    BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
-    public static final RegistryObject<Block> FADED_GATEWAY = register("faded_gateway",
-            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_BRICK = register("faded_brick",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
-    public static final RegistryObject<Block> FADED_BRICK_STAIRS = register("faded_brick_stairs",
-            () -> new StairBlock(() -> GenesisBlocks.FADED_BRICK.get().defaultBlockState(),
-                    BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> CHISELED_FADED_BRICK = register("chiseled_faded_brick",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_PILLAR = register("faded_pillar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> FADED_GATEWAY = register("faded_gateway",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+
+    public static final RegistryObject<Block> FADED_STONE_STAIRS = register("faded_stone_stairs",
+            () -> new StairBlock(() -> GenesisBlocks.FADED_STONE.get().defaultBlockState(),
+                    BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+    public static final RegistryObject<Block> FADED_BRICK_STAIRS = register("faded_brick_stairs",
+            () -> new StairBlock(() -> GenesisBlocks.FADED_BRICK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_STONE_SLAB = register("faded_stone_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_BRICK_SLAB = register("faded_brick_slab",

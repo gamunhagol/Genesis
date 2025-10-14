@@ -30,6 +30,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.RED_CRYSTAL_SHARD);
         simpleItem(GenesisItems.FADED_CRYSTAL_SHARD);
 
+        clusterItem(GenesisBlocks.BLUE_CRYSTAL_CLUSTER);
+        clusterItem(GenesisBlocks.CITRINE_CLUSTER);
+        clusterItem(GenesisBlocks.RED_CRYSTAL_CLUSTER);
 
         simpleItem(GenesisItems.PEWRIESE_ORE_PIECE);
 
@@ -69,6 +72,12 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     }
 
+    public void clusterItem(RegistryObject<Block> block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+        withExistingParent(name, new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "block/" + name));
+    }
+
     public void evenSimpleBlockItem(RegistryObject<Block> block) {
         this.withExistingParent(GenesisMod.MODID + ":" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
                 modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
@@ -102,5 +111,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
                 modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
     }
+
 
 }

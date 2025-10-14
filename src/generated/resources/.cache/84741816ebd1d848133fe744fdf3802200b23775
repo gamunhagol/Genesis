@@ -1,7 +1,9 @@
-// 1.20.1	2025-10-14T21:03:27.1895315	Block States: genesis
+// 1.20.1	2025-10-14T22:32:50.3833102	Block States: genesis
 33669f1948ef85fa0188cef3187744c67500262a assets/genesis/blockstates/blue_crystal_block.json
+e4aa3541b6501639cf02573f4806f61e4691a935 assets/genesis/blockstates/blue_crystal_cluster.json
 782d1e4cda45d0cf784f874e7ad78304c675e6fe assets/genesis/blockstates/chiseled_faded_brick.json
 c2b1db5f4225089e9d0c33dceaffb7c943e4086a assets/genesis/blockstates/citrine_block.json
+7c42f84f2ee22914c7e28960d101f615477993f6 assets/genesis/blockstates/citrine_cluster.json
 cc8fabfa277c292cc101fdafe4bdceb84d846928 assets/genesis/blockstates/faded_brick.json
 10abf4dbd40779d3be84134d1275ec099c564dc8 assets/genesis/blockstates/faded_brick_slab.json
 0dd9bbdbc355b266bc09d81cc61954ee3aa1d977 assets/genesis/blockstates/faded_brick_stairs.json
@@ -14,9 +16,12 @@ afa82427fa4ab99528887498d8032c3cb5832456 assets/genesis/blockstates/faded_stone_
 75b721511e96c930a6467b8c60e7cf04d1df89cf assets/genesis/blockstates/pewriese_crystal_block.json
 80788117dc22a0b95ebf07098ae579598ddbb006 assets/genesis/blockstates/pewriese_ore.json
 8e75485b984c8db7e50ca6dc715acb7a0b553e8e assets/genesis/blockstates/red_crystal_block.json
+cf94cf46723739ddec218fafd19f0566bfdaad40 assets/genesis/blockstates/red_crystal_cluster.json
 5bd76539732ae07da45f84d8e223c9b234c8d145 assets/genesis/models/block/blue_crystal_block.json
+3eb1e292e941b6131c99178fb64abc3a6454d28e assets/genesis/models/block/blue_crystal_cluster.json
 1c63a0b7daa2f00f0b4fc9e8af8b5449ac3b01d8 assets/genesis/models/block/chiseled_faded_brick.json
 2159d1077b4ff68cb21db48b7c9da662ee362666 assets/genesis/models/block/citrine_block.json
+84ec51aedc25b637b9b3ed2786d746c120c023e8 assets/genesis/models/block/citrine_cluster.json
 20858705f3121a70d14b486e1ef6fc38916d1f1c assets/genesis/models/block/faded_brick.json
 1af03f8a61a1d73b66b67993f80f3b20ac113181 assets/genesis/models/block/faded_brick_slab.json
 248cf91f71a5cbb0780329516baedf299709de4d assets/genesis/models/block/faded_brick_slab_top.json
@@ -38,6 +43,7 @@ c9b081364158339a2db146de2178873b1e183ad6 assets/genesis/models/block/faded_stone
 3b693c9963822d1146c57ff51e0f3746e353f432 assets/genesis/models/block/pewriese_crystal_block.json
 71a4f7d332d472dbc1b2d1cf5fb5057164026eaa assets/genesis/models/block/pewriese_ore.json
 832ea8a7895ebf8ebb46a65dc155440d67de2e4e assets/genesis/models/block/red_crystal_block.json
+809764f21c38b0401c5fcbdd40566dc6d2f20f90 assets/genesis/models/block/red_crystal_cluster.json
 1e30ea15883b2234d59cebb15f9a2bb871f064c6 assets/genesis/models/item/blue_crystal_block.json
 83191ffa0b24fbf13175e9097493c8da313540dc assets/genesis/models/item/chiseled_faded_brick.json
 682537e4bd685eef983ebdaaa9fc0bfaf2bffab9 assets/genesis/models/item/citrine_block.json
