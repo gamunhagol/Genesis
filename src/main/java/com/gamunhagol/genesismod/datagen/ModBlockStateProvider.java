@@ -3,7 +3,8 @@ package com.gamunhagol.genesismod.datagen;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
@@ -22,6 +23,22 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWhitItem(GenesisBlocks.CITRINE_BLOCK);
         blockWhitItem(GenesisBlocks.RED_CRYSTAL_BLOCK);
 
+
+        blockWhitItem(GenesisBlocks.FADED_STONE);
+        blockWhitItem(GenesisBlocks.FADED_BRICK);
+        blockWhitItem(GenesisBlocks.FADED_GATEWAY);
+        blockWhitItem(GenesisBlocks.CHISELED_FADED_BRICK);
+
+        stairsBlock(((StairBlock) GenesisBlocks.FADED_STONE_STAIRS.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
+        stairsBlock(((StairBlock) GenesisBlocks.FADED_BRICK_STAIRS.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));
+
+        slabBlock(((SlabBlock) GenesisBlocks.FADED_STONE_SLAB.get()), blockTexture(GenesisBlocks.FADED_STONE.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
+        slabBlock(((SlabBlock) GenesisBlocks.FADED_BRICK_SLAB.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));
+
+        wallBlock(((WallBlock) GenesisBlocks.FADED_BRICK_WALL.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));
+
+        axisBlock(((RotatedPillarBlock) GenesisBlocks.FADED_PILLAR.get()), blockTexture(GenesisBlocks.FADED_PILLAR.get()),
+                new ResourceLocation(GenesisMod.MODID, "block/faded_pillar_top"));
 
 
     }

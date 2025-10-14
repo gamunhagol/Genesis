@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -17,7 +18,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisBlocks.PEWRIESE_ORE.get());
+    private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -26,8 +27,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 
-        oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_ORE_PIECE.get(), 20.8f, 20000, "pewriese");
-        oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_ORE_PIECE.get(), 20.8f, 10000, "pewriese");
+        oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 20.8f, 20000, "pewriese");
+        oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 20.8f, 10000, "pewriese");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get())
                 .pattern("aaa")
@@ -40,7 +41,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), 9)
                 .requires(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get())
                 .unlockedBy(getHasName(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()), has(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()))
-                .save(pWriter);
+                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "pewriese_crystal_from_block"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())
                 .pattern("aa")

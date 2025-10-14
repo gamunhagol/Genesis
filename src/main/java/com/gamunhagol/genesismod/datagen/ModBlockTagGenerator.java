@@ -34,5 +34,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
 
+        this.tag(BlockTags.WALLS)
+                .add(GenesisBlocks.FADED_BRICK_WALL.get());
+
+
     }
 }
