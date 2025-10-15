@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "genesis:pewriese_piece"
+    },
+    "a": {
+      "item": "minecraft:lapis_lazuli"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#a#",
+    " # "
+  ],
+  "result": {
+    "item": "genesis:pewriese_crystal"
+  },
+  "show_notification": true
+}
