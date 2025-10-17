@@ -1,5 +1,5 @@
 {
-  "parent": "minecraft:item/generated",
+  "parent": "epicfight:item/dagger",
   "textures": {
     "layer0": "genesis:item/pewriese_dagger"
   }

@@ -46,16 +46,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.GOLD_COIN);
         simpleItem(GenesisItems.PLATINUM_COIN);
 
-        simpleItem(GenesisItems.PEWRIESE_AXE);
-        simpleItem(GenesisItems.PEWRIESE_PICKAXE);
-        simpleItem(GenesisItems.PEWRIESE_SHOVEL);
-        simpleItem(GenesisItems.PEWRIESE_HOE);
-        simpleItem(GenesisItems.PEWRIESE_SWORD);
-        simpleItem(GenesisItems.PEWRIESE_GREATSWORD);
-        simpleItem(GenesisItems.PEWRIESE_LONGSWORD);
-        simpleItem(GenesisItems.PEWRIESE_SPEAR);
-        simpleItem(GenesisItems.PEWRIESE_DAGGER);
-        simpleItem(GenesisItems.PEWRIESE_TACHI);
 
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
