@@ -46,6 +46,33 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.GOLD_COIN);
         simpleItem(GenesisItems.PLATINUM_COIN);
 
+        simpleItem(GenesisItems.PEWRIESE_AXE);
+        simpleItem(GenesisItems.PEWRIESE_PICKAXE);
+        simpleItem(GenesisItems.PEWRIESE_SHOVEL);
+        simpleItem(GenesisItems.PEWRIESE_HOE);
+        simpleItem(GenesisItems.PEWRIESE_SWORD);
+        simpleItem(GenesisItems.PEWRIESE_GREATSWORD);
+        simpleItem(GenesisItems.PEWRIESE_LONGSWORD);
+        simpleItem(GenesisItems.PEWRIESE_SPEAR);
+        simpleItem(GenesisItems.PEWRIESE_DAGGER);
+        simpleItem(GenesisItems.PEWRIESE_TACHI);
+
+        simpleItem(GenesisItems.PEWRIESE_HELMET);
+        simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
+        simpleItem(GenesisItems.PEWRIESE_LEGGINGS);
+        simpleItem(GenesisItems.PEWRIESE_BOOTS);
+
+        simpleItem(GenesisItems.PEWRIESE_PLATE_HELMET);
+        simpleItem(GenesisItems.PEWRIESE_PLATE_CHESTPLATE);
+        simpleItem(GenesisItems.PEWRIESE_PLATE_LEGGINGS);
+        simpleItem(GenesisItems.PEWRIESE_PLATE_BOOTS);
+
+        simpleItem(GenesisItems.HOLY_KNIGHT_HELMET);
+        simpleItem(GenesisItems.HOLY_KNIGHT_CHESTPLATE);
+        simpleItem(GenesisItems.HOLY_KNIGHT_LEGGINGS);
+        simpleItem(GenesisItems.HOLY_KNIGHT_BOOTS);
+
+
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
