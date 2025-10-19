@@ -42,6 +42,7 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PLATINUM_COIN.get());
 
 
+                output.accept(GenesisItems.SPIRIT_COMPASS.get());
 
                 output.accept(GenesisItems.PEWRIESE_SWORD.get());
                 output.accept(GenesisItems.PEWRIESE_SHOVEL.get());

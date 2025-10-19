@@ -93,6 +93,10 @@ public class GenesisItems {
 
 //tool,armor
 
+    public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+
+
+
     public static final RegistryObject<Item> PEWRIESE_SWORD = ITEMS.register("pewriese_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
             new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> PEWRIESE_SHOVEL = ITEMS.register("pewriese_shovel", () -> new ShovelItem(GenesisItemTier.PEWRIESE, 1.5f, -3.0f,

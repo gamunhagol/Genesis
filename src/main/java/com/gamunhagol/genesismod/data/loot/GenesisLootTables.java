@@ -32,7 +32,8 @@ public class GenesisLootTables {
 
         if (event.getName().equals(BuiltInLootTables.ANCIENT_CITY)) {
             event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F,2.0F))
-                    .add(LootItem.lootTableItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(2).when(LootItemRandomChanceCondition.randomChance(0.15F)))
+                    .add(LootItem.lootTableItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()).setWeight(2).when(LootItemRandomChanceCondition.randomChance(0.013F)))
+                            .add((LootItem.lootTableItem(GenesisItems.PEWRIESE_PIECE.get()).setWeight(7).when(LootItemRandomChanceCondition.randomChance(0.042f))))
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.END_CITY_TREASURE)) {
@@ -55,11 +56,17 @@ public class GenesisLootTables {
                     .add(LootItem.lootTableItem(GenesisItems.DREAM_POWDER.get()).setWeight(10).when(LootItemRandomChanceCondition.randomChance(0.4F)))
                     .build());
         }
+        if (event.getName().equals(BuiltInLootTables.JUNGLE_TEMPLE)) {
+            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(4.0F,20.0F))
+                    .add(LootItem.lootTableItem(GenesisItems.SPIRIT_COMPASS.get()).setWeight(1).when(LootItemRandomChanceCondition.randomChance(0.019F)))
+                    .build());
+        }
         if (event.getName().equals(BuiltInLootTables.CAT_MORNING_GIFT)) {
             event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F,5.0F))
                     .add(LootItem.lootTableItem(GenesisItems.DREAM_POWDER.get()).setWeight(3).when(LootItemRandomChanceCondition.randomChance(0.35F)))
                     .build());
         }
+
     }
 
 }

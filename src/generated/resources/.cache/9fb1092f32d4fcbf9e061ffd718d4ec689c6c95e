@@ -1,4 +1,4 @@
-// 1.20.1	2025-10-15T12:26:43.3077404	Recipes
+// 1.20.1	2025-10-19T21:01:16.6468781	Recipes
 2f8fa2dc64e5aab03db9ecbe44626774e4da2806 data/genesis/advancements/recipes/building_blocks/blue_crystal_block.json
 ee841603d88153569eb13d9f4da4e44e1efc292f data/genesis/advancements/recipes/building_blocks/citrine_block.json
 26c60967bc3ef19b10ee71d333b3b2a5d0dcd268 data/genesis/advancements/recipes/building_blocks/red_crystal_block.json
@@ -56,8 +56,8 @@ fdeb67e69abdcaf4c9ec5031f9c7bbc3bf588332 data/genesis/recipes/pewriese_helmet.js
 cba36f55f12726c9cb37d1887bf1ef6bb5446c62 data/genesis/recipes/pewriese_leggings.json
 a547ec6af9de7030cbe208926d46385bd2b7a54d data/genesis/recipes/pewriese_longsword.json
 4dd62452352dfa1c00065a746f9773650a45d073 data/genesis/recipes/pewriese_pickaxe.json
-d839e442a59c590e5b12b109c7dec05f8d2c5ac4 data/genesis/recipes/pewriese_piece_from_blasting_pewriese_ore_piece.json
-968b2711581da19cafc5a47fd2ece0406e89882d data/genesis/recipes/pewriese_piece_from_smelting_pewriese_ore_piece.json
+64aee0fdf96701e1ae2e24648b77a53e0c33fc1c data/genesis/recipes/pewriese_piece_from_blasting_pewriese_ore_piece.json
+ba5bdd481d6a7b88844fa538c99b9736522f3c48 data/genesis/recipes/pewriese_piece_from_smelting_pewriese_ore_piece.json
 77ed44a986b285db4fbc3c3808d8619f1c4620b5 data/genesis/recipes/pewriese_plate_boots.json
 31a96f62e8933182182bd1e67545546c72fa571e data/genesis/recipes/pewriese_plate_chestplate.json
 41aeb23c3ebaff1dbc95f0fb0a452f79bfc94ea4 data/genesis/recipes/pewriese_plate_helmet.json

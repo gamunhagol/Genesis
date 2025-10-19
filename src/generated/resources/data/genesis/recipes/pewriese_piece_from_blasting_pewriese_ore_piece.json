@@ -2,7 +2,7 @@
   "type": "minecraft:blasting",
   "category": "misc",
   "cookingtime": 10000,
-  "experience": 20.8,
+  "experience": 2.4,
   "group": "pewriese",
   "ingredient": {
     "item": "genesis:pewriese_ore_piece"
