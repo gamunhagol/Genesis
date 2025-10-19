@@ -22,6 +22,10 @@ public class GenesisLootTables {
     public static final DeferredRegister<Codec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(ForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, "genesis");
     public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_ITEM = LOOT_MODIFIERS.register("add_item", AddItemModifier.CODEC);
 
+    public static final RegistryObject<Codec<? extends IGlobalLootModifier>> ADD_SUS_SAND_ITEM =
+            LOOT_MODIFIERS.register("add_sus_sand_item", AddSusSandItemModifier.CODEC);
+
+
 
     @SubscribeEvent
     public static void modifyVanillaLootPools(final LootTableLoadEvent event) {

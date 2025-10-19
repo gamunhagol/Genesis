@@ -58,7 +58,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
     private void clusterBlock(RegistryObject<Block> block) {
         String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
 
-        // cross 모델 직접 생성 (이 라인이 핵심!)
         var model = models().cross(name, modLoc("block/" + name))
                 .renderType("cutout");
 

@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -62,6 +63,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.HOLY_KNIGHT_LEGGINGS);
         simpleItem(GenesisItems.HOLY_KNIGHT_BOOTS);
 
+        handheldItem(GenesisItems.PEWRIESE_SWORD);
+        handheldItem(GenesisItems.PEWRIESE_AXE);
+        handheldItem(GenesisItems.PEWRIESE_PICKAXE);
+        handheldItem(GenesisItems.PEWRIESE_HOE);
+        handheldItem(GenesisItems.PEWRIESE_SHOVEL);
+
 
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
@@ -117,6 +124,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(), mcLoc("block/wall_inventory"))
                 .texture("wall", new ResourceLocation(GenesisMod.MODID,"block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
+
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(GenesisMod.MODID, "item/" + item.getId().getPath()));
+    }
+
+
 
     private ItemModelBuilder simpleBlockItme(RegistryObject<Block> item) {
         return withExistingParent(item.getId().getPath(),
