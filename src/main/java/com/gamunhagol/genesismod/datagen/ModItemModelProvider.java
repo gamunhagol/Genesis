@@ -26,7 +26,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.DREAM_POWDER);
         simpleItem(GenesisItems.DREAM_DANGO);
         simpleItem(GenesisItems.REMNANTS_OF_A_DREAM);
-        simpleItem(GenesisItems.FRAGMENT_OF_MEMORY);
+        basicItem(GenesisItems.FRAGMENT_OF_MEMORY.get());
 
         simpleItem(GenesisItems.BLUE_CRYSTAL_SHARD);
         simpleItem(GenesisItems.CITRINE_SHARD);
