@@ -70,6 +70,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
 
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.BOOK_OF_CREATION.get())
+                .requires(Items.BOOK)
+                .requires(Items.EMERALD)
+                .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
+                .save(pWriter);
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get())
                 .pattern("aaa")
                 .pattern("aaa")
@@ -114,12 +121,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.BOOK_OF_CREATION.get())
-                .pattern("ab")
-                .define('a',Items.BOOK)
-                .define('b',Items.EMERALD)
-                .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
-                .save(pWriter);
+
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())

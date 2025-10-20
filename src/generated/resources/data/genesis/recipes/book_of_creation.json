@@ -1,19 +1,15 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "a": {
+  "ingredients": [
+    {
       "item": "minecraft:book"
     },
-    "b": {
+    {
       "item": "minecraft:emerald"
     }
-  },
-  "pattern": [
-    "ab"
   ],
   "result": {
     "item": "genesis:book_of_creation"
-  },
-  "show_notification": true
+  }
 }
