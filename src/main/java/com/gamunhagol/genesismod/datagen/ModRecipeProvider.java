@@ -101,7 +101,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern("aaa")
                 .pattern("aaa")
                 .define('a',GenesisItems.DREAM_DANGO.get())
-                .unlockedBy(getHasName(GenesisItems.DREAM_DANGO.get()), has(GenesisItems.DREAM_DANGO.get()))
+                .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.FRAGMENT_OF_MEMORY.get())
@@ -111,9 +111,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('a',Items.NETHER_STAR)
                 .define('m',GenesisItems.REMNANTS_OF_A_DREAM.get())
                 .define('#',Items.BLAZE_POWDER)
-                .unlockedBy(getHasName(GenesisItems.DREAM_DANGO.get()), has(GenesisItems.DREAM_DANGO.get()))
+                .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.BOOK_OF_CREATION.get())
+                .pattern("ab")
+                .define('a',Items.BOOK)
+                .define('b',Items.EMERALD)
+                .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
+                .save(pWriter);
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())
@@ -143,7 +149,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .pattern(" # ")
                 .define('a',Items.LAPIS_LAZULI)
                 .define('#',GenesisItems.PEWRIESE_PIECE.get())
-                .unlockedBy(getHasName(GenesisItems.PEWRIESE_CRYSTAL.get()), has(GenesisItems.PEWRIESE_CRYSTAL.get()))
+                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
                 .save(pWriter);
 
 

@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dream_dango": {
+    "has_dream_powder": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:dream_dango"
+              "genesis:dream_powder"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_dream_dango",
+      "has_dream_powder",
       "has_the_recipe"
     ]
   ],

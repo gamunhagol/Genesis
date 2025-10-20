@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:book"
+    },
+    "b": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "pattern": [
+    "ab"
+  ],
+  "result": {
+    "item": "genesis:book_of_creation"
+  },
+  "show_notification": true
+}

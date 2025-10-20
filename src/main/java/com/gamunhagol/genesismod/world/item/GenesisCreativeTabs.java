@@ -15,9 +15,11 @@ public class GenesisCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, GenesisMod.MODID);
 
     public static final RegistryObject<CreativeModeTab> GENESIS_ITEMS_TAB = TABS.register("genesis", () -> CreativeModeTab.builder()
-            .icon(() -> new ItemStack(GenesisItems.FRAGMENT_OF_MEMORY.get()))
+            .icon(() -> new ItemStack(GenesisItems.BOOK_OF_CREATION.get()))
             .withTabsBefore(CreativeModeTabs.SPAWN_EGGS)
             .displayItems((params, output) -> {
+                output.accept(GenesisItems.BOOK_OF_CREATION.get());
+
                 output.accept(GenesisItems.DREAM_POWDER.get());
                 output.accept(GenesisItems.DREAM_DANGO.get());
                 output.accept(GenesisItems.REMNANTS_OF_A_DREAM.get());

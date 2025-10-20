@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_pewriese_crystal": {
+    "has_pewriese_piece": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:pewriese_crystal"
+              "genesis:pewriese_piece"
             ]
           }
         ]
@@ -22,7 +22,7 @@
   },
   "requirements": [
     [
-      "has_pewriese_crystal",
+      "has_pewriese_piece",
       "has_the_recipe"
     ]
   ],

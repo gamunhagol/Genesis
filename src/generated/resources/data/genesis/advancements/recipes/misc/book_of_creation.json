@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dream_powder": {
+    "has_book": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:dream_powder"
+              "minecraft:book"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "genesis:fragment_of_memory"
+        "recipe": "genesis:book_of_creation"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dream_powder",
+      "has_book",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "genesis:fragment_of_memory"
+      "genesis:book_of_creation"
     ]
   },
   "sends_telemetry_event": false

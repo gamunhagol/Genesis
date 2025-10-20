@@ -62,6 +62,8 @@ public class GenesisItems {
 
 
     //item
+    public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder", () -> new Item(new Item.Properties()
             .food(NightmareRelief.DREAM_POWDER)));
     public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango", () -> new Item(new Item.Properties()

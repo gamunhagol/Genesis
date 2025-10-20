@@ -21,6 +21,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleItem(GenesisItems.BOOK_OF_CREATION);
+
         simpleItem(GenesisItems.DREAM_POWDER);
         simpleItem(GenesisItems.DREAM_DANGO);
         simpleItem(GenesisItems.REMNANTS_OF_A_DREAM);
