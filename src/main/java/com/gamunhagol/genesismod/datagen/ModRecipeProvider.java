@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.datagen;
 
+import com.gamunhagol.genesismod.data.repice.ModRecipeSerializers;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -121,6 +122,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
+        net.minecraft.data.recipes.SpecialRecipeBuilder
+                .special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
+                .save(pWriter, String.valueOf(new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine")));
 
 
 

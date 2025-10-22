@@ -9,6 +9,10 @@
   "item.genesis.blue_crystal_shard": "청수정 조각",
   "item.genesis.citrine_shard": "황수정 조각",
   "item.genesis.red_crystal_shard": "적수정 조각",
+  "item.genesis.wind_stone": "바람석",
+  "item.genesis.lighting_crystal_shard": "번개수정 조각",
+  "item.genesis.green_amber": "녹호박",
+  "item.genesis.frost_crystal_shard": "냉기수정 조각",
   "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
 
   "item.genesis.pewriese_ore_piece": "퓨리즌 광석 파편",
@@ -96,5 +100,19 @@
 
 
   "itemGroup.genesis.items": "창세기 아이템",
-  "itemGroup.genesis_block.blocks": "창세기 블럭"
+  "itemGroup.genesis_block.blocks": "창세기 블럭",
+
+
+
+  "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
+  "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
+  "tooltip.genesis.spirit_compass.type": "속성: %s",
+
+  "tooltip.genesis.spirit_type.fire": "화염",
+  "tooltip.genesis.spirit_type.water": "물",
+  "tooltip.genesis.spirit_type.earth": "땅",
+  "tooltip.genesis.spirit_type.storm": "폭풍",
+  "tooltip.genesis.spirit_type.lightning": "번개",
+  "tooltip.genesis.spirit_type.plants": "식물",
+  "tooltip.genesis.spirit_type.ice": "냉기"
 }

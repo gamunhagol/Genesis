@@ -76,6 +76,10 @@ public class GenesisItems {
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CITRINE_SHARD = ITEMS.register("citrine_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RED_CRYSTAL_SHARD = ITEMS.register("red_crystal_shard", () -> new FuelItem(new Item.Properties(), 20000));
+    public static final RegistryObject<Item> WIND_STONE = ITEMS.register("wind_stone", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> LIGHTING_CRYSTAL_SHARD = ITEMS.register("lighting_crystal_shard", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GREEN_AMBER = ITEMS.register("green_amber", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FROST_CRYSTAL_SHARD = ITEMS.register("frost_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FADED_CRYSTAL_SHARD = ITEMS.register("faded_crystal_shard", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> PEWRIESE_ORE_PIECE = ITEMS.register("pewriese_ore_piece", () -> new Item(new Item.Properties()));
@@ -95,7 +99,7 @@ public class GenesisItems {
 
 //tool,armor
 
-    public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
 
 
 

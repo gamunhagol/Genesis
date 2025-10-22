@@ -41,6 +41,10 @@ public class GenesisMod {
         GenesisLootTables.LOOT_MODIFIERS.register(modEventBus);
 
 
+        com.gamunhagol.genesismod.data.repice.ModRecipeSerializers.SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+
+
     }
 
     public static ResourceLocation prefix(String tagName) {

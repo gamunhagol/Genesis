@@ -9,6 +9,10 @@
   "item.genesis.blue_crystal_shard": "Blue Crystal Shard",
   "item.genesis.citrine_shard": "Citrine Shard",
   "item.genesis.red_crystal_shard": "Red Crystal Shard",
+  "item.genesis.wind_stone": "Wind Stone",
+  "item.genesis.lighting_crystal_shard": "Lighting Crystal Shard",
+  "item.genesis.green_amber": "Green Amber",
+  "item.genesis.frost_crystal_shard": "Frost Crystal Shard",
   "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
 
   "item.genesis.pewriese_ore_piece": "pewriese Ore Piece",
@@ -92,5 +96,20 @@
 
 
   "itemGroup.genesis.items": "Genesis Items",
-  "itemGroup.genesis_block.blocks": "Genesis Blocks"
+  "itemGroup.genesis_block.blocks": "Genesis Blocks",
+
+
+
+
+  "tooltip.genesis.spirit_compass.has_needle": "Needle: Installed",
+  "tooltip.genesis.spirit_compass.no_needle": "Needle: Missing",
+  "tooltip.genesis.spirit_compass.type": "Type: %s",
+
+  "tooltip.genesis.spirit_type.fire": "Fire",
+  "tooltip.genesis.spirit_type.water": "Water",
+  "tooltip.genesis.spirit_type.earth": "Earth",
+  "tooltip.genesis.spirit_type.storm": "Storm",
+  "tooltip.genesis.spirit_type.lightning": "Lightning",
+  "tooltip.genesis.spirit_type.plants": "Nature",
+  "tooltip.genesis.spirit_type.ice": "Frost"
 }
