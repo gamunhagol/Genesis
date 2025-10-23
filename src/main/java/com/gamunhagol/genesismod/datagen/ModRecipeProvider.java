@@ -126,6 +126,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
                 .save(pWriter, String.valueOf(new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine")));
 
+        net.minecraft.data.recipes.SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
+                .save(pWriter, String.valueOf(new ResourceLocation(GenesisMod.MODID, "spirit_compass_remove")));
+
+
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())

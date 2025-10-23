@@ -12,14 +12,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
-
 import java.util.List;
 
 /**
- * Spirit Compass — 제작 시 구조물을 자동 지정하고 그 방향을 추적하는 나침반
- * - Lodestone 기반 CompassItem 확장
- * - 반짝임 제거, 자석석 이름 방지
- * - 구조물 위치 주기적 갱신
+ * Spirit Compass — 지정된 구조물 방향을 추적하는 커스텀 나침반
  */
 public class SpiritCompassItem extends CompassItem {
     public static final String KEY_HAS_NEEDLE = "HasNeedle";
@@ -38,13 +34,11 @@ public class SpiritCompassItem extends CompassItem {
 
         tip.add(Component.translatable(
                         has ? "tooltip.genesis.spirit_compass.has_needle" : "tooltip.genesis.spirit_compass.no_needle")
-                .withStyle(has ? ChatFormatting.AQUA : ChatFormatting.DARK_GRAY)
-        );
+                .withStyle(has ? ChatFormatting.AQUA : ChatFormatting.DARK_GRAY));
 
         if (has) {
             String type = tag.getString(KEY_NEEDLE_TYPE);
-            tip.add(Component.translatable(
-                            "tooltip.genesis.spirit_compass.type",
+            tip.add(Component.translatable("tooltip.genesis.spirit_compass.type",
                             Component.translatable("tooltip.genesis.spirit_type." + type))
                     .withStyle(ChatFormatting.YELLOW));
         }
@@ -69,11 +63,13 @@ public class SpiritCompassItem extends CompassItem {
                 lodestoneTag.putInt("x", pos.getX());
                 lodestoneTag.putInt("y", pos.getY());
                 lodestoneTag.putInt("z", pos.getZ());
-
                 tag.put("LodestonePos", lodestoneTag);
-                // ✅ 렌더러가 인식할 수 있도록 차원 ID 고정
-                tag.putString("LodestoneDimension", Level.OVERWORLD.location().toString());
+                tag.putString("LodestoneDimension", server.dimension().location().toString());
                 tag.putBoolean("LodestoneTracked", true);
+
+                stack.setTag(tag);
+                player.getInventory().setChanged();
+                player.containerMenu.broadcastChanges();
             }
         }
     }
@@ -82,14 +78,12 @@ public class SpiritCompassItem extends CompassItem {
     @Override
     public void inventoryTick(ItemStack stack, Level level, net.minecraft.world.entity.Entity entity, int slot, boolean selected) {
         if (level.isClientSide) return;
-
         CompoundTag tag = stack.getOrCreateTag();
         if (!tag.getBoolean(KEY_HAS_NEEDLE) || !tag.contains(KEY_TARGET)) return;
 
         String target = tag.getString(KEY_TARGET);
         BlockPos origin = entity.blockPosition();
 
-        // 10초(200틱)마다 위치 갱신
         if (level.getGameTime() % 200 == 0 && level instanceof ServerLevel server) {
             BlockPos pos = SpiritStructureFinder.findNearest(server, target, origin, 6400);
             if (pos != null) {
@@ -97,23 +91,22 @@ public class SpiritCompassItem extends CompassItem {
                 lodestoneTag.putInt("x", pos.getX());
                 lodestoneTag.putInt("y", pos.getY());
                 lodestoneTag.putInt("z", pos.getZ());
-
                 tag.put("LodestonePos", lodestoneTag);
-                tag.putString("LodestoneDimension", Level.OVERWORLD.location().toString());
+                tag.putString("LodestoneDimension", server.dimension().location().toString());
                 tag.putBoolean("LodestoneTracked", true);
+                stack.setTag(tag);
             }
         }
     }
 
-    /** 반짝임 제거 */
     @Override
-    public boolean isFoil(ItemStack stack) {
-        return false;
-    }
+    public boolean isFoil(ItemStack stack) { return false; }
 
-    /** 이름 고정 ("정령 나침반") */
     @Override
     public Component getName(ItemStack stack) {
         return Component.translatable(this.getDescriptionId(stack));
+    }
+    public boolean isCompass(ItemStack stack) {
+        return true;
     }
 }

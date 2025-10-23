@@ -11,6 +11,7 @@ import net.minecraft.core.GlobalPos;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -25,8 +26,7 @@ public class RegisterClient {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-
-            // 1️⃣ 침 유무 표시 (predicate)
+            // 🔹 침 유무
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation(GenesisMod.MODID, "has_needle"),
@@ -34,53 +34,47 @@ public class RegisterClient {
                             stack.getOrCreateTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE) ? 1.0F : 0.0F
             );
 
-            // 2️⃣ 침 색상 구분 (모델 전환)
+            // 🔹 침 속성 (모델 전환)
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation(GenesisMod.MODID, "needle_type"),
                     (stack, level, entity, seed) -> {
                         String t = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);
                         return switch (t) {
-                            case "fire"      -> 0.1F;
-                            case "water"     -> 0.2F;
-                            case "earth"     -> 0.3F;
-                            case "storm"     -> 0.4F;
+                            case "fire" -> 0.1F;
+                            case "water" -> 0.2F;
+                            case "earth" -> 0.3F;
+                            case "storm" -> 0.4F;
                             case "lightning" -> 0.5F;
-                            case "plants"    -> 0.6F;
-                            case "ice"       -> 0.7F;
-                            default          -> 0.0F;
+                            case "plants" -> 0.6F;
+                            case "ice" -> 0.7F;
+                            default -> 0.0F;
                         };
                     }
             );
 
-            // 3️⃣ 구조물 방향 추적 (핵심 angle property)
+            // 🔹 Lodestone 기반 방향 표시
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation("angle"),
                     new CompassItemPropertyFunction(new CompassItemPropertyFunction.CompassTarget() {
                         @Override
-                        public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable Entity entity) {
+                        public @Nullable GlobalPos getPos(ClientLevel pLevel, ItemStack pStack, Entity pEntity) {
+                            return null;
+                        }
+
+                        public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable LivingEntity entity) {
                             if (stack.hasTag()
                                     && stack.getTag().contains("LodestonePos")
                                     && stack.getTag().contains("LodestoneDimension")) {
-
                                 var posTag = stack.getTag().getCompound("LodestonePos");
                                 var dimKey = stack.getTag().getString("LodestoneDimension");
 
-                                try {
-                                    var dimension = ResourceLocation.tryParse(dimKey);
-                                    if (dimension != null) {
-                                        var worldKey = ResourceKey.create(
-                                                net.minecraft.core.registries.Registries.DIMENSION,
-                                                dimension);
-                                        var pos = new BlockPos(
-                                                posTag.getInt("x"),
-                                                posTag.getInt("y"),
-                                                posTag.getInt("z"));
-                                        return GlobalPos.of(worldKey, pos);
-                                    }
-                                } catch (Exception e) {
-                                    // dimension 파싱 실패 시 무시
+                                var dimension = ResourceLocation.tryParse(dimKey);
+                                if (dimension != null) {
+                                    var worldKey = ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, dimension);
+                                    var pos = new BlockPos(posTag.getInt("x"), posTag.getInt("y"), posTag.getInt("z"));
+                                    return GlobalPos.of(worldKey, pos);
                                 }
                             }
                             return null;
@@ -90,22 +84,20 @@ public class RegisterClient {
         });
     }
 
-    // 4️⃣ 침 색상 틴트 (아이콘 렌더용)
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> {
             if (tintIndex != 1) return 0xFFFFFF;
-
             String t = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);
             return switch (t) {
-                case "fire"      -> 0xFF7377;
-                case "water"     -> 0x628FFF;
-                case "earth"     -> 0xFFBD79;
-                case "storm"     -> 0x99C1D1;
+                case "fire" -> 0xFF7377;
+                case "water" -> 0x628FFF;
+                case "earth" -> 0xFFBD79;
+                case "storm" -> 0x99C1D1;
                 case "lightning" -> 0xF1FF7D;
-                case "plants"    -> 0x7DFF87;
-                case "ice"       -> 0x8ADAF2;
-                default          -> 0xFFFFFF;
+                case "plants" -> 0x7DFF87;
+                case "ice" -> 0x8ADAF2;
+                default -> 0xFFFFFF;
             };
         }, GenesisItems.SPIRIT_COMPASS.get());
     }

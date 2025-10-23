@@ -31,7 +31,7 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
             "earth", "minecraft:ancient_city",
             "storm", "minecraft:end_city",
             "lightning", "minecraft:stronghold",
-            "plants", "minecraft:mansion",
+            "plants", "minecraft:jungle_temple",
             "ice", "minecraft:igloo"
     );
 
