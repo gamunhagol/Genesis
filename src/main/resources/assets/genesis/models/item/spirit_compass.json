@@ -1,0 +1,15 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "genesis:item/spirit_compass"
+  },
+  "overrides": [
+    { "predicate": { "genesis:needle_type": 0.1 }, "model": "genesis:item/spirit_compass_fire" },
+    { "predicate": { "genesis:needle_type": 0.2 }, "model": "genesis:item/spirit_compass_water" },
+    { "predicate": { "genesis:needle_type": 0.3 }, "model": "genesis:item/spirit_compass_earth" },
+    { "predicate": { "genesis:needle_type": 0.4 }, "model": "genesis:item/spirit_compass_storm" },
+    { "predicate": { "genesis:needle_type": 0.5 }, "model": "genesis:item/spirit_compass_lightning" },
+    { "predicate": { "genesis:needle_type": 0.6 }, "model": "genesis:item/spirit_compass_plants" },
+    { "predicate": { "genesis:needle_type": 0.7 }, "model": "genesis:item/spirit_compass_ice" }
+  ]
+}

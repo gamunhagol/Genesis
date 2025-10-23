@@ -4,30 +4,43 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.GlobalPos;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import org.jetbrains.annotations.Nullable;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class RegisterClient {
-
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
 
+            // 1️⃣ 침 유무 표시 (predicate)
+            ItemProperties.register(
+                    GenesisItems.SPIRIT_COMPASS.get(),
+                    new ResourceLocation(GenesisMod.MODID, "has_needle"),
+                    (stack, level, entity, seed) ->
+                            stack.getOrCreateTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE) ? 1.0F : 0.0F
+            );
+
+            // 2️⃣ 침 색상 구분 (모델 전환)
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation(GenesisMod.MODID, "needle_type"),
-                    (ItemStack stack, ClientLevel level, net.minecraft.world.entity.LivingEntity entity, int seed) -> {
-                        if (!stack.hasTag()) return 0.0F;
-                        String type = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);
-                        return switch (type) {
+                    (stack, level, entity, seed) -> {
+                        String t = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);
+                        return switch (t) {
                             case "fire"      -> 0.1F;
                             case "water"     -> 0.2F;
                             case "earth"     -> 0.3F;
@@ -40,35 +53,44 @@ public class RegisterClient {
                     }
             );
 
-
+            // 3️⃣ 구조물 방향 추적 (핵심 angle property)
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
-                    new ResourceLocation(GenesisMod.MODID, "has_needle"),
-                    (stack, level, entity, seed) ->
-                            stack.getOrCreateTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE) ? 1.0F : 0.0F
-            );
+                    new ResourceLocation("angle"),
+                    new CompassItemPropertyFunction(new CompassItemPropertyFunction.CompassTarget() {
+                        @Override
+                        public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable Entity entity) {
+                            if (stack.hasTag()
+                                    && stack.getTag().contains("LodestonePos")
+                                    && stack.getTag().contains("LodestoneDimension")) {
 
+                                var posTag = stack.getTag().getCompound("LodestonePos");
+                                var dimKey = stack.getTag().getString("LodestoneDimension");
 
-            ItemProperties.register(
-                    GenesisItems.SPIRIT_COMPASS.get(),
-                    new ResourceLocation(GenesisMod.MODID, "needle_color"),
-                    (stack, level, entity, seed) -> {
-                        String t = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);
-                        return switch (t) {
-                            case "water"     -> 1.0F;
-                            case "fire"      -> 2.0F;
-                            case "earth"     -> 3.0F;
-                            case "storm"     -> 4.0F;
-                            case "lightning" -> 5.0F;
-                            case "plants"    -> 6.0F;
-                            case "ice"       -> 7.0F;
-                            default          -> 0.0F;
-                        };
-                    }
+                                try {
+                                    var dimension = ResourceLocation.tryParse(dimKey);
+                                    if (dimension != null) {
+                                        var worldKey = ResourceKey.create(
+                                                net.minecraft.core.registries.Registries.DIMENSION,
+                                                dimension);
+                                        var pos = new BlockPos(
+                                                posTag.getInt("x"),
+                                                posTag.getInt("y"),
+                                                posTag.getInt("z"));
+                                        return GlobalPos.of(worldKey, pos);
+                                    }
+                                } catch (Exception e) {
+                                    // dimension 파싱 실패 시 무시
+                                }
+                            }
+                            return null;
+                        }
+                    })
             );
         });
     }
 
+    // 4️⃣ 침 색상 틴트 (아이콘 렌더용)
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> {
@@ -88,4 +110,3 @@ public class RegisterClient {
         }, GenesisItems.SPIRIT_COMPASS.get());
     }
 }
-
