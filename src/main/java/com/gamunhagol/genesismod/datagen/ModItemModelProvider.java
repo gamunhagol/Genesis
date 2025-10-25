@@ -91,10 +91,6 @@ public class ModItemModelProvider extends ItemModelProvider {
             basicItemModel("spirit_compass_" + type);
         }
 
-        // 기본 나침반 모델 (.mcmeta 렌더 전용)
-        getBuilder("spirit_compass")
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", "genesis:item/spirit_compass");
     }
 
     // ─────────────────────────────
@@ -120,6 +116,19 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", "genesis:item/" + name);
     }
+    // ─────────────────────────────
+    //  오버라이드 추가 헬퍼 메서드
+    // ─────────────────────────────
+
+    private void addCompassOverride(ItemModelBuilder builder, float value, String type) {
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "needle_type"), value)
+                .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type))
+                .end();
+    }
+
+
+
 
     // ─────────────────────────────
     //  블록 아이템용 헬퍼
@@ -128,6 +137,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
         withExistingParent(name, new ResourceLocation("item/generated"))
                 .texture("layer0", new ResourceLocation(GenesisMod.MODID, "block/" + name));
+
     }
 
     public void evenSimpleBlockItem(RegistryObject<Block> block) {
