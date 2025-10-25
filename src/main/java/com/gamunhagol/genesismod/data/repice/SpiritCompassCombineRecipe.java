@@ -3,14 +3,18 @@ package com.gamunhagol.genesismod.data.repice;
 import com.gamunhagol.genesismod.datagen.ModItemTagGenerator;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
+import com.gamunhagol.genesismod.world.structure.SpiritStructureFinder;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
+import java.util.List;
 import java.util.Map;
 
 public class SpiritCompassCombineRecipe extends CustomRecipe {
@@ -25,14 +29,15 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
             GenesisItems.FROST_CRYSTAL_SHARD.getId(), "ice"
     );
 
-    private static final Map<String, String> COLOR_TO_STRUCTURE = Map.of(
-            "water", "minecraft:ocean_monument",
-            "fire", "minecraft:fortress",
-            "earth", "minecraft:ancient_city",
-            "storm", "minecraft:end_city",
-            "lightning", "minecraft:stronghold",
-            "plants", "minecraft:jungle_temple",
-            "ice", "minecraft:igloo"
+    // ✅ 타입별로 여러 구조물 지원
+    private static final Map<String, List<String>> COLOR_TO_STRUCTURES = Map.of(
+            "water", List.of("shipwreck_beached","minecraft:monument","minecraft:shipwreck"),
+            "fire", List.of("minecraft:fortress"),
+            "earth", List.of("minecraft:ancient_city","desert_pyramid"),
+            "storm", List.of("minecraft:ruined_portal","minecraft:pillager_outpost"),
+            "lightning", List.of("minecraft:stronghold"),
+            "plants", List.of("minecraft:jungle_pyramid"),
+            "ice", List.of("minecraft:igloo")
     );
 
     public SpiritCompassCombineRecipe(ResourceLocation id, CraftingBookCategory category) {
@@ -81,7 +86,14 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
         if (compass.isEmpty() || stone.isEmpty()) return ItemStack.EMPTY;
 
         String color = STONE_COLOR_MAP.getOrDefault(stone.getItem().builtInRegistryHolder().key().location(), "blue");
-        String structureKey = COLOR_TO_STRUCTURE.getOrDefault(color, "minecraft:ancient_city");
+
+        // ✅ 여러 구조물 중 첫 번째로 찾은 것을 선택
+        String structureKey = "minecraft:ancient_city"; // 기본값
+        List<String> structures = COLOR_TO_STRUCTURES.get(color);
+
+        if (structures != null && !structures.isEmpty()) {
+            structureKey = structures.get(0);
+        }
 
         ItemStack result = compass.copy();
         result.getOrCreateTag().putBoolean(SpiritCompassItem.KEY_HAS_NEEDLE, true);
@@ -123,5 +135,3 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
         return ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get();
     }
 }
-
-
