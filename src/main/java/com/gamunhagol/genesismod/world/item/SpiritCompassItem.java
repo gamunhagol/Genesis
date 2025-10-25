@@ -130,8 +130,8 @@ public class SpiritCompassItem extends CompassItem {
                     target.getZ() - start.z
             ).normalize();
 
-            // 🔹 파티클 직선 뿌리기 (7블록 정도)
-            for (int i = 1; i <= 7; i++) {
+            // 🔹 파티클 직선 뿌리기 (10블록 정도)
+            for (int i = 1; i <= 10; i++) {
                 double px = start.x + direction.x * i;
                 double py = start.y + direction.y * i;
                 double pz = start.z + direction.z * i;
@@ -167,7 +167,7 @@ public class SpiritCompassItem extends CompassItem {
             dx /= len; dy /= len; dz /= len;
 
 // ■ 7블록 직선으로 트레이스
-            int steps = 14;              // 7블록 / 0.5 간격
+            int steps = 20;              // 10블록 / 0.5 간격
             double step = 0.5;
 
 // 색상: 정령 타입별 Dust(레드스톤) + END_ROD 섞어 뿌림

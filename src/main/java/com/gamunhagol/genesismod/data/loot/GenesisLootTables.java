@@ -57,7 +57,7 @@ public class GenesisLootTables {
                     .build());
         }
         if (event.getName().equals(BuiltInLootTables.JUNGLE_TEMPLE)) {
-            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(4.0F,20.0F))
+            event.getTable().addPool(LootPool.lootPool().setRolls(UniformGenerator.between(1.0F,7.0F))
                     .add(LootItem.lootTableItem(GenesisItems.SPIRIT_COMPASS.get()).setWeight(1).when(LootItemRandomChanceCondition.randomChance(0.019F)))
                     .build());
         }
