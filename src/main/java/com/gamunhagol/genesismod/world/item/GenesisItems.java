@@ -1,6 +1,5 @@
 package com.gamunhagol.genesismod.world.item;
 
-import com.gamunhagol.genesismod.client.renderer.model.item.SpiritCompassISTER;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;

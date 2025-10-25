@@ -3,11 +3,6 @@ package com.gamunhagol.genesismod.datagen;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.google.common.hash.HashCode;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import net.minecraft.data.CachedOutput;
-import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -19,21 +14,16 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 public class ModItemModelProvider extends ItemModelProvider {
-    private final PackOutput output;
-
-    public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, GenesisMod.MODID, existingFileHelper);
-        this.output = output;
+    public ModItemModelProvider(PackOutput output, ExistingFileHelper helper) {
+        super(output, GenesisMod.MODID, helper);
     }
 
     @Override
     protected void registerModels() {
+        // ─────────────── 일반 아이템 ───────────────
         simpleItem(GenesisItems.BOOK_OF_CREATION);
+
         simpleItem(GenesisItems.DREAM_POWDER);
         simpleItem(GenesisItems.DREAM_DANGO);
         simpleItem(GenesisItems.REMNANTS_OF_A_DREAM);
@@ -68,6 +58,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.PEWRIESE_HOE);
         handheldItem(GenesisItems.PEWRIESE_SHOVEL);
 
+        simpleItem(GenesisItems.AMETHYST_NEEDLE);
+        simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
+
+        // ─────────────── 블록 아이템 ───────────────
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
         evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_STAIRS);
         evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_SLAB);
@@ -75,10 +69,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimpleBlockItem(GenesisBlocks.FADED_STONE_SLAB);
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
+        // ─────────────── 방어구 ───────────────
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
         simpleItem(GenesisItems.PEWRIESE_LEGGINGS);
         simpleItem(GenesisItems.PEWRIESE_BOOTS);
+
         simpleItem(GenesisItems.PEWRIESE_PLATE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_PLATE_CHESTPLATE);
         simpleItem(GenesisItems.PEWRIESE_PLATE_LEGGINGS);
@@ -89,19 +85,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.HOLY_KNIGHT_LEGGINGS);
         simpleItem(GenesisItems.HOLY_KNIGHT_BOOTS);
 
-        simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
-        simpleItem(GenesisItems.AMETHYST_NEEDLE);
-
-        // 🔹 정령 나침반 시리즈 자동 생성
+        // ─────────────── 정령 나침반 시리즈 ───────────────
         String[] types = {"fire", "water", "earth", "storm", "lightning", "plants", "ice"};
         for (String type : types) {
-            makeCompassSeries(type);
+            basicItemModel("spirit_compass_" + type);
         }
+
+        // 기본 나침반 모델 (.mcmeta 렌더 전용)
+        getBuilder("spirit_compass")
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", "genesis:item/spirit_compass");
     }
 
     // ─────────────────────────────
-    //  일반 아이템 모델 생성 헬퍼들
+    //  아이템 모델 생성 헬퍼
     // ─────────────────────────────
+
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated"))
@@ -116,16 +115,30 @@ public class ModItemModelProvider extends ItemModelProvider {
                         new ResourceLocation(GenesisMod.MODID, "item/" + item.getId().getPath()));
     }
 
+    private void basicItemModel(String name) {
+        getBuilder(name)
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", "genesis:item/" + name);
+    }
+
+    // ─────────────────────────────
+    //  블록 아이템용 헬퍼
+    // ─────────────────────────────
     public void clusterItem(RegistryObject<Block> block) {
         String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
         withExistingParent(name, new ResourceLocation("item/generated"))
-                .texture("layer0",
-                        new ResourceLocation(GenesisMod.MODID, "block/" + name));
+                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "block/" + name));
     }
 
     public void evenSimpleBlockItem(RegistryObject<Block> block) {
         this.withExistingParent(
                 GenesisMod.MODID + ":" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
+                modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
+    }
+
+    public void pillarItem(RegistryObject<Block> block) {
+        this.withExistingParent(
+                ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
                 modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
     }
 
@@ -135,98 +148,5 @@ public class ModItemModelProvider extends ItemModelProvider {
                         mcLoc("block/wall_inventory"))
                 .texture("wall",
                         new ResourceLocation(GenesisMod.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
-    }
-
-    public void pillarItem(RegistryObject<Block> block) {
-        this.withExistingParent(
-                ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
-                modLoc("block/" + ForgeRegistries.BLOCKS.getKey(block.get()).getPath()));
-    }
-
-    // ─────────────────────────────
-    //  나침반 시리즈 + Epic Fight JSON
-    // ─────────────────────────────
-    private void makeCompassSeries(String type) {
-        getBuilder("spirit_compass_" + type)
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", "genesis:item/spirit_compass_" + type + "_00")
-                .override()
-                .predicate(rawAngle(), 0.0f)
-                .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type + "_00"))
-                .end();
-
-        for (int i = 0; i < 32; i++) {
-            float angle = (float) i / 32.0f;
-            String index = String.format("%02d", i);
-
-            getBuilder("spirit_compass_" + type + "_" + index)
-                    .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                    .texture("layer0", "genesis:item/spirit_compass_" + type + "_" + index);
-
-            getBuilder("spirit_compass_" + type)
-                    .override()
-                    .predicate(rawAngle(), angle)
-                    .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type + "_" + index))
-                    .end();
-        }
-
-        createEpicFightJson(type);
-    }
-
-    /**
-     * ✅ Epic Fight 렌더링 설정 JSON 자동 생성 (1.20.1 완전 호환)
-     */
-    private void createEpicFightJson(String type) {
-        JsonObject json = new JsonObject();
-        json.addProperty("force_vanilla_first_person", true);
-        json.addProperty("alwaysInHand", false);
-        json.addProperty("appeared_in_afterimage", true);
-
-        JsonObject transforms = new JsonObject();
-        JsonObject mainhand = new JsonObject();
-        JsonObject toolR = new JsonObject();
-        JsonArray translation = new JsonArray();
-        translation.add(0.0f);
-        translation.add(0.05f);
-        translation.add(-0.12f);
-        toolR.add("translation", translation);
-        mainhand.add("Tool_R", toolR);
-        transforms.add("mainhand", mainhand);
-        json.add("transforms", transforms);
-
-        Path path = this.output.getOutputFolder()
-                .resolve("assets/epicfight/items/genesis/spirit_compass_" + type + ".json");
-
-        try {
-            // ✅ 직접 파일 저장 (Forge 1.20.1용 안전 방식)
-            Files.createDirectories(path.getParent());
-            DataProvider.saveStable(new DummyCache(), json, path);
-            GenesisMod.LOGGER.info("[DataGen] ✅ Created EpicFight JSON for {}", type);
-        } catch (IOException e) {
-            throw new RuntimeException("❌ Failed to generate EpicFight JSON for " + type, e);
-        }
-    }
-
-    /**
-     * ✅ Dummy CachedOutput 구현체 (Forge 1.20.1에서 NO_CACHE 대체)
-     */
-    private static class DummyCache implements CachedOutput {
-        @Override
-        public void writeIfNeeded(Path path, byte[] bytes, HashCode hashCode) throws IOException {
-            Files.createDirectories(path.getParent());
-            Files.write(path, bytes);
-        }
-    }
-
-    /**
-     * ✅ "minecraft:angle" → "angle"로 강제 출력
-     */
-    private static ResourceLocation rawAngle() {
-        return new ResourceLocation("genesis_temp:angle") {
-            @Override
-            public String toString() {
-                return "angle";
-            }
-        };
     }
 }
