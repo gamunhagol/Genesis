@@ -1,5 +1,7 @@
 package com.gamunhagol.genesismod.world.item;
 
+import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.client.renderer.model.item.SpiritCompassISTER;
 import com.gamunhagol.genesismod.world.structure.SpiritStructureFinder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -10,22 +12,19 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.CompassItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.core.registries.Registries;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
+import java.util.function.Consumer;
 
-/**
- * Spirit Compass — 제작 시 구조물을 자동 지정하고 그 방향을 추적하는 나침반
- * - Lodestone 기반 CompassItem 확장
- * - 반짝임 제거, 자석석 이름 방지
- * - 구조물 위치 주기적 갱신 및 클라이언트 표시
- */
 public class SpiritCompassItem extends CompassItem {
     public static final String KEY_HAS_NEEDLE = "HasNeedle";
     public static final String KEY_NEEDLE_TYPE = "NeedleType";
@@ -35,7 +34,9 @@ public class SpiritCompassItem extends CompassItem {
         super(props);
     }
 
-    /** Tooltip 표시 (침 유무 / 속성명) */
+    // ─────────────────────────────────────────────────────────────
+    // Tooltip 표시
+    // ─────────────────────────────────────────────────────────────
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tip, TooltipFlag flag) {
         CompoundTag tag = stack.getOrCreateTag();
@@ -49,98 +50,66 @@ public class SpiritCompassItem extends CompassItem {
         if (has) {
             String type = tag.getString(KEY_NEEDLE_TYPE);
             tip.add(Component.translatable(
-                            "tooltip.genesis.spirit_compass.type",
-                            Component.translatable("tooltip.genesis.spirit_type." + type))
-                    .withStyle(ChatFormatting.YELLOW));
+                    "tooltip.genesis.spirit_compass.type",
+                    Component.translatable("tooltip.genesis.spirit_type." + type)
+            ).withStyle(ChatFormatting.YELLOW));
         }
     }
 
-    /** 제작 시 자동으로 구조물 좌표 저장 */
-    @Override
-    public void onCraftedBy(ItemStack stack, Level level, Player player) {
-        super.onCraftedBy(stack, level, player);
-
-        CompoundTag tag = stack.getOrCreateTag();
-        if (!tag.getBoolean(KEY_HAS_NEEDLE)) return;
-        String structureKey = tag.getString(KEY_TARGET);
-        if (structureKey.isEmpty()) return;
-
-        if (!level.isClientSide() && level instanceof ServerLevel server) {
-            BlockPos origin = player.blockPosition();
-            BlockPos pos = SpiritStructureFinder.findNearest(server, structureKey, origin, 6400);
-
-            if (pos != null) {
-                CompoundTag lodestoneTag = new CompoundTag();
-                lodestoneTag.putInt("x", pos.getX());
-                lodestoneTag.putInt("y", pos.getY());
-                lodestoneTag.putInt("z", pos.getZ());
-
-                tag.put("LodestonePos", lodestoneTag);
-                tag.putString("LodestoneDimension", server.dimension().location().toString());
-                tag.putBoolean("LodestoneTracked", true);
-            }
-        }
-    }
-
-    /** 서버에서 주기적으로 구조물 좌표를 다시 찾음 */
-    @Override
-    public void inventoryTick(ItemStack stack, Level level, net.minecraft.world.entity.Entity entity, int slot, boolean selected) {
-        if (level.isClientSide) return;
-
-        CompoundTag tag = stack.getOrCreateTag();
-        if (!tag.getBoolean(KEY_HAS_NEEDLE) || !tag.contains(KEY_TARGET)) return;
-
-        String target = tag.getString(KEY_TARGET);
-        BlockPos origin = entity.blockPosition();
-
-        // 10초(200틱)마다 위치 갱신
-        if (level.getGameTime() % 200 == 0 && level instanceof ServerLevel server) {
-            BlockPos pos = SpiritStructureFinder.findNearest(server, target, origin, 6400);
-            if (pos != null) {
-                CompoundTag lodestoneTag = new CompoundTag();
-                lodestoneTag.putInt("x", pos.getX());
-                lodestoneTag.putInt("y", pos.getY());
-                lodestoneTag.putInt("z", pos.getZ());
-
-                tag.put("LodestonePos", lodestoneTag);
-                tag.putString("LodestoneDimension", server.dimension().location().toString());
-                tag.putBoolean("LodestoneTracked", true);
-            }
-        }
-    }
-
-    /** 반짝임 제거 */
-    @Override
-    public boolean isFoil(ItemStack stack) {
-        return false;
-    }
-
-    /** 이름 고정 ("정령 나침반") */
-    @Override
-    public Component getName(ItemStack stack) {
-        return Component.translatable(this.getDescriptionId(stack));
-    }
-
-    /** 📍 클라이언트용 Lodestone 위치 반환 (렌더러에서 사용됨) */
+    // ─────────────────────────────────────────────────────────────
+    // Lodestone 목표 좌표
+    // ─────────────────────────────────────────────────────────────
     @Nullable
     public static GlobalPos getCompassTarget(ItemStack stack, @Nullable ClientLevel level) {
-        if (stack.hasTag() && stack.getTag().contains("LodestonePos")) {
-            var tag = stack.getTag().getCompound("LodestonePos");
-            String dim = stack.getTag().getString("LodestoneDimension");
+        if (!stack.hasTag() || !stack.getTag().contains("LodestonePos")) return null;
 
-            var dimLoc = ResourceLocation.tryParse(dim);
-            if (dimLoc == null) return null;
+        CompoundTag tag = stack.getTag().getCompound("LodestonePos");
+        String dim = stack.getTag().getString("LodestoneDimension");
+        ResourceLocation dimLoc = ResourceLocation.tryParse(dim);
+        if (dimLoc == null) return null;
 
-            var worldKey = ResourceKey.create(Registries.DIMENSION, dimLoc);
-            var pos = new BlockPos(tag.getInt("x"), tag.getInt("y"), tag.getInt("z"));
-            return GlobalPos.of(worldKey, pos);
+        ResourceKey<Level> worldKey = ResourceKey.create(Registries.DIMENSION, dimLoc);
+        BlockPos pos = new BlockPos(tag.getInt("x"), tag.getInt("y"), tag.getInt("z"));
+        if (level != null && !level.dimension().location().equals(dimLoc)) {
+            return GlobalPos.of(level.dimension(), pos);
         }
-        return null;
-    }
-    // Lodestone 전용 이름 변환 방지
-    @Override
-    public String getDescriptionId(ItemStack stack) {
-        return "item.genesis.spirit_compass";
+        return GlobalPos.of(worldKey, pos);
     }
 
+    // ─────────────────────────────────────────────────────────────
+    // 나침반 각도 계산 (ISTER와 모델 프리디케이트에서 공용)
+    // ─────────────────────────────────────────────────────────────
+    public static float calculateCompassAngle(ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity) {
+        if (level == null || entity == null) return 0.0F;
+        GlobalPos target = getCompassTarget(stack, level);
+        if (target == null) return 0.0F;
+
+        double dx = target.pos().getX() + 0.5 - entity.getX();
+        double dz = target.pos().getZ() + 0.5 - entity.getZ();
+        double angleRad = Math.atan2(dz, dx);
+        float degrees = (float) Math.toDegrees(angleRad) - entity.getYRot();
+        return (degrees % 360 + 360) % 360;
+    }
+
+    // ─────────────────────────────────────────────────────────────
+    // Epic Fight 호환용 렌더러 연결
+    // ─────────────────────────────────────────────────────────────
+    @Override
+    public void initializeClient(Consumer<IClientItemExtensions> consumer) {
+        consumer.accept(new IClientItemExtensions() {
+            private final SpiritCompassISTER renderer = new SpiritCompassISTER();
+
+            @Override
+            public SpiritCompassISTER getCustomRenderer() {
+                return renderer;
+            }
+        });
+    }
+
+    @Override
+    public boolean isFoil(ItemStack stack) { return false; }
+    @Override
+    public Component getName(ItemStack stack) { return Component.translatable(this.getDescriptionId(stack)); }
+    @Override
+    public String getDescriptionId(ItemStack stack) { return "item.genesis.spirit_compass"; }
 }

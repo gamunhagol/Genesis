@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.item;
 
+import com.gamunhagol.genesismod.client.renderer.model.item.SpiritCompassISTER;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
@@ -100,6 +101,7 @@ public class GenesisItems {
 //tool,armor
 
     public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
+
 
 
 

@@ -9,6 +9,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -22,9 +23,12 @@ public class RegisterClient {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
+        GenesisMod.LOGGER.warn("[ClientSetup] ✅ RegisterClient.onClientSetup CALLED!");
 
-            // 🔹 침 색상 모델 전환용
+        event.enqueueWork(() -> {
+            GenesisMod.LOGGER.warn("[ClientSetup] ✅ Registering SpiritCompass item properties...");
+
+            // 🔹 needle_type 프리디케이트
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation(GenesisMod.MODID, "needle_type"),
@@ -43,7 +47,7 @@ public class RegisterClient {
                     }
             );
 
-            // 🔹 구조물 추적용 Compass 함수 등록
+            // 🔹 angle 프리디케이트
             CompassItemPropertyFunction.CompassTarget targetProvider = new CompassItemPropertyFunction.CompassTarget() {
                 @Override
                 public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable Entity entity) {
@@ -51,18 +55,27 @@ public class RegisterClient {
                 }
             };
 
-            // 🔹 핵심! angle 회전 로직 (바닐라 로직 그대로 활용)
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation("angle"),
-                    new CompassItemPropertyFunction(targetProvider)
+                    new CompassItemPropertyFunction(targetProvider) {
+                        @Override
+                        public float call(ItemStack stack, @Nullable ClientLevel level, @Nullable LivingEntity entity, int seed) {
+                            float result = super.call(stack, level, entity, seed);
+                            if (level != null && level.getGameTime() % 40 == 0)
+                                GenesisMod.LOGGER.info("[CompassAngle] Item={}, Angle={}", stack.getItem(), result);
+                            return result;
+                        }
+                    }
             );
+
+            GenesisMod.LOGGER.warn("[ClientSetup] ✅ SpiritCompass predicates registered successfully!");
         });
     }
 
-    // 🔹 침 색상 틴트 (아이콘 렌더용)
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
+        GenesisMod.LOGGER.warn("[ClientSetup] ✅ Registering SpiritCompass color handler...");
         event.register((stack, tintIndex) -> {
             if (tintIndex != 1) return 0xFFFFFF;
             String t = stack.getOrCreateTag().getString(SpiritCompassItem.KEY_NEEDLE_TYPE);

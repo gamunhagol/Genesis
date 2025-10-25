@@ -26,7 +26,7 @@ import org.slf4j.Logger;
 public class GenesisMod {
     public static final String MODID = "genesis";
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public GenesisMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
@@ -42,6 +42,7 @@ public class GenesisMod {
 
 
         com.gamunhagol.genesismod.data.repice.ModRecipeSerializers.SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
 
 
 
@@ -65,12 +66,4 @@ public class GenesisMod {
 
     }
 
-
-    @Mod.EventBusSubscriber(modid = MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public static class ClientModEvents {
-        @SubscribeEvent
-        public static void onClientSetup(FMLClientSetupEvent event) {
-
-        }
-    }
 }
