@@ -6,12 +6,9 @@ import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.CompassItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.GlobalPos;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
@@ -26,15 +23,8 @@ public class RegisterClient {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            // 🔹 침 유무
-            ItemProperties.register(
-                    GenesisItems.SPIRIT_COMPASS.get(),
-                    new ResourceLocation(GenesisMod.MODID, "has_needle"),
-                    (stack, level, entity, seed) ->
-                            stack.getOrCreateTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE) ? 1.0F : 0.0F
-            );
 
-            // 🔹 침 속성 (모델 전환)
+            // 🔹 침 색상 모델 전환용
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation(GenesisMod.MODID, "needle_type"),
@@ -53,37 +43,24 @@ public class RegisterClient {
                     }
             );
 
-            // 🔹 Lodestone 기반 방향 표시
+            // 🔹 구조물 추적용 Compass 함수 등록
+            CompassItemPropertyFunction.CompassTarget targetProvider = new CompassItemPropertyFunction.CompassTarget() {
+                @Override
+                public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable Entity entity) {
+                    return SpiritCompassItem.getCompassTarget(stack, level);
+                }
+            };
+
+            // 🔹 핵심! angle 회전 로직 (바닐라 로직 그대로 활용)
             ItemProperties.register(
                     GenesisItems.SPIRIT_COMPASS.get(),
                     new ResourceLocation("angle"),
-                    new CompassItemPropertyFunction(new CompassItemPropertyFunction.CompassTarget() {
-                        @Override
-                        public @Nullable GlobalPos getPos(ClientLevel pLevel, ItemStack pStack, Entity pEntity) {
-                            return null;
-                        }
-
-                        public @Nullable GlobalPos getPos(ClientLevel level, ItemStack stack, @Nullable LivingEntity entity) {
-                            if (stack.hasTag()
-                                    && stack.getTag().contains("LodestonePos")
-                                    && stack.getTag().contains("LodestoneDimension")) {
-                                var posTag = stack.getTag().getCompound("LodestonePos");
-                                var dimKey = stack.getTag().getString("LodestoneDimension");
-
-                                var dimension = ResourceLocation.tryParse(dimKey);
-                                if (dimension != null) {
-                                    var worldKey = ResourceKey.create(net.minecraft.core.registries.Registries.DIMENSION, dimension);
-                                    var pos = new BlockPos(posTag.getInt("x"), posTag.getInt("y"), posTag.getInt("z"));
-                                    return GlobalPos.of(worldKey, pos);
-                                }
-                            }
-                            return null;
-                        }
-                    })
+                    new CompassItemPropertyFunction(targetProvider)
             );
         });
     }
 
+    // 🔹 침 색상 틴트 (아이콘 렌더용)
     @SubscribeEvent
     public static void onItemColors(RegisterColorHandlersEvent.Item event) {
         event.register((stack, tintIndex) -> {

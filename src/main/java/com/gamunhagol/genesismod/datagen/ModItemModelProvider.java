@@ -10,6 +10,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -18,6 +19,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
         super(output, GenesisMod.MODID, existingFileHelper);
     }
+
+    
 
     @Override
     protected void registerModels() {
@@ -91,10 +94,41 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
+        String[] types = {"fire", "water", "earth", "storm", "lightning", "plants", "ice"};
 
+        for (String type : types) {
+            makeCompassSeries(type);
+        }
 
 
     }
+
+    private void makeCompassSeries(String type) {
+        // 기본 모델
+        getBuilder("spirit_compass_" + type)
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", "genesis:item/spirit_compass_" + type + "_00")
+                .override()
+                .predicate(new ResourceLocation("angle"), 0.0f)
+                .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type + "_00"))
+                .end();
+
+        for (int i = 0; i < 32; i++) {
+            float angle = (float) i / 32.0f;
+            String index = String.format("%02d", i); // 두 자리로 변환 (00, 01, ..., 31)
+
+            getBuilder("spirit_compass_" + type + "_" + index)
+                    .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                    .texture("layer0", "genesis:item/spirit_compass_" + type + "_" + index);
+
+            getBuilder("spirit_compass_" + type)
+                    .override()
+                    .predicate(new ResourceLocation("angle"), angle)
+                    .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type + "_" + index))
+                    .end();
+        }
+    }
+
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),

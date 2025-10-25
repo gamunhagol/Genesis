@@ -33,6 +33,10 @@ public class SpiritStructureFinder {
         Pair<BlockPos, Holder<Structure>> nearest =
                 gen.findNearestMapStructure(server, target, origin, radius, false);
 
+
         return nearest != null ? nearest.getFirst() : null;
+
+
     }
+
 }

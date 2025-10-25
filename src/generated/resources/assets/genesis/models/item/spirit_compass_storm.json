@@ -1,0 +1,206 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "genesis:item/spirit_compass_storm_00",
+      "predicate": {
+        "minecraft:angle": 0.0
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_00",
+      "predicate": {
+        "minecraft:angle": 0.0
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_01",
+      "predicate": {
+        "minecraft:angle": 0.03125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_02",
+      "predicate": {
+        "minecraft:angle": 0.0625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_03",
+      "predicate": {
+        "minecraft:angle": 0.09375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_04",
+      "predicate": {
+        "minecraft:angle": 0.125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_05",
+      "predicate": {
+        "minecraft:angle": 0.15625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_06",
+      "predicate": {
+        "minecraft:angle": 0.1875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_07",
+      "predicate": {
+        "minecraft:angle": 0.21875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_08",
+      "predicate": {
+        "minecraft:angle": 0.25
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_09",
+      "predicate": {
+        "minecraft:angle": 0.28125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_10",
+      "predicate": {
+        "minecraft:angle": 0.3125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_11",
+      "predicate": {
+        "minecraft:angle": 0.34375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_12",
+      "predicate": {
+        "minecraft:angle": 0.375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_13",
+      "predicate": {
+        "minecraft:angle": 0.40625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_14",
+      "predicate": {
+        "minecraft:angle": 0.4375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_15",
+      "predicate": {
+        "minecraft:angle": 0.46875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_16",
+      "predicate": {
+        "minecraft:angle": 0.5
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_17",
+      "predicate": {
+        "minecraft:angle": 0.53125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_18",
+      "predicate": {
+        "minecraft:angle": 0.5625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_19",
+      "predicate": {
+        "minecraft:angle": 0.59375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_20",
+      "predicate": {
+        "minecraft:angle": 0.625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_21",
+      "predicate": {
+        "minecraft:angle": 0.65625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_22",
+      "predicate": {
+        "minecraft:angle": 0.6875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_23",
+      "predicate": {
+        "minecraft:angle": 0.71875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_24",
+      "predicate": {
+        "minecraft:angle": 0.75
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_25",
+      "predicate": {
+        "minecraft:angle": 0.78125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_26",
+      "predicate": {
+        "minecraft:angle": 0.8125
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_27",
+      "predicate": {
+        "minecraft:angle": 0.84375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_28",
+      "predicate": {
+        "minecraft:angle": 0.875
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_29",
+      "predicate": {
+        "minecraft:angle": 0.90625
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_30",
+      "predicate": {
+        "minecraft:angle": 0.9375
+      }
+    },
+    {
+      "model": "genesis:item/spirit_compass_storm_31",
+      "predicate": {
+        "minecraft:angle": 0.96875
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "genesis:item/spirit_compass_storm_00"
+  }
+}
