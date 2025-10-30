@@ -1,17 +1,24 @@
 package com.gamunhagol.genesismod.world.block;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+
+
+import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
+
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
+
+import static net.minecraftforge.registries.ForgeRegistries.Keys.FLUID_TYPES;
 
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
@@ -44,6 +51,26 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion().lightLevel((p_152632_) -> {
                 return 5;
             }).pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =
+            BLOCKS.register("hot_spring_block",
+                    () -> new HotSpringFluidBlock(GenesisFluids.HOT_SPRING,
+                            BlockBehaviour.Properties.copy(Blocks.WATER)
+                                    .noLootTable()
+                                    .noCollission()
+                                    .liquid()));
+    public static final RegistryObject<LiquidBlock> FLOWING_SAND_BLOCK =
+            BLOCKS.register("flowing_sand_block",
+                    () -> new FlowingSandFluidBlock(GenesisFluids.FLOWING_SAND,
+                            BlockBehaviour.Properties.of()
+                                    .noCollission()
+                                    .strength(100f)
+                                    .noLootTable()
+                                    .liquid()
+                                    .randomTicks()));
+
+
+
 
     //crafting
 

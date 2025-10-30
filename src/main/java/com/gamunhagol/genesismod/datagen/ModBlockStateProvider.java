@@ -33,6 +33,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWhitItem(GenesisBlocks.FADED_GATEWAY);
         blockWhitItem(GenesisBlocks.CHISELED_FADED_BRICK);
 
+
+
         stairsBlock(((StairBlock) GenesisBlocks.FADED_STONE_STAIRS.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
         stairsBlock(((StairBlock) GenesisBlocks.FADED_BRICK_STAIRS.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));
 
@@ -48,6 +50,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         clusterBlock(GenesisBlocks.BLUE_CRYSTAL_CLUSTER);
         clusterBlock(GenesisBlocks.CITRINE_CLUSTER);
         clusterBlock(GenesisBlocks.RED_CRYSTAL_CLUSTER);
+
 
     }
 

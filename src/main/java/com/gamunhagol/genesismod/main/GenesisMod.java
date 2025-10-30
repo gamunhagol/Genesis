@@ -3,12 +3,13 @@ package com.gamunhagol.genesismod.main;
 import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
 import com.gamunhagol.genesismod.gameasset.GenesisSounds;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
+import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
@@ -18,7 +19,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 
 
@@ -42,6 +42,10 @@ public class GenesisMod {
 
 
         com.gamunhagol.genesismod.data.repice.ModRecipeSerializers.SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+        GenesisFluidTypes.FLUID_TYPES.register(modEventBus);
+        GenesisFluids.FLUIDS.register(modEventBus);
+
 
 
 

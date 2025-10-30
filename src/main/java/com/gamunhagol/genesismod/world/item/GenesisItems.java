@@ -3,6 +3,8 @@ package com.gamunhagol.genesismod.world.item;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.fluid.FlowingSandFluid;
+import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import net.minecraft.world.item.*;
 
 import net.minecraftforge.registries.DeferredRegister;
@@ -167,4 +169,12 @@ public class GenesisItems {
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
 
 
+    public static final RegistryObject<Item> HOT_SPRING_BUCKET =
+            ITEMS.register("hot_spring_bucket",
+                    () -> new BucketItem(GenesisFluids.HOT_SPRING,
+                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> FLOWING_SAND_BUCKET =
+            ITEMS.register("flowing_sand_bucket",
+                    () -> new BucketItem(GenesisFluids.FLOWING_SAND,
+                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 }
