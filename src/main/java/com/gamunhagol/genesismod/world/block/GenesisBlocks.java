@@ -56,18 +56,11 @@ public class GenesisBlocks {
             BLOCKS.register("hot_spring_block",
                     () -> new HotSpringFluidBlock(GenesisFluids.HOT_SPRING,
                             BlockBehaviour.Properties.copy(Blocks.WATER)
-                                    .noLootTable()
-                                    .noCollission()
-                                    .liquid()));
-    public static final RegistryObject<LiquidBlock> FLOWING_SAND_BLOCK =
-            BLOCKS.register("flowing_sand_block",
-                    () -> new FlowingSandFluidBlock(GenesisFluids.FLOWING_SAND,
-                            BlockBehaviour.Properties.of()
-                                    .noCollission()
-                                    .strength(100f)
-                                    .noLootTable()
-                                    .liquid()
-                                    .randomTicks()));
+                                    .noLootTable().noCollission().liquid()));
+    public static final RegistryObject<Block> SAND_TRAP = BLOCKS.register("sand_trap",
+            () -> new SandTrapBlock(BlockBehaviour.Properties.copy(Blocks.SAND)
+                    .strength(0.5F).noOcclusion().noLootTable()));
+
 
 
 

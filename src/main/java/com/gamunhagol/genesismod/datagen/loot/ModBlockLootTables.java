@@ -56,7 +56,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .apply(ApplyExplosionDecay.explosionDecay())
                 ));
 
-
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {

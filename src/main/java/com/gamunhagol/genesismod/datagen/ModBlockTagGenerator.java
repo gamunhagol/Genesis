@@ -37,6 +37,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.WALLS)
                 .add(GenesisBlocks.FADED_BRICK_WALL.get());
 
+        this.tag(BlockTags.MINEABLE_WITH_SHOVEL)
+                .add(GenesisBlocks.SAND_TRAP.get());
 
+        this.tag(BlockTags.IMPERMEABLE).remove(GenesisBlocks.SAND_TRAP.get());
     }
 }

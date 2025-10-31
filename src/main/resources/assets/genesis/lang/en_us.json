@@ -66,7 +66,7 @@
   "item.genesis.pewriese_upgrade_smithing_template": "Pewriese Upgrade Smithing Template",
 
   "item.genesis.hot_spring_bucket": "Hot Spring Bucket",
-  "item.genesis.flowing_sand_bucket": "Flowing Sand Bucket",
+  "item.genesis.sand_trap_bucket": "Sand Trap Bucket",
 
 
 
@@ -94,6 +94,10 @@
   "block.genesis.faded_stone_stairs": "Faded Stone Stairs",
   "block.genesis.faded_brick_stairs": "Faded Brick Stairs",
   "block.genesis.faded_brick_wall": "Faded Brick Wall",
+
+  "block.genesis.hot_spring_block": "Hot Spring",
+  "block.genesis.sand_trap": "Sand Trap",
+
 
 
 

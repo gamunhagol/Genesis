@@ -62,7 +62,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
-        simpleItem(GenesisItems.FLOWING_SAND_BUCKET);
+        simpleItem(GenesisItems.SAND_TRAP_BUCKET);
+
 
         // ─────────────── 블록 아이템 ───────────────
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);

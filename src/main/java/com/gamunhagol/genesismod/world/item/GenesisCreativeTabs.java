@@ -87,7 +87,7 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
 
                 output.accept(GenesisItems.HOT_SPRING_BUCKET.get());
-                output.accept(GenesisItems.FLOWING_SAND_BUCKET.get());
+                output.accept(GenesisItems.SAND_TRAP_BUCKET.get());
 
             })
             .title(Component.translatable("itemGroup.genesis.items"))
@@ -100,7 +100,7 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 GenesisBlocks.BLOCKS.getEntries().forEach(item -> {
                     if (item.get() == GenesisBlocks.HOT_SPRING_BLOCK.get()
-                            || item.get() == GenesisBlocks.FLOWING_SAND_BLOCK.get()) {
+                            || item.get() == GenesisBlocks.SAND_TRAP.get()) {
                         return;
                     }
                     output.accept(item.get());

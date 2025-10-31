@@ -3,10 +3,10 @@ package com.gamunhagol.genesismod.world.item;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
-import com.gamunhagol.genesismod.world.fluid.FlowingSandFluid;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import net.minecraft.world.item.*;
 
+import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -171,10 +171,13 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> HOT_SPRING_BUCKET =
             ITEMS.register("hot_spring_bucket",
-                    () -> new BucketItem(GenesisFluids.HOT_SPRING,
-                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-    public static final RegistryObject<Item> FLOWING_SAND_BUCKET =
-            ITEMS.register("flowing_sand_bucket",
-                    () -> new BucketItem(GenesisFluids.FLOWING_SAND,
-                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+                    () -> new BucketItem(GenesisFluids.HOT_SPRING, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+    public static final RegistryObject<Item> SAND_TRAP_BUCKET =
+            ITEMS.register("sand_trap_bucket",
+                    () -> new SandTrapBucketItem(
+                            new Item.Properties()
+                                    .craftRemainder(Items.BUCKET)
+                                    .stacksTo(1)));
+
+
 }

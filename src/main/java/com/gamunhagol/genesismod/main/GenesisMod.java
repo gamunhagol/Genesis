@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.main;
 
 import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
 import com.gamunhagol.genesismod.gameasset.GenesisSounds;
+import com.gamunhagol.genesismod.init.ModCommonSetup;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
@@ -52,12 +53,13 @@ public class GenesisMod {
 
     }
 
+
     public static ResourceLocation prefix(String tagName) {
         return null;
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
-
+        event.enqueueWork(ModCommonSetup::setup);
     }
 
 

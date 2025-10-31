@@ -24,19 +24,5 @@ public class GenesisFluidTypes {
                             .lightLevel(0)
 
                     ));
-
-    public static final RegistryObject<FluidType> FLOWING_SAND_TYPE =
-            FLUID_TYPES.register("flowing_sand", () ->
-                    new FlowingSandFluidType(FluidType.Properties.create()
-                            .density(2000)
-                            .viscosity(3000)
-                            .motionScale(0.002F)
-                            .canPushEntity(true)
-                            .supportsBoating(false)
-                            .fallDistanceModifier(0.0F)
-                            .canExtinguish(false)
-                            .canHydrate(false)
-                            .lightLevel(0)
-                    ));
 }
 
