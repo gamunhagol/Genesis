@@ -1,0 +1,8 @@
+{
+  "values": [
+    "genesis:padded_chain_helmet",
+    "genesis:padded_chain_chestplate",
+    "genesis:padded_chain_leggings",
+    "genesis:padded_chain_boots"
+  ]
+}

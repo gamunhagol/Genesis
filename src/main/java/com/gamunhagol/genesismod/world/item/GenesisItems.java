@@ -99,7 +99,7 @@ public class GenesisItems {
 
 
 
-//tool,armor
+//tool,weapon
 
     public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
 
@@ -133,7 +133,16 @@ public class GenesisItems {
             , GenesisItemTier.PEWRIESE));
 
 
+    //armor
 
+    public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> PADDED_CHAIN_CHESTPLATE = ITEMS.register("padded_chain_chestplate", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> PADDED_CHAIN_LEGGINGS = ITEMS.register("padded_chain_leggings", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> PADDED_CHAIN_BOOTS = ITEMS.register("padded_chain_boots", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
 
     public static final RegistryObject<Item> PEWRIESE_HELMET = ITEMS.register("pewriese_helmet", () -> new ArmorItem(GenesisArmorMaterials.PEWRIESE,
             ArmorItem.Type.HELMET,new Item.Properties().fireResistant()));

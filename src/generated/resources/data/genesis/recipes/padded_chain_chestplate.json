@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "minecraft:chainmail_chestplate"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "aba"
+  ],
+  "result": {
+    "item": "genesis:padded_chain_chestplate"
+  },
+  "show_notification": true
+}

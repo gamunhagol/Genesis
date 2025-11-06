@@ -47,6 +47,13 @@
 
   "item.genesis.pewriese_dagger": "퓨리즌 단검",
 
+
+
+  "item.genesis.padded_chain_helmet": "가죽 덧댄 사슬 투구",
+  "item.genesis.padded_chain_chestplate": "가죽 덧댄 사슬 흉갑",
+  "item.genesis.padded_chain_leggings": "가죽 덧댄 사슬 레깅스",
+  "item.genesis.padded_chain_boots": "가죽 덧댄 사슬 부츠",
+
   "item.genesis.pewriese_helmet": "퓨리즌 투구",
   "item.genesis.pewriese_chestplate": "퓨리즌 흉갑",
   "item.genesis.pewriese_leggings": "퓨리즌 레깅스",

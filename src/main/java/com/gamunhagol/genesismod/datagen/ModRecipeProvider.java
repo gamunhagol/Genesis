@@ -78,6 +78,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
 
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get())
                 .pattern("aaa")
                 .pattern("aaa")
@@ -104,6 +105,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()), has(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()))
                 .save(pWriter,new ResourceLocation(GenesisMod.MODID, "pewriese_crystal_from_block"));
 
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_HELMET.get())
+                .pattern(" a ")
+                .pattern("aba")
+                .define('a',Items.LEATHER)
+                .define('b',Items.CHAINMAIL_HELMET)
+                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_HELMET))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_CHESTPLATE.get())
+                .pattern("aaa")
+                .pattern("aba")
+                .define('a',Items.LEATHER)
+                .define('b',Items.CHAINMAIL_CHESTPLATE)
+                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_CHESTPLATE))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_LEGGINGS.get())
+                .pattern("aba")
+                .pattern("a a")
+                .define('a',Items.LEATHER)
+                .define('b',Items.CHAINMAIL_LEGGINGS)
+                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_LEGGINGS))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_BOOTS.get())
+                .pattern("aba")
+                .define('a',Items.LEATHER)
+                .define('b',Items.CHAINMAIL_BOOTS)
+                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_BOOTS))
+                .save(pWriter);
+
+
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.REMNANTS_OF_A_DREAM.get())
                 .pattern("aaa")
                 .pattern("aaa")
@@ -121,6 +154,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#',Items.BLAZE_POWDER)
                 .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
+
+
 
         net.minecraft.data.recipes.SpecialRecipeBuilder
                 .special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())

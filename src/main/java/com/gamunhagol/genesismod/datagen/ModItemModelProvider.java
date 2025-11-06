@@ -74,6 +74,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
         // ─────────────── 방어구 ───────────────
+        simpleItem(GenesisItems.PADDED_CHAIN_HELMET);
+        simpleItem(GenesisItems.PADDED_CHAIN_CHESTPLATE);
+        simpleItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
+        simpleItem(GenesisItems.PADDED_CHAIN_BOOTS);
+
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
         simpleItem(GenesisItems.PEWRIESE_LEGGINGS);
@@ -120,6 +125,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", "genesis:item/" + name);
     }
+
     // ─────────────────────────────
     //  오버라이드 추가 헬퍼 메서드
     // ─────────────────────────────

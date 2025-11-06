@@ -66,6 +66,11 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.PEWRIESE_DAGGER.get());
 
+                output.accept(GenesisItems.PADDED_CHAIN_HELMET.get());
+                output.accept(GenesisItems.PADDED_CHAIN_CHESTPLATE.get());
+                output.accept(GenesisItems.PADDED_CHAIN_LEGGINGS.get());
+                output.accept(GenesisItems.PADDED_CHAIN_BOOTS.get());
+
                 output.accept(GenesisItems.PEWRIESE_HELMET.get());
                 output.accept(GenesisItems.PEWRIESE_CHESTPLATE.get());
                 output.accept(GenesisItems.PEWRIESE_LEGGINGS.get());

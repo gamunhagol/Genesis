@@ -38,6 +38,13 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.FROST_CRYSTAL_SHARD.get()
         );
 
+        tag(net.minecraft.tags.ItemTags.TRIMMABLE_ARMOR).add(
+                GenesisItems.PADDED_CHAIN_HELMET.get(),
+                GenesisItems.PADDED_CHAIN_CHESTPLATE.get(),
+                GenesisItems.PADDED_CHAIN_LEGGINGS.get(),
+                GenesisItems.PADDED_CHAIN_BOOTS.get()
+        );
+
     }
 
     @Override

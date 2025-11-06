@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "minecraft:chainmail_boots"
+    }
+  },
+  "pattern": [
+    "aba"
+  ],
+  "result": {
+    "item": "genesis:padded_chain_boots"
+  },
+  "show_notification": true
+}

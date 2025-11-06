@@ -46,6 +46,13 @@
 
   "item.genesis.pewriese_dagger": "Pewriese Dagger",
 
+
+
+  "item.genesis.padded_chain_helmet": "Padded Chain Helmet",
+  "item.genesis.padded_chain_chestplate": "Padded Chain Chestplate",
+  "item.genesis.padded_chain_leggings": "Padded Chain Leggings",
+  "item.genesis.padded_chain_boots": "Padded Chain boots",
+
   "item.genesis.pewriese_helmet": "Pewriese Helmet",
   "item.genesis.pewriese_chestplate": "Pewriese Chestplate",
   "item.genesis.pewriese_leggings": "Pewriese Leggings",
