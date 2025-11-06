@@ -4,8 +4,13 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.data.PackOutput;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.PackType;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.armortrim.TrimMaterial;
+import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
@@ -14,7 +19,24 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.LinkedHashMap;
+
 public class ModItemModelProvider extends ItemModelProvider {
+    private static LinkedHashMap<ResourceKey<TrimMaterial>, Float> trimMaterial = new LinkedHashMap<>();
+    static {
+        trimMaterial.put(TrimMaterials.QUARTZ, 0.1F);
+        trimMaterial.put(TrimMaterials.IRON, 0.2F);
+        trimMaterial.put(TrimMaterials.NETHERITE, 0.3F);
+        trimMaterial.put(TrimMaterials.REDSTONE, 0.4F);
+        trimMaterial.put(TrimMaterials.COPPER, 0.5F);
+        trimMaterial.put(TrimMaterials.GOLD, 0.6F);
+        trimMaterial.put(TrimMaterials.EMERALD, 0.7F);
+        trimMaterial.put(TrimMaterials.DIAMOND, 0.8F);
+        trimMaterial.put(TrimMaterials.LAPIS, 0.9F);
+        trimMaterial.put(TrimMaterials.AMETHYST, 1.0F);
+    }
+
+
     public ModItemModelProvider(PackOutput output, ExistingFileHelper helper) {
         super(output, GenesisMod.MODID, helper);
     }
@@ -74,10 +96,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
         // ─────────────── 방어구 ───────────────
-        simpleItem(GenesisItems.PADDED_CHAIN_HELMET);
-        simpleItem(GenesisItems.PADDED_CHAIN_CHESTPLATE);
-        simpleItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
-        simpleItem(GenesisItems.PADDED_CHAIN_BOOTS);
+        trimmedArmorItem(GenesisItems.PADDED_CHAIN_HELMET);
+        trimmedArmorItem(GenesisItems.PADDED_CHAIN_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
+        trimmedArmorItem(GenesisItems.PADDED_CHAIN_BOOTS);
+
 
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
@@ -126,6 +149,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("layer0", "genesis:item/" + name);
     }
 
+
     // ─────────────────────────────
     //  오버라이드 추가 헬퍼 메서드
     // ─────────────────────────────
@@ -136,7 +160,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type))
                 .end();
     }
-
 
 
 
@@ -168,5 +191,49 @@ public class ModItemModelProvider extends ItemModelProvider {
                         mcLoc("block/wall_inventory"))
                 .texture("wall",
                         new ResourceLocation(GenesisMod.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
+    }
+
+    private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
+        final String MOD_ID = GenesisMod.MODID;
+
+        if (itemRegistryObject.get() instanceof ArmorItem armorItem) {
+            trimMaterial.entrySet().forEach(entry -> {
+
+                ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
+                float trimValue = entry.getValue();
+
+                String armorType = switch (armorItem.getEquipmentSlot()) {
+                    case HEAD -> "helmet";
+                    case CHEST -> "chestplate";
+                    case LEGS -> "leggings";
+                    case FEET -> "boots";
+                    default -> "";
+
+                };
+
+                String armorItemPath = "item/" + armorItem;
+                String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
+                String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
+                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, armorItemPath);
+                ResourceLocation trimResLoc = new ResourceLocation(trimPath);
+                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+
+                existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
+
+                getBuilder(currentTrimName)
+                        .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                        .texture("layer0", armorItemResLoc)
+                        .texture("layer1", trimResLoc);
+
+                this.withExistingParent(itemRegistryObject.getId().getPath(),
+                                new ResourceLocation("minecraft", "item/generated"))
+                        .override()
+                        .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
+                        .predicate(mcLoc("trim_type"), trimValue).end()
+                        .texture("layer0",
+                                new ResourceLocation(MOD_ID,
+                                        "item/" + itemRegistryObject.getId().getPath()));
+            });
+        }
     }
 }
