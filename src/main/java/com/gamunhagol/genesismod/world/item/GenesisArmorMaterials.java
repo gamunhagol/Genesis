@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
-    CHAIN_PADDED("padded_chain", 17, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+    PADDED_CHAIN("padded_chain", 17, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
             1.0F, 0.0F, () -> {return Ingredient.of(Items.CHAIN);
     }),
     PEWRIESE("pewriese", 62, new int[]{4, 7, 9, 4}, 12, SoundEvents.ARMOR_EQUIP_IRON,

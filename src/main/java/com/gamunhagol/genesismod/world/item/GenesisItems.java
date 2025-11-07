@@ -6,7 +6,6 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import net.minecraft.world.item.*;
 
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -135,13 +134,13 @@ public class GenesisItems {
 
     //armor
 
-    public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+    public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.HELMET,new Item.Properties()));
-    public static final RegistryObject<Item> PADDED_CHAIN_CHESTPLATE = ITEMS.register("padded_chain_chestplate", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+    public static final RegistryObject<Item> PADDED_CHAIN_CHESTPLATE = ITEMS.register("padded_chain_chestplate", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.CHESTPLATE,new Item.Properties()));
-    public static final RegistryObject<Item> PADDED_CHAIN_LEGGINGS = ITEMS.register("padded_chain_leggings", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+    public static final RegistryObject<Item> PADDED_CHAIN_LEGGINGS = ITEMS.register("padded_chain_leggings", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.LEGGINGS,new Item.Properties()));
-    public static final RegistryObject<Item> PADDED_CHAIN_BOOTS = ITEMS.register("padded_chain_boots", () -> new ArmorItem(GenesisArmorMaterials.CHAIN_PADDED,
+    public static final RegistryObject<Item> PADDED_CHAIN_BOOTS = ITEMS.register("padded_chain_boots", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
     public static final RegistryObject<Item> PEWRIESE_HELMET = ITEMS.register("pewriese_helmet", () -> new ArmorItem(GenesisArmorMaterials.PEWRIESE,
