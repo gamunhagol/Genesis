@@ -114,79 +114,36 @@ public class SpiritCompassItem extends CompassItem {
                 return InteractionResultHolder.fail(stack);
             }
 
-            BlockPos playerPos = player.blockPosition();
-            BlockPos target = SpiritStructureFinder.findNearest(serverLevel, targetStr, playerPos, 6400);
+            BlockPos target = SpiritStructureFinder.findNearest(serverLevel, targetStr, player.blockPosition(), 1200);
 
             if (target == null) {
                 player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.not_found").withStyle(ChatFormatting.GRAY), true);
                 return InteractionResultHolder.fail(stack);
             }
 
-            // 🔹 목표 구조물 방향 벡터 계산
-            Vec3 start = player.position().add(0, player.getEyeHeight(), 0);
-            Vec3 direction = new Vec3(
-                    target.getX() - start.x,
-                    target.getY() - start.y,
-                    target.getZ() - start.z
-            ).normalize();
-
-            // 🔹 파티클 직선 뿌리기 (10블록 정도)
-            for (int i = 1; i <= 10; i++) {
-                double px = start.x + direction.x * i;
-                double py = start.y + direction.y * i;
-                double pz = start.z + direction.z * i;
-
-                serverLevel.sendParticles(ParticleTypes.END_ROD,
-                        px, py, pz,
-                        4, 0.1, 0.1, 0.1, 0.01);
-            }
-
-
-            serverLevel.playSound(
-                    null,
-                    player.blockPosition(),
-                    SoundEvents.AMETHYST_CLUSTER_BREAK, // ✅ 군집(Cluster) 깨지는 소리
-                    SoundSource.PLAYERS,
-                    1.0f,
-                    1.0f
-            );
-
-            // ⏳ 쿨다운 5초
-            player.getCooldowns().addCooldown(this, 100); // 100 tick = 5초
-
-            // ■ 사운드: '자수정 군집' 깨지는 소리
+            // 🔹 사운드 재생 (한 번만)
             serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-// ■ 목표 방향 벡터(+ 정규화)
+            // 🔹 방향 계산 및 파티클 생성 (중복 제거)
             double dx = target.getX() + 0.5 - player.getX();
-            double dy = (target.getY() + 1.5) - (player.getY() + player.getEyeHeight());
+            double dy = (target.getY() + 1.5) - player.getEyeY();
             double dz = target.getZ() + 0.5 - player.getZ();
-            double len = Math.sqrt(dx*dx + dy*dy + dz*dz);
-            if (len < 0.0001) len = 0.0001;
+            double len = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
             dx /= len; dy /= len; dz /= len;
 
-// ■ 7블록 직선으로 트레이스
-            int steps = 20;              // 10블록 / 0.5 간격
-            double step = 0.5;
+            String needle = tag.getString(KEY_NEEDLE_TYPE);
+            DustParticleOptions dust = new DustParticleOptions(colorFor(needle), 1.2f);
 
-// 색상: 정령 타입별 Dust(레드스톤) + END_ROD 섞어 뿌림
-            String needle = stack.getOrCreateTag().getString(KEY_NEEDLE_TYPE);
-            Vector3f rgb = colorFor(needle);
-            DustParticleOptions dust = new DustParticleOptions(rgb, 1.2f); // size 1.2
-
-            for (int i = 1; i <= steps; i++) {
-                double t = i * step;
-                double px = player.getX() + dx * t;
-                double py = player.getEyeY() + dy * t;
-                double pz = player.getZ() + dz * t;
-
-                // 컬러 파편
-                serverLevel.sendParticles(dust, px, py, pz, 6, 0.02, 0.02, 0.02, 0.0);
-
-                // 빛 기둥 느낌 (눈에 잘 띄게)
-                serverLevel.sendParticles(ParticleTypes.END_ROD, px, py, pz, 1, 0.0, 0.0, 0.0, 0.0);
+            // 7블록 정도만 색상 파티클로 표시
+            for (int i = 1; i <= 14; i++) {
+                double t = i * 0.5;
+                serverLevel.sendParticles(dust, player.getX() + dx * t, player.getEyeY() + dy * t, player.getZ() + dz * t, 4, 0.02, 0.02, 0.02, 0.0);
             }
+
+
+            // ⏳ 쿨다운 5초
+            player.getCooldowns().addCooldown(this, 100); // 100 tick = 5초
 
         }
 

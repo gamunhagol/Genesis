@@ -117,6 +117,10 @@
   "tooltip.genesis.spirit_compass.no_needle": "Needle: Missing",
   "tooltip.genesis.spirit_compass.type": "Type: %s",
 
+
+  "item.genesis.spirit_compass.no_target": "Target: Not set",
+  "item.genesis.spirit_compass.not_found": "Search: Out of range (1.2km)",
+
   "tooltip.genesis.spirit_type.fire": "Fire",
   "tooltip.genesis.spirit_type.water": "Water",
   "tooltip.genesis.spirit_type.earth": "Earth",

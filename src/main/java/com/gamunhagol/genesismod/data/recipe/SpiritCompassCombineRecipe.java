@@ -10,6 +10,7 @@ import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
 import java.util.Map;
@@ -82,7 +83,7 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
 
         if (compass.isEmpty() || stone.isEmpty()) return ItemStack.EMPTY;
 
-        String color = STONE_COLOR_MAP.getOrDefault(stone.getItem().builtInRegistryHolder().key().location(), "blue");
+        String color = STONE_COLOR_MAP.getOrDefault(ForgeRegistries.ITEMS.getKey(stone.getItem()), "water");
 
         // ✅ 여러 구조물 중 첫 번째로 찾은 것을 선택
         String structureKey = "minecraft:ancient_city"; // 기본값

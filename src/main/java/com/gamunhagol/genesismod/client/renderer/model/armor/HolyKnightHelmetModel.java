@@ -22,7 +22,6 @@ public class HolyKnightHelmetModel<T extends LivingEntity> extends HumanoidModel
 
     public HolyKnightHelmetModel(ModelPart pRoot) {
         super(pRoot);
-
     }
 
     public static LayerDefinition createArmorLayer() {
@@ -35,18 +34,18 @@ public class HolyKnightHelmetModel<T extends LivingEntity> extends HumanoidModel
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
-        PartDefinition head_right_wing = head.addOrReplaceChild("head_right_wing", CubeListBuilder.create()
+        head.addOrReplaceChild("head_right_wing", CubeListBuilder.create()
                 .texOffs(42,78).addBox(-3.6F,-13.5F,4.0F,0.0F,8.0F,8.0F, new CubeDeformation(1.0F))
                 , PartPose.offsetAndRotation(0.0F,0.0F,0.0F,0.0F,-0.15F,0.0F));
 
-        PartDefinition head_left_wing = head.addOrReplaceChild("head_left_wing", CubeListBuilder.create()
+        head.addOrReplaceChild("head_left_wing", CubeListBuilder.create()
                 .texOffs(42,78).mirror().addBox(3.6F,-13.5F,4.0F,0.0F,8.0F,8.0F, new CubeDeformation(1.0F)).mirror(false)
                 , PartPose.offsetAndRotation(0.0F,0.0F,0.0F,0.0F,0.15F,0.0F));
 
 
-        PartDefinition head_feather = head.addOrReplaceChild("head_feather", CubeListBuilder.create()
-                .texOffs(3, 76).addBox(-6.0F,12.4F,-2.0F,12.0F,20.0F,0.0F, new CubeDeformation(0.0F))
-                , PartPose.offsetAndRotation(0.0F,-22.0F,5.0F,0.20F,0.0F,0.0F));
+        head.addOrReplaceChild("head_feather", CubeListBuilder.create()
+                .texOffs(3, 76).addBox(-6.0F, 0.0F, 1.0F, 12.0F, 20.0F, 0.0F, new CubeDeformation(0.0F))
+                , PartPose.offsetAndRotation(0.0F, -8.5F, 4.0F, 0.20F, 0.0F, 0.0F));
 
 
 
