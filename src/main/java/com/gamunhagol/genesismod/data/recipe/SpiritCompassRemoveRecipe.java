@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.data.repice;
+package com.gamunhagol.genesismod.data.recipe;
 
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
@@ -7,14 +7,15 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.CraftingBookCategory;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
 
 public class SpiritCompassRemoveRecipe extends CustomRecipe {
 
-    public SpiritCompassRemoveRecipe(ResourceLocation id, net.minecraft.world.item.crafting.CraftingBookCategory cat) {
-        super(id, cat);
+    public SpiritCompassRemoveRecipe(ResourceLocation id, CraftingBookCategory category) {
+        super(id, category);
     }
 
     @Override
@@ -73,7 +74,7 @@ public class SpiritCompassRemoveRecipe extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return com.gamunhagol.genesismod.data.repice.ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get();
+        return com.gamunhagol.genesismod.data.recipe.ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get();
     }
 }
 

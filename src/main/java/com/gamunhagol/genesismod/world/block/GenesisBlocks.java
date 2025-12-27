@@ -57,10 +57,6 @@ public class GenesisBlocks {
                     () -> new HotSpringFluidBlock(GenesisFluids.HOT_SPRING,
                             BlockBehaviour.Properties.copy(Blocks.WATER)
                                     .noLootTable().noCollission().liquid()));
-    public static final RegistryObject<Block> SAND_TRAP = BLOCKS.register("sand_trap",
-            () -> new SandTrapBlock(BlockBehaviour.Properties.copy(Blocks.SAND)
-                    .strength(0.5F).noOcclusion().noLootTable()));
-
 
 
 

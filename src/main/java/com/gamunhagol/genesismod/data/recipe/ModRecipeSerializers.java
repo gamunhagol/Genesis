@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.data.repice;
+package com.gamunhagol.genesismod.data.recipe;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import net.minecraft.world.item.crafting.RecipeSerializer;

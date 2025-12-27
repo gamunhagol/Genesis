@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.datagen;
 
-import com.gamunhagol.genesismod.data.repice.ModRecipeSerializers;
+import com.gamunhagol.genesismod.data.recipe.ModRecipeSerializers;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;

@@ -20,20 +20,19 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        blockWhitItem(GenesisBlocks.PEWRIESE_ORE);
-        blockWhitItem(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK);
+        blockWithItem(GenesisBlocks.PEWRIESE_ORE);
+        blockWithItem(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK);
 
-        blockWhitItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK);
-        blockWhitItem(GenesisBlocks.CITRINE_BLOCK);
-        blockWhitItem(GenesisBlocks.RED_CRYSTAL_BLOCK);
+        blockWithItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK);
+        blockWithItem(GenesisBlocks.CITRINE_BLOCK);
+        blockWithItem(GenesisBlocks.RED_CRYSTAL_BLOCK);
 
 
-        blockWhitItem(GenesisBlocks.FADED_STONE);
-        blockWhitItem(GenesisBlocks.FADED_BRICK);
-        blockWhitItem(GenesisBlocks.FADED_GATEWAY);
-        blockWhitItem(GenesisBlocks.CHISELED_FADED_BRICK);
+        blockWithItem(GenesisBlocks.FADED_STONE);
+        blockWithItem(GenesisBlocks.FADED_BRICK);
+        blockWithItem(GenesisBlocks.FADED_GATEWAY);
+        blockWithItem(GenesisBlocks.CHISELED_FADED_BRICK);
 
-        blockWhitItem(GenesisBlocks.SAND_TRAP);
 
 
 
@@ -56,7 +55,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     }
 
-    private void blockWhitItem(RegistryObject<Block> blockRegistryObject) {
+    private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
     }
 

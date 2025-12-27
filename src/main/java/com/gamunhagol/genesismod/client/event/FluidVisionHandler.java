@@ -22,12 +22,6 @@ import net.minecraftforge.fml.common.Mod;
 public class FluidVisionHandler {
 
     // 🔹 카메라 기준으로 현재 블록/유체 상태 가져오기
-    private static BlockState getEyeBlock(Camera camera) {
-        Minecraft mc = Minecraft.getInstance();
-        if (mc.level == null) return null;
-        BlockPos eyePos = BlockPos.containing(camera.getPosition());
-        return mc.level.getBlockState(eyePos);
-    }
 
     private static FluidState getEyeFluid(Camera camera) {
         Minecraft mc = Minecraft.getInstance();
@@ -40,23 +34,11 @@ public class FluidVisionHandler {
     @SubscribeEvent
     public static void onRenderFog(ViewportEvent.RenderFog event) {
         Camera camera = event.getCamera();
-        BlockState block = getEyeBlock(camera);
         FluidState fluid = getEyeFluid(camera);
-        if (block == null && fluid == null) return;
-
-        // 🟡 모래함정 안개
-        if (block != null && block.is(GenesisBlocks.SAND_TRAP.get())) {
-            float near = 0.25F;
-            float far = 4.0F;
-            event.setNearPlaneDistance(near);
-            event.setFarPlaneDistance(far);
-            RenderSystem.setShaderFogStart(near);
-            RenderSystem.setShaderFogEnd(far);
-            RenderSystem.setShaderFogColor(0.93F, 0.88F, 0.68F); // 밝은 모래색
-        }
+        if (fluid == null) return;
 
         // 💧 온천수 안개
-        else if (fluid != null && (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get()))) {
+        if (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get())) {
             float near = 0.5F;
             float far = 8.0F;
             event.setNearPlaneDistance(near);
@@ -71,19 +53,12 @@ public class FluidVisionHandler {
     @SubscribeEvent
     public static void onFogColor(ViewportEvent.ComputeFogColor event) {
         Camera camera = event.getCamera();
-        BlockState block = getEyeBlock(camera);
         FluidState fluid = getEyeFluid(camera);
-        if (block == null && fluid == null) return;
+        if (fluid == null) return;
 
-        // 🟡 모래함정 색상
-        if (block != null && block.is(GenesisBlocks.SAND_TRAP.get())) {
-            event.setRed(0.89F);
-            event.setGreen(0.86F);
-            event.setBlue(0.69F);
-        }
 
         // 💧 온천수 색상
-        else if (fluid != null && (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get()))) {
+        if (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get())) {
             event.setRed(0.55F);
             event.setGreen(0.95F);
             event.setBlue(0.95F);
