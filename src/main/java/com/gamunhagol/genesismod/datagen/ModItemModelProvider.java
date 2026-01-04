@@ -84,6 +84,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
+        simpleItem(GenesisItems.QUICKSAND_BUCKET);
 
 
         // ─────────────── 블록 아이템 ───────────────

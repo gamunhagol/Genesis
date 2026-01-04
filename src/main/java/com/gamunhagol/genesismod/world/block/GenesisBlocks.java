@@ -58,6 +58,12 @@ public class GenesisBlocks {
                             BlockBehaviour.Properties.copy(Blocks.WATER)
                                     .noLootTable().noCollission().liquid()));
 
+    public static final RegistryObject<LiquidBlock> QUICKSAND_BLOCK =
+            BLOCKS.register("quicksand_block",
+                    () -> new QuicksandFluidBlock(GenesisFluids.QUICKSAND,
+                            BlockBehaviour.Properties.copy(Blocks.WATER)
+                                    .noLootTable().noCollission().liquid()));
+
 
 
 

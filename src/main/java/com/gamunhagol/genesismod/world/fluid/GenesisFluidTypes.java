@@ -24,5 +24,19 @@ public class GenesisFluidTypes {
                             .lightLevel(0)
 
                     ));
+
+    // --- 유사 (Quicksand) 타입 ---
+    public static final RegistryObject<FluidType> QUICKSAND_TYPE =
+            FLUID_TYPES.register("quicksand", () ->
+                    new QuicksandFluidType(FluidType.Properties.create()
+                            .density(3000)      // 물보다 무겁게
+                            .viscosity(6000)    // 용암보다 끈적하게
+                            .motionScale(0.007F) // [중요] 0.01보다 낮춰서 더 꾸덕하게 이동
+                            .canPushEntity(true)
+                            .supportsBoating(false)
+                            .fallDistanceModifier(0.0F)
+                            .canDrown(true)
+                            .lightLevel(0)
+                    ));
 }
 

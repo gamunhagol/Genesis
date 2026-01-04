@@ -75,6 +75,7 @@
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
   "item.genesis.hot_spring_bucket": "온천수 양동이",
+  "item.genesis.quicksand_bucket": "유사 양동이",
 
 
 
@@ -105,6 +106,7 @@
   "block.genesis.faded_brick_wall": "빛바랜 벽돌 담장",
 
   "block.genesis.hot_spring_block": "온천수",
+  "block.genesis.quicksand_block": "유사",
 
 
 

@@ -16,4 +16,10 @@ public class GenesisFluids {
             FLUIDS.register("hot_spring", () -> new ForgeFlowingFluid.Source(HotSpringFluid.PROPERTIES));
     public static final RegistryObject<FlowingFluid> HOT_SPRING_FLOWING =
             FLUIDS.register("hot_spring_flowing", () -> new ForgeFlowingFluid.Flowing(HotSpringFluid.PROPERTIES));
+
+
+    public static final RegistryObject<FlowingFluid> QUICKSAND =
+            FLUIDS.register("quicksand", () -> new ForgeFlowingFluid.Source(QuicksandFluid.PROPERTIES));
+    public static final RegistryObject<FlowingFluid> QUICKSAND_FLOWING =
+            FLUIDS.register("quicksand_flowing", () -> new ForgeFlowingFluid.Flowing(QuicksandFluid.PROPERTIES));
 }
