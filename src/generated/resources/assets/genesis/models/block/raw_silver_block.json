@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "genesis:block/raw_sliver_block"
+    "all": "genesis:block/raw_silver_block"
   }
 }

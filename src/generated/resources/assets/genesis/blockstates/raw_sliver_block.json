@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "": {
-      "model": "genesis:block/raw_sliver_block"
-    }
-  }
-}
