@@ -23,6 +23,10 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
+                        ,GenesisBlocks.SILVER_ORE.get()
+                        ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
+                        ,GenesisBlocks.RAW_SILVER_BLOCK.get()
+                        ,GenesisBlocks.SILVER_BLOCK.get()
                 ,GenesisBlocks.RED_CRYSTAL_BLOCK.get()
                         ,GenesisBlocks.CITRINE_BLOCK.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_BLOCK.get()
@@ -30,9 +34,16 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.CITRINE_CLUSTER.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get());
 
+
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
+
+        this.tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(GenesisBlocks.SILVER_ORE.get()
+                        ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
+                        ,GenesisBlocks.RAW_SILVER_BLOCK.get()
+                        ,GenesisBlocks.SILVER_BLOCK.get());
 
         this.tag(BlockTags.WALLS)
                 .add(GenesisBlocks.FADED_BRICK_WALL.get());

@@ -23,6 +23,10 @@ import java.util.function.Consumer;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
 
+    private static final List<ItemLike> SILVER_SMELTING = List.of(GenesisItems.RAW_SILVER.get(),
+            GenesisBlocks.SILVER_ORE.get(),
+            GenesisBlocks.DEEPSLATE_SILVER_ORE.get());
+
 
     private static final Map<Item, Item> PEWRIESE_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.IRON_SWORD, GenesisItems.PEWRIESE_SWORD.get()),
@@ -67,6 +71,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 
+        oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
+        oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
         oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
 
@@ -77,6 +83,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.SILVER_PIECE.get(), 9)
+                .requires(GenesisItems.SILVER_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.SILVER_PIECE.get()), has(GenesisItems.SILVER_PIECE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get())
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.SILVER_PIECE.get())
+                .unlockedBy(getHasName(GenesisItems.SILVER_PIECE.get()), has(GenesisItems.SILVER_PIECE.get()))
+                .save(pWriter);
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get())
@@ -92,6 +110,34 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.DREAM_DANGO.get()), has(GenesisItems.DREAM_DANGO.get()))
                 .save(pWriter,new ResourceLocation(GenesisMod.MODID,"dream_powder_from_dango"));
 
+        //block&restoration
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.SILVER_BLOCK.get())
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.SILVER_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.SILVER_INGOT.get()), has(GenesisItems.SILVER_INGOT.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 9)
+                .requires(GenesisBlocks.SILVER_BLOCK.get())
+                .unlockedBy(getHasName(GenesisBlocks.SILVER_BLOCK.get()), has(GenesisBlocks.SILVER_BLOCK.get()))
+                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "silver_from_block"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.RAW_SILVER_BLOCK.get())
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.RAW_SILVER.get())
+                .unlockedBy(getHasName(GenesisItems.RAW_SILVER.get()), has(GenesisItems.RAW_SILVER.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.RAW_SILVER.get(), 9)
+                .requires(GenesisBlocks.RAW_SILVER_BLOCK.get())
+                .unlockedBy(getHasName(GenesisBlocks.RAW_SILVER_BLOCK.get()), has(GenesisBlocks.RAW_SILVER_BLOCK.get()))
+                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "silver_from_raw_block"));
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get())
                 .pattern("aaa")
                 .pattern("aaa")
@@ -106,6 +152,37 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter,new ResourceLocation(GenesisMod.MODID, "pewriese_crystal_from_block"));
 
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())
+                .pattern("aa")
+                .pattern("aa")
+                .define('a',GenesisItems.BLUE_CRYSTAL_SHARD.get())
+                .unlockedBy(getHasName(GenesisItems.BLUE_CRYSTAL_SHARD.get()), has(GenesisItems.BLUE_CRYSTAL_SHARD.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.CITRINE_BLOCK.get())
+                .pattern("aa")
+                .pattern("aa")
+                .define('a',GenesisItems.CITRINE_SHARD.get())
+                .unlockedBy(getHasName(GenesisItems.CITRINE_SHARD.get()), has(GenesisItems.CITRINE_SHARD.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.RED_CRYSTAL_BLOCK.get())
+                .pattern("aa")
+                .pattern("aa")
+                .define('a',GenesisItems.RED_CRYSTAL_SHARD.get())
+                .unlockedBy(getHasName(GenesisItems.RED_CRYSTAL_SHARD.get()), has(GenesisItems.RED_CRYSTAL_SHARD.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get())
+                .pattern(" # ")
+                .pattern("#a#")
+                .pattern(" # ")
+                .define('a',Items.LAPIS_LAZULI)
+                .define('#',GenesisItems.PEWRIESE_PIECE.get())
+                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
+                .save(pWriter);
+
+        //misc
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_HELMET.get())
                 .pattern(" a ")
                 .pattern("aba")
@@ -167,37 +244,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.BLUE_CRYSTAL_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.BLUE_CRYSTAL_SHARD.get()), has(GenesisItems.BLUE_CRYSTAL_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.CITRINE_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.CITRINE_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.CITRINE_SHARD.get()), has(GenesisItems.CITRINE_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.RED_CRYSTAL_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.RED_CRYSTAL_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.RED_CRYSTAL_SHARD.get()), has(GenesisItems.RED_CRYSTAL_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get())
-                .pattern(" # ")
-                .pattern("#a#")
-                .pattern(" # ")
-                .define('a',Items.LAPIS_LAZULI)
-                .define('#',GenesisItems.PEWRIESE_PIECE.get())
-                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
-                .save(pWriter);
 
 
+
+        //smithing template
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 2)
                 .pattern("#m#")
@@ -209,6 +259,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()), has(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()))
                 .save(pWriter);
 
+
+        //smithing table upgrade
 
         for (var entry : PEWRIESE_SMITHING_MAP.entrySet()) {
             pewrieseSmithing(pWriter,

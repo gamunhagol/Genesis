@@ -26,13 +26,22 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
+        this.dropSelf(GenesisBlocks.RAW_SILVER_BLOCK.get());
+        this.dropSelf(GenesisBlocks.SILVER_BLOCK.get());
         this.dropSelf(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
         this.dropSelf(GenesisBlocks.RED_CRYSTAL_BLOCK.get());
 
+
+
+        this.add(GenesisBlocks.SILVER_ORE.get(),
+                block -> createCopperLikeOreDrops(GenesisBlocks.SILVER_ORE.get(), GenesisItems.RAW_SILVER.get()));
+        this.add(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(),
+                block -> createCopperLikeOreDrops(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(), GenesisItems.RAW_SILVER.get()));
         this.add(GenesisBlocks.PEWRIESE_ORE.get(),
                 block -> createCopperLikeOreDrops(GenesisBlocks.PEWRIESE_ORE.get(), GenesisItems.PEWRIESE_ORE_PIECE.get()));
+
 
         this.add(GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get(),
                 block -> createSilkTouchDispatchTable(block,

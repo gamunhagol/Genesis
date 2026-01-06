@@ -64,6 +64,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         clusterItem(GenesisBlocks.CITRINE_CLUSTER);
         clusterItem(GenesisBlocks.RED_CRYSTAL_CLUSTER);
 
+        simpleItem(GenesisItems.RAW_SILVER);
+        simpleItem(GenesisItems.SILVER_PIECE);
+        simpleItem(GenesisItems.SILVER_INGOT);
+
         simpleItem(GenesisItems.PEWRIESE_ORE_PIECE);
         simpleItem(GenesisItems.PEWRIESE_PIECE);
         simpleItem(GenesisItems.PEWRIESE_CRYSTAL);

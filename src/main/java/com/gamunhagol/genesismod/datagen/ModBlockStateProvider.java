@@ -20,6 +20,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+        blockWithItem(GenesisBlocks.SILVER_ORE);
+        blockWithItem(GenesisBlocks.DEEPSLATE_SILVER_ORE);
+        blockWithItem(GenesisBlocks.RAW_SILVER_BLOCK);
+        blockWithItem(GenesisBlocks.SILVER_BLOCK);
+
         blockWithItem(GenesisBlocks.PEWRIESE_ORE);
         blockWithItem(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK);
 

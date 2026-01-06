@@ -15,7 +15,11 @@
   "item.genesis.frost_crystal_shard": "냉기수정 조각",
   "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
 
+  "item.genesis.raw_silver": "은 원석",
   "item.genesis.pewriese_ore_piece": "퓨리즌 광석 파편",
+
+  "item.genesis.silver_piece": "은 조각",
+  "item.genesis.silver_ingot": "은 주괴",
 
   "item.genesis.pewriese_piece": "퓨리즌 파편",
   "item.genesis.pewriese_crystal": "퓨리즌 결정",
@@ -80,9 +84,14 @@
 
 
 
+  "block.genesis.silver_ore": "은 광석",
+  "block.genesis.deepslate_silver_ore": "심층암 은 광석",
 
   "block.genesis.pewriese_ore": "이시스 광석",
 
+
+  "block.genesis.raw_silver_block": "은 원석 블럭",
+  "block.genesis.silver_block": "은 블럭",
   "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
 
   "block.genesis.blue_crystal_block": "청수정 블럭",

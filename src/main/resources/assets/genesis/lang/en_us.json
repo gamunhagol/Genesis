@@ -15,7 +15,12 @@
   "item.genesis.frost_crystal_shard": "Frost Crystal Shard",
   "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
 
+  "item.genesis.raw_silver": "Raw Silver",
   "item.genesis.pewriese_ore_piece": "pewriese Ore Piece",
+
+
+  "item.genesis.silver_piece": "Silver Piece",
+  "item.genesis.silver_ingot": "Silver Ingot",
 
   "item.genesis.pewriese_piece": "pewriese Piece",
   "item.genesis.pewriese_crystal": "pewriese Crystal",
@@ -77,9 +82,14 @@
 
 
 
+  "block.genesis.silver_ore": "Silver Ore",
+  "block.genesis.deepslate_silver_ore": "Deepslate Silver Ore",
 
   "block.genesis.pewriese_ore": "Pewriese Ore",
 
+
+  "block.genesis.raw_silver_block": "Raw Silver Block",
+  "block.genesis.silver_block": "Silver Block",
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
