@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.MobSpawnType;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -17,6 +18,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 import java.util.List;
 
@@ -103,18 +105,27 @@ public class Collector extends WanderingTrader {
     public void aiStep() {
         super.aiStep();
         if (!this.level().isClientSide) {
-            // 주변에 호위병이 있는지 확인하고 없으면 소환
-            if (--this.spawnGuardCooldown <= 0) {
-                this.spawnGuardCooldown = 2400;
-                // 주변 16칸 내에 호위병이 있는지 확인
-                List<CollectorGuard> guards = this.level().getEntitiesOfClass(CollectorGuard.class, this.getBoundingBox().inflate(16));
-                if (guards.size() < 4) { // 호위병이 5마리 미만이면 소환
+            // 먼저 주변 가드 수를 체크
+            List<CollectorGuard> guards = this.level().getEntitiesOfClass(CollectorGuard.class, this.getBoundingBox().inflate(16));
+
+            // 가드가 4마리 미만일 때만 쿨타임을 깎습니다.
+            if (guards.size() < 4) {
+                if (--this.spawnGuardCooldown <= 0) {
+                    this.spawnGuardCooldown = 4800;
+
                     CollectorGuard guard = GenesisEntities.COLLECTOR_GUARD.get().create(this.level());
                     if (guard != null) {
                         guard.moveTo(this.getX(), this.getY(), this.getZ(), this.getYRot(), 0);
+
+                        guard.finalizeSpawn((ServerLevelAccessor)this.level(),
+                                this.level().getCurrentDifficultyAt(guard.blockPosition()),
+                                MobSpawnType.EVENT, null, null);
+
                         this.level().addFreshEntity(guard);
                     }
                 }
+            } else {
+                this.spawnGuardCooldown = 4800;
             }
         }
     }
