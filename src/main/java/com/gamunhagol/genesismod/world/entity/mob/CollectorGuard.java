@@ -84,7 +84,7 @@ public class CollectorGuard extends Monster implements RangedAttackMob, Crossbow
                 .add(Attributes.MAX_HEALTH, 30.0f)
                 .add(Attributes.MOVEMENT_SPEED, 0.25D)
                 .add(Attributes.ATTACK_DAMAGE, 1.0D)
-                .add(Attributes.ARMOR, 0.0D)
+                .add(Attributes.ARMOR, 1.0D)
                 .add(Attributes.FOLLOW_RANGE, 35.0D);
 
 
