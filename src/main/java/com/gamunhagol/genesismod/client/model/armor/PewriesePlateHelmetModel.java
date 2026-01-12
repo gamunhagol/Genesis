@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.client.renderer.model.armor;
+package com.gamunhagol.genesismod.client.model.armor;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import net.minecraft.client.model.HumanoidModel;

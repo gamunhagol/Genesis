@@ -1,6 +1,11 @@
 package com.gamunhagol.genesismod.client.event;
 
-import com.gamunhagol.genesismod.client.renderer.model.armor.*;
+import com.gamunhagol.genesismod.client.model.armor.*;
+import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
+import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
+import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
+import com.gamunhagol.genesismod.world.entity.GenesisEntities;
+import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraftforge.api.distmarker.Dist;
@@ -44,6 +49,7 @@ public class RegisterModels {
     @SubscribeEvent
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event){
 
+        //armor
         event.registerLayerDefinition(PewriesePlateHelmetModel.LAYER_LOCATION, PewriesePlateHelmetModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateChestplateModel.LAYER_LOCATION, PewriesePlateChestplateModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateLeggingsModel.LAYER_LOCATION, PewriesePlateLeggingsModel::createArmorLayer);
@@ -53,5 +59,15 @@ public class RegisterModels {
         event.registerLayerDefinition(HolyKnightChestplateModel.LAYER_LOCATION, HolyKnightChestplateModel::createArmorLayer);
         event.registerLayerDefinition(HolyKnightLeggingsModel.LAYER_LOCATION, HolyKnightLeggingsModel::createArmorLayer);
         event.registerLayerDefinition(HolyKnightBootsModel.LAYER_LOCATION, HolyKnightBootsModel::createArmorLayer);
+
+        //entity
+        event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
+    }
+
+    @SubscribeEvent
+    public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
+        // 엔티티와 렌더러를 연결합니다.
+        event.registerEntityRenderer(GenesisEntities.COLLECTOR.get(), CollectorRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
     }
 }

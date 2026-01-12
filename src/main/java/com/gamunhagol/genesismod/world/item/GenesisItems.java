@@ -3,9 +3,11 @@ package com.gamunhagol.genesismod.world.item;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import net.minecraft.world.item.*;
 
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -185,6 +187,7 @@ public class GenesisItems {
 
 
 
+    //misc
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
 
@@ -196,6 +199,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> QUICKSAND_BUCKET =
             ITEMS.register("quicksand_bucket",
                     () -> new BucketItem(GenesisFluids.QUICKSAND, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+
+    //spawn egg
+    public static final RegistryObject<Item> COLLECTOR_SPAWN_EGG = ITEMS.register("collector_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR, 0xFFFFFF, 0xFFFFFF,
+             new Item.Properties()));
+    public static final RegistryObject<Item> COLLECTOR_GUARD_SPAWN_EGG = ITEMS.register("collector_guard_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR_GUARD, 0xFFFFFF, 0xFFFFFF,
+            new Item.Properties()));
 
 
 }

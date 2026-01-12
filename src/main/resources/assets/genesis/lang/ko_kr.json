@@ -81,6 +81,9 @@
   "item.genesis.hot_spring_bucket": "온천수 양동이",
   "item.genesis.quicksand_bucket": "유사 양동이",
 
+  "item.genesis.collector_spawn_egg": "징수원 생성 알",
+  "item.genesis.collector_guard_spawn_egg": "징수원 호위 생성 알",
+
 
 
 
@@ -116,6 +119,10 @@
 
   "block.genesis.hot_spring_block": "온천수",
   "block.genesis.quicksand_block": "유사",
+
+
+  "entity.genesis.collector": "징수원",
+  "entity.genesis.collector_guard": "징수원 호위",
 
 
 

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.main;
 import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
 import com.gamunhagol.genesismod.gameasset.GenesisSounds;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
@@ -22,6 +23,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 
+
 @Mod(GenesisMod.MODID)
 public class GenesisMod {
     public static final String MODID = "genesis";
@@ -34,6 +36,7 @@ public class GenesisMod {
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
+        GenesisEntities.ENTITY_TYPES.register(modEventBus);
         GenesisItems.ITEMS.register(modEventBus);
         GenesisBlocks.BLOCKS.register(modEventBus);
         GenesisCreativeTabs.TABS.register(modEventBus);
@@ -78,4 +81,5 @@ public class GenesisMod {
 
         }
     }
+
 }

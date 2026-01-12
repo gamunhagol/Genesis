@@ -99,6 +99,9 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.HOT_SPRING_BUCKET.get());
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());
 
+                output.accept(GenesisItems.COLLECTOR_SPAWN_EGG.get());
+                output.accept(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG.get());
+
             })
             .title(Component.translatable("itemGroup.genesis.items"))
             .build()

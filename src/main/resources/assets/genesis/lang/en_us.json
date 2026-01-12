@@ -80,6 +80,9 @@
   "item.genesis.hot_spring_bucket": "Hot Spring Bucket",
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
 
+  "item.genesis.collector_spawn_egg": "Collector Spawn Egg",
+  "item.genesis.collector_guard_spawn_egg": "Collector Guard Spawn Egg",
+
 
 
   "block.genesis.silver_ore": "Silver Ore",
@@ -114,6 +117,10 @@
 
   "block.genesis.hot_spring_block": "Hot Spring",
   "block.genesis.quicksand_block": "Quicksand",
+
+
+  "entity.genesis.collector": "Collector",
+  "entity.genesis.collector_guard": "Collector Guard",
 
 
 

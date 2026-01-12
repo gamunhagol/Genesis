@@ -90,6 +90,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
         simpleItem(GenesisItems.QUICKSAND_BUCKET);
 
+        simpleItem(GenesisItems.COLLECTOR_SPAWN_EGG);
+        simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
+
 
         // ─────────────── 블록 아이템 ───────────────
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
