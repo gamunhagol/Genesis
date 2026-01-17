@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.datagen;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.world.block.AmethystAppleBlock;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
@@ -40,6 +41,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
 
+        getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
+                .partialState().with(AmethystAppleBlock.HANGING, false)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_ground"))).addModel()
+                .partialState().with(AmethystAppleBlock.HANGING, true)
+                .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_hanging"))).addModel();
 
         stairsBlock(((StairBlock) GenesisBlocks.FADED_STONE_STAIRS.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
         stairsBlock(((StairBlock) GenesisBlocks.FADED_BRICK_STAIRS.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));

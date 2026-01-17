@@ -31,6 +31,8 @@
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
+  "item.genesis.amethyst_apple": "자수정 사과",
+
 
 
   "item.genesis.spirit_compass": "정령 나침반",
@@ -96,6 +98,10 @@
   "block.genesis.raw_silver_block": "은 원석 블럭",
   "block.genesis.silver_block": "은 블럭",
   "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
+
+  "item.genesis.amethyst_apple_slices": "자수정 사과 조각",
+
+  "block.genesis.amethyst_apple_block": "자수정 사과",
 
   "block.genesis.blue_crystal_block": "청수정 블럭",
   "block.genesis.blue_crystal_cluster": "청수정 군집",

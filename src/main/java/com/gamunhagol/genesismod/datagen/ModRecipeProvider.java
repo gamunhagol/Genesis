@@ -83,6 +83,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.AMETHYST_APPLE_SLICES.get(), 4)
+                .requires(GenesisItems.AMETHYST_APPLE.get())
+                .requires(GenesisItems.AMETHYST_NEEDLE.get())
+                .unlockedBy(getHasName(GenesisItems.AMETHYST_APPLE.get()), has(GenesisItems.AMETHYST_APPLE.get()))
+                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.SILVER_PIECE.get(), 9)
                 .requires(GenesisItems.SILVER_INGOT.get())
                 .unlockedBy(getHasName(GenesisItems.SILVER_PIECE.get()), has(GenesisItems.SILVER_PIECE.get()))
@@ -109,6 +115,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(GenesisItems.DREAM_DANGO.get())
                 .unlockedBy(getHasName(GenesisItems.DREAM_DANGO.get()), has(GenesisItems.DREAM_DANGO.get()))
                 .save(pWriter,new ResourceLocation(GenesisMod.MODID,"dream_powder_from_dango"));
+
 
         //block&restoration
 

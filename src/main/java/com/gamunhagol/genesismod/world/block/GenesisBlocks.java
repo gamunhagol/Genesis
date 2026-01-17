@@ -41,6 +41,11 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> PEWRIESE_CRYSTAL_BLOCK = register("pewriese_crystal_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(180.0F, 1200.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
+    public static final RegistryObject<Block> AMETHYST_APPLE_BLOCK = register("amethyst_apple_block",
+            () -> new AmethystAppleBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).noOcclusion().lightLevel((p_152632_) -> {
+                return 5;})));
+
+
     public static final RegistryObject<Block> BLUE_CRYSTAL_BLOCK = register("blue_crystal_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final RegistryObject<Block> BLUE_CRYSTAL_CLUSTER = register("blue_crystal_cluster",
@@ -62,6 +67,9 @@ public class GenesisBlocks {
                 return 5;
             }).pushReaction(PushReaction.DESTROY)));
 
+
+
+    //liquid
     public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =
             BLOCKS.register("hot_spring_block",
                     () -> new HotSpringFluidBlock(GenesisFluids.HOT_SPRING,
@@ -73,6 +81,8 @@ public class GenesisBlocks {
                     () -> new QuicksandFluidBlock(GenesisFluids.QUICKSAND,
                             BlockBehaviour.Properties.copy(Blocks.WATER)
                                     .noLootTable().noCollission().liquid()));
+
+
 
 
 

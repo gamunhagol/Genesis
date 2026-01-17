@@ -78,6 +78,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.GOLD_COIN);
         simpleItem(GenesisItems.PLATINUM_COIN);
 
+        simpleItem(GenesisItems.AMETHYST_APPLE_SLICES);
+
+        simpleItem(GenesisItems.AMETHYST_APPLE);
+
         handheldItem(GenesisItems.PEWRIESE_SWORD);
         handheldItem(GenesisItems.PEWRIESE_AXE);
         handheldItem(GenesisItems.PEWRIESE_PICKAXE);

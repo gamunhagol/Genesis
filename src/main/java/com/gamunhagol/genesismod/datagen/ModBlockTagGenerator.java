@@ -27,6 +27,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
                         ,GenesisBlocks.RAW_SILVER_BLOCK.get()
                         ,GenesisBlocks.SILVER_BLOCK.get()
+                        ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
                 ,GenesisBlocks.RED_CRYSTAL_BLOCK.get()
                         ,GenesisBlocks.CITRINE_BLOCK.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_BLOCK.get()

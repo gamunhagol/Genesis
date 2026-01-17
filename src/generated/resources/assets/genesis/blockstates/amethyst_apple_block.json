@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "hanging=false": {
+      "model": "genesis:block/amethyst_apple_ground"
+    },
+    "hanging=true": {
+      "model": "genesis:block/amethyst_apple_hanging"
+    }
+  }
+}

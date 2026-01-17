@@ -32,6 +32,10 @@
   "item.genesis.gold_coin": "Gold coin",
   "item.genesis.platinum_coin": "Platinum coin",
 
+  "item.genesis.amethyst_apple_slices": "Amethyst Apple Slices",
+
+  "item.genesis.amethyst_apple": "Amethyst Apple",
+
 
   "item.genesis.spirit_compass": "Spirit Compass",
 
@@ -94,6 +98,8 @@
   "block.genesis.raw_silver_block": "Raw Silver Block",
   "block.genesis.silver_block": "Silver Block",
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
+
+  "block.genesis.amethyst_apple_block": "Amethyst Apple",
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
   "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",

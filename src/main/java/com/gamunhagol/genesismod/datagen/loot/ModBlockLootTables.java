@@ -33,6 +33,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
         this.dropSelf(GenesisBlocks.RED_CRYSTAL_BLOCK.get());
 
+        this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
 
 
         this.add(GenesisBlocks.SILVER_ORE.get(),
