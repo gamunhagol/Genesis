@@ -52,9 +52,14 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.GOLD_COIN.get());
                 output.accept(GenesisItems.PLATINUM_COIN.get());
 
-                output.accept(GenesisItems.AMETHYST_APPLE_SLICES.get());
-
                 output.accept(GenesisItems.AMETHYST_APPLE.get());
+
+                output.accept(GenesisItems.AMETHYST_APPLE_SLICES.get());
+                output.accept(GenesisItems.AMETHYST_APPLE_PUDDING.get());
+
+                output.accept(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK.get());
+
+
 
 
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
@@ -117,7 +122,7 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 GenesisBlocks.BLOCKS.getEntries().forEach(item -> {
                     if (item.get() == GenesisBlocks.HOT_SPRING_BLOCK.get() ||item.get() == GenesisBlocks.QUICKSAND_BLOCK.get()
-                            ||item.get() == GenesisBlocks.AMETHYST_APPLE_BLOCK.get()) {
+                            ||item.get() == GenesisBlocks.AMETHYST_APPLE_BLOCK.get() ||item.get() == GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get()) {
                         return;
                     }
                     output.accept(item.get());

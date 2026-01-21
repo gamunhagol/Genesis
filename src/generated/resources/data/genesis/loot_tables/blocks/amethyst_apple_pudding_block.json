@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:block",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "conditions": [
+            {
+              "block": "genesis:amethyst_apple_pudding_block",
+              "condition": "minecraft:block_state_property",
+              "properties": {
+                "portions": "0"
+              }
+            }
+          ],
+          "name": "genesis:amethyst_apple_pudding_block"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "genesis:blocks/amethyst_apple_pudding_block"
+}

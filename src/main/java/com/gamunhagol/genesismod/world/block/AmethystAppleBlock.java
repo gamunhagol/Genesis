@@ -20,8 +20,8 @@ import javax.annotation.Nullable;
 public class AmethystAppleBlock extends Block {
     public static final BooleanProperty HANGING = BlockStateProperties.HANGING;
 
-    protected static final VoxelShape FLOOR_SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 9.0D, 12.0D);
-    protected static final VoxelShape HANGING_SHAPE = Block.box(4.0D, 7.0D, 4.0D, 12.0D, 16.0D, 12.0D);
+    protected static final VoxelShape FLOOR_SHAPE = Block.box(5.0D, 0.0D, 5.0D, 11.0D, 7.0D, 11.0D);
+    protected static final VoxelShape HANGING_SHAPE = Block.box(5.0D, 9.0D, 5.0D, 11.0D, 16.0D, 11.0D);
 
     public AmethystAppleBlock(Properties pProperties) {
         super(pProperties);
@@ -70,7 +70,6 @@ public class AmethystAppleBlock extends Block {
             }
 
             // 4. 실제 자수정 반짝임 파티클 생성
-            // ParticleTypes.AMETHYST_SPARKLE이 우리가 찾는 그 '보석 반짝임'입니다.
             level.addParticle(ParticleTypes.END_ROD, x, y, z, 0.0D, 0.0D, 0.0D);
         }
     }

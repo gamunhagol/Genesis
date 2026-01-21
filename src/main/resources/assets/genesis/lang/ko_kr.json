@@ -31,7 +31,11 @@
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
+  "item.genesis.amethyst_apple_slices": "자수정 사과 조각",
+  "item.genesis.amethyst_apple_pudding": "그릇에 담긴 자수정 사과 푸딩",
+
   "item.genesis.amethyst_apple": "자수정 사과",
+  "item.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
 
 
 
@@ -99,9 +103,9 @@
   "block.genesis.silver_block": "은 블럭",
   "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
 
-  "item.genesis.amethyst_apple_slices": "자수정 사과 조각",
 
   "block.genesis.amethyst_apple_block": "자수정 사과",
+  "block.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
 
   "block.genesis.blue_crystal_block": "청수정 블럭",
   "block.genesis.blue_crystal_cluster": "청수정 군집",
@@ -153,5 +157,14 @@
   "tooltip.genesis.spirit_type.storm": "폭풍",
   "tooltip.genesis.spirit_type.lightning": "번개",
   "tooltip.genesis.spirit_type.plants": "식물",
-  "tooltip.genesis.spirit_type.ice": "냉기"
+  "tooltip.genesis.spirit_type.ice": "냉기",
+
+  "tooltip.genesis.pudding_need_bowl": "음식을 푸려면 그릇이 필요합니다.",
+
+  "tooltip.genesis.hold_shift": "§7<Shift 키를 눌러 상세 정보 보기>",
+
+  "tooltip.genesis.dream_powder.shift": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
+  "tooltip.genesis.dream_dango.shift": "달콤한 경단, 잠깐의 행복감을 주지만 곧 허무해진다. 악몽을 몰아낸다.",
+  "tooltip.genesis.remnants_of_a_dream.shift":"아무것도 느껴지지 않는다. 악몽을 불러온다",
+  "tooltip.genesis.fragment_of_memory.shift": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다"
 }

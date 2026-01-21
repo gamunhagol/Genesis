@@ -5,20 +5,37 @@ import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yesman.epicfight.world.item.*;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 
 public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GenesisMod.MODID);
+
+    public static void addCommonLore(List<Component> tooltip, String translationKey) {
+        if (Screen.hasShiftDown()) {
+            tooltip.add(Component.translatable(translationKey).withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
+        } else {
+            tooltip.add(Component.translatable("tooltip.genesis.hold_shift").withStyle(ChatFormatting.GRAY));
+        }
+    }
+
+
 
     //block
     public static final RegistryObject<BlockItem> SILVER_ORE = ITEMS.register("silver_ore",
@@ -55,6 +72,9 @@ public class GenesisItems {
 
 
 
+
+
+
     public static final RegistryObject<BlockItem> FADED_STONE = ITEMS.register("faded_stone",
             () -> new BlockItem(GenesisBlocks.FADED_STONE.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<BlockItem> FADED_STONE_STAIRS = ITEMS.register("faded_stone_stairs",
@@ -81,13 +101,41 @@ public class GenesisItems {
     public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder", () -> new Item(new Item.Properties()
-            .food(NightmareRelief.DREAM_POWDER)));
+            .food(NightmareRelief.DREAM_POWDER)){
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            addCommonLore(tooltip, "tooltip.genesis.dream_powder.shift");
+
+            super.appendHoverText(stack, level, tooltip, flag);
+        }
+    });
     public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango", () -> new Item(new Item.Properties()
-            .food(NightmareRelief.DREAM_DANGO)));
+            .food(NightmareRelief.DREAM_DANGO)){
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            addCommonLore(tooltip, "tooltip.genesis.dream_dango.shift");
+
+            super.appendHoverText(stack, level, tooltip, flag);
+        }
+    });
     public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream", () -> new Item(new Item.Properties()
-            .food(NightmareAggravated.REMNANTS_OF_A_DREAM)));
+            .food(NightmareAggravated.REMNANTS_OF_A_DREAM)){
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            addCommonLore(tooltip, "tooltip.genesis.remnants_of_a_dream.shift");
+
+            super.appendHoverText(stack, level, tooltip, flag);
+        }
+    });
     public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory", () -> new Item(new Item.Properties()
-            .stacksTo(16).rarity(Rarity.RARE)));
+            .stacksTo(16).rarity(Rarity.RARE)) {
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            addCommonLore(tooltip, "tooltip.genesis.fragment_of_memory.shift");
+
+            super.appendHoverText(stack, level, tooltip, flag);
+        }
+    });
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CITRINE_SHARD = ITEMS.register("citrine_shard", () -> new Item(new Item.Properties()));
@@ -117,10 +165,12 @@ public class GenesisItems {
     //food
     public static final RegistryObject<Item> AMETHYST_APPLE_SLICES = ITEMS.register("amethyst_apple_slices", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)
             .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.4f).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1), 1.0f).build())));
+    public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING = ITEMS.register("amethyst_apple_pudding", () -> new AmethystApplePuddingItem(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)));
+
 
     //block item
     public static final RegistryObject<Item> AMETHYST_APPLE = ITEMS.register("amethyst_apple", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_BLOCK.get(), new Item.Properties()));
-
+    public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING_BLOCK = ITEMS.register("amethyst_apple_pudding_block", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), new Item.Properties()));
 
 
 //tool,weapon
@@ -217,6 +267,8 @@ public class GenesisItems {
              new Item.Properties()));
     public static final RegistryObject<Item> COLLECTOR_GUARD_SPAWN_EGG = ITEMS.register("collector_guard_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR_GUARD, 0xFFFFFF, 0xFFFFFF,
             new Item.Properties()));
+
+
 
 
 }

@@ -88,6 +88,9 @@ public class GenesisBlocks {
 
 
     //crafting
+    public static final RegistryObject<Block> AMETHYST_APPLE_PUDDING_BLOCK = register("amethyst_apple_pudding_block",
+            () -> new AmethystApplePuddingBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL).sound(SoundType.SLIME_BLOCK).noOcclusion().lightLevel((p_152632_) -> {
+                return 5;})));
 
 
     //Get mob

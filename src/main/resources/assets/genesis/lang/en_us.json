@@ -33,8 +33,10 @@
   "item.genesis.platinum_coin": "Platinum coin",
 
   "item.genesis.amethyst_apple_slices": "Amethyst Apple Slices",
+  "item.genesis.amethyst_apple_pudding": "Amethyst Apple Pudding in a Bowl",
 
   "item.genesis.amethyst_apple": "Amethyst Apple",
+  "item.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",
 
 
   "item.genesis.spirit_compass": "Spirit Compass",
@@ -100,6 +102,7 @@
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.amethyst_apple_block": "Amethyst Apple",
+  "block.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
   "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",
@@ -152,5 +155,14 @@
   "tooltip.genesis.spirit_type.storm": "Storm",
   "tooltip.genesis.spirit_type.lightning": "Lightning",
   "tooltip.genesis.spirit_type.plants": "Nature",
-  "tooltip.genesis.spirit_type.ice": "Frost"
+  "tooltip.genesis.spirit_type.ice": "Frost",
+
+  "tooltip.genesis.pudding_need_bowl": "You need a bowl to scoop the food.",
+
+  "tooltip.genesis.hold_shift": "§7<Hold Shift for more information>",
+
+  "tooltip.genesis.dream_powder.shift": "Sweet powder that brings a fleeting sense of happiness and dispels nightmares.",
+  "tooltip.genesis.dream_dango.shift": "Sweet dango that offers a momentary bliss, only to leave one feeling hollow. and dispels nightmares.",
+  "tooltip.genesis.remnants_of_a_dream.shift":"Devoid of all sensation. It beckons the nightmares.",
+  "tooltip.genesis.fragment_of_memory.shift": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade."
 }
