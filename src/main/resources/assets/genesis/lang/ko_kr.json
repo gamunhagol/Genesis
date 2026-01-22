@@ -84,6 +84,8 @@
   "item.genesis.amethyst_needle": "자수정 바늘",
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
+  "item.genesis.medallion_of_dominion": "지배의 메달",
+
   "item.genesis.hot_spring_bucket": "온천수 양동이",
   "item.genesis.quicksand_bucket": "유사 양동이",
 
@@ -166,5 +168,7 @@
   "tooltip.genesis.dream_powder.shift": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
   "tooltip.genesis.dream_dango.shift": "달콤한 경단, 잠깐의 행복감을 주지만 곧 허무해진다. 악몽을 몰아낸다.",
   "tooltip.genesis.remnants_of_a_dream.shift":"아무것도 느껴지지 않는다. 악몽을 불러온다",
-  "tooltip.genesis.fragment_of_memory.shift": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다"
+  "tooltip.genesis.fragment_of_memory.shift": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다",
+
+  "tooltip.genesis.medallion_of_dominion.shift": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다"
 }

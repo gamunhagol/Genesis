@@ -96,6 +96,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
+        simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
+
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
         simpleItem(GenesisItems.QUICKSAND_BUCKET);
 

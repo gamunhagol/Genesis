@@ -105,6 +105,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
 
+                output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());
+
                 output.accept(GenesisItems.HOT_SPRING_BUCKET.get());
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());
 

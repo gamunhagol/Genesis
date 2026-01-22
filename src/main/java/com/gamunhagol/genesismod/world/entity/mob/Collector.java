@@ -71,31 +71,37 @@ public class Collector extends WanderingTrader {
 
         int infiniteTrades = 99999;
 
-        int copperCost = this.random.nextInt(3) + 1;
-        int copperReward = this.random.nextInt(21) + 20;
+        int copperCost = this.random.nextInt(2) + 3;
+        int copperReward = this.random.nextInt(12) + 21;
         merchantoffers.add(new MerchantOffer(
                 new ItemStack(Items.EMERALD, copperCost),
                 new ItemStack(GenesisItems.COPPER_COIN.get(),copperReward),infiniteTrades,1, 0.7f
         ));
 
-        int silverCost = this.random.nextInt(12) + 7;
-        int silverReward = this.random.nextInt(3) + 2;
+        int silverCost = this.random.nextInt(8) + 12;
+        int silverReward = this.random.nextInt(3) + 3;
         merchantoffers.add(new MerchantOffer(
                 new ItemStack(Items.EMERALD, silverCost),
                 new ItemStack(GenesisItems.SILVER_COIN.get(),silverReward),infiniteTrades,3, 0.7f
         ));
 
-        int goldCost = this.random.nextInt(10) + 6;
-        int goldReward = this.random.nextInt(2) + 1;
+        int goldCost = this.random.nextInt(11) + 6;
+        int goldReward = this.random.nextInt(3) + 1;
         merchantoffers.add(new MerchantOffer(
                 new ItemStack(Items.EMERALD_BLOCK, goldCost),
                 new ItemStack(GenesisItems.GOLD_COIN.get(),goldReward),infiniteTrades,7, 0.7f
         ));
 
-        int platinumCost = this.random.nextInt(50) + 9;
+        int platinumCost = this.random.nextInt(15) + 50;
         merchantoffers.add(new MerchantOffer(
                 new ItemStack(Items.EMERALD_BLOCK, platinumCost),
                 new ItemStack(GenesisItems.PLATINUM_COIN.get(),1),infiniteTrades,15, 0.7f
+        ));
+
+        int platinumReward = this.random.nextInt(7) + 3;
+        merchantoffers.add(new MerchantOffer(
+                new ItemStack(GenesisItems.MEDALLION_OF_DOMINION.get(), 1),
+                new ItemStack(GenesisItems.PLATINUM_COIN.get(),platinumReward),infiniteTrades,16, 0.7f
         ));
     }
 

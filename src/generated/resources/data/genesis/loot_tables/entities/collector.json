@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:entity",
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "chance": 1.0E-4,
+          "condition": "minecraft:random_chance"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "genesis:medallion_of_dominion"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ],
+  "random_sequence": "genesis:entities/collector"
+}

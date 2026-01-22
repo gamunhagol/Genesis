@@ -252,6 +252,17 @@ public class GenesisItems {
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
 
+    public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion", () -> new Item(new Item.Properties()
+            .rarity(Rarity.COMMON)) {
+        @Override
+        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
+            addCommonLore(tooltip, "tooltip.genesis.medallion_of_dominion.shift");
+
+            super.appendHoverText(stack, level, tooltip, flag);
+        }
+    });
+
+
 
     public static final RegistryObject<Item> HOT_SPRING_BUCKET =
             ITEMS.register("hot_spring_bucket",

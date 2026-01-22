@@ -318,7 +318,7 @@ public class CollectorGuard extends Monster implements RangedAttackMob, Crossbow
         if (!this.level().isClientSide) {
             // 성능을 위해 1초(20틱)마다 징수원 존재 여부 체크
             if (this.tickCount % 20 == 0) {
-                List<Collector> list = this.level().getEntitiesOfClass(Collector.class, this.getBoundingBox().inflate(16.0D));
+                List<Collector> list = this.level().getEntitiesOfClass(Collector.class, this.getBoundingBox().inflate(24.0D));
 
                 if (list.isEmpty()) {
                     // 징수원이 없으면 타이머에서 20틱(1초) 차감
@@ -347,5 +347,9 @@ public class CollectorGuard extends Monster implements RangedAttackMob, Crossbow
         if (pCompound.contains("DespawnTimer")) {
             this.despawnTimer = pCompound.getInt("DespawnTimer");
         }
+    }
+    //경험치
+    protected int getExperienceReward(Player player) {
+        return 5 + this.random.nextInt(5);
     }
 }

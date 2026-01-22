@@ -83,6 +83,8 @@
   "item.genesis.amethyst_needle": "Amethyst Needle",
   "item.genesis.pewriese_upgrade_smithing_template": "Pewriese Upgrade Smithing Template",
 
+  "item.genesis.medallion_of_dominion": "Medallion of Dominion",
+
   "item.genesis.hot_spring_bucket": "Hot Spring Bucket",
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
 
@@ -164,5 +166,7 @@
   "tooltip.genesis.dream_powder.shift": "Sweet powder that brings a fleeting sense of happiness and dispels nightmares.",
   "tooltip.genesis.dream_dango.shift": "Sweet dango that offers a momentary bliss, only to leave one feeling hollow. and dispels nightmares.",
   "tooltip.genesis.remnants_of_a_dream.shift":"Devoid of all sensation. It beckons the nightmares.",
-  "tooltip.genesis.fragment_of_memory.shift": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade."
+  "tooltip.genesis.fragment_of_memory.shift": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
+
+  "tooltip.genesis.medallion_of_dominion.shift": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain."
 }
