@@ -113,6 +113,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimpleBlockItem(GenesisBlocks.FADED_STONE_SLAB);
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
+        this.withExistingParent("faded_chest", modLoc("block/faded_chest_closed"));
+
+
+
         // ─────────────── 방어구 ───────────────
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_HELMET);
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_CHESTPLATE);
@@ -210,6 +214,8 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .texture("wall",
                         new ResourceLocation(GenesisMod.MODID, "block/" + ForgeRegistries.BLOCKS.getKey(baseBlock.get()).getPath()));
     }
+
+
 
     private void trimmedArmorItem(RegistryObject<Item> itemRegistryObject) {
         final String MOD_ID = GenesisMod.MODID;

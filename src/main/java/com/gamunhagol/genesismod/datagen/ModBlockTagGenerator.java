@@ -33,12 +33,14 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.BLUE_CRYSTAL_BLOCK.get()
                         ,GenesisBlocks.RED_CRYSTAL_CLUSTER.get()
                         ,GenesisBlocks.CITRINE_CLUSTER.get()
-                        ,GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get());
+                        ,GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get()
+                        ,GenesisBlocks.AEK_STATUE.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
-                ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
+                ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
+                        ,GenesisBlocks.AEK_STATUE.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(GenesisBlocks.SILVER_ORE.get()

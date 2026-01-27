@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "locked=false,open=false": {
+      "model": "genesis:block/faded_chest_closed"
+    },
+    "locked=false,open=true": {
+      "model": "genesis:block/faded_chest_opened"
+    },
+    "locked=true,open=false": {
+      "model": "genesis:block/faded_chest_closed"
+    },
+    "locked=true,open=true": {
+      "model": "genesis:block/faded_chest_opened"
+    }
+  }
+}

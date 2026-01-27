@@ -1,9 +1,7 @@
 package com.gamunhagol.genesismod.datagen;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.block.AmethystAppleBlock;
-import com.gamunhagol.genesismod.world.block.AmethystApplePuddingBlock;
-import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.block.*;
 import net.minecraft.core.Direction;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
@@ -37,9 +35,38 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(GenesisBlocks.FADED_STONE);
         blockWithItem(GenesisBlocks.FADED_BRICK);
-        blockWithItem(GenesisBlocks.FADED_GATEWAY);
         blockWithItem(GenesisBlocks.CHISELED_FADED_BRICK);
 
+
+        getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())
+                .forAllStates(state -> {
+                    int light = state.getValue(FadedGatewayBlock.LIGHT_LEVEL);
+                    // 5 이하는 정지된 기본 모델, 그 외(15)는 애니메이션 모델 사용
+                    String modelName = (light <= 5) ? "faded_gateway" : "enable_faded_gateway";
+                    return ConfiguredModel.builder()
+                            .modelFile(models().cubeAll(modelName, modLoc("block/" + modelName)))
+                            .build();
+                });
+        // 아이템 모델 설정 (인벤토리에서는 항상 꺼진 상태인 faded_gateway 사용)
+        simpleBlockItem(GenesisBlocks.FADED_GATEWAY.get(),
+                models().cubeAll("faded_gateway", modLoc("block/faded_gateway")));
+
+        getVariantBuilder(GenesisBlocks.FADED_CHEST.get())
+                .forAllStates(state -> {
+                    boolean isOpen = state.getValue(FadedChestBlock.OPEN);
+                    String topTexture = isOpen ? "faded_chest_top_open" : "faded_chest_top";
+
+                    return ConfiguredModel.builder()
+                            .modelFile(models().cube("faded_chest_" + (isOpen ? "opened" : "closed"),
+                                    modLoc("block/faded_stone"),
+                                    modLoc("block/" + topTexture),
+                                    modLoc("block/faded_chest_side"),
+                                    modLoc("block/faded_chest_side"),
+                                    modLoc("block/faded_chest_side"),
+                                    modLoc("block/faded_chest_side")
+                            ).texture("particle", modLoc("block/faded_chest_side")))
+                            .build();
+                });
 
 
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
@@ -49,25 +76,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_hanging"))).addModel();
 
 
-        getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get())
-                .forAllStates(state -> {
-                    int portions = state.getValue(AmethystApplePuddingBlock.PORTIONS);
-                    Direction facing = state.getValue(AmethystApplePuddingBlock.FACING);
-
-                    String modelName = switch (portions) {
-                        case 0 -> "pudding_full";
-                        case 1 -> "pudding_stage1";
-                        case 2 -> "pudding_stage2";
-                        case 3 -> "pudding_stage3";
-                        case 4 -> "pudding_empty";
-                        default -> "pudding_full";
-                    };
-
-                    return ConfiguredModel.builder()
-                            .modelFile(models().getExistingFile(modLoc("block/" + modelName)))
-                            .rotationY((int) facing.toYRot())
-                            .build();
-                });
 
 
         stairsBlock(((StairBlock) GenesisBlocks.FADED_STONE_STAIRS.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
@@ -87,6 +95,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         clusterBlock(GenesisBlocks.RED_CRYSTAL_CLUSTER);
 
 
+
+        simpleBlockWithItem(GenesisBlocks.AEK_STATUE.get(),
+                models().cubeAll("ancient_elf_knight_statue", modLoc("block/faded_stone")));
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

@@ -129,8 +129,14 @@
   "block.genesis.faded_brick_stairs": "빛바랜 벽돌 계단",
   "block.genesis.faded_brick_wall": "빛바랜 벽돌 담장",
 
+  "block.genesis.faded_chest": "빛바랜 상자",
+
   "block.genesis.hot_spring_block": "온천수",
   "block.genesis.quicksand_block": "유사",
+
+
+
+  "block.genesis.ancient_elf_knight_statue": "고대 엘프 기사상",
 
 
   "entity.genesis.collector": "징수원",
@@ -138,6 +144,9 @@
 
 
 
+
+
+  "container.genesis.faded_chest": "빛바랜 상자",
 
 
   "itemGroup.genesis.items": "창세기 아이템",

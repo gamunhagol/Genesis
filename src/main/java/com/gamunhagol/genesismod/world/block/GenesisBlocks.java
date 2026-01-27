@@ -106,7 +106,7 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> FADED_PILLAR = register("faded_pillar",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_GATEWAY = register("faded_gateway",
-            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+            () -> new FadedGatewayBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable().lightLevel(state -> 15)));
 
     public static final RegistryObject<Block> FADED_STONE_STAIRS = register("faded_stone_stairs",
             () -> new StairBlock(() -> GenesisBlocks.FADED_STONE.get().defaultBlockState(),
@@ -120,6 +120,14 @@ public class GenesisBlocks {
             () -> new SlabBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
     public static final RegistryObject<Block> FADED_BRICK_WALL = register("faded_brick_wall",
             () -> new WallBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable()));
+
+
+    public static final RegistryObject<Block> FADED_CHEST = register("faded_chest",
+            () -> new FadedChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable().lightLevel(state -> 6)));
+
+
+    public static final RegistryObject<Block> AEK_STATUE = register("ancient_elf_knight_statue",
+            () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {

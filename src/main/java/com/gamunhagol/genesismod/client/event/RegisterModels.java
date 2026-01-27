@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
+import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
@@ -62,6 +63,8 @@ public class RegisterModels {
 
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
+
+
     }
 
     @SubscribeEvent
@@ -69,5 +72,7 @@ public class RegisterModels {
         // 엔티티와 렌더러를 연결합니다.
         event.registerEntityRenderer(GenesisEntities.COLLECTOR.get(), CollectorRenderer::new);
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
+
     }
+    
 }

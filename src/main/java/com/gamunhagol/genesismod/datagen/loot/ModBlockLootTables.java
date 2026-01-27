@@ -82,6 +82,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .apply(ApplyExplosionDecay.explosionDecay())
                 ));
 
+        this.add(GenesisBlocks.AEK_STATUE.get(),
+                block -> LootTable.lootTable().withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyExplosionDecay.explosionDecay()))
+                )
+        );
+
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {

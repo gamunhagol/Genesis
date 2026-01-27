@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "genesis:block/faded_stone",
+    "east": "genesis:block/faded_chest_side",
+    "north": "genesis:block/faded_chest_side",
+    "particle": "genesis:block/faded_chest_side",
+    "south": "genesis:block/faded_chest_side",
+    "up": "genesis:block/faded_chest_top",
+    "west": "genesis:block/faded_chest_side"
+  }
+}

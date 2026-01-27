@@ -126,8 +126,14 @@
   "block.genesis.faded_brick_stairs": "Faded Brick Stairs",
   "block.genesis.faded_brick_wall": "Faded Brick Wall",
 
+  "block.genesis.faded_chest": "Faded Chest",
+
   "block.genesis.hot_spring_block": "Hot Spring",
   "block.genesis.quicksand_block": "Quicksand",
+
+
+
+  "block.genesis.ancient_elf_knight_statue": "Ancient Elf Knight Statue",
 
 
   "entity.genesis.collector": "Collector",
@@ -135,6 +141,9 @@
 
 
 
+
+
+  "container.genesis.faded_chest": "Faded Chest",
 
 
   "itemGroup.genesis.items": "Genesis Items",

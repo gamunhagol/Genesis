@@ -95,6 +95,11 @@ public class GenesisItems {
             () -> new BlockItem(GenesisBlocks.FADED_BRICK_SLAB.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<BlockItem> FADED_BRICK_WALL = ITEMS.register("faded_brick_wall",
             () -> new BlockItem(GenesisBlocks.FADED_BRICK_WALL.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> FADED_CHEST = ITEMS.register("faded_chest",
+            () -> new BlockItem(GenesisBlocks.FADED_CHEST.get(), new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<BlockItem> AEK_STATUE = ITEMS.register("ancient_elf_knight_statue",
+            () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
 
 
     //item
