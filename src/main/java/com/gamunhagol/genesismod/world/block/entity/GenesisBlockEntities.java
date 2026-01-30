@@ -17,6 +17,11 @@ public class GenesisBlockEntities {
                     BlockEntityType.Builder.of(FadedChestBlockEntity::new,
                             GenesisBlocks.FADED_CHEST.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<StatueBlockEntity>> STATUE_BE =
+            BLOCK_ENTITIES.register("statue_be", () ->
+                    BlockEntityType.Builder.of(StatueBlockEntity::new, // 여기를 고치세요!
+                            GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<AEKStatueBlockEntity>> AEK_STATUE_BE =
             BLOCK_ENTITIES.register("aek_statue_be", () ->
                     BlockEntityType.Builder.of(AEKStatueBlockEntity::new,

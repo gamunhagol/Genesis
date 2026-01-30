@@ -126,6 +126,10 @@ public class GenesisBlocks {
             () -> new FadedChestBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW).noLootTable().lightLevel(state -> 6)));
 
 
+    public static final RegistryObject<Block> STATUE_OF_SENTINEL_OF_OBLIVION = register("statue_of_sentinel_of_oblivion",
+            () -> new StatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW)
+                    .noLootTable().noOcclusion()));
+
     public static final RegistryObject<Block> AEK_STATUE = register("ancient_elf_knight_statue",
             () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)));
 

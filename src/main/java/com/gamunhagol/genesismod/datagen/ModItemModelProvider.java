@@ -104,6 +104,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.COLLECTOR_SPAWN_EGG);
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
 
+        simpleItem(GenesisItems.STATUE_OF_SENTINEL_OF_OBLIVION);
+
 
         // ─────────────── 블록 아이템 ───────────────
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
@@ -114,6 +116,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
         this.withExistingParent("faded_chest", modLoc("block/faded_chest_closed"));
+
 
 
 

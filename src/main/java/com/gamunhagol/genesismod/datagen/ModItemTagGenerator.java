@@ -21,6 +21,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
             Registries.ITEM, new ResourceLocation(GenesisMod.MODID, "spirit_stone")
     );
 
+
     public ModItemTagGenerator(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
         super(pOutput, pLookupProvider, pBlockTags, GenesisMod.MODID, existingFileHelper);
     }
@@ -44,6 +45,8 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.PADDED_CHAIN_LEGGINGS.get(),
                 GenesisItems.PADDED_CHAIN_BOOTS.get()
         );
+
+
 
     }
 

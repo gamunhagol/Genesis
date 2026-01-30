@@ -98,6 +98,8 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> FADED_CHEST = ITEMS.register("faded_chest",
             () -> new BlockItem(GenesisBlocks.FADED_CHEST.get(), new Item.Properties().fireResistant()));
 
+
+
     public static final RegistryObject<BlockItem> AEK_STATUE = ITEMS.register("ancient_elf_knight_statue",
             () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
 
@@ -177,6 +179,9 @@ public class GenesisItems {
     public static final RegistryObject<Item> AMETHYST_APPLE = ITEMS.register("amethyst_apple", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING_BLOCK = ITEMS.register("amethyst_apple_pudding_block", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), new Item.Properties()));
 
+
+    public static final RegistryObject<Item> STATUE_OF_SENTINEL_OF_OBLIVION = ITEMS.register("statue_of_sentinel_of_oblivion",
+            () -> new BlockItem(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(), new Item.Properties()));
 
 //tool,weapon
 

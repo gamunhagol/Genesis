@@ -68,12 +68,35 @@ public class ModBlockStateProvider extends BlockStateProvider {
                             .build();
                 });
 
+        simpleBlock(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(),
+                models().cubeAll("statue_of_sentinel_of_oblivion", modLoc("block/statue_of_sentinel_of_oblivion")));
 
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_ground"))).addModel()
                 .partialState().with(AmethystAppleBlock.HANGING, true)
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_hanging"))).addModel();
+
+        getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get())
+                .forAllStates(state -> {
+                    int portions = state.getValue(AmethystApplePuddingBlock.PORTIONS);
+                    String modelName;
+
+                    switch (portions) {
+                        case 0 -> modelName = "pudding_full";
+                        case 1 -> modelName = "pudding_stage1";
+                        case 2 -> modelName = "pudding_stage2";
+                        case 3 -> modelName = "pudding_stage3";
+                        case 4 -> modelName = "pudding_empty";
+                        default -> modelName = "pudding_full";
+                    }
+
+                    // 방향(FACING)에 따른 모델 회전 적용
+                    return ConfiguredModel.builder()
+                            .modelFile(models().getExistingFile(modLoc("block/" + modelName)))
+                            .rotationY((int) state.getValue(AmethystApplePuddingBlock.FACING).toYRot())
+                            .build();
+                });
 
 
 

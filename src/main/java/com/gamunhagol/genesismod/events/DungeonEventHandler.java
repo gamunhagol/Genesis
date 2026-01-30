@@ -20,7 +20,7 @@ public class DungeonEventHandler {
         ServerLevel level = event.getLevel();
         BlockPos origin = event.getPos();
 
-        // 탐색 범위 설정 (관문 주변 10칸 정도)
+        // 탐색 범위 설정
         int range = 100;
 
 
@@ -31,7 +31,7 @@ public class DungeonEventHandler {
                     BlockState state = level.getBlockState(targetPos);
 
                     //특정 블럭을 정해진 몹으로 변환(파괴후 생성)
-                    if (state.is(GenesisBlocks.FADED_BRICK.get())) {
+                    if (state.is(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get())) {
                         level.removeBlock(targetPos, false);
                         EntityType.PIG.spawn(level, targetPos, MobSpawnType.EVENT);
                     }
