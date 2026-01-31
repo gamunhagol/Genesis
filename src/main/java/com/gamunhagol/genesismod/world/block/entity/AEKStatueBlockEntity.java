@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.block.entity;
 
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.util.IFadedDungeonElement;
 import com.gamunhagol.genesismod.world.block.AEKStatueBlock;
 import net.minecraft.core.BlockPos;
@@ -24,15 +25,16 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
     public static void tick(Level level, BlockPos pos, BlockState state, AEKStatueBlockEntity be) {
         if (!state.getValue(AEKStatueBlock.LOCKED)) {
             if (level.isClientSide) {
-                // 녹색 불꽃 (Dust 입자 활용)
-                // new Vector3f(R, G, B), 크기(scale)
-                // 녹색: 0.0f, 1.0f, 0.0f
-                if (level.random.nextFloat() < 0.4f) {
-                    level.addParticle(new DustParticleOptions(new org.joml.Vector3f(0.0f, 1.0f, 0.2f), 1.5f),
-                            pos.getX() + 0.5 + (level.random.nextFloat() - 0.5) * 0.4,
+                // 확률적으로 파티클 생성 (0.4f = 40% 확률)
+                if (level.random.nextFloat() < 0.2f) {
+                    double offsetX = (level.random.nextFloat() - 0.5) * 0.1;
+                    double offsetZ = (level.random.nextFloat() - 0.5) * 0.1;
+
+                    level.addParticle(GenesisParticles.GREEN_FLAME.get(),
+                            pos.getX() + 0.5 + offsetX,
                             pos.getY() + 1.2,
-                            pos.getZ() + 0.5 + (level.random.nextFloat() - 0.5) * 0.4,
-                            0, 0.05, 0);
+                            pos.getZ() + 0.5 + offsetZ,
+                            0.0, 0.02, 0.0); // Y축 속도도 0.03에서 0.02로 약간 낮춤
                 }
             }
 

@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.main;
 
 import com.gamunhagol.genesismod.data.loot.GenesisLootTables;
 import com.gamunhagol.genesismod.gameasset.GenesisSounds;
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
@@ -44,6 +45,8 @@ public class GenesisMod {
         GenesisCreativeTabs.TABS.register(modEventBus);
         GenesisSounds.SOUNDS.register(modEventBus);
         GenesisLootTables.LOOT_MODIFIERS.register(modEventBus);
+
+        GenesisParticles.PARTICLE_TYPES.register(modEventBus);
 
 
         com.gamunhagol.genesismod.data.recipe.ModRecipeSerializers.SERIALIZERS.register(FMLJavaModLoadingContext.get().getModEventBus());

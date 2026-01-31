@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "level=0":  { "model": "genesis:block/hot_spring_block" },
+    "level=1":  { "model": "genesis:block/hot_spring_block" },
+    "level=2":  { "model": "genesis:block/hot_spring_block" },
+    "level=3":  { "model": "genesis:block/hot_spring_block" },
+    "level=4":  { "model": "genesis:block/hot_spring_block" },
+    "level=5":  { "model": "genesis:block/hot_spring_block" },
+    "level=6":  { "model": "genesis:block/hot_spring_block" },
+    "level=7":  { "model": "genesis:block/hot_spring_block" },
+    "level=8":  { "model": "genesis:block/hot_spring_block" },
+    "level=9":  { "model": "genesis:block/hot_spring_block" },
+    "level=10": { "model": "genesis:block/hot_spring_block" },
+    "level=11": { "model": "genesis:block/hot_spring_block" },
+    "level=12": { "model": "genesis:block/hot_spring_block" },
+    "level=13": { "model": "genesis:block/hot_spring_block" },
+    "level=14": { "model": "genesis:block/hot_spring_block" },
+    "level=15": { "model": "genesis:block/hot_spring_block" }
+  }
+}
