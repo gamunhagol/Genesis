@@ -1,0 +1,11 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 0.019,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/jungle_temple"
+    }
+  ],
+  "item": "genesis:spirit_compass"
+}

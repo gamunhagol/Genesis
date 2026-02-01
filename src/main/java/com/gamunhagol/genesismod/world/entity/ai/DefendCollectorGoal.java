@@ -22,20 +22,20 @@ public class DefendCollectorGoal extends TargetGoal {
 
     @Override
     public boolean canUse() {
-        // 주변 16블록 내의 징수원을 찾습니다.
         List<Collector> list = this.guard.level().getEntitiesOfClass(Collector.class, this.guard.getBoundingBox().inflate(16.0D));
         if (list.isEmpty()) return false;
 
         for (Collector collector : list) {
-            // 정확한 메서드 명칭은 getLastHurtByMobTimestamp입니다.
-            int currentTimestamp = collector.getLastHurtByMobTimestamp();
-            LivingEntity lastAttacker = collector.getLastHurtByMob();
+            int i = collector.getLastHurtByMobTimestamp();
+            LivingEntity attacker = collector.getLastHurtByMob();
 
-            // 마지막 공격 시간이 갱신되었고, 공격자가 살아있다면 타겟으로 잡습니다.
-            if (currentTimestamp != this.lastTimestamp && lastAttacker != null) {
-                this.attacker = lastAttacker;
-                this.lastTimestamp = currentTimestamp;
-                return true;
+            // [수정] 공격자가 있고 + 타임스탬프가 다르고 + "최근 200틱(10초) 이내에 맞았을 때만" 반응
+            if (i != this.lastTimestamp && attacker != null) {
+                if (this.guard.tickCount - i < 200) { // <-- 시간 체크 추가 권장 (선택사항이지만 넣는 게 자연스러움)
+                    this.attacker = attacker;
+                    this.lastTimestamp = i;
+                    return true;
+                }
             }
         }
         return false;

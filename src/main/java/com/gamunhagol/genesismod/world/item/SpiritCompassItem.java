@@ -34,6 +34,15 @@ public class SpiritCompassItem extends CompassItem {
     public static final String KEY_NEEDLE_TYPE = "NeedleType";
     public static final String KEY_TARGET = "TargetStructure";
 
+    private static final Vector3f COLOR_FIRE      = new Vector3f(1.00f, 0.35f, 0.35f);
+    private static final Vector3f COLOR_WATER     = new Vector3f(0.38f, 0.56f, 1.00f);
+    private static final Vector3f COLOR_EARTH     = new Vector3f(1.00f, 0.74f, 0.36f);
+    private static final Vector3f COLOR_STORM     = new Vector3f(0.60f, 0.76f, 0.82f);
+    private static final Vector3f COLOR_LIGHTNING = new Vector3f(0.95f, 1.00f, 0.49f);
+    private static final Vector3f COLOR_PLANTS    = new Vector3f(0.49f, 1.00f, 0.53f);
+    private static final Vector3f COLOR_ICE       = new Vector3f(0.54f, 0.85f, 0.95f);
+    private static final Vector3f COLOR_DEFAULT   = new Vector3f(1.00f, 1.00f, 1.00f);
+
     public SpiritCompassItem(Properties props) {
         super(props);
     }
@@ -80,16 +89,15 @@ public class SpiritCompassItem extends CompassItem {
     public String getDescriptionId(ItemStack stack) { return "item.genesis.spirit_compass"; }
 
     private static Vector3f colorFor(String type) {
-        // 0.0~1.0 범위 RGB
         return switch (type) {
-            case "fire"      -> new Vector3f(1.00f, 0.35f, 0.35f);
-            case "water"     -> new Vector3f(0.38f, 0.56f, 1.00f);
-            case "earth"     -> new Vector3f(1.00f, 0.74f, 0.36f);
-            case "storm"     -> new Vector3f(0.60f, 0.76f, 0.82f);
-            case "lightning" -> new Vector3f(0.95f, 1.00f, 0.49f);
-            case "plants"    -> new Vector3f(0.49f, 1.00f, 0.53f);
-            case "ice"       -> new Vector3f(0.54f, 0.85f, 0.95f);
-            default          -> new Vector3f(1.00f, 1.00f, 1.00f);
+            case "fire"      -> COLOR_FIRE;
+            case "water"     -> COLOR_WATER;
+            case "earth"     -> COLOR_EARTH;
+            case "storm"     -> COLOR_STORM;
+            case "lightning" -> COLOR_LIGHTNING;
+            case "plants"    -> COLOR_PLANTS;
+            case "ice"       -> COLOR_ICE;
+            default          -> COLOR_DEFAULT;
         };
     }
 
@@ -97,7 +105,7 @@ public class SpiritCompassItem extends CompassItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 🔸 쿨다운 중이면 무시
+        // 1. 쿨다운 체크
         if (player.getCooldowns().isOnCooldown(this)) {
             if (level.isClientSide) {
                 player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 0.5f, 1.6f);
@@ -105,49 +113,58 @@ public class SpiritCompassItem extends CompassItem {
             return InteractionResultHolder.fail(stack);
         }
 
-        // 🔹 서버 측 처리
+        // 2. 서버 측 로직
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
             CompoundTag tag = stack.getOrCreateTag();
             String targetStr = tag.getString(KEY_TARGET);
+            String needleType = tag.getString(KEY_NEEDLE_TYPE);
+
             if (targetStr == null || targetStr.isEmpty()) {
                 player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.no_target").withStyle(ChatFormatting.RED), true);
                 return InteractionResultHolder.fail(stack);
             }
 
-            BlockPos target = SpiritStructureFinder.findNearest(serverLevel, targetStr, player.blockPosition(), 1200);
+            // 쿨다운 즉시 적용 (중복 클릭 방지)
+            player.getCooldowns().addCooldown(this, 100);
 
-            if (target == null) {
-                player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.not_found").withStyle(ChatFormatting.GRAY), true);
-                return InteractionResultHolder.fail(stack);
-            }
+            BlockPos playerPos = player.blockPosition();
 
-            // 🔹 사운드 재생 (한 번만)
-            serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+            //  비동기 탐색: 별도의 스레드에서 구조물을 찾습니다.
+            java.util.concurrent.CompletableFuture.supplyAsync(() -> {
+                List<String> targetList = java.util.Arrays.asList(targetStr.split(","));
 
-            // 🔹 방향 계산 및 파티클 생성 (중복 제거)
-            double dx = target.getX() + 0.5 - player.getX();
-            double dy = (target.getY() + 1.5) - player.getEyeY();
-            double dz = target.getZ() + 0.5 - player.getZ();
-            double len = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
-            dx /= len; dy /= len; dz /= len;
-
-            String needle = tag.getString(KEY_NEEDLE_TYPE);
-            DustParticleOptions dust = new DustParticleOptions(colorFor(needle), 1.2f);
-
-            // 7블록 정도만 색상 파티클로 표시
-            for (int i = 1; i <= 14; i++) {
-                double t = i * 0.5;
-                serverLevel.sendParticles(dust, player.getX() + dx * t, player.getEyeY() + dy * t, player.getZ() + dz * t, 4, 0.02, 0.02, 0.02, 0.0);
-            }
-
-
-            // ⏳ 쿨다운 5초
-            player.getCooldowns().addCooldown(this, 100); // 100 tick = 5초
-
+                return SpiritStructureFinder.findNearest(serverLevel, targetList, playerPos, 1200);
+            }).thenAccept(target -> {
+                // 탐색이 완료되면 다시 메인 스레드에서 결과를 처리합니다.
+                serverLevel.getServer().execute(() -> {
+                    if (target != null && player.isAlive()) {
+                        // 성공 이펙트 실행
+                        this.spawnCompassParticles(serverLevel, player, target, needleType);
+                        serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
+                                SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+                    } else {
+                        player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.not_found").withStyle(ChatFormatting.GRAY), true);
+                    }
+                });
+            });
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
+    }
+
+    // 파티클 생성 로직을 별도 메서드로 분리 (가독성용)
+    private void spawnCompassParticles(ServerLevel serverLevel, Player player, BlockPos target, String needle) {
+        double dx = target.getX() + 0.5 - player.getX();
+        double dy = (target.getY() + 1.5) - player.getEyeY();
+        double dz = target.getZ() + 0.5 - player.getZ();
+        double len = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
+        dx /= len; dy /= len; dz /= len;
+
+        net.minecraft.core.particles.DustParticleOptions dust = new net.minecraft.core.particles.DustParticleOptions(colorFor(needle), 1.2f);
+        for (int i = 1; i <= 14; i++) {
+            double t = i * 0.5;
+            serverLevel.sendParticles(dust, player.getX() + dx * t, player.getEyeY() + dy * t, player.getZ() + dz * t, 4, 0.02, 0.02, 0.02, 0.0);
+        }
     }
 
 }

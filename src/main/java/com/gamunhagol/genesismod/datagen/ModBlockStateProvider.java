@@ -35,7 +35,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(GenesisBlocks.FADED_STONE);
         blockWithItem(GenesisBlocks.FADED_BRICK);
-        blockWithItem(GenesisBlocks.CHISELED_FADED_BRICK);
+
 
 
         getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())
@@ -100,6 +100,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
 
+
+        simpleBlock(GenesisBlocks.CHISELED_FADED_BRICK.get(),
+                models().cubeColumn(
+                        "chiseled_faded_brick", // 모델 파일 이름
+                        blockTexture(GenesisBlocks.CHISELED_FADED_BRICK.get()), // 옆면 텍스처 (기본)
+                        new ResourceLocation(GenesisMod.MODID, "block/chiseled_faded_brick_top") // 윗면/아랫면 텍스처
+                )
+        );
 
         stairsBlock(((StairBlock) GenesisBlocks.FADED_STONE_STAIRS.get()), blockTexture(GenesisBlocks.FADED_STONE.get()));
         stairsBlock(((StairBlock) GenesisBlocks.FADED_BRICK_STAIRS.get()), blockTexture(GenesisBlocks.FADED_BRICK.get()));

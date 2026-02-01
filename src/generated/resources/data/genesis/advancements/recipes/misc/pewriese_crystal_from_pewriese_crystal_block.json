@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_dream_powder": {
+    "has_pewriese_crystal_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:dream_powder"
+              "genesis:pewriese_crystal_block"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "genesis:dream_dango"
+        "recipe": "genesis:pewriese_crystal_from_pewriese_crystal_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_dream_powder",
+      "has_pewriese_crystal_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "genesis:dream_dango"
+      "genesis:pewriese_crystal_from_pewriese_crystal_block"
     ]
   },
   "sends_telemetry_event": false

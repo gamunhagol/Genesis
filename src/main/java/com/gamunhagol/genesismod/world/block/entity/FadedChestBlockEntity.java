@@ -21,7 +21,9 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
     // 27칸 인벤토리
     private final ItemStackHandler inventory = new ItemStackHandler(27) {
         @Override
-        protected void onContentsChanged(int slot) { setChanged(); }
+        protected void onContentsChanged(int slot) {
+            setChanged();
+        }
     };
 
     public FadedChestBlockEntity(BlockPos pPos, BlockState pBlockState) {
@@ -53,17 +55,6 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
         return Component.translatable("container.genesis.faded_chest");
     }
 
-    @Override
-    protected void saveAdditional(CompoundTag pTag) {
-        pTag.put("inventory", inventory.serializeNBT());
-        super.saveAdditional(pTag);
-    }
-
-    @Override
-    public void load(CompoundTag pTag) {
-        super.load(pTag);
-        inventory.deserializeNBT(pTag.getCompound("inventory"));
-    }
     public void startOpen(Player pPlayer) {
         if (!pPlayer.isSpectator() && this.level != null) {
             // 창을 열 때 OPEN을 true로 변경
@@ -87,14 +78,39 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
     }
 
     @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        // 키 이름을 "inventory" 대신 더 명확하게 하거나,
+        // 핸들러 자체의 serialize를 믿고 넣어줍니다.
+        pTag.put("genesis_inventory", this.inventory.serializeNBT());
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        // 저장할 때 쓴 키와 똑같은 키로 읽어와야 합니다.
+        if (pTag.contains("genesis_inventory")) {
+            this.inventory.deserializeNBT(pTag.getCompound("genesis_inventory"));
+        }
+    }
+
+    @Override
     public AbstractContainerMenu createMenu(int pId, Inventory pInv, Player pPlayer) {
-        this.startOpen(pPlayer); // 열기 시작
-        return ChestMenu.threeRows(pId, pInv, new SimpleContainerWrapper(this.inventory) {
-            @Override
-            public void stopOpen(Player player) {
-                super.stopOpen(player);
-                FadedChestBlockEntity.this.stopOpen(player); // 닫기 완료
-            }
-        });
+        this.startOpen(pPlayer);
+        return ChestMenu.threeRows(pId, pInv, new SimpleContainerWrapper(this.inventory));
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        CompoundTag tag = super.getUpdateTag();
+        saveAdditional(tag);
+        return tag;
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag) {
+        if (tag != null) {
+            load(tag);
+        }
     }
 }

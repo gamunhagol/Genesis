@@ -286,7 +286,7 @@ public class CollectorGuard extends Monster implements RangedAttackMob, Crossbow
                     zombie.setItemSlot(slot, guardItem.copy());
 
 
-                    zombie.setDropChance(slot, 0.45F);
+                    zombie.setDropChance(slot, 0.05F);
                 }
                 if (this.hasCustomName()) {
                     zombie.setCustomName(this.getCustomName());

@@ -16,7 +16,7 @@ public class CollectorSpawner {
     public void tick(ServerLevel level) {
         if (--this.spawnDelay <= 0) {
             this.spawnDelay = 72000; //3일
-            attemptSpawn(level);
+            if (level.random.nextFloat() < 0.25F) attemptSpawn(level);
         }
     }
     private void attemptSpawn(ServerLevel level) {

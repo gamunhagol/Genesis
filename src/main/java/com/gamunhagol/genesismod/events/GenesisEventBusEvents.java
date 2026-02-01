@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
@@ -9,7 +10,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 
-@Mod.EventBusSubscriber(modid = "genesis", bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class GenesisEventBusEvents {
 
     @SubscribeEvent

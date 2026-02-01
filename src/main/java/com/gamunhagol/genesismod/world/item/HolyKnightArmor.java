@@ -11,9 +11,9 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 
-public class Holy_Knight_Armor extends ArmorItem {
+public class HolyKnightArmor extends ArmorItem {
 
-    public Holy_Knight_Armor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
+    public HolyKnightArmor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
         super(pMaterial, pType, pProperties);
     }
 

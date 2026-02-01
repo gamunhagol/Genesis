@@ -12,13 +12,13 @@ import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 
-/**
- * 🏜️ QuicksandFluidType
- * 유사 전용 FluidType 렌더 설정:
- * - 용암 텍스처 기반 (더 꾸덕한 시각 효과)
- * - 짙은 갈색 안개/시야 (잠기면 앞이 안 보임)
- */
 public class QuicksandFluidType extends FluidType {
+
+    // [최적화] 상수화: 텍스처 경로와 안개 색상을 미리 정의
+    private static final ResourceLocation QUICKSAND_STILL = new ResourceLocation(GenesisMod.MODID, "block/quicksand_still");
+    private static final ResourceLocation QUICKSAND_FLOW = new ResourceLocation(GenesisMod.MODID, "block/quicksand_flow");
+
+    private static final Vector3f FOG_COLOR = new Vector3f(0.85F, 0.81F, 0.63F);
 
     public QuicksandFluidType(Properties properties) {
         super(properties);
@@ -28,33 +28,25 @@ public class QuicksandFluidType extends FluidType {
     public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
         consumer.accept(new IClientFluidTypeExtensions() {
 
-            // 텍스처를 lava로 바꾸면 water보다 훨씬 점도가 있어 보입니다.
-            private static final ResourceLocation STILL = new ResourceLocation(GenesisMod.MODID, "block/quicksand_still");
-            private static final ResourceLocation FLOW = new ResourceLocation(GenesisMod.MODID, "block/quicksand_flow");
+            @Override
+            public ResourceLocation getStillTexture() { return QUICKSAND_STILL; }
 
             @Override
-            public ResourceLocation getStillTexture() {
-                return STILL;
-            }
-
-            @Override
-            public ResourceLocation getFlowingTexture() {
-                return FLOW;
-            }
+            public ResourceLocation getFlowingTexture() { return QUICKSAND_FLOW; }
 
             @Override
             public Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
                                            int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
-                // 안개 색상: 진한 갈색 (R, G, B)
-                return new Vector3f(0.85F, 0.81F, 0.63F);
+                // 캐싱된 객체 반환 (메모리 절약)
+                return FOG_COLOR;
             }
 
             public void modifyFogRender(Camera camera, float partialTick, ClientLevel level,
                                         int renderDistance, float darkenWorldAmount, FogType fogType) {
-                // 유사 속에 잠기면 앞이 거의 안 보이도록 FogEnd를 짧게(2.0F) 설정
                 RenderSystem.setShaderFogStart(-1.0F);
                 RenderSystem.setShaderFogEnd(2.0F);
-                RenderSystem.setShaderFogColor(0.85F, 0.81F, 0.63F);
+                // 상수의 값 사용
+                RenderSystem.setShaderFogColor(FOG_COLOR.x(), FOG_COLOR.y(), FOG_COLOR.z());
             }
         });
     }

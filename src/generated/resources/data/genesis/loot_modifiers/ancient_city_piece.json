@@ -1,0 +1,12 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 0.42,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    }
+  ],
+  "item": "genesis:pewriese_ore_piece",
+  "max_count": 2
+}

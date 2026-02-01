@@ -90,7 +90,9 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
         List<String> structures = COLOR_TO_STRUCTURES.get(color);
 
         if (structures != null && !structures.isEmpty()) {
-            structureKey = structures.get(0);
+            // ✅ 리스트에 있는 모든 구조물을 쉼표(,)로 이어 붙입니다.
+            // 예: "minecraft:shipwreck,minecraft:monument,minecraft:shipwreck_beached"
+            structureKey = String.join(",", structures);
         }
 
         ItemStack result = compass.copy();

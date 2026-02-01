@@ -26,10 +26,10 @@ public class HotSpringFluidBlock extends LiquidBlock {
         super.entityInside(state, level, pos, entity);
     }
 
-    // 🔥 온천수 연기 효과 (여기서 작동)
+    //  온천수 연기 효과 (여기서 작동)
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        if (random.nextFloat() < 0.05F) { // 15% 확률
+        if (random.nextFloat() < 0.05F) {
             level.addParticle(
                     ParticleTypes.CAMPFIRE_COSY_SMOKE,
                     pos.getX() + random.nextDouble(),

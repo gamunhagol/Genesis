@@ -1,6 +1,14 @@
 {
   "entries": [
-    "genesis:add_sus_sand_item"
+    "genesis:ancient_city_piece",
+    "genesis:ancient_city_template",
+    "genesis:end_city_powder",
+    "genesis:stronghold_crossing_powder",
+    "genesis:stronghold_library_powder",
+    "genesis:stronghold_corridor_powder",
+    "genesis:jungle_temple_compass",
+    "genesis:cat_gift_powder",
+    "genesis:add_sus_sand_items"
   ],
   "replace": false
 }

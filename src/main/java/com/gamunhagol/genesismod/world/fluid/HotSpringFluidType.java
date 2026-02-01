@@ -11,13 +11,15 @@ import org.joml.Vector3f;
 
 import java.util.function.Consumer;
 
-/**
- * 💧 HotSpringFluidType
- * 온천수 전용 FluidType 렌더 설정:
- * - 물 텍스처 기반
- * - 부드러운 하늘색 시야/안개 효과
- */
 public class HotSpringFluidType extends FluidType {
+
+    // [최적화 1] 텍스처 경로는 불변이므로 상수로 선언
+    private static final ResourceLocation WATER_STILL = new ResourceLocation("minecraft", "block/water_still");
+    private static final ResourceLocation WATER_FLOW = new ResourceLocation("minecraft", "block/water_flow");
+
+    // [최적화 2] 안개 색상을 상수로 정의 (한 곳에서만 수정하면 됨)
+    private static final Vector3f FOG_COLOR = new Vector3f(0.55F, 0.95F, 0.95F);
+    private static final int TINT_COLOR = 0xFF00E4E4;
 
     public HotSpringFluidType(Properties properties) {
         super(properties);
@@ -27,37 +29,28 @@ public class HotSpringFluidType extends FluidType {
     public void initializeClient(Consumer<IClientFluidTypeExtensions> consumer) {
         consumer.accept(new IClientFluidTypeExtensions() {
 
-            private static final ResourceLocation STILL = ResourceLocation.withDefaultNamespace("block/water_still");
-            private static final ResourceLocation FLOW = ResourceLocation.withDefaultNamespace("block/water_flow");
+            @Override
+            public ResourceLocation getStillTexture() { return WATER_STILL; }
 
             @Override
-            public ResourceLocation getStillTexture() {
-                return STILL;
-            }
+            public ResourceLocation getFlowingTexture() { return WATER_FLOW; }
 
             @Override
-            public ResourceLocation getFlowingTexture() {
-                return FLOW;
-            }
+            public int getTintColor() { return TINT_COLOR; }
 
-            @Override
-            public int getTintColor() {
-                return 0xFF00E4E4; // 밝은 청록색 (온천수)
-            }
-
-            // 시야 내부 색감 - 물속 느낌
             @Override
             public Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
                                            int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
-                return new Vector3f(0.55F, 0.95F, 0.95F); // 부드러운 하늘색
+                // [최적화 3] 매 프레임 new Vector3f() 하지 않고, 미리 만들어둔 상수 반환
+                return FOG_COLOR;
             }
 
-            // 안개 거리 및 색상 (물속 표현)
             public void modifyFogRender(Camera camera, float partialTick, ClientLevel level,
                                         int renderDistance, float darkenWorldAmount, FogType fogType) {
                 RenderSystem.setShaderFogStart(0.5F);
                 RenderSystem.setShaderFogEnd(8.0F);
-                RenderSystem.setShaderFogColor(0.55F, 0.95F, 0.95F);
+                // [최적화 4] 위에서 정의한 상수 값을 재사용 (실수 방지)
+                RenderSystem.setShaderFogColor(FOG_COLOR.x(), FOG_COLOR.y(), FOG_COLOR.z());
             }
         });
     }

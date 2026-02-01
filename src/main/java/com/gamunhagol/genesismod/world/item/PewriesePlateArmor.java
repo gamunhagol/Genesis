@@ -12,9 +12,9 @@ import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 
 import java.util.function.Consumer;
 
-public class Pewriese_Plate_Armor extends ArmorItem {
+public class PewriesePlateArmor extends ArmorItem {
 
-    public Pewriese_Plate_Armor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
+    public PewriesePlateArmor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
         super(pMaterial, pType, pProperties);
     }
 

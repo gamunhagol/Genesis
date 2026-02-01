@@ -109,6 +109,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         // ─────────────── 블록 아이템 ───────────────
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
+        evenSimpleBlockItem(GenesisBlocks.CHISELED_FADED_BRICK);
         evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_STAIRS);
         evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_SLAB);
         evenSimpleBlockItem(GenesisBlocks.FADED_STONE_STAIRS);
@@ -169,9 +170,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
     private void basicItemModel(String name) {
-        getBuilder(name)
-                .parent(new ModelFile.UncheckedModelFile("item/generated"))
-                .texture("layer0", "genesis:item/" + name);
+        withExistingParent(name, new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/" + name));
     }
 
 
@@ -224,8 +224,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         final String MOD_ID = GenesisMod.MODID;
 
         if (itemRegistryObject.get() instanceof ArmorItem armorItem) {
-            trimMaterial.entrySet().forEach(entry -> {
+            // 1. 기본 아이템 모델을 루프 '밖'에서 먼저 만듭니다.
+            String itemName = itemRegistryObject.getId().getPath();
+            ItemModelBuilder builder = this.withExistingParent(itemName,
+                            new ResourceLocation("minecraft", "item/generated"))
+                    .texture("layer0", new ResourceLocation(MOD_ID, "item/" + itemName));
 
+            // 2. 루프를 돌며 트리밍 모델을 만들고, 기본 모델에 오버라이드를 추가합니다.
+            trimMaterial.entrySet().forEach(entry -> {
                 ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
                 float trimValue = entry.getValue();
 
@@ -235,31 +241,29 @@ public class ModItemModelProvider extends ItemModelProvider {
                     case LEGS -> "leggings";
                     case FEET -> "boots";
                     default -> "";
-
                 };
 
-                String armorItemPath = "item/" + armorItem;
+                // 트리밍된 모델 파일 생성 (item/padded_chain_helmet_quartz_trim 등)
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
-                String currentTrimName = armorItemPath + "_" + trimMaterial.location().getPath() + "_trim";
-                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, armorItemPath);
-                ResourceLocation trimResLoc = new ResourceLocation(trimPath);
+                String currentTrimName = itemName + "_" + trimMaterial.location().getPath() + "_trim";
+                ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, "item/" + itemName);
+                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // minecraft:trims/...
                 ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
 
+                // 텍스처 존재 여부 확인 (Client Resources)
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
 
+                // 트리밍 전용 모델 파일 생성
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
                         .texture("layer0", armorItemResLoc)
                         .texture("layer1", trimResLoc);
 
-                this.withExistingParent(itemRegistryObject.getId().getPath(),
-                                new ResourceLocation("minecraft", "item/generated"))
-                        .override()
+                // [핵심] 1번에서 만든 builder에 오버라이드만 쏙쏙 추가
+                builder.override()
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
-                        .predicate(mcLoc("trim_type"), trimValue).end()
-                        .texture("layer0",
-                                new ResourceLocation(MOD_ID,
-                                        "item/" + itemRegistryObject.getId().getPath()));
+                        .predicate(mcLoc("trim_type"), trimValue)
+                        .end();
             });
         }
     }

@@ -19,7 +19,7 @@ public class GenesisBlockEntities {
 
     public static final RegistryObject<BlockEntityType<StatueBlockEntity>> STATUE_BE =
             BLOCK_ENTITIES.register("statue_be", () ->
-                    BlockEntityType.Builder.of(StatueBlockEntity::new, // 여기를 고치세요!
+                    BlockEntityType.Builder.of(StatueBlockEntity::new,
                             GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<AEKStatueBlockEntity>> AEK_STATUE_BE =
@@ -28,7 +28,6 @@ public class GenesisBlockEntities {
                             GenesisBlocks.AEK_STATUE.get()).build(null));
 
 
-    // 메인 클래스(GenesisMod)에서 호출할 등록 메서드
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

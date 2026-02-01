@@ -11,13 +11,13 @@ import net.minecraft.world.level.block.Block;
 public class GenesisTags {
     public static class Blocks {
 
-        private static TagKey<Block> ta(String name) {
+        private static TagKey<Block> tag(String name) {
             return BlockTags.create(new ResourceLocation(GenesisMod.MODID, name));
         }
     }
 
     public static class Items {
-        private static TagKey<Item> ta(String name) {
+        private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(GenesisMod.MODID, name));
 
         }

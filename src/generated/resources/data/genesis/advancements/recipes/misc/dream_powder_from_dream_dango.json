@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_silver_piece": {
+    "has_dream_dango": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:silver_piece"
+              "genesis:dream_dango"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "genesis:silver_ingot"
+        "recipe": "genesis:dream_powder_from_dream_dango"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_silver_piece",
+      "has_dream_dango",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "genesis:silver_ingot"
+      "genesis:dream_powder_from_dream_dango"
     ]
   },
   "sends_telemetry_event": false

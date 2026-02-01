@@ -71,45 +71,33 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
 
-        oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
-        oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
-        oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
-        oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
-
-
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.BOOK_OF_CREATION.get())
                 .requires(Items.BOOK)
                 .requires(Items.EMERALD)
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(pWriter);
 
+        oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
+        oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
+        oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
+        oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.SILVER_PIECE.get(), 9)
-                .requires(GenesisItems.SILVER_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.SILVER_PIECE.get()), has(GenesisItems.SILVER_PIECE.get()))
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get())
+                .pattern(" # ")
+                .pattern("#a#")
+                .pattern(" # ")
+                .define('a', Items.LAPIS_LAZULI)
+                .define('#', GenesisItems.PEWRIESE_PIECE.get())
+                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get())
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.SILVER_PIECE.get())
-                .unlockedBy(getHasName(GenesisItems.SILVER_PIECE.get()), has(GenesisItems.SILVER_PIECE.get()))
-                .save(pWriter);
 
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_PIECE.get(), RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.SILVER_BLOCK.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.RAW_SILVER.get(), RecipeCategory.MISC, GenesisBlocks.RAW_SILVER_BLOCK.get());
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get())
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.DREAM_POWDER.get())
-                .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
-                .save(pWriter);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), 9)
-                .requires(GenesisItems.DREAM_DANGO.get())
-                .unlockedBy(getHasName(GenesisItems.DREAM_DANGO.get()), has(GenesisItems.DREAM_DANGO.get()))
-                .save(pWriter,new ResourceLocation(GenesisMod.MODID,"dream_powder_from_dango"));
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
 
         //food
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.AMETHYST_APPLE_SLICES.get(), 4)
@@ -133,98 +121,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //block&restoration
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.SILVER_BLOCK.get())
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.SILVER_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.SILVER_INGOT.get()), has(GenesisItems.SILVER_INGOT.get()))
-                .save(pWriter);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 9)
-                .requires(GenesisBlocks.SILVER_BLOCK.get())
-                .unlockedBy(getHasName(GenesisBlocks.SILVER_BLOCK.get()), has(GenesisBlocks.SILVER_BLOCK.get()))
-                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "silver_from_block"));
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.RAW_SILVER_BLOCK.get())
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.RAW_SILVER.get())
-                .unlockedBy(getHasName(GenesisItems.RAW_SILVER.get()), has(GenesisItems.RAW_SILVER.get()))
-                .save(pWriter);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.RAW_SILVER.get(), 9)
-                .requires(GenesisBlocks.RAW_SILVER_BLOCK.get())
-                .unlockedBy(getHasName(GenesisBlocks.RAW_SILVER_BLOCK.get()), has(GenesisBlocks.RAW_SILVER_BLOCK.get()))
-                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "silver_from_raw_block"));
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get())
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.PEWRIESE_CRYSTAL.get())
-                .unlockedBy(getHasName(GenesisItems.PEWRIESE_CRYSTAL.get()), has(GenesisItems.PEWRIESE_CRYSTAL.get()))
-                .save(pWriter);
-
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), 9)
-                .requires(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get())
-                .unlockedBy(getHasName(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()), has(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()))
-                .save(pWriter,new ResourceLocation(GenesisMod.MODID, "pewriese_crystal_from_block"));
-
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.BLUE_CRYSTAL_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.BLUE_CRYSTAL_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.BLUE_CRYSTAL_SHARD.get()), has(GenesisItems.BLUE_CRYSTAL_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.CITRINE_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.CITRINE_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.CITRINE_SHARD.get()), has(GenesisItems.CITRINE_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, GenesisBlocks.RED_CRYSTAL_BLOCK.get())
-                .pattern("aa")
-                .pattern("aa")
-                .define('a',GenesisItems.RED_CRYSTAL_SHARD.get())
-                .unlockedBy(getHasName(GenesisItems.RED_CRYSTAL_SHARD.get()), has(GenesisItems.RED_CRYSTAL_SHARD.get()))
-                .save(pWriter);
-
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get())
-                .pattern(" # ")
-                .pattern("#a#")
-                .pattern(" # ")
-                .define('a',Items.LAPIS_LAZULI)
-                .define('#',GenesisItems.PEWRIESE_PIECE.get())
-                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
-                .save(pWriter);
+        compress2x2(pWriter, GenesisItems.BLUE_CRYSTAL_SHARD.get(), GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
+        compress2x2(pWriter, GenesisItems.CITRINE_SHARD.get(), GenesisBlocks.CITRINE_BLOCK.get());
+        compress2x2(pWriter, GenesisItems.RED_CRYSTAL_SHARD.get(), GenesisBlocks.RED_CRYSTAL_BLOCK.get());
 
         //misc
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_HELMET.get())
-                .pattern(" a ")
-                .pattern("aba")
-                .define('a',Items.LEATHER)
-                .define('b',Items.CHAINMAIL_HELMET)
-                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_HELMET))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_CHESTPLATE.get())
-                .pattern("aaa")
-                .pattern("aba")
-                .define('a',Items.LEATHER)
-                .define('b',Items.CHAINMAIL_CHESTPLATE)
-                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_CHESTPLATE))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_LEGGINGS.get())
-                .pattern("aba")
-                .pattern("a a")
-                .define('a',Items.LEATHER)
-                .define('b',Items.CHAINMAIL_LEGGINGS)
-                .unlockedBy("has_chainmail", has(Items.CHAINMAIL_LEGGINGS))
-                .save(pWriter);
+        paddedArmorRecipe(pWriter, Items.CHAINMAIL_HELMET, GenesisItems.PADDED_CHAIN_HELMET.get(), " a ", "aba");
+        paddedArmorRecipe(pWriter, Items.CHAINMAIL_CHESTPLATE, GenesisItems.PADDED_CHAIN_CHESTPLATE.get(), "aaa", "aba");
+        paddedArmorRecipe(pWriter, Items.CHAINMAIL_LEGGINGS, GenesisItems.PADDED_CHAIN_LEGGINGS.get(), "aba", "a a");
+
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_BOOTS.get())
                 .pattern("aba")
                 .define('a',Items.LEATHER)
@@ -255,15 +160,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        net.minecraft.data.recipes.SpecialRecipeBuilder
-                .special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
-                .save(pWriter, String.valueOf(new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine")));
-
-        net.minecraft.data.recipes.SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
-                .save(pWriter, String.valueOf(new ResourceLocation(GenesisMod.MODID, "spirit_compass_remove")));
-
-
-
+        SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine").toString());
+        SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_remove").toString());
 
 
 
@@ -315,8 +215,50 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     }
 
-    protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {
-        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTIme, pGroup, "_from_smelting");
+    // --- Helper Methods ---
+
+    // [New] 2x2 압축 레시피 헬퍼
+    protected static void compress2x2(Consumer<FinishedRecipe> consumer, ItemLike small, ItemLike big) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, big)
+                .pattern("aa")
+                .pattern("aa")
+                .define('a', small)
+                .unlockedBy(getHasName(small), has(small))
+                .save(consumer);
+    }
+
+    // [New] 패딩 갑옷 레시피 헬퍼
+    protected static void paddedArmorRecipe(Consumer<FinishedRecipe> consumer, ItemLike chainmail, ItemLike result, String line1, String line2) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, result)
+                .pattern(line1)
+                .pattern(line2)
+                .define('a', Items.LEATHER)
+                .define('b', chainmail)
+                .unlockedBy("has_chainmail", has(chainmail))
+                .save(consumer);
+    }
+
+    // [New] Vanilla 스타일 9개 압축/해제 자동화 헬퍼 (Item -> Block, Block -> Item)
+    // 원래는 RecipeProvider에 nineBlockStorageRecipe가 있지만, 양방향을 한 번에 처리하려면 직접 만드는 게 편함.
+    protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> pWriter, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
+        // Packed -> Unpacked (1 -> 9)
+        ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
+                .requires(pPacked)
+                .unlockedBy(getHasName(pPacked), has(pPacked))
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pUnpacked) + "_from_" + getItemName(pPacked)));
+
+        // Unpacked -> Packed (9 -> 1)
+        ShapedRecipeBuilder.shaped(pPackedCategory, pPacked)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a', pUnpacked)
+                .unlockedBy(getHasName(pUnpacked), has(pUnpacked))
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pPacked) + "_from_" + getItemName(pUnpacked))); // 여기 이름이 중요
+    }
+
+    protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        oreCooking(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_smelting");
     }
 
     protected static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {

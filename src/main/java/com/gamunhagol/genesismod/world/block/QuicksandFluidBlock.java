@@ -1,7 +1,6 @@
 package com.gamunhagol.genesismod.world.block;
 
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -24,6 +23,7 @@ public class QuicksandFluidBlock extends LiquidBlock {
                 // 2. 산소 게이지 조작
                 int currentAir = living.getAirSupply();
 
+
                 // 마인크래프트는 기본적으로 초당 15~20 정도의 산소를 회복하거나 소모합니다.
                 // 여기서는 매 틱마다 산소를 추가로 1씩 더 깎아서 약 2~3배 빠르게 소모시킵니다.
                 if (currentAir > -20) { // 산소가 완전히 다 떨어지기 전까지
@@ -31,6 +31,7 @@ public class QuicksandFluidBlock extends LiquidBlock {
                 }
             }
         }
+        entity.makeStuckInBlock(state, new net.minecraft.world.phys.Vec3(0.45D, 0.8D, 0.45D));
     }
 
 }

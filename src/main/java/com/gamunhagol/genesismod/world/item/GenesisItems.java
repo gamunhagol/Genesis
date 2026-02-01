@@ -237,22 +237,22 @@ public class GenesisItems {
     public static final RegistryObject<Item> PEWRIESE_BOOTS = ITEMS.register("pewriese_boots", () -> new ArmorItem(GenesisArmorMaterials.PEWRIESE,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant()));
 
-    public static final RegistryObject<Item> PEWRIESE_PLATE_HELMET = ITEMS.register("pewriese_plate_helmet", () -> new Pewriese_Plate_Armor(GenesisArmorMaterials.PEWRIESE_PLATE,
+    public static final RegistryObject<Item> PEWRIESE_PLATE_HELMET = ITEMS.register("pewriese_plate_helmet", () -> new PewriesePlateArmor(GenesisArmorMaterials.PEWRIESE_PLATE,
             ArmorItem.Type.HELMET,new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> PEWRIESE_PLATE_CHESTPLATE = ITEMS.register("pewriese_plate_chestplate", () -> new Pewriese_Plate_Armor(GenesisArmorMaterials.PEWRIESE_PLATE,
+    public static final RegistryObject<Item> PEWRIESE_PLATE_CHESTPLATE = ITEMS.register("pewriese_plate_chestplate", () -> new PewriesePlateArmor(GenesisArmorMaterials.PEWRIESE_PLATE,
             ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> PEWRIESE_PLATE_LEGGINGS = ITEMS.register("pewriese_plate_leggings", () -> new Pewriese_Plate_Armor(GenesisArmorMaterials.PEWRIESE_PLATE,
+    public static final RegistryObject<Item> PEWRIESE_PLATE_LEGGINGS = ITEMS.register("pewriese_plate_leggings", () -> new PewriesePlateArmor(GenesisArmorMaterials.PEWRIESE_PLATE,
             ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant()));
-    public static final RegistryObject<Item> PEWRIESE_PLATE_BOOTS = ITEMS.register("pewriese_plate_boots", () -> new Pewriese_Plate_Armor(GenesisArmorMaterials.PEWRIESE_PLATE,
+    public static final RegistryObject<Item> PEWRIESE_PLATE_BOOTS = ITEMS.register("pewriese_plate_boots", () -> new PewriesePlateArmor(GenesisArmorMaterials.PEWRIESE_PLATE,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant()));
 
-    public static final RegistryObject<Item> HOLY_KNIGHT_HELMET = ITEMS.register("holy_knight_helmet", () -> new Holy_Knight_Armor(GenesisArmorMaterials.HOLY_KNIGHT,
+    public static final RegistryObject<Item> HOLY_KNIGHT_HELMET = ITEMS.register("holy_knight_helmet", () -> new HolyKnightArmor(GenesisArmorMaterials.HOLY_KNIGHT,
             ArmorItem.Type.HELMET,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
-    public static final RegistryObject<Item> HOLY_KNIGHT_CHESTPLATE = ITEMS.register("holy_knight_chestplate", () -> new Holy_Knight_Armor(GenesisArmorMaterials.HOLY_KNIGHT,
+    public static final RegistryObject<Item> HOLY_KNIGHT_CHESTPLATE = ITEMS.register("holy_knight_chestplate", () -> new HolyKnightArmor(GenesisArmorMaterials.HOLY_KNIGHT,
             ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
-    public static final RegistryObject<Item> HOLY_KNIGHT_LEGGINGS = ITEMS.register("holy_knight_leggings", () -> new Holy_Knight_Armor(GenesisArmorMaterials.HOLY_KNIGHT,
+    public static final RegistryObject<Item> HOLY_KNIGHT_LEGGINGS = ITEMS.register("holy_knight_leggings", () -> new HolyKnightArmor(GenesisArmorMaterials.HOLY_KNIGHT,
             ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
-    public static final RegistryObject<Item> HOLY_KNIGHT_BOOTS = ITEMS.register("holy_knight_boots", () -> new Holy_Knight_Armor(GenesisArmorMaterials.HOLY_KNIGHT,
+    public static final RegistryObject<Item> HOLY_KNIGHT_BOOTS = ITEMS.register("holy_knight_boots", () -> new HolyKnightArmor(GenesisArmorMaterials.HOLY_KNIGHT,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
 

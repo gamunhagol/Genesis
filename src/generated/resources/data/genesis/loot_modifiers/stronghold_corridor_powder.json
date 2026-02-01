@@ -1,0 +1,13 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 0.4,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/stronghold_corridor"
+    }
+  ],
+  "item": "genesis:dream_powder",
+  "max_count": 6,
+  "min_count": 2
+}

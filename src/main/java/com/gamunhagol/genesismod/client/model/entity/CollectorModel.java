@@ -1,7 +1,6 @@
 package com.gamunhagol.genesismod.client.model.entity;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.VillagerModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -12,7 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CollectorModel<T extends LivingEntity> extends VillagerModel<T> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("genesis","collector"),"main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(GenesisMod.MODID,"collector"),"main");
 
     public CollectorModel(ModelPart pRoot) {
         super(pRoot);

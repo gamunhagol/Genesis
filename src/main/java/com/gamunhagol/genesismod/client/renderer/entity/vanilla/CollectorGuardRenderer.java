@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.client.renderer.entity.vanilla;
 
+import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -8,7 +9,7 @@ import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
 public class CollectorGuardRenderer extends HumanoidMobRenderer<CollectorGuard, HumanoidModel<CollectorGuard>> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation("genesis", "textures/entity/collector_guard.png");
+    public static final ResourceLocation TEXTURE = new ResourceLocation(GenesisMod.MODID, "textures/entity/collector_guard.png");
 
     public CollectorGuardRenderer(EntityRendererProvider.Context pContext) {
 

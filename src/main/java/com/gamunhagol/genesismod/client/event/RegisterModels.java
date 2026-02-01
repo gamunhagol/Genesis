@@ -11,8 +11,10 @@ import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -29,6 +31,26 @@ public class RegisterModels {
     public static HolyKnightChestplateModel<?> HOLY_KNIGHT_CHESTPLATE_MODEL = null;
     public static HolyKnightLeggingsModel<?> HOLY_KNIGHT_LEGGINGS_MODEL = null;
     public static HolyKnightBootsModel<?> HOLY_KNIGHT_BOOTS_MODEL = null;
+
+    @SubscribeEvent
+    public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
+        // 리소스(텍스처 등)가 다시 로딩될 때 실행되는 리스너 등록
+        event.registerReloadListener((ResourceManagerReloadListener) (resourceManager) -> {
+            // 기존에 만들어둔 모델 캐시를 싹 비웁니다.
+            // 그러면 다음 렌더링 때 checkForInitModels()가 다시 실행되면서
+            // 새로운 텍스처와 모델을 안전하게 로딩합니다.
+
+            RegisterModels.PEWRIESE_PLATE_HELMET_MODEL = null;
+            RegisterModels.PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
+            RegisterModels.PEWRIESE_PLATE_LEGGINGS_MODEL = null;
+            RegisterModels.PEWRIESE_PLATE_BOOTS_MODEL = null;
+
+            RegisterModels.HOLY_KNIGHT_HELMET_MODEL = null;
+            RegisterModels.HOLY_KNIGHT_CHESTPLATE_MODEL = null;
+            RegisterModels.HOLY_KNIGHT_LEGGINGS_MODEL = null;
+            RegisterModels.HOLY_KNIGHT_BOOTS_MODEL = null;
+        });
+    }
 
 
     public static void checkForInitModels(){

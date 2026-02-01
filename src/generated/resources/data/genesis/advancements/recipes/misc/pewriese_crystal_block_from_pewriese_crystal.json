@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_silver_block": {
+    "has_pewriese_crystal": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:silver_block"
+              "genesis:pewriese_crystal"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "genesis:silver_from_block"
+        "recipe": "genesis:pewriese_crystal_block_from_pewriese_crystal"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_silver_block",
+      "has_pewriese_crystal",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "genesis:silver_from_block"
+      "genesis:pewriese_crystal_block_from_pewriese_crystal"
     ]
   },
   "sends_telemetry_event": false

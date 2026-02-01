@@ -1,7 +1,8 @@
 package com.gamunhagol.genesismod.client.renderer.blockentity;
 
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
-import com.gamunhagol.genesismod.world.block.StatueBlock; // [중요] StatueBlock import 필요
+import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.world.block.StatueBlock;
 import com.gamunhagol.genesismod.world.block.entity.StatueBlockEntity;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -18,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState; // [중요] BlockState 
 public class StatueBlockRenderer implements BlockEntityRenderer<StatueBlockEntity> {
     private final SentinelStatueModel model;
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation("genesis", "textures/block/statue_of_sentinel_of_oblivion.png");
+            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_sentinel_of_oblivion.png");
 
     public StatueBlockRenderer(BlockEntityRendererProvider.Context context) {
         this.model = new SentinelStatueModel(context.bakeLayer(ModModelLayers.SENTINEL_LAYER));

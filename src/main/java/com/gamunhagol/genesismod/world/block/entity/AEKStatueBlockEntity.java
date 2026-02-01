@@ -4,8 +4,7 @@ import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.util.IFadedDungeonElement;
 import com.gamunhagol.genesismod.world.block.AEKStatueBlock;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +12,6 @@ import net.minecraft.world.entity.animal.Pig;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
 
 public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonElement {
     private int spawnTick = 0;
@@ -75,6 +73,18 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
                 }
             }
         }
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        super.saveAdditional(pTag);
+        pTag.putInt("SpawnTick", this.spawnTick); // 현재 쿨타임 저장
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        this.spawnTick = pTag.getInt("SpawnTick"); // 쿨타임 불러오기
     }
 
     @Override
