@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/snow_height8",
+  "textures": {
+    "particle": "genesis:block/platinum_coin_pile",
+    "texture": "genesis:block/platinum_coin_pile"
+  }
+}

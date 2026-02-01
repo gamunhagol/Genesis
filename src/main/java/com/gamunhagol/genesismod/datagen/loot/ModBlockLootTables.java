@@ -5,12 +5,12 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SnowLayerBlock;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -27,6 +27,24 @@ import java.util.Set;
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
         super(Set.of(), FeatureFlags.REGISTRY.allFlags());
+    }
+
+    protected LootTable.Builder createCoinPileDrops(Block block, Item item) {
+        LootPool.Builder pool = LootPool.lootPool()
+                .setRolls(ConstantValue.exactly(1.0F));
+
+        LootItem.Builder<?> itemEntry = LootItem.lootTableItem(item);
+
+        // 1층부터 8층까지 루프를 돌며 조건을 추가
+        for (int i = 1; i <= 8; i++) {
+            final int count = i;
+            itemEntry.apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) count))
+                    .when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                            .setProperties(StatePropertiesPredicate.Builder.properties()
+                                    .hasProperty(SnowLayerBlock.LAYERS, count))));
+        }
+
+        return LootTable.lootTable().withPool(pool.add(itemEntry));
     }
 
     @Override
@@ -81,6 +99,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                                 .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
                                 .apply(ApplyExplosionDecay.explosionDecay())
                 ));
+
+        this.add(GenesisBlocks.COPPER_COIN_PILE.get(),
+                block -> createCoinPileDrops(block, GenesisItems.COPPER_COIN_PILE.get()));
+        this.add(GenesisBlocks.SILVER_COIN_PILE.get(),
+                block -> createCoinPileDrops(block, GenesisItems.SILVER_COIN_PILE.get()));
+        this.add(GenesisBlocks.GOLD_COIN_PILE.get(),
+                block -> createCoinPileDrops(block, GenesisItems.GOLD_COIN_PILE.get()));
+        this.add(GenesisBlocks.PLATINUM_COIN_PILE.get(),
+                block -> createCoinPileDrops(block, GenesisItems.PLATINUM_COIN_PILE.get()));
+
 
         this.add(GenesisBlocks.AEK_STATUE.get(),
                 block -> LootTable.lootTable().withPool(LootPool.lootPool()

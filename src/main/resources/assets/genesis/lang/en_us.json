@@ -32,6 +32,11 @@
   "item.genesis.gold_coin": "Gold coin",
   "item.genesis.platinum_coin": "Platinum coin",
 
+  "item.genesis.copper_coin_pile": "Copper coin Pile",
+  "item.genesis.silver_coin_pile": "Silver coin Pile",
+  "item.genesis.gold_coin_pile": "Gold coin Pile",
+  "item.genesis.platinum_coin_pile": "Platinum coin Pile",
+
   "item.genesis.amethyst_apple_slices": "Amethyst Apple Slices",
   "item.genesis.amethyst_apple_pudding": "Amethyst Apple Pudding in a Bowl",
 
@@ -105,6 +110,13 @@
 
   "block.genesis.amethyst_apple_block": "Amethyst Apple",
   "block.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",
+
+  "block.genesis.copper_coin_pile": "Copper coin Pile",
+  "block.genesis.silver_coin_pile": "Silver coin Pile",
+  "block.genesis.gold_coin_pile": "Gold coin Pile",
+  "block.genesis.platinum_coin_pile": "Platinum coin Pile",
+
+
 
   "block.genesis.blue_crystal_block": "Blue Crystal Block",
   "block.genesis.blue_crystal_cluster": "Blue Crystal Cluster",

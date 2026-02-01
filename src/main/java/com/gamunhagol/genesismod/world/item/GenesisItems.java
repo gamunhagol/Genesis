@@ -75,6 +75,9 @@ public class GenesisItems {
 
 
 
+
+
+
     public static final RegistryObject<BlockItem> FADED_STONE = ITEMS.register("faded_stone",
             () -> new BlockItem(GenesisBlocks.FADED_STONE.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<BlockItem> FADED_STONE_STAIRS = ITEMS.register("faded_stone_stairs",
@@ -178,6 +181,15 @@ public class GenesisItems {
     //block item
     public static final RegistryObject<Item> AMETHYST_APPLE = ITEMS.register("amethyst_apple", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING_BLOCK = ITEMS.register("amethyst_apple_pudding_block", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> COPPER_COIN_PILE = ITEMS.register("copper_coin_pile",
+            () -> new BlockItem(GenesisBlocks.COPPER_COIN_PILE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> SILVER_COIN_PILE = ITEMS.register("silver_coin_pile",
+            () -> new BlockItem(GenesisBlocks.SILVER_COIN_PILE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOLD_COIN_PILE = ITEMS.register("gold_coin_pile",
+            () -> new BlockItem(GenesisBlocks.GOLD_COIN_PILE.get(), new Item.Properties()));
+    public static final RegistryObject<Item> PLATINUM_COIN_PILE = ITEMS.register("platinum_coin_pile",
+            () -> new BlockItem(GenesisBlocks.PLATINUM_COIN_PILE.get(), new Item.Properties()));
 
 
     public static final RegistryObject<Item> STATUE_OF_SENTINEL_OF_OBLIVION = ITEMS.register("statue_of_sentinel_of_oblivion",

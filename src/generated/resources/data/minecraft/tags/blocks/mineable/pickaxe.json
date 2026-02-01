@@ -13,6 +13,10 @@
     "genesis:red_crystal_cluster",
     "genesis:citrine_cluster",
     "genesis:blue_crystal_cluster",
-    "genesis:ancient_elf_knight_statue"
+    "genesis:ancient_elf_knight_statue",
+    "genesis:copper_coin_pile",
+    "genesis:silver_coin_pile",
+    "genesis:gold_coin_pile",
+    "genesis:platinum_coin_pile"
   ]
 }

@@ -83,8 +83,17 @@ public class GenesisBlocks {
 
     //crafting
     public static final RegistryObject<Block> AMETHYST_APPLE_PUDDING_BLOCK = register("amethyst_apple_pudding_block",
-            () -> new AmethystApplePuddingBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL).sound(SoundType.SLIME_BLOCK).noOcclusion().lightLevel((p_152632_) -> {
-                return 5;})));
+            () -> new AmethystApplePuddingBlock(BlockBehaviour.Properties.copy(Blocks.MAGENTA_WOOL).sound(SoundType.SLIME_BLOCK).noOcclusion().lightLevel(state -> 5)));
+
+
+    public static final RegistryObject<Block> COPPER_COIN_PILE = register("copper_coin_pile", () -> new CoinPileBlock
+            (BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2f).sound(SoundType.CHAIN).noOcclusion()));
+    public static final RegistryObject<Block> SILVER_COIN_PILE = register("silver_coin_pile", () -> new CoinPileBlock
+            (BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2f).sound(SoundType.CHAIN).noOcclusion()));
+    public static final RegistryObject<Block> GOLD_COIN_PILE = register("gold_coin_pile", () -> new CoinPileBlock
+            (BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2f).sound(SoundType.CHAIN).noOcclusion()));
+    public static final RegistryObject<Block> PLATINUM_COIN_PILE = register("platinum_coin_pile", () -> new CoinPileBlock
+            (BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(0.2f).sound(SoundType.CHAIN).noOcclusion()));
 
 
     //Get mob

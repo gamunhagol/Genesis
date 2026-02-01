@@ -32,6 +32,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.CITRINE_BLOCK);
         blockWithItem(GenesisBlocks.RED_CRYSTAL_BLOCK);
 
+        snowLayerBlock(GenesisBlocks.COPPER_COIN_PILE);
+        snowLayerBlock(GenesisBlocks.SILVER_COIN_PILE);
+        snowLayerBlock(GenesisBlocks.GOLD_COIN_PILE);
+        snowLayerBlock(GenesisBlocks.PLATINUM_COIN_PILE);
 
         blockWithItem(GenesisBlocks.FADED_STONE);
         blockWithItem(GenesisBlocks.FADED_BRICK);
@@ -129,6 +133,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlockWithItem(GenesisBlocks.AEK_STATUE.get(),
                 models().cubeAll("ancient_elf_knight_statue", modLoc("block/faded_stone")));
+
+
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
@@ -171,10 +177,34 @@ public class ModBlockStateProvider extends BlockStateProvider {
             RegistryObject<Block> medium,
             RegistryObject<Block> large,
             RegistryObject<Block> cluster
-    ) {
+    )
+    {
         clusterBlock(small);
         clusterBlock(medium);
         clusterBlock(large);
         clusterBlock(cluster);
+    }
+
+    private void snowLayerBlock(RegistryObject<Block> block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int layers = state.getValue(BlockStateProperties.LAYERS);
+
+            if (layers == 8) {
+                return ConfiguredModel.builder()
+                        .modelFile(models().cubeAll(name + "_all", modLoc("block/" + name)))
+                        .build();
+            } else {
+                // 바닐라 눈 모델을 부모로 빌려와서 층별 높이 조절 (블록 전용)
+                return ConfiguredModel.builder()
+                        .modelFile(models().withExistingParent(name + "_height" + layers, mcLoc("block/snow_height" + (layers * 2)))
+                                .texture("texture", modLoc("block/" + name))
+                                .texture("particle", modLoc("block/" + name)))
+                        .build();
+            }
+        });
+        this.itemModels().withExistingParent(name, new ResourceLocation("item/generated"))
+                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/" + name));
     }
 }

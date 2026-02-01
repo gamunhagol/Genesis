@@ -31,6 +31,11 @@
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
+  "item.genesis.copper_coin_pile": "동 동전 더미",
+  "item.genesis.silver_coin_pile": "은 동전 더미",
+  "item.genesis.gold_coin_pile": "금 동전 더미",
+  "item.genesis.platinum_coin_pile": "백금 동전 더미",
+
   "item.genesis.amethyst_apple_slices": "자수정 사과 조각",
   "item.genesis.amethyst_apple_pudding": "그릇에 담긴 자수정 사과 푸딩",
 
@@ -108,6 +113,13 @@
 
   "block.genesis.amethyst_apple_block": "자수정 사과",
   "block.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
+
+  "block.genesis.copper_coin_pile": "동 동전 더미",
+  "block.genesis.silver_coin_pile": "은 동전 더미",
+  "block.genesis.gold_coin_pile": "금 동전 더미",
+  "block.genesis.platinum_coin_pile": "백금 동전 더미",
+
+
 
   "block.genesis.blue_crystal_block": "청수정 블럭",
   "block.genesis.blue_crystal_cluster": "청수정 군집",

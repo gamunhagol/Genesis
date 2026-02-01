@@ -34,7 +34,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.RED_CRYSTAL_CLUSTER.get()
                         ,GenesisBlocks.CITRINE_CLUSTER.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get()
-                        ,GenesisBlocks.AEK_STATUE.get());
+                        ,GenesisBlocks.AEK_STATUE.get()
+                    ,GenesisBlocks.COPPER_COIN_PILE.get()
+                    ,GenesisBlocks.SILVER_COIN_PILE.get()
+                    ,GenesisBlocks.GOLD_COIN_PILE.get()
+                    ,GenesisBlocks.PLATINUM_COIN_PILE.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)

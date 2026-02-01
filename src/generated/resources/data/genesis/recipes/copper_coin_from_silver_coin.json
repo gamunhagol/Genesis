@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:silver_coin"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "genesis:copper_coin"
+  }
+}

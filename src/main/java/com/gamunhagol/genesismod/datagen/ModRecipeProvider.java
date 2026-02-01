@@ -77,6 +77,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(pWriter);
 
+
+
         oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
         oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
@@ -98,6 +100,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
+
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.COPPER_COIN.get(), RecipeCategory.MISC, GenesisItems.COPPER_COIN_PILE.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_COIN.get(), RecipeCategory.MISC, GenesisItems.SILVER_COIN_PILE.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.GOLD_COIN.get(), RecipeCategory.MISC, GenesisItems.GOLD_COIN_PILE.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PLATINUM_COIN.get(), RecipeCategory.MISC, GenesisItems.PLATINUM_COIN_PILE.get());
+
+        coinDeconstruct(pWriter, GenesisItems.SILVER_COIN.get(), GenesisItems.COPPER_COIN.get(), 9);
+        coinDeconstruct(pWriter, GenesisItems.GOLD_COIN.get(), GenesisItems.SILVER_COIN.get(), 9);
+        coinDeconstruct(pWriter, GenesisItems.PLATINUM_COIN.get(), GenesisItems.GOLD_COIN.get(), 9);
 
         //food
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.AMETHYST_APPLE_SLICES.get(), 4)
@@ -148,6 +159,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.FRAGMENT_OF_MEMORY.get())
                 .pattern("#a#")
                 .pattern("#m#")
@@ -158,6 +170,29 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.DREAM_POWDER.get()), has(GenesisItems.DREAM_POWDER.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.SILVER_COIN.get(), 8)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.COPPER_COIN_PILE.get())
+                .unlockedBy(getHasName(GenesisItems.COPPER_COIN_PILE.get()), has(GenesisItems.COPPER_COIN_PILE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.GOLD_COIN.get(), 8)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.SILVER_COIN_PILE.get())
+                .unlockedBy(getHasName(GenesisItems.SILVER_COIN_PILE.get()), has(GenesisItems.SILVER_COIN_PILE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PLATINUM_COIN.get(), 8)
+                .pattern("aaa")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.GOLD_COIN_PILE.get())
+                .unlockedBy(getHasName(GenesisItems.GOLD_COIN_PILE.get()), has(GenesisItems.GOLD_COIN_PILE.get()))
+                .save(pWriter);
 
 
         SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
@@ -216,6 +251,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     // --- Helper Methods ---
+
+    // 동전 압축 레시피 헬퍼
+    protected static void coinDeconstruct(Consumer<FinishedRecipe> pWriter, ItemLike pHigh, ItemLike pLow, int count) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, pLow, count)
+                .requires(pHigh)
+                .unlockedBy(getHasName(pHigh), has(pHigh))
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pLow) + "_from_" + getItemName(pHigh)));
+    }
 
     // [New] 2x2 압축 레시피 헬퍼
     protected static void compress2x2(Consumer<FinishedRecipe> consumer, ItemLike small, ItemLike big) {
