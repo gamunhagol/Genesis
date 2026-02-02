@@ -134,7 +134,8 @@ public class GenesisBlocks {
                     .noLootTable().noOcclusion()));
 
     public static final RegistryObject<Block> AEK_STATUE = register("ancient_elf_knight_statue",
-            () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)));
+            () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)
+                    .noOcclusion()));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {

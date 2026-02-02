@@ -30,21 +30,29 @@ public class StatueBlockRenderer implements BlockEntityRenderer<StatueBlockEntit
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         poseStack.pushPose();
 
-        // 1. 블럭의 현재 방향 가져오기
+        // 1. 블럭의 현재 방향 가져오기 (StatueBlock.FACING 사용)
         BlockState blockState = entity.getBlockState();
         Direction direction = blockState.getValue(StatueBlock.FACING);
 
         // 2. 위치 잡기 (중앙)
         poseStack.translate(0.5D, 1.5D, 0.5D);
 
-        // 3. 상하 반전 (Java 모델 특성)
+        // 3. Java 모델의 기본 상하 반전 적용
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 
-        // 4. [핵심] 방향에 따라 Y축 회전
-        // direction.toYRot()은 북쪽 기준 각도를 줍니다. 반대 방향으로 돌려야 딱 맞습니다.
-        poseStack.mulPose(Axis.YP.rotationDegrees(-direction.toYRot()));
+        // 4. [수정 포인트] 방향 순서가 꼬일 때 여기서 수동으로 순서를 바꿉니다.
+        // 현재 남북이 반대이고 동서가 제각각이라면, 아래 숫자들을 서로 바꿔보며 맞출 수 있습니다.
+        float rotation = switch (direction) {
+            case NORTH -> 0f; // 만약 뒤통수가 보이면 0f로 수정
+            case SOUTH -> 180f;   // 만약 뒤통수가 보이면 180f로 수정
+            case WEST  -> 90f;  // 만약 옆면이 보이면 270f 등으로 수정
+            case EAST  -> 270f; // 만약 옆면이 보이면 90f 등으로 수정
+            default    -> 0f;
+        };
 
-        // 5. 그리기
+        // 마이너스(-) 부호를 붙여 마인크래프트 회전 방향(시계/반시계)을 맞춥니다.
+        poseStack.mulPose(Axis.YP.rotationDegrees(-rotation));
+
         VertexConsumer vertexConsumer = bufferSource.getBuffer(RenderType.entityCutoutNoCull(TEXTURE));
         this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
 

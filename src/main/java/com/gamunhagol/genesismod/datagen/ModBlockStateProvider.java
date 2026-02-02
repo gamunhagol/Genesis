@@ -75,6 +75,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(),
                 models().cubeAll("statue_of_sentinel_of_oblivion", modLoc("block/statue_of_sentinel_of_oblivion")));
 
+        simpleBlock(GenesisBlocks.AEK_STATUE.get(),
+                models().cubeAll("ancient_elf_knight_statue", modLoc("block/ancient_elf_knight_statue")));
+
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_ground"))).addModel()
@@ -131,8 +134,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
 
-        simpleBlockWithItem(GenesisBlocks.AEK_STATUE.get(),
-                models().cubeAll("ancient_elf_knight_statue", modLoc("block/faded_stone")));
+
 
 
     }

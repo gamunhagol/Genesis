@@ -105,6 +105,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
 
         simpleItem(GenesisItems.STATUE_OF_SENTINEL_OF_OBLIVION);
+        simpleItem(GenesisItems.AEK_STATUE);
 
 
         // ─────────────── 블록 아이템 ───────────────

@@ -103,9 +103,6 @@ public class GenesisItems {
 
 
 
-    public static final RegistryObject<BlockItem> AEK_STATUE = ITEMS.register("ancient_elf_knight_statue",
-            () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
-
 
     //item
     public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new Item(new Item.Properties()));
@@ -194,6 +191,8 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> STATUE_OF_SENTINEL_OF_OBLIVION = ITEMS.register("statue_of_sentinel_of_oblivion",
             () -> new BlockItem(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(), new Item.Properties()));
+    public static final RegistryObject<Item> AEK_STATUE = ITEMS.register("ancient_elf_knight_statue",
+            () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
 
 //tool,weapon
 

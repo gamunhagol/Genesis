@@ -1,8 +1,10 @@
 package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.client.model.armor.*;
+import com.gamunhagol.genesismod.client.model.block.AEKStatueModel;
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
+import com.gamunhagol.genesismod.client.renderer.blockentity.AEKStatueRenderer;
 import com.gamunhagol.genesismod.client.renderer.blockentity.StatueBlockRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
@@ -87,6 +89,7 @@ public class RegisterModels {
 
         //blockentity
         event.registerLayerDefinition(ModModelLayers.SENTINEL_LAYER, SentinelStatueModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.AEK_STATUE_LAYER, AEKStatueModel::createBodyLayer);
 
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
@@ -102,6 +105,7 @@ public class RegisterModels {
 
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.STATUE_BE.get(), StatueBlockRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.AEK_STATUE_BE.get(), AEKStatueRenderer::new);
     }
     
 }

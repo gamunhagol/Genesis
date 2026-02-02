@@ -11,4 +11,6 @@ public class ModModelLayers {
 
     public static final ModelLayerLocation SENTINEL_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_of_sentinel"), "main");
+    public static final ModelLayerLocation AEK_STATUE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "aek_statue"), "main");
 }

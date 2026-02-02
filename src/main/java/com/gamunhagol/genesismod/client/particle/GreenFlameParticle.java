@@ -12,8 +12,15 @@ public class GreenFlameParticle extends TextureSheetParticle {
         super(level, x, y, z, vx, vy, vz);
 
         // 크기 및 수명 설정 (바닐라 불꽃 설정값)
-        this.quadSize *= 0.75F; // 크기 조절
-        this.lifetime = 48;     // 수명
+        this.quadSize *= 0.55F; // 크기 조절
+        this.lifetime = 24;     // 수명
+
+        // 이렇게 하면 사방으로 퍼지는 현상이 원천 차단됩니다.
+        this.xd = 0.0D;
+        this.zd = 0.0D;
+
+        // Y 속도(위로 올라가는 속도)만 아주 살짝 남겨둡니다.
+        this.yd = vy;
 
         this.rCol = 1.0F;
         this.gCol = 1.0F;
@@ -42,16 +49,16 @@ public class GreenFlameParticle extends TextureSheetParticle {
         if (this.age++ >= this.lifetime) {
             this.remove();
         } else {
-            // 위로 올라가면서 서서히 사라지는 불꽃 특유의 움직임
-            this.move(this.xd, this.yd, this.zd);
-            this.xd *= 0.87F; // 마찰력
-            this.yd *= 0.87F;
-            this.zd *= 0.87F;
+            // [수정] 움직임을 처리하기 전에 속도를 제어합니다.
+            // X, Z는 아예 안 움직이게 0으로 유지하고
+            this.xd = 0;
+            this.zd = 0;
 
-            if (this.onGround) {
-                this.xd *= 0.7F;
-                this.zd *= 0.7F;
-            }
+            // 위치 업데이트
+            this.move(this.xd, this.yd, this.zd);
+
+            // 마찰력: 위로 올라가는 힘만 서서히 줄어들게 합니다.
+            this.yd *= 0.86F;
         }
     }
     // 팩토리: 이 파티클을 생성하는 공장
