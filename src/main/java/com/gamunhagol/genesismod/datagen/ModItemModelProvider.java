@@ -68,6 +68,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SILVER_PIECE);
         simpleItem(GenesisItems.SILVER_INGOT);
 
+        simpleItem(GenesisItems.ELVENIA_PIECE);
+        simpleItem(GenesisItems.ELVENIA_INGOT);
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_PIECE);
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_INGOT);
+
+
+
         simpleItem(GenesisItems.PEWRIESE_ORE_PIECE);
         simpleItem(GenesisItems.PEWRIESE_PIECE);
         simpleItem(GenesisItems.PEWRIESE_CRYSTAL);

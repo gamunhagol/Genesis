@@ -98,6 +98,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.SILVER_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.RAW_SILVER.get(), RecipeCategory.MISC, GenesisBlocks.RAW_SILVER_BLOCK.get());
 
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_PIECE.get(), RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.ELVENIA_BLOCK.get());
+
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_PIECE.get(), RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
+
+
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
 

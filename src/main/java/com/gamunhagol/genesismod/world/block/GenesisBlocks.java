@@ -34,6 +34,11 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> SILVER_BLOCK = register("silver_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL)));
 
+    public static final RegistryObject<Block> ELVENIA_BLOCK = register("elvenia_block",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(4.5F, 8.0F).sound(SoundType.METAL)));
+    public static final RegistryObject<Block> ANCIENT_ELVENIA_BLOCK = register("ancient_elvenia_block",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(6.0F, 8.0F).sound(SoundType.METAL)));
+
     public static final RegistryObject<Block> PEWRIESE_ORE = register("pewriese_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(60.0F, 1200.0F).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
     public static final RegistryObject<Block> PEWRIESE_CRYSTAL_BLOCK = register("pewriese_crystal_block",

@@ -21,6 +21,12 @@
   "item.genesis.silver_piece": "은 조각",
   "item.genesis.silver_ingot": "은 주괴",
 
+  "item.genesis.elvenia_piece": "엘브니아 조각",
+  "item.genesis.elvenia_ingot": "엘브니아 주괴",
+
+  "item.genesis.ancient_elvenia_piece": "고대 엘브니아 조각",
+  "item.genesis.ancient_elvenia_ingot": "고대 엘브니아 주괴",
+
   "item.genesis.pewriese_piece": "퓨리즌 파편",
   "item.genesis.pewriese_crystal": "퓨리즌 결정",
 
@@ -108,6 +114,10 @@
 
   "block.genesis.raw_silver_block": "은 원석 블럭",
   "block.genesis.silver_block": "은 블럭",
+
+  "block.genesis.elvenia_block": "엘브니아 블록",
+  "block.genesis.ancient_elvenia_block": "고대 엘브니아 블럭",
+
   "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
 
 

@@ -22,6 +22,12 @@
   "item.genesis.silver_piece": "Silver Piece",
   "item.genesis.silver_ingot": "Silver Ingot",
 
+  "item.genesis.elvenia_piece": "Elvenia Piece",
+  "item.genesis.elvenia_ingot": "Elvenia Ingot",
+
+  "item.genesis.ancient_elvenia_piece": "Ancient Elvenia Piece",
+  "item.genesis.ancient_elvenia_ingot": "Ancient Elvenia Ingot",
+
   "item.genesis.pewriese_piece": "pewriese Piece",
   "item.genesis.pewriese_crystal": "pewriese Crystal",
 
@@ -106,6 +112,10 @@
 
   "block.genesis.raw_silver_block": "Raw Silver Block",
   "block.genesis.silver_block": "Silver Block",
+
+  "block.genesis.elvenia_block": "Elvenia Block",
+  "block.genesis.ancient_elvenia_block": "Ancient Elvenia Block",
+
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.amethyst_apple_block": "Amethyst Apple",

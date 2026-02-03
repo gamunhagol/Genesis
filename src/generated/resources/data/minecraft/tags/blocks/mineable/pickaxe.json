@@ -6,6 +6,8 @@
     "genesis:deepslate_silver_ore",
     "genesis:raw_silver_block",
     "genesis:silver_block",
+    "genesis:elvenia_block",
+    "genesis:ancient_elvenia_block",
     "genesis:amethyst_apple_block",
     "genesis:red_crystal_block",
     "genesis:citrine_block",

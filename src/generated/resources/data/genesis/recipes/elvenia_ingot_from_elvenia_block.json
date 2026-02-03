@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:elvenia_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "genesis:elvenia_ingot"
+  }
+}

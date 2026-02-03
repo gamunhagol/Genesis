@@ -47,6 +47,11 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> SILVER_BLOCK = ITEMS.register("silver_block",
             () -> new BlockItem(GenesisBlocks.SILVER_BLOCK.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> ELVENIA_BLOCK = ITEMS.register("elvenia_block",
+            () -> new BlockItem(GenesisBlocks.ELVENIA_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> ANCIENT_ELVENIA_BLOCK = ITEMS.register("ancient_elvenia_block",
+            () -> new BlockItem(GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get(), new Item.Properties()));
+
     public static final RegistryObject<BlockItem> PEWRIESE_ORE = ITEMS.register("pewriese_ore",
             () -> new BlockItem(GenesisBlocks.PEWRIESE_ORE.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> PEWRIESE_CRYSTAL_BLOCK = ITEMS.register("pewriese_crystal_block",
@@ -158,6 +163,13 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SILVER_PIECE = ITEMS.register("silver_piece", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> ELVENIA_INGOT = ITEMS.register("elvenia_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_PIECE = ITEMS.register("elvenia_piece", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_INGOT = ITEMS.register("ancient_elvenia_ingot", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_PIECE = ITEMS.register("ancient_elvenia_piece", () -> new Item(new Item.Properties()));
+
+
 
     public static final RegistryObject<Item> PEWRIESE_PIECE = ITEMS.register("pewriese_piece", () -> new Item(new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> PEWRIESE_CRYSTAL = ITEMS.register("pewriese_crystal", () -> new Item(new Item.Properties().fireResistant()));

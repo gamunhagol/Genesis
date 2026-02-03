@@ -55,6 +55,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
         this.dropSelf(GenesisBlocks.RED_CRYSTAL_BLOCK.get());
+        this.dropSelf(GenesisBlocks.ELVENIA_BLOCK.get());
+        this.dropSelf(GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
 
         this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
 
@@ -115,7 +117,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(GenesisBlocks.AEK_STATUE.get(),
                 block -> LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(Items.IRON_INGOT)
+                        .add(LootItem.lootTableItem(GenesisItems.ANCIENT_ELVENIA_INGOT.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
                                 .apply(ApplyExplosionDecay.explosionDecay()))
                 )

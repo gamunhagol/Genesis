@@ -43,6 +43,13 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.SILVER_INGOT.get());
                 output.accept(GenesisItems.PEWRIESE_PIECE.get());
 
+                output.accept(GenesisItems.ELVENIA_PIECE.get());
+                output.accept(GenesisItems.ELVENIA_INGOT.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_PIECE.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+
+
+
                 output.accept(GenesisItems.PEWRIESE_CRYSTAL.get());
 
                 output.accept(GenesisItems.PYULITELA.get());
