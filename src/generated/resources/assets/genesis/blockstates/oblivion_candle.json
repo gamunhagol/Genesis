@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "candles=1,lit=false,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_one"
+    },
+    "candles=1,lit=false,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_one"
+    },
+    "candles=1,lit=true,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_one"
+    },
+    "candles=1,lit=true,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_one"
+    },
+    "candles=2,lit=false,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_two"
+    },
+    "candles=2,lit=false,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_two"
+    },
+    "candles=2,lit=true,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_two"
+    },
+    "candles=2,lit=true,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_two"
+    },
+    "candles=3,lit=false,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_three"
+    },
+    "candles=3,lit=false,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_three"
+    },
+    "candles=3,lit=true,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_three"
+    },
+    "candles=3,lit=true,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_three"
+    },
+    "candles=4,lit=false,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_four"
+    },
+    "candles=4,lit=false,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_four"
+    },
+    "candles=4,lit=true,waterlogged=false": {
+      "model": "genesis:block/oblivion_candle_four"
+    },
+    "candles=4,lit=true,waterlogged=true": {
+      "model": "genesis:block/oblivion_candle_four"
+    }
+  }
+}

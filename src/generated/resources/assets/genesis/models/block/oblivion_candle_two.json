@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/template_two_candles",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "all": "genesis:block/oblivion_candle_lit",
+    "particle": "genesis:block/oblivion_candle_lit"
+  }
+}

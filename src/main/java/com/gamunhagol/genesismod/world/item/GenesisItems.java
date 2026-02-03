@@ -176,6 +176,8 @@ public class GenesisItems {
 
 
     //block item
+    public static final RegistryObject<Item> OBLIVION_CANDLE = ITEMS.register("oblivion_candle", () -> new BlockItem(GenesisBlocks.OBLIVION_CANDLE.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> AMETHYST_APPLE = ITEMS.register("amethyst_apple", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING_BLOCK = ITEMS.register("amethyst_apple_pudding_block", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), new Item.Properties()));
 

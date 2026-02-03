@@ -109,6 +109,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(GenesisBlocks.PLATINUM_COIN_PILE.get(),
                 block -> createCoinPileDrops(block, GenesisItems.PLATINUM_COIN_PILE.get()));
 
+        this.add(GenesisBlocks.OBLIVION_CANDLE.get(), (block) -> createCandleDrops(block));
+
 
         this.add(GenesisBlocks.AEK_STATUE.get(),
                 block -> LootTable.lootTable().withPool(LootPool.lootPool()

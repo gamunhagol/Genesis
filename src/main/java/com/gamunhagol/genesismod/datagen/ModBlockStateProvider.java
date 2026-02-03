@@ -132,6 +132,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         clusterBlock(GenesisBlocks.CITRINE_CLUSTER);
         clusterBlock(GenesisBlocks.RED_CRYSTAL_CLUSTER);
 
+        customCandleBlock(GenesisBlocks.OBLIVION_CANDLE);
+
 
 
 
@@ -208,5 +210,38 @@ public class ModBlockStateProvider extends BlockStateProvider {
         });
         this.itemModels().withExistingParent(name, new ResourceLocation("item/generated"))
                 .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/" + name));
+    }
+
+    private void customCandleBlock(RegistryObject<Block> block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+
+        ResourceLocation candleTexture = modLoc("block/oblivion_candle_lit");
+
+        var candle1 = models().withExistingParent(name + "_one", mcLoc("block/template_candle"))
+                .texture("all", candleTexture)
+                .texture("particle", candleTexture)
+                .renderType("cutout");
+
+        var candle2 = models().withExistingParent(name + "_two", mcLoc("block/template_two_candles"))
+                .texture("all", candleTexture)
+                .texture("particle", candleTexture)
+                .renderType("cutout");
+
+        var candle3 = models().withExistingParent(name + "_three", mcLoc("block/template_three_candles"))
+                .texture("all", candleTexture)
+                .texture("particle", candleTexture)
+                .renderType("cutout");
+
+        var candle4 = models().withExistingParent(name + "_four", mcLoc("block/template_four_candles"))
+                .texture("all", candleTexture)
+                .texture("particle", candleTexture)
+                .renderType("cutout");
+
+        getVariantBuilder(block.get()).forAllStates(state -> {
+            int candles = state.getValue(CandleBlock.CANDLES);
+            return ConfiguredModel.builder()
+                    .modelFile(candles == 1 ? candle1 : candles == 2 ? candle2 : candles == 3 ? candle3 : candle4)
+                    .build();
+        });
     }
 }

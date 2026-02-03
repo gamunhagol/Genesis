@@ -28,7 +28,7 @@ public class AEKStatueBlock extends BaseEntityBlock {
 
     // [추가] 히트박스: 높이 32 (2칸)으로 설정. 모델 크기에 맞춰 조절하세요.
     // 예: box(0, 0, 0, 16, 32, 16) -> 가로세로 꽉 채운 2칸 높이
-    private static final VoxelShape SHAPE = box(0, 0, 0, 16, 32, 16);
+    private static final VoxelShape SHAPE = box(0, 0, 0, 16, 40, 16);
 
     public AEKStatueBlock(Properties pProperties) {
         super(pProperties);

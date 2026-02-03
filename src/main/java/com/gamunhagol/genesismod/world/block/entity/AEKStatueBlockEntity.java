@@ -49,8 +49,7 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
                         default -> { } // [중요] 예외 방지용 기본값
                     }
 
-                    // 20% 확률로 불꽃 생성 (너무 많으면 눈이 가려짐)
-                    if (level.random.nextFloat() < 0.045f) {
+                    if (level.random.nextFloat() < 0.085f) {
                         level.addParticle(GenesisParticles.GREEN_FLAME.get(),
                                 pos.getX() + 0.5 + offsetX,
                                 pos.getY() + height,

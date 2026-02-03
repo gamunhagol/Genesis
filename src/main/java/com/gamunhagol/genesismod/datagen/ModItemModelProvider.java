@@ -84,6 +84,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING);
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK);
 
+        simpleItem(GenesisItems.OBLIVION_CANDLE);
 
 
 

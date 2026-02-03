@@ -62,6 +62,8 @@ public class GenesisBlocks {
                     .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
 
 
+    public static final RegistryObject<Block> OBLIVION_CANDLE = register("oblivion_candle",
+            () -> new OblivionCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).noOcclusion()));
 
     //liquid
     public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =

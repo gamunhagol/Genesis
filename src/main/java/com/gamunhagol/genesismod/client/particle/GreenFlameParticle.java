@@ -12,14 +12,15 @@ public class GreenFlameParticle extends TextureSheetParticle {
         super(level, x, y, z, vx, vy, vz);
 
         // 크기 및 수명 설정 (바닐라 불꽃 설정값)
-        this.quadSize *= 0.55F; // 크기 조절
-        this.lifetime = 24;     // 수명
+        this.quadSize *= 0.45F; // 크기 조절
+        this.lifetime = 10 + level.random.nextInt(12);   // 수명
 
-        // 이렇게 하면 사방으로 퍼지는 현상이 원천 차단됩니다.
-        this.xd = 0.0D;
-        this.zd = 0.0D;
+        // [수정] 생성 시점에 아주 미세한 수평 속도(흔들림)를 부여합니다.
+        // vx, vz가 0으로 들어와도 자체적으로 미세하게 퍼지도록 설정
+        this.xd = vx + (level.random.nextFloat() - level.random.nextFloat()) * 0.01F;
+        this.zd = vz + (level.random.nextFloat() - level.random.nextFloat()) * 0.01F;
 
-        // Y 속도(위로 올라가는 속도)만 아주 살짝 남겨둡니다.
+        // 위로 올라가는 속도 (바닐라와 유사하게)
         this.yd = vy;
 
         this.rCol = 1.0F;
@@ -29,8 +30,6 @@ public class GreenFlameParticle extends TextureSheetParticle {
 
     @Override
     public @NotNull ParticleRenderType getRenderType() {
-        // OPAQUE는 투명 배경을 검은색으로 만듭니다.
-        // 불꽃처럼 테두리가 투명해야 한다면 TRANSLUCENT를 써야 합니다.
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
 
@@ -49,16 +48,25 @@ public class GreenFlameParticle extends TextureSheetParticle {
         if (this.age++ >= this.lifetime) {
             this.remove();
         } else {
-            // [수정] 움직임을 처리하기 전에 속도를 제어합니다.
-            // X, Z는 아예 안 움직이게 0으로 유지하고
-            this.xd = 0;
-            this.zd = 0;
+            // [수정] xd, zd를 0으로 고정하던 코드를 삭제했습니다.
+            // 대신 위로 올라가면서 옆으로 아주 살짝씩 흔들리게 하고 싶다면 아래 주석을 해제하세요.
+            // this.xd += (this.random.nextFloat() - this.random.nextFloat()) * 0.005F;
 
-            // 위치 업데이트
+            // 위치 업데이트 (이제 xd, yd, zd가 모두 반영됩니다)
             this.move(this.xd, this.yd, this.zd);
 
-            // 마찰력: 위로 올라가는 힘만 서서히 줄어들게 합니다.
+            // [수정] 속도 감쇠 (공기 저항)
+            // 수평 속도는 서서히 줄어들어 분수처럼 퍼지지 않게 하고,
+            // 수직 속도(yd)는 유지하거나 살짝 줄여서 위로 계속 가게 합니다.
+            this.xd *= 0.86F;
+            this.zd *= 0.86F;
             this.yd *= 0.86F;
+
+            // 바닥에 닿았을 때의 처리 (양초 위이므로 보통은 생략 가능)
+            if (this.onGround) {
+                this.xd *= 0.7F;
+                this.zd *= 0.7F;
+            }
         }
     }
     // 팩토리: 이 파티클을 생성하는 공장
