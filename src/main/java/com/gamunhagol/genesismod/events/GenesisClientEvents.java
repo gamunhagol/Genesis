@@ -25,6 +25,7 @@ public class GenesisClientEvents {
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
             ItemBlockRenderTypes.setRenderLayer(GenesisBlocks.OBLIVION_CANDLE.get(), RenderType.cutout());
+            ClientTooltipHandler.init();
         });
     }
 }

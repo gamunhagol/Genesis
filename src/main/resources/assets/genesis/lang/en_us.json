@@ -1,6 +1,7 @@
 {
   "item.genesis.book_of_creation": "Book of Creation",
 
+  "item.genesis.scattered_memories": "Scattered Memories",
   "item.genesis.dream_powder": "Dream Powder",
   "item.genesis.dream_dango": "Dream Dango",
   "item.genesis.remnants_of_a_dream": "Remnants of a Dream",
@@ -196,12 +197,12 @@
 
   "tooltip.genesis.pudding_need_bowl": "You need a bowl to scoop the food.",
 
-  "tooltip.genesis.hold_shift": "§7<Hold Shift for more information>",
+  "tooltip.genesis.hold_alt": "<Hold Alt for more information>",
 
-  "tooltip.genesis.dream_powder.shift": "Sweet powder that brings a fleeting sense of happiness and dispels nightmares.",
-  "tooltip.genesis.dream_dango.shift": "Sweet dango that offers a momentary bliss, only to leave one feeling hollow. and dispels nightmares.",
-  "tooltip.genesis.remnants_of_a_dream.shift":"Devoid of all sensation. It beckons the nightmares.",
-  "tooltip.genesis.fragment_of_memory.shift": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
+  "tooltip.genesis.dream_powder.info": "Sweet powder that brings a fleeting sense of happiness and dispels nightmares.",
+  "tooltip.genesis.dream_dango.info": "Sweet dango that offers a momentary bliss, only to leave one feeling hollow. and dispels nightmares.",
+  "tooltip.genesis.remnants_of_a_dream.info":"Devoid of all sensation. It beckons the nightmares.",
+  "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
-  "tooltip.genesis.medallion_of_dominion.shift": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain."
+  "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain."
 }

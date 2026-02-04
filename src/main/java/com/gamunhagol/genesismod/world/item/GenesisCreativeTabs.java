@@ -20,6 +20,7 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 output.accept(GenesisItems.BOOK_OF_CREATION.get());
 
+                output.accept(GenesisItems.SCATTERED_MEMORIES.get());
                 output.accept(GenesisItems.DREAM_POWDER.get());
                 output.accept(GenesisItems.DREAM_DANGO.get());
                 output.accept(GenesisItems.REMNANTS_OF_A_DREAM.get());

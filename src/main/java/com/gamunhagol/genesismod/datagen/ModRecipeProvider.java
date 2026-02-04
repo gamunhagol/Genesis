@@ -77,6 +77,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get())
+                .requires(GenesisItems.SCATTERED_MEMORIES.get(), 9)
+                .unlockedBy(getHasName(GenesisItems.SCATTERED_MEMORIES.get()), has(GenesisItems.SCATTERED_MEMORIES.get()))
+                .save(pWriter);
 
 
         oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
@@ -193,11 +197,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.SILVER_COIN_PILE.get()), has(GenesisItems.SILVER_COIN_PILE.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PLATINUM_COIN.get(), 8)
-                .pattern("aaa")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.GOLD_COIN_PILE.get())
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PLATINUM_COIN.get(), 8)
+                .requires(GenesisItems.GOLD_COIN_PILE.get(), 9) // 해당 아이템 9개 필요
                 .unlockedBy(getHasName(GenesisItems.GOLD_COIN_PILE.get()), has(GenesisItems.GOLD_COIN_PILE.get()))
                 .save(pWriter);
 

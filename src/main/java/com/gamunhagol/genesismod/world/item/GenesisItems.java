@@ -27,13 +27,6 @@ import java.util.List;
 public class GenesisItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, GenesisMod.MODID);
 
-    public static void addCommonLore(List<Component> tooltip, String translationKey) {
-        if (Screen.hasShiftDown()) {
-            tooltip.add(Component.translatable(translationKey).withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
-        } else {
-            tooltip.add(Component.translatable("tooltip.genesis.hold_shift").withStyle(ChatFormatting.GRAY));
-        }
-    }
 
 
 
@@ -112,42 +105,17 @@ public class GenesisItems {
     //item
     public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder", () -> new Item(new Item.Properties()
-            .food(NightmareRelief.DREAM_POWDER)){
-        @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-            addCommonLore(tooltip, "tooltip.genesis.dream_powder.shift");
+    public static final RegistryObject<Item> SCATTERED_MEMORIES = ITEMS.register("scattered_memories", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder",
+            () -> new Item(new Item.Properties().food(NightmareRelief.DREAM_POWDER)));
+    public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango",
+            () -> new Item(new Item.Properties().food(NightmareRelief.DREAM_DANGO)));
+    public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream",
+            () -> new Item(new Item.Properties().food(NightmareAggravated.REMNANTS_OF_A_DREAM)));
+    public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory",
+            () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.RARE)));
 
-            super.appendHoverText(stack, level, tooltip, flag);
-        }
-    });
-    public static final RegistryObject<Item> DREAM_DANGO = ITEMS.register("dream_dango", () -> new Item(new Item.Properties()
-            .food(NightmareRelief.DREAM_DANGO)){
-        @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-            addCommonLore(tooltip, "tooltip.genesis.dream_dango.shift");
 
-            super.appendHoverText(stack, level, tooltip, flag);
-        }
-    });
-    public static final RegistryObject<Item> REMNANTS_OF_A_DREAM = ITEMS.register("remnants_of_a_dream", () -> new Item(new Item.Properties()
-            .food(NightmareAggravated.REMNANTS_OF_A_DREAM)){
-        @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-            addCommonLore(tooltip, "tooltip.genesis.remnants_of_a_dream.shift");
-
-            super.appendHoverText(stack, level, tooltip, flag);
-        }
-    });
-    public static final RegistryObject<Item> FRAGMENT_OF_MEMORY = ITEMS.register("fragment_of_memory", () -> new Item(new Item.Properties()
-            .stacksTo(16).rarity(Rarity.RARE)) {
-        @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-            addCommonLore(tooltip, "tooltip.genesis.fragment_of_memory.shift");
-
-            super.appendHoverText(stack, level, tooltip, flag);
-        }
-    });
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CITRINE_SHARD = ITEMS.register("citrine_shard", () -> new Item(new Item.Properties()));
@@ -287,15 +255,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
 
-    public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion", () -> new Item(new Item.Properties()
-            .rarity(Rarity.COMMON)) {
-        @Override
-        public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltip, TooltipFlag flag) {
-            addCommonLore(tooltip, "tooltip.genesis.medallion_of_dominion.shift");
-
-            super.appendHoverText(stack, level, tooltip, flag);
-        }
-    });
+    public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
+            () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
 
 
 

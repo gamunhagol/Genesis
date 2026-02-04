@@ -46,6 +46,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         // ─────────────── 일반 아이템 ───────────────
         simpleItem(GenesisItems.BOOK_OF_CREATION);
 
+        simpleItem(GenesisItems.SCATTERED_MEMORIES);
         simpleItem(GenesisItems.DREAM_POWDER);
         simpleItem(GenesisItems.DREAM_DANGO);
         simpleItem(GenesisItems.REMNANTS_OF_A_DREAM);

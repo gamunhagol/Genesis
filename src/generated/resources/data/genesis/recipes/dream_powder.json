@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    },
+    {
+      "item": "genesis:scattered_memories"
+    }
+  ],
+  "result": {
+    "item": "genesis:dream_powder"
+  }
+}

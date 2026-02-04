@@ -1,6 +1,7 @@
 {
   "item.genesis.book_of_creation": "창조의 서",
 
+  "item.genesis.scattered_memories": "흩어진 기억",
   "item.genesis.dream_powder": "꿈의 가루",
   "item.genesis.dream_dango": "꿈의 경단",
   "item.genesis.remnants_of_a_dream": "꿈의 잔재",
@@ -198,12 +199,12 @@
 
   "tooltip.genesis.pudding_need_bowl": "음식을 푸려면 그릇이 필요합니다.",
 
-  "tooltip.genesis.hold_shift": "§7<Shift 키를 눌러 상세 정보 보기>",
+  "tooltip.genesis.hold_alt": "<Alt 키를 눌러 상세 정보 보기>",
 
-  "tooltip.genesis.dream_powder.shift": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
-  "tooltip.genesis.dream_dango.shift": "달콤한 경단, 잠깐의 행복감을 주지만 곧 허무해진다. 악몽을 몰아낸다.",
-  "tooltip.genesis.remnants_of_a_dream.shift":"아무것도 느껴지지 않는다. 악몽을 불러온다",
-  "tooltip.genesis.fragment_of_memory.shift": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다",
+  "tooltip.genesis.dream_powder.info": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
+  "tooltip.genesis.dream_dango.info": "달콤한 경단, 잠깐의 행복감을 주지만 곧 허무해진다. 악몽을 몰아낸다.",
+  "tooltip.genesis.remnants_of_a_dream.info":"아무것도 느껴지지 않는다. 악몽을 불러온다",
+  "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다",
 
-  "tooltip.genesis.medallion_of_dominion.shift": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다"
+  "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다"
 }

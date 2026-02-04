@@ -1,19 +1,37 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "minecraft:crafting_shapeless",
   "category": "misc",
-  "key": {
-    "a": {
+  "ingredients": [
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
+      "item": "genesis:gold_coin_pile"
+    },
+    {
       "item": "genesis:gold_coin_pile"
     }
-  },
-  "pattern": [
-    "aaa",
-    "aaa",
-    "aaa"
   ],
   "result": {
     "count": 8,
     "item": "genesis:platinum_coin"
-  },
-  "show_notification": true
+  }
 }
