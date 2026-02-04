@@ -74,7 +74,7 @@ public class SpiritCompassRemoveRecipe extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return com.gamunhagol.genesismod.data.recipe.ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get();
+        return GenesisRecipeSerializers.SPIRIT_COMPASS_REMOVE.get();
     }
 }
 

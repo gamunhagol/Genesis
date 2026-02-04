@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "genesis:block/statue_of_guide_to_oblivion"
+  }
+}

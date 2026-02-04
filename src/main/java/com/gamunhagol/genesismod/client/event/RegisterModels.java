@@ -2,10 +2,14 @@ package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.block.AEKStatueModel;
+import com.gamunhagol.genesismod.client.model.block.GuideStatueModel;
+import com.gamunhagol.genesismod.client.model.block.HeraldStatueModel;
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.AEKStatueRenderer;
-import com.gamunhagol.genesismod.client.renderer.blockentity.StatueBlockRenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.GuideStatueRenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.HeraldStatueRenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.SentinelStatueRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
@@ -89,6 +93,9 @@ public class RegisterModels {
 
         //blockentity
         event.registerLayerDefinition(ModModelLayers.SENTINEL_LAYER, SentinelStatueModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.HERALD_LAYER, HeraldStatueModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.GUIDE_LAYER, GuideStatueModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.AEK_STATUE_LAYER, AEKStatueModel::createBodyLayer);
 
         //entity
@@ -104,7 +111,9 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
 
 
-        event.registerBlockEntityRenderer(GenesisBlockEntities.STATUE_BE.get(), StatueBlockRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GUIDE_STATUE_BE.get(), GuideStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.AEK_STATUE_BE.get(), AEKStatueRenderer::new);
     }
     

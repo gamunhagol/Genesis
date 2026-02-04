@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.world.block;
 import com.gamunhagol.genesismod.main.GenesisMod;
 
 
+import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 
 import net.minecraft.util.valueproviders.UniformInt;
@@ -138,7 +139,13 @@ public class GenesisBlocks {
 
     public static final RegistryObject<Block> STATUE_OF_SENTINEL_OF_OBLIVION = register("statue_of_sentinel_of_oblivion",
             () -> new StatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW)
-                    .noLootTable().noOcclusion()));
+                    .noLootTable().noOcclusion(), GenesisBlockEntities.SENTINEL_STATUE_BE));
+    public static final RegistryObject<Block> STATUE_OF_HERALD_OF_OBLIVION = register("statue_of_herald_of_oblivion",
+            () -> new StatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW)
+                    .noLootTable().noOcclusion(), GenesisBlockEntities.HERALD_STATUE_BE));
+    public static final RegistryObject<Block> STATUE_OF_GUIDE_TO_OBLIVION = register("statue_of_guide_to_oblivion",
+            () -> new StatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F).sound(SoundType.POWDER_SNOW)
+                    .noLootTable().noOcclusion(), GenesisBlockEntities.GUIDE_STATUE_BE));
 
     public static final RegistryObject<Block> AEK_STATUE = register("ancient_elf_knight_statue",
             () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)

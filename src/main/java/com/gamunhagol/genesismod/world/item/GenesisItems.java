@@ -5,23 +5,17 @@ import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 
-import net.minecraft.world.level.Level;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import yesman.epicfight.world.item.*;
 
-import javax.annotation.Nullable;
-import java.util.List;
 
 
 public class GenesisItems {
@@ -173,6 +167,11 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> STATUE_OF_SENTINEL_OF_OBLIVION = ITEMS.register("statue_of_sentinel_of_oblivion",
             () -> new BlockItem(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STATUE_OF_HERALD_OF_OBLIVION = ITEMS.register("statue_of_herald_of_oblivion",
+            () -> new BlockItem(GenesisBlocks.STATUE_OF_HERALD_OF_OBLIVION.get(), new Item.Properties()));
+    public static final RegistryObject<Item> STATUE_OF_GUIDE_TO_OBLIVION = ITEMS.register("statue_of_guide_to_oblivion",
+            () -> new BlockItem(GenesisBlocks.STATUE_OF_GUIDE_TO_OBLIVION.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> AEK_STATUE = ITEMS.register("ancient_elf_knight_statue",
             () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
 

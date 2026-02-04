@@ -7,6 +7,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -15,15 +16,21 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.Supplier;
+
 public class StatueBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
+    private final Supplier<? extends BlockEntityType<?>> blockEntityType;
+
     private static final VoxelShape SHAPE = box(0, 0, 0, 16, 48, 16);
 
-    public StatueBlock(Properties properties) {
+    public StatueBlock(Properties properties, Supplier<? extends BlockEntityType<?>> be) {
         super(properties);
-        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+        this.blockEntityType = be;
+        this.registerDefaultState(this.stateDefinition.any().setValue(FACING, net.minecraft.core.Direction.NORTH));
     }
+
 
     // 설치할 때 플레이어가 보는 방향의 반대(나를 보게)로 설정
     @Nullable
@@ -64,6 +71,7 @@ public class StatueBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new StatueBlockEntity(pos, state);
+        // 생성자에서 받은 타입을 사용하여 BE를 생성합니다.
+        return this.blockEntityType.get().create(pos, state);
     }
 }

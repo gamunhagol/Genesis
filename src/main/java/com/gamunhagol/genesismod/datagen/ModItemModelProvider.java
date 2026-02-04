@@ -114,6 +114,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
 
         simpleItem(GenesisItems.STATUE_OF_SENTINEL_OF_OBLIVION);
+        simpleItem(GenesisItems.STATUE_OF_HERALD_OF_OBLIVION);
+        simpleItem(GenesisItems.STATUE_OF_GUIDE_TO_OBLIVION);
         simpleItem(GenesisItems.AEK_STATUE);
 
 

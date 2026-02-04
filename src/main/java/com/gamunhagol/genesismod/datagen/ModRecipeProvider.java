@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.datagen;
 
-import com.gamunhagol.genesismod.data.recipe.ModRecipeSerializers;
+import com.gamunhagol.genesismod.data.recipe.GenesisRecipeSerializers;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -203,9 +203,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter);
 
 
-        SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
+        SpecialRecipeBuilder.special(GenesisRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine").toString());
-        SpecialRecipeBuilder.special(ModRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
+        SpecialRecipeBuilder.special(GenesisRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_remove").toString());
 
 

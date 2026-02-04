@@ -132,6 +132,6 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return ModRecipeSerializers.SPIRIT_COMPASS_COMBINE.get();
+        return GenesisRecipeSerializers.SPIRIT_COMPASS_COMBINE.get();
     }
 }

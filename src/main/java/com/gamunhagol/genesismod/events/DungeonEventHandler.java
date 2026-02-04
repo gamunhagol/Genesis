@@ -41,6 +41,16 @@ public class DungeonEventHandler {
                         EntityType.PIG.spawn(level, targetPos, MobSpawnType.EVENT);
                     }
 
+                    if (state.is(GenesisBlocks.STATUE_OF_HERALD_OF_OBLIVION.get())) {
+                        level.removeBlock(targetPos, false);
+                        EntityType.COW.spawn(level, targetPos, MobSpawnType.EVENT);
+                    }
+
+                    if (state.is(GenesisBlocks.STATUE_OF_GUIDE_TO_OBLIVION.get())) {
+                        level.removeBlock(targetPos, false);
+                        EntityType.SHEEP.spawn(level, targetPos, MobSpawnType.EVENT);
+                    }
+
                     BlockEntity be = level.getBlockEntity(targetPos);
                     if (be instanceof IFadedDungeonElement element) {
                         element.activateElement();
