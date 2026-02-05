@@ -73,34 +73,23 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
 
         this.add(GenesisBlocks.SILVER_ORE.get(),
-                block -> createCopperLikeOreDrops(GenesisBlocks.SILVER_ORE.get(), GenesisItems.RAW_SILVER.get()));
+                block -> createStandardOreDrops(block, GenesisItems.RAW_SILVER.get()));
+
         this.add(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(),
-                block -> createCopperLikeOreDrops(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(), GenesisItems.RAW_SILVER.get()));
+                block -> createStandardOreDrops(block, GenesisItems.RAW_SILVER.get()));
+
         this.add(GenesisBlocks.PEWRIESE_ORE.get(),
                 block -> createCopperLikeOreDrops(GenesisBlocks.PEWRIESE_ORE.get(), GenesisItems.PEWRIESE_ORE_PIECE.get()));
 
 
         this.add(GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get(),
-                block -> createSilkTouchDispatchTable(block,
-                        LootItem.lootTableItem(GenesisItems.BLUE_CRYSTAL_SHARD.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F,4.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-                                .apply(ApplyExplosionDecay.explosionDecay())
-                ));
+                block -> createCrystalClusterDrops(block, GenesisItems.BLUE_CRYSTAL_SHARD.get()));
+
         this.add(GenesisBlocks.CITRINE_CLUSTER.get(),
-                block -> createSilkTouchDispatchTable(block,
-                        LootItem.lootTableItem(GenesisItems.CITRINE_SHARD.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F,4.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-                                .apply(ApplyExplosionDecay.explosionDecay())
-                ));
+                block -> createCrystalClusterDrops(block, GenesisItems.CITRINE_SHARD.get()));
+
         this.add(GenesisBlocks.RED_CRYSTAL_CLUSTER.get(),
-                block -> createSilkTouchDispatchTable(block,
-                        LootItem.lootTableItem(GenesisItems.RED_CRYSTAL_SHARD.get())
-                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F,4.0F)))
-                                .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))
-                                .apply(ApplyExplosionDecay.explosionDecay())
-                ));
+                block -> createCrystalClusterDrops(block, GenesisItems.RED_CRYSTAL_SHARD.get()));
 
         this.add(GenesisBlocks.COPPER_COIN_PILE.get(),
                 block -> createCoinPileDrops(block, GenesisItems.COPPER_COIN_PILE.get()));
@@ -129,6 +118,20 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         return createSilkTouchDispatchTable(pBlock,
                 this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
                         .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 6.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+    }
+
+    protected LootTable.Builder createStandardOreDrops(Block pBlock, Item item) {
+        return createSilkTouchDispatchTable(pBlock,
+                this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
+                        .apply(SetItemCountFunction.setCount(ConstantValue.exactly(1.0F)))
+                        .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
+    }
+
+    protected LootTable.Builder createCrystalClusterDrops(Block pBlock, Item item) {
+        return createSilkTouchDispatchTable(pBlock,
+                this.applyExplosionDecay(pBlock, LootItem.lootTableItem(item)
+                        .apply(SetItemCountFunction.setCount(UniformGenerator.between(2.0F, 4.0F)))
                         .apply(ApplyBonusCount.addOreBonusCount(Enchantments.BLOCK_FORTUNE))));
     }
 
