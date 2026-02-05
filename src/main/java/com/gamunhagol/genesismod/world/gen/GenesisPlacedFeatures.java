@@ -35,12 +35,15 @@ public class GenesisPlacedFeatures {
         register(context, PEWRIESE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_ORE_KEY),
                 GenesisOrePlacement.rareOrePlacement(3,
                         HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-128), // 생성 최저 높이
+                                VerticalAnchor.absolute(-84), // 생성 최저 높이
                                 VerticalAnchor.absolute(-32)   // 생성 최고 높이
                         )));
 
         register(context, PEWRIESE_ORE_DESERT_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_ORE_KEY),
-                GenesisOrePlacement.commonOrePlacement(1, HeightRangePlacement.triangle(VerticalAnchor.absolute(-128), VerticalAnchor.absolute(-16))));
+                GenesisOrePlacement.commonOrePlacement(1,
+                        HeightRangePlacement.triangle(
+                                VerticalAnchor.absolute(-100),
+                                VerticalAnchor.absolute(-16))));
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {
