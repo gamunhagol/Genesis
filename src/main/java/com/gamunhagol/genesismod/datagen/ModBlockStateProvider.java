@@ -35,6 +35,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK);
         blockWithItem(GenesisBlocks.CITRINE_BLOCK);
         blockWithItem(GenesisBlocks.RED_CRYSTAL_BLOCK);
+        blockWithItem(GenesisBlocks.GREEN_AMBER_BLOCK);
+        blockWithItem(GenesisBlocks.ICE_FLOWER_BLOCK);
+        blockWithItem(GenesisBlocks.LIGHTING_CRYSTAL_BLOCK);
+        blockWithItem(GenesisBlocks.WIND_STONE_BLOCK);
 
         snowLayerBlock(GenesisBlocks.COPPER_COIN_PILE);
         snowLayerBlock(GenesisBlocks.SILVER_COIN_PILE);
@@ -139,6 +143,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
         clusterBlock(GenesisBlocks.BLUE_CRYSTAL_CLUSTER);
         clusterBlock(GenesisBlocks.CITRINE_CLUSTER);
         clusterBlock(GenesisBlocks.RED_CRYSTAL_CLUSTER);
+        clusterBlock(GenesisBlocks.GREEN_AMBER_CLUSTER);
+        clusterBlock(GenesisBlocks.ICE_FLOWER_CLUSTER);
+        clusterBlock(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER);
+        clusterBlock(GenesisBlocks.WIND_STONE_CLUSTER);
 
         customCandleBlock(GenesisBlocks.OBLIVION_CANDLE);
 

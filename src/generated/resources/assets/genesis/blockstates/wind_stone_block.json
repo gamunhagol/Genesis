@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "genesis:block/wind_stone_block"
+    }
+  }
+}

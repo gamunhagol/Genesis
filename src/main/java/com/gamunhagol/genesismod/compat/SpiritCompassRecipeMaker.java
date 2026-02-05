@@ -37,7 +37,7 @@ public class SpiritCompassRecipeMaker {
         addCombine(list, GenesisItems.WIND_STONE.get(), "storm", "minecraft:pillager_outpost");
         addCombine(list, GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), "lightning", "minecraft:stronghold");
         addCombine(list, GenesisItems.GREEN_AMBER.get(), "plants", "minecraft:jungle_pyramid");
-        addCombine(list, GenesisItems.FROST_CRYSTAL_SHARD.get(), "ice", "minecraft:igloo");
+        addCombine(list, GenesisItems.ICE_FLOWER_SHARD.get(), "ice", "minecraft:igloo");
 
         return list;
     }

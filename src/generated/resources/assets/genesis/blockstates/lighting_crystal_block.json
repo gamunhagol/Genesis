@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "genesis:block/lighting_crystal_block"
+    }
+  }
+}

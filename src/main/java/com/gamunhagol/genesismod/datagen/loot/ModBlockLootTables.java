@@ -55,6 +55,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
         this.dropSelf(GenesisBlocks.RED_CRYSTAL_BLOCK.get());
+        this.dropSelf(GenesisBlocks.GREEN_AMBER_BLOCK.get());
+        this.dropSelf(GenesisBlocks.ICE_FLOWER_BLOCK.get());
+        this.dropSelf(GenesisBlocks.LIGHTING_CRYSTAL_BLOCK.get());
+        this.dropSelf(GenesisBlocks.WIND_STONE_BLOCK.get());
         this.dropSelf(GenesisBlocks.ELVENIA_BLOCK.get());
         this.dropSelf(GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
 
@@ -84,12 +88,19 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get(),
                 block -> createCrystalClusterDrops(block, GenesisItems.BLUE_CRYSTAL_SHARD.get()));
-
         this.add(GenesisBlocks.CITRINE_CLUSTER.get(),
                 block -> createCrystalClusterDrops(block, GenesisItems.CITRINE_SHARD.get()));
-
         this.add(GenesisBlocks.RED_CRYSTAL_CLUSTER.get(),
                 block -> createCrystalClusterDrops(block, GenesisItems.RED_CRYSTAL_SHARD.get()));
+        this.add(GenesisBlocks.GREEN_AMBER_CLUSTER.get(),
+                block -> createCrystalClusterDrops(block, GenesisItems.GREEN_AMBER.get()));
+        this.add(GenesisBlocks.ICE_FLOWER_CLUSTER.get(),
+                block -> createCrystalClusterDrops(block, GenesisItems.ICE_FLOWER_SHARD.get()));
+        this.add(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER.get(),
+                block -> createCrystalClusterDrops(block, GenesisItems.LIGHTING_CRYSTAL_SHARD.get()));
+        this.add(GenesisBlocks.WIND_STONE_CLUSTER.get(),
+                block -> createCrystalClusterDrops(block, GenesisItems.WIND_STONE.get()));
+
 
         this.add(GenesisBlocks.COPPER_COIN_PILE.get(),
                 block -> createCoinPileDrops(block, GenesisItems.COPPER_COIN_PILE.get()));

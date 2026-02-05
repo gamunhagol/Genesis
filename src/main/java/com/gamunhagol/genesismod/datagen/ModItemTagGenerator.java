@@ -36,7 +36,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.WIND_STONE.get(),
                 GenesisItems.LIGHTING_CRYSTAL_SHARD.get(),
                 GenesisItems.GREEN_AMBER.get(),
-                GenesisItems.FROST_CRYSTAL_SHARD.get()
+                GenesisItems.ICE_FLOWER_SHARD.get()
         );
 
         tag(net.minecraft.tags.ItemTags.TRIMMABLE_ARMOR).add(

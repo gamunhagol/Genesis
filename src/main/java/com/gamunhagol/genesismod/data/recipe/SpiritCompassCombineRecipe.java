@@ -24,7 +24,7 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
             GenesisItems.WIND_STONE.getId(), "storm",
             GenesisItems.LIGHTING_CRYSTAL_SHARD.getId(), "lightning",
             GenesisItems.GREEN_AMBER.getId(), "plants",
-            GenesisItems.FROST_CRYSTAL_SHARD.getId(), "ice"
+            GenesisItems.ICE_FLOWER_SHARD.getId(), "ice"
     );
 
     // ✅ 타입별로 여러 구조물 지원

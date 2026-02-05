@@ -13,8 +13,7 @@
   "item.genesis.wind_stone": "바람석",
   "item.genesis.lighting_crystal_shard": "번개수정 조각",
   "item.genesis.green_amber": "녹호박",
-  "item.genesis.frost_crystal_shard": "냉기수정 조각",
-  "item.genesis.faded_crystal_shard": "빛바랜 수정 조각",
+  "item.genesis.ice_flower_shard": "얼음 꽃 조각",
 
   "item.genesis.raw_silver": "은 원석",
   "item.genesis.pewriese_ore_piece": "퓨리즌 광석 파편",
@@ -138,6 +137,14 @@
   "block.genesis.citrine_cluster": "황수정 군집",
   "block.genesis.red_crystal_block": "적수정 블럭",
   "block.genesis.red_crystal_cluster": "적수정 군집",
+  "block.genesis.green_amber_block": "녹 호박석",
+  "block.genesis.green_amber_cluster": "녹 호박 덩어리",
+  "block.genesis.ice_flower_block": "얼음 꽃 블럭",
+  "block.genesis.ice_flower_cluster": "얼음꽃 송이",
+  "block.genesis.lighting_crystal_block": "뇌전 수정 블럭",
+  "block.genesis.lighting_crystal_cluster": "뇌전 수정 군집",
+  "block.genesis.wind_stone_block": "바람석 블럭",
+  "block.genesis.wind_stone_cluster": "바람석 군집",
 
   "block.genesis.oblivion_candle": "망각의 초",
 

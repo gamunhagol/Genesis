@@ -13,8 +13,7 @@
   "item.genesis.wind_stone": "Wind Stone",
   "item.genesis.lighting_crystal_shard": "Lighting Crystal Shard",
   "item.genesis.green_amber": "Green Amber",
-  "item.genesis.frost_crystal_shard": "Frost Crystal Shard",
-  "item.genesis.faded_crystal_shard": "Faded Crystal Shard",
+  "item.genesis.ice_flower_shard": "Ice Flower Shard",
 
   "item.genesis.raw_silver": "Raw Silver",
   "item.genesis.pewriese_ore_piece": "pewriese Ore Piece",
@@ -135,6 +134,15 @@
   "block.genesis.citrine_cluster": "Citrine Cluster",
   "block.genesis.red_crystal_block": "Red Crystal Block",
   "block.genesis.red_crystal_cluster": "Red Crystal Cluster",
+  "block.genesis.green_amber_block": "Green Amber Block",
+  "block.genesis.green_amber_cluster": "Green Amber Cluster",
+  "block.genesis.ice_flower_block": "Ice Flower Block",
+  "block.genesis.ice_flower_cluster": "Ice Flower Cluster",
+  "block.genesis.lighting_crystal_block": "Lighting Crystal Block",
+  "block.genesis.lighting_crystal_cluster": "Lighting Crystal Cluster",
+  "block.genesis.wind_stone_block": "Wind Stone Block",
+  "block.genesis.wind_stone_cluster": "Wind Stone Cluster",
+
 
   "block.genesis.oblivion_candle": "Oblivion Candle",
 

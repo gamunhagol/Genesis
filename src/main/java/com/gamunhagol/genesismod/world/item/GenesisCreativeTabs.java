@@ -32,8 +32,7 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.WIND_STONE.get());
                 output.accept(GenesisItems.LIGHTING_CRYSTAL_SHARD.get());
                 output.accept(GenesisItems.GREEN_AMBER.get());
-                output.accept(GenesisItems.FROST_CRYSTAL_SHARD.get());
-                output.accept(GenesisItems.FADED_CRYSTAL_SHARD.get());
+                output.accept(GenesisItems.ICE_FLOWER_SHARD.get());
 
                 output.accept(GenesisItems.RAW_SILVER.get());
 

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "genesis:item/frost_crystal_shard"
+    "layer0": "genesis:item/ice_flower_shard"
   }
 }

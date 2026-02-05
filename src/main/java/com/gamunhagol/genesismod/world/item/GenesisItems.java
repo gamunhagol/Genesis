@@ -60,6 +60,26 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> RED_CRYSTAL_CLUSTER = ITEMS.register("red_crystal_cluster",
             () -> new BlockItem(GenesisBlocks.RED_CRYSTAL_CLUSTER.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> GREEN_AMBER_BLOCK = ITEMS.register("green_amber_block",
+            () -> new BlockItem(GenesisBlocks.GREEN_AMBER_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> GREEN_AMBER_CLUSTER = ITEMS.register("green_amber_cluster",
+            () -> new BlockItem(GenesisBlocks.GREEN_AMBER_CLUSTER.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> ICE_FLOWER_BLOCK = ITEMS.register("ice_flower_block",
+            () -> new BlockItem(GenesisBlocks.ICE_FLOWER_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> ICE_FLOWER_CLUSTER = ITEMS.register("ice_flower_cluster",
+            () -> new BlockItem(GenesisBlocks.ICE_FLOWER_CLUSTER.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> LIGHTING_CRYSTAL_BLOCK = ITEMS.register("lighting_crystal_block",
+            () -> new BlockItem(GenesisBlocks.LIGHTING_CRYSTAL_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> LIGHTING_CRYSTAL_CLUSTER = ITEMS.register("lighting_crystal_cluster",
+            () -> new BlockItem(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER.get(), new Item.Properties()));
+
+    public static final RegistryObject<BlockItem> WIND_STONE_BLOCK = ITEMS.register("wind_stone_block",
+            () -> new BlockItem(GenesisBlocks.WIND_STONE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> WIND_STONE_CLUSTER = ITEMS.register("wind_stone_cluster",
+            () -> new BlockItem(GenesisBlocks.WIND_STONE_CLUSTER.get(), new Item.Properties()));
+
 
 
 
@@ -117,8 +137,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> WIND_STONE = ITEMS.register("wind_stone", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> LIGHTING_CRYSTAL_SHARD = ITEMS.register("lighting_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GREEN_AMBER = ITEMS.register("green_amber", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FROST_CRYSTAL_SHARD = ITEMS.register("frost_crystal_shard", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FADED_CRYSTAL_SHARD = ITEMS.register("faded_crystal_shard", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ICE_FLOWER_SHARD = ITEMS.register("ice_flower_shard", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<Item> RAW_SILVER = ITEMS.register("raw_silver", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_ORE_PIECE = ITEMS.register("pewriese_ore_piece", () -> new Item(new Item.Properties()));

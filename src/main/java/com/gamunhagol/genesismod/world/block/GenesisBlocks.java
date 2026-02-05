@@ -67,6 +67,30 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
                     .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
 
+    public static final RegistryObject<Block> GREEN_AMBER_BLOCK = register("green_amber_block",
+            () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
+    public static final RegistryObject<Block> GREEN_AMBER_CLUSTER = register("green_amber_cluster",
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
+                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<Block> ICE_FLOWER_BLOCK = register("ice_flower_block",
+            () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
+    public static final RegistryObject<Block> ICE_FLOWER_CLUSTER = register("ice_flower_cluster",
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
+                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<Block> LIGHTING_CRYSTAL_BLOCK = register("lighting_crystal_block",
+            () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
+    public static final RegistryObject<Block> LIGHTING_CRYSTAL_CLUSTER = register("lighting_crystal_cluster",
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
+                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+
+    public static final RegistryObject<Block> WIND_STONE_BLOCK = register("wind_stone_block",
+            () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
+    public static final RegistryObject<Block> WIND_STONE_CLUSTER = register("wind_stone_cluster",
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
+                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+
 
     public static final RegistryObject<Block> OBLIVION_CANDLE = register("oblivion_candle",
             () -> new OblivionCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).noOcclusion()));

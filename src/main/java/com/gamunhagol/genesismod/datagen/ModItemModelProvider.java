@@ -58,12 +58,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.WIND_STONE);
         simpleItem(GenesisItems.LIGHTING_CRYSTAL_SHARD);
         simpleItem(GenesisItems.GREEN_AMBER);
-        simpleItem(GenesisItems.FROST_CRYSTAL_SHARD);
-        simpleItem(GenesisItems.FADED_CRYSTAL_SHARD);
+        simpleItem(GenesisItems.ICE_FLOWER_SHARD);
 
         clusterItem(GenesisBlocks.BLUE_CRYSTAL_CLUSTER);
         clusterItem(GenesisBlocks.CITRINE_CLUSTER);
         clusterItem(GenesisBlocks.RED_CRYSTAL_CLUSTER);
+        clusterItem(GenesisBlocks.GREEN_AMBER_CLUSTER);
+        clusterItem(GenesisBlocks.ICE_FLOWER_CLUSTER);
+        clusterItem(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER);
+        clusterItem(GenesisBlocks.WIND_STONE_CLUSTER);
 
         simpleItem(GenesisItems.RAW_SILVER);
         simpleItem(GenesisItems.SILVER_PIECE);

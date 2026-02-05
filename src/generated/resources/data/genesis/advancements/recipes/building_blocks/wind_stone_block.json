@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "genesis:wind_stone_block"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wind_stone": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:wind_stone"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_wind_stone",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "genesis:wind_stone_block"
+    ]
+  },
+  "sends_telemetry_event": false
+}
