@@ -86,6 +86,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(GenesisBlocks.PEWRIESE_ORE.get(),
                 block -> createCopperLikeOreDrops(GenesisBlocks.PEWRIESE_ORE.get(), GenesisItems.PEWRIESE_ORE_PIECE.get()));
 
+        this.add(GenesisBlocks.PYULITELA_ORE.get(),
+                block -> createStandardOreDrops(block, GenesisItems.PYULITELA.get()));
+
 
         this.add(GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get(),
                 block -> createCrystalClusterDrops(block, GenesisItems.BLUE_CRYSTAL_SHARD.get()));

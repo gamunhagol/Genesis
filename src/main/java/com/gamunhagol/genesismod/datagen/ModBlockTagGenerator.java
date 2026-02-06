@@ -23,6 +23,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
+                ,GenesisBlocks.PYULITELA_ORE.get()
                 ,GenesisBlocks.PYULITELA_BLOCK.get()
                         ,GenesisBlocks.SILVER_ORE.get()
                         ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
@@ -55,6 +56,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(GenesisBlocks.PEWRIESE_ORE.get()
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
+                ,GenesisBlocks.PYULITELA_ORE.get()
                 ,GenesisBlocks.PYULITELA_BLOCK.get()
                         ,GenesisBlocks.AEK_STATUE.get()
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
@@ -70,6 +72,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .add(GenesisBlocks.FADED_BRICK_WALL.get());
 
         this.tag(BlockTags.MINEABLE_WITH_SHOVEL);
+
+        this.tag(BlockTags.MINEABLE_WITH_AXE);
 
 
     }
