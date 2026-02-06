@@ -109,6 +109,8 @@
 
   "block.genesis.pewriese_ore": "Pewriese Ore",
 
+  "block.genesis.pyulitela_ore": "Pyulitela Ore",
+
 
   "block.genesis.raw_silver_block": "Raw Silver Block",
   "block.genesis.silver_block": "Silver Block",
@@ -119,6 +121,7 @@
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.pyulitela_block": "Pyulitela Block",
+
 
   "block.genesis.amethyst_apple_block": "Amethyst Apple",
   "block.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",

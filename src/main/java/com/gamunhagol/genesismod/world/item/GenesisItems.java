@@ -48,7 +48,7 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> PYULITELA_ORE = ITEMS.register("pyulitela_ore",
             () -> new BlockItem(GenesisBlocks.PYULITELA_ORE.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> PYULITELA_BLOCK = ITEMS.register("pyulitela_block",
-            () -> new BlockItem(GenesisBlocks.PYULITELA_BLOCK.get(), new Item.Properties().fireResistant()));
+            () -> new BlockItem(GenesisBlocks.PYULITELA_BLOCK.get(), new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<BlockItem> BLUE_CRYSTAL_BLOCK = ITEMS.register("blue_crystal_block",
             () -> new BlockItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get(), new Item.Properties()));
