@@ -25,16 +25,16 @@ public class PewriesePlateBootsModel<T extends LivingEntity> extends HumanoidMod
         PartDefinition left_leg = partDefinition.getChild("left_leg");
 
         PartDefinition right_boot = right_leg.addOrReplaceChild("right_boot", CubeListBuilder.create()
-                .texOffs(0,16).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F))
-                .texOffs(24,48).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.35F))
+                .texOffs(0,80).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F))
+                .texOffs(24,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.35F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
         PartDefinition left_boot = left_leg.addOrReplaceChild("left_boot", CubeListBuilder.create()
-                .texOffs(0,16).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F)).mirror(false)
-                .texOffs(24,48).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.35F)).mirror(false)
+                .texOffs(0,80).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F)).mirror(false)
+                .texOffs(24,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.35F)).mirror(false)
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
-        return LayerDefinition.create(meshDefinition, 64, 64);
+        return LayerDefinition.create(meshDefinition, 128, 128);
     }
 }

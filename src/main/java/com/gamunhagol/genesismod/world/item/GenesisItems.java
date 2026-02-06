@@ -245,6 +245,24 @@ public class GenesisItems {
     public static final RegistryObject<Item> PADDED_CHAIN_BOOTS = ITEMS.register("padded_chain_boots", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
+    public static final RegistryObject<Item> ELVENIA_HELMET = ITEMS.register("elvenia_helmet", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_CHESTPLATE = ITEMS.register("elvenia_chestplate", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_LEGGINGS = ITEMS.register("elvenia_leggings", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_BOOTS = ITEMS.register("elvenia_boots", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_HELMET = ITEMS.register("ancient_elvenia_helmet", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_CHESTPLATE = ITEMS.register("ancient_elvenia_chestplate", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_LEGGINGS = ITEMS.register("ancient_elvenia_leggings", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_BOOTS = ITEMS.register("ancient_elvenia_boots", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
     public static final RegistryObject<Item> PEWRIESE_HELMET = ITEMS.register("pewriese_helmet", () -> new ArmorItem(GenesisArmorMaterials.PEWRIESE,
             ArmorItem.Type.HELMET,new Item.Properties().fireResistant()));
     public static final RegistryObject<Item> PEWRIESE_CHESTPLATE = ITEMS.register("pewriese_chestplate", () -> new ArmorItem(GenesisArmorMaterials.PEWRIESE,
@@ -277,6 +295,7 @@ public class GenesisItems {
 
     //misc
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("elvenia_upgrade_smithing_template", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
 
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",

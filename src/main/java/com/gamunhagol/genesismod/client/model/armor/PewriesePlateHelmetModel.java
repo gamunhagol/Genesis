@@ -24,14 +24,14 @@ public class PewriesePlateHelmetModel<T extends LivingEntity> extends HumanoidMo
         PartDefinition head = partDefinition.getChild("head");
 
         PartDefinition head_armor = head.addOrReplaceChild("head_armor", CubeListBuilder.create()
-                .texOffs(0,0).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
-                .texOffs(32,0).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.0F))
-                        .texOffs(0,32).addBox(-4.0F,-11.50F,-1.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.1F))
+                .texOffs(0,64).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
+                .texOffs(32,64).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.0F))
+                        .texOffs(0,96).addBox(-4.0F,-11.50F,-1.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.1F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
 
 
-        return LayerDefinition.create(meshDefinition, 64, 64);
+        return LayerDefinition.create(meshDefinition, 128, 128);
     }
 }

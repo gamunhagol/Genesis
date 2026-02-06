@@ -26,21 +26,21 @@ public class PewriesePlateLeggingsModel<T extends LivingEntity> extends Humanoid
         PartDefinition left_leg = partDefinition.getChild("left_leg");
 
         PartDefinition waist_armor = body.addOrReplaceChild("waist_armor", CubeListBuilder.create()
-                .texOffs(16,16).addBox(-4.0F,-24.0F,-2.0F,8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
+                .texOffs(16,80).addBox(-4.0F,-24.0F,-2.0F,8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
                 , PartPose.offset(0.0F,23.5F,0.0F));
 
 
         PartDefinition right_legging = right_leg.addOrReplaceChild("right_legging", CubeListBuilder.create()
-                .texOffs(0,16).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
-                .texOffs(24,48).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
+                .texOffs(0,80).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
+                .texOffs(24,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
         PartDefinition left_legging = left_leg.addOrReplaceChild("left_legging", CubeListBuilder.create()
-                .texOffs(0,16).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
-                .texOffs(24,48).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
+                .texOffs(0,80).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
+                .texOffs(24,112).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
                 , PartPose.offset(0.0F,0.0F,0.0F));
 
 
-        return LayerDefinition.create(meshDefinition, 64, 64);
+        return LayerDefinition.create(meshDefinition, 128, 128);
     }
 }

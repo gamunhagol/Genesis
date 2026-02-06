@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:ancient_elvenia_ingot"
+  },
+  "base": {
+    "item": "genesis:elvenia_boots"
+  },
+  "result": {
+    "item": "genesis:ancient_elvenia_boots"
+  },
+  "template": {
+    "item": "genesis:elvenia_upgrade_smithing_template"
+  }
+}

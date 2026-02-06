@@ -75,6 +75,17 @@
   "item.genesis.padded_chain_leggings": "가죽 덧댄 사슬 레깅스",
   "item.genesis.padded_chain_boots": "가죽 덧댄 사슬 부츠",
 
+  "item.genesis.elvenia_helmet": "엘브니아 투구",
+  "item.genesis.elvenia_chestplate": "엘브니아 흉갑",
+  "item.genesis.elvenia_leggings": "엘브니아 레깅스",
+  "item.genesis.elvenia_boots": "엘브니아 부츠",
+
+  "item.genesis.ancient_elvenia_helmet": "고대 엘브니아 투구",
+  "item.genesis.ancient_elvenia_chestplate": "고대 엘브니아 흉갑",
+  "item.genesis.ancient_elvenia_leggings": "고대 엘브니아 레깅스",
+  "item.genesis.ancient_elvenia_boots": "고대 엘브니아 부츠",
+
+
   "item.genesis.pewriese_helmet": "퓨리즌 투구",
   "item.genesis.pewriese_chestplate": "퓨리즌 흉갑",
   "item.genesis.pewriese_leggings": "퓨리즌 레깅스",
@@ -93,6 +104,7 @@
 
 
   "item.genesis.amethyst_needle": "자수정 바늘",
+  "item.genesis.elvenia_upgrade_smithing_template": "엘브니아 형판",
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
   "item.genesis.medallion_of_dominion": "지배의 메달",

@@ -92,6 +92,16 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PADDED_CHAIN_LEGGINGS.get());
                 output.accept(GenesisItems.PADDED_CHAIN_BOOTS.get());
 
+                output.accept(GenesisItems.ELVENIA_HELMET.get());
+                output.accept(GenesisItems.ELVENIA_CHESTPLATE.get());
+                output.accept(GenesisItems.ELVENIA_LEGGINGS.get());
+                output.accept(GenesisItems.ELVENIA_BOOTS.get());
+
+                output.accept(GenesisItems.ANCIENT_ELVENIA_HELMET.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_BOOTS.get());
+
                 output.accept(GenesisItems.PEWRIESE_HELMET.get());
                 output.accept(GenesisItems.PEWRIESE_CHESTPLATE.get());
                 output.accept(GenesisItems.PEWRIESE_LEGGINGS.get());
@@ -110,6 +120,7 @@ public class GenesisCreativeTabs {
 
 
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
+                output.accept(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
 
                 output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());

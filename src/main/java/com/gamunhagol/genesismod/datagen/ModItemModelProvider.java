@@ -106,6 +106,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.PEWRIESE_SHOVEL);
 
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
+        simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
@@ -142,6 +143,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_BOOTS);
 
+        simpleItem(GenesisItems.ELVENIA_HELMET);
+        simpleItem(GenesisItems.ELVENIA_CHESTPLATE);
+        simpleItem(GenesisItems.ELVENIA_LEGGINGS);
+        simpleItem(GenesisItems.ELVENIA_BOOTS);
+
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_HELMET);
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_CHESTPLATE);
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_LEGGINGS);
+        simpleItem(GenesisItems.ANCIENT_ELVENIA_BOOTS);
 
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);

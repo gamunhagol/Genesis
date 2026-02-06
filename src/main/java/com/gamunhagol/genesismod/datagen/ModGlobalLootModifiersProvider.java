@@ -81,6 +81,11 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build()
                 }, GenesisItems.SPIRIT_COMPASS.get(), 0.019f, 1, 1));
 
+        add("jungle_temple_template", new AddChestItemModifier(
+                new LootItemCondition[] {
+                        new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build()
+                }, GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(), 0.036f, 1, 1));
+
 
         // 고양이 선물 (Cat Gift)
         add("cat_gift_powder", new AddChestItemModifier(

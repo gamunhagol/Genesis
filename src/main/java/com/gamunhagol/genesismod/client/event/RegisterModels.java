@@ -28,6 +28,16 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class RegisterModels {
 
+    public static ElveniaHelmetModel<?> ELVENIA_HELMET_MODEL = null;
+    public static ElveniaChestplateModel<?> ELVENIA_CHESTPLATE_MODEL = null;
+    public static ElveniaLeggingsModel<?> ELVENIA_LEGGINGS_MODEL = null;
+    public static ElveniaBootsModel<?> ELVENIA_BOOTS_MODEL = null;
+
+    public static AncientElveniaHelmetModel<?> ANCIENT_ELVENIA_HELMET_MODEL = null;
+    public static AncientElveniaChestplateModel<?> ANCIENT_ELVENIA_CHESTPLATE_MODEL = null;
+    public static AncientElveniaLeggingsModel<?> ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
+    public static AncientElveniaBootsModel<?> ANCIENT_ELVENIA_BOOTS_MODEL = null;
+
     public static PewriesePlateHelmetModel<?> PEWRIESE_PLATE_HELMET_MODEL = null;
     public static PewriesePlateChestplateModel<?> PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
     public static PewriesePlateLeggingsModel<?> PEWRIESE_PLATE_LEGGINGS_MODEL = null;
@@ -45,6 +55,16 @@ public class RegisterModels {
             // 기존에 만들어둔 모델 캐시를 싹 비웁니다.
             // 그러면 다음 렌더링 때 checkForInitModels()가 다시 실행되면서
             // 새로운 텍스처와 모델을 안전하게 로딩합니다.
+
+            RegisterModels.ELVENIA_HELMET_MODEL = null;
+            RegisterModels.ELVENIA_CHESTPLATE_MODEL = null;
+            RegisterModels.ELVENIA_LEGGINGS_MODEL = null;
+            RegisterModels.ELVENIA_BOOTS_MODEL = null;
+
+            RegisterModels.ANCIENT_ELVENIA_HELMET_MODEL = null;
+            RegisterModels.ANCIENT_ELVENIA_CHESTPLATE_MODEL = null;
+            RegisterModels.ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
+            RegisterModels.ANCIENT_ELVENIA_BOOTS_MODEL = null;
 
             RegisterModels.PEWRIESE_PLATE_HELMET_MODEL = null;
             RegisterModels.PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
@@ -64,6 +84,16 @@ public class RegisterModels {
 
         EntityModelSet mcModels = Minecraft.getInstance().getEntityModels();
 
+        ELVENIA_HELMET_MODEL = new ElveniaHelmetModel<>(mcModels.bakeLayer(ElveniaHelmetModel.LAYER_LOCATION));
+        ELVENIA_CHESTPLATE_MODEL = new ElveniaChestplateModel<>(mcModels.bakeLayer(ElveniaChestplateModel.LAYER_LOCATION));
+        ELVENIA_LEGGINGS_MODEL = new ElveniaLeggingsModel<>(mcModels.bakeLayer(ElveniaLeggingsModel.LAYER_LOCATION));
+        ELVENIA_BOOTS_MODEL = new ElveniaBootsModel<>(mcModels.bakeLayer(ElveniaBootsModel.LAYER_LOCATION));
+
+        ANCIENT_ELVENIA_HELMET_MODEL = new AncientElveniaHelmetModel<>(mcModels.bakeLayer(AncientElveniaHelmetModel.LAYER_LOCATION));
+        ANCIENT_ELVENIA_CHESTPLATE_MODEL = new AncientElveniaChestplateModel<>(mcModels.bakeLayer(AncientElveniaChestplateModel.LAYER_LOCATION));
+        ANCIENT_ELVENIA_LEGGINGS_MODEL = new AncientElveniaLeggingsModel<>(mcModels.bakeLayer(AncientElveniaLeggingsModel.LAYER_LOCATION));
+        ANCIENT_ELVENIA_BOOTS_MODEL = new AncientElveniaBootsModel<>(mcModels.bakeLayer(AncientElveniaBootsModel.LAYER_LOCATION));
+
         PEWRIESE_PLATE_HELMET_MODEL = new PewriesePlateHelmetModel<>(mcModels.bakeLayer(PewriesePlateHelmetModel.LAYER_LOCATION));
         PEWRIESE_PLATE_CHESTPLATE_MODEL = new PewriesePlateChestplateModel<>(mcModels.bakeLayer(PewriesePlateChestplateModel.LAYER_LOCATION));
         PEWRIESE_PLATE_LEGGINGS_MODEL = new PewriesePlateLeggingsModel<>(mcModels.bakeLayer(PewriesePlateLeggingsModel.LAYER_LOCATION));
@@ -81,6 +111,16 @@ public class RegisterModels {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event){
 
         //armor
+        event.registerLayerDefinition(ElveniaHelmetModel.LAYER_LOCATION, ElveniaHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(ElveniaChestplateModel.LAYER_LOCATION, ElveniaChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(ElveniaLeggingsModel.LAYER_LOCATION, ElveniaLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(ElveniaBootsModel.LAYER_LOCATION, ElveniaBootsModel::createArmorLayer);
+
+        event.registerLayerDefinition(AncientElveniaHelmetModel.LAYER_LOCATION, AncientElveniaHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(AncientElveniaChestplateModel.LAYER_LOCATION, AncientElveniaChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(AncientElveniaLeggingsModel.LAYER_LOCATION, AncientElveniaLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(AncientElveniaBootsModel.LAYER_LOCATION, AncientElveniaBootsModel::createArmorLayer);
+
         event.registerLayerDefinition(PewriesePlateHelmetModel.LAYER_LOCATION, PewriesePlateHelmetModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateChestplateModel.LAYER_LOCATION, PewriesePlateChestplateModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateLeggingsModel.LAYER_LOCATION, PewriesePlateLeggingsModel::createArmorLayer);

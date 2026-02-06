@@ -17,6 +17,12 @@ public enum GenesisArmorMaterials implements ArmorMaterial {
     PADDED_CHAIN("padded_chain", 17, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
             1.0F, 0.0F, () -> {return Ingredient.of(Items.CHAIN);
     }),
+    ELVENIA("elvenia", 30, new int[]{2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_IRON,
+            1.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.ELVENIA_INGOT.get());
+    }),
+    ANCIENT_ELVENIA("ancient_elvenia", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_IRON,
+            3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+    }),
     PEWRIESE("pewriese", 62, new int[]{4, 7, 9, 4}, 12, SoundEvents.ARMOR_EQUIP_IRON,
             3.0F, 0.0F, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
     }),

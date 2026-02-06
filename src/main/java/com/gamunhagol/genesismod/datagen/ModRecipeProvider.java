@@ -27,6 +27,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             GenesisBlocks.SILVER_ORE.get(),
             GenesisBlocks.DEEPSLATE_SILVER_ORE.get());
 
+    private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
+            Map.entry(Items.GOLDEN_HELMET, GenesisItems.ELVENIA_HELMET.get()),
+            Map.entry(Items.GOLDEN_CHESTPLATE, GenesisItems.ELVENIA_CHESTPLATE.get()),
+            Map.entry(Items.GOLDEN_LEGGINGS, GenesisItems.ELVENIA_LEGGINGS.get()),
+            Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()));
+
+    private static final Map<Item, Item> ANCIENT_ELVENIA_SMITHING_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.ELVENIA_HELMET.get(), GenesisItems.ANCIENT_ELVENIA_HELMET.get()),
+            Map.entry(GenesisItems.ELVENIA_CHESTPLATE.get(), GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get()),
+            Map.entry(GenesisItems.ELVENIA_LEGGINGS.get(), GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get()),
+            Map.entry(GenesisItems.ELVENIA_BOOTS.get(), GenesisItems.ANCIENT_ELVENIA_BOOTS.get()));
+
 
     private static final Map<Item, Item> PEWRIESE_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.IRON_SWORD, GenesisItems.PEWRIESE_SWORD.get()),
@@ -218,6 +230,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         //smithing template
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(), 2)
+                .pattern("#m#")
+                .pattern("#a#")
+                .pattern("###")
+                .define('a',Items.MOSS_BLOCK)
+                .define('#',Items.GOLD_INGOT)
+                .define('m', GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get())
+                .unlockedBy(getHasName(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get()), has(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get()))
+                .save(pWriter);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 2)
                 .pattern("#m#")
                 .pattern("#a#")
@@ -230,6 +252,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //smithing table upgrade
+
+        // 일반 엘브니아 (금 갑옷 -> 엘브니아)
+        for (var entry : ELVENIA_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
+                    entry.getKey(),
+                    GenesisItems.ELVENIA_INGOT.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
+        }
+
+        //  고대 엘브니아 (엘브니아 -> 고대 엘브니아)
+        for (var entry : ANCIENT_ELVENIA_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
+                    entry.getKey(),
+                    GenesisItems.ANCIENT_ELVENIA_INGOT.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
+        }
 
         for (var entry : PEWRIESE_SMITHING_MAP.entrySet()) {
             pewrieseSmithing(pWriter,
@@ -345,6 +387,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         RecipeCategory.COMBAT,
                         resultItem)
                 .unlocks("has_" + getItemName(additionItem), has(additionItem))
+                .save(consumer, new ResourceLocation(GenesisMod.MODID, recipeName));
+    }
+
+    protected static void smithingUpgrade(Consumer<FinishedRecipe> consumer,
+                                          ItemLike template,
+                                          ItemLike base,
+                                          ItemLike addition,
+                                          Item result,
+                                          String recipeName) {
+        SmithingTransformRecipeBuilder.smithing(
+                        Ingredient.of(template),
+                        Ingredient.of(base),
+                        Ingredient.of(addition),
+                        RecipeCategory.COMBAT,
+                        result)
+                .unlocks("has_" + getItemName(addition), has(addition))
                 .save(consumer, new ResourceLocation(GenesisMod.MODID, recipeName));
     }
 
