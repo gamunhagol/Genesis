@@ -110,6 +110,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PYULITELA.get(), RecipeCategory.MISC, GenesisBlocks.PYULITELA_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.COPPER_COIN.get(), RecipeCategory.MISC, GenesisItems.COPPER_COIN_PILE.get());

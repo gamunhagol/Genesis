@@ -32,6 +32,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.PEWRIESE_ORE);
         blockWithItem(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK);
 
+        blockWithItem(GenesisBlocks.PYULITELA_BLOCK);
+
         blockWithItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK);
         blockWithItem(GenesisBlocks.CITRINE_BLOCK);
         blockWithItem(GenesisBlocks.RED_CRYSTAL_BLOCK);

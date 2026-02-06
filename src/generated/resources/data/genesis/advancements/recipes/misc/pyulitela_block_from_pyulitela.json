@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_pyulitela": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:pyulitela"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "genesis:pyulitela_block_from_pyulitela"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_pyulitela",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "genesis:pyulitela_block_from_pyulitela"
+    ]
+  },
+  "sends_telemetry_event": false
+}
