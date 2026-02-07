@@ -71,6 +71,31 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
 
+                output.accept(GenesisItems.ELVENIA_SWORD.get());
+                output.accept(GenesisItems.ELVENIA_SHOVEL.get());
+                output.accept(GenesisItems.ELVENIA_PICKAXE.get());
+                output.accept(GenesisItems.ELVENIA_AXE.get());
+                output.accept(GenesisItems.ELVENIA_HOE.get());
+
+                output.accept(GenesisItems.ELVENIA_GREATSWORD.get());
+                output.accept(GenesisItems.ELVENIA_SPEAR.get());
+                output.accept(GenesisItems.ELVENIA_TACHI.get());
+                output.accept(GenesisItems.ELVENIA_LONGSWORD.get());
+                output.accept(GenesisItems.ELVENIA_DAGGER.get());
+
+                output.accept(GenesisItems.ANCIENT_ELVENIA_SWORD.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_SHOVEL.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_PICKAXE.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_AXE.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_HOE.get());
+
+                output.accept(GenesisItems.ANCIENT_ELVENIA_GREATSWORD.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_SPEAR.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_TACHI.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_LONGSWORD.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_DAGGER.get());
+
+
                 output.accept(GenesisItems.PEWRIESE_SWORD.get());
                 output.accept(GenesisItems.PEWRIESE_SHOVEL.get());
                 output.accept(GenesisItems.PEWRIESE_PICKAXE.get());
@@ -78,14 +103,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PEWRIESE_HOE.get());
 
                 output.accept(GenesisItems.PEWRIESE_GREATSWORD.get());
-
                 output.accept(GenesisItems.PEWRIESE_SPEAR.get());
-
                 output.accept(GenesisItems.PEWRIESE_TACHI.get());
-
                 output.accept(GenesisItems.PEWRIESE_LONGSWORD.get());
-
                 output.accept(GenesisItems.PEWRIESE_DAGGER.get());
+
 
                 output.accept(GenesisItems.PADDED_CHAIN_HELMET.get());
                 output.accept(GenesisItems.PADDED_CHAIN_CHESTPLATE.get());

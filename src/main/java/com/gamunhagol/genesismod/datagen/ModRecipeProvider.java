@@ -28,12 +28,32 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             GenesisBlocks.DEEPSLATE_SILVER_ORE.get());
 
     private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
+            Map.entry(Items.GOLDEN_SWORD, GenesisItems.ELVENIA_SWORD.get()),
+            Map.entry(Items.GOLDEN_SHOVEL, GenesisItems.ELVENIA_SHOVEL.get()),
+            Map.entry(Items.GOLDEN_PICKAXE, GenesisItems.ELVENIA_PICKAXE.get()),
+            Map.entry(Items.GOLDEN_AXE, GenesisItems.ELVENIA_AXE.get()),
+            Map.entry(Items.GOLDEN_HOE, GenesisItems.ELVENIA_HOE.get()),
+            Map.entry(EpicFightItems.GOLDEN_GREATSWORD.get(), GenesisItems.ELVENIA_GREATSWORD.get()),
+            Map.entry(EpicFightItems.GOLDEN_SPEAR.get(), GenesisItems.ELVENIA_SPEAR.get()),
+            Map.entry(EpicFightItems.GOLDEN_TACHI.get(), GenesisItems.ELVENIA_TACHI.get()),
+            Map.entry(EpicFightItems.GOLDEN_LONGSWORD.get(), GenesisItems.ELVENIA_LONGSWORD.get()),
+            Map.entry(EpicFightItems.GOLDEN_DAGGER.get(), GenesisItems.ELVENIA_DAGGER.get()),
             Map.entry(Items.GOLDEN_HELMET, GenesisItems.ELVENIA_HELMET.get()),
             Map.entry(Items.GOLDEN_CHESTPLATE, GenesisItems.ELVENIA_CHESTPLATE.get()),
             Map.entry(Items.GOLDEN_LEGGINGS, GenesisItems.ELVENIA_LEGGINGS.get()),
             Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()));
 
     private static final Map<Item, Item> ANCIENT_ELVENIA_SMITHING_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.ELVENIA_SWORD.get(), GenesisItems.ANCIENT_ELVENIA_SWORD.get()),
+            Map.entry(GenesisItems.ELVENIA_SHOVEL.get(), GenesisItems.ANCIENT_ELVENIA_SHOVEL.get()),
+            Map.entry(GenesisItems.ELVENIA_PICKAXE.get(), GenesisItems.ANCIENT_ELVENIA_PICKAXE.get()),
+            Map.entry(GenesisItems.ELVENIA_AXE.get(), GenesisItems.ANCIENT_ELVENIA_AXE.get()),
+            Map.entry(GenesisItems.ELVENIA_HOE.get(), GenesisItems.ANCIENT_ELVENIA_HOE.get()),
+            Map.entry(GenesisItems.ELVENIA_GREATSWORD.get(), GenesisItems.ANCIENT_ELVENIA_GREATSWORD.get()),
+            Map.entry(GenesisItems.ELVENIA_SPEAR.get(), GenesisItems.ANCIENT_ELVENIA_SPEAR.get()),
+            Map.entry(GenesisItems.ELVENIA_TACHI.get(), GenesisItems.ANCIENT_ELVENIA_TACHI.get()),
+            Map.entry(GenesisItems.ELVENIA_LONGSWORD.get(), GenesisItems.ANCIENT_ELVENIA_LONGSWORD.get()),
+            Map.entry(GenesisItems.ELVENIA_DAGGER.get(), GenesisItems.ANCIENT_ELVENIA_DAGGER.get()),
             Map.entry(GenesisItems.ELVENIA_HELMET.get(), GenesisItems.ANCIENT_ELVENIA_HELMET.get()),
             Map.entry(GenesisItems.ELVENIA_CHESTPLATE.get(), GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get()),
             Map.entry(GenesisItems.ELVENIA_LEGGINGS.get(), GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get()),

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:elvenia_ingot"
+  },
+  "base": {
+    "item": "epicfight:golden_greatsword"
+  },
+  "result": {
+    "item": "genesis:elvenia_greatsword"
+  },
+  "template": {
+    "item": "genesis:elvenia_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:elvenia_ingot"
+  },
+  "base": {
+    "item": "minecraft:golden_shovel"
+  },
+  "result": {
+    "item": "genesis:elvenia_shovel"
+  },
+  "template": {
+    "item": "genesis:elvenia_upgrade_smithing_template"
+  }
+}

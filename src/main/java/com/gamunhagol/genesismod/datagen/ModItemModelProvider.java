@@ -97,7 +97,17 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.OBLIVION_CANDLE);
 
+        handheldItem(GenesisItems.ELVENIA_SWORD);
+        handheldItem(GenesisItems.ELVENIA_AXE);
+        handheldItem(GenesisItems.ELVENIA_PICKAXE);
+        handheldItem(GenesisItems.ELVENIA_HOE);
+        handheldItem(GenesisItems.ELVENIA_SHOVEL);
 
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_AXE);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_PICKAXE);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_HOE);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_SHOVEL);
 
         handheldItem(GenesisItems.PEWRIESE_SWORD);
         handheldItem(GenesisItems.PEWRIESE_AXE);

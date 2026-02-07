@@ -204,7 +204,49 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> ELVENIA_SWORD = ITEMS.register("elvenia_sword", () -> new SwordItem(GenesisItemTier.ELVENIA, 3, -2.4f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_SHOVEL = ITEMS.register("elvenia_shovel", () -> new ShovelItem(GenesisItemTier.ELVENIA, 1.5f, -3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_PICKAXE = ITEMS.register("elvenia_pickaxe", () -> new PickaxeItem(GenesisItemTier.ELVENIA, 1, -2.8f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_AXE = ITEMS.register("elvenia_axe", () -> new AxeItem(GenesisItemTier.ELVENIA, 6, -3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIA_HOE = ITEMS.register("elvenia_hoe", () -> new HoeItem(GenesisItemTier.ELVENIA, -2, 0.0f,
+            new Item.Properties()));
 
+    public static final RegistryObject<Item> ELVENIA_GREATSWORD = ITEMS.register("elvenia_greatsword", () -> new GreatswordItem(new Item.Properties()
+            , GenesisItemTier.ELVENIA));
+    public static final RegistryObject<Item> ELVENIA_SPEAR = ITEMS.register("elvenia_spear", () -> new SpearItem(new Item.Properties()
+            , GenesisItemTier.ELVENIA));
+    public static final RegistryObject<Item> ELVENIA_TACHI = ITEMS.register("elvenia_tachi", () -> new TachiItem(new Item.Properties()
+            , GenesisItemTier.ELVENIA));
+    public static final RegistryObject<Item> ELVENIA_LONGSWORD = ITEMS.register("elvenia_longsword", () -> new LongswordItem(new Item.Properties()
+            , GenesisItemTier.ELVENIA));
+    public static final RegistryObject<Item> ELVENIA_DAGGER = ITEMS.register("elvenia_dagger", () -> new DaggerItem(new Item.Properties()
+            , GenesisItemTier.ELVENIA));
+
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_SWORD = ITEMS.register("ancient_elvenia_sword", () -> new SwordItem(GenesisItemTier.ANCIENT_ELVENIA, 3, -2.4f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_SHOVEL = ITEMS.register("ancient_elvenia_shovel", () -> new ShovelItem(GenesisItemTier.ANCIENT_ELVENIA, 1.5f, -3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_PICKAXE = ITEMS.register("ancient_elvenia_pickaxe", () -> new PickaxeItem(GenesisItemTier.ANCIENT_ELVENIA, 1, -2.8f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_AXE = ITEMS.register("ancient_elvenia_axe", () -> new AxeItem(GenesisItemTier.ANCIENT_ELVENIA, 5, -3.0f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_HOE = ITEMS.register("ancient_elvenia_hoe", () -> new HoeItem(GenesisItemTier.ANCIENT_ELVENIA, -3, 0.0f,
+            new Item.Properties()));
+
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_GREATSWORD = ITEMS.register("ancient_elvenia_greatsword", () -> new GreatswordItem(new Item.Properties()
+            , GenesisItemTier.ANCIENT_ELVENIA));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_SPEAR = ITEMS.register("ancient_elvenia_spear", () -> new SpearItem(new Item.Properties()
+            , GenesisItemTier.ANCIENT_ELVENIA));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_TACHI = ITEMS.register("ancient_elvenia_tachi", () -> new TachiItem(new Item.Properties()
+            , GenesisItemTier.ANCIENT_ELVENIA));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_LONGSWORD = ITEMS.register("ancient_elvenia_longsword", () -> new LongswordItem(new Item.Properties()
+            , GenesisItemTier.ANCIENT_ELVENIA));
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_DAGGER = ITEMS.register("ancient_elvenia_dagger", () -> new DaggerItem(new Item.Properties()
+            , GenesisItemTier.ANCIENT_ELVENIA));
 
 
     public static final RegistryObject<Item> PEWRIESE_SWORD = ITEMS.register("pewriese_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
@@ -220,16 +262,12 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> PEWRIESE_GREATSWORD = ITEMS.register("pewriese_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
-
     public static final RegistryObject<Item> PEWRIESE_SPEAR = ITEMS.register("pewriese_spear", () -> new SpearItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
-
     public static final RegistryObject<Item> PEWRIESE_TACHI = ITEMS.register("pewriese_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
-
     public static final RegistryObject<Item> PEWRIESE_LONGSWORD = ITEMS.register("pewriese_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
-
     public static final RegistryObject<Item> PEWRIESE_DAGGER = ITEMS.register("pewriese_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
 

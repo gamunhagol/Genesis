@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:elvenia_ingot"
+  },
+  "base": {
+    "item": "minecraft:golden_sword"
+  },
+  "result": {
+    "item": "genesis:elvenia_sword"
+  },
+  "template": {
+    "item": "genesis:elvenia_upgrade_smithing_template"
+  }
+}

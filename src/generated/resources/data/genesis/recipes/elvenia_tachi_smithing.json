@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:elvenia_ingot"
+  },
+  "base": {
+    "item": "epicfight:golden_tachi"
+  },
+  "result": {
+    "item": "genesis:elvenia_tachi"
+  },
+  "template": {
+    "item": "genesis:elvenia_upgrade_smithing_template"
+  }
+}

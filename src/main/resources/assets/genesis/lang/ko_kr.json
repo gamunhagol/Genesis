@@ -52,6 +52,30 @@
 
   "item.genesis.spirit_compass": "정령 나침반",
 
+  "item.genesis.elvenia_sword": "엘브니아 검",
+  "item.genesis.elvenia_shovel": "엘브니아 삽",
+  "item.genesis.elvenia_pickaxe": "엘브니아 곡괭이",
+  "item.genesis.elvenia_axe": "엘브니아 도끼",
+  "item.genesis.elvenia_hoe": "엘브니아 괭이",
+
+  "item.genesis.elvenia_greatsword": "엘브니아 대검",
+  "item.genesis.elvenia_spear": "엘브니아 창",
+  "item.genesis.elvenia_tachi": "엘브니아 태도",
+  "item.genesis.elvenia_longsword": "엘브니아 장검",
+  "item.genesis.elvenia_dagger": "엘브니아 단검",
+
+  "item.genesis.ancient_elvenia_sword": "고대 엘브니아 검",
+  "item.genesis.ancient_elvenia_shovel": "고대 엘브니아 삽",
+  "item.genesis.ancient_elvenia_pickaxe": "고대 엘브니아 곡괭이",
+  "item.genesis.ancient_elvenia_axe": "고대 엘브니아 도끼",
+  "item.genesis.ancient_elvenia_hoe": "고대 엘브니아 괭이",
+
+  "item.genesis.ancient_elvenia_greatsword": "고대 엘브니아 대검",
+  "item.genesis.ancient_elvenia_spear": "고대 엘브니아 창",
+  "item.genesis.ancient_elvenia_tachi": "고대 엘브니아 태도",
+  "item.genesis.ancient_elvenia_longsword": "고대 엘브니아 장검",
+  "item.genesis.ancient_elvenia_dagger": "고대 엘브니아 단검",
+
   "item.genesis.pewriese_sword": "퓨리즌 검",
   "item.genesis.pewriese_shovel": "퓨리즌 삽",
   "item.genesis.pewriese_pickaxe": "퓨리즌 곡괭이",
@@ -59,13 +83,9 @@
   "item.genesis.pewriese_hoe": "퓨리즌 괭이",
 
   "item.genesis.pewriese_greatsword": "퓨리즌 대검",
-
   "item.genesis.pewriese_spear": "퓨리즌 창",
-
   "item.genesis.pewriese_tachi": "퓨리즌 태도",
-
   "item.genesis.pewriese_longsword": "퓨리즌 장검",
-
   "item.genesis.pewriese_dagger": "퓨리즌 단검",
 
 
