@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -17,7 +18,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -46,6 +51,7 @@ public class GenesisForgeEvents {
             }
         }
     }
+
     // [추가됨] 살아있는 모든 엔티티(좀비, 플레이어, 주민 등)가 매 틱마다 실행하는 이벤트
     @SubscribeEvent
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
@@ -80,5 +86,55 @@ public class GenesisForgeEvents {
         return !stack.isEmpty() &&
                 stack.getItem() instanceof ArmorItem armor &&
                 armor.getMaterial() == GenesisArmorMaterials.PADDED_CHAIN;
+    }
+
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onLivingDamage(LivingDamageEvent event) {
+        // 이미 대미지가 없거나(0), 다른 모드에 의해 취소된 경우 계산하지 않음
+        if (event.getAmount() <= 0) return;
+
+        LivingEntity entity = event.getEntity();
+        float originalDamage = event.getAmount(); // 다른 모드가 수정한 대미지를 가져옴
+        float finalDamage = originalDamage;
+
+        // 1. 마법 방어력 계산 (우선 순위)
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO)) {
+            AttributeInstance magicDefenseAttr = entity.getAttribute(GenesisAttributes.MAGIC_DEFENSE.get());
+            if (magicDefenseAttr != null) {
+                double defenseValue = magicDefenseAttr.getValue();
+                if (defenseValue > 0) {
+                    // 마법 방어력 공식 (분모 20.0)
+                    // 공식: 1 - (방어력 / (방어력 + 20))
+                    float reductionMultiplier = (float) (1.0 - (defenseValue / (defenseValue + 30.0)));
+                    finalDamage = originalDamage * reductionMultiplier;
+
+                    // 최소 대미지 보장 (0.5f)
+                    if (finalDamage < 0.5f && originalDamage > 0) {
+                        finalDamage = 0.5f;
+                    }
+                }
+            }
+        }
+        // 2. 물리 방어력 캡 돌파 계산 (마법이 아니고, 방어 무시가 아닐 때만)
+        else if (!event.getSource().is(DamageTypeTags.BYPASSES_ARMOR)) {
+            float currentArmor = entity.getArmorValue();
+
+            // 바닐라 캡(20)을 넘는 경우에만 추가 감소 적용
+            if (currentArmor > 20) {
+                float excessArmor = currentArmor - 20.0f;
+
+                // ★ 물리 방어력 캡 돌파 공식 (분모 50.0)
+                // 공식: 남은 대미지 * (1 - (초과분 / (초과분 + 50)))
+                float reductionFactor = excessArmor / (excessArmor + 50.0f);
+
+                finalDamage = originalDamage * (1.0f - reductionFactor);
+            }
+        }
+
+        // 대미지가 변경되었을 때만 적용 (불필요한 세팅 방지)
+        if (finalDamage != originalDamage) {
+            event.setAmount(finalDamage);
+        }
     }
 }

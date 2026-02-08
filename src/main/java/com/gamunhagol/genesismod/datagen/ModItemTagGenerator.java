@@ -20,6 +20,9 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     public static final TagKey<Item> SPIRIT_STONES = TagKey.create(
             Registries.ITEM, new ResourceLocation(GenesisMod.MODID, "spirit_stone")
     );
+    public static final TagKey<Item> MAGIC_DEFENSE_ARMOR = TagKey.create(
+            Registries.ITEM, new ResourceLocation(GenesisMod.MODID, "magic_defense_armor")
+    );
 
 
     public ModItemTagGenerator(PackOutput pOutput, CompletableFuture<HolderLookup.Provider> pLookupProvider, CompletableFuture<TagLookup<Block>> pBlockTags, @Nullable ExistingFileHelper existingFileHelper) {
@@ -37,6 +40,13 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.LIGHTING_CRYSTAL_SHARD.get(),
                 GenesisItems.GREEN_AMBER.get(),
                 GenesisItems.ICE_FLOWER_SHARD.get()
+        );
+
+        tag(MAGIC_DEFENSE_ARMOR).add(
+                GenesisItems.ANCIENT_ELVENIA_HELMET.get(),
+                GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get(),
+                GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get(),
+                GenesisItems.ANCIENT_ELVENIA_BOOTS.get()
         );
 
         tag(net.minecraft.tags.ItemTags.TRIMMABLE_ARMOR).add(

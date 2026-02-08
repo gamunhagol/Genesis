@@ -223,15 +223,17 @@
   "itemGroup.genesis.items": "창세기 아이템",
   "itemGroup.genesis_block.blocks": "창세기 블럭",
 
+  "item.genesis.spirit_compass.no_target":"목표: 설정되지 않음",
+  "item.genesis.spirit_compass.not_found":"탐색: 범위 밖 (1.2km)",
+
+
+  "attribute.name.genesis.magic_defense": "마법 방어력",
 
 
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
   "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
   "tooltip.genesis.spirit_compass.type": "속성: %s",
 
-
-  "item.genesis.spirit_compass.no_target":"목표: 설정되지 않음",
-  "item.genesis.spirit_compass.not_found":"탐색: 범위 밖 (1.2km)",
 
   "tooltip.genesis.spirit_type.fire": "화염",
   "tooltip.genesis.spirit_type.water": "물",
