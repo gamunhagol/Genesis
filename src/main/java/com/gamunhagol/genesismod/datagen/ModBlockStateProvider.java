@@ -151,6 +151,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         clusterBlock(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER);
         clusterBlock(GenesisBlocks.WIND_STONE_CLUSTER);
 
+        saplingBlock(GenesisBlocks.AMETHYST_SAPLING);
+
         customCandleBlock(GenesisBlocks.OBLIVION_CANDLE);
 
 
@@ -162,6 +164,15 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+
+    private void saplingBlock(RegistryObject<Block> block) {
+        String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+
+        var model = models().cross(name, modLoc("block/" + name))
+                .renderType("cutout");
+
+        simpleBlock(block.get(), model);
     }
 
     private void clusterBlock(RegistryObject<Block> block) {

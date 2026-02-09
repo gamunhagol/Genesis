@@ -46,6 +46,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ICE_FLOWER_CLUSTER.get()
                         ,GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER.get()
                         ,GenesisBlocks.WIND_STONE_CLUSTER.get()
+                        ,GenesisBlocks.AMETHYST_SAPLING.get()
                         ,GenesisBlocks.AEK_STATUE.get()
                     ,GenesisBlocks.COPPER_COIN_PILE.get()
                     ,GenesisBlocks.SILVER_COIN_PILE.get()

@@ -85,6 +85,9 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> WIND_STONE_CLUSTER = ITEMS.register("wind_stone_cluster",
             () -> new BlockItem(GenesisBlocks.WIND_STONE_CLUSTER.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> AMETHYST_SAPLING = ITEMS.register("amethyst_sapling",
+            () -> new BlockItem(GenesisBlocks.AMETHYST_SAPLING.get(), new Item.Properties()));
+
 
 
 

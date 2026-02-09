@@ -100,6 +100,11 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> OBLIVION_CANDLE = register("oblivion_candle",
             () -> new OblivionCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).noOcclusion()));
 
+    //plant
+    public static final RegistryObject<Block> AMETHYST_SAPLING = register("amethyst_sapling",
+            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
+                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+
     //liquid
     public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =
             BLOCKS.register("hot_spring_block",
