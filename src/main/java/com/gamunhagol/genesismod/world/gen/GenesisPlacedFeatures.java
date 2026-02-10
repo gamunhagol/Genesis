@@ -5,13 +5,12 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.placement.HeightRangePlacement;
-import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-import net.minecraft.world.level.levelgen.placement.PlacementModifier;
+import net.minecraft.world.level.levelgen.placement.*;
 
 import java.util.List;
 
@@ -20,6 +19,8 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> PEWRIESE_ORE_PLACED_KEY = registerKey("pewriese_ore_placed");
 
     public static final ResourceKey<PlacedFeature> PEWRIESE_ORE_DESERT_PLACED_KEY = registerKey("pewriese_ore_desert_placed");
+
+    public static final ResourceKey<PlacedFeature> AMETHYST_TREE_PLACED_KEY = registerKey("amethyst_tree_placed");
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -44,6 +45,17 @@ public class GenesisPlacedFeatures {
                         HeightRangePlacement.triangle(
                                 VerticalAnchor.absolute(-100),
                                 VerticalAnchor.absolute(-16))));
+
+        register(context, AMETHYST_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.AMETHYST_TREE_KEY),
+                List.of(
+                        CountPlacement.of(1),
+                        RarityFilter.onAverageOnceEvery(55),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(50)),
+                        SurfaceWaterDepthFilter.forMaxDepth(0),
+                        BiomeFilter.biome()
+                ));
+
     }
 
     private static ResourceKey<PlacedFeature> registerKey(String name) {

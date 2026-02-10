@@ -102,8 +102,8 @@ public class GenesisBlocks {
 
     //plant
     public static final RegistryObject<Block> AMETHYST_SAPLING = register("amethyst_sapling",
-            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
-                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+            () -> new AmethystSaplingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)
+                    .sound(SoundType.AMETHYST_CLUSTER).lightLevel(state -> 5).noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     //liquid
     public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =

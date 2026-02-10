@@ -21,6 +21,8 @@ public class GenesisBiomeModifiers {
 
     public static final ResourceKey<BiomeModifier> ADD_PEWRIESE_ORE_DESERT = registerKey("add_pewriese_ore_desert");
 
+    public static final ResourceKey<BiomeModifier> ADD_AMETHYST_TREE = registerKey("add_amethyst_tree");
+
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -42,6 +44,13 @@ public class GenesisBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_ORE_DESERT_PLACED_KEY)),
                 GenerationStep.Decoration.UNDERGROUND_ORES));
+
+
+        context.register(ADD_AMETHYST_TREE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 모든 오버월드 바이옴 대상
+                HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.AMETHYST_TREE_PLACED_KEY)),
+                GenerationStep.Decoration.VEGETAL_DECORATION
+        ));
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

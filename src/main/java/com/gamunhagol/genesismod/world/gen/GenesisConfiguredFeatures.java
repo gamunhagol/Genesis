@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.gen;
 
+import com.gamunhagol.genesismod.main.GenesisFeatures;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.core.registries.Registries;
@@ -9,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
+import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.OreConfiguration;
 import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 
@@ -17,6 +19,8 @@ import java.util.List;
 public class GenesisConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PEWRIESE_ORE_KEY = registerKey("pewriese_ore");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_TREE_KEY = registerKey("amethyst_tree");
 
 
     public static void bootstrap(BootstapContext<ConfiguredFeature<?, ?>> context) {
@@ -34,6 +38,8 @@ public class GenesisConfiguredFeatures {
         ), 3));
 
         register(context, SILVER_ORE_KEY, Feature.ORE, new OreConfiguration(overworldGenesisOres, 9));
+
+        register(context, AMETHYST_TREE_KEY, GenesisFeatures.AMETHYST_TREE.get(), NoneFeatureConfiguration.INSTANCE);
     }
 
 

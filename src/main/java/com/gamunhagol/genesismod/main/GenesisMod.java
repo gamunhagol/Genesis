@@ -50,6 +50,7 @@ public class GenesisMod {
         GenesisFluidTypes.FLUID_TYPES.register(modEventBus);
         GenesisFluids.FLUIDS.register(modEventBus);
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
+        GenesisFeatures.FEATURES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 
