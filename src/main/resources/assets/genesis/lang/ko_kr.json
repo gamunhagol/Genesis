@@ -141,7 +141,7 @@
   "block.genesis.silver_ore": "은 광석",
   "block.genesis.deepslate_silver_ore": "심층암 은 광석",
 
-  "block.genesis.pewriese_ore": "이시스 광석",
+  "block.genesis.pewriese_ore": "퓨리즌 광석",
 
   "block.genesis.pyulitela_ore": "땅의 순수 광석",
 
@@ -151,7 +151,7 @@
   "block.genesis.elvenia_block": "엘브니아 블록",
   "block.genesis.ancient_elvenia_block": "고대 엘브니아 블럭",
 
-  "block.genesis.pewriese_crystal_block": "이시스 결정 블럭",
+  "block.genesis.pewriese_crystal_block": "퓨리즌 결정 블럭",
 
   "block.genesis.pyulitela_block": "땅의 순수 블럭",
 
@@ -185,6 +185,9 @@
 
 
   "block.genesis.oblivion_candle": "망각의 초",
+
+
+  "block.genesis.precipitate": "침전물",
 
 
   "block.genesis.faded_stone": "빛바랜 돌",
@@ -255,5 +258,7 @@
   "tooltip.genesis.remnants_of_a_dream.info":"아무것도 느껴지지 않는다. 악몽을 불러온다",
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다",
 
-  "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다"
+  "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다",
+
+  "biome.genesis.dust_in_the_crevices": "틈새의 먼지"
 }

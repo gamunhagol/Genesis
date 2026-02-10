@@ -140,6 +140,10 @@ public class GenesisBlocks {
 
     //Get mob
 
+    //misc
+    public static final RegistryObject<Block> PRECIPITATE = register("precipitate",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.SAND).strength(0.1f,0.1f).noLootTable()));
+
 
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",

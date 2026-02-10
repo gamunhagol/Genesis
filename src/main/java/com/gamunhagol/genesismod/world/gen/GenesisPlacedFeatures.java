@@ -48,7 +48,8 @@ public class GenesisPlacedFeatures {
 
         register(context, AMETHYST_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.AMETHYST_TREE_KEY),
                 List.of(
-                        CountPlacement.of(1),
+                        //먼저 청크당 시도 횟수를 넉넉히 잡습니다 (동굴은 실패 확률이 높기 때문)
+                        CountPlacement.of(25),
                         RarityFilter.onAverageOnceEvery(55),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(50)),

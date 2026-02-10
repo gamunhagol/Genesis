@@ -88,6 +88,9 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> AMETHYST_SAPLING = ITEMS.register("amethyst_sapling",
             () -> new BlockItem(GenesisBlocks.AMETHYST_SAPLING.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> PRECIPITATE = ITEMS.register("precipitate",
+            () -> new BlockItem(GenesisBlocks.PRECIPITATE.get(), new Item.Properties()));
+
 
 
 

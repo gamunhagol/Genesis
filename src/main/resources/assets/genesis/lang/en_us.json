@@ -185,6 +185,9 @@
   "block.genesis.oblivion_candle": "Oblivion Candle",
 
 
+  "block.genesis.precipitate": "Precipitate",
+
+
   "block.genesis.faded_stone": "Faded Stone",
   "block.genesis.faded_gateway": "Faded Gateway",
   "block.genesis.faded_brick": "Faded Brick",
@@ -252,5 +255,7 @@
   "tooltip.genesis.remnants_of_a_dream.info":"Devoid of all sensation. It beckons the nightmares.",
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
-  "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain."
+  "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
+
+  "biome.genesis.dust_in_the_crevices": "Dust in the Crevices"
 }

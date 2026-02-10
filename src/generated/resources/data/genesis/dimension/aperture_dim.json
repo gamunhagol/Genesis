@@ -1,0 +1,21 @@
+{
+  "type": "genesis:aperture_dim_type",
+  "generator": {
+    "type": "minecraft:flat",
+    "settings": {
+      "biome": "genesis:dust_in_the_crevices",
+      "features": false,
+      "lakes": false,
+      "layers": [
+        {
+          "block": "minecraft:bedrock",
+          "height": 1
+        },
+        {
+          "block": "genesis:precipitate",
+          "height": 63
+        }
+      ]
+    }
+  }
+}
