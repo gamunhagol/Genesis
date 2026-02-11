@@ -43,10 +43,19 @@ public class AddChestItemModifier extends LootModifier {
         if (context.getRandom().nextFloat() < this.chance) {
             // 개수 랜덤 (min ~ max)
             int count = context.getRandom().nextInt(maxCount - minCount + 1) + minCount;
-            generatedLoot.add(new ItemStack(item, count));
+            ItemStack stack = new ItemStack(item, count);
+
+            // [추가] 성배병일 경우 빈 상태로 설정
+            if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                grail.setUses(stack, 0);
+            }
+
+            generatedLoot.add(stack);
         }
         return generatedLoot;
     }
+
+
 
     @Override
     public Codec<? extends IGlobalLootModifier> codec() {

@@ -93,11 +93,12 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
-        // 부활(Death) 상황인지 확인 (차원 이동 시 리필 방지)
         if (event.isWasDeath()) {
+            // 부활한 플레이어 객체
             Player newPlayer = event.getEntity();
 
-            // 새 플레이어의 인벤토리를 스캔하여 모든 성배병을 꽉 채움
+            // 만약 keepInventory가 켜져 있거나, 아이템 보존 로직이 작동했다면
+            // 부활한 인벤토리에 들어있는 성배병을 찾아 리필합니다.
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);
                 if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {

@@ -24,8 +24,12 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         Map<ResourceLocation, AddSusSandItemModifier.Pair> susSandEntries = new HashMap<>();
         susSandEntries.put(new ResourceLocation("minecraft", "archaeology/desert_pyramid"),
                 new AddSusSandItemModifier.Pair(GenesisItems.SPIRIT_COMPASS.get(), 0.025f));
+        susSandEntries.put(new ResourceLocation("minecraft", "archaeology/desert_pyramid"),
+                new AddSusSandItemModifier.Pair(GenesisItems.DIVINE_GRAIL.get(), 0.012f));
         susSandEntries.put(new ResourceLocation("minecraft", "archaeology/trail_ruins_rare"),
                 new AddSusSandItemModifier.Pair(GenesisItems.PEWRIESE_ORE_PIECE.get(), 0.051f));
+        susSandEntries.put(new ResourceLocation("minecraft", "archaeology/trail_ruins_rare"),
+                new AddSusSandItemModifier.Pair(GenesisItems.DIVINE_GRAIL.get(), 0.008f));
         susSandEntries.put(new ResourceLocation("minecraft", "archaeology/ocean_ruins_cold"),
                 new AddSusSandItemModifier.Pair(GenesisItems.SPIRIT_COMPASS.get(), 0.008f));
         susSandEntries.put(new ResourceLocation("minecraft", "archaeology/ocean_ruins_warm"),
@@ -74,6 +78,11 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                         new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_corridor")).build()
                 }, GenesisItems.DREAM_POWDER.get(), 0.4f, 2, 6));
 
+        add("stronghold_corridor_grail", new AddChestItemModifier(
+                new LootItemCondition[] {
+                        new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_corridor")).build()
+                }, GenesisItems.DIVINE_GRAIL.get(), 0.02f, 1, 1));
+
 
         // 정글 사원 (Jungle Temple)
         add("jungle_temple_compass", new AddChestItemModifier(
@@ -85,6 +94,10 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootItemCondition[] {
                         new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build()
                 }, GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(), 0.036f, 1, 1));
+        add("jungle_temple_grail", new AddChestItemModifier(
+                new LootItemCondition[] {
+                        new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build()
+                }, GenesisItems.DIVINE_GRAIL.get(), 0.006f, 1, 1));
 
 
         // 고양이 선물 (Cat Gift)

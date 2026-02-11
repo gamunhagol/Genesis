@@ -55,7 +55,14 @@ public class AddSusSandItemModifier extends LootModifier {
 
         Pair entry = entries.get(tableId);
         if (entry != null && context.getRandom().nextFloat() < entry.chance) {
-            generatedLoot.add(new ItemStack(entry.item));
+            ItemStack stack = new ItemStack(entry.item);
+
+            // [추가] 성배병일 경우 빈 상태로 설정
+            if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                grail.setUses(stack, 0);
+            }
+
+            generatedLoot.add(stack);
         }
         return generatedLoot;
     }

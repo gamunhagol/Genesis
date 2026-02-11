@@ -60,9 +60,14 @@ public class DivineGrailItem extends Item {
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced) {
         int uses = getUses(pStack);
         int maxUses = getMaxUses(pStack);
-        float heal = getHealAmount(pStack);
+        int upgradeLevel = pStack.hasTag() && pStack.getTag().contains("HealLevel") ? pStack.getTag().getInt("HealLevel") : 0;
 
         pTooltipComponents.add(Component.translatable("tooltip.genesis.grail.uses", uses, maxUses).withStyle(ChatFormatting.BLUE));
+
+        if (upgradeLevel > 0) {
+            // +1, +2 형태로 표시하기 위해 파라미터로 upgradeLevel 전달
+            pTooltipComponents.add(Component.translatable("tooltip.genesis.grail.enforce", upgradeLevel).withStyle(ChatFormatting.BLUE));
+        }
 
         if (uses == 0) {
             pTooltipComponents.add(Component.translatable("tooltip.genesis.grail.empty").withStyle(ChatFormatting.GRAY));

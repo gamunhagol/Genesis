@@ -8,8 +8,10 @@
     "genesis:stronghold_corridor_powder",
     "genesis:jungle_temple_compass",
     "genesis:jungle_temple_template",
+    "genesis:jungle_temple_grail",
     "genesis:cat_gift_powder",
-    "genesis:add_sus_sand_items"
+    "genesis:add_sus_sand_items",
+    "genesis:stronghold_corridor_grail"
   ],
   "replace": false
 }

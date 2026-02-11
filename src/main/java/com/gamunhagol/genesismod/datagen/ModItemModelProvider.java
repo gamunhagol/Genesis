@@ -143,9 +143,33 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItemModel("divine_grail_most");
         basicItemModel("divine_grail_full");
 
-        ItemModelBuilder grailBuilder = withExistingParent(GenesisItems.DIVINE_GRAIL.getId().getPath(),
-                new ResourceLocation("item/handheld"))
-                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/divine_grail_full"));
+// 2. 메인 아이템 모델 생성 및 오버라이드 직접 설정
+// handheldItem() 호출 대신 직접 빌더를 구성하여 경로 혼선을 방지합니다.
+        ItemModelBuilder grailBuilder = withExistingParent("divine_grail", new ResourceLocation("item/handheld"))
+                .texture("layer0", modLoc("item/divine_grail_full")); // 기본 이미지
+
+// 3. 오버라이드 조건 설정 (반드시 수치가 '낮은' 것부터 '높은' 순서대로 작성)
+// 마인크래프트는 위에서부터 읽으며 조건에 맞는 "마지막" 것을 선택합니다.
+        grailBuilder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_empty")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.1f) // 0.0보다 크면 실행
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_near_empty")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.4f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_half")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.7f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_most")))
+                .end()
+                .override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.9f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_full")))
+                .end();
 
 
 
@@ -319,33 +343,5 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .end();
             });
         }
-    }
-
-    private void addGrailOverrides(ItemModelBuilder builder) {
-        // 0.0: 텅 빈 상태
-        builder.override()
-                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.0f)
-                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_empty")))
-                .end();
-        // 0.25: 거의 다 마심
-        builder.override()
-                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.25f)
-                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_near_empty")))
-                .end();
-        // 0.5: 절반
-        builder.override()
-                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.5f)
-                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_half")))
-                .end();
-        // 0.75: 조금 마심
-        builder.override()
-                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.75f)
-                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_most")))
-                .end();
-        // 1.0: 꽉 참
-        builder.override()
-                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 1.0f)
-                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_full")))
-                .end();
     }
 }

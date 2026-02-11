@@ -248,6 +248,7 @@
   "tooltip.genesis.spirit_compass.type": "속성: %s",
 
   "tooltip.genesis.grail.uses":"남은 횟수: %s / %s",
+  "tooltip.genesis.grail.enforce": "+%s",
   "tooltip.genesis.grail.empty":"텅 빈",
 
 

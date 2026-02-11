@@ -1,5 +1,37 @@
 {
   "parent": "minecraft:item/handheld",
+  "overrides": [
+    {
+      "model": "genesis:item/divine_grail_empty",
+      "predicate": {
+        "genesis:fill_level": 0.0
+      }
+    },
+    {
+      "model": "genesis:item/divine_grail_near_empty",
+      "predicate": {
+        "genesis:fill_level": 0.1
+      }
+    },
+    {
+      "model": "genesis:item/divine_grail_half",
+      "predicate": {
+        "genesis:fill_level": 0.4
+      }
+    },
+    {
+      "model": "genesis:item/divine_grail_most",
+      "predicate": {
+        "genesis:fill_level": 0.7
+      }
+    },
+    {
+      "model": "genesis:item/divine_grail_full",
+      "predicate": {
+        "genesis:fill_level": 0.9
+      }
+    }
+  ],
   "textures": {
     "layer0": "genesis:item/divine_grail_full"
   }

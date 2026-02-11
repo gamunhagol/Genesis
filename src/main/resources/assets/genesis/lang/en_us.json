@@ -244,6 +244,7 @@
   "tooltip.genesis.spirit_compass.type": "Type: %s",
 
   "tooltip.genesis.grail.uses":"Remaining Times: %s / %s",
+  "tooltip.genesis.grail.enforce": "+%s",
   "tooltip.genesis.grail.empty":"empty",
 
 
