@@ -86,6 +86,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.PEWRIESE_CRYSTAL);
         simpleItem(GenesisItems.PYULITELA);
 
+        simpleItem(GenesisItems.BEAST_REMAINS);
+        simpleItem(GenesisItems.FLASK_SHARD);
+
         simpleItem(GenesisItems.COPPER_COIN);
         simpleItem(GenesisItems.SILVER_COIN);
         simpleItem(GenesisItems.GOLD_COIN);
@@ -133,6 +136,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.STATUE_OF_HERALD_OF_OBLIVION);
         simpleItem(GenesisItems.STATUE_OF_GUIDE_TO_OBLIVION);
         simpleItem(GenesisItems.AEK_STATUE);
+
+        basicItemModel("divine_grail_empty");
+        basicItemModel("divine_grail_near_empty");
+        basicItemModel("divine_grail_half");
+        basicItemModel("divine_grail_most");
+        basicItemModel("divine_grail_full");
+
+        ItemModelBuilder grailBuilder = withExistingParent(GenesisItems.DIVINE_GRAIL.getId().getPath(),
+                new ResourceLocation("item/handheld"))
+                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/divine_grail_full"));
+
 
 
         // ─────────────── 블록 아이템 ───────────────
@@ -184,6 +198,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         String[] types = {"fire", "water", "earth", "storm", "lightning", "plants", "ice"};
         for (String type : types) {
             basicItemModel("spirit_compass_" + type);
+
         }
 
     }
@@ -222,6 +237,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .model(new ModelFile.UncheckedModelFile("genesis:item/spirit_compass_" + type))
                 .end();
     }
+
 
 
 
@@ -303,5 +319,33 @@ public class ModItemModelProvider extends ItemModelProvider {
                         .end();
             });
         }
+    }
+
+    private void addGrailOverrides(ItemModelBuilder builder) {
+        // 0.0: 텅 빈 상태
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_empty")))
+                .end();
+        // 0.25: 거의 다 마심
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.25f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_near_empty")))
+                .end();
+        // 0.5: 절반
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.5f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_half")))
+                .end();
+        // 0.75: 조금 마심
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.75f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_most")))
+                .end();
+        // 1.0: 꽉 참
+        builder.override()
+                .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 1.0f)
+                .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_full")))
+                .end();
     }
 }

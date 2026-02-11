@@ -33,6 +33,10 @@
 
   "item.genesis.pyulitela": "Pyulitela",
 
+  "item.genesis.flask_shard": "Chalice Bottle Fragment",
+
+  "item.genesis.beast_remains": "Beast Remains",
+
   "item.genesis.copper_coin": "Copper coin",
   "item.genesis.silver_coin": "Silver coin",
   "item.genesis.gold_coin": "Gold coin",
@@ -49,6 +53,8 @@
   "item.genesis.amethyst_apple": "Amethyst Apple",
   "item.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",
 
+
+  "item.genesis.divine_grail": "Holy Grail Bottle of Mythical Age",
 
   "item.genesis.spirit_compass": "Spirit Compass",
 
@@ -236,6 +242,9 @@
   "tooltip.genesis.spirit_compass.has_needle": "Needle: Installed",
   "tooltip.genesis.spirit_compass.no_needle": "Needle: Missing",
   "tooltip.genesis.spirit_compass.type": "Type: %s",
+
+  "tooltip.genesis.grail.uses":"Remaining Times: %s / %s",
+  "tooltip.genesis.grail.empty":"empty",
 
 
   "tooltip.genesis.spirit_type.fire": "Fire",

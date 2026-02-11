@@ -54,6 +54,10 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.PYULITELA.get());
 
+                output.accept(GenesisItems.FLASK_SHARD.get());
+
+                output.accept(GenesisItems.BEAST_REMAINS.get());
+
                 output.accept(GenesisItems.COPPER_COIN.get());
                 output.accept(GenesisItems.SILVER_COIN.get());
                 output.accept(GenesisItems.GOLD_COIN.get());
@@ -68,6 +72,8 @@ public class GenesisCreativeTabs {
 
 
 
+
+                output.accept(GenesisItems.DIVINE_GRAIL.get());
 
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
 

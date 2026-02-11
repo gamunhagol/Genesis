@@ -20,5 +20,9 @@ public class GenesisRecipeSerializers {
     public static final RegistryObject<RecipeSerializer<SpiritCompassRemoveRecipe>> SPIRIT_COMPASS_REMOVE =
             SERIALIZERS.register("spirit_compass_remove",
                     () -> new SimpleCraftingRecipeSerializer<>(SpiritCompassRemoveRecipe::new));
+
+    public static final RegistryObject<RecipeSerializer<DivineGrailRecipe>> DIVINE_GRAIL_RECIPE =
+            SERIALIZERS.register("divine_grail_crafting",
+                    () -> new SimpleCraftingRecipeSerializer<>(DivineGrailRecipe::new));
 }
 

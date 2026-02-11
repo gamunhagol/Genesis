@@ -32,6 +32,11 @@
 
   "item.genesis.pyulitela": "땅의순수",
 
+  "item.genesis.flask_shard": "성배병 파편",
+
+  "item.genesis.beast_remains": "야수의 유해",
+
+
   "item.genesis.copper_coin": "동 동전",
   "item.genesis.silver_coin": "은 동전",
   "item.genesis.gold_coin": "금 동전",
@@ -49,6 +54,8 @@
   "item.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
 
 
+
+  "item.genesis.divine_grail": "신대의 성배병",
 
   "item.genesis.spirit_compass": "정령 나침반",
 
@@ -239,6 +246,9 @@
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
   "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
   "tooltip.genesis.spirit_compass.type": "속성: %s",
+
+  "tooltip.genesis.grail.uses":"남은 횟수: %s / %s",
+  "tooltip.genesis.grail.empty":"텅 빈",
 
 
   "tooltip.genesis.spirit_type.fire": "화염",

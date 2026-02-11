@@ -239,6 +239,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.GOLD_COIN_PILE.get()), has(GenesisItems.GOLD_COIN_PILE.get()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.FLASK_SHARD.get())
+                .requires(GenesisItems.DIVINE_GRAIL.get())
+                .unlockedBy(getHasName(GenesisItems.DIVINE_GRAIL.get()), has(GenesisItems.DIVINE_GRAIL.get()))
+                .save(pWriter);
+
+        SpecialRecipeBuilder.special(GenesisRecipeSerializers.DIVINE_GRAIL_RECIPE.get())
+                .save(pWriter, new ResourceLocation(GenesisMod.MODID, "divine_grail_crafting").toString());
 
         SpecialRecipeBuilder.special(GenesisRecipeSerializers.SPIRIT_COMPASS_COMBINE.get())
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_combine").toString());

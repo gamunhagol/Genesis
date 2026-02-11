@@ -13,6 +13,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -22,6 +23,7 @@ import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -87,6 +89,42 @@ public class GenesisForgeEvents {
                 stack.getItem() instanceof ArmorItem armor &&
                 armor.getMaterial() == GenesisArmorMaterials.PADDED_CHAIN;
     }
+
+
+    @SubscribeEvent
+    public static void onPlayerClone(PlayerEvent.Clone event) {
+        // 부활(Death) 상황인지 확인 (차원 이동 시 리필 방지)
+        if (event.isWasDeath()) {
+            Player newPlayer = event.getEntity();
+
+            // 새 플레이어의 인벤토리를 스캔하여 모든 성배병을 꽉 채움
+            for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
+                ItemStack stack = newPlayer.getInventory().getItem(i);
+                if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                    grail.refill(stack);
+                }
+            }
+        }
+    }
+
+    /**
+     * 상황 2: 플레이어가 죽어서 아이템을 바닥에 떨어뜨릴 때
+     */
+    @SubscribeEvent
+    public static void onPlayerDrops(net.minecraftforge.event.entity.living.LivingDropsEvent event) {
+        if (event.getEntity() instanceof Player) {
+            // 바닥에 떨어지는 아이템 엔티티 리스트를 확인
+            for (net.minecraft.world.entity.item.ItemEntity itemEntity : event.getDrops()) {
+                ItemStack stack = itemEntity.getItem();
+
+                // 성배병인 경우, 떨어진 아이템 자체를 리필 상태로 변경
+                if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                    grail.refill(stack);
+                }
+            }
+        }
+    }
+
 
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
