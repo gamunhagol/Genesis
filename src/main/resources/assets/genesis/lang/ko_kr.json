@@ -264,12 +264,19 @@
 
   "tooltip.genesis.hold_alt": "<Alt 키를 눌러 상세 정보 보기>",
 
+  "tooltip.genesis.book_of_creation.info": "드높이 올라 별이 되어라. - 창조의 신 에테르",
+
   "tooltip.genesis.dream_powder.info": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
   "tooltip.genesis.dream_dango.info": "달콤한 경단, 잠깐의 행복감을 주지만 곧 허무해진다. 악몽을 몰아낸다.",
-  "tooltip.genesis.remnants_of_a_dream.info":"아무것도 느껴지지 않는다. 악몽을 불러온다",
-  "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다",
+  "tooltip.genesis.remnants_of_a_dream.info":"아무것도 느껴지지 않는다. 악몽을 불러온다.",
 
-  "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새계진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다",
+  "tooltip.genesis.flask_shard.info":"신화 시대의 흔적. 깨져버렸으나 남아 있는 것들을 위해 공헌할 준비가 되어 있다.",
+  "tooltip.genesis.beast_remains.info":"위대한 야수의 유해. 이름과 이성을 잃었으나 그 쓸모만은 남아 있다.",
+  "tooltip.genesis.divine_grail.info":"신화 시대의 유물, 사용자를 채운다.",
+
+  "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
+
+  "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
 
   "biome.genesis.dust_in_the_crevices": "틈새의 먼지"
 }

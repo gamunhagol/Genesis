@@ -260,9 +260,16 @@
 
   "tooltip.genesis.hold_alt": "<Hold Alt for more information>",
 
+  "tooltip.genesis.book_of_creation.info": "Rise high and become a star. - Aether, God of Creation",
+
   "tooltip.genesis.dream_powder.info": "Sweet powder that brings a fleeting sense of happiness and dispels nightmares.",
   "tooltip.genesis.dream_dango.info": "Sweet dango that offers a momentary bliss, only to leave one feeling hollow. and dispels nightmares.",
   "tooltip.genesis.remnants_of_a_dream.info":"Devoid of all sensation. It beckons the nightmares.",
+
+  "tooltip.genesis.flask_shard.info":"A vestige of the mythic era. Though shattered, it stands ready to serve what remains.",
+  "tooltip.genesis.beast_remains.info":"Remains of a great beast. It has lost its name and reason, yet its utility endures.",
+  "tooltip.genesis.divine_grail.info":"Relic of the mythic era. It replenishes the wielder.",
+
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",

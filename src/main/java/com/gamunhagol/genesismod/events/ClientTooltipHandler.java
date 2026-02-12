@@ -30,11 +30,19 @@ public class ClientTooltipHandler {
      */
     public static void init() {
         // 여기에 툴팁을 추가하고 싶은 아이템들을 등록하세요.
+        register(GenesisItems.BOOK_OF_CREATION.get(), "tooltip.genesis.book_of_creation.info");
+
         register(GenesisItems.DREAM_POWDER.get(), "tooltip.genesis.dream_powder.info");
         register(GenesisItems.DREAM_DANGO.get(), "tooltip.genesis.dream_dango.info");
         register(GenesisItems.REMNANTS_OF_A_DREAM.get(), "tooltip.genesis.remnants_of_a_dream.info");
         register(GenesisItems.FRAGMENT_OF_MEMORY.get(), "tooltip.genesis.fragment_of_memory.info");
+
+        register(GenesisItems.FLASK_SHARD.get(), "tooltip.genesis.flask_shard.info");
+        register(GenesisItems.BEAST_REMAINS.get(), "tooltip.genesis.beast_remains.info");
+        register(GenesisItems.DIVINE_GRAIL.get(), "tooltip.genesis.divine_grail.info");
+
         register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.medallion_of_dominion.info");
+
 
         // 나중에 아이템이 늘어나면 여기에 한 줄씩만 추가하면 됩니다.
     }

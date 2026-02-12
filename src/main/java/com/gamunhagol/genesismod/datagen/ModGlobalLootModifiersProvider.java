@@ -42,6 +42,11 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         // 상자 (AddChestItemModifier 사용)
 
 
+        // 사막 피라미드 (Desert Pyramid)
+        add("desert_pyramid_grail", new AddChestItemModifier(
+                new LootItemCondition[] {
+                        new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build()
+                }, GenesisItems.DIVINE_GRAIL.get(), 0.02f, 1, 1));
 
         // 고대 도시 (Ancient City)
         add("ancient_city_template", new AddChestItemModifier(
