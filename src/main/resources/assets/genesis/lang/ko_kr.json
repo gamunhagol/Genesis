@@ -44,7 +44,7 @@
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
-  "item.genesis.fabricated_star": "만들어진 별",
+
 
   "item.genesis.copper_coin_pile": "동 동전 더미",
   "item.genesis.silver_coin_pile": "은 동전 더미",
@@ -139,6 +139,8 @@
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
   "item.genesis.medallion_of_dominion": "지배의 메달",
+
+  "item.genesis.fabricated_star": "만들어진 별",
 
   "item.genesis.hot_spring_bucket": "온천수 양동이",
   "item.genesis.quicksand_bucket": "유사 양동이",
