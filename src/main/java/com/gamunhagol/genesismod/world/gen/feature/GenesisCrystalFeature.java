@@ -49,17 +49,18 @@ public class GenesisCrystalFeature extends Feature<GenesisCrystalConfiguration> 
         StructureTemplate t = template.get();
         Vec3i size = t.getSize();
 
-        // 3. 프로세서 설정 (핵심 블록 보호 로직 추가)
+        // 3. 프로세서 설정 (공기 치환 로직 수정)
         StructurePlaceSettings settings = new StructurePlaceSettings()
                 .setRotation(Rotation.getRandom(random))
                 .setMirror(Mirror.NONE)
                 .setIgnoreEntities(true)
                 .addProcessor(new RuleProcessor(ImmutableList.of(
                         new ProcessorRule(
-                                // [수정] 오직 설정된 'targetBlock'과 일치할 때만 검사함
-                                new BlockMatchTest(config.targetBlock().getBlock()),
-                                // [추가] 그 블록이 'targetBlock'일 때만 airChance 확률을 적용함
+                                // [수정 1] 첫 번째 인자: NBT 블록이 'targetBlock'이면서 + '확률'에 당첨되었는지 검사
                                 new RandomBlockMatchTest(config.targetBlock().getBlock(), config.airChance()),
+                                // [수정 2] 두 번째 인자: 월드에 원래 있던 블록이 무엇이든 상관없음 (무조건 통과)
+                                AlwaysTrueTest.INSTANCE,
+                                // [결과] 위 두 조건이 맞으면 공기로 바꿈
                                 Blocks.AIR.defaultBlockState()
                         )
                 )));

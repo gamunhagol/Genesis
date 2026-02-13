@@ -1,7 +1,7 @@
 {
   "type": "genesis:genesis_crystal",
   "config": {
-    "air_chance": 0.6,
+    "air_chance": 0.7,
     "structure_path": "genesis:lighting_crystal_geode",
     "target_block": {
       "Name": "genesis:lighting_crystal_cluster",
@@ -11,6 +11,6 @@
       }
     },
     "variants": 2,
-    "y_offset": -1
+    "y_offset": 0
   }
 }

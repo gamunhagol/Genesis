@@ -101,15 +101,15 @@ public class GenesisConfiguredFeatures {
                 new ResourceLocation(GenesisMod.MODID, "lighting_crystal_geode"),
                 2,
                 GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER.get().defaultBlockState(),
-                0.6f,
-                -1
+                0.7f,
+                0
         ));
         // 7. 얼음꽃 (Ice Flower): 빙하. 40% 치환 (꽃잎 모양)
         register(context, ICE_FLOWER_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "ice_flower_geode"),
                 2,
                 GenesisBlocks.ICE_FLOWER_CLUSTER.get().defaultBlockState(),
-                0.4f,
+                0.5f,
                 0
         ));
 

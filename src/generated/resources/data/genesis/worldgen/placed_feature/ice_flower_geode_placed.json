@@ -2,8 +2,8 @@
   "feature": "genesis:ice_flower_geode",
   "placement": [
     {
-      "type": "minecraft:count",
-      "count": 65
+      "type": "minecraft:rarity_filter",
+      "chance": 75
     },
     {
       "type": "minecraft:in_square"

@@ -59,7 +59,7 @@ public class GenesisPlacedFeatures {
         register(context, PYULITELA_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PYULITELA_ORE_KEY),
                 GenesisOrePlacement.rareOrePlacement(21,
                         HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-254),
+                                VerticalAnchor.absolute(-160),
                                 VerticalAnchor.absolute(64))));
 
         register(context, AMETHYST_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.AMETHYST_TREE_KEY),
@@ -74,54 +74,51 @@ public class GenesisPlacedFeatures {
 
         register(context, RED_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.RED_CRYSTAL_GEODE_KEY),
                 List.of(
-                        CountPlacement.of(40),
-                        RarityFilter.onAverageOnceEvery(5),
+                        RarityFilter.onAverageOnceEvery(55),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-10)),
-                        // [수정] forPrediction -> forPredicate
                         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.LAVA)),
                         BiomeFilter.biome()
                 ));
         register(context, BLUE_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.BLUE_CRYSTAL_GEODE_KEY),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(60),
+                        RarityFilter.onAverageOnceEvery(75),
                         InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
-                        // [수정] forPrediction -> forPredicate
                         BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)),
                         BiomeFilter.biome()
                 ));
         register(context, WIND_STONE_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.WIND_STONE_GEODE_KEY),
                 List.of(
-                        CountPlacement.of(60),
+                        RarityFilter.onAverageOnceEvery(140),
                         InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()
                 ));
         register(context, CITRINE_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.CITRINE_GEODE_KEY),
                 List.of(
-                        CountPlacement.of(80),
+                        RarityFilter.onAverageOnceEvery(85),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(30)),
                         BiomeFilter.biome()
                 ));
         register(context, GREEN_AMBER_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AMBER_GEODE_KEY),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(70),
+                        RarityFilter.onAverageOnceEvery(120),
                         InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()
                 ));
         register(context, LIGHTING_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.LIGHTING_CRYSTAL_GEODE_KEY),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(70),
+                        RarityFilter.onAverageOnceEvery(175),
                         InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()
                 ));
         register(context, ICE_FLOWER_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.ICE_FLOWER_GEODE_KEY),
                 List.of(
-                        CountPlacement.of(65),
+                        RarityFilter.onAverageOnceEvery(75),
                         InSquarePlacement.spread(),
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()

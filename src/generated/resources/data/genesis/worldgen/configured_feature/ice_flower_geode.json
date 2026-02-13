@@ -1,7 +1,7 @@
 {
   "type": "genesis:genesis_crystal",
   "config": {
-    "air_chance": 0.4,
+    "air_chance": 0.5,
     "structure_path": "genesis:ice_flower_geode",
     "target_block": {
       "Name": "genesis:ice_flower_cluster",
