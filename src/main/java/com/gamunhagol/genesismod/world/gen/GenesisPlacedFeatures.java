@@ -32,6 +32,9 @@ public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> LIGHTING_CRYSTAL_GEODE_PLACED_KEY = registerKey("lighting_crystal_geode_placed");
     public static final ResourceKey<PlacedFeature> ICE_FLOWER_GEODE_PLACED_KEY = registerKey("ice_flower_geode_placed");
 
+    public static final ResourceKey<PlacedFeature> PEWRIESE_METEORITE_PLACED_KEY = registerKey("pewriese_meteorite_placed");
+    public static final ResourceKey<PlacedFeature> PEWRIESE_METEORITE_SUBSPECIES_PLACED_KEY = registerKey("pewriese_meteorite_subspecies_placed");
+
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
@@ -57,7 +60,7 @@ public class GenesisPlacedFeatures {
                                 VerticalAnchor.absolute(-16))));
 
         register(context, PYULITELA_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PYULITELA_ORE_KEY),
-                GenesisOrePlacement.rareOrePlacement(21,
+                GenesisOrePlacement.rareOrePlacement(35,
                         HeightRangePlacement.triangle(
                                 VerticalAnchor.absolute(-160),
                                 VerticalAnchor.absolute(64))));
@@ -120,6 +123,24 @@ public class GenesisPlacedFeatures {
                 List.of(
                         RarityFilter.onAverageOnceEvery(75),
                         InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome()
+                ));
+
+
+        register(context, PEWRIESE_METEORITE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_METEORITE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(325),
+                        InSquarePlacement.spread(),
+                        // 지상(World Surface)에 배치
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome()
+                ));
+        register(context, PEWRIESE_METEORITE_SUBSPECIES_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_METEORITE_SUBSPECIES_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(950),
+                        InSquarePlacement.spread(),
+                        // 지상(World Surface)에 배치
                         HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()
                 ));

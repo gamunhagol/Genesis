@@ -9,6 +9,7 @@ import net.minecraft.data.worldgen.BootstapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
@@ -31,6 +32,9 @@ public class GenesisConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> WIND_STONE_GEODE_KEY = registerKey("wind_stone_geode");
     public static final ResourceKey<ConfiguredFeature<?, ?>> LIGHTING_CRYSTAL_GEODE_KEY = registerKey("lighting_crystal_geode");
     public static final ResourceKey<ConfiguredFeature<?, ?>> ICE_FLOWER_GEODE_KEY = registerKey("ice_flower_geode");
+
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PEWRIESE_METEORITE_KEY = registerKey("pewriese_meteorite");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> PEWRIESE_METEORITE_SUBSPECIES_KEY = registerKey("pewriese_meteorite_subspecies");
 
 
 
@@ -113,6 +117,21 @@ public class GenesisConfiguredFeatures {
                 0
         ));
 
+
+        register(context, PEWRIESE_METEORITE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
+                new ResourceLocation(GenesisMod.MODID, "pewriese_meteorite"),
+                1,    // 변주가 없다면 1 (pewriese_meteorite_1.nbt 하나만 사용)
+                Blocks.AIR.defaultBlockState(), // 딱히 바꿀 블록이 없다면 AIR
+                0.0f, // 공기 치환 없음 (덩어리 그대로 생성)
+                -1    // 땅에 1칸 박힘
+        ));
+        register(context, PEWRIESE_METEORITE_SUBSPECIES_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
+                new ResourceLocation(GenesisMod.MODID, "pewriese_meteorite_subspecies"),
+                1,    // 변주가 없다면 1 (pewriese_meteorite_1.nbt 하나만 사용)
+                Blocks.AIR.defaultBlockState(), // 딱히 바꿀 블록이 없다면 AIR
+                0.0f, // 공기 치환 없음 (덩어리 그대로 생성)
+                -1    // 땅에 1칸 박힘
+        ));
     }
 
 

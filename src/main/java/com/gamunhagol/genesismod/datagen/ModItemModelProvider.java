@@ -301,13 +301,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         final String MOD_ID = GenesisMod.MODID;
 
         if (itemRegistryObject.get() instanceof ArmorItem armorItem) {
-            // 1. 기본 아이템 모델을 루프 '밖'에서 먼저 만듭니다.
             String itemName = itemRegistryObject.getId().getPath();
             ItemModelBuilder builder = this.withExistingParent(itemName,
                             new ResourceLocation("minecraft", "item/generated"))
                     .texture("layer0", new ResourceLocation(MOD_ID, "item/" + itemName));
 
-            // 2. 루프를 돌며 트리밍 모델을 만들고, 기본 모델에 오버라이드를 추가합니다.
             trimMaterial.entrySet().forEach(entry -> {
                 ResourceKey<TrimMaterial> trimMaterial = entry.getKey();
                 float trimValue = entry.getValue();
@@ -320,23 +318,23 @@ public class ModItemModelProvider extends ItemModelProvider {
                     default -> "";
                 };
 
-                // 트리밍된 모델 파일 생성 (item/padded_chain_helmet_quartz_trim 등)
+                // 트리밍 텍스처 경로 (예: trims/items/helmet_trim_quartz)
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = itemName + "_" + trimMaterial.location().getPath() + "_trim";
                 ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, "item/" + itemName);
-                ResourceLocation trimResLoc = new ResourceLocation(trimPath); // minecraft:trims/...
-                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, currentTrimName);
+                // [수정 1] 트리밍 텍스처는 'minecraft' 네임스페이스를 써야 합니다.
+                ResourceLocation trimResLoc = new ResourceLocation("minecraft", trimPath);
+                // [수정 2] 모델을 참조할 때는 'item/' 폴더 경로를 명시해야 게임이 찾을 수 있습니다.
+                ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, "item/" + currentTrimName);
 
-                // 텍스처 존재 여부 확인 (Client Resources)
+                // 텍스처 존재 여부 확인 (DataGen 에러 방지용)
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
-
-                // 트리밍 전용 모델 파일 생성
+                // 트리밍 전용 모델 파일 생성 (.json 파일 생성)
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
                         .texture("layer0", armorItemResLoc)
                         .texture("layer1", trimResLoc);
-
-                // [핵심] 1번에서 만든 builder에 오버라이드만 쏙쏙 추가
+                // [핵심] 기본 모델에 오버라이드 추가 (수정된 trimNameResLoc 사용)
                 builder.override()
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
                         .predicate(mcLoc("trim_type"), trimValue)

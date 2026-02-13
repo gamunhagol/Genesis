@@ -31,6 +31,9 @@ public class GenesisBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_LIGHTING_CRYSTAL_GEODE = registerKey("add_lighting_crystal_geode");
     public static final ResourceKey<BiomeModifier> ADD_ICE_FLOWER_GEODE = registerKey("add_ice_flower_geode");
 
+    public static final ResourceKey<BiomeModifier> ADD_PEWRIESE_METEORITE = registerKey("add_pewriese_meteorite");
+    public static final ResourceKey<BiomeModifier> ADD_PEWRIESE_SUBSPECIES_METEORITE = registerKey("add_pewriese_meteorite_subspecies");
+
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
@@ -102,6 +105,19 @@ public class GenesisBiomeModifiers {
                 HolderSet.direct(biomes.getOrThrow(Biomes.ICE_SPIKES)),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.ICE_FLOWER_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
+
+
+        context.register(ADD_PEWRIESE_METEORITE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 모든 오버월드 바이옴
+                HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_METEORITE_PLACED_KEY)),
+                GenerationStep.Decoration.SURFACE_STRUCTURES // 지상 구조물 단계
+        ));
+        context.register(ADD_PEWRIESE_SUBSPECIES_METEORITE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 모든 오버월드 바이옴
+                HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_METEORITE_SUBSPECIES_PLACED_KEY)),
+                GenerationStep.Decoration.SURFACE_STRUCTURES // 지상 구조물 단계
+        ));
+
     }
 
     private static ResourceKey<BiomeModifier> registerKey(String name) {

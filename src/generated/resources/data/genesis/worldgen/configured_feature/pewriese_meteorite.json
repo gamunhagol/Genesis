@@ -1,0 +1,12 @@
+{
+  "type": "genesis:genesis_crystal",
+  "config": {
+    "air_chance": 0.0,
+    "structure_path": "genesis:pewriese_meteorite",
+    "target_block": {
+      "Name": "minecraft:air"
+    },
+    "variants": 1,
+    "y_offset": -1
+  }
+}

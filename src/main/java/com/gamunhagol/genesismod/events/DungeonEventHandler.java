@@ -22,7 +22,7 @@ public class DungeonEventHandler {
         BlockPos origin = event.getPos();
 
         // 탐색 범위 설정
-        int range = 100;
+        int range = 60;
 
 
 
