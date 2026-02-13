@@ -141,6 +141,7 @@ public class GenesisItems {
             () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.RARE)));
 
 
+    public static final RegistryObject<Item> MANA_IMBUED_AMETHYST_SHARD = ITEMS.register("mana_imbued_amethyst_shard", () -> new ManaCrystalItem(new Item.Properties()));
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CITRINE_SHARD = ITEMS.register("citrine_shard", () -> new Item(new Item.Properties()));
@@ -177,6 +178,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> SILVER_COIN = ITEMS.register("silver_coin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> GOLD_COIN = ITEMS.register("gold_coin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> PLATINUM_COIN = ITEMS.register("platinum_coin", () -> new Item(new Item.Properties()));
+
 
 
 
@@ -354,6 +356,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
             () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
 
+    public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties()));
 
 
     public static final RegistryObject<Item> HOT_SPRING_BUCKET =

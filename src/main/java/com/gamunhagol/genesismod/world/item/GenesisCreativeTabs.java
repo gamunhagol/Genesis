@@ -26,6 +26,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.REMNANTS_OF_A_DREAM.get());
                 output.accept(GenesisItems.FRAGMENT_OF_MEMORY.get());
 
+                output.accept(GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get());
+
                 output.accept(GenesisItems.BLUE_CRYSTAL_SHARD.get());
                 output.accept(GenesisItems.CITRINE_SHARD.get());
                 output.accept(GenesisItems.RED_CRYSTAL_SHARD.get());
@@ -62,6 +64,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.SILVER_COIN.get());
                 output.accept(GenesisItems.GOLD_COIN.get());
                 output.accept(GenesisItems.PLATINUM_COIN.get());
+
+
 
                 output.accept(GenesisItems.AMETHYST_APPLE.get());
 
@@ -152,6 +156,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
 
                 output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());
+
+                output.accept(GenesisItems.FABRICATED_STAR.get());
 
                 output.accept(GenesisItems.HOT_SPRING_BUCKET.get());
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());

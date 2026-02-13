@@ -43,6 +43,8 @@ public class ClientTooltipHandler {
 
         register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.medallion_of_dominion.info");
 
+        register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.fabricated_star.info");
+
 
         // 나중에 아이템이 늘어나면 여기에 한 줄씩만 추가하면 됩니다.
     }

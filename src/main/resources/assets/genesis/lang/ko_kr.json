@@ -7,6 +7,8 @@
   "item.genesis.remnants_of_a_dream": "꿈의 잔재",
   "item.genesis.fragment_of_memory": "기억의 편린",
 
+  "item.genesis.mana_imbued_amethyst_shard": "마력을 품은 자수정 조각",
+
   "item.genesis.blue_crystal_shard": "청수정 조각",
   "item.genesis.citrine_shard": "황수정 조각",
   "item.genesis.red_crystal_shard": "적수정 조각",
@@ -41,6 +43,8 @@
   "item.genesis.silver_coin": "은 동전",
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
+
+  "item.genesis.fabricated_star": "Fabricated Star",
 
   "item.genesis.copper_coin_pile": "동 동전 더미",
   "item.genesis.silver_coin_pile": "은 동전 더미",
@@ -277,6 +281,10 @@
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
 
   "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
+
+  "tooltip.genesis.fabricated_star.info": "순서대로 세워져 세상이 되었다",
+
+
 
   "biome.genesis.dust_in_the_crevices": "틈새의 먼지"
 }

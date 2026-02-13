@@ -2,11 +2,13 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.stats.StatCapability;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -28,5 +30,10 @@ public class GenesisEventBusEvents {
         for (EntityType<? extends LivingEntity> type : event.getTypes()) {
             event.add(type, GenesisAttributes.MAGIC_DEFENSE.get());
         }
+    }
+
+    @SubscribeEvent
+    public static void registerCaps(RegisterCapabilitiesEvent event) {
+        event.register(StatCapability.class);
     }
 }

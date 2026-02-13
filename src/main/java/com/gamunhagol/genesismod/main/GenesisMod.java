@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.data.recipe.GenesisRecipeSerializers;
 import com.gamunhagol.genesismod.gameasset.GenesisSounds;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.init.GenesisParticles;
+import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
@@ -51,6 +52,7 @@ public class GenesisMod {
         GenesisFluids.FLUIDS.register(modEventBus);
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
         GenesisFeatures.FEATURES.register(modEventBus);
+        GenesisNetwork.register();
 
         MinecraftForge.EVENT_BUS.register(this);
 

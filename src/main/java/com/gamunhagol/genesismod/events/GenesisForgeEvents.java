@@ -1,10 +1,16 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.client.gui.MentalPowerGui;
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.PacketSyncMentalPower;
+import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -17,6 +23,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraftforge.client.event.RenderGuiOverlayEvent;
+import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
@@ -31,6 +39,34 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisForgeEvents {
     private static final CollectorSpawner COLLECTOR_SPAWNER = new CollectorSpawner();
+
+
+    @SubscribeEvent
+    public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
+        if (event.getObject() instanceof Player) {
+
+            event.addCapability(new ResourceLocation(GenesisMod.MODID, "stats"), new StatCapabilityProvider());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
+        if (event.side.isServer() && event.phase == TickEvent.Phase.END) {
+            // [문제점] 람다식 내부에서 변수 접근 문제 (ServerPlayer 캐스팅 등)
+            event.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                stats.tick();
+
+                // [수정 필요] 매 틱마다 보내는 것보다, 값이 변했을 때만 보내는 로직이 더 안전합니다.
+                // 현재 코드도 나쁘진 않으나, 아래처럼 다듬는 게 좋습니다.
+                if (stats.getMentalPower() < stats.getMaxMentalPower()) {
+                    GenesisNetwork.sendToPlayer(
+                            new PacketSyncMentalPower(stats.getMentalPower()),
+                            (ServerPlayer) event.player
+                    );
+                }
+            });
+        }
+    }
 
     @SubscribeEvent
     public static void onLevelTick(TickEvent.LevelTickEvent event) {

@@ -52,6 +52,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.REMNANTS_OF_A_DREAM);
         basicItem(GenesisItems.FRAGMENT_OF_MEMORY.get());
 
+        basicItem(GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get());
+
         simpleItem(GenesisItems.BLUE_CRYSTAL_SHARD);
         simpleItem(GenesisItems.CITRINE_SHARD);
         simpleItem(GenesisItems.RED_CRYSTAL_SHARD);
@@ -67,6 +69,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         clusterItem(GenesisBlocks.ICE_FLOWER_CLUSTER);
         clusterItem(GenesisBlocks.LIGHTING_CRYSTAL_CLUSTER);
         clusterItem(GenesisBlocks.WIND_STONE_CLUSTER);
+
 
         clusterItem(GenesisBlocks.AMETHYST_SAPLING);
 
@@ -93,6 +96,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SILVER_COIN);
         simpleItem(GenesisItems.GOLD_COIN);
         simpleItem(GenesisItems.PLATINUM_COIN);
+
+
 
         simpleItem(GenesisItems.AMETHYST_APPLE);
 
@@ -125,6 +130,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
+
+        simpleItem(GenesisItems.FABRICATED_STAR);
 
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
         simpleItem(GenesisItems.QUICKSAND_BUCKET);

@@ -7,6 +7,8 @@
   "item.genesis.remnants_of_a_dream": "Remnants of a Dream",
   "item.genesis.fragment_of_memory": "Fragment of Memory",
 
+  "item.genesis.mana_imbued_amethyst_shard": "Mana imbued Amethyst Shard",
+
   "item.genesis.blue_crystal_shard": "Blue Crystal Shard",
   "item.genesis.citrine_shard": "Citrine Shard",
   "item.genesis.red_crystal_shard": "Red Crystal Shard",
@@ -41,6 +43,8 @@
   "item.genesis.silver_coin": "Silver coin",
   "item.genesis.gold_coin": "Gold coin",
   "item.genesis.platinum_coin": "Platinum coin",
+
+  "item.genesis.fabricated_star": "Fabricated Star",
 
   "item.genesis.copper_coin_pile": "Copper coin Pile",
   "item.genesis.silver_coin_pile": "Silver coin Pile",
@@ -273,6 +277,10 @@
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
+
+  "tooltip.genesis.fabricated_star.info": "Arranged in sequence to weave the world.",
+
+
 
   "biome.genesis.dust_in_the_crevices": "Dust in the Crevices"
 }

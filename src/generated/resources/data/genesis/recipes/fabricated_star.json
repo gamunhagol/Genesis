@@ -1,0 +1,42 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:nether_star"
+    },
+    "a": {
+      "item": "genesis:citrine_shard"
+    },
+    "b": {
+      "item": "genesis:red_crystal_shard"
+    },
+    "c": {
+      "item": "genesis:ice_flower_shard"
+    },
+    "d": {
+      "item": "genesis:blue_crystal_shard"
+    },
+    "e": {
+      "item": "genesis:wind_stone"
+    },
+    "f": {
+      "item": "genesis:lighting_crystal_shard"
+    },
+    "g": {
+      "item": "genesis:green_amber"
+    },
+    "h": {
+      "item": "genesis:mana_imbued_amethyst_shard"
+    }
+  },
+  "pattern": [
+    "abc",
+    "d#e",
+    "fgh"
+  ],
+  "result": {
+    "item": "genesis:fabricated_star"
+  },
+  "show_notification": true
+}

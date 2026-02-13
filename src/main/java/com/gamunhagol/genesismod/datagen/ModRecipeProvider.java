@@ -114,6 +114,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.SCATTERED_MEMORIES.get()), has(GenesisItems.SCATTERED_MEMORIES.get()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get())
+                .requires(Items.AMETHYST_SHARD)
+                .requires(Items.LAPIS_LAZULI)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                .save(pWriter);
 
         oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
         oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
@@ -127,6 +132,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('a', Items.LAPIS_LAZULI)
                 .define('#', GenesisItems.PEWRIESE_PIECE.get())
                 .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.FABRICATED_STAR.get())
+                .pattern("abc")
+                .pattern("d#e")
+                .pattern("fgh")
+                .define('#', Items.NETHER_STAR)
+                .define('a', GenesisItems.CITRINE_SHARD.get())
+                .define('b', GenesisItems.RED_CRYSTAL_SHARD.get())
+                .define('c', GenesisItems.ICE_FLOWER_SHARD.get())
+                .define('d', GenesisItems.BLUE_CRYSTAL_SHARD.get())
+                .define('e', GenesisItems.WIND_STONE.get())
+                .define('f', GenesisItems.LIGHTING_CRYSTAL_SHARD.get())
+                .define('g', GenesisItems.GREEN_AMBER.get())
+                .define('h', GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get())
+                .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .save(pWriter);
 
 
