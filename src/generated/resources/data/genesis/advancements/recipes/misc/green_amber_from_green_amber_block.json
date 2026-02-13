@@ -1,12 +1,12 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_green_amber": {
+    "has_green_amber_block": {
       "conditions": {
         "items": [
           {
             "items": [
-              "genesis:green_amber"
+              "genesis:green_amber_block"
             ]
           }
         ]
@@ -15,20 +15,20 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "genesis:green_amber_block"
+        "recipe": "genesis:green_amber_from_green_amber_block"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
   },
   "requirements": [
     [
-      "has_green_amber",
+      "has_green_amber_block",
       "has_the_recipe"
     ]
   ],
   "rewards": {
     "recipes": [
-      "genesis:green_amber_block"
+      "genesis:green_amber_from_green_amber_block"
     ]
   },
   "sends_telemetry_event": false

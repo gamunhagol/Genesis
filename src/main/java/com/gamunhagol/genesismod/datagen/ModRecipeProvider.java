@@ -179,10 +179,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         compress2x2(pWriter, GenesisItems.BLUE_CRYSTAL_SHARD.get(), GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         compress2x2(pWriter, GenesisItems.CITRINE_SHARD.get(), GenesisBlocks.CITRINE_BLOCK.get());
         compress2x2(pWriter, GenesisItems.RED_CRYSTAL_SHARD.get(), GenesisBlocks.RED_CRYSTAL_BLOCK.get());
-        compress2x2(pWriter, GenesisItems.GREEN_AMBER.get(), GenesisBlocks.GREEN_AMBER_BLOCK.get());
         compress2x2(pWriter, GenesisItems.ICE_FLOWER_SHARD.get(), GenesisBlocks.ICE_FLOWER_BLOCK.get());
         compress2x2(pWriter, GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), GenesisBlocks.LIGHTING_CRYSTAL_BLOCK.get());
         compress2x2(pWriter, GenesisItems.WIND_STONE.get(), GenesisBlocks.WIND_STONE_BLOCK.get());
+
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.GREEN_AMBER.get(), RecipeCategory.MISC, GenesisBlocks.GREEN_AMBER_BLOCK.get());
 
         //misc
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_HELMET, GenesisItems.PADDED_CHAIN_HELMET.get(), " a ", "aba");

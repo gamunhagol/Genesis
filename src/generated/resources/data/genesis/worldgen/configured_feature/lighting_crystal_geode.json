@@ -1,0 +1,16 @@
+{
+  "type": "genesis:genesis_crystal",
+  "config": {
+    "air_chance": 0.6,
+    "structure_path": "genesis:lighting_crystal_geode",
+    "target_block": {
+      "Name": "genesis:lighting_crystal_cluster",
+      "Properties": {
+        "facing": "up",
+        "waterlogged": "false"
+      }
+    },
+    "variants": 2,
+    "y_offset": -1
+  }
+}

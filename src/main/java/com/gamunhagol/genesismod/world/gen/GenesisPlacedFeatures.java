@@ -5,10 +5,12 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
-import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
+import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.placement.*;
 
@@ -17,27 +19,35 @@ import java.util.List;
 public class GenesisPlacedFeatures {
     public static final ResourceKey<PlacedFeature> SILVER_ORE_PLACED_KEY = registerKey("silver_ore_placed");
     public static final ResourceKey<PlacedFeature> PEWRIESE_ORE_PLACED_KEY = registerKey("pewriese_ore_placed");
-
     public static final ResourceKey<PlacedFeature> PEWRIESE_ORE_DESERT_PLACED_KEY = registerKey("pewriese_ore_desert_placed");
+    public static final ResourceKey<PlacedFeature> PYULITELA_ORE_PLACED_KEY = registerKey("pyulitela_ore_placed");
 
     public static final ResourceKey<PlacedFeature> AMETHYST_TREE_PLACED_KEY = registerKey("amethyst_tree_placed");
+
+    public static final ResourceKey<PlacedFeature> CITRINE_GEODE_PLACED_KEY = registerKey("citrine_geode_placed");
+    public static final ResourceKey<PlacedFeature> RED_CRYSTAL_GEODE_PLACED_KEY = registerKey("red_crystal_geode_placed");
+    public static final ResourceKey<PlacedFeature> BLUE_CRYSTAL_GEODE_PLACED_KEY = registerKey("blue_crystal_geode_placed");
+    public static final ResourceKey<PlacedFeature> GREEN_AMBER_GEODE_PLACED_KEY = registerKey("green_amber_geode_placed");
+    public static final ResourceKey<PlacedFeature> WIND_STONE_GEODE_PLACED_KEY = registerKey("wind_stone_geode_placed");
+    public static final ResourceKey<PlacedFeature> LIGHTING_CRYSTAL_GEODE_PLACED_KEY = registerKey("lighting_crystal_geode_placed");
+    public static final ResourceKey<PlacedFeature> ICE_FLOWER_GEODE_PLACED_KEY = registerKey("ice_flower_geode_placed");
+
 
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        // 배치 규칙 설정
         register(context, SILVER_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.SILVER_ORE_KEY),
-                GenesisOrePlacement.commonOrePlacement(7, // 청크당 광맥 생성 시도 횟수
+                GenesisOrePlacement.commonOrePlacement(7,
                         HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-64), // 생성 최저 높이
-                                VerticalAnchor.absolute(32)   // 생성 최고 높이
+                                VerticalAnchor.absolute(-64),
+                                VerticalAnchor.absolute(32)
                         )));
 
         register(context, PEWRIESE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_ORE_KEY),
                 GenesisOrePlacement.rareOrePlacement(3,
                         HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-84), // 생성 최저 높이
-                                VerticalAnchor.absolute(-32)   // 생성 최고 높이
+                                VerticalAnchor.absolute(-84),
+                                VerticalAnchor.absolute(-32)
                         )));
 
         register(context, PEWRIESE_ORE_DESERT_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_ORE_KEY),
@@ -46,14 +56,74 @@ public class GenesisPlacedFeatures {
                                 VerticalAnchor.absolute(-100),
                                 VerticalAnchor.absolute(-16))));
 
+        register(context, PYULITELA_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PYULITELA_ORE_KEY),
+                GenesisOrePlacement.rareOrePlacement(21,
+                        HeightRangePlacement.triangle(
+                                VerticalAnchor.absolute(-254),
+                                VerticalAnchor.absolute(64))));
+
         register(context, AMETHYST_TREE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.AMETHYST_TREE_KEY),
                 List.of(
-                        //먼저 청크당 시도 횟수를 넉넉히 잡습니다 (동굴은 실패 확률이 높기 때문)
                         CountPlacement.of(25),
                         RarityFilter.onAverageOnceEvery(55),
                         InSquarePlacement.spread(),
                         HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(50)),
                         SurfaceWaterDepthFilter.forMaxDepth(0),
+                        BiomeFilter.biome()
+                ));
+
+        register(context, RED_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.RED_CRYSTAL_GEODE_KEY),
+                List.of(
+                        CountPlacement.of(40),
+                        RarityFilter.onAverageOnceEvery(5),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-64), VerticalAnchor.absolute(-10)),
+                        // [수정] forPrediction -> forPredicate
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.LAVA)),
+                        BiomeFilter.biome()
+                ));
+        register(context, BLUE_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.BLUE_CRYSTAL_GEODE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(60),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
+                        // [수정] forPrediction -> forPredicate
+                        BlockPredicateFilter.forPredicate(BlockPredicate.matchesBlocks(Blocks.WATER)),
+                        BiomeFilter.biome()
+                ));
+        register(context, WIND_STONE_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.WIND_STONE_GEODE_KEY),
+                List.of(
+                        CountPlacement.of(60),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome()
+                ));
+        register(context, CITRINE_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.CITRINE_GEODE_KEY),
+                List.of(
+                        CountPlacement.of(80),
+                        InSquarePlacement.spread(),
+                        HeightRangePlacement.uniform(VerticalAnchor.absolute(-60), VerticalAnchor.absolute(30)),
+                        BiomeFilter.biome()
+                ));
+        register(context, GREEN_AMBER_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.GREEN_AMBER_GEODE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(70),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome()
+                ));
+        register(context, LIGHTING_CRYSTAL_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.LIGHTING_CRYSTAL_GEODE_KEY),
+                List.of(
+                        RarityFilter.onAverageOnceEvery(70),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
+                        BiomeFilter.biome()
+                ));
+        register(context, ICE_FLOWER_GEODE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.ICE_FLOWER_GEODE_KEY),
+                List.of(
+                        CountPlacement.of(65),
+                        InSquarePlacement.spread(),
+                        HeightmapPlacement.onHeightmap(Heightmap.Types.WORLD_SURFACE_WG),
                         BiomeFilter.biome()
                 ));
 
@@ -67,5 +137,4 @@ public class GenesisPlacedFeatures {
                                  List<PlacementModifier> modifiers) {
         context.register(key, new PlacedFeature(configuration, List.copyOf(modifiers)));
     }
-
 }

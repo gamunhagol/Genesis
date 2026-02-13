@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:ice_spikes",
+  "features": "genesis:ice_flower_geode_placed",
+  "step": "local_modifications"
+}

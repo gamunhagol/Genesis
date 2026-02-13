@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:desert",
+  "features": "genesis:lighting_crystal_geode_placed",
+  "step": "local_modifications"
+}

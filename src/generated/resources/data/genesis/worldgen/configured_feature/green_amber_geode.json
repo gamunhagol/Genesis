@@ -1,0 +1,16 @@
+{
+  "type": "genesis:genesis_crystal",
+  "config": {
+    "air_chance": 0.5,
+    "structure_path": "genesis:green_amber_geode",
+    "target_block": {
+      "Name": "genesis:green_amber_cluster",
+      "Properties": {
+        "facing": "up",
+        "waterlogged": "false"
+      }
+    },
+    "variants": 2,
+    "y_offset": 0
+  }
+}

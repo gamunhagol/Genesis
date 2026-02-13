@@ -1,0 +1,6 @@
+{
+  "type": "forge:add_features",
+  "biomes": "minecraft:warm_ocean",
+  "features": "genesis:blue_crystal_geode_placed",
+  "step": "local_modifications"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "genesis:genesis_crystal",
+  "config": {
+    "air_chance": 0.4,
+    "structure_path": "genesis:wind_stone_geode",
+    "target_block": {
+      "Name": "genesis:wind_stone_cluster",
+      "Properties": {
+        "facing": "up",
+        "waterlogged": "false"
+      }
+    },
+    "variants": 2,
+    "y_offset": 0
+  }
+}

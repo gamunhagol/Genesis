@@ -1,14 +1,15 @@
 {
   "type": "minecraft:crafting_shaped",
-  "category": "building",
+  "category": "misc",
   "key": {
     "a": {
       "item": "genesis:green_amber"
     }
   },
   "pattern": [
-    "aa",
-    "aa"
+    "aaa",
+    "aaa",
+    "aaa"
   ],
   "result": {
     "item": "genesis:green_amber_block"
