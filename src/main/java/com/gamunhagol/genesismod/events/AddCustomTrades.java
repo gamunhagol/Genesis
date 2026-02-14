@@ -19,23 +19,23 @@ public class AddCustomTrades {
     {
         Random random = new Random();
 
-        int rewardAmount = random.nextInt(5) + 1;
-        int sellingAmount = random.nextInt(13) + 14;
+        int shardRewardAmount = random.nextInt(5) + 1;
+        int shardSellingAmount = (shardRewardAmount * 5) + random.nextInt(15) + 4;
 
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.BLUE_CRYSTAL_SHARD.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.CITRINE_SHARD.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.GREEN_AMBER.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.ICE_FLOWER_SHARD.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.RED_CRYSTAL_SHARD.get(), rewardAmount),3,10,1));
-        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, sellingAmount)
-                , new ItemStack(GenesisItems.WIND_STONE.get(), rewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.BLUE_CRYSTAL_SHARD.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.CITRINE_SHARD.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.GREEN_AMBER.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.ICE_FLOWER_SHARD.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.RED_CRYSTAL_SHARD.get(), shardRewardAmount),3,10,1));
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
+                , new ItemStack(GenesisItems.WIND_STONE.get(), shardRewardAmount),3,10,1));
         event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 48), new ItemStack(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(), 1),4,24,1));
         event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD_BLOCK, 24), new ItemStack(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 1),3,64,1));
     }
