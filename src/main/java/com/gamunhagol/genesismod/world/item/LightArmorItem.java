@@ -28,6 +28,13 @@ public class LightArmorItem extends ArmorItem {
             UUID.fromString("DE1E515-6000-0000-0000-00000001001")  // HEAD
     };
 
+    private static final UUID[] HOLY_MODIFIER_UUID_PER_SLOT = new UUID[]{
+            UUID.fromString("FE1E515-7000-0000-0000-00000004001"), // FEET
+            UUID.fromString("FE1E515-7000-0000-0000-00000003001"), // LEGS
+            UUID.fromString("FE1E515-7000-0000-0000-00000002001"), // CHEST
+            UUID.fromString("FE1E515-7000-0000-0000-00000001001")  // HEAD
+    };
+
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
                     .put(GenesisArmorMaterials.PADDED_CHAIN, new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0,
@@ -50,13 +57,21 @@ public class LightArmorItem extends ArmorItem {
         if (slot == this.type.getSlot()) {
             if (this.getMaterial() instanceof GenesisArmorMaterials genesisMaterial) {
                 float magicDefense = genesisMaterial.getMagicDefense();
-
                 if (magicDefense != 0) {
                     builder.put(GenesisAttributes.MAGIC_DEFENSE.get(),
                             new AttributeModifier(
                                     ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()],
                                     "Magic defense",
                                     magicDefense,
+                                    AttributeModifier.Operation.ADDITION));
+                }
+
+                float holyDefense = genesisMaterial.getHolyDefense();
+                if (holyDefense != 0) {
+                    builder.put(GenesisAttributes.HOLY_DEFENSE.get(),
+                            new AttributeModifier(HOLY_MODIFIER_UUID_PER_SLOT[slot.getIndex()],
+                                    "Holy defense",
+                                    holyDefense,
                                     AttributeModifier.Operation.ADDITION));
                 }
             }

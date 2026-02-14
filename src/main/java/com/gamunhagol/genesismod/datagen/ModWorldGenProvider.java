@@ -26,7 +26,9 @@ public class ModWorldGenProvider extends DatapackBuiltinEntriesProvider {
 
             .add(Registries.DIMENSION_TYPE, GenesisDimensionTypes::bootstrap)
             .add(Registries.BIOME, GenesisBiomes::bootstrap)
-            .add(Registries.LEVEL_STEM, GenesisDimensions::bootstrapStem); //
+            .add(Registries.LEVEL_STEM, GenesisDimensions::bootstrapStem)
+
+            .add(Registries.DAMAGE_TYPE, DataGenerators::bootstrap);
 
     public ModWorldGenProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(GenesisMod.MODID));

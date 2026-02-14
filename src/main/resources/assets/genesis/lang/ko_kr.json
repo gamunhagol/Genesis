@@ -44,7 +44,7 @@
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
-  "item.genesis.fabricated_star": "Fabricated Star",
+
 
   "item.genesis.copper_coin_pile": "동 동전 더미",
   "item.genesis.silver_coin_pile": "은 동전 더미",
@@ -139,6 +139,8 @@
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
   "item.genesis.medallion_of_dominion": "지배의 메달",
+
+  "item.genesis.fabricated_star": "만들어진 별",
 
   "item.genesis.hot_spring_bucket": "온천수 양동이",
   "item.genesis.quicksand_bucket": "유사 양동이",
@@ -245,6 +247,7 @@
 
 
   "attribute.name.genesis.magic_defense": "마법 방어력",
+  "attribute.name.genesis.holy_defense": "신성 방어력",
 
 
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
@@ -286,5 +289,13 @@
 
 
 
-  "biome.genesis.dust_in_the_crevices": "틈새의 먼지"
+  "biome.genesis.dust_in_the_crevices": "틈새의 먼지",
+
+
+
+  "death.attack.genesis.holy": "%1$s이(가) 신성한 힘에 의해 사그라들었습니다.",
+  "death.attack.genesis.holy.player": "%1$s이(가) %2$s의 심판을 견디지 못하고 정화되었습니다.",
+
+  "death.attack.genesis.destruction": "%1$s이(가) 파괴되었습니다.",
+  "death.attack.genesis.destruction.player": "%1$s이(가) %2$s에 의해 박살났습니다."
 }

@@ -26,6 +26,13 @@ public class HolyKnightArmor extends ArmorItem {
             UUID.fromString("DE1E515-6000-0000-0000-00000001005")  // HEAD
     };
 
+    private static final UUID[] HOLY_MODIFIER_UUID_PER_SLOT = new UUID[]{
+            UUID.fromString("FE1E515-7000-0000-0000-00000004005"), // FEET
+            UUID.fromString("FE1E515-7000-0000-0000-00000003005"), // LEGS
+            UUID.fromString("FE1E515-7000-0000-0000-00000002005"), // CHEST
+            UUID.fromString("FE1E515-7000-0000-0000-00000001005")  // HEAD
+    };
+
     public HolyKnightArmor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
         super(pMaterial, pType, pProperties);
     }
@@ -38,13 +45,21 @@ public class HolyKnightArmor extends ArmorItem {
         if (slot == this.type.getSlot()) {
             if (this.getMaterial() instanceof GenesisArmorMaterials genesisMaterial) {
                 float magicDefense = genesisMaterial.getMagicDefense();
-
                 if (magicDefense != 0) {
                     builder.put(GenesisAttributes.MAGIC_DEFENSE.get(),
                             new AttributeModifier(
                                     ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()],
                                     "Magic defense",
                                     magicDefense,
+                                    AttributeModifier.Operation.ADDITION));
+                }
+
+                float holyDefense = genesisMaterial.getHolyDefense();
+                if (holyDefense != 0) {
+                    builder.put(GenesisAttributes.HOLY_DEFENSE.get(),
+                            new AttributeModifier(HOLY_MODIFIER_UUID_PER_SLOT[slot.getIndex()],
+                                    "Holy defense",
+                                    holyDefense,
                                     AttributeModifier.Operation.ADDITION));
                 }
             }

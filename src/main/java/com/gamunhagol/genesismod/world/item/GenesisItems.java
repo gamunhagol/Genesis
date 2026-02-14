@@ -1,7 +1,8 @@
 package com.gamunhagol.genesismod.world.item;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.util.GenesisItemTier;
+
+import com.gamunhagol.genesismod.world.item.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;

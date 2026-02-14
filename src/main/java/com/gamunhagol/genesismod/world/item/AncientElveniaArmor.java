@@ -26,6 +26,13 @@ public class AncientElveniaArmor extends ArmorItem {
             UUID.fromString("DE1E515-6000-0000-0000-00000001003")  // HEAD
     };
 
+    private static final UUID[] HOLY_MODIFIER_UUID_PER_SLOT = new UUID[]{
+            UUID.fromString("FE1E515-7000-0000-0000-00000004003"), // FEET
+            UUID.fromString("FE1E515-7000-0000-0000-00000003003"), // LEGS
+            UUID.fromString("FE1E515-7000-0000-0000-00000002003"), // CHEST
+            UUID.fromString("FE1E515-7000-0000-0000-00000001003")  // HEAD
+    };
+
     public AncientElveniaArmor(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
         super(pMaterial, pType, pProperties);
     }
@@ -42,7 +49,6 @@ public class AncientElveniaArmor extends ArmorItem {
         if (slot == this.type.getSlot()) {
             if (this.getMaterial() instanceof GenesisArmorMaterials genesisMaterial) {
                 float magicDefense = genesisMaterial.getMagicDefense();
-
                 // 마법 방어력이 0이 아닐 때만 (양수든 음수든) 적용
                 if (magicDefense != 0) {
                     builder.put(GenesisAttributes.MAGIC_DEFENSE.get(),
@@ -50,6 +56,16 @@ public class AncientElveniaArmor extends ArmorItem {
                                     ARMOR_MODIFIER_UUID_PER_SLOT[slot.getIndex()], // 슬롯별 고유 UUID
                                     "Magic defense",
                                     magicDefense,
+                                    AttributeModifier.Operation.ADDITION));
+                }
+
+                // 신성 방어력
+                float holyDefense = genesisMaterial.getHolyDefense();
+                if (holyDefense != 0) {
+                    builder.put(GenesisAttributes.HOLY_DEFENSE.get(),
+                            new AttributeModifier(HOLY_MODIFIER_UUID_PER_SLOT[slot.getIndex()],
+                                    "Holy defense",
+                                    holyDefense,
                                     AttributeModifier.Operation.ADDITION));
                 }
             }
