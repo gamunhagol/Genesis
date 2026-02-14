@@ -1,4 +1,5 @@
-// 1.20.1	2026-02-13T19:38:25.7616855	Registries
+// 1.20.1	2026-02-14T19:20:37.3947897	Registries
+0c5548045b7f52a24dd88bdbce769cc787700b97 data/genesis/damage_type/holy.json
 67604e77ea7e3b839d7c1fd5036f21b0f90f53f2 data/genesis/dimension/aperture_dim.json
 0d047d0bcb376b0686ccdfee9dabfa6e0b5c1983 data/genesis/dimension_type/aperture_dim_type.json
 54a90d9a48d0e51b458ef7159a4aef6f811bae84 data/genesis/forge/biome_modifier/add_amethyst_tree.json

@@ -29,6 +29,7 @@ public class GenesisEventBusEvents {
         // 모든 LivingEntity(살아있는 것들) 타입을 순회하며 추가
         for (EntityType<? extends LivingEntity> type : event.getTypes()) {
             event.add(type, GenesisAttributes.MAGIC_DEFENSE.get());
+            event.add(type, GenesisAttributes.HOLY_DEFENSE.get());
         }
     }
 

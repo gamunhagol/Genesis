@@ -21,6 +21,10 @@ public class GenesisAttributes {
             () -> new RangedAttribute("attribute.name.genesis.magic_defense", 0.0D, 0.0D, 1024.0D)
                     .setSyncable(true)); // true로 해야 클라이언트(GUI 등)에서도 수치가 보입니다.
 
+    public static final RegistryObject<Attribute> HOLY_DEFENSE = ATTRIBUTES.register("holy_defense",
+            () -> new RangedAttribute("attribute.name.genesis.holy_defense", 0.0D, 0.0D, 1000.0D).setSyncable(true));
+
+
     // 3. 메인 클래스에서 이 레지스터를 실행시키기 위한 메서드
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);

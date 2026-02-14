@@ -1,9 +1,12 @@
 package com.gamunhagol.genesismod.datagen;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.worldgen.BootstapContext;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -23,7 +26,6 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new ModRecipeProvider(packOutput));
         generator.addProvider(event.includeServer(), ModLootTableProvider.create(packOutput));
-
         generator.addProvider(event.includeClient(), new ModBlockStateProvider(packOutput, existingFileHelper));
         generator.addProvider(event.includeClient(), new ModItemModelProvider(packOutput, existingFileHelper));
 
@@ -35,7 +37,18 @@ public class DataGenerators {
             event.getGenerator().addProvider(true, new ModGlobalLootModifiersProvider(packOutput));
         }
 
+
+        ModWorldGenProvider worldGenProvider = new ModWorldGenProvider(packOutput, lookupProvider);
+        generator.addProvider(event.includeServer(), worldGenProvider);
+
+
         generator.addProvider(event.includeClient(), new ModPoiTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
-        generator.addProvider(event.includeServer(), new ModWorldGenProvider(packOutput, lookupProvider));
+
+        generator.addProvider(event.includeServer(), new ModDamageTypeTagProvider(packOutput, worldGenProvider.getRegistryProvider(), existingFileHelper));
+    }
+
+    public static void bootstrap(BootstapContext<DamageType> context) {
+        context.register(GenesisDamageTypes.HOLY, new DamageType("genesis.holy", 0.1F));
+        context.register(GenesisDamageTypes.DESTRUCTION, new DamageType("genesis.destruction", 0.1F));
     }
 }
