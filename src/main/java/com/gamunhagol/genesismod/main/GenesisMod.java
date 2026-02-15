@@ -8,6 +8,7 @@ import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.capability.IGenesisWeaponStats;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
@@ -16,6 +17,7 @@ import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -54,6 +56,7 @@ public class GenesisMod {
         GenesisFeatures.FEATURES.register(modEventBus);
         GenesisNetwork.register();
 
+
         MinecraftForge.EVENT_BUS.register(this);
 
     }
@@ -64,6 +67,9 @@ public class GenesisMod {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(() -> {
+
+        });
     }
 
 

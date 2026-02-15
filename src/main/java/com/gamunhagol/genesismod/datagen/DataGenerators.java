@@ -37,14 +37,16 @@ public class DataGenerators {
             event.getGenerator().addProvider(true, new ModGlobalLootModifiersProvider(packOutput));
         }
 
-
         ModWorldGenProvider worldGenProvider = new ModWorldGenProvider(packOutput, lookupProvider);
         generator.addProvider(event.includeServer(), worldGenProvider);
 
-
         generator.addProvider(event.includeClient(), new ModPoiTypeTagsProvider(packOutput, lookupProvider, existingFileHelper));
 
-        generator.addProvider(event.includeServer(), new ModDamageTypeTagProvider(packOutput, worldGenProvider.getRegistryProvider(), existingFileHelper));
+        generator.addProvider(event.includeServer(), new ModDamageTypeTagProvider(
+                packOutput,
+                worldGenProvider.getRegistryProvider(), // 이걸 써야 합니다!
+                existingFileHelper
+        ));
     }
 
     public static void bootstrap(BootstapContext<DamageType> context) {

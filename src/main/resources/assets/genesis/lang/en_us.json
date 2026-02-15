@@ -247,6 +247,9 @@
   "attribute.name.genesis.holy_defense": "Holy Defense",
 
 
+  "tooltip.genesis.holy_damage": "%s Holy Damage",
+  "tooltip.genesis.destruction_damage": "%s Destruction Damage",
+
   "tooltip.genesis.spirit_compass.has_needle": "Needle: Installed",
   "tooltip.genesis.spirit_compass.no_needle": "Needle: Missing",
   "tooltip.genesis.spirit_compass.type": "Type: %s",

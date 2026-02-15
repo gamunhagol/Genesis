@@ -24,6 +24,12 @@ public class GenesisAttributes {
     public static final RegistryObject<Attribute> HOLY_DEFENSE = ATTRIBUTES.register("holy_defense",
             () -> new RangedAttribute("attribute.name.genesis.holy_defense", 0.0D, 0.0D, 1000.0D).setSyncable(true));
 
+    public static final RegistryObject<Attribute> HOLY_DAMAGE = ATTRIBUTES.register("holy_damage",
+            () -> new RangedAttribute("attribute.name.genesis.holy_damage", 0.0D, 0.0D, 1024.0D).setSyncable(true));
+
+    public static final RegistryObject<Attribute> DESTRUCTION_DAMAGE = ATTRIBUTES.register("destruction_damage",
+            () -> new RangedAttribute("attribute.name.genesis.destruction_damage", 0.0D, 0.0D, 1024.0D).setSyncable(true));
+
 
     // 3. 메인 클래스에서 이 레지스터를 실행시키기 위한 메서드
     public static void register(IEventBus eventBus) {

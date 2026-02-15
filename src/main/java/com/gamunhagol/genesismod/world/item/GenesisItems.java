@@ -1,8 +1,7 @@
 package com.gamunhagol.genesismod.world.item;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-
-import com.gamunhagol.genesismod.world.item.GenesisItemTier;
+import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
@@ -374,7 +373,6 @@ public class GenesisItems {
              new Item.Properties()));
     public static final RegistryObject<Item> COLLECTOR_GUARD_SPAWN_EGG = ITEMS.register("collector_guard_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR_GUARD, 0xFFFFFF, 0xFFFFFF,
             new Item.Properties()));
-
 
 
 

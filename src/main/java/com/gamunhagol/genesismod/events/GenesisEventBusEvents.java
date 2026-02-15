@@ -36,5 +36,6 @@ public class GenesisEventBusEvents {
     @SubscribeEvent
     public static void registerCaps(RegisterCapabilitiesEvent event) {
         event.register(StatCapability.class);
+        event.register(com.gamunhagol.genesismod.world.capability.IGenesisWeaponStats.class);
     }
 }

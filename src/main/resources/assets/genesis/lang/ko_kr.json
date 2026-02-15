@@ -250,6 +250,9 @@
   "attribute.name.genesis.holy_defense": "신성 방어력",
 
 
+  "tooltip.genesis.holy_damage": "%s 신성 피해",
+  "tooltip.genesis.destruction_damage": "%s 파괴 피해",
+
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
   "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
   "tooltip.genesis.spirit_compass.type": "속성: %s",
