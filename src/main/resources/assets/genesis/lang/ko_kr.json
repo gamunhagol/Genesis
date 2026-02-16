@@ -138,6 +138,22 @@
   "item.genesis.elvenia_upgrade_smithing_template": "엘브니아 형판",
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
+
+  "item.genesis.scale_fossil_shard": "Scale Fossil Shard",
+  "item.genesis.scale_fossil": "Scale Fossil",
+  "item.genesis.scale_fossil_clump": "Scale Fossil Clump",
+  "item.genesis.weathered_ancient_dragon_rock": "Weathered Ancient Dragon Rock",
+  "item.genesis.ancient_dragon_rock": "Ancient Dragon Rock",
+  "item.genesis.ancient_dragon_scale": "Ancient Dragon Scale",
+  "item.genesis.dragon_king_scale": "Dragon King Scale",
+
+  "item.genesis.shard_of_the_mountain": "Shard of the Mountain",
+  "item.genesis.fragment_of_the_mountain": "Fragment of the Mountain",
+  "item.genesis.clump_of_the_mountain": "Clump of the Mountain",
+  "item.genesis.tablet_shard": "Tablet Shard",
+  "item.genesis.tablet_of_the_radiant_mountain": "Tablet of the Radiant Mountain",
+
+
   "item.genesis.medallion_of_dominion": "지배의 메달",
 
   "item.genesis.fabricated_star": "만들어진 별",
@@ -250,8 +266,6 @@
   "attribute.name.genesis.holy_defense": "신성 방어력",
 
 
-  "tooltip.genesis.holy_damage": "%s 신성 피해",
-  "tooltip.genesis.destruction_damage": "%s 파괴 피해",
 
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
   "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
@@ -274,6 +288,29 @@
 
   "tooltip.genesis.hold_alt": "<Alt 키를 눌러 상세 정보 보기>",
 
+  "tooltip.genesis.magic_damage_simple": " %.1f 마법 피해",
+  "tooltip.genesis.fire_damage_simple": " %.1f 마법 피해",
+  "tooltip.genesis.lightning_damage_simple": " %.1f 마법 피해",
+  "tooltip.genesis.frost_damage_simple": " %.1f 동상 피해",
+  "tooltip.genesis.holy_damage": " %.1f 신성 피해",
+  "tooltip.genesis.destruction_damage": " %.1f 파괴 피해",
+
+  "tooltip.genesis.magic_damage_label": "마법 피해",
+  "tooltip.genesis.fire_damage_label": "마법 피해",
+  "tooltip.genesis.lightning_damage_label": "마법 피해",
+  "tooltip.genesis.frost_damage_label": "동상 피해",
+  "tooltip.genesis.holy_damage_label": "신성 피해",
+  "tooltip.genesis.destruction_damage_label": "파괴 피해",
+
+  "tooltip.genesis.hold_tab": "<§8TAB 키를 눌러 상세 정보 확인>",
+  "tooltip.genesis.stats_header": "§7=== 장비 능력치 ===",
+  "tooltip.genesis.attack_power": "공격 피해",
+  "tooltip.genesis.scaling": "보정치:",
+  "tooltip.genesis.requirements": "요구치:",
+
+
+
+
   "tooltip.genesis.book_of_creation.info": "드높이 올라 별이 되어라. - 창조의 신 에테르",
 
   "tooltip.genesis.dream_powder.info": "달달한 가루, 잠깐의 행복감을 주고 악몽을 몰아낸다.",
@@ -286,6 +323,20 @@
 
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
 
+  "tooltip.genesis.scale_fossil_shard.info": "",
+  "tooltip.genesis.scale_fossil.info": "",
+  "tooltip.genesis.scale_fossil_clump.info": "",
+  "tooltip.genesis.weathered_ancient_dragon_rock.info": "",
+  "tooltip.genesis.ancient_dragon_rock.info": "",
+  "tooltip.genesis.ancient_dragon_scale.info": "",
+  "tooltip.genesis.dragon_king_scale.info": "",
+
+  "tooltip.genesis.shard_of_the_mountain.info": "",
+  "tooltip.genesis.fragment_of_the_mountain.info": "",
+  "tooltip.genesis.clump_of_the_mountain.info": "",
+  "tooltip.genesis.tablet_shard.info": "",
+  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "",
+
   "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
 
   "tooltip.genesis.fabricated_star.info": "순서대로 세워져 세상이 되었다",
@@ -295,6 +346,22 @@
   "biome.genesis.dust_in_the_crevices": "틈새의 먼지",
 
 
+
+  "stat.genesis.vigor": "생명력",
+  "stat.genesis.mind": "정신력",
+  "stat.genesis.endurance": "지구력",
+  "stat.genesis.strength": "근력",
+  "stat.genesis.dexterity": "기량",
+  "stat.genesis.intelligence": "지력",
+  "stat.genesis.faith": "신앙",
+  "stat.genesis.arcane": "신비",
+
+  "commands.genesis.stats.set.success": "§a[Genesis] §e%s§f의 §6%s§f 스탯이 §b%d§f(으)로 설정되었습니다.",
+  "commands.genesis.mental.set.success": "§b[Genesis] §f정신력이 %s(으)로 설정되었습니다.",
+
+
+
+  "message.genesis.insufficient_stats": "당신은 이 무기의 스킬을 사용하기에 필요한 능력치가 부족합니다.",
 
   "death.attack.genesis.holy": "%1$s이(가) 신성한 힘에 의해 사그라들었습니다.",
   "death.attack.genesis.holy.player": "%1$s이(가) %2$s의 심판을 견디지 못하고 정화되었습니다.",
