@@ -37,7 +37,7 @@ public class MentalPowerGui {
 
             minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 // 배틀 모드가 아니면서, 정신력이 꽉 차있다면 굳이 그리지 않음 (Fade Out 로직은 아래에서 처리)
-                renderMentalBar(event.getGuiGraphics(), stats.getMentalPower(), stats.getMaxMentalPower(), isBattleMode);
+                renderMentalBar(event.getGuiGraphics(), stats.getMental(), stats.getMaxMental(), isBattleMode);
             });
         }
     }

@@ -10,7 +10,7 @@ public class ClientPayloadHandler {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                stats.setMentalPower(mentalPower);
+                stats.setMental(mentalPower);
             });
         }
     }

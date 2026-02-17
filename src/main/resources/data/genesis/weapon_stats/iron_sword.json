@@ -1,0 +1,35 @@
+{
+  "item": "minecraft:iron_sword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 6.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "vigor": 0,
+    "mind": 0,
+    "endurance": 0,
+    "strength": 10,
+    "dexterity": 10,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "D",
+    "intelligence": "E",
+    "faith": "E",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "10": { "strength": "C", "dexterity": "C" },
+    "20": { "strength": "B", "dexterity": "B" }
+  }
+}

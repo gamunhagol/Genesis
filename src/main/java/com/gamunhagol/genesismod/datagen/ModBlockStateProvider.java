@@ -48,6 +48,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
         snowLayerBlock(GenesisBlocks.GOLD_COIN_PILE);
         snowLayerBlock(GenesisBlocks.PLATINUM_COIN_PILE);
 
+        blockWithItem(GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK);
+        blockWithItem(GenesisBlocks.ANCIENT_DRAGON_ROCK);
+
         blockWithItem(GenesisBlocks.PRECIPITATE);
 
         blockWithItem(GenesisBlocks.FADED_STONE);

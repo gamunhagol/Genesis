@@ -41,9 +41,24 @@ public class ClientTooltipHandler {
         register(GenesisItems.BEAST_REMAINS.get(), "tooltip.genesis.beast_remains.info");
         register(GenesisItems.DIVINE_GRAIL.get(), "tooltip.genesis.divine_grail.info");
 
+        register(GenesisItems.SCALE_FOSSIL_SHARD.get(), "tooltip.genesis.scale_fossil_shard.info");
+        register(GenesisItems.SCALE_FOSSIL.get(), "tooltip.genesis.scale_fossil.info");
+        register(GenesisItems.SCALE_FOSSIL_CLUMP.get(), "tooltip.genesis.scale_fossil_clump.info");
+        register(GenesisItems.WEATHERED_ANCIENT_DRAGON_ROCK.get(), "tooltip.genesis.weathered_ancient_dragon_rock.info");
+        register(GenesisItems.ANCIENT_DRAGON_ROCK.get(), "tooltip.genesis.ancient_dragon_rock.info");
+        register(GenesisItems.ANCIENT_DRAGON_SCALE.get(), "tooltip.genesis.ancient_dragon_scale.info");
+        register(GenesisItems.DRAGON_KING_SCALE.get(), "tooltip.genesis.dragon_king_scale.info");
+
+        register(GenesisItems.SHARD_OF_THE_MOUNTAIN.get(), "tooltip.genesis.shard_of_the_mountain.info");
+        register(GenesisItems.FRAGMENT_OF_THE_MOUNTAIN.get(), "tooltip.genesis.fragment_of_the_mountain.info");
+        register(GenesisItems.CLUMP_OF_THE_MOUNTAIN.get(), "tooltip.genesis.clump_of_the_mountain.info");
+        register(GenesisItems.TABLET_SHARD.get(), "tooltip.genesis.tablet_shard.info");
+        register(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get(), "tooltip.genesis.tablet_of_the_radiant_mountain.info");
+
+
         register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.medallion_of_dominion.info");
 
-        register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.fabricated_star.info");
+        register(GenesisItems.FABRICATED_STAR.get(), "tooltip.genesis.fabricated_star.info");
 
 
         // 나중에 아이템이 늘어나면 여기에 한 줄씩만 추가하면 됩니다.

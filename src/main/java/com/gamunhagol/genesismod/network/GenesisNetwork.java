@@ -14,6 +14,7 @@ public class GenesisNetwork {
     private static int id() { return packetId++; }
 
     public static void register() {
+        // 1. 채널 생성 및 INSTANCE 초기화 (이 부분이 빠져있었습니다)
         SimpleChannel net = NetworkRegistry.ChannelBuilder
                 .named(new ResourceLocation(GenesisMod.MODID, "messages"))
                 .networkProtocolVersion(() -> "1.0")
@@ -23,16 +24,32 @@ public class GenesisNetwork {
 
         INSTANCE = net;
 
-        // 위에서 만든 패킷 등록
-        net.messageBuilder(PacketSyncMentalPower.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(PacketSyncMentalPower::new)
-                .encoder(PacketSyncMentalPower::toBytes)
-                .consumerMainThread(PacketSyncMentalPower::handle)
+        // 2. 사용할 패킷들 등록 (클래스 이름과 순서를 확인하세요)
+        net.messageBuilder(PacketSyncStats.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncStats::new)
+                .encoder(PacketSyncStats::toBytes)
+                .consumerMainThread(PacketSyncStats::handle)
+                .add();
+
+        net.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketConfirmLevelUp::new)
+                .encoder(PacketConfirmLevelUp::toBytes)
+                .consumerMainThread(PacketConfirmLevelUp::handle)
                 .add();
     }
 
     // 서버에서 특정 플레이어에게 패킷을 보내는 메서드
     public static void sendToPlayer(Object message, ServerPlayer player) {
-        INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
+        // INSTANCE가 null인지 체크하여 튕김 방지
+        if (INSTANCE != null && player != null) {
+            INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
+        }
+    }
+
+    // 클라이언트에서 서버로 패킷을 보내는 메서드
+    public static void sendToServer(Object message) {
+        if (INSTANCE != null) {
+            INSTANCE.sendToServer(message);
+        }
     }
 }

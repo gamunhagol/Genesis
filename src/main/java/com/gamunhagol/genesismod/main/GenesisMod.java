@@ -18,6 +18,7 @@ import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -57,6 +58,9 @@ public class GenesisMod {
         GenesisNetwork.register();
 
 
+        MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
+
+
         MinecraftForge.EVENT_BUS.register(this);
 
     }
@@ -80,6 +84,10 @@ public class GenesisMod {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
 
+    }
+
+    private void onAddReloadListeners(AddReloadListenerEvent event) {
+        event.addListener(new com.gamunhagol.genesismod.world.weapon.WeaponDataManager());
     }
 
 }

@@ -2,7 +2,8 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.PacketSyncMentalPower;
+import com.gamunhagol.genesismod.network.PacketSyncStats;
+import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
@@ -34,7 +35,6 @@ public class GenesisForgeEvents {
 
     private static final CollectorSpawner COLLECTOR_SPAWNER = new CollectorSpawner();
 
-    //  플레이어에게 스탯 Capability 부착
     @SubscribeEvent
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
@@ -42,81 +42,74 @@ public class GenesisForgeEvents {
         }
     }
 
-    //  플레이어 틱 처리 (멘탈 파워 동기화 & 파괴 효과 시간 체크)
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.side.isServer() && event.phase == TickEvent.Phase.END) {
             Player player = event.player;
 
-            // 멘탈 파워 로직
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.tick();
-                if (stats.getMentalPower() < stats.getMaxMentalPower()) {
+                if (stats.isDirty()) {
                     GenesisNetwork.sendToPlayer(
-                            new PacketSyncMentalPower(stats.getMentalPower()),
+                            new PacketSyncStats(
+                                    stats.getVigor(),
+                                    stats.getMind(),
+                                    stats.getEndurance(),
+                                    stats.getStrength(),
+                                    stats.getDexterity(),
+                                    stats.getIntelligence(),
+                                    stats.getFaith(),
+                                    stats.getArcane(),
+                                    stats.getMental(),
+                                    stats.getMaxMental(),
+                                    stats.isLevelUpUnlocked() // [수정됨] 맨 뒤에 해금 여부 추가!
+                            ),
                             (ServerPlayer) player
                     );
+                    stats.setDirty(false);
                 }
             });
 
-            // 1초(20틱)마다 검사
-            if (player.tickCount % 20 != 0) return;
-
-            // 파괴 피해 지속 시간 체크 (로직은 CombatEvents에서 가져옴)
-            if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
-                long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
-                long currentTick = player.level().getGameTime();
-
-                // 시간이 다 되었으면 효과 해제
-                if (currentTick >= endTick) {
-                    // ★ 변경점: CombatEvents에 있는 해제 메서드 호출 (중복 제거)
-                    GenesisCombatEvents.removeDestructionEffect(player);
+            // 파괴 효과 체크 (기존 유지)
+            if (player.tickCount % 20 == 0) {
+                if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
+                    long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
+                    if (player.level().getGameTime() >= endTick) {
+                        GenesisCombatEvents.removeDestructionEffect(player);
+                    }
                 }
             }
         }
     }
 
-    //  월드 틱 처리 (커스텀 스포너)
-    @SubscribeEvent
-    public static void onLevelTick(TickEvent.LevelTickEvent event) {
-        if (event.phase == TickEvent.Phase.END && event.level instanceof ServerLevel serverLevel) {
-            if (serverLevel.dimension() == Level.OVERWORLD) {
-                COLLECTOR_SPAWNER.tick(serverLevel);
-            }
-        }
-    }
-
-    //  엔티티 생성 시 AI 추가 (CollectorGuard 적대 설정)
-    @SubscribeEvent
-    public static void onEntityJoinLevel(EntityJoinLevelEvent event) {
-        Entity entity = event.getEntity();
-        if (entity instanceof Monster monster) {
-            if (!(monster instanceof CollectorGuard)) {
-                monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(monster, CollectorGuard.class, true));
-            }
-        }
-    }
-
-    //  엔티티 틱 처리 (세트 효과: 이동 속도 증가)
-    @SubscribeEvent
-    public static void onLivingTick(LivingEvent.LivingTickEvent event) {
-        LivingEntity entity = event.getEntity();
-        Level level = entity.level();
-
-        if (level.isClientSide) return;
-        if (entity.tickCount % 20 != 0) return;
-
-        if (hasFullPaddedChainSet(entity)) {
-            entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 40, 0, false, false, true));
-        }
-    }
-
-    //  플레이어 부활/사망 처리 (성배 아이템 리필)
     @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
+        Player original = event.getOriginal();
+        Player newPlayer = event.getEntity();
+
+        original.reviveCaps();
+
+        original.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(oldStats -> {
+            newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
+                newStats.copyFrom(oldStats);
+                StatApplier.applyAll(newPlayer, newStats);
+
+                if (newPlayer instanceof ServerPlayer serverPlayer) {
+                    GenesisNetwork.sendToPlayer(
+                            new PacketSyncStats(
+                                    newStats.getVigor(), newStats.getMind(), newStats.getEndurance(),
+                                    newStats.getStrength(), newStats.getDexterity(), newStats.getIntelligence(),
+                                    newStats.getFaith(), newStats.getArcane(),
+                                    newStats.getMental(), newStats.getMaxMental(),
+                                    newStats.isLevelUpUnlocked() // [수정됨] 여기도 맨 뒤에 추가!
+                            ),
+                            serverPlayer
+                    );
+                }
+            });
+        });
+
         if (event.isWasDeath()) {
-            Player newPlayer = event.getEntity();
-            // 인벤토리 전체를 순회하며 성배 리필
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);
                 if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
@@ -126,20 +119,7 @@ public class GenesisForgeEvents {
         }
     }
 
-    //  플레이어 아이템 드롭 시 처리 (성배 아이템 리필 - 드롭된 상태에서도)
-    @SubscribeEvent
-    public static void onPlayerDrops(net.minecraftforge.event.entity.living.LivingDropsEvent event) {
-        if (event.getEntity() instanceof Player) {
-            for (net.minecraft.world.entity.item.ItemEntity itemEntity : event.getDrops()) {
-                ItemStack stack = itemEntity.getItem();
-                if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
-                    grail.refill(stack);
-                }
-            }
-        }
-    }
-
-    // [헬퍼 메서드] 세트 효과 체크
+    // ... (헬퍼 메서드 유지) ...
     private static boolean hasFullPaddedChainSet(LivingEntity entity) {
         ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chest = entity.getItemBySlot(EquipmentSlot.CHEST);
@@ -153,5 +133,24 @@ public class GenesisForgeEvents {
         return !stack.isEmpty() &&
                 stack.getItem() instanceof ArmorItem armor &&
                 armor.getMaterial() == GenesisArmorMaterials.PADDED_CHAIN;
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                // 접속하자마자 현재 상태를 패킷으로 보냄
+                GenesisNetwork.sendToPlayer(
+                        new PacketSyncStats(
+                                stats.getVigor(), stats.getMind(), stats.getEndurance(),
+                                stats.getStrength(), stats.getDexterity(), stats.getIntelligence(),
+                                stats.getFaith(), stats.getArcane(),
+                                stats.getMental(), stats.getMaxMental(),
+                                stats.isLevelUpUnlocked() // 이 정보가 클라이언트로 가야 버튼이 생깁니다.
+                        ),
+                        player
+                );
+            });
+        }
     }
 }

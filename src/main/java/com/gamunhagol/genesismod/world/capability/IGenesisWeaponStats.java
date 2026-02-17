@@ -7,5 +7,8 @@ public interface IGenesisWeaponStats {
     float getDestructionDamage();
     void setDestructionDamage(float damage);
 
+    int getReinforceLevel();
+    void setReinforceLevel(int level);
+
     void copyFrom(IGenesisWeaponStats source);
 }

@@ -57,6 +57,8 @@
   "item.genesis.amethyst_apple": "자수정 사과",
   "item.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
 
+  "item.genesis.opaque_jelly": "불투명한 젤리",
+
 
 
   "item.genesis.divine_grail": "신대의 성배병",
@@ -139,19 +141,17 @@
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
 
-  "item.genesis.scale_fossil_shard": "Scale Fossil Shard",
-  "item.genesis.scale_fossil": "Scale Fossil",
-  "item.genesis.scale_fossil_clump": "Scale Fossil Clump",
-  "item.genesis.weathered_ancient_dragon_rock": "Weathered Ancient Dragon Rock",
-  "item.genesis.ancient_dragon_rock": "Ancient Dragon Rock",
-  "item.genesis.ancient_dragon_scale": "Ancient Dragon Scale",
-  "item.genesis.dragon_king_scale": "Dragon King Scale",
+  "item.genesis.scale_fossil_shard": "비늘 화석 조각",
+  "item.genesis.scale_fossil": "비늘 화석",
+  "item.genesis.scale_fossil_clump": "비늘 덩어리 화석",
+  "item.genesis.ancient_dragon_scale": "고룡의 비늘",
+  "item.genesis.dragon_king_scale": "용왕의 비늘",
 
-  "item.genesis.shard_of_the_mountain": "Shard of the Mountain",
-  "item.genesis.fragment_of_the_mountain": "Fragment of the Mountain",
-  "item.genesis.clump_of_the_mountain": "Clump of the Mountain",
-  "item.genesis.tablet_shard": "Tablet Shard",
-  "item.genesis.tablet_of_the_radiant_mountain": "Tablet of the Radiant Mountain",
+  "item.genesis.shard_of_the_mountain": "산의 조각",
+  "item.genesis.fragment_of_the_mountain": "산의 파편",
+  "item.genesis.clump_of_the_mountain": "산의 덩어리",
+  "item.genesis.tablet_shard": "석판 조각",
+  "item.genesis.tablet_of_the_radiant_mountain": "빛의 산 석판",
 
 
   "item.genesis.medallion_of_dominion": "지배의 메달",
@@ -209,6 +209,9 @@
   "block.genesis.lighting_crystal_cluster": "뇌전 수정 군집",
   "block.genesis.wind_stone_block": "바람석 블럭",
   "block.genesis.wind_stone_cluster": "바람석 군집",
+
+  "block.genesis.weathered_ancient_dragon_rock": "변질된 고룡암",
+  "block.genesis.ancient_dragon_rock": "고룡암",
 
   "block.genesis.amethyst_sapling": "자수정 묘목",
 
@@ -323,19 +326,19 @@
 
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
 
-  "tooltip.genesis.scale_fossil_shard.info": "",
-  "tooltip.genesis.scale_fossil.info": "",
-  "tooltip.genesis.scale_fossil_clump.info": "",
-  "tooltip.genesis.weathered_ancient_dragon_rock.info": "",
-  "tooltip.genesis.ancient_dragon_rock.info": "",
-  "tooltip.genesis.ancient_dragon_scale.info": "",
-  "tooltip.genesis.dragon_king_scale.info": "",
+  "tooltip.genesis.scale_fossil_shard.info": "헤아릴 수 없는 과거, 원시 야수들이 걸어 다녔다.",
+  "tooltip.genesis.scale_fossil.info": "야수들의 비늘은 재해를 튕겨냈고, 집어삼켰다.",
+  "tooltip.genesis.scale_fossil_clump.info": "그들은 흐려진 용의 피를 일깨운 자손들이었다.",
+  "tooltip.genesis.weathered_ancient_dragon_rock.info": "과거, 고룡들은 세상의 정점에 서 있었다.",
+  "tooltip.genesis.ancient_dragon_rock.info": "그들의 산이자 보호자의 방패였다.",
+  "tooltip.genesis.ancient_dragon_scale.info": "옛 맹약은 그들을 성벽으로 만들었고,",
+  "tooltip.genesis.dragon_king_scale.info": "그들의 첫 번째 왕을 태초 전쟁 속에 사라지게 하였다. 그리고 다시는 돌아오지 못하게 하였다.",
 
-  "tooltip.genesis.shard_of_the_mountain.info": "",
-  "tooltip.genesis.fragment_of_the_mountain.info": "",
-  "tooltip.genesis.clump_of_the_mountain.info": "",
-  "tooltip.genesis.tablet_shard.info": "",
-  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "",
+  "tooltip.genesis.shard_of_the_mountain.info": "세상의 중심에 서 있던 가장 높았던 산의 조각. 무엇으로도 파괴할 수 없었으나, 이제는 무구를 벼리는 재료가 되었다.",
+  "tooltip.genesis.fragment_of_the_mountain.info": "신역의 중심에 서 있던 가장 높았던 산의 파편. 산산이 부서졌지만 무구를 벼리는 데 도움이 된다.",
+  "tooltip.genesis.clump_of_the_mountain.info": "먼 과거에 부서진 산의 덩어리. 무기를 더 높은 단계로 끌어올린다, 그 높았던 과거처럼.",
+  "tooltip.genesis.tablet_shard.info": "산을 오르는 길을 만들 때 떼어낸 산의 조각. 그 부스러기는 영원을 꿈꿨으나 이루어지지 못하였다.",
+  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "빛의 산에 길을 낼 때 떼어내 영원의 찬양을 기록한 석판. 그 덧없는 꿈은 이루어지지 못하였으나, 벼려진 무구는 영광의 경지에 이를 것이다.",
 
   "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
 
@@ -367,5 +370,26 @@
   "death.attack.genesis.holy.player": "%1$s이(가) %2$s의 심판을 견디지 못하고 정화되었습니다.",
 
   "death.attack.genesis.destruction": "%1$s이(가) 파괴되었습니다.",
-  "death.attack.genesis.destruction.player": "%1$s이(가) %2$s에 의해 박살났습니다."
+  "death.attack.genesis.destruction.player": "%1$s이(가) %2$s에 의해 박살났습니다.",
+
+
+
+  "message.genesis.level_up.not_enough_xp": "XP 가 모자랍니다!",
+
+  "gui.genesis.level_up.title": "레벨 업",
+  "gui.genesis.level_up.recovered_levels": "복구된 레벨: +%s",
+  "gui.genesis.level_up.current_xp": "소지 XP: %s",
+  "gui.genesis.level_up.required_xp": "필요 XP: %s",
+  "gui.genesis.level_up.hp": "HP: %s",
+  "gui.genesis.level_up.stamina": "SP: %s",
+  "gui.genesis.level_up.mana": "FP: %s / %s",
+  "gui.genesis.level_up.confirm": "완료",
+  "gui.genesis.level_up.cancel": "취소",
+  "gui.genesis.button.inc": ">",
+  "gui.genesis.button.dec": "<",
+  "gui.genesis.button.exit": "X",
+  "gui.genesis.button.cancel": "취소",
+  "gui.genesis.button.confirm": "완료",
+  "gui.genesis.button.increase": ">",
+  "gui.genesis.button.decrease": "<"
 }

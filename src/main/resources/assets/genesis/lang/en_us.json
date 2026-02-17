@@ -57,6 +57,8 @@
   "item.genesis.amethyst_apple": "Amethyst Apple",
   "item.genesis.amethyst_apple_pudding_block": "Amethyst Apple Pudding",
 
+  "item.genesis.opaque_jelly": "Opaque Jelly",
+
 
   "item.genesis.divine_grail": "Holy Grail Bottle of Mythical Age",
 
@@ -139,8 +141,6 @@
   "item.genesis.scale_fossil_shard": "Scale Fossil Shard",
   "item.genesis.scale_fossil": "Scale Fossil",
   "item.genesis.scale_fossil_clump": "Scale Fossil Clump",
-  "item.genesis.weathered_ancient_dragon_rock": "Weathered Ancient Dragon Rock",
-  "item.genesis.ancient_dragon_rock": "Ancient Dragon Rock",
   "item.genesis.ancient_dragon_scale": "Ancient Dragon Scale",
   "item.genesis.dragon_king_scale": "Dragon King Scale",
 
@@ -206,6 +206,9 @@
   "block.genesis.lighting_crystal_cluster": "Lighting Crystal Cluster",
   "block.genesis.wind_stone_block": "Wind Stone Block",
   "block.genesis.wind_stone_cluster": "Wind Stone Cluster",
+
+  "block.genesis.weathered_ancient_dragon_rock": "Weathered Ancient Dragon Rock",
+  "block.genesis.ancient_dragon_rock": "Ancient Dragon Rock",
 
   "block.genesis.amethyst_sapling": "Amethyst Sapling",
 
@@ -320,19 +323,19 @@
 
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
-  "tooltip.genesis.scale_fossil_shard.info": "",
-  "tooltip.genesis.scale_fossil.info": "",
-  "tooltip.genesis.scale_fossil_clump.info": "",
-  "tooltip.genesis.weathered_ancient_dragon_rock.info": "",
-  "tooltip.genesis.ancient_dragon_rock.info": "",
-  "tooltip.genesis.ancient_dragon_scale.info": "",
-  "tooltip.genesis.dragon_king_scale.info": "",
+  "tooltip.genesis.scale_fossil_shard.info": "In an unfathomable past, primordial beasts once roamed the earth.",
+  "tooltip.genesis.scale_fossil.info": "The scales of these beasts repelled disasters and swallowed them whole.",
+  "tooltip.genesis.scale_fossil_clump.info": "They were the descendants who awakened the faded blood of dragons.",
+  "tooltip.genesis.weathered_ancient_dragon_rock.info": "Once, the ancient dragons stood at the very pinnacle of the world.",
+  "tooltip.genesis.ancient_dragon_rock.info": "They were the mountains themselves, and the shields of the protectors.",
+  "tooltip.genesis.ancient_dragon_scale.info": "An ancient covenant turned them into living fortresses.",
+  "tooltip.genesis.dragon_king_scale.info": "It caused their first king to vanish into the Primal War, destined never to return.",
 
-  "tooltip.genesis.shard_of_the_mountain.info": "",
-  "tooltip.genesis.fragment_of_the_mountain.info": "",
-  "tooltip.genesis.clump_of_the_mountain.info": "",
-  "tooltip.genesis.tablet_shard.info": "",
-  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "",
+  "tooltip.genesis.shard_of_the_mountain.info": "A piece of the highest mountain that stood at the world's center. Once indestructible, it is now a material for forging arms.",
+  "tooltip.genesis.fragment_of_the_mountain.info": "A fragment of the highest mountain in the heart of the divine realm. Though shattered, it aids in the forging of equipment.",
+  "tooltip.genesis.clump_of_the_mountain.info": "A mass from the mountain broken in the distant past. It elevates weapons to a higher plane, much like its lofty history.",
+  "tooltip.genesis.tablet_shard.info": "A shard of the mountain removed while carving the path to the summit. A mere crumb of a dream for eternity that never came to be.",
+  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "A tablet recording eternal praise, carved when the path through the Radiant Mountain was made. Though the fleeting dream went unfulfilled, the forged weapon shall reach a state of glory.",
 
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
 
@@ -364,5 +367,26 @@
   "death.attack.genesis.holy.player": "%1$s failed to endure the judgment of %2$s and was purified.",
 
   "death.attack.genesis.destruction": "%1$s was destroyed.",
-  "death.attack.genesis.destruction.player": "%1$s was smashed to pieces by %2$s."
+  "death.attack.genesis.destruction.player": "%1$s was smashed to pieces by %2$s.",
+
+
+
+  "message.genesis.level_up.not_enough_xp": "Not enough XP!",
+
+  "gui.genesis.level_up.title": "Level Up",
+  "gui.genesis.level_up.recovered_levels": "Reclaimed Levels: +%s",
+  "gui.genesis.level_up.current_xp": "Current XP: %s",
+  "gui.genesis.level_up.required_xp": "Required XP: %s",
+  "gui.genesis.level_up.hp": "HP: %s",
+  "gui.genesis.level_up.stamina": "SP: %s",
+  "gui.genesis.level_up.mana": "FP: %s / %s",
+  "gui.genesis.level_up.confirm": "Confirm",
+  "gui.genesis.level_up.cancel": "Cancel",
+  "gui.genesis.button.inc": ">",
+  "gui.genesis.button.dec": "<",
+  "gui.genesis.button.exit": "X",
+  "gui.genesis.button.cancel": "Cancel",
+  "gui.genesis.button.confirm": "OK",
+  "gui.genesis.button.increase": ">",
+  "gui.genesis.button.decrease": "<"
 }

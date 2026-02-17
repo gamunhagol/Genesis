@@ -97,6 +97,11 @@ public class GenesisBlocks {
                     .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
 
 
+    public static final RegistryObject<Block> WEATHERED_ANCIENT_DRAGON_ROCK = register("weathered_ancient_dragon_rock",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(60.0F, 1800.0F)));
+    public static final RegistryObject<Block> ANCIENT_DRAGON_ROCK = register("ancient_dragon_rock",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(180.0F, 1800.0F)));
+
     public static final RegistryObject<Block> OBLIVION_CANDLE = register("oblivion_candle",
             () -> new OblivionCandleBlock(BlockBehaviour.Properties.copy(Blocks.CANDLE).noOcclusion()));
 

@@ -105,6 +105,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING);
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK);
 
+        simpleItem(GenesisItems.OPAQUE_JELLY);
+
         simpleItem(GenesisItems.OBLIVION_CANDLE);
 
         handheldItem(GenesisItems.ELVENIA_SWORD);
@@ -128,6 +130,18 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
+
+        simpleItem(GenesisItems.SCALE_FOSSIL_SHARD);
+        simpleItem(GenesisItems.SCALE_FOSSIL);
+        simpleItem(GenesisItems.SCALE_FOSSIL_CLUMP);
+        simpleItem(GenesisItems.ANCIENT_DRAGON_SCALE);
+        simpleItem(GenesisItems.DRAGON_KING_SCALE);
+
+        simpleItem(GenesisItems.SHARD_OF_THE_MOUNTAIN);
+        simpleItem(GenesisItems.FRAGMENT_OF_THE_MOUNTAIN);
+        simpleItem(GenesisItems.CLUMP_OF_THE_MOUNTAIN);
+        simpleItem(GenesisItems.TABLET_SHARD);
+        simpleItem(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN);
 
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
 

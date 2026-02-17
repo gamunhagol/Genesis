@@ -72,6 +72,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.AMETHYST_APPLE_SLICES.get());
                 output.accept(GenesisItems.AMETHYST_APPLE_PUDDING.get());
 
+                output.accept(GenesisItems.OPAQUE_JELLY.get());
+
                 output.accept(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK.get());
 
 
@@ -154,6 +156,21 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
                 output.accept(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
+
+                output.accept(GenesisItems.SCALE_FOSSIL_SHARD.get());
+                output.accept(GenesisItems.SCALE_FOSSIL.get());
+                output.accept(GenesisItems.SCALE_FOSSIL_CLUMP.get());
+                output.accept(GenesisItems.WEATHERED_ANCIENT_DRAGON_ROCK.get());
+                output.accept(GenesisItems.ANCIENT_DRAGON_ROCK.get());
+                output.accept(GenesisItems.ANCIENT_DRAGON_SCALE.get());
+                output.accept(GenesisItems.DRAGON_KING_SCALE.get());
+
+                output.accept(GenesisItems.SHARD_OF_THE_MOUNTAIN.get());
+                output.accept(GenesisItems.FRAGMENT_OF_THE_MOUNTAIN.get());
+                output.accept(GenesisItems.CLUMP_OF_THE_MOUNTAIN.get());
+                output.accept(GenesisItems.TABLET_SHARD.get());
+                output.accept(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get());
+
 
                 output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());
 

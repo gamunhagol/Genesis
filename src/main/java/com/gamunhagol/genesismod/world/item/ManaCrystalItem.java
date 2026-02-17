@@ -28,11 +28,11 @@ public class ManaCrystalItem extends Item {
         if (!level.isClientSide) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 float recoveryAmount = 5.0f;
-                stats.setMentalPower(Math.min(stats.getMaxMentalPower(), stats.getMentalPower() + recoveryAmount));
+                stats.setMental(Math.min(stats.getMaxMental(), stats.getMental() + recoveryAmount));
 
                 // [★버그 수정] 값이 변했으니 클라이언트에게 즉시 "야! 값 바뀌었어!" 하고 소리쳐야 합니다.
                 if (player instanceof ServerPlayer serverPlayer) {
-                    GenesisNetwork.sendToPlayer(new PacketSyncMentalPower(stats.getMentalPower()), serverPlayer);
+                    GenesisNetwork.sendToPlayer(new PacketSyncMentalPower(stats.getMental()), serverPlayer);
                 }
             });
             //  효과음 재생

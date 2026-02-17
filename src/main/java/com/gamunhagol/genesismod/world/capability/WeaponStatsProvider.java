@@ -27,6 +27,7 @@ public class WeaponStatsProvider implements ICapabilitySerializable<CompoundTag>
         CompoundTag nbt = new CompoundTag();
         nbt.putFloat("HolyDamage", backend.getHolyDamage());
         nbt.putFloat("DestructionDamage", backend.getDestructionDamage());
+        nbt.putInt("ReinforceLevel", backend.getReinforceLevel());
         return nbt;
     }
 
@@ -34,5 +35,6 @@ public class WeaponStatsProvider implements ICapabilitySerializable<CompoundTag>
     public void deserializeNBT(CompoundTag nbt) {
         backend.setHolyDamage(nbt.getFloat("HolyDamage"));
         backend.setDestructionDamage(nbt.getFloat("DestructionDamage"));
+        backend.setReinforceLevel(nbt.getInt("ReinforceLevel"));
     }
 }

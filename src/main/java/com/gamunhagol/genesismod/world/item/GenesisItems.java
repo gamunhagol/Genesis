@@ -85,6 +85,11 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> WIND_STONE_CLUSTER = ITEMS.register("wind_stone_cluster",
             () -> new BlockItem(GenesisBlocks.WIND_STONE_CLUSTER.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> WEATHERED_ANCIENT_DRAGON_ROCK = ITEMS.register("weathered_ancient_dragon_rock",
+            () -> new BlockItem(GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<BlockItem> ANCIENT_DRAGON_ROCK = ITEMS.register("ancient_dragon_rock",
+            () -> new BlockItem(GenesisBlocks.ANCIENT_DRAGON_ROCK.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
+
     public static final RegistryObject<BlockItem> AMETHYST_SAPLING = ITEMS.register("amethyst_sapling",
             () -> new BlockItem(GenesisBlocks.AMETHYST_SAPLING.get(), new Item.Properties()));
 
@@ -128,7 +133,7 @@ public class GenesisItems {
 
 
     //item
-    public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BOOK_OF_CREATION = ITEMS.register("book_of_creation", () -> new BookOfCreationItem(new Item.Properties()));
 
     public static final RegistryObject<Item> SCATTERED_MEMORIES = ITEMS.register("scattered_memories", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> DREAM_POWDER = ITEMS.register("dream_powder",
@@ -170,9 +175,9 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> PYULITELA = ITEMS.register("pyulitela", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> FLASK_SHARD = ITEMS.register("flask_shard", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FLASK_SHARD = ITEMS.register("flask_shard", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> BEAST_REMAINS = ITEMS.register("beast_remains", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> BEAST_REMAINS = ITEMS.register("beast_remains", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> COPPER_COIN = ITEMS.register("copper_coin", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILVER_COIN = ITEMS.register("silver_coin", () -> new Item(new Item.Properties()));
@@ -187,7 +192,9 @@ public class GenesisItems {
     //food
     public static final RegistryObject<Item> AMETHYST_APPLE_SLICES = ITEMS.register("amethyst_apple_slices", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)
             .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.4f).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1), 1.0f).build())));
-    public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING = ITEMS.register("amethyst_apple_pudding", () -> new AmethystApplePuddingItem(new Item.Properties().stacksTo(16).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING = ITEMS.register("amethyst_apple_pudding", () -> new AmethystApplePuddingItem(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> OPAQUE_JELLY = ITEMS.register("opaque_jelly", () -> new Item(new Item.Properties()));
 
 
     //block item
@@ -217,9 +224,9 @@ public class GenesisItems {
             () -> new BlockItem(GenesisBlocks.AEK_STATUE.get(), new Item.Properties()));
 
 //tool,weapon
-    public static final RegistryObject<Item> DIVINE_GRAIL = ITEMS.register("divine_grail", () -> new DivineGrailItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> DIVINE_GRAIL = ITEMS.register("divine_grail", () -> new DivineGrailItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
 
-    public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> ELVENIA_SWORD = ITEMS.register("elvenia_sword", () -> new SwordItem(GenesisItemTier.ELVENIA, 3, -2.4f,
             new Item.Properties()));
@@ -351,12 +358,26 @@ public class GenesisItems {
     //misc
     public static final RegistryObject<Item> AMETHYST_NEEDLE = ITEMS.register("amethyst_needle", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ELVENIA_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("elvenia_upgrade_smithing_template", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PEWRIESE_UPGRADE_SMITHING_TEMPLATE = ITEMS.register("pewriese_upgrade_smithing_template", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SCALE_FOSSIL_SHARD = ITEMS.register("scale_fossil_shard", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCALE_FOSSIL = ITEMS.register("scale_fossil", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SCALE_FOSSIL_CLUMP = ITEMS.register("scale_fossil_clump", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ANCIENT_DRAGON_SCALE = ITEMS.register("ancient_dragon_scale", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> DRAGON_KING_SCALE = ITEMS.register("dragon_king_scale", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> SHARD_OF_THE_MOUNTAIN = ITEMS.register("shard_of_the_mountain", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> FRAGMENT_OF_THE_MOUNTAIN = ITEMS.register("fragment_of_the_mountain", () -> new Item(new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CLUMP_OF_THE_MOUNTAIN = ITEMS.register("clump_of_the_mountain", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> TABLET_SHARD = ITEMS.register("tablet_shard", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> TABLET_OF_THE_RADIANT_MOUNTAIN = ITEMS.register("tablet_of_the_radiant_mountain", () -> new Item(new Item.Properties().fireResistant().rarity(Rarity.EPIC)));
+
+
 
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
-            () -> new Item(new Item.Properties().rarity(Rarity.COMMON)));
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
 
     public static final RegistryObject<Item> HOT_SPRING_BUCKET =
