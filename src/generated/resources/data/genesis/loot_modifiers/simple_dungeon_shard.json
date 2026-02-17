@@ -1,0 +1,12 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 0.11,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/simple_dungeon"
+    }
+  ],
+  "item": "genesis:shard_of_the_mountain",
+  "max_count": 3
+}

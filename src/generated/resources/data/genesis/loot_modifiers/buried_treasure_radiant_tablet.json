@@ -1,0 +1,11 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 1.0E-4,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/buried_treasure"
+    }
+  ],
+  "item": "genesis:tablet_of_the_radiant_mountain"
+}

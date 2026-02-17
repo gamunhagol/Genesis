@@ -19,9 +19,9 @@ public class AddChestItemModifier extends LootModifier {
     public static final Supplier<Codec<AddChestItemModifier>> CODEC = Suppliers.memoize(() ->
             RecordCodecBuilder.create(inst -> codecStart(inst)
                     .and(ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(m -> m.item))
-                    .and(Codec.FLOAT.fieldOf("chance").forGetter(m -> m.chance)) // 확률 추가
-                    .and(Codec.INT.optionalFieldOf("min_count", 1).forGetter(m -> m.minCount)) // 최소 개수
-                    .and(Codec.INT.optionalFieldOf("max_count", 1).forGetter(m -> m.maxCount)) // 최대 개수
+                    .and(Codec.FLOAT.fieldOf("chance").forGetter(m -> m.chance))
+                    .and(Codec.INT.optionalFieldOf("min_count", 1).forGetter(m -> m.minCount))
+                    .and(Codec.INT.optionalFieldOf("max_count", 1).forGetter(m -> m.maxCount))
                     .apply(inst, AddChestItemModifier::new)));
 
     private final Item item;
@@ -38,14 +38,22 @@ public class AddChestItemModifier extends LootModifier {
     }
 
     @Override
-    protected @NotNull ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+    protected @NotNull ObjectArrayList<ItemStack> doApply(@NotNull ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
+        // [수정] 행운(Luck) 수치 가져오기 (기본 0, 행운 포션 효과 등에 따라 증가)
+        float luck = context.getLuck();
+
+        // [수정] 행운에 따른 최종 확률 계산
+        // 공식: 기본 확률 * (1 + 행운 수치 * 0.05)
+        // 행운 1당 기본 확률의 5%만큼 보너스 확률이 생깁니다.
+        float finalChance = this.chance * (1.0f + (luck * 0.05f));
+
         // 확률 체크
-        if (context.getRandom().nextFloat() < this.chance) {
+        if (context.getRandom().nextFloat() < finalChance) {
             // 개수 랜덤 (min ~ max)
             int count = context.getRandom().nextInt(maxCount - minCount + 1) + minCount;
             ItemStack stack = new ItemStack(item, count);
 
-            // [추가] 성배병일 경우 빈 상태로 설정
+            // 성배병일 경우 빈 상태로 설정
             if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
                 grail.setUses(stack, 0);
             }
@@ -54,8 +62,6 @@ public class AddChestItemModifier extends LootModifier {
         }
         return generatedLoot;
     }
-
-
 
     @Override
     public Codec<? extends IGlobalLootModifier> codec() {

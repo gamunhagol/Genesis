@@ -14,35 +14,30 @@ import net.minecraftforge.common.loot.LootModifier;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
-/**
- * 완전히 타입 안전한 버전
- * - 여러 테이블별 확률 지정 가능
- * - 기존 전리품 유지
- * - Codec 타입 추론 문제 해결
- */
 public class AddSusSandItemModifier extends LootModifier {
+    // 한 위치에 여러 아이템이 들어갈 수 있도록 .listOf() 코덱을 사용합니다.
+    public static final Codec<Pair> PAIR_CODEC = RecordCodecBuilder.create(inst ->
+            inst.group(
+                    ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(Pair::getItem),
+                    Codec.FLOAT.fieldOf("chance").forGetter(Pair::getChance)
+            ).apply(inst, Pair::new)
+    );
+
     public static final Supplier<Codec<AddSusSandItemModifier>> CODEC = Suppliers.memoize(() ->
-            RecordCodecBuilder.create((RecordCodecBuilder.Instance<AddSusSandItemModifier> inst) ->
-                    codecStart(inst)
-                            .and(Codec.unboundedMap(
-                                    ResourceLocation.CODEC,
-                                    RecordCodecBuilder.create((RecordCodecBuilder.Instance<Pair> entry) ->
-                                            entry.group(
-                                                    ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(Pair::getItem),
-                                                    Codec.FLOAT.fieldOf("chance").forGetter(Pair::getChance)
-                                            ).apply(entry, Pair::new)
-                                    )
-                            ).fieldOf("entries").forGetter(m -> m.entries))
-                            .apply(inst, AddSusSandItemModifier::new)
+            RecordCodecBuilder.create(inst -> codecStart(inst)
+                    .and(Codec.unboundedMap(ResourceLocation.CODEC, PAIR_CODEC.listOf())
+                            .fieldOf("entries").forGetter(m -> m.entries))
+                    .apply(inst, AddSusSandItemModifier::new)
             )
     );
 
-    private final Map<ResourceLocation, Pair> entries;
+    private final Map<ResourceLocation, List<Pair>> entries;
 
-    public AddSusSandItemModifier(LootItemCondition[] conditions, Map<ResourceLocation, Pair> entries) {
+    public AddSusSandItemModifier(LootItemCondition[] conditions, Map<ResourceLocation, List<Pair>> entries) {
         super(conditions);
         this.entries = entries;
     }
@@ -53,16 +48,21 @@ public class AddSusSandItemModifier extends LootModifier {
         ResourceLocation tableId = context.getQueriedLootTableId();
         if (tableId == null) return generatedLoot;
 
-        Pair entry = entries.get(tableId);
-        if (entry != null && context.getRandom().nextFloat() < entry.chance) {
-            ItemStack stack = new ItemStack(entry.item);
+        List<Pair> lootList = entries.get(tableId);
+        if (lootList != null) {
+            // 해당 장소에 등록된 모든 아이템 후보를 검사합니다.
+            for (Pair entry : lootList) {
+                if (context.getRandom().nextFloat() < entry.chance) {
+                    ItemStack stack = new ItemStack(entry.item);
 
-            // [추가] 성배병일 경우 빈 상태로 설정
-            if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
-                grail.setUses(stack, 0);
+                    // 성배 아이템 특수 처리
+                    if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                        grail.setUses(stack, 0);
+                    }
+
+                    generatedLoot.add(stack);
+                }
             }
-
-            generatedLoot.add(stack);
         }
         return generatedLoot;
     }
@@ -72,7 +72,6 @@ public class AddSusSandItemModifier extends LootModifier {
         return CODEC.get();
     }
 
-    /** Codec 타입 안전성을 위한 정적 내부 클래스 */
     public static class Pair {
         private final Item item;
         private final float chance;
@@ -82,12 +81,7 @@ public class AddSusSandItemModifier extends LootModifier {
             this.chance = chance;
         }
 
-        public Item getItem() {
-            return item;
-        }
-
-        public float getChance() {
-            return chance;
-        }
+        public Item getItem() { return item; }
+        public float getChance() { return chance; }
     }
 }

@@ -2,21 +2,93 @@
   "type": "genesis:add_sus_sand_item",
   "conditions": [],
   "entries": {
-    "minecraft:archaeology/desert_pyramid": {
-      "chance": 0.012,
-      "item": "genesis:divine_grail"
-    },
-    "minecraft:archaeology/ocean_ruins_cold": {
-      "chance": 0.008,
-      "item": "genesis:spirit_compass"
-    },
-    "minecraft:archaeology/ocean_ruins_warm": {
-      "chance": 0.012,
-      "item": "genesis:spirit_compass"
-    },
-    "minecraft:archaeology/trail_ruins_rare": {
-      "chance": 0.008,
-      "item": "genesis:divine_grail"
-    }
+    "minecraft:archaeology/desert_pyramid": [
+      {
+        "chance": 0.45,
+        "item": "genesis:scale_fossil_shard"
+      },
+      {
+        "chance": 0.34,
+        "item": "genesis:scale_fossil"
+      },
+      {
+        "chance": 0.14,
+        "item": "genesis:scale_fossil_clump"
+      },
+      {
+        "chance": 0.025,
+        "item": "genesis:spirit_compass"
+      },
+      {
+        "chance": 0.012,
+        "item": "genesis:divine_grail"
+      }
+    ],
+    "minecraft:archaeology/desert_well": [
+      {
+        "chance": 0.66,
+        "item": "genesis:opaque_jelly"
+      }
+    ],
+    "minecraft:archaeology/ocean_ruins_cold": [
+      {
+        "chance": 0.51,
+        "item": "genesis:scale_fossil_shard"
+      },
+      {
+        "chance": 0.27,
+        "item": "genesis:scale_fossil"
+      },
+      {
+        "chance": 0.06,
+        "item": "genesis:scale_fossil_clump"
+      },
+      {
+        "chance": 0.008,
+        "item": "genesis:spirit_compass"
+      }
+    ],
+    "minecraft:archaeology/ocean_ruins_warm": [
+      {
+        "chance": 0.51,
+        "item": "genesis:scale_fossil_shard"
+      },
+      {
+        "chance": 0.27,
+        "item": "genesis:scale_fossil"
+      },
+      {
+        "chance": 0.06,
+        "item": "genesis:scale_fossil_clump"
+      },
+      {
+        "chance": 0.012,
+        "item": "genesis:spirit_compass"
+      }
+    ],
+    "minecraft:archaeology/trail_ruins_common": [
+      {
+        "chance": 0.16,
+        "item": "genesis:scale_fossil_shard"
+      },
+      {
+        "chance": 0.08,
+        "item": "genesis:scale_fossil"
+      }
+    ],
+    "minecraft:archaeology/trail_ruins_rare": [
+      {
+        "chance": 0.051,
+        "item": "genesis:pewriese_ore_piece"
+      },
+      {
+        "chance": 0.021,
+        "item": "genesis:scale_fossil_clump"
+      },
+      {
+        "chance": 0.008,
+        "item": "genesis:divine_grail"
+      }
+    ]
   }
 }
