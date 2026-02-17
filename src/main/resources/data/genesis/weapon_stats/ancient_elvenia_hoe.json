@@ -1,0 +1,41 @@
+{
+  "item": "genesis:ancient_elvenia_hoe",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 1.0,
+    "magic": 0.5,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 8,
+    "dexterity": 7,
+    "intelligence": 9
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "intelligence": "D"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "E",
+      "intelligence": "D"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "D",
+      "intelligence": "D"
+    },
+    "25": {
+      "strength": "C",
+      "dexterity": "D",
+      "intelligence": "C"
+    }
+  }
+}

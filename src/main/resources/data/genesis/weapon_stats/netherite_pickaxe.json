@@ -1,5 +1,5 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "minecraft:netherite_pickaxe",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
@@ -12,28 +12,25 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "strength": 13,
+    "dexterity": 8
   },
   "scaling": {
-    "strength": "E",
+    "strength": "D",
     "dexterity": "E"
   },
   "scaling_overrides": {
     "8": {
-      "strength": "C",
-      "dexterity": "E"
+      "strength": "D",
+      "dexterity": "D"
     },
     "16": {
       "strength": "C",
       "dexterity": "D"
     },
     "25": {
-      "strength": "B",
-      "dexterity": "D"
+      "strength": "A",
+      "dexterity": "C"
     }
   }
 }

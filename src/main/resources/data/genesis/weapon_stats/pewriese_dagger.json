@@ -1,9 +1,9 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "genesis:pewriese_dagger",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
+    "physical": 7.0,
     "magic": 0.0,
     "fire": 0.0,
     "lightning": 0.0,
@@ -13,27 +13,24 @@
   },
   "requirements": {
     "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "dexterity": 21
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "E"
+    "dexterity": "D"
   },
   "scaling_overrides": {
     "8": {
-      "strength": "C",
-      "dexterity": "E"
+      "strength": "E",
+      "dexterity": "C"
     },
     "16": {
       "strength": "C",
-      "dexterity": "D"
+      "dexterity": "B"
     },
     "25": {
-      "strength": "B",
-      "dexterity": "D"
+      "strength": "C",
+      "dexterity": "S"
     }
   }
 }

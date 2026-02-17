@@ -1,0 +1,41 @@
+{
+  "item": "genesis:ancient_elvenia_pickaxe",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 5.0,
+    "magic": 0.5,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10,
+    "dexterity": 6,
+    "intelligence": 9
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "D",
+      "intelligence": "D"
+    },
+    "16": {
+      "strength": "C",
+      "dexterity": "D",
+      "intelligence": "D"
+    },
+    "25": {
+      "strength": "B",
+      "dexterity": "D",
+      "intelligence": "C"
+    }
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "item": "genesis:ancient_elvenia_axe",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 9.0,
+    "magic": 0.5,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 15,
+    "dexterity": 7,
+    "intelligence": 9
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "D"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "D",
+      "intelligence": "D"
+    },
+    "16": {
+      "strength": "C",
+      "dexterity": "D",
+      "intelligence": "D"
+    },
+    "25": {
+      "strength": "A",
+      "dexterity": "C",
+      "intelligence": "C"
+    }
+  }
+}

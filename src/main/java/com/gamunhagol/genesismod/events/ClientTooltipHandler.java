@@ -41,6 +41,8 @@ public class ClientTooltipHandler {
         register(GenesisItems.BEAST_REMAINS.get(), "tooltip.genesis.beast_remains.info");
         register(GenesisItems.DIVINE_GRAIL.get(), "tooltip.genesis.divine_grail.info");
 
+        register(GenesisItems.OPAQUE_JELLY.get(), "tooltip.genesis.opaque_jelly.info");
+
         register(GenesisItems.SCALE_FOSSIL_SHARD.get(), "tooltip.genesis.scale_fossil_shard.info");
         register(GenesisItems.SCALE_FOSSIL.get(), "tooltip.genesis.scale_fossil.info");
         register(GenesisItems.SCALE_FOSSIL_CLUMP.get(), "tooltip.genesis.scale_fossil_clump.info");

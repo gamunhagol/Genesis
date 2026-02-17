@@ -1,10 +1,10 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "genesis:elvenia_tachi",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
-    "magic": 0.0,
+    "physical": 7.0,
+    "magic": 0.3,
     "fire": 0.0,
     "lightning": 0.0,
     "frost": 0.0,
@@ -13,27 +13,29 @@
   },
   "requirements": {
     "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "dexterity": 9,
+    "intelligence": 7
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "E"
+    "dexterity": "D",
+    "intelligence": "E"
   },
   "scaling_overrides": {
     "8": {
-      "strength": "C",
-      "dexterity": "E"
+      "strength": "D",
+      "dexterity": "C",
+      "intelligence": "E"
     },
     "16": {
       "strength": "C",
-      "dexterity": "D"
+      "dexterity": "C",
+      "intelligence": "E"
     },
     "25": {
-      "strength": "B",
-      "dexterity": "D"
+      "strength": "C",
+      "dexterity": "B",
+      "intelligence": "D"
     }
   }
 }

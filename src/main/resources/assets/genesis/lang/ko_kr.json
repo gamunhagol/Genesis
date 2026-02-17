@@ -324,6 +324,8 @@
   "tooltip.genesis.beast_remains.info":"위대한 야수의 유해. 이름과 이성을 잃었으나 그 쓸모만은 남아 있다.",
   "tooltip.genesis.divine_grail.info":"신화 시대의 유물, 사용자를 채운다.",
 
+  "tooltip.genesis.opaque_jelly.info": "흔해 빠진 맛없는 젤리. 기본적으로 아무런 능력도 없지만, 불사자의 몸을 원래대로 돌려놓는다.",
+
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
 
   "tooltip.genesis.scale_fossil_shard.info": "헤아릴 수 없는 과거, 원시 야수들이 걸어 다녔다.",

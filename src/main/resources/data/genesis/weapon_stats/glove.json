@@ -1,0 +1,25 @@
+{
+  "item": "epicfight:glove",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 3.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10
+  },
+  "scaling": {
+    "strength": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D" },
+    "16": { "strength": "B" },
+    "25": { "strength": "S" }
+  }
+}

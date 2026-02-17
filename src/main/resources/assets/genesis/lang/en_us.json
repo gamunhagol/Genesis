@@ -321,6 +321,8 @@
   "tooltip.genesis.beast_remains.info":"Remains of a great beast. It has lost its name and reason, yet its utility endures.",
   "tooltip.genesis.divine_grail.info":"Relic of the mythic era. It replenishes the wielder.",
 
+  "tooltip.genesis.opaque_jelly.info": "A common, tasteless jelly. It possesses no innate abilities, yet it restores an undead body to its original state.",
+
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
   "tooltip.genesis.scale_fossil_shard.info": "In an unfathomable past, primordial beasts once roamed the earth.",

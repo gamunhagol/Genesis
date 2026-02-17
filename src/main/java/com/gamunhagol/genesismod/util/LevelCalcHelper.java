@@ -15,7 +15,7 @@ public class LevelCalcHelper {
     // 다음 레벨업에 필요한 우리 모드 전용 XP 비용 (수치 살짝 조정: 80 -> 50) [cite: 2026-02-16]
     public static int getXpCostForNextLevel(int currentLevel) {
         if (currentLevel >= 713) return 0;
-        return (int) (Math.pow(currentLevel - 1, 1.5) * 10 + 50);
+        return (int) (Math.pow(currentLevel - 1, 1.5) * 14 + 80);
     }
 
     // 플레이어의 현재 총 '바닐라 XP 포인트' 합계 계산 [cite: 2026-02-16]

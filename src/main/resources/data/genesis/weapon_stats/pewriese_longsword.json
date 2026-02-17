@@ -1,9 +1,9 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "genesis:pewriese_longsword",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
+    "physical": 10.0,
     "magic": 0.0,
     "fire": 0.0,
     "lightning": 0.0,
@@ -12,28 +12,25 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "strength": 21,
+    "dexterity": 17
   },
   "scaling": {
-    "strength": "E",
+    "strength": "D",
     "dexterity": "E"
   },
   "scaling_overrides": {
     "8": {
       "strength": "C",
-      "dexterity": "E"
+      "dexterity": "D"
     },
     "16": {
-      "strength": "C",
-      "dexterity": "D"
+      "strength": "B",
+      "dexterity": "C"
     },
     "25": {
-      "strength": "B",
-      "dexterity": "D"
+      "strength": "S",
+      "dexterity": "A"
     }
   }
 }

@@ -1,9 +1,9 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "minecraft:diamond_hoe",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
+    "physical": 1.0,
     "magic": 0.0,
     "fire": 0.0,
     "lightning": 0.0,
@@ -12,11 +12,8 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "strength": 8,
+    "dexterity": 7
   },
   "scaling": {
     "strength": "E",
@@ -24,7 +21,7 @@
   },
   "scaling_overrides": {
     "8": {
-      "strength": "C",
+      "strength": "D",
       "dexterity": "E"
     },
     "16": {

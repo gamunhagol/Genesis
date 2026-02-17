@@ -1,10 +1,10 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "genesis:ancient_elvenia_sword",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
-    "magic": 0.0,
+    "physical": 7.0,
+    "magic": 0.5,
     "fire": 0.0,
     "lightning": 0.0,
     "frost": 0.0,
@@ -12,28 +12,32 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
+    "strength": 12,
     "dexterity": 7,
-    "intelligence": 0,
+    "intelligence": 9,
     "faith": 0,
     "arcane": 0
   },
   "scaling": {
-    "strength": "E",
-    "dexterity": "E"
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "D"
   },
   "scaling_overrides": {
     "8": {
       "strength": "C",
-      "dexterity": "E"
+      "dexterity": "E",
+      "intelligence": "D"
     },
     "16": {
       "strength": "C",
-      "dexterity": "D"
+      "dexterity": "D",
+      "intelligence": "D"
     },
     "25": {
-      "strength": "B",
-      "dexterity": "D"
+      "strength": "A",
+      "dexterity": "C",
+      "intelligence": "C"
     }
   }
 }

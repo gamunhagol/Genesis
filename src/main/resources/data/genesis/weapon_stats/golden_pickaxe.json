@@ -1,0 +1,41 @@
+{
+  "item": "minecraft:golden_pickaxe",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 2.0,
+    "magic": 0.1,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 6,
+    "dexterity": 4,
+    "intelligence": 5
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "E",
+      "intelligence": "E"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "D",
+      "intelligence": "E"
+    },
+    "25": {
+      "strength": "C",
+      "dexterity": "D",
+      "intelligence": "D"
+    }
+  }
+}

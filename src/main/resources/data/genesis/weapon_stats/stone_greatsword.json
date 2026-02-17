@@ -1,9 +1,9 @@
 {
-  "item": "minecraft:iron_sword",
+  "item": "epicfight:stone_greatsword",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 6.0,
+    "physical": 13.0,
     "magic": 0.0,
     "fire": 0.0,
     "lightning": 0.0,
@@ -12,14 +12,11 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
-    "dexterity": 7,
-    "intelligence": 0,
-    "faith": 0,
-    "arcane": 0
+    "strength": 10,
+    "dexterity": 4
   },
   "scaling": {
-    "strength": "E",
+    "strength": "D",
     "dexterity": "E"
   },
   "scaling_overrides": {
@@ -28,8 +25,8 @@
       "dexterity": "E"
     },
     "16": {
-      "strength": "C",
-      "dexterity": "D"
+      "strength": "B",
+      "dexterity": "E"
     },
     "25": {
       "strength": "B",

@@ -1,0 +1,41 @@
+{
+  "item": "genesis:ancient_elvenia_greatsword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 15.0,
+    "magic": 0.5,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 17,
+    "dexterity": 7,
+    "intelligence": 9
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "D"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "C",
+      "dexterity": "E",
+      "intelligence": "D"
+    },
+    "16": {
+      "strength": "B",
+      "dexterity": "E",
+      "intelligence": "D"
+    },
+    "25": {
+      "strength": "A",
+      "dexterity": "D",
+      "intelligence": "C"
+    }
+  }
+}
