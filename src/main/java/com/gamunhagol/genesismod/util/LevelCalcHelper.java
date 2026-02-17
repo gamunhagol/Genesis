@@ -35,4 +35,15 @@ public class LevelCalcHelper {
         if (level >= 15) return 37 + (level - 15) * 5;
         return 7 + level * 2;
     }
+
+    // 1레벨부터 targetLevel까지 성장하는 데 필요한 누적 XP 계산
+    public static int calculateTotalXpSpent(int currentLevel) {
+        int totalCost = 0;
+        // 1레벨부터 현재 레벨 직전까지 반복하며 비용 합산
+        // 예: 현재 3레벨이면 (1->2 비용) + (2->3 비용) 환급
+        for (int i = 1; i < currentLevel; i++) {
+            totalCost += getXpCostForNextLevel(i);
+        }
+        return totalCost;
+    }
 }

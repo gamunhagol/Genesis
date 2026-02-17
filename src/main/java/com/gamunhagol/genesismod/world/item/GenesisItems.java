@@ -194,7 +194,7 @@ public class GenesisItems {
             .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.4f).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1), 1.0f).build())));
     public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING = ITEMS.register("amethyst_apple_pudding", () -> new AmethystApplePuddingItem(new Item.Properties().stacksTo(16)));
 
-    public static final RegistryObject<Item> OPAQUE_JELLY = ITEMS.register("opaque_jelly", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> OPAQUE_JELLY = ITEMS.register("opaque_jelly", () -> new OpaqueJellyItem(new Item.Properties()));
 
 
     //block item

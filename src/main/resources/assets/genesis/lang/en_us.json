@@ -373,6 +373,8 @@
 
   "message.genesis.level_up.not_enough_xp": "Not enough XP!",
 
+  "message.genesis.reset_success": "Your body has returned to its original state.",
+
   "gui.genesis.level_up.title": "Level Up",
   "gui.genesis.level_up.recovered_levels": "Reclaimed Levels: +%s",
   "gui.genesis.level_up.current_xp": "Current XP: %s",

@@ -376,6 +376,8 @@
 
   "message.genesis.level_up.not_enough_xp": "XP 가 모자랍니다!",
 
+  "message.genesis.reset_success": "몸이 원상태로 돌아갔다",
+
   "gui.genesis.level_up.title": "레벨 업",
   "gui.genesis.level_up.recovered_levels": "복구된 레벨: +%s",
   "gui.genesis.level_up.current_xp": "소지 XP: %s",
