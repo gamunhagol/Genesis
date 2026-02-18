@@ -1,14 +1,17 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
+import com.gamunhagol.genesismod.world.capability.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.capability.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
+import com.gamunhagol.genesismod.world.weapon.WeaponStatData;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,12 +22,13 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BowItem;
+import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -33,8 +37,6 @@ import java.util.UUID;
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisCombatEvents {
     private static final UUID DESTRUCTION_HP_MOD_UUID = UUID.fromString("AD1E5150-9000-0000-0000-000000090010");
-    private static final String KEY_EXTRA_HOLY = "GenesisExtraHoly";
-    private static final String KEY_EXTRA_DESTRUCTION = "GenesisExtraDestruction";
 
     @SubscribeEvent
     public static void onItemTooltip(ItemTooltipEvent event) {
@@ -42,6 +44,13 @@ public class GenesisCombatEvents {
         stack.getCapability(WeaponStatsProvider.WEAPON_STATS).ifPresent(stats -> {
             float holy = stats.getHolyDamage();
             float destruction = stats.getDestructionDamage();
+            // JSON 기반 아이템이라면 JSON 데이터도 툴팁에 표시
+            if (WeaponDataManager.hasData(stack.getItem())) {
+                WeaponStatData data = WeaponDataManager.get(stack.getItem());
+                if (data.baseDestruction() > 0) destruction = data.baseDestruction();
+                if (data.baseHoly() > 0) holy = data.baseHoly();
+            }
+
             if (holy <= 0 && destruction <= 0) return;
 
             int insertIndex = event.getToolTip().size();
@@ -60,54 +69,91 @@ public class GenesisCombatEvents {
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity target = event.getEntity();
-        Entity attackerEntity = event.getSource().getEntity();
+        Entity sourceEntity = event.getSource().getDirectEntity(); // 직접 때린 엔티티 (화살, 플레이어 등)
+        Entity attackerEntity = event.getSource().getEntity();   // 공격의 주체 (플레이어)
 
-        if (attackerEntity instanceof Player player) {
-            ItemStack weapon = player.getMainHandItem();
+        DamageSnapshot snapshot = null;
 
-            // 1. JSON 데이터가 있는 경우 (신규 시스템)
-            if (WeaponDataManager.hasData(weapon.getItem())) {
-                // 물리 대미지 적용
-                float phys = WeaponRequirementHelper.getPhysicalDamage(player, weapon, event.getAmount());
-                event.setAmount(phys);
-
-                // 속성 대미지 예약 (마법, 화염, 번개, 동상, 신성, 파괴)
-                String[] types = {"magic", "fire", "lightning", "frost", "holy", "destruction"};
-                for (String type : types) {
-                    float dmg = WeaponRequirementHelper.calculateElementalDamage(player, weapon, type);
-                    if (dmg > 0) {
-                        // 키 예시: GenesisExtraMagic, GenesisExtraFire ...
-                        String key = "GenesisExtra" + capitalize(type);
-                        target.getPersistentData().putFloat(key, dmg);
-                    }
-                }
-            }
-            // 2. JSON 데이터가 없는 경우 (기존 시스템 유지)
-            else {
-                player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                    float baseDamage = event.getAmount();
-                    float bonusRate = 0.0f;
-                    bonusRate += StatApplier.calculateScaling(stats.getStrength());
-                    bonusRate += StatApplier.calculateScaling(stats.getDexterity()) * 0.5f;
-
-                    if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO)) {
-                        bonusRate += StatApplier.calculateScaling(stats.getIntelligence());
-                    }
-                    if (event.getSource().is(GenesisDamageTypes.HOLY)) {
-                        bonusRate += StatApplier.calculateScaling(stats.getFaith());
-                    }
-                    event.setAmount(baseDamage + (baseDamage * bonusRate));
-                });
-
-                // 구형 Capability 데이터 사용 (호환성)
-                weapon.getCapability(WeaponStatsProvider.WEAPON_STATS).ifPresent(wStats -> {
-                    if (wStats.getDestructionDamage() > 0) {
-                        target.getPersistentData().putFloat("GenesisExtraDestruction", wStats.getDestructionDamage());
-                    }
-                    // 신성 등 다른 속성도 필요하면 여기에 추가
-                });
+        // ==========================================================
+        // 1. 투사체(화살, 삼지창 등) 공격 확인 -> 저장된 스냅샷 사용
+        // ==========================================================
+        if (sourceEntity != null && sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).isPresent()) {
+            var cap = sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).orElse(null);
+            if (cap != null && !cap.getSnapshot().isEmpty()) {
+                snapshot = cap.getSnapshot();
             }
         }
+
+        // ==========================================================
+        // 2. 플레이어의 근접 공격 확인 -> 실시간 JSON 데이터 계산
+        // (단, 투사체 공격이 아닐 때만 진입)
+        // ==========================================================
+        else if (attackerEntity instanceof Player player) {
+            ItemStack weapon = player.getMainHandItem();
+
+            if (WeaponDataManager.hasData(weapon.getItem())) {
+                // [예외] 활이나 석궁으로 직접 때리는 경우 (Bow Melee)
+                // JSON 데이터를 무시하고 바닐라 대미지를 적용하기 위해 snapshot을 null로 둠
+                if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
+                    return;
+                }
+
+                // 일반 근접 무기 계산
+                snapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, event.getAmount());
+            }
+        }
+
+        // ==========================================================
+        // 3. 스냅샷 적용 (1번 혹은 2번에서 스냅샷이 생성된 경우)
+        // ==========================================================
+        if (snapshot != null && !snapshot.isEmpty()) {
+            // 물리 대미지 덮어쓰기
+            if (snapshot.physical() > 0) {
+                event.setAmount(snapshot.physical());
+            }
+            // 속성 대미지 마커 부착
+            applyElementalMarkers(target, snapshot);
+        }
+
+        // ==========================================================
+        // 레거시(구형) 시스템 지원
+        // 스냅샷이 없고(JSON 데이터 X), 공격자가 플레이어인 경우
+        // ==========================================================
+        else if (attackerEntity instanceof Player player && snapshot == null) {
+
+            // 기존 스탯 보정 로직
+            player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                float baseDamage = event.getAmount();
+                float bonusRate = 0.0f;
+                bonusRate += StatApplier.calculateScaling(stats.getStrength());
+                bonusRate += StatApplier.calculateScaling(stats.getDexterity()) * 0.5f;
+
+                if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO)) {
+                    bonusRate += StatApplier.calculateScaling(stats.getIntelligence());
+                }
+                if (event.getSource().is(GenesisDamageTypes.HOLY)) {
+                    bonusRate += StatApplier.calculateScaling(stats.getFaith());
+                }
+                event.setAmount(baseDamage + (baseDamage * bonusRate));
+            });
+
+            // 구형 Capability 데이터 사용 (파괴 속성 등)
+            ItemStack weapon = player.getMainHandItem();
+            weapon.getCapability(WeaponStatsProvider.WEAPON_STATS).ifPresent(wStats -> {
+                if (wStats.getDestructionDamage() > 0) {
+                    target.getPersistentData().putFloat("GenesisExtraDestruction", wStats.getDestructionDamage());
+                }
+            });
+        }
+    }
+
+    private static void applyElementalMarkers(LivingEntity target, DamageSnapshot snapshot) {
+        if (snapshot.magic() > 0) target.getPersistentData().putFloat("GenesisExtraMagic", snapshot.magic());
+        if (snapshot.fire() > 0) target.getPersistentData().putFloat("GenesisExtraFire", snapshot.fire());
+        if (snapshot.lightning() > 0) target.getPersistentData().putFloat("GenesisExtraLightning", snapshot.lightning());
+        if (snapshot.frost() > 0) target.getPersistentData().putFloat("GenesisExtraFrost", snapshot.frost());
+        if (snapshot.holy() > 0) target.getPersistentData().putFloat("GenesisExtraHoly", snapshot.holy());
+        if (snapshot.destruction() > 0) target.getPersistentData().putFloat("GenesisExtraDestruction", snapshot.destruction());
     }
 
     @SubscribeEvent
@@ -116,7 +162,7 @@ public class GenesisCombatEvents {
         LivingEntity target = event.getEntity();
         float finalDamage = event.getAmount();
 
-        //  예약된 속성 대미지 처리
+        // 예약된 속성 대미지 터트리기
         String[] types = {"Magic", "Fire", "Lightning", "Frost", "Holy", "Destruction"};
 
         for (String type : types) {
@@ -124,7 +170,7 @@ public class GenesisCombatEvents {
             if (target.getPersistentData().contains(key)) {
                 float extraDmg = target.getPersistentData().getFloat(key);
 
-                // 속성별 방어력 계산 등 추가 로직
+                // 속성별 방어력 계산
                 if (type.equals("Holy")) extraDmg = calculateHolyDamage(target, extraDmg);
                 else if (type.equals("Magic")) extraDmg = calculateMagicDamage(target, extraDmg);
 
@@ -136,7 +182,7 @@ public class GenesisCombatEvents {
             }
         }
 
-        //  기존 파괴 효과 처리 (소스가 직접 파괴 속성일 때)
+        // 소스가 직접 파괴 속성일 때 (예: 환경 대미지 등)
         if (event.getSource().is(GenesisDamageTypes.DESTRUCTION)) {
             applyDestructionEffect(target, event.getAmount());
         }
@@ -147,12 +193,6 @@ public class GenesisCombatEvents {
     @SubscribeEvent
     public static void onTargetDeath(LivingDeathEvent event) {
         removeDestructionEffect(event.getEntity());
-    }
-
-
-    private static String capitalize(String str) {
-        if (str == null || str.isEmpty()) return str;
-        return str.substring(0, 1).toUpperCase() + str.substring(1);
     }
 
     // --- Helper Methods ---

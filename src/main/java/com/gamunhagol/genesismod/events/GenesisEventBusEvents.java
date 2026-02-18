@@ -3,6 +3,8 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatCapability;
+import com.gamunhagol.genesismod.world.capability.IGenesisWeaponStats;
+import com.gamunhagol.genesismod.world.capability.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
@@ -36,6 +38,7 @@ public class GenesisEventBusEvents {
     @SubscribeEvent
     public static void registerCaps(RegisterCapabilitiesEvent event) {
         event.register(StatCapability.class);
-        event.register(com.gamunhagol.genesismod.world.capability.IGenesisWeaponStats.class);
+        event.register(IGenesisWeaponStats.class);
+        event.register(ProjectileStatsProvider.ProjectileStats.class);
     }
 }

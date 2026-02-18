@@ -1,0 +1,18 @@
+{
+  "item": "minecraft:crossbow",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 10.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 6,
+    "dexterity": 5
+  }
+}

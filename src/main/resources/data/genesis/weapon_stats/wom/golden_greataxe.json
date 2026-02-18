@@ -1,0 +1,29 @@
+{
+  "item": "wom:golden_greataxe",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 8.0,
+    "magic": 0.1,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 9,
+    "dexterity": 7,
+    "intelligence": 5
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D", "intelligence": "E" },
+    "16": { "strength": "B", "dexterity": "D", "intelligence": "E" },
+    "25": { "strength": "S", "dexterity": "D", "intelligence": "E" }
+  }
+}

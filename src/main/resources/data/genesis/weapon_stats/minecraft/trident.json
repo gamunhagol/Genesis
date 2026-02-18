@@ -1,0 +1,27 @@
+{
+  "item": "minecraft:trident",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 9.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 13,
+    "dexterity": 9
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "E" },
+    "16": { "strength": "B", "dexterity": "D" },
+    "25": { "strength": "S", "dexterity": "C" }
+  }
+}
