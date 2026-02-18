@@ -40,8 +40,8 @@ public class WeaponDataManager extends SimpleJsonResourceReloadListener {
                 String itemIdStr = jsonObject.get("item").getAsString();
                 Item item = ForgeRegistries.ITEMS.getValue(new ResourceLocation(itemIdStr));
 
-                if (item == null) {
-                    LOGGER.error("Genesis Mod: Item not found: {}", itemIdStr);
+                if (item == null || item == net.minecraft.world.item.Items.AIR) {
+                    LOGGER.error("Genesis Mod: Item not found or is air: {}", itemIdStr);
                     return;
                 }
 
