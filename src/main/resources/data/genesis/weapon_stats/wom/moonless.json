@@ -1,0 +1,30 @@
+{
+  "item": "wom:moonless",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 11,
+    "dexterity": 21,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D", "dexterity": "C" },
+    "16": { "strength": "C", "dexterity": "B" },
+    "25": { "strength": "C", "dexterity": "A" }
+  }
+}

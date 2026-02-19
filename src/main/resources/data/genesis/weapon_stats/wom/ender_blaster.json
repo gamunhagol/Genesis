@@ -1,0 +1,30 @@
+{
+  "item": "wom:ender_blaster",
+  "is_special": true,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10,
+    "dexterity": 16,
+    "intelligence": 9,
+    "faith": 0,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D", "dexterity": "C" },
+    "16": { "strength": "C", "dexterity": "B" },
+    "25": { "strength": "B", "dexterity": "A" }
+  }
+}

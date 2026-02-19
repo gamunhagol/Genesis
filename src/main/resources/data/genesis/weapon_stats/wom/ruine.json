@@ -1,0 +1,31 @@
+{
+  "item": "wom:ruine",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 17,
+    "dexterity": 12,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 6
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D", "arcane": "E" },
+    "16": { "strength": "B", "dexterity": "C", "arcane": "E" },
+    "25": { "strength": "A", "dexterity": "B", "arcane": "E" }
+  }
+}

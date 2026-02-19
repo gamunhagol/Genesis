@@ -1,0 +1,31 @@
+{
+  "item": "wom:solar",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 9.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 24,
+    "dexterity": 11,
+    "intelligence": 0,
+    "faith": 5,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "faith": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D", "faith": "E" },
+    "16": { "strength": "B", "dexterity": "D", "faith": "E" },
+    "25": { "strength": "S", "dexterity": "C", "faith": "E" }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "item": "wom:antitheus",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 8.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 16,
+    "dexterity": 16,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 16
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D", "dexterity": "D", "arcane": "D" },
+    "16": { "strength": "C", "dexterity": "D", "arcane": "C" },
+    "25": { "strength": "A", "dexterity": "C", "arcane": "B" }
+  }
+}

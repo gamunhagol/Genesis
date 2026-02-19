@@ -1,0 +1,30 @@
+{
+  "item": "wom:herrscher",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 6.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 15,
+    "dexterity": 10,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D" },
+    "16": { "strength": "B", "dexterity": "D" },
+    "25": { "strength": "A", "dexterity": "C" }
+  }
+}

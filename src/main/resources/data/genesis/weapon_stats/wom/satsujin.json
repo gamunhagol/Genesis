@@ -1,0 +1,31 @@
+{
+  "item": "wom:satsujin",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 11,
+    "dexterity": 19,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 11
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D", "dexterity": "C", "arcane": "E" },
+    "16": { "strength": "D", "dexterity": "B", "arcane": "E" },
+    "25": { "strength": "B", "dexterity": "A", "arcane": "D" }
+  }
+}

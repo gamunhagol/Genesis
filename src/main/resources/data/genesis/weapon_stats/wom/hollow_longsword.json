@@ -1,0 +1,36 @@
+{
+  "item": "wom:hollow_longsword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10,
+    "dexterity": 9
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "C",
+      "dexterity": "D"
+    },
+    "16": {
+      "strength": "C",
+      "dexterity": "C"
+    },
+    "25": {
+      "strength": "B",
+      "dexterity": "C"
+    }
+  }
+}

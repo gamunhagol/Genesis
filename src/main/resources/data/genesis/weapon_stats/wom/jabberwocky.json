@@ -1,0 +1,31 @@
+{
+  "item": "wom:jabberwocky",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 6.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10,
+    "dexterity": 7,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 7
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D", "arcane": "E" },
+    "16": { "strength": "B", "dexterity": "D", "arcane": "D" },
+    "25": { "strength": "A", "dexterity": "C", "arcane": "D" }
+  }
+}

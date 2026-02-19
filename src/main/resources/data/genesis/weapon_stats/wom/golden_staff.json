@@ -1,0 +1,29 @@
+{
+  "item": "wom:golden_staff",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 2.0,
+    "magic": 0.1,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 5,
+    "dexterity": 10,
+    "intelligence": 5
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "D", "dexterity": "D", "intelligence": "E" },
+    "16": { "strength": "D", "dexterity": "C", "intelligence": "E" },
+    "25": { "strength": "C", "dexterity": "B", "intelligence": "E" }
+  }
+}

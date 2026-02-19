@@ -38,33 +38,6 @@ import java.util.UUID;
 public class GenesisCombatEvents {
     private static final UUID DESTRUCTION_HP_MOD_UUID = UUID.fromString("AD1E5150-9000-0000-0000-000000090010");
 
-    @SubscribeEvent
-    public static void onItemTooltip(ItemTooltipEvent event) {
-        ItemStack stack = event.getItemStack();
-        stack.getCapability(WeaponStatsProvider.WEAPON_STATS).ifPresent(stats -> {
-            float holy = stats.getHolyDamage();
-            float destruction = stats.getDestructionDamage();
-            // JSON 기반 아이템이라면 JSON 데이터도 툴팁에 표시
-            if (WeaponDataManager.hasData(stack.getItem())) {
-                WeaponStatData data = WeaponDataManager.get(stack.getItem());
-                if (data.baseDestruction() > 0) destruction = data.baseDestruction();
-                if (data.baseHoly() > 0) holy = data.baseHoly();
-            }
-
-            if (holy <= 0 && destruction <= 0) return;
-
-            int insertIndex = event.getToolTip().size();
-            for (int i = 0; i < event.getToolTip().size(); i++) {
-                String content = event.getToolTip().get(i).getString();
-                if (content.contains("공격 피해") || content.contains("Attack Damage")) {
-                    insertIndex = i + 1;
-                    break;
-                }
-            }
-            if (destruction > 0) event.getToolTip().add(insertIndex, Component.translatable("tooltip.genesis.destruction_damage", String.format(" %.1f", destruction)).withStyle(ChatFormatting.DARK_RED));
-            if (holy > 0) event.getToolTip().add(insertIndex, Component.translatable("tooltip.genesis.holy_damage", String.format(" %.1f", holy)).withStyle(ChatFormatting.YELLOW));
-        });
-    }
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {

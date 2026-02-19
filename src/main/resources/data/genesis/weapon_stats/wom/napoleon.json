@@ -1,0 +1,32 @@
+{
+  "item": "wom:napoleon",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 20,
+    "dexterity": 17,
+    "intelligence": 7,
+    "faith": 0,
+    "arcane": 15
+  },
+  "scaling": {
+    "strength": "D",
+    "dexterity": "E",
+    "intelligence": "E",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": { "strength": "C", "dexterity": "D", "intelligence": "E", "arcane": "D" },
+    "16": { "strength": "B", "dexterity": "C", "intelligence": "D", "arcane": "D" },
+    "25": { "strength": "A", "dexterity": "B", "intelligence": "D", "arcane": "C" }
+  }
+}
