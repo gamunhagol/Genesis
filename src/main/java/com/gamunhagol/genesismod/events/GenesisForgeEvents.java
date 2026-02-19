@@ -6,6 +6,7 @@ import com.gamunhagol.genesismod.network.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
+import com.gamunhagol.genesismod.world.item.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
 import net.minecraft.resources.ResourceLocation;
@@ -25,6 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -83,12 +85,27 @@ public class GenesisForgeEvents {
     }
 
     @SubscribeEvent
+    public static void onLivingDeath(LivingDeathEvent event) {
+        // 플레이어가 죽는 순간 실행
+        if (event.getEntity() instanceof Player player) {
+            // getContainerSize()는 메인 인벤토리(0~35), 갑옷(36~39), 오프핸드(40)를 모두 포함합니다.
+            for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+                ItemStack stack = player.getInventory().getItem(i);
+
+                // 아이템이 성배라면 리필!
+                if (!stack.isEmpty() && stack.getItem() instanceof DivineGrailItem grail) {
+                    grail.refill(stack);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onPlayerClone(PlayerEvent.Clone event) {
         Player original = event.getOriginal();
         Player newPlayer = event.getEntity();
 
         original.reviveCaps();
-
         original.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(oldStats -> {
             newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
                 newStats.copyFrom(oldStats);
@@ -101,7 +118,7 @@ public class GenesisForgeEvents {
                                     newStats.getStrength(), newStats.getDexterity(), newStats.getIntelligence(),
                                     newStats.getFaith(), newStats.getArcane(),
                                     newStats.getMental(), newStats.getMaxMental(),
-                                    newStats.isLevelUpUnlocked() // [수정됨] 여기도 맨 뒤에 추가!
+                                    newStats.isLevelUpUnlocked()
                             ),
                             serverPlayer
                     );
@@ -112,7 +129,7 @@ public class GenesisForgeEvents {
         if (event.isWasDeath()) {
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);
-                if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                if (!stack.isEmpty() && stack.getItem() instanceof DivineGrailItem grail) {
                     grail.refill(stack);
                 }
             }
