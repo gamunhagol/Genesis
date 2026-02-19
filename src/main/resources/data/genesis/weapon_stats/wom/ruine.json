@@ -24,8 +24,8 @@
     "arcane": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "C", "dexterity": "D", "arcane": "E" },
-    "16": { "strength": "B", "dexterity": "C", "arcane": "E" },
-    "25": { "strength": "A", "dexterity": "B", "arcane": "E" }
+    "4": { "strength": "C", "dexterity": "D", "arcane": "E" },
+    "7": { "strength": "B", "dexterity": "C", "arcane": "E" },
+    "10": { "strength": "A", "dexterity": "B", "arcane": "E" }
   }
 }

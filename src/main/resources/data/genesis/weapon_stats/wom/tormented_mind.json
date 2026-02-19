@@ -23,8 +23,8 @@
     "dexterity": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "C", "dexterity": "D" },
-    "16": { "strength": "B", "dexterity": "C" },
-    "25": { "strength": "S", "dexterity": "C" }
+    "4": { "strength": "C", "dexterity": "D" },
+    "7": { "strength": "B", "dexterity": "C" },
+    "10": { "strength": "S", "dexterity": "C" }
   }
 }

@@ -24,8 +24,8 @@
     "faith": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "C", "dexterity": "D", "faith": "E" },
-    "16": { "strength": "B", "dexterity": "D", "faith": "E" },
-    "25": { "strength": "S", "dexterity": "C", "faith": "E" }
+    "4": { "strength": "C", "dexterity": "D", "faith": "E" },
+    "7": { "strength": "B", "dexterity": "D", "faith": "E" },
+    "10": { "strength": "S", "dexterity": "C", "faith": "E" }
   }
 }

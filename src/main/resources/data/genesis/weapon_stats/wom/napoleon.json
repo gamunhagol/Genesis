@@ -25,8 +25,8 @@
     "arcane": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "C", "dexterity": "D", "intelligence": "E", "arcane": "D" },
-    "16": { "strength": "B", "dexterity": "C", "intelligence": "D", "arcane": "D" },
-    "25": { "strength": "A", "dexterity": "B", "intelligence": "D", "arcane": "C" }
+    "4": { "strength": "C", "dexterity": "D", "intelligence": "E", "arcane": "D" },
+    "7": { "strength": "B", "dexterity": "C", "intelligence": "D", "arcane": "D" },
+    "10": { "strength": "A", "dexterity": "B", "intelligence": "D", "arcane": "C" }
   }
 }

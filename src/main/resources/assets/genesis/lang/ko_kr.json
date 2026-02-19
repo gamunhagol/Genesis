@@ -381,7 +381,7 @@
   "message.genesis.reset_success": "몸이 원상태로 돌아갔다",
 
   "gui.genesis.level_up.title": "레벨 업",
-  "gui.genesis.level_up.recovered_levels": "복구된 레벨: +%s",
+  "gui.genesis.level_up.recovered_levels": "누적 레벨: +%s",
   "gui.genesis.level_up.current_xp": "소지 XP: %s",
   "gui.genesis.level_up.required_xp": "필요 XP: %s",
   "gui.genesis.level_up.hp": "HP: %s",
