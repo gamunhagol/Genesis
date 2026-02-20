@@ -151,6 +151,11 @@
   "item.genesis.tablet_of_the_radiant_mountain": "Tablet of the Radiant Mountain",
 
 
+  "item.genesis.key_of_oblivion": "Key of Oblivion",
+
+  "item.genesis.mist_core_1": "Savanna Mist",
+
+
   "item.genesis.medallion_of_dominion": "Medallion of Dominion",
 
   "item.genesis.fabricated_star": "Fabricated Star",
@@ -243,6 +248,8 @@
   "block.genesis.statue_of_guide_to_oblivion": "Statue of Guide to Oblivion",
 
   "block.genesis.ancient_elf_knight_statue": "Ancient Elf Knight Statue",
+
+  "block.genesis.mist_vault_1": "Mist Vault",
 
 
   "entity.genesis.collector": "Collector",

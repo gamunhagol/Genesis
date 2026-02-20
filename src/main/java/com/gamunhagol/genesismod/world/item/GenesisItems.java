@@ -129,6 +129,9 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> FADED_CHEST = ITEMS.register("faded_chest",
             () -> new BlockItem(GenesisBlocks.FADED_CHEST.get(), new Item.Properties().fireResistant()));
 
+    public static final RegistryObject<BlockItem> MIST_VAULT_1 = ITEMS.register("mist_vault_1",
+            () -> new BlockItem(GenesisBlocks.MIST_VAULT_1.get(), new Item.Properties().fireResistant()));
+
 
 
 
@@ -374,10 +377,17 @@ public class GenesisItems {
 
 
 
+    public static final RegistryObject<Item> KEY_OF_OBLIVION = ITEMS.register("key_of_oblivion", () -> new Item(new Item.Properties().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> MISY_CORE_1 = ITEMS.register("mist_core_1", () -> new Item(new Item.Properties().rarity(Rarity.EPIC)));
+
+
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+
 
 
     public static final RegistryObject<Item> HOT_SPRING_BUCKET =

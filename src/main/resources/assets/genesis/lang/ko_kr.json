@@ -154,6 +154,11 @@
   "item.genesis.tablet_of_the_radiant_mountain": "빛의 산 석판",
 
 
+  "item.genesis.key_of_oblivion": "망각의 열쇠",
+
+  "item.genesis.mist_core_1": "사바나의 안개",
+
+
   "item.genesis.medallion_of_dominion": "지배의 메달",
 
   "item.genesis.fabricated_star": "만들어진 별",
@@ -246,6 +251,8 @@
   "block.genesis.statue_of_guide_to_oblivion": "망각의 인도자 석상",
 
   "block.genesis.ancient_elf_knight_statue": "고대 엘프 기사상",
+
+  "block.genesis.mist_vault_1": "안개 보관소",
 
 
   "entity.genesis.collector": "징수원",

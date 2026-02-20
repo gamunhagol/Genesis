@@ -56,6 +56,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.FADED_STONE);
         blockWithItem(GenesisBlocks.FADED_BRICK);
 
+        simpleBlock(GenesisBlocks.MIST_VAULT_1.get(),
+                models().cubeAll("mist_vault_1", modLoc("block/mist_vault_1"))
+                        .renderType("translucent")
+        );
+
 
 
         getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())

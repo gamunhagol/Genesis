@@ -143,6 +143,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.TABLET_SHARD);
         simpleItem(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN);
 
+        simpleItem(GenesisItems.KEY_OF_OBLIVION);
+
+        simpleItem(GenesisItems.MISY_CORE_1);
+
+
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
 
         simpleItem(GenesisItems.FABRICATED_STAR);
@@ -202,6 +207,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimpleBlockItem(GenesisBlocks.FADED_STONE_STAIRS);
         evenSimpleBlockItem(GenesisBlocks.FADED_STONE_SLAB);
         pillarItem(GenesisBlocks.FADED_PILLAR);
+
+        withExistingParent("mist_vault_1", modLoc("block/mist_vault_1"));
 
         this.withExistingParent("faded_chest", modLoc("block/faded_chest_closed"));
 

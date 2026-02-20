@@ -6,10 +6,7 @@ import com.gamunhagol.genesismod.client.model.block.GuideStatueModel;
 import com.gamunhagol.genesismod.client.model.block.HeraldStatueModel;
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
-import com.gamunhagol.genesismod.client.renderer.blockentity.AEKStatueRenderer;
-import com.gamunhagol.genesismod.client.renderer.blockentity.GuideStatueRenderer;
-import com.gamunhagol.genesismod.client.renderer.blockentity.HeraldStatueRenderer;
-import com.gamunhagol.genesismod.client.renderer.blockentity.SentinelStatueRenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.*;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
@@ -155,6 +152,8 @@ public class RegisterModels {
         event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.GUIDE_STATUE_BE.get(), GuideStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.AEK_STATUE_BE.get(), AEKStatueRenderer::new);
+
+        event.registerBlockEntityRenderer(GenesisBlockEntities.MIST_VAULT_BE.get(), MistVaultRenderer::new);
     }
     
 }

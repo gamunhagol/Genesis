@@ -36,6 +36,11 @@ public class GenesisBlockEntities {
                     BlockEntityType.Builder.of(AEKStatueBlockEntity::new,
                             GenesisBlocks.AEK_STATUE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<MistVaultBlockEntity>> MIST_VAULT_BE =
+            BLOCK_ENTITIES.register("mist_vault_be", () ->
+                    BlockEntityType.Builder.of(MistVaultBlockEntity::new,
+                            GenesisBlocks.MIST_VAULT_1.get()).build(null));
+
 
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);

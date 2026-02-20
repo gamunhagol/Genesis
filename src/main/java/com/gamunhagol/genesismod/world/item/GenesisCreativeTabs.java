@@ -172,6 +172,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get());
 
 
+                output.accept(GenesisItems.KEY_OF_OBLIVION.get());
+
+                output.accept(GenesisItems.MISY_CORE_1.get());
+
+
                 output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());
 
                 output.accept(GenesisItems.FABRICATED_STAR.get());

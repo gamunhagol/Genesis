@@ -194,6 +194,11 @@ public class GenesisBlocks {
             () -> new AEKStatueBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).strength(30.0F, 1200.0F).sound(SoundType.METAL).lightLevel(state -> 3)
                     .noOcclusion()));
 
+    public static final RegistryObject<Block> MIST_VAULT_1 = register("mist_vault_1",
+            () -> new MistVaultBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F)
+                    .sound(SoundType.POWDER_SNOW).noLootTable().noOcclusion().lightLevel(state -> 6)));
+
+
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
