@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:pyulitela"
+  },
+  "base": {
+    "item": "genesis:pewriese_dagger"
+  },
+  "result": {
+    "item": "genesis:holy_knight_dagger"
+  },
+  "template": {
+    "item": "genesis:pewriese_upgrade_smithing_template"
+  }
+}
