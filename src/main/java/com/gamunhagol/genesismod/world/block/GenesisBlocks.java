@@ -195,7 +195,7 @@ public class GenesisBlocks {
                     .noOcclusion()));
 
     public static final RegistryObject<Block> MIST_VAULT_1 = register("mist_vault_1",
-            () -> new MistVaultBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F)
+            () -> new MistVault1Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F)
                     .sound(SoundType.POWDER_SNOW).noLootTable().noOcclusion().lightLevel(state -> 6)));
 
 

@@ -58,6 +58,11 @@ public class ClientTooltipHandler {
         register(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get(), "tooltip.genesis.tablet_of_the_radiant_mountain.info");
 
 
+        register(GenesisItems.KEY_OF_OBLIVION.get(), "tooltip.genesis.key_of_oblivion.info");
+
+        register(GenesisItems.MISY_CORE_1.get(), "tooltip.genesis.mist_core_1.info");
+
+
         register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.medallion_of_dominion.info");
 
         register(GenesisItems.FABRICATED_STAR.get(), "tooltip.genesis.fabricated_star.info");

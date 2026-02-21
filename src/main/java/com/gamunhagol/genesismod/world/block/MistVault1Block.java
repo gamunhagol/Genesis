@@ -18,8 +18,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
-public class MistVaultBlock extends BaseEntityBlock {
-    public MistVaultBlock(Properties properties) {
+public class MistVault1Block extends BaseEntityBlock {
+    public MistVault1Block(Properties properties) {
         super(properties.noOcclusion()); // 반투명을 위해 필수
     }
 

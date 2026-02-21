@@ -143,7 +143,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.TABLET_SHARD);
         simpleItem(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN);
 
-        simpleItem(GenesisItems.KEY_OF_OBLIVION);
+        basicItem(GenesisItems.KEY_OF_OBLIVION.get());
 
         simpleItem(GenesisItems.MISY_CORE_1);
 

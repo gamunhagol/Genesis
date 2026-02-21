@@ -90,7 +90,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.PEWRIESE_BOOTS.get(), GenesisItems.HOLY_KNIGHT_BOOTS.get())
     );
 
-    private static final Map<Item, Item> PEWRIESE_TOOL_UPGRADE_MAP = Map.ofEntries();
+    private static final Map<Item, Item> PEWRIESE_TOOL_UPGRADE_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.PEWRIESE_DAGGER.get(), GenesisItems.HOLY_KNIGHT_DAGGER.get()),
+            Map.entry(GenesisItems.PEWRIESE_GREATSWORD.get(), GenesisItems.HOLY_KNIGHT_GREATSWORD.get()),
+            Map.entry(GenesisItems.PEWRIESE_LONGSWORD.get(), GenesisItems.HOLY_KNIGHT_LONGSWORD.get()),
+            Map.entry(GenesisItems.PEWRIESE_SPEAR.get(), GenesisItems.HOLY_KNIGHT_SPEAR.get()),
+            Map.entry(GenesisItems.PEWRIESE_TACHI.get(), GenesisItems.HOLY_KNIGHT_TACHI.get())
+    );
 
 
 

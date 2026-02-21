@@ -1,0 +1,41 @@
+{
+  "item": "genesis:holy_knight_spear",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 9.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 2.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 17,
+    "dexterity": 25,
+    "faith": 15
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D",
+    "faith": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "C",
+      "faith": "E"
+    },
+    "16": {
+      "strength": "B",
+      "dexterity": "C",
+      "faith": "D"
+    },
+    "25": {
+      "strength": "A",
+      "dexterity": "A",
+      "faith": "C"
+    }
+  }
+}

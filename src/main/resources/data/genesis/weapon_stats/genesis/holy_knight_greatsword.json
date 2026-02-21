@@ -1,0 +1,41 @@
+{
+  "item": "genesis:holy_knight_greatsword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 17.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 3.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 33,
+    "dexterity": 11,
+    "faith": 15
+  },
+  "scaling": {
+    "strength": "C",
+    "dexterity": "E",
+    "faith": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "B",
+      "dexterity": "E",
+      "faith": "E"
+    },
+    "16": {
+      "strength": "B",
+      "dexterity": "C",
+      "faith": "D"
+    },
+    "25": {
+      "strength": "S",
+      "dexterity": "C",
+      "faith": "C"
+    }
+  }
+}

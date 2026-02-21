@@ -100,6 +100,12 @@
   "item.genesis.pewriese_longsword": "Pewriese Longsword",
   "item.genesis.pewriese_dagger": "Pewriese Dagger",
 
+  "item.genesis.holy_knight_greatsword": "Holy Knight Greatsword",
+  "item.genesis.holy_knight_spear": "Holy Knight Spear",
+  "item.genesis.holy_knight_tachi": "Holy Knight Tachi",
+  "item.genesis.holy_knight_longsword": "Holy Knight Longsword",
+  "item.genesis.holy_knight_dagger": "Holy Knight Dagger",
+
 
 
   "item.genesis.padded_chain_helmet": "Padded Chain Helmet",
@@ -345,6 +351,10 @@
   "tooltip.genesis.clump_of_the_mountain.info": "A mass from the mountain broken in the distant past. It elevates weapons to a higher plane, much like its lofty history.",
   "tooltip.genesis.tablet_shard.info": "A shard of the mountain removed while carving the path to the summit. A mere crumb of a dream for eternity that never came to be.",
   "tooltip.genesis.tablet_of_the_radiant_mountain.info": "A tablet recording eternal praise, carved when the path through the Radiant Mountain was made. Though the fleeting dream went unfulfilled, the forged weapon shall reach a state of glory.",
+
+  "tooltip.genesis.key_of_oblivion.info": "A key forged in oblivion, once guarded by the Warden.",
+
+  "tooltip.genesis.mist_core_1.info": "Forgotten by the world.",
 
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
 

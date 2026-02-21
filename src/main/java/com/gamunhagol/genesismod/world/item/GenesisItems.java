@@ -298,6 +298,17 @@ public class GenesisItems {
     public static final RegistryObject<Item> PEWRIESE_DAGGER = ITEMS.register("pewriese_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
             , GenesisItemTier.PEWRIESE));
 
+    public static final RegistryObject<Item> HOLY_KNIGHT_GREATSWORD = ITEMS.register("holy_knight_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
+    public static final RegistryObject<Item> HOLY_KNIGHT_SPEAR = ITEMS.register("holy_knight_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
+    public static final RegistryObject<Item> HOLY_KNIGHT_TACHI = ITEMS.register("holy_knight_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
+    public static final RegistryObject<Item> HOLY_KNIGHT_LONGSWORD = ITEMS.register("holy_knight_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
+    public static final RegistryObject<Item> HOLY_KNIGHT_DAGGER = ITEMS.register("holy_knight_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
+
 
     //armor
 
