@@ -123,6 +123,12 @@ public class GenesisBlocks {
                             BlockBehaviour.Properties.copy(Blocks.WATER)
                                     .noLootTable().noCollission().liquid()));
 
+    public static final RegistryObject<LiquidBlock> BLOOD_BLOCK =
+            BLOCKS.register("blood_block",
+                    () -> new BloodFluidBlock(GenesisFluids.BLOOD,
+                            BlockBehaviour.Properties.copy(Blocks.WATER)
+                                    .noLootTable().noCollission().liquid()));
+
 
 
 

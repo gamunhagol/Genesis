@@ -37,8 +37,8 @@ public class HolyKnightHelmetModel<T extends LivingEntity> extends HumanoidModel
                 PartPose.offsetAndRotation(0.0F, 0.0F, 0.0F, 0.0F, 0.15F, 0.0F));
 
         PartDefinition head_feather = head.addOrReplaceChild("head_feather", CubeListBuilder.create()
-                        .texOffs(3, 76).addBox(-6.0F, 0.0F, 1.0F, 12.0F, 20.0F, 0.0F, new CubeDeformation(0.0F)),
-                PartPose.offsetAndRotation(0.0F, -8.5F, 4.0F, 0.20F, 0.0F, 0.0F));
+                        .texOffs(0, 63).addBox(0.0F, -5.0F, -1.0F, 0.0F, 20.0F, 13.0F, new CubeDeformation(0.0F)),
+                PartPose.offsetAndRotation(0.0F, -8.5F, 4.0F, 0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }

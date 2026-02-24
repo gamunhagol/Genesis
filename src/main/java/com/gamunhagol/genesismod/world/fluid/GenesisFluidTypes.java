@@ -1,6 +1,9 @@
 package com.gamunhagol.genesismod.world.fluid;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -37,6 +40,20 @@ public class GenesisFluidTypes {
                             .fallDistanceModifier(0.0F)
                             .canDrown(true)
                             .lightLevel(0)
+                    ));
+
+    public static final RegistryObject<FluidType> BLOOD_TYPE =
+            FLUID_TYPES.register("blood", () ->
+                    new BloodFluidType(FluidType.Properties.create()
+                            .descriptionId("fluid.genesis.blood")
+                            .density(1100)   // 물보다 살짝 무겁게
+                            .viscosity(1500) // 살짝 끈적하게
+                            .canPushEntity(true)
+                            .canDrown(true)
+                            .pathType(BlockPathTypes.WATER)
+                            .adjacentPathType(BlockPathTypes.WATER)
+                            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+                            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                     ));
 }
 

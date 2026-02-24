@@ -76,6 +76,8 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK.get());
 
+                output.accept(GenesisItems.BLOOD_BOTTLE.get());
+
 
 
 
@@ -191,6 +193,7 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.HOT_SPRING_BUCKET.get());
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());
+                output.accept(GenesisItems.BLOOD_BUCKET.get());
 
                 output.accept(GenesisItems.COLLECTOR_SPAWN_EGG.get());
                 output.accept(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG.get());
@@ -206,7 +209,8 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 GenesisBlocks.BLOCKS.getEntries().forEach(item -> {
                     if (item.get() == GenesisBlocks.HOT_SPRING_BLOCK.get() ||item.get() == GenesisBlocks.QUICKSAND_BLOCK.get()
-                            ||item.get() == GenesisBlocks.AMETHYST_APPLE_BLOCK.get() ||item.get() == GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get()) {
+                            ||item.get() == GenesisBlocks.AMETHYST_APPLE_BLOCK.get() ||item.get() == GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get()
+                            ||item.get() == GenesisBlocks.BLOOD_BLOCK.get()) {
                         return;
                     }
                     output.accept(item.get());

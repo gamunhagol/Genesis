@@ -199,6 +199,13 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> OPAQUE_JELLY = ITEMS.register("opaque_jelly", () -> new OpaqueJellyItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> BLOOD_BOTTLE = ITEMS.register("blood_bottle",
+            () -> new BloodBottleItem(new Item.Properties()
+                    .craftRemainder(Items.GLASS_BOTTLE)
+                    .stacksTo(16)
+                    .food(new FoodProperties.Builder().alwaysEat().build())
+            ));
+
 
     //block item
     public static final RegistryObject<Item> OBLIVION_CANDLE = ITEMS.register("oblivion_candle", () -> new BlockItem(GenesisBlocks.OBLIVION_CANDLE.get(), new Item.Properties()));
@@ -411,6 +418,11 @@ public class GenesisItems {
     public static final RegistryObject<Item> QUICKSAND_BUCKET =
             ITEMS.register("quicksand_bucket",
                     () -> new BucketItem(GenesisFluids.QUICKSAND, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+
+    public static final RegistryObject<Item> BLOOD_BUCKET =
+            ITEMS.register("blood_bucket",
+                    () -> new BucketItem(GenesisFluids.BLOOD,
+                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 
     //spawn egg

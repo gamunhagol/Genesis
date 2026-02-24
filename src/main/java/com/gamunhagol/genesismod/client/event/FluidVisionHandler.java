@@ -60,12 +60,22 @@ public class FluidVisionHandler {
             event.setNearPlaneDistance(near);
             event.setFarPlaneDistance(far);
 
-            // 3. RenderSystem에 직접 주입 (이게 빠지면 안 보일 수 있음)
             RenderSystem.setShaderFogStart(near);
             RenderSystem.setShaderFogEnd(far);
 
             // 4. 이벤트 취소 (중요: 마인크래프트 기본 안개 설정을 무시하고 내 설정을 강제함)
             event.setCanceled(true);
+        }
+        if (fluid.is(GenesisFluids.BLOOD.get()) || fluid.is(GenesisFluids.BLOOD_FLOWING.get())) {
+            float near = 0.0F;
+            float far = 4.0F;
+
+            event.setNearPlaneDistance(near);
+            event.setFarPlaneDistance(far);
+
+            RenderSystem.setShaderFogStart(near);
+            RenderSystem.setShaderFogEnd(far);
+            RenderSystem.setShaderFogColor(0.4F, 0.05F, 0.05F);
         }
     }
 
@@ -77,7 +87,6 @@ public class FluidVisionHandler {
         if (fluid == null) return;
 
 
-        // 💧 온천수 색상
         if (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get())) {
             event.setRed(0.55F);
             event.setGreen(0.95F);
@@ -88,6 +97,11 @@ public class FluidVisionHandler {
             event.setRed(0.85F);
             event.setGreen(0.81F);
             event.setBlue(0.63F);
+        }
+        if (fluid.is(GenesisFluids.BLOOD.get()) || fluid.is(GenesisFluids.BLOOD_FLOWING.get())) {
+            event.setRed(0.4F);
+            event.setGreen(0.05F);
+            event.setBlue(0.05F);
         }
     }
 }

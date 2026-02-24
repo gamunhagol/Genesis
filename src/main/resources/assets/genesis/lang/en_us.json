@@ -59,6 +59,8 @@
 
   "item.genesis.opaque_jelly": "Opaque Jelly",
 
+  "item.genesis.blood_bottle": "Blood Bottle",
+
 
   "item.genesis.divine_grail": "Holy Grail Bottle of Mythical Age",
 
@@ -170,6 +172,7 @@
 
   "item.genesis.hot_spring_bucket": "Hot Spring Bucket",
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
+  "item.genesis.blood_bucket": "Blood Bucket",
 
   "item.genesis.collector_spawn_egg": "Collector Spawn Egg",
   "item.genesis.collector_guard_spawn_egg": "Collector Guard Spawn Egg",
@@ -248,6 +251,7 @@
 
   "block.genesis.hot_spring_block": "Hot Spring",
   "block.genesis.quicksand_block": "Quicksand",
+  "block.genesis.blood_block": "Blood",
 
 
 

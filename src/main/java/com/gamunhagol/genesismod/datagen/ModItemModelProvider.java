@@ -105,6 +105,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING);
         simpleItem(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK);
 
+        simpleItem(GenesisItems.BLOOD_BOTTLE);
+
         simpleItem(GenesisItems.OPAQUE_JELLY);
 
         simpleItem(GenesisItems.OBLIVION_CANDLE);
@@ -156,6 +158,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.HOT_SPRING_BUCKET);
         simpleItem(GenesisItems.QUICKSAND_BUCKET);
+        simpleItem(GenesisItems.BLOOD_BUCKET);
 
         simpleItem(GenesisItems.COLLECTOR_SPAWN_EGG);
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
