@@ -120,6 +120,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PEWRIESE_LONGSWORD.get());
                 output.accept(GenesisItems.PEWRIESE_DAGGER.get());
 
+                output.accept(GenesisItems.HOLY_KNIGHT_SWORD.get());
+
                 output.accept(GenesisItems.HOLY_KNIGHT_GREATSWORD.get());
                 output.accept(GenesisItems.HOLY_KNIGHT_SPEAR.get());
                 output.accept(GenesisItems.HOLY_KNIGHT_TACHI.get());

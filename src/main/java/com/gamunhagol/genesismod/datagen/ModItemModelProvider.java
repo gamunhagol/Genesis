@@ -127,6 +127,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.PEWRIESE_HOE);
         handheldItem(GenesisItems.PEWRIESE_SHOVEL);
 
+        handheldItem(GenesisItems.HOLY_KNIGHT_SWORD);
+
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
