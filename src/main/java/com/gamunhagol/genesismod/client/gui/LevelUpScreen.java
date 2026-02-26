@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketConfirmLevelUp;
+import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.LevelCalcHelper;
 import net.minecraft.client.Minecraft;
@@ -190,7 +191,34 @@ public class LevelUpScreen extends Screen {
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.stamina", (int)stamina), statusX, statusY + 15, textColor, false);
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.mana", (int)stats.getMental(), (int)stats.getMaxMental()), statusX, statusY + 30, textColor, false);
 
-            // [하단] 경험치 정보
+            // [우측 하단: 상세 공격/유틸 능력치 정보]
+            int infoX = statusX;
+            int infoY = y + (int)(150 * scale); // HP/SP 표시부 아래쪽
+            int lineGap = (int)(18 * scale);
+
+            //  물리 위력 보정
+            int totalPhysLevel = (stats.getStrength() + pendingIncreases[3]) + (stats.getDexterity() + pendingIncreases[4]);
+            float physScaling = StatApplier.calculateScaling(totalPhysLevel);
+
+            graphics.drawString(this.font,
+                    Component.translatable("gui.genesis.info.phys_scaling", (int)(physScaling * 100)),
+                    infoX, infoY, textColor, false);
+
+            //  마법 위력 보정 (지력 기준 Scaling % 표시)
+            float magicScaling = StatApplier.calculateScaling(stats.getIntelligence() + pendingIncreases[5]);
+            graphics.drawString(this.font, Component.translatable("gui.genesis.info.magic_scaling", (int)(magicScaling * 100)), infoX, infoY + lineGap, textColor, false);
+
+            //  신성 위력 보정 (신앙 기준 Scaling % 표시)
+            float holyScaling = StatApplier.calculateScaling(stats.getFaith() + pendingIncreases[6]);
+            graphics.drawString(this.font, Component.translatable("gui.genesis.info.holy_scaling", (int)(holyScaling * 100)), infoX, infoY + lineGap * 2, textColor, false);
+
+            //  아이템 발견력 (신비 기반 Luck 수치 표시)
+            float discovery = (stats.getArcane() + pendingIncreases[7]) * 0.05f;
+            graphics.drawString(this.font, Component.translatable("gui.genesis.info.discovery", String.format("%.2f", discovery)), infoX, infoY + lineGap * 4, textColor, false);
+
+
+
+            // [좌측 하단] 경험치 정보
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 

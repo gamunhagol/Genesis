@@ -156,7 +156,6 @@ public class GenesisForgeEvents {
         }
     }
 
-    // ... (헬퍼 메서드 유지) ...
     private static boolean hasFullPaddedChainSet(LivingEntity entity) {
         ItemStack helmet = entity.getItemBySlot(EquipmentSlot.HEAD);
         ItemStack chest = entity.getItemBySlot(EquipmentSlot.CHEST);
