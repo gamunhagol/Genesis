@@ -32,6 +32,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ELVENIA_BLOCK.get()
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
+                        ,GenesisBlocks.GIANT_STONE.get()
                 ,GenesisBlocks.RED_CRYSTAL_BLOCK.get()
                         ,GenesisBlocks.CITRINE_BLOCK.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_BLOCK.get()
@@ -72,6 +73,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.RAW_SILVER_BLOCK.get()
                         ,GenesisBlocks.SILVER_BLOCK.get()
                         ,GenesisBlocks.ELVENIA_BLOCK.get());
+
+        this.tag(BlockTags.NEEDS_STONE_TOOL)
+                .add(GenesisBlocks.GIANT_STONE.get());
 
         this.tag(BlockTags.WALLS)
                 .add(GenesisBlocks.FADED_BRICK_WALL.get());

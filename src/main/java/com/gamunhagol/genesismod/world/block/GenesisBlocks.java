@@ -50,6 +50,9 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> PYULITELA_BLOCK = register("pyulitela_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(360.0F, 2400.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
+    public static final RegistryObject<Block> GIANT_STONE = register("giant_stone",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 15000.0F)));
+
     public static final RegistryObject<Block> AMETHYST_APPLE_BLOCK = register("amethyst_apple_block",
             () -> new AmethystAppleBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).noOcclusion().lightLevel(state -> 5)));
 
