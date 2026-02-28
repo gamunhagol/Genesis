@@ -90,8 +90,10 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> LIGHTING_CRYSTAL_BLOCK = register("lighting_crystal_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
     public static final RegistryObject<Block> LIGHTING_CRYSTAL_CLUSTER = register("lighting_crystal_cluster",
-            () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
-                    .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
+            () -> new LightingCrystalClusterBlock(7, 3,
+                    BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER)
+                            .sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion().lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)
+                            .randomTicks()));
 
     public static final RegistryObject<Block> WIND_STONE_BLOCK = register("wind_stone_block",
             () -> new AmethystBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK)));
