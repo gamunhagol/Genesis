@@ -13,29 +13,29 @@
   },
   "requirements": {
     "strength": 12,
-    "dexterity": 15,
+    "dexterity": 10,
     "intelligence": 9
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "D",
+    "dexterity": "E",
     "intelligence": "E"
   },
   "scaling_overrides": {
     "8": {
-      "strength": "D",
+      "strength": "E",
       "dexterity": "D",
-      "intelligence": "D"
+      "intelligence": "E"
     },
     "16": {
+      "strength": "D",
+      "dexterity": "D",
+      "intelligence": "E"
+    },
+    "25": {
       "strength": "C",
       "dexterity": "D",
       "intelligence": "D"
-    },
-    "25": {
-      "strength": "B",
-      "dexterity": "C",
-      "intelligence": "C"
     }
   }
 }

@@ -12,25 +12,25 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 16,
+    "strength": 14,
     "dexterity": 18
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "D"
+    "dexterity": "E"
   },
   "scaling_overrides": {
     "8": {
+      "strength": "E",
+      "dexterity": "D"
+    },
+    "16": {
       "strength": "D",
       "dexterity": "C"
     },
-    "16": {
-      "strength": "C",
-      "dexterity": "C"
-    },
     "25": {
-      "strength": "B",
-      "dexterity": "A"
+      "strength": "D",
+      "dexterity": "B"
     }
   }
 }

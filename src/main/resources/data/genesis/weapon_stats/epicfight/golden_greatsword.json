@@ -12,30 +12,25 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 9,
-    "dexterity": 3,
+    "strength": 14,
+    "dexterity": 7,
     "intelligence": 5
   },
   "scaling": {
-    "strength": "D",
+    "strength": "E",
     "dexterity": "E",
     "intelligence": "E"
   },
   "scaling_overrides": {
-    "8": {
-      "strength": "C",
-      "dexterity": "E",
-      "intelligence": "E"
-    },
-    "16": {
-      "strength": "B",
+    "12": {
+      "strength": "D",
       "dexterity": "E",
       "intelligence": "E"
     },
     "25": {
-      "strength": "B",
+      "strength": "C",
       "dexterity": "D",
-      "intelligence": "D"
+      "intelligence": "E"
     }
   }
 }

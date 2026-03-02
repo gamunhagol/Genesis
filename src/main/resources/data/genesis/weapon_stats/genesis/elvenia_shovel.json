@@ -13,7 +13,7 @@
   },
   "requirements": {
     "strength": 8,
-    "dexterity": 7,
+    "dexterity": 6,
     "intelligence": 7
   },
   "scaling": {
@@ -34,7 +34,7 @@
     },
     "25": {
       "strength": "C",
-      "dexterity": "D",
+      "dexterity": "C",
       "intelligence": "D"
     }
   }

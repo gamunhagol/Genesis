@@ -12,9 +12,9 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 11,
-    "dexterity": 24,
-    "faith": 15
+    "strength": 7,
+    "dexterity": 16,
+    "faith": 11
   },
   "scaling": {
     "strength": "E",
@@ -34,7 +34,7 @@
     },
     "25": {
       "strength": "C",
-      "dexterity": "S",
+      "dexterity": "A",
       "faith": "C"
     }
   }

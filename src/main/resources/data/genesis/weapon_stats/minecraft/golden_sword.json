@@ -13,7 +13,7 @@
   },
   "requirements": {
     "strength": 7,
-    "dexterity": 5,
+    "dexterity": 7,
     "intelligence": 5,
     "faith": 0,
     "arcane": 0
@@ -24,20 +24,15 @@
     "intelligence": "E"
   },
   "scaling_overrides": {
-    "8": {
-      "strength": "D",
-      "dexterity": "E",
-      "intelligence": "E"
-    },
-    "16": {
+    "12": {
       "strength": "D",
       "dexterity": "D",
       "intelligence": "E"
     },
     "25": {
-      "strength": "C",
-      "dexterity": "D",
-      "intelligence": "D"
+      "strength": "D",
+      "dexterity": "C",
+      "intelligence": "E"
     }
   }
 }

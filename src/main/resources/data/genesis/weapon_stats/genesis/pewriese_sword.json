@@ -12,27 +12,27 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 17,
-    "dexterity": 10,
+    "strength": 15,
+    "dexterity": 15,
     "intelligence": 0,
     "faith": 0,
     "arcane": 0
   },
   "scaling": {
-    "strength": "D",
+    "strength": "E",
     "dexterity": "E"
   },
   "scaling_overrides": {
     "8": {
-      "strength": "C",
+      "strength": "E",
       "dexterity": "D"
     },
     "16": {
-      "strength": "B",
+      "strength": "D",
       "dexterity": "C"
     },
     "25": {
-      "strength": "S",
+      "strength": "B",
       "dexterity": "C"
     }
   }

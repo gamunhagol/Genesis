@@ -22,20 +22,15 @@
     "intelligence": "E"
   },
   "scaling_overrides": {
-    "8": {
-      "strength": "D",
-      "dexterity": "E",
-      "intelligence": "E"
-    },
-    "16": {
+    "12": {
       "strength": "D",
       "dexterity": "D",
       "intelligence": "E"
     },
     "25": {
       "strength": "C",
-      "dexterity": "D",
-      "intelligence": "D"
+      "dexterity": "C",
+      "intelligence": "E"
     }
   }
 }

@@ -12,8 +12,8 @@
     "destruction": 0.0
   },
   "requirements": {
-    "strength": 8,
-    "dexterity": 7
+    "strength": 13,
+    "dexterity": 11
   },
   "scaling": {
     "strength": "E",
@@ -25,12 +25,12 @@
       "dexterity": "E"
     },
     "16": {
-      "strength": "D",
+      "strength": "C",
       "dexterity": "D"
     },
     "25": {
-      "strength": "C",
-      "dexterity": "D"
+      "strength": "B",
+      "dexterity": "C"
     }
   }
 }

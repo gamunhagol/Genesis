@@ -13,15 +13,15 @@
   },
   "requirements": {
     "strength": 13,
-    "dexterity": 9
+    "dexterity": 11
   },
   "scaling": {
-    "strength": "D",
+    "strength": "E",
     "dexterity": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "C", "dexterity": "E" },
-    "16": { "strength": "B", "dexterity": "D" },
-    "25": { "strength": "S", "dexterity": "C" }
+    "8": { "strength": "D", "dexterity": "E" },
+    "16": { "strength": "D", "dexterity": "D" },
+    "25": { "strength": "C", "dexterity": "D" }
   }
 }
