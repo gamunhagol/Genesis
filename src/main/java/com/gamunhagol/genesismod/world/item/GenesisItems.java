@@ -218,6 +218,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> AMETHYST_APPLE = ITEMS.register("amethyst_apple", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_BLOCK.get(), new Item.Properties()));
     public static final RegistryObject<Item> AMETHYST_APPLE_PUDDING_BLOCK = ITEMS.register("amethyst_apple_pudding_block", () -> new BlockItem(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), new Item.Properties()));
 
+
     public static final RegistryObject<Item> COPPER_COIN_PILE = ITEMS.register("copper_coin_pile",
             () -> new BlockItem(GenesisBlocks.COPPER_COIN_PILE.get(), new Item.Properties()));
     public static final RegistryObject<Item> SILVER_COIN_PILE = ITEMS.register("silver_coin_pile",

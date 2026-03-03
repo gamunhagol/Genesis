@@ -68,6 +68,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.GIANT_STONE.get());
         this.dropSelf(GenesisBlocks.ACTIVATED_GIANT_STONE.get());
 
+
         this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
 
         //portions가 0(가득 참)일 때만 자기 자신을 드롭함

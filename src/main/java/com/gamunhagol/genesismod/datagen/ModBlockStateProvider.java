@@ -65,7 +65,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         );
 
 
-
         getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())
                 .forAllStates(state -> {
                     int light = state.getValue(FadedGatewayBlock.LIGHT_LEVEL);

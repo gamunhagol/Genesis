@@ -174,13 +174,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         basicItemModel("divine_grail_most");
         basicItemModel("divine_grail_full");
 
-// 2. 메인 아이템 모델 생성 및 오버라이드 직접 설정
-// handheldItem() 호출 대신 직접 빌더를 구성하여 경로 혼선을 방지합니다.
+
         ItemModelBuilder grailBuilder = withExistingParent("divine_grail", new ResourceLocation("item/handheld"))
                 .texture("layer0", modLoc("item/divine_grail_full")); // 기본 이미지
 
-// 3. 오버라이드 조건 설정 (반드시 수치가 '낮은' 것부터 '높은' 순서대로 작성)
-// 마인크래프트는 위에서부터 읽으며 조건에 맞는 "마지막" 것을 선택합니다.
+
         grailBuilder.override()
                 .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.0f)
                 .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_empty")))

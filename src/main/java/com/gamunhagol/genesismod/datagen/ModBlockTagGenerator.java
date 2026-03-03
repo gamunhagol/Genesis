@@ -87,5 +87,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_AXE);
 
 
+
     }
 }
