@@ -17,11 +17,10 @@
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "D"
+    "dexterity": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "D", "dexterity": "D" },
-    "16": { "strength": "D", "dexterity": "C" },
-    "25": { "strength": "C", "dexterity": "B" }
+    "12": { "strength": "E", "dexterity": "D" },
+    "25": { "strength": "D", "dexterity": "C" }
   }
 }

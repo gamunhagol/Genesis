@@ -218,6 +218,58 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_CHESTPLATE, GenesisItems.PADDED_CHAIN_CHESTPLATE.get(), "aaa", "aba");
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_LEGGINGS, GenesisItems.PADDED_CHAIN_LEGGINGS.get(), "aba", "a a");
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STONE)
+                .requires(Items.COBBLESTONE)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COAL_BLOCK)
+                .requires(Items.COAL)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.COPPER_BLOCK)
+                .requires(Items.COPPER_INGOT)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.IRON_BLOCK)
+                .requires(Items.IRON_INGOT)
+            .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.GOLD_BLOCK)
+                .requires(Items.GOLD_INGOT)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.DIAMOND_BLOCK)
+                .requires(Items.DIAMOND)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.NETHERITE_BLOCK)
+                .requires(Items.NETHERITE_INGOT)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.EMERALD_BLOCK)
+                .requires(Items.EMERALD)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.REDSTONE_BLOCK)
+                .requires(Items.REDSTONE)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.LAPIS_BLOCK)
+                .requires(Items.LAPIS_LAZULI)
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+
+
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_BOOTS.get())
                 .pattern("aba")
                 .define('a',Items.LEATHER)

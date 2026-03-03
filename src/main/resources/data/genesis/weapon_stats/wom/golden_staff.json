@@ -18,12 +18,12 @@
   },
   "scaling": {
     "strength": "E",
-    "dexterity": "D",
+    "dexterity": "E",
     "intelligence": "E"
   },
   "scaling_overrides": {
-    "8": { "strength": "D", "dexterity": "D", "intelligence": "E" },
-    "16": { "strength": "D", "dexterity": "C", "intelligence": "E" },
-    "25": { "strength": "C", "dexterity": "B", "intelligence": "E" }
+    "8": { "strength": "E", "dexterity": "D", "intelligence": "E" },
+    "16": { "strength": "D", "dexterity": "D", "intelligence": "E" },
+    "25": { "strength": "D", "dexterity": "C", "intelligence": "E" }
   }
 }
