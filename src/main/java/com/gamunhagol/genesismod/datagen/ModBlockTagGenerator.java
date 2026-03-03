@@ -33,6 +33,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
                         ,GenesisBlocks.GIANT_STONE.get()
+                        ,GenesisBlocks.ACTIVATED_GIANT_STONE.get()
                 ,GenesisBlocks.RED_CRYSTAL_BLOCK.get()
                         ,GenesisBlocks.CITRINE_BLOCK.get()
                         ,GenesisBlocks.BLUE_CRYSTAL_BLOCK.get()
@@ -65,7 +66,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.AEK_STATUE.get()
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK.get()
-                        ,GenesisBlocks.ANCIENT_DRAGON_ROCK.get());
+                        ,GenesisBlocks.ANCIENT_DRAGON_ROCK.get()
+                        ,GenesisBlocks.ACTIVATED_GIANT_STONE.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(GenesisBlocks.SILVER_ORE.get()

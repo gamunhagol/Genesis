@@ -66,6 +66,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.ANCIENT_DRAGON_ROCK.get());
         this.dropSelf(GenesisBlocks.AMETHYST_SAPLING.get());
         this.dropSelf(GenesisBlocks.GIANT_STONE.get());
+        this.dropSelf(GenesisBlocks.ACTIVATED_GIANT_STONE.get());
 
         this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
 

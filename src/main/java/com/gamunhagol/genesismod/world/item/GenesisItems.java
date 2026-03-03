@@ -52,6 +52,8 @@ public class GenesisItems {
 
     public static final RegistryObject<BlockItem> GIANT_STONE = ITEMS.register("giant_stone",
             () -> new BlockItem(GenesisBlocks.GIANT_STONE.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> ACTIVATED_GIANT_STONE = ITEMS.register("activated_giant_stone",
+            () -> new BlockItem(GenesisBlocks.ACTIVATED_GIANT_STONE.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> BLUE_CRYSTAL_BLOCK = ITEMS.register("blue_crystal_block",
             () -> new BlockItem(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get(), new Item.Properties()));
