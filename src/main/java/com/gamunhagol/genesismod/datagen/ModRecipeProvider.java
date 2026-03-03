@@ -269,6 +269,28 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.ELVENIA_BLOCK.get())
+                .requires(GenesisItems.ELVENIA_INGOT.get())
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_BLOCK.get())
+                .requires(GenesisItems.ANCIENT_ELVENIA_INGOT.get())
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL_BLOCK.get())
+                .requires(GenesisItems.PEWRIESE_CRYSTAL.get())
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PYULITELA_BLOCK.get())
+                .requires(GenesisItems.PYULITELA.get())
+                .requires(GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
+                .save(pWriter);
+
+
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_BOOTS.get())
                 .pattern("aba")
