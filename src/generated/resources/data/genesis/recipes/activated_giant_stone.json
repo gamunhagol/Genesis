@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "genesis:pewriese_piece"
+    },
+    "a": {
+      "item": "genesis:giant_stone"
+    }
+  },
+  "pattern": [
+    " # ",
+    "#a#",
+    " # "
+  ],
+  "result": {
+    "item": "genesis:activated_giant_stone"
+  },
+  "show_notification": true
+}
