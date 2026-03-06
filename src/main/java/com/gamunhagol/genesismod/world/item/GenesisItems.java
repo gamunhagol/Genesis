@@ -326,6 +326,11 @@ public class GenesisItems {
             .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
 
 
+
+    public static final RegistryObject<Item> GREAT_BOW = ITEMS.register("great_bow", () -> new BowItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> LARGE_ARROW = ITEMS.register("large_arrow", () -> new Item(new Item.Properties()));
+
     //armor
 
     public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
