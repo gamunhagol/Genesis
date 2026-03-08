@@ -65,6 +65,32 @@ public class GenesisForgeEvents {
     }
 
     @SubscribeEvent
+    public static void onEntityJoin(EntityJoinLevelEvent event) {
+        Entity entity = event.getEntity();
+
+        // 소환된 엔티티가 일반 몬스터(Monster)이고, CollectorGuard가 아닌 경우
+        if (entity instanceof Monster monster && !(entity instanceof CollectorGuard)) {
+            // targetSelector에 CollectorGuard를 공격 목표로 추가 (우선순위 2)
+            // 이를 통해 좀비, 스켈레톤 등이 CollectorGuard를 인식하면 먼저 달려듭니다.
+            monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(monster, CollectorGuard.class, true));
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+        LivingEntity entity = event.getEntity();
+
+        // 서버에서만 계산하고, 1초(20틱)마다 체크해서 렉 방지
+        if (!entity.level().isClientSide && entity.tickCount % 20 == 0) {
+            // 기존 클래스에 있던 메서드 그대로 사용
+            if (hasFullPaddedChainSet(entity)) {
+                // 이펙트 부여 (지속시간을 여유 있게 200틱(10초) 줘서 아이콘 깜빡임 방지)
+                entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false, true));
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.side.isServer() && event.phase == TickEvent.Phase.END) {
             Player player = event.player;
@@ -117,6 +143,7 @@ public class GenesisForgeEvents {
                     grail.refill(stack);
                 }
             }
+
         }
     }
 
