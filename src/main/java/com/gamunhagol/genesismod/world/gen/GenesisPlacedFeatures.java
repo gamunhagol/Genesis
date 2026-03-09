@@ -138,7 +138,7 @@ public class GenesisPlacedFeatures {
                 ));
         register(context, PEWRIESE_METEORITE_SUBSPECIES_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_METEORITE_SUBSPECIES_KEY),
                 List.of(
-                        RarityFilter.onAverageOnceEvery(25750),
+                        RarityFilter.onAverageOnceEvery(25759),
                         InSquarePlacement.spread(),
                         // 지상(World Surface)에 배치
                         HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
