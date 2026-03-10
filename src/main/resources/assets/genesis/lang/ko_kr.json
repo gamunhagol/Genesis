@@ -395,6 +395,15 @@
   "stat.genesis.faith": "신앙",
   "stat.genesis.arcane": "신비",
 
+  "attribute.name.genesis.vigor": "생명력",
+  "attribute.name.genesis.mind": "정신력",
+  "attribute.name.genesis.endurance": "지구력",
+  "attribute.name.genesis.strength": "근력",
+  "attribute.name.genesis.dexterity": "기량",
+  "attribute.name.genesis.intelligence": "지력",
+  "attribute.name.genesis.faith": "신앙",
+  "attribute.name.genesis.arcane": "신비",
+
   "commands.genesis.stats.set.success": "§a[Genesis] §e%s§f의 §6%s§f 스탯이 §b%d§f(으)로 설정되었습니다.",
   "commands.genesis.mental.set.success": "§b[Genesis] §f정신력이 %s(으)로 설정되었습니다.",
 

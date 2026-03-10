@@ -1,5 +1,7 @@
 package com.gamunhagol.genesismod.stats;
 
+import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -21,6 +23,22 @@ public class StatApplier {
         applyEndurance(player, stats.getEndurance());
         applyArcane(player, stats.getArcane());
         stats.updateMaxMental();
+
+        sync(player, GenesisAttributes.VIGOR.get(), stats.getVigor());
+        sync(player, GenesisAttributes.MIND.get(), stats.getMind());
+        sync(player, GenesisAttributes.ENDURANCE.get(), stats.getEndurance());
+        sync(player, GenesisAttributes.STRENGTH.get(), stats.getStrength());
+        sync(player, GenesisAttributes.DEXTERITY.get(), stats.getDexterity());
+        sync(player, GenesisAttributes.INTELLIGENCE.get(), stats.getIntelligence());
+        sync(player, GenesisAttributes.FAITH.get(), stats.getFaith());
+        sync(player, GenesisAttributes.ARCANE.get(), stats.getArcane());
+    }
+
+    private static void sync(Player player, Attribute attribute, int value) {
+        AttributeInstance inst = player.getAttribute(attribute);
+        if (inst != null) {
+            inst.setBaseValue(value); // Modifier를 제외한 순수 레벨만 설정
+        }
     }
 
     public static void applyVigor(Player player, int level) {

@@ -32,7 +32,7 @@ public class GuiInjectionEvents {
                     int guiLeft = (invScreen.width - 176) / 2;
                     int guiTop = (invScreen.height - 166) / 2;
 
-                    event.addListener(Button.builder(Component.literal("S"), button -> {
+                    event.addListener(Button.builder(Component.literal("L"), button -> {
                                 mc.setScreen(new LevelUpScreen(invScreen));
                             })
                             .bounds(guiLeft + 155, guiTop + 7, 18, 18)

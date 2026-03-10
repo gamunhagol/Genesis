@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.client.gui;
 
 import com.gamunhagol.genesismod.api.StatType;
+import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketConfirmLevelUp;
@@ -16,6 +17,7 @@ import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.entity.ai.attributes.Attribute;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
 public class LevelUpScreen extends Screen {
@@ -38,26 +40,22 @@ public class LevelUpScreen extends Screen {
     protected void init() {
         super.init();
 
-        // [화면 크기 설정]
         this.displaySize = Math.min((int)(this.height * 0.85), 512);
         this.scale = (float) displaySize / textureSize;
 
         int x = (this.width - displaySize) / 2;
         int y = (this.height - displaySize) / 2;
 
-        // 1. 나가기 버튼
         this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.exit"), b -> {
             Minecraft.getInstance().setScreen(this.lastScreen);
         }).bounds(x + (int)(456 * scale), y + (int)(450 * scale), (int)(45 * scale), (int)(45 * scale)).build());
 
-        // 2. 취소 버튼
         this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.cancel"), b -> {
                     resetPending();
                     playClickSound();
                 }).bounds(x + (int)(11 * scale), y + (int)(459 * scale), (int)(54 * scale), (int)(36 * scale))
                 .tooltip(Tooltip.create(Component.translatable("gui.genesis.level_up.cancel"))).build());
 
-        // 3. 완료 버튼
         this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.confirm"), b -> {
                     if (totalPendingLevels > 0) {
                         GenesisNetwork.sendToServer(new PacketConfirmLevelUp(pendingIncreases));
@@ -67,14 +65,12 @@ public class LevelUpScreen extends Screen {
                 }).bounds(x + (int)(99 * scale), y + (int)(459 * scale), (int)(54 * scale), (int)(36 * scale))
                 .tooltip(Tooltip.create(Component.translatable("gui.genesis.level_up.confirm"))).build());
 
-        // 4. 스탯 증감 버튼 루프
         int[] yCoords = {87, 126, 165, 204, 243, 282, 321, 360};
 
         for (int i = 0; i < 8; i++) {
             final int index = i;
             int rowY = y + (int)(yCoords[i] * scale);
 
-            // [ > ] 증가 버튼 (키 값 통일: increase)
             this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.increase"), b -> {
                 if (canAffordNextPendingLevel()) {
                     pendingIncreases[index]++;
@@ -90,7 +86,6 @@ public class LevelUpScreen extends Screen {
                 }
             }).bounds(x + (int)(117 * scale), rowY, (int)(21 * scale), (int)(21 * scale)).build());
 
-            // [ < ] 감소 버튼 (키 값 통일: decrease)
             this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.decrease"), b -> {
                 if (pendingIncreases[index] > 0) {
                     pendingIncreases[index]--;
@@ -156,33 +151,34 @@ public class LevelUpScreen extends Screen {
                 totalCost += LevelCalcHelper.getXpCostForNextLevel(baseLevel + i);
             }
 
-            // [상단] 현재 레벨 (Lv. X)
             int levelTextY = y + (int)(15 * scale);
             graphics.drawString(this.font, "Lv. " + (baseLevel + totalPendingLevels), x + (int)(15 * scale), levelTextY, textColor, false);
 
-            // 회수된(추가된) 레벨 표시
-            // 현재 레벨 아래에 약 12픽셀 간격을 두고 표시합니다.
             if (totalPendingLevels > 0) {
                 graphics.drawString(this.font,
                         Component.translatable("gui.genesis.level_up.recovered_levels", totalPendingLevels),
-                        x + (int)(15 * scale), levelTextY + (int)(12 * scale), 0xFFFF00, false); // 노란색으로 강조
+                        x + (int)(15 * scale), levelTextY + (int)(12 * scale), 0xFFFF00, false);
             }
 
-            // [좌측] 스탯 렌더링
-            int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
             int[] yCoords = {87, 126, 165, 204, 243, 282, 321, 360};
 
             for (int i = 0; i < 8; i++) {
                 int rowY = y + (int)(yCoords[i] * scale) + 4;
-                int totalStat = baseValues[i] + pendingIncreases[i];
+
+                // 헬퍼 메서드 사용 (Capability 기본 스탯 + 장비 추가 스탯)
+                int currentTotalWithArmor = getTotalStatValue(i, stats);
+
+                // 최종 표시 수치 = (현재 최종값) + (GUI에서 찍으려는 포인트)
+                int displayStat = currentTotalWithArmor + pendingIncreases[i];
                 int color = (pendingIncreases[i] > 0) ? 0xFFFF00 : 0xFFFFFF;
 
                 Component statName = Component.translatable("stat.genesis." + StatType.values()[i].getName());
                 graphics.drawString(this.font, statName, x + (int)(15 * scale), rowY, textColor, false);
-                graphics.drawString(this.font, totalStat + "/99", x + (int)(155 * scale), rowY, color, false);
+
+                // [수정됨] "/99" 부분을 제거하고 숫자만 깔끔하게 출력합니다.
+                graphics.drawString(this.font, String.valueOf(displayStat), x + (int)(155 * scale), rowY, color, false);
             }
 
-            // [우측 상단] 상태 정보
             int statusX = x + (int)(255 * scale);
             int statusY = y + (int)(25 * scale);
 
@@ -191,34 +187,28 @@ public class LevelUpScreen extends Screen {
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.stamina", (int)stamina), statusX, statusY + 15, textColor, false);
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.mana", (int)stats.getMental(), (int)stats.getMaxMental()), statusX, statusY + 30, textColor, false);
 
-            // [우측 하단: 상세 공격/유틸 능력치 정보]
             int infoX = statusX;
-            int infoY = y + (int)(150 * scale); // HP/SP 표시부 아래쪽
+            int infoY = y + (int)(150 * scale);
             int lineGap = (int)(18 * scale);
 
-            //  물리 위력 보정
-            int totalPhysLevel = (stats.getStrength() + pendingIncreases[3]) + (stats.getDexterity() + pendingIncreases[4]);
-            float physScaling = StatApplier.calculateScaling(totalPhysLevel);
+            int totalStr = getTotalStatValue(3, stats) + pendingIncreases[3];
+            int totalDex = getTotalStatValue(4, stats) + pendingIncreases[4];
+            float physScaling = StatApplier.calculateScaling(totalStr + totalDex);
 
-            graphics.drawString(this.font,
-                    Component.translatable("gui.genesis.info.phys_scaling", (int)(physScaling * 100)),
-                    infoX, infoY, textColor, false);
+            graphics.drawString(this.font, Component.translatable("gui.genesis.info.phys_scaling", (int)(physScaling * 100)), infoX, infoY, textColor, false);
 
-            //  마법 위력 보정 (지력 기준 Scaling % 표시)
-            float magicScaling = StatApplier.calculateScaling(stats.getIntelligence() + pendingIncreases[5]);
+            int totalInt = getTotalStatValue(5, stats) + pendingIncreases[5];
+            float magicScaling = StatApplier.calculateScaling(totalInt);
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.magic_scaling", (int)(magicScaling * 100)), infoX, infoY + lineGap, textColor, false);
 
-            //  신성 위력 보정 (신앙 기준 Scaling % 표시)
-            float holyScaling = StatApplier.calculateScaling(stats.getFaith() + pendingIncreases[6]);
+            int totalFaith = getTotalStatValue(6, stats) + pendingIncreases[6];
+            float holyScaling = StatApplier.calculateScaling(totalFaith);
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.holy_scaling", (int)(holyScaling * 100)), infoX, infoY + lineGap * 2, textColor, false);
 
-            //  아이템 발견력 (신비 기반 Luck 수치 표시)
-            float discovery = (stats.getArcane() + pendingIncreases[7]) * 0.05f;
+            int totalArcane = getTotalStatValue(7, stats) + pendingIncreases[7];
+            float discovery = totalArcane * 0.05f;
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.discovery", String.format("%.2f", discovery)), infoX, infoY + lineGap * 4, textColor, false);
 
-
-
-            // [좌측 하단] 경험치 정보
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 
@@ -226,5 +216,36 @@ public class LevelUpScreen extends Screen {
             int costColor = (currentTotalXp >= totalCost) ? 0xFFFF00 : 0xFF5555;
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.required_xp", totalCost), xpInfoX, xpInfoY, costColor, false);
         });
+    }
+
+    // 루프 인덱스를 GenesisAttributes 속성으로 매칭합니다.
+    private Attribute getAttributeForStat(int index) {
+        return switch (index) {
+            case 0 -> GenesisAttributes.VIGOR.get();
+            case 1 -> GenesisAttributes.MIND.get();
+            case 2 -> GenesisAttributes.ENDURANCE.get();
+            case 3 -> GenesisAttributes.STRENGTH.get();
+            case 4 -> GenesisAttributes.DEXTERITY.get();
+            case 5 -> GenesisAttributes.INTELLIGENCE.get();
+            case 6 -> GenesisAttributes.FAITH.get();
+            case 7 -> GenesisAttributes.ARCANE.get();
+            default -> GenesisAttributes.VIGOR.get();
+        };
+    }
+
+    // Capability의 순수 레벨과 Attribute의 장비 보너스를 안전하게 합칩니다.
+    private int getTotalStatValue(int statIndex, com.gamunhagol.genesismod.stats.StatCapability stats) {
+        int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
+        int baseLevel = baseValues[statIndex];
+
+        Attribute currentAttr = getAttributeForStat(statIndex);
+        var attrInst = this.minecraft.player.getAttribute(currentAttr);
+
+        int armorBonus = 0;
+        if (attrInst != null) {
+            armorBonus = (int) (attrInst.getValue() - attrInst.getBaseValue());
+        }
+
+        return baseLevel + armorBonus;
     }
 }

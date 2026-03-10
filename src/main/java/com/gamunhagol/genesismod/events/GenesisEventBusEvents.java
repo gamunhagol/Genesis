@@ -33,6 +33,15 @@ public class GenesisEventBusEvents {
             event.add(type, GenesisAttributes.MAGIC_DEFENSE.get());
             event.add(type, GenesisAttributes.HOLY_DEFENSE.get());
         }
+
+        event.add(EntityType.PLAYER, GenesisAttributes.VIGOR.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.MIND.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.ENDURANCE.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.STRENGTH.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.DEXTERITY.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.INTELLIGENCE.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.FAITH.get());
+        event.add(EntityType.PLAYER, GenesisAttributes.ARCANE.get());
     }
 
     @SubscribeEvent

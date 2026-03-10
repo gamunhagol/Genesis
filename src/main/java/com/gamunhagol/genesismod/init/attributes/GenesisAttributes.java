@@ -31,6 +31,20 @@ public class GenesisAttributes {
             () -> new RangedAttribute("attribute.name.genesis.destruction_damage", 0.0D, 0.0D, 1024.0D).setSyncable(true));
 
 
+    public static final RegistryObject<Attribute> VIGOR = registerStat("vigor", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> MIND = registerStat("mind", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> ENDURANCE = registerStat("endurance", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> STRENGTH = registerStat("strength", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> DEXTERITY = registerStat("dexterity", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> INTELLIGENCE = registerStat("intelligence", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> FAITH = registerStat("faith", 0.0D, 100.0D);
+    public static final RegistryObject<Attribute> ARCANE = registerStat("arcane", 0.0D, 100.0D);
+
+    // 등록 헬퍼 메서드
+    private static RegistryObject<Attribute> registerStat(String name, double base, double max) {
+        return ATTRIBUTES.register(name, () -> new RangedAttribute("attribute.name.genesis." + name, base, 0.0D, max).setSyncable(true));
+    }
+
     // 3. 메인 클래스에서 이 레지스터를 실행시키기 위한 메서드
     public static void register(IEventBus eventBus) {
         ATTRIBUTES.register(eventBus);

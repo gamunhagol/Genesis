@@ -393,6 +393,15 @@
   "stat.genesis.faith": "Faith",
   "stat.genesis.arcane": "Arcane",
 
+  "attribute.name.genesis.vigor": "Vigor",
+  "attribute.name.genesis.mind": "Mind",
+  "attribute.name.genesis.endurance": "Endurance",
+  "attribute.name.genesis.strength": "Strength",
+  "attribute.name.genesis.dexterity": "Dexterity",
+  "attribute.name.genesis.intelligence": "Intelligence",
+  "attribute.name.genesis.faith": "Faith",
+  "attribute.name.genesis.arcane": "Arcane",
+
   "commands.genesis.stats.set.success": "§a[Genesis] §6%2$s§f stat of §e%1$s§f has been set to §b%3$d§f.",
   "commands.genesis.mental.set.success": "§b[Genesis] §fMental power set to %s.",
 
