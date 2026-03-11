@@ -356,19 +356,19 @@
 
   "tooltip.genesis.fragment_of_memory.info": "Memories from beyond; warm, nostalgic, and rekindling thoughts that had begun to fade.",
 
-  "tooltip.genesis.scale_fossil_shard.info": "In an unfathomable past, primordial beasts once roamed the earth.",
-  "tooltip.genesis.scale_fossil.info": "The scales of these beasts repelled disasters and swallowed them whole.",
-  "tooltip.genesis.scale_fossil_clump.info": "They were the descendants who awakened the faded blood of dragons.",
-  "tooltip.genesis.weathered_ancient_dragon_rock.info": "Once, the ancient dragons stood at the very pinnacle of the world.",
-  "tooltip.genesis.ancient_dragon_rock.info": "They were the mountains themselves, and the shields of the protectors.",
-  "tooltip.genesis.ancient_dragon_scale.info": "An ancient covenant turned them into living fortresses.",
-  "tooltip.genesis.dragon_king_scale.info": "It caused their first king to vanish into the Primal War, destined never to return.",
+  "tooltip.genesis.scale_fossil_shard.info": "In an unfathomable past, primordial beasts once roamed the earth.\n(Material for Levels 1–5)",
+  "tooltip.genesis.scale_fossil.info": "The scales of these beasts repelled disasters and swallowed them whole.\n(Material for Levels 6–10)",
+  "tooltip.genesis.scale_fossil_clump.info": "They were the descendants who awakened the faded blood of dragons.\n(Material for Levels 11–15)",
+  "tooltip.genesis.weathered_ancient_dragon_rock.info": "Once, the ancient dragons stood at the very pinnacle of the world.\n(Material for Levels 16–20)",
+  "tooltip.genesis.ancient_dragon_rock.info": "They were the mountains themselves, and the shields of the protectors.\n(Material for Levels 21–22)",
+  "tooltip.genesis.ancient_dragon_scale.info": "An ancient covenant turned them into living fortresses.\n(Material for Levels 23–24)",
+  "tooltip.genesis.dragon_king_scale.info": "It caused their first king to vanish into the Primal War, destined never to return.\n(Material for Levels 25)",
 
-  "tooltip.genesis.shard_of_the_mountain.info": "A piece of the highest mountain that stood at the world's center. Once indestructible, it is now a material for forging arms.",
-  "tooltip.genesis.fragment_of_the_mountain.info": "A fragment of the highest mountain in the heart of the divine realm. Though shattered, it aids in the forging of equipment.",
-  "tooltip.genesis.clump_of_the_mountain.info": "A mass from the mountain broken in the distant past. It elevates weapons to a higher plane, much like its lofty history.",
-  "tooltip.genesis.tablet_shard.info": "A shard of the mountain removed while carving the path to the summit. A mere crumb of a dream for eternity that never came to be.",
-  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "A tablet recording eternal praise, carved when the path through the Radiant Mountain was made. Though the fleeting dream went unfulfilled, the forged weapon shall reach a state of glory.",
+  "tooltip.genesis.shard_of_the_mountain.info": "A piece of the highest mountain that stood at the world's center. Once indestructible, it is now a material for forging arms.\n(Material for Levels 1–3)",
+  "tooltip.genesis.fragment_of_the_mountain.info": "A fragment of the highest mountain in the heart of the divine realm. Though shattered, it aids in the forging of equipment.\n(Material for Levels 4–6)",
+  "tooltip.genesis.clump_of_the_mountain.info": "A mass from the mountain broken in the distant past. It elevates weapons to a higher plane, much like its lofty history.\n(Material for Levels 7–8)",
+  "tooltip.genesis.tablet_shard.info": "A shard of the mountain removed while carving the path to the summit. A mere crumb of a dream for eternity that never came to be.\n(Material for Levels 9)",
+  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "A tablet recording eternal praise, carved when the path through the Radiant Mountain was made. Though the fleeting dream went unfulfilled, the forged weapon shall reach a state of glory.\n(Material for Levels 10)",
 
   "tooltip.genesis.key_of_oblivion.info": "A key forged in oblivion, once guarded by the Warden.",
 

@@ -25,6 +25,10 @@ public class GenesisJeiPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         List<CraftingRecipe> allRecipes = new ArrayList<>();
 
+        var vanillaRecipeFactory = registration.getVanillaRecipeFactory();
+
+        registration.addRecipes(RecipeTypes.ANVIL, ReinforceRecipeMaker.getAnvilRecipes(vanillaRecipeFactory));
+
         allRecipes.addAll(SpiritCompassRecipeMaker.getRecipes());
         allRecipes.addAll(DivineGrailRecipeMaker.getRecipes());
 
