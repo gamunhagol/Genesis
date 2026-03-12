@@ -78,8 +78,5 @@ public class ReinforceRecipeMaker {
             cap.setReinforceLevel(level);
         });
 
-        // 만약 Capability 데이터가 NBT에 바로 동기화되지 않는 구조라면
-        // 여기서 직접 NBT에 레벨을 써줘야 JEI 아이템에 마우스를 올렸을 때 레벨이 보입니다.
-        // stack.getOrCreateTag().putInt("ReinforceLevel", level);
     }
 }
