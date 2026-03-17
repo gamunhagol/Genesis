@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/snow_height6",
   "textures": {
-    "particle": "genesis:block/silver_coin_pile",
+    "particle": "genesis:item/silver_coin",
     "texture": "genesis:block/silver_coin_pile"
   }
 }

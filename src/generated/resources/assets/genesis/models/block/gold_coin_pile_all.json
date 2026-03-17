@@ -1,6 +1,7 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "genesis:block/gold_coin_pile"
+    "all": "genesis:block/gold_coin_pile",
+    "particle": "genesis:item/gold_coin"
   }
 }

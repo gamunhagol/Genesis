@@ -229,26 +229,33 @@ public class ModBlockStateProvider extends BlockStateProvider {
     }
 
     private void snowLayerBlock(RegistryObject<Block> block) {
-        String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+        String blockName = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
+
+        String particleItemName = blockName.replace("_pile", "");
 
         getVariantBuilder(block.get()).forAllStates(state -> {
             int layers = state.getValue(BlockStateProperties.LAYERS);
 
             if (layers == 8) {
+                // 8층(전체 블록)일 때
                 return ConfiguredModel.builder()
-                        .modelFile(models().cubeAll(name + "_all", modLoc("block/" + name)))
+                        .modelFile(models().withExistingParent(blockName + "_all", mcLoc("block/cube_all"))
+                                .texture("all", modLoc("block/" + blockName))
+                                .texture("particle", modLoc("item/" + particleItemName))) // 아이템 파티클 적용
                         .build();
             } else {
-                // 바닐라 눈 모델을 부모로 빌려와서 층별 높이 조절 (블록 전용)
+                // 1~7층일 때
                 return ConfiguredModel.builder()
-                        .modelFile(models().withExistingParent(name + "_height" + layers, mcLoc("block/snow_height" + (layers * 2)))
-                                .texture("texture", modLoc("block/" + name))
-                                .texture("particle", modLoc("block/" + name)))
+                        .modelFile(models().withExistingParent(blockName + "_height" + layers, mcLoc("block/snow_height" + (layers * 2)))
+                                .texture("texture", modLoc("block/" + blockName))
+                                .texture("particle", modLoc("item/" + particleItemName))) // 아이템 파티클 적용
                         .build();
             }
         });
-        this.itemModels().withExistingParent(name, new ResourceLocation("item/generated"))
-                .texture("layer0", new ResourceLocation(GenesisMod.MODID, "item/" + name));
+
+        // 아이템 모델 설정 (인벤토리에서 보이는 모습)
+        this.itemModels().withExistingParent(blockName, new ResourceLocation("item/generated"))
+                .texture("layer0", modLoc("item/" + blockName));
     }
 
     private void customCandleBlock(RegistryObject<Block> block) {
