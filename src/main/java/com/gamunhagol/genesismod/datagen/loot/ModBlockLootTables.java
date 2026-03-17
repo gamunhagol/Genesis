@@ -49,8 +49,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        this.dropSelf(GenesisBlocks.RAW_SILVER_BLOCK.get());
-        this.dropSelf(GenesisBlocks.SILVER_BLOCK.get());
         this.dropSelf(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.PYULITELA_BLOCK.get());
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
@@ -83,11 +81,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         );
 
 
-        this.add(GenesisBlocks.SILVER_ORE.get(),
-                block -> createStandardOreDrops(block, GenesisItems.RAW_SILVER.get()));
 
-        this.add(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(),
-                block -> createStandardOreDrops(block, GenesisItems.RAW_SILVER.get()));
+
+
 
         this.add(GenesisBlocks.PEWRIESE_ORE.get(),
                 block -> createCopperLikeOreDrops(GenesisBlocks.PEWRIESE_ORE.get(), GenesisItems.PEWRIESE_ORE_PIECE.get()));

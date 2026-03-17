@@ -15,7 +15,6 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class GenesisBiomeModifiers {
     // 바이옴 모디파이어 리소스 키 정의
-    public static final ResourceKey<BiomeModifier> ADD_SILVER_ORE = registerKey("add_silver_ore");
     public static final ResourceKey<BiomeModifier> ADD_PEWRIESE_ORE = registerKey("add_pewriese_ore");
     public static final ResourceKey<BiomeModifier> ADD_PYULITELA_ORE = registerKey("add_pyulitela_ore");
 
@@ -39,11 +38,6 @@ public class GenesisBiomeModifiers {
         var biomes = context.lookup(Registries.BIOME);
 
         // 오버월드 바이옴 태그를 가진 모든 곳에 광물 추가
-        context.register(ADD_SILVER_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 오버월드 바이옴 타겟팅
-                HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.SILVER_ORE_PLACED_KEY)), // 배치 규칙 연결
-                GenerationStep.Decoration.UNDERGROUND_ORES // 생성 단계 설정
-        ));
         context.register(ADD_PEWRIESE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_ORE_PLACED_KEY)), // 배치 규칙 연결

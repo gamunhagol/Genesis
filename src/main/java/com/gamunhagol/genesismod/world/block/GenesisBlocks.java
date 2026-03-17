@@ -26,14 +26,6 @@ public class GenesisBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, GenesisMod.MODID);
 
     //natural acquisition
-    public static final RegistryObject<Block> SILVER_ORE = register("silver_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
-    public static final RegistryObject<Block> DEEPSLATE_SILVER_ORE = register("deepslate_silver_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(SILVER_ORE.get()).mapColor(MapColor.DEEPSLATE).strength(4.5F, 3.0F).sound(SoundType.DEEPSLATE)));
-    public static final RegistryObject<Block> RAW_SILVER_BLOCK = register("raw_silver_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.0F, 3.0F)));
-    public static final RegistryObject<Block> SILVER_BLOCK = register("silver_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).requiresCorrectToolForDrops().strength(3.0F, 6.0F).sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> ELVENIA_BLOCK = register("elvenia_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(4.5F, 8.0F).sound(SoundType.METAL)));

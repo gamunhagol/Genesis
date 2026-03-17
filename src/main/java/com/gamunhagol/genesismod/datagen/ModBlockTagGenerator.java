@@ -25,10 +25,6 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
                 ,GenesisBlocks.PYULITELA_ORE.get()
                 ,GenesisBlocks.PYULITELA_BLOCK.get()
-                        ,GenesisBlocks.SILVER_ORE.get()
-                        ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
-                        ,GenesisBlocks.RAW_SILVER_BLOCK.get()
-                        ,GenesisBlocks.SILVER_BLOCK.get()
                         ,GenesisBlocks.ELVENIA_BLOCK.get()
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
@@ -70,11 +66,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ACTIVATED_GIANT_STONE.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(GenesisBlocks.SILVER_ORE.get()
-                        ,GenesisBlocks.DEEPSLATE_SILVER_ORE.get()
-                        ,GenesisBlocks.RAW_SILVER_BLOCK.get()
-                        ,GenesisBlocks.SILVER_BLOCK.get()
-                        ,GenesisBlocks.ELVENIA_BLOCK.get());
+                .add(GenesisBlocks.ELVENIA_BLOCK.get());
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(GenesisBlocks.GIANT_STONE.get());

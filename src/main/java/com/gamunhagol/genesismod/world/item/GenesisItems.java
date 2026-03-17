@@ -25,14 +25,6 @@ public class GenesisItems {
 
 
     //block
-    public static final RegistryObject<BlockItem> SILVER_ORE = ITEMS.register("silver_ore",
-            () -> new BlockItem(GenesisBlocks.SILVER_ORE.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> DEEPSLATEL_SILVER_ORE = ITEMS.register("deepslate_silver_ore",
-            () -> new BlockItem(GenesisBlocks.DEEPSLATE_SILVER_ORE.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> RAW_SILVER_BLOCK = ITEMS.register("raw_silver_block",
-            () -> new BlockItem(GenesisBlocks.RAW_SILVER_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> SILVER_BLOCK = ITEMS.register("silver_block",
-            () -> new BlockItem(GenesisBlocks.SILVER_BLOCK.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> ELVENIA_BLOCK = ITEMS.register("elvenia_block",
             () -> new BlockItem(GenesisBlocks.ELVENIA_BLOCK.get(), new Item.Properties()));
@@ -165,11 +157,10 @@ public class GenesisItems {
     public static final RegistryObject<Item> ICE_FLOWER_SHARD = ITEMS.register("ice_flower_shard", () -> new Item(new Item.Properties()));
 
 
-    public static final RegistryObject<Item> RAW_SILVER = ITEMS.register("raw_silver", () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> PEWRIESE_ORE_PIECE = ITEMS.register("pewriese_ore_piece", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> SILVER_PIECE = ITEMS.register("silver_piece", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> SILVER_INGOT = ITEMS.register("silver_ingot", () -> new Item(new Item.Properties()));
+
 
     public static final RegistryObject<Item> ELVENIA_INGOT = ITEMS.register("elvenia_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ELVENIA_PIECE = ITEMS.register("elvenia_piece", () -> new Item(new Item.Properties()));

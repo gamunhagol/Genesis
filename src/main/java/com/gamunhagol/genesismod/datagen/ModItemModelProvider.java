@@ -73,9 +73,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         clusterItem(GenesisBlocks.AMETHYST_SAPLING);
 
-        simpleItem(GenesisItems.RAW_SILVER);
-        simpleItem(GenesisItems.SILVER_PIECE);
-        simpleItem(GenesisItems.SILVER_INGOT);
+
 
         simpleItem(GenesisItems.ELVENIA_PIECE);
         simpleItem(GenesisItems.ELVENIA_INGOT);

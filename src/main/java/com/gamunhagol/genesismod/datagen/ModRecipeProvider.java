@@ -23,9 +23,6 @@ import java.util.function.Consumer;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
 
-    private static final List<ItemLike> SILVER_SMELTING = List.of(GenesisItems.RAW_SILVER.get(),
-            GenesisBlocks.SILVER_ORE.get(),
-            GenesisBlocks.DEEPSLATE_SILVER_ORE.get());
 
     private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.GOLDEN_SWORD, GenesisItems.ELVENIA_SWORD.get()),
@@ -127,8 +124,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
                 .save(pWriter);
 
-        oreSmelting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 200, "silver");
-        oreBlasting(pWriter, SILVER_SMELTING, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), 1.0f, 100, "silver");
+
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
         oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
 
@@ -168,9 +164,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
 
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_PIECE.get(), RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get());
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.SILVER_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.SILVER_BLOCK.get());
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.RAW_SILVER.get(), RecipeCategory.MISC, GenesisBlocks.RAW_SILVER_BLOCK.get());
+;
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_PIECE.get(), RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.ELVENIA_BLOCK.get());

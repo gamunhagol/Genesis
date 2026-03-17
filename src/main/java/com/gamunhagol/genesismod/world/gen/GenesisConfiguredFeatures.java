@@ -19,7 +19,6 @@ import net.minecraft.world.level.levelgen.structure.templatesystem.TagMatchTest;
 import java.util.List;
 
 public class GenesisConfiguredFeatures {
-    public static final ResourceKey<ConfiguredFeature<?, ?>> SILVER_ORE_KEY = registerKey("silver_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PEWRIESE_ORE_KEY = registerKey("pewriese_ore");
     public static final ResourceKey<ConfiguredFeature<?, ?>> PYULITELA_ORE_KEY = registerKey("pyulitela_ore");
 
@@ -42,10 +41,7 @@ public class GenesisConfiguredFeatures {
         TagMatchTest stoneReplaceables = new TagMatchTest(BlockTags.STONE_ORE_REPLACEABLES);
         TagMatchTest deepslateReplaceables = new TagMatchTest(BlockTags.DEEPSLATE_ORE_REPLACEABLES);
 
-        List<OreConfiguration.TargetBlockState> overworldGenesisOres = List.of(
-                OreConfiguration.target(stoneReplaceables, GenesisBlocks.SILVER_ORE.get().defaultBlockState()),
-                OreConfiguration.target(deepslateReplaceables, GenesisBlocks.DEEPSLATE_SILVER_ORE.get().defaultBlockState())
-        );
+
 
         register(context, PEWRIESE_ORE_KEY, Feature.ORE, new OreConfiguration(List.of(
                 OreConfiguration.target(stoneReplaceables, GenesisBlocks.PEWRIESE_ORE.get().defaultBlockState()),
@@ -57,7 +53,7 @@ public class GenesisConfiguredFeatures {
                 OreConfiguration.target(deepslateReplaceables, GenesisBlocks.PYULITELA_ORE.get().defaultBlockState())
         ), 2));
 
-        register(context, SILVER_ORE_KEY, Feature.ORE, new OreConfiguration(overworldGenesisOres, 9));
+
         register(context, AMETHYST_TREE_KEY, GenesisFeatures.AMETHYST_TREE.get(), NoneFeatureConfiguration.INSTANCE);
 
         // 1. 황수정 (Citrine): 땅속 매립형. 40% 공기 치환

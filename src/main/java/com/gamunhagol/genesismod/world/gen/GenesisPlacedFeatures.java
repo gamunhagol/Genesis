@@ -39,12 +39,7 @@ public class GenesisPlacedFeatures {
     public static void bootstrap(BootstapContext<PlacedFeature> context) {
         HolderGetter<ConfiguredFeature<?, ?>> configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
-        register(context, SILVER_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.SILVER_ORE_KEY),
-                GenesisOrePlacement.commonOrePlacement(7,
-                        HeightRangePlacement.triangle(
-                                VerticalAnchor.absolute(-64),
-                                VerticalAnchor.absolute(32)
-                        )));
+
 
         register(context, PEWRIESE_ORE_PLACED_KEY, configuredFeatures.getOrThrow(GenesisConfiguredFeatures.PEWRIESE_ORE_KEY),
                 GenesisOrePlacement.rareOrePlacement(3,

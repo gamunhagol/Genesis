@@ -2,7 +2,5 @@
   "replace": false,
   "values": [
     "genesis:pewriese_ore",
-    "genesis:silver_ore",
-    "genesis:deepslate_silver_ore"
   ]
 }
