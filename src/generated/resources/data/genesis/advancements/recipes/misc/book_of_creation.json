@@ -6,6 +6,18 @@
         "items": [
           {
             "items": [
+              "minecraft:book"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_emerald": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
               "minecraft:emerald"
             ]
           }
@@ -23,6 +35,7 @@
   "requirements": [
     [
       "has_book",
+      "has_emerald",
       "has_the_recipe"
     ]
   ],
