@@ -407,6 +407,7 @@
 
 
   "message.genesis.insufficient_stats": "당신은 이 무기의 스킬을 사용하기에 필요한 능력치가 부족합니다.",
+  "message.genesis.level_up.locked": "아직 이 기능을 사용할 수 없습니다. 창조의 서가 필요합니다.",
 
   "death.attack.genesis.holy": "%1$s이(가) 신성한 힘에 의해 사그라들었습니다.",
   "death.attack.genesis.holy.player": "%1$s이(가) %2$s의 심판을 견디지 못하고 정화되었습니다.",
@@ -420,7 +421,8 @@
 
   "message.genesis.reset_success": "몸이 원상태로 돌아갔다",
 
-  "gui.genesis.level_up.title": "레벨 업",
+  "gui.genesis.level_up.title": "능력치 강화",
+  "gui.genesis.level_up.hint": "§6[잠김]§r '창조의 서'를 사용하여 능력을 개방하십시오.",
   "gui.genesis.level_up.recovered_levels": "누적 레벨: +%s",
   "gui.genesis.level_up.current_xp": "소지 XP: %s",
   "gui.genesis.level_up.required_xp": "필요 XP: %s",

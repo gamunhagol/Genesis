@@ -405,6 +405,7 @@
 
 
   "message.genesis.insufficient_stats": "You lack the stats to use this weapon's skill.",
+  "message.genesis.level_up.locked": "You cannot use this feature yet. The Book of Creation is required.",
 
   "death.attack.genesis.holy": "%1$s faded away under the weight of holy power.",
   "death.attack.genesis.holy.player": "%1$s failed to endure the judgment of %2$s and was purified.",
@@ -418,7 +419,8 @@
 
   "message.genesis.reset_success": "Your body has returned to its original state.",
 
-  "gui.genesis.level_up.title": "Level Up",
+  "gui.genesis.level_up.title": "Stat Enhancement",
+  "gui.genesis.level_up.hint": "§6[Locked]§r Use the 'Book of Creation' to unlock this power.",
   "gui.genesis.level_up.recovered_levels": "Accumulated Levels: +%s",
   "gui.genesis.level_up.current_xp": "Current XP: %s",
   "gui.genesis.level_up.required_xp": "Required XP: %s",
