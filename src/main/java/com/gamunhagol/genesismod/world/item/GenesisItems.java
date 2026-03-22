@@ -413,10 +413,6 @@ public class GenesisItems {
 
 
 
-    public static final RegistryObject<Item> HOT_SPRING_BUCKET =
-            ITEMS.register("hot_spring_bucket",
-                    () -> new BucketItem(GenesisFluids.HOT_SPRING, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
-
     public static final RegistryObject<Item> QUICKSAND_BUCKET =
             ITEMS.register("quicksand_bucket",
                     () -> new BucketItem(GenesisFluids.QUICKSAND, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));

@@ -90,11 +90,11 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         // 고대 도시
         add("ancient_city_template", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
-                GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 0.013f, 1, 1));
+                GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 0.023f, 1, 1));
 
         add("ancient_city_piece", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
-                GenesisItems.PEWRIESE_ORE_PIECE.get(), 0.42f, 1, 2));
+                GenesisItems.PEWRIESE_ORE_PIECE.get(), 0.42f, 1, 3));
 
         // 엔드 시티 & 유적 (Stronghold)
         add("end_city_powder", new AddChestItemModifier(

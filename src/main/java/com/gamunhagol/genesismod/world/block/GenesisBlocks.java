@@ -111,12 +111,6 @@ public class GenesisBlocks {
                     .sound(SoundType.AMETHYST_CLUSTER).lightLevel(state -> 5).noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     //liquid
-    public static final RegistryObject<LiquidBlock> HOT_SPRING_BLOCK =
-            BLOCKS.register("hot_spring_block",
-                    () -> new HotSpringFluidBlock(GenesisFluids.HOT_SPRING,
-                            BlockBehaviour.Properties.copy(Blocks.WATER)
-                                    .noLootTable().noCollission().liquid()));
-
     public static final RegistryObject<LiquidBlock> QUICKSAND_BLOCK =
             BLOCKS.register("quicksand_block",
                     () -> new QuicksandFluidBlock(GenesisFluids.QUICKSAND,

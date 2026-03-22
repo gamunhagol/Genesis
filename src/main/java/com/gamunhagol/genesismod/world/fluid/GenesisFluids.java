@@ -12,10 +12,6 @@ public class GenesisFluids {
     public static final DeferredRegister<Fluid> FLUIDS =
             DeferredRegister.create(ForgeRegistries.FLUIDS, GenesisMod.MODID);
 
-    public static final RegistryObject<FlowingFluid> HOT_SPRING =
-            FLUIDS.register("hot_spring", () -> new ForgeFlowingFluid.Source(HotSpringFluid.PROPERTIES));
-    public static final RegistryObject<FlowingFluid> HOT_SPRING_FLOWING =
-            FLUIDS.register("hot_spring_flowing", () -> new ForgeFlowingFluid.Flowing(HotSpringFluid.PROPERTIES));
 
     public static final RegistryObject<FlowingFluid> QUICKSAND =
             FLUIDS.register("quicksand", () -> new ForgeFlowingFluid.Source(QuicksandFluid.PROPERTIES));

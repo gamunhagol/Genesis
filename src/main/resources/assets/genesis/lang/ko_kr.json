@@ -177,7 +177,6 @@
 
   "item.genesis.fabricated_star": "만들어진 별",
 
-  "item.genesis.hot_spring_bucket": "온천수 양동이",
   "item.genesis.quicksand_bucket": "유사 양동이",
   "item.genesis.blood_bucket": "피 양동이",
 
@@ -260,7 +259,6 @@
 
   "block.genesis.faded_chest": "빛바랜 상자",
 
-  "block.genesis.hot_spring_block": "온천수",
   "block.genesis.quicksand_block": "유사",
   "block.genesis.blood_block": "피",
 

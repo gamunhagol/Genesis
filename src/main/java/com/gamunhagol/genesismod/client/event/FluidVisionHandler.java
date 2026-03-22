@@ -38,16 +38,6 @@ public class FluidVisionHandler {
         FluidState fluid = getEyeFluid(camera);
         if (fluid == null) return;
 
-        // 💧 온천수 안개
-        if (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get())) {
-            float near = 0.5F;
-            float far = 8.0F;
-            event.setNearPlaneDistance(near);
-            event.setFarPlaneDistance(far);
-            RenderSystem.setShaderFogStart(near);
-            RenderSystem.setShaderFogEnd(far);
-            RenderSystem.setShaderFogColor(0.55F, 0.95F, 0.95F); // 하늘색 계열
-        }
         if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
             // 1. 안개 계산 방식 강제 설정
             event.setFogShape(FogShape.CYLINDER); // 용암과 유사한 평면 안개 방식
@@ -86,12 +76,6 @@ public class FluidVisionHandler {
         FluidState fluid = getEyeFluid(camera);
         if (fluid == null) return;
 
-
-        if (fluid.is(GenesisFluids.HOT_SPRING.get()) || fluid.is(GenesisFluids.HOT_SPRING_FLOWING.get())) {
-            event.setRed(0.55F);
-            event.setGreen(0.95F);
-            event.setBlue(0.95F);
-        }
         if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
             // 모래색 (DACFA3) 비율 설정
             event.setRed(0.85F);

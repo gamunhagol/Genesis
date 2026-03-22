@@ -1,6 +1,6 @@
 {
   "type": "genesis:add_chest_item",
-  "chance": 0.013,
+  "chance": 0.023,
   "conditions": [
     {
       "condition": "forge:loot_table_id",

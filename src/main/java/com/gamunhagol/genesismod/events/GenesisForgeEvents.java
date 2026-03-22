@@ -253,17 +253,7 @@ public class GenesisForgeEvents {
                     event.setCancellationResult(InteractionResult.SUCCESS);
                     event.setCanceled(true);
                 }
-
-                else if (state.is(GenesisBlocks.HOT_SPRING_BLOCK.get())) {
-                    level.playSound(player, player.getX(), player.getY(), player.getZ(),
-                            SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
-
-                    ItemStack waterBottle = PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.WATER);
-                    player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, waterBottle));
-
-                    event.setCancellationResult(InteractionResult.SUCCESS);
-                    event.setCanceled(true);
-                }
+                
             }
         }
     }

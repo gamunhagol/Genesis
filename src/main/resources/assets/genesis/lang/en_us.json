@@ -175,7 +175,6 @@
 
   "item.genesis.fabricated_star": "Fabricated Star",
 
-  "item.genesis.hot_spring_bucket": "Hot Spring Bucket",
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
   "item.genesis.blood_bucket": "Blood Bucket",
 
@@ -258,7 +257,6 @@
 
   "block.genesis.faded_chest": "Faded Chest",
 
-  "block.genesis.hot_spring_block": "Hot Spring",
   "block.genesis.quicksand_block": "Quicksand",
   "block.genesis.blood_block": "Blood",
 

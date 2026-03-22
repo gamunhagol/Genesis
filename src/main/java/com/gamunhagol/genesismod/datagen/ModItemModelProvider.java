@@ -154,7 +154,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.FABRICATED_STAR);
 
-        simpleItem(GenesisItems.HOT_SPRING_BUCKET);
         simpleItem(GenesisItems.QUICKSAND_BUCKET);
         simpleItem(GenesisItems.BLOOD_BUCKET);
 
