@@ -36,6 +36,12 @@ public class GenesisNetwork {
                 .encoder(PacketConfirmLevelUp::toBytes)
                 .consumerMainThread(PacketConfirmLevelUp::handle)
                 .add();
+
+        net.messageBuilder(PacketSyncMentalPower.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncMentalPower::new)
+                .encoder(PacketSyncMentalPower::toBytes)
+                .consumerMainThread(PacketSyncMentalPower::handle)
+                .add();
     }
 
     // 서버에서 특정 플레이어에게 패킷을 보내는 메서드

@@ -38,16 +38,17 @@ public class ManaCrystalItem extends Item {
             //  효과음 재생
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
-            //  파티클 소환 (서버 월드인 경우)
+            float angle = player.yBodyRot * ((float)Math.PI / 180F);
+            double sideOffset = (hand == InteractionHand.MAIN_HAND ? 1.0 : -1.0) * 0.4D;
+            double spawnX = player.getX() - (double)(Math.cos(angle) * sideOffset);
+            double spawnY = player.getY() + 1.2D; // 눈높이보다 살짝 아래 (손 높이)
+            double spawnZ = player.getZ() - (double)(Math.sin(angle) * sideOffset);
             if (level instanceof ServerLevel serverLevel) {
-                // (A) 자수정 파편 효과: 아이템이 부서지는 입자
                 serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, itemstack),
-                        player.getX(), player.getY() + 1.2D, player.getZ(),
+                        spawnX, spawnY, spawnZ,
                         10, 0.2D, 0.2D, 0.2D, 0.1D);
-                // (B) 파랑 파티클 (물방울/마력 기운): 찔끔 올라가는 연출
-                // ParticleTypes.BUBBLE이나 DRIPPING_WATER 등을 섞으면 '물' 느낌이 납니다.
                 serverLevel.sendParticles(ParticleTypes.GLOW,
-                        player.getX(), player.getY() + 1.0D, player.getZ(),
+                        spawnX, spawnY, spawnZ,
                         5, 0.3D, 0.5D, 0.3D, 0.05D);
             }
         }
