@@ -198,6 +198,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());
                 output.accept(GenesisItems.BLOOD_BUCKET.get());
 
+                output.accept(GenesisItems.HEAL_SCROLL_1.get());
+
                 output.accept(GenesisItems.COLLECTOR_SPAWN_EGG.get());
                 output.accept(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG.get());
 

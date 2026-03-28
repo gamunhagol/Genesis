@@ -422,6 +422,15 @@ public class GenesisItems {
                     () -> new BucketItem(GenesisFluids.BLOOD,
                             new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    //Scroll
+    public static final RegistryObject<Item> HEAL_SCROLL_1 = ITEMS.register("heal_scroll_1",
+            () -> new GenericScrollItem(
+                    new Item.Properties(), 5.0f, 3,
+                    (level, player) -> {
+                        player.heal(10.0f);
+                    }
+            ));
+
 
     //spawn egg
     public static final RegistryObject<Item> COLLECTOR_SPAWN_EGG = ITEMS.register("collector_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR, 0xFFFFFF, 0xFFFFFF,

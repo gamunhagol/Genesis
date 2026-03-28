@@ -2,13 +2,17 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.common.BasicItemListing;
+import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.List;
 import java.util.Random;
 
 
@@ -40,4 +44,24 @@ public class AddCustomTrades {
         event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD_BLOCK, 24), new ItemStack(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 1),3,64,1));
     }
 
+    @SubscribeEvent
+    public static void addVillagerTrades(VillagerTradesEvent event) {
+
+        if (event.getType() == VillagerProfession.CLERIC) {
+
+
+            List<VillagerTrades.ItemListing> trades = event.getTrades().get(4);
+
+            Random random = new Random();
+            if (random.nextFloat() < 0.2f) {
+                trades.add(new BasicItemListing(
+                        new ItemStack(Items.EMERALD, 6),
+                        new ItemStack(GenesisItems.HEAL_SCROLL_1.get(), 1),
+                        3,
+                        6,
+                        0.05f
+                ));
+            }
+        }
+    }
 }
