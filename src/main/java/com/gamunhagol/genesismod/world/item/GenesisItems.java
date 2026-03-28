@@ -425,9 +425,9 @@ public class GenesisItems {
     //Scroll
     public static final RegistryObject<Item> HEAL_SCROLL_1 = ITEMS.register("heal_scroll_1",
             () -> new GenericScrollItem(
-                    new Item.Properties(), 5.0f, 3,
+                    new Item.Properties(), 3.0f, 3,
                     (level, player) -> {
-                        player.heal(10.0f);
+                        player.heal(9.0f);
                     }
             ));
 
