@@ -439,5 +439,12 @@
   "gui.genesis.button.cancel": "취소",
   "gui.genesis.button.confirm": "완료",
   "gui.genesis.button.increase": ">",
-  "gui.genesis.button.decrease": "<"
+  "gui.genesis.button.decrease": "<",
+
+
+
+
+
+  "key.categories.genesis": "창세기 모드",
+  "key.genesis.level_up": "스탯 설정 화면 열기"
 }

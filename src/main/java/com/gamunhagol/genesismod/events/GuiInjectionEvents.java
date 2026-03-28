@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.gui.LevelUpScreen;
+import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import net.minecraft.ChatFormatting;
@@ -13,6 +14,7 @@ import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,43 +29,28 @@ public class GuiInjectionEvents {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
 
-        // 화면이 새로 열릴 때마다 이전 버튼 참조를 일단 숨김 처리하거나 초기화
+        // 화면이 바뀔 때마다 버튼 상태 초기화
         if (statButton != null) {
             statButton.visible = false;
         }
 
+        // 오직 서바이벌 인벤토리(InventoryScreen)에서만 버튼 생성
         if (event.getScreen() instanceof InventoryScreen inv) {
             createPersistentButton(event, inv.getGuiLeft() + 155, inv.getGuiTop() + 7, inv);
-        } else if (event.getScreen() instanceof CreativeModeInventoryScreen creative) {
-            createPersistentButton(event, creative.getGuiLeft() + 159, creative.getGuiTop() + 28, creative);
         }
+        // 크리에이티브 인벤토리 관련 else if 블록을 완전히 제거함
     }
 
     @SubscribeEvent
     public static void onScreenRenderPre(ScreenEvent.Render.Pre event) {
         if (statButton == null) return;
 
-        // 1. 일반 서바이벌 인벤토리 화면인 경우
-        if (event.getScreen() instanceof InventoryScreen inv) {
+        // 일반 서바이벌 인벤토리 화면인 경우에만 활성화
+        if (event.getScreen() instanceof InventoryScreen) {
             statButton.visible = true;
             statButton.active = true;
-            // 위치 고정 (서바이벌 인벤토리는 고정값이므로 init에서 잡아준 대로 가도 됨)
         }
-        // 2. 크리에이티브 인벤토리 화면인 경우
-        else if (event.getScreen() instanceof CreativeModeInventoryScreen creative) {
-            // '가방' 모양의 서바이벌 탭이 선택되었는지 확인
-            boolean isSurvivalTab = creative.isInventoryOpen();
-
-            statButton.visible = isSurvivalTab;
-            statButton.active = isSurvivalTab;
-
-            if (isSurvivalTab) {
-                // 탭을 옮겨 다닐 때 위치가 틀어질 수 있으므로 매 프레임 위치를 갱신
-                statButton.setX(creative.getGuiLeft() + 159);
-                statButton.setY(creative.getGuiTop() + 28);
-            }
-        }
-        // 3. 그 외 모든 화면 (창고, 조합대, 화로, 메뉴 화면 등)
+        // 그 외 모든 화면(크리에이티브 포함)에서는 버튼을 숨기고 비활성화
         else {
             statButton.visible = false;
             statButton.active = false;
@@ -90,7 +77,7 @@ public class GuiInjectionEvents {
                 .build();
 
         updateButtonTooltip(mc);
-        event.addListener(statButton);
+        event.addListener(statButton); // 해당 화면의 위젯 리스트에 추가
     }
 
     private static void updateButtonTooltip(Minecraft mc) {
@@ -105,5 +92,30 @@ public class GuiInjectionEvents {
                 ));
             }
         });
+    }
+
+    @SubscribeEvent
+    public static void onKeyInput(InputEvent.Key event) {
+        Minecraft mc = Minecraft.getInstance();
+
+        // 1. 플레이어가 존재하고, 현재 열린 화면이 없을 때만 단축키 작동
+        // (채팅창이나 다른 메뉴가 열려있을 때 중복으로 열리는 것 방지)
+        if (mc.player == null || mc.screen != null) return;
+
+        // 2. 단축키 입력 확인 (GLFW.GLFW_PRESS는 키를 누른 순간 한 번만 실행됨)
+        if (ModKeyBindings.LEVEL_UP_KEY.consumeClick()) {
+            mc.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                if (stats.isLevelUpUnlocked()) {
+                    // 단축키로 열 때는 부모 화면이 없으므로 null 전달
+                    mc.setScreen(new LevelUpScreen(null));
+                } else {
+                    mc.player.displayClientMessage(
+                            Component.translatable("message.genesis.level_up.locked").withStyle(ChatFormatting.RED),
+                            true
+                    );
+                    mc.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.VILLAGER_NO, 1.0F));
+                }
+            });
+        }
     }
 }

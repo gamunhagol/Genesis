@@ -437,5 +437,12 @@
   "gui.genesis.button.cancel": "Cancel",
   "gui.genesis.button.confirm": "OK",
   "gui.genesis.button.increase": ">",
-  "gui.genesis.button.decrease": "<"
+  "gui.genesis.button.decrease": "<",
+
+
+
+
+
+  "key.categories.genesis": "Genesis Mod",
+  "key.genesis.level_up": "Open Stat Menu"
 }

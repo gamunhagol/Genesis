@@ -2,11 +2,13 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
 import com.gamunhagol.genesismod.init.GenesisParticles;
+import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,5 +29,10 @@ public class GenesisClientEvents {
             ItemBlockRenderTypes.setRenderLayer(GenesisBlocks.OBLIVION_CANDLE.get(), RenderType.cutout());
             ClientTooltipHandler.init();
         });
+    }
+
+    @SubscribeEvent
+    public static void onKeyRegister(RegisterKeyMappingsEvent event) {
+        event.register(ModKeyBindings.LEVEL_UP_KEY);
     }
 }
