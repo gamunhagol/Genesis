@@ -9,6 +9,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation COLLECTOR_GUARD_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "collector_guard"), "main");
 
+    public static final ModelLayerLocation LARGE_ARROW_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "large_arrow"), "main");
+
     public static final ModelLayerLocation SENTINEL_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_of_sentinel"), "main");
     public static final ModelLayerLocation HERALD_LAYER = new ModelLayerLocation(

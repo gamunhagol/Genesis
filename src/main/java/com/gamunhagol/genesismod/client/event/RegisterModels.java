@@ -6,7 +6,9 @@ import com.gamunhagol.genesismod.client.model.block.GuideStatueModel;
 import com.gamunhagol.genesismod.client.model.block.HeraldStatueModel;
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
+import com.gamunhagol.genesismod.client.model.entity.projectile.LargeArrowModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
+import com.gamunhagol.genesismod.client.renderer.entity.projectile.LargeArrowRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
@@ -138,6 +140,8 @@ public class RegisterModels {
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
 
+        event.registerLayerDefinition(ModModelLayers.LARGE_ARROW_LAYER, LargeArrowModel::createBodyLayer);
+
 
     }
 
@@ -146,6 +150,8 @@ public class RegisterModels {
         // 엔티티와 렌더러를 연결합니다.
         event.registerEntityRenderer(GenesisEntities.COLLECTOR.get(), CollectorRenderer::new);
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
+
+        event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);
