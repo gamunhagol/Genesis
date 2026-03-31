@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.ProjectileStatsProvider;
+import com.gamunhagol.genesismod.world.item.GreatBowItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
@@ -72,8 +73,10 @@ public class GenesisProjectileEvents {
                 double velocity = projectile.getDeltaMovement().length();
                 float chargeMultiplier = (float) (velocity / 3.0);
 
-                // 너무 낮거나 높지 않게 제한 (0.1 ~ 1.2배)
-                chargeMultiplier = Math.min(Math.max(chargeMultiplier, 0.1f), 1.2f);
+                //  무기 종류에 따른 배율 제한(Cap) 설정
+                // 대궁은 탄속이 5.5이므로 약 1.83배 이상이 나오도록 제한을 2.5배까지 풀어줍니다.
+                float maxMultiplier = (weaponStack.getItem() instanceof GreatBowItem) ? 2.5f : 1.2f;
+                chargeMultiplier = Math.min(Math.max(chargeMultiplier, 0.1f), maxMultiplier);
 
                 // 기초 스탯 대미지 계산 (기본 바닐라뎀 인자는 0으로 전달하여 JSON 스탯 중심 계산)
                 DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weaponStack, 0);
