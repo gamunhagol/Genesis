@@ -318,7 +318,8 @@ public class GenesisItems {
 
 
 
-    public static final RegistryObject<Item> GREAT_BOW = ITEMS.register("great_bow", () -> new BowItem(new Item.Properties()));
+    public static final RegistryObject<Item> GREAT_BOW = ITEMS.register("great_bow", () -> new GreatBowItem(new Item.Properties()
+            .durability(484)));
 
     public static final RegistryObject<Item> LARGE_ARROW = ITEMS.register("large_arrow", () -> new LargeArrowItem(new Item.Properties()));
 
