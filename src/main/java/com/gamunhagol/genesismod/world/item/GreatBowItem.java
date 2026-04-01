@@ -47,7 +47,7 @@ public class GreatBowItem extends BowItem {
                     AbstractArrow abstractarrow = arrowitem.createArrow(pLevel, projectileStack, player);
 
                     // [추가] 탄속 강화: 4.0F (바닐라 3.0F보다 빠름)
-                    abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 5.5F, 1.0F);
+                    abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 5.6F, 1.0F);
 
                     if (f == 1.0F) abstractarrow.setCritArrow(true);
 
