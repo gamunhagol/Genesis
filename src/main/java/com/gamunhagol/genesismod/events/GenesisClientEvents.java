@@ -58,7 +58,7 @@ public class GenesisClientEvents {
                         return 0.0F;
                     }
                     // (최대 사용 시간 - 남은 시간) / 20틱(1초) -> 바닐라 활 기준 완충 시간
-                    return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 22.0F;
+                    return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 28.0F;
                 }
         );
     }
