@@ -19,6 +19,8 @@ public class GreatBowItem extends BowItem {
 
     public GreatBowItem(Properties pProperties) {
         super(pProperties);
+
+        this.addDefaultAttributeModifiers();
     }
 
     // [추가] 차징 위력 계산 메서드
@@ -78,6 +80,12 @@ public class GreatBowItem extends BowItem {
     @Override
     public int getEnchantmentValue() {
         return 15;
+    }
+
+    // 에픽 파이트 전용 속성(경직치, 스테미나)을 추가하는 메서드
+    private void addDefaultAttributeModifiers() {
+        // 여기에 나중에 에픽 파이트의 Attribute(IMPACT 등)를 추가하는 코드를 넣을 겁니다.
+        // 지금은 개념만 잡으시고, 실제 등록은 에픽 파이트의 'ItemCapability' 시스템을 따르는 게 좋습니다.
     }
 
     @Override

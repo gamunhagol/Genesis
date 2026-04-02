@@ -1,5 +1,5 @@
 {
-  "item": "minecraft:bow",
+  "item": "genesis:great_bow",
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {

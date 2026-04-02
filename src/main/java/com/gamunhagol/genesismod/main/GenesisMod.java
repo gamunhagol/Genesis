@@ -23,11 +23,13 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.util.AbstractMap;
 
 
 @Mod(GenesisMod.MODID)
@@ -72,7 +74,12 @@ public class GenesisMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-
+            InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
+                    new AbstractMap.SimpleEntry<>(
+                            GenesisItems.GREAT_BOW.get(),
+                            GenesisMod.prefix("great_bow_preset")
+                    )
+            );
         });
     }
 
