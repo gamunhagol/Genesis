@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.events;
 
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.world.capability.GenesisGreatBowCapability;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -22,22 +23,14 @@ import java.util.UUID;
 public class GenesisEpicFightEvents {
     private static final UUID GREAT_BOW_IMPACT_ID = UUID.fromString("f67a8451-2292-492c-8069-4f7f6f966144");
 
-    /**
-     * RangedWeaponCapability의 protected 생성자에 접근하기 위한 브릿지 클래스입니다.
-     */
-    public static class GenesisRangedCapability extends RangedWeaponCapability {
-        public GenesisRangedCapability(CapabilityItem.Builder builder) {
-            super(builder);
-        }
-    }
 
     @SubscribeEvent
     public static void onPresetRegistry(WeaponCapabilityPresetRegistryEvent event) {
-        // getTypeRegistry -> getTypeEntry 로 수정
         event.getTypeEntry().put(GenesisMod.prefix("great_bow_preset"), (item) ->
                 CapabilityItem.builder()
                         .category(CapabilityItem.WeaponCategories.RANGED)
-                        .constructor(GenesisRangedCapability::new)
+                        // 새로 만든 전용 Capability 클래스로 교체
+                        .constructor(GenesisGreatBowCapability::new)
                         .addStyleAttibutes(CapabilityItem.Styles.RANGED, Pair.of(
                                 EpicFightAttributes.IMPACT.get(),
                                 new AttributeModifier(GREAT_BOW_IMPACT_ID, "Great Bow Impact", 6.0, AttributeModifier.Operation.ADDITION)
