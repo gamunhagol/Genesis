@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -66,5 +67,25 @@ public class GenesisClientEvents {
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(ModKeyBindings.LEVEL_UP_KEY);
+    }
+
+    @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
+    public static class ForgeBusEvents {
+        @SubscribeEvent
+        public static void onComputeFovModifier(ComputeFovModifierEvent event) {
+            if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().is(GenesisItems.GREAT_BOW.get())) {
+                int i = event.getPlayer().getTicksUsingItem();
+                // 모델과 똑같이 28.0F 기준으로 줌인 계산
+                float f = (float)i / 28.0F;
+                if (f > 1.0F) {
+                    f = 1.0F;
+                } else {
+                    f *= f;
+                }
+
+                // 줌 세기 조절 (0.15F ~ 0.2F 사이에서 원하는 만큼 조절하세요)
+                event.setNewFovModifier(event.getFovModifier() * (1.0F - f * 0.15F));
+            }
+        }
     }
 }

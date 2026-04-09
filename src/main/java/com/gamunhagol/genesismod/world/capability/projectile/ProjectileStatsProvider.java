@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.capability;
+package com.gamunhagol.genesismod.world.capability.projectile;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import net.minecraft.core.Direction;

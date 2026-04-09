@@ -2,7 +2,8 @@ package com.gamunhagol.genesismod.events;
 
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.capability.GenesisGreatBowCapability;
+import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
+import com.gamunhagol.genesismod.world.capability.item.GenesisGreatBowCapability;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -11,10 +12,6 @@ import net.minecraftforge.fml.common.Mod;
 import yesman.epicfight.api.forgeevent.EntityPatchRegistryEvent;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
-import yesman.epicfight.world.capabilities.item.RangedWeaponCapability;
-import yesman.epicfight.world.capabilities.projectile.ArrowPatch;
-import yesman.epicfight.world.damagesource.EpicFightDamageSource;
-import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
 import java.util.UUID;
@@ -38,19 +35,9 @@ public class GenesisEpicFightEvents {
         );
     }
 
-    public static class GenesisArrowPatch extends ArrowPatch {
-        @Override
-        public EpicFightDamageSource createEpicFightDamageSource() {
-            // 부모 클래스(ArrowPatch)의 기본 설정을 가져온 뒤, StunType만 덮어씌웁니다.
-            // .setStunType(StunType.LONG) : 한참 동안 헉헉거리는 경직
-            // .setStunType(StunType.KNOCKDOWN) : 뒤로 자빠지는 경직 (파라솔 대궁 느낌)
-            return super.createEpicFightDamageSource().setStunType(StunType.KNOCKDOWN);
-        }
-    }
 
     @SubscribeEvent
     public static void onEntityPatchRegistry(EntityPatchRegistryEvent event) {
-        // 이제 일반 ArrowPatch 대신, 우리가 만든 GenesisArrowPatch를 등록합니다.
-        event.getTypeEntry().put(GenesisEntities.LARGE_ARROW.get(), (entity) -> () -> new GenesisArrowPatch());
+        event.getTypeEntry().put(GenesisEntities.LARGE_ARROW.get(), (entity) -> GenesisArrowPatch::new);
     }
 }

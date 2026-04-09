@@ -8,6 +8,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 
 import java.util.function.Predicate;
@@ -82,10 +83,17 @@ public class GreatBowItem extends BowItem {
         return 15;
     }
 
-    // 에픽 파이트 전용 속성(경직치, 스테미나)을 추가하는 메서드
     private void addDefaultAttributeModifiers() {
-        // 여기에 나중에 에픽 파이트의 Attribute(IMPACT 등)를 추가하는 코드를 넣을 겁니다.
-        // 지금은 개념만 잡으시고, 실제 등록은 에픽 파이트의 'ItemCapability' 시스템을 따르는 게 좋습니다.
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack pStack) {
+        return UseAnim.BOW; // 에픽 파이트 카메라 연출(Snap)을 활성화하는 핵심
+    }
+
+    @Override
+    public int getUseDuration(ItemStack pStack) {
+        return 72000; // 바닐라 활과 동일한 충분한 사용 시간 설정
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
-import com.gamunhagol.genesismod.world.capability.ProjectileStatsProvider;
+import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.item.GreatBowItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.resources.ResourceLocation;
