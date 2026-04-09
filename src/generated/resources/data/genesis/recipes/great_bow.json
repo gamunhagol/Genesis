@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "minecraft:bow"
+    },
+    "l": {
+      "item": "minecraft:string"
+    },
+    "w": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    " #l",
+    "wal",
+    " #l"
+  ],
+  "result": {
+    "item": "genesis:great_bow"
+  },
+  "show_notification": true
+}

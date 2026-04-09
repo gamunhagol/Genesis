@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "minecraft:iron_nugget"
+    },
+    "b": {
+      "item": "minecraft:feather"
+    },
+    "w": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " aw",
+    "b#a",
+    "#b "
+  ],
+  "result": {
+    "item": "genesis:large_arrow"
+  },
+  "show_notification": true
+}
