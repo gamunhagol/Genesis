@@ -7,6 +7,7 @@ import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
@@ -217,6 +218,31 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         compress2x2(pWriter, GenesisItems.WIND_STONE.get(), GenesisBlocks.WIND_STONE_BLOCK.get());
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.GREEN_AMBER.get(), RecipeCategory.MISC, GenesisBlocks.GREEN_AMBER_BLOCK.get());
+
+        //tool&weapon
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.GREAT_BOW.get())
+                .pattern(" #l")
+                .pattern("wal")
+                .pattern(" #l")
+                .define('a', Items.BOW)
+                .define('#', Items.STICK)
+                .define('w', ItemTags.LOGS)
+                .define('l', Items.STRING)
+                .unlockedBy(getHasName(Items.BOW), has(Items.BOW))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.LARGE_ARROW.get())
+                .pattern(" aw")
+                .pattern("b#a")
+                .pattern("#b ")
+                .define('a', Items.IRON_NUGGET)
+                .define('#', Items.STICK)
+                .define('w', Items.IRON_INGOT)
+                .define('b', Items.FEATHER)
+                .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
+                .save(pWriter);
+
 
         //misc
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_HELMET, GenesisItems.PADDED_CHAIN_HELMET.get(), " a ", "aba");
