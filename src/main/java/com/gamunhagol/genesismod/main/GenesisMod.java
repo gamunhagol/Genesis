@@ -7,6 +7,7 @@ import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.skill.GenesisSkillDataKeys;
+import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
@@ -56,8 +57,11 @@ public class GenesisMod {
         GenesisFluids.FLUIDS.register(modEventBus);
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
         GenesisFeatures.FEATURES.register(modEventBus);
+        GenesisSkillDataKeys.DATA_KEYS.register(modEventBus);
+        GenesisSkills.SKILLS.register(modEventBus);
+
         GenesisNetwork.register();
-        GenesisSkillDataKeys.DATA_KEYS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
 
 
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);

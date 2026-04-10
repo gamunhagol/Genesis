@@ -2,7 +2,6 @@ package com.gamunhagol.genesismod.events;
 
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.skill.GenesisSkill;
 import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
 import com.gamunhagol.genesismod.world.capability.item.GenesisGreatBowCapability;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
