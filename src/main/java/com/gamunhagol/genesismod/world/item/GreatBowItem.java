@@ -15,7 +15,6 @@ import java.util.function.Predicate;
 
 
 public class GreatBowItem extends BowItem {
-    // [추가] 대형 활 전용 차징 시간 (22틱 = 약 1.1초)
     public static final int MAX_CHARGE_TIME = 28;
 
     public GreatBowItem(Properties pProperties) {
