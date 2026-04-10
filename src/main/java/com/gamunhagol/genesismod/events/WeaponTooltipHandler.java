@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper; // Helper 임포트 추가
-import com.gamunhagol.genesismod.world.capability.WeaponStatsProvider;
+import com.gamunhagol.genesismod.world.capability.weapon.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import com.gamunhagol.genesismod.world.weapon.WeaponStatData;
 import com.mojang.blaze3d.platform.InputConstants;

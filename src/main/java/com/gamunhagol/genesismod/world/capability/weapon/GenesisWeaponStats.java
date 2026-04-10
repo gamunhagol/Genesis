@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.capability;
+package com.gamunhagol.genesismod.world.capability.weapon;
 
 public class GenesisWeaponStats implements IGenesisWeaponStats {
     private float holyDamage;

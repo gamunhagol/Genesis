@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.events;
 
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.skill.GenesisSkill;
 import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
 import com.gamunhagol.genesismod.world.capability.item.GenesisGreatBowCapability;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
@@ -26,7 +27,6 @@ public class GenesisEpicFightEvents {
         event.getTypeEntry().put(GenesisMod.prefix("great_bow_preset"), (item) ->
                 CapabilityItem.builder()
                         .category(CapabilityItem.WeaponCategories.RANGED)
-                        // 새로 만든 전용 Capability 클래스로 교체
                         .constructor(GenesisGreatBowCapability::new)
                         .addStyleAttibutes(CapabilityItem.Styles.RANGED, Pair.of(
                                 EpicFightAttributes.IMPACT.get(),

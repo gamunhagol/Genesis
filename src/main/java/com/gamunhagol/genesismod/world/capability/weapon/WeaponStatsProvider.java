@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.capability;
+package com.gamunhagol.genesismod.world.capability.weapon;
 
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;

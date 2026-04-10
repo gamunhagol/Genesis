@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.capability.WeaponStatsProvider;
+import com.gamunhagol.genesismod.world.capability.weapon.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;

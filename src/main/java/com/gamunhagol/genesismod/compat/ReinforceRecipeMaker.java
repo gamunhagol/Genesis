@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.compat;
 
 import com.gamunhagol.genesismod.content.ReinforceManager;
-import com.gamunhagol.genesismod.world.capability.WeaponStatsProvider;
+import com.gamunhagol.genesismod.world.capability.weapon.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import com.gamunhagol.genesismod.world.weapon.WeaponStatData;
 import mezz.jei.api.recipe.vanilla.IVanillaRecipeFactory;

@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.stats;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
-import com.gamunhagol.genesismod.world.capability.WeaponStatsProvider;
+import com.gamunhagol.genesismod.world.capability.weapon.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import com.gamunhagol.genesismod.world.weapon.WeaponStatData;
 import net.minecraft.world.entity.ai.attributes.Attribute;
