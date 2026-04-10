@@ -58,7 +58,6 @@ public class GenesisMod {
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
         GenesisFeatures.FEATURES.register(modEventBus);
         GenesisSkillDataKeys.DATA_KEYS.register(modEventBus);
-        GenesisSkills.SKILLS.register(modEventBus);
 
         GenesisNetwork.register();
 
@@ -78,12 +77,16 @@ public class GenesisMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
-                    new AbstractMap.SimpleEntry<>(
-                            GenesisItems.GREAT_BOW.get(),
-                            GenesisMod.prefix("great_bow_preset")
-                    )
-            );
+            GenesisSkills.SKILLS.register(FMLJavaModLoadingContext.get().getModEventBus());
+
+            if (GenesisItems.GREAT_BOW.isPresent()) {
+                InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
+                        new AbstractMap.SimpleEntry<>(
+                                GenesisItems.GREAT_BOW.get(),
+                                GenesisMod.prefix("great_bow_preset")
+                        )
+                );
+            }
         });
     }
 

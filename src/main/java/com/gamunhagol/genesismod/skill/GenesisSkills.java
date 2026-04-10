@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.skill;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.skill.weaponinnate.GreatBowSpecialShot;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -15,7 +16,8 @@ public class GenesisSkills {
 
     public static final RegistryObject<Skill> GREAT_BOW_SPECIAL_SHOT = SKILLS.register("great_bow_special_shot",
             () -> new GreatBowSpecialShot(
-                    new SkillBuilder<GreatBowSpecialShot>() // 여기서 제네릭 타입을 명시!
+                    new SkillBuilder<GreatBowSpecialShot>()
+                            .setRegistryName(GenesisMod.prefix("great_bow_special_shot"))
                             .setCategory(SkillCategories.WEAPON_INNATE)
                             .setResource(Skill.Resource.STAMINA)
             ));
