@@ -75,8 +75,7 @@ public class GenesisClientEvents {
         public static void onComputeFovModifier(ComputeFovModifierEvent event) {
             if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().is(GenesisItems.GREAT_BOW.get())) {
                 int i = event.getPlayer().getTicksUsingItem();
-                // 모델과 똑같이 28.0F 기준으로 줌인 계산
-                float f = (float)i / 28.0F;
+                float f = (float)i / 38.0F;
                 if (f > 1.0F) {
                     f = 1.0F;
                 } else {

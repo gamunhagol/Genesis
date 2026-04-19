@@ -16,7 +16,7 @@ import net.minecraft.world.level.Level;
 import java.util.function.Predicate;
 
 public class GreatBowItem extends BowItem {
-    public static final int MAX_CHARGE_TIME = 28;
+    public static final int MAX_CHARGE_TIME = 38;
 
     public GreatBowItem(Properties pProperties) {
         super(pProperties);
