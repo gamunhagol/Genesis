@@ -3,6 +3,8 @@ package com.gamunhagol.genesismod.world.item;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -13,33 +15,47 @@ import net.minecraft.world.level.Level;
 
 import java.util.function.Predicate;
 
-
 public class GreatBowItem extends BowItem {
     public static final int MAX_CHARGE_TIME = 28;
 
     public GreatBowItem(Properties pProperties) {
         super(pProperties);
-
-        this.addDefaultAttributeModifiers();
     }
 
-    // [추가] 차징 위력 계산 메서드
-    public static float getPowerForTime(int pCharge) {
-        float f = (float)pCharge / (float)MAX_CHARGE_TIME;
-        f = (f * f + f * 2.0F) / 3.0F;
-        return Math.min(f, 1.0F);
+    // 활을 당길 수 있는지 결정하는 로직
+    @Override
+    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
+
+        boolean hasAmmo = !pPlayer.getProjectile(itemstack).isEmpty();
+
+        if (pPlayer.getAbilities().instabuild || hasAmmo) {
+            pPlayer.startUsingItem(pHand);
+            return InteractionResultHolder.consume(itemstack);
+        } else {
+            return InteractionResultHolder.fail(itemstack);
+        }
     }
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
         if (pEntityLiving instanceof Player player) {
-            // [기존 코드 유지] 화살 체크 로직
+            boolean isCreative = player.getAbilities().instabuild;
+
+            // 인벤토리에서 화살을 찾음
             ItemStack projectileStack = player.getProjectile(pStack);
-            if (!(projectileStack.getItem() instanceof LargeArrowItem)) {
+
+            // [핵심 수정] 크리에이티브 모드인데 화살이 없거나, 엉뚱한 화살(일반 화살 등)이 잡힌 경우
+            // 커스텀 화살로 교체.
+            if (isCreative && (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem))) {
+                projectileStack = new ItemStack(getCustomDefaultArrow());
+            }
+
+            // 최종 확인: 여전히 화살이 없거나 커스텀 화살이 아니면 발사 중단 (서바이벌용)
+            if (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem)) {
                 return;
             }
 
-            // [추가] 여기서부터 커스텀 발사 로직 시작 (super 대신 실행됨)
             int i = this.getUseDuration(pStack) - pTimeLeft;
             float f = getPowerForTime(i);
 
@@ -48,20 +64,24 @@ public class GreatBowItem extends BowItem {
                     LargeArrowItem arrowitem = (LargeArrowItem)projectileStack.getItem();
                     AbstractArrow abstractarrow = arrowitem.createArrow(pLevel, projectileStack, player);
 
-                    // [추가] 탄속 강화: 4.0F (바닐라 3.0F보다 빠름)
                     abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 5.6F, 1.0F);
 
                     if (f == 1.0F) abstractarrow.setCritArrow(true);
 
-                    // 내구도 감소 및 소리
+                    // 크리에이티브 모드일 때 화살이 인벤토리에 다시 들어오지 않도록 설정
+                    if (isCreative) {
+                        abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                    }
+
                     pStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
                     pLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
                             SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-                    // 화살 소비 로직
-                    if (!player.getAbilities().instabuild) {
+                    if (!isCreative) {
                         projectileStack.shrink(1);
-                        if (projectileStack.isEmpty()) player.getInventory().removeItem(projectileStack);
+                        if (projectileStack.isEmpty()) {
+                            player.getInventory().removeItem(projectileStack);
+                        }
                     }
 
                     pLevel.addFreshEntity(abstractarrow);
@@ -69,34 +89,32 @@ public class GreatBowItem extends BowItem {
                 player.awardStat(Stats.ITEM_USED.get(this));
             }
         }
-        // super.releaseUsing(pStack, pLevel, pEntityLiving, pTimeLeft); // <- 이 줄은 커스텀 로직이 대신하므로 지우거나 주석 처리하면 됩니다.
     }
 
-    @Override
-    public boolean isValidRepairItem(ItemStack pToRepair, ItemStack pRepair) {
-        return super.isValidRepairItem(pToRepair, pRepair);
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return 15;
-    }
-
-    private void addDefaultAttributeModifiers() {
-    }
-
-    @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.BOW; // 에픽 파이트 카메라 연출(Snap)을 활성화하는 핵심
-    }
-
-    @Override
-    public int getUseDuration(ItemStack pStack) {
-        return 72000; // 바닐라 활과 동일한 충분한 사용 시간 설정
+    public static float getPowerForTime(int pCharge) {
+        float f = (float)pCharge / (float)MAX_CHARGE_TIME;
+        f = (f * f + f * 2.0F) / 3.0F;
+        return Math.min(f, 1.0F);
     }
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
+        // 이 활은 오직 LargeArrowItem만 쏠 수 있음
         return stack -> stack.getItem() instanceof LargeArrowItem;
+    }
+
+    private LargeArrowItem getCustomDefaultArrow() {
+        // GenesisItems에서 등록한 화살 아이템을 반환
+        return (LargeArrowItem) GenesisItems.LARGE_ARROW.get();
+    }
+
+    @Override
+    public UseAnim getUseAnimation(ItemStack pStack) {
+        return UseAnim.BOW;
+    }
+
+    @Override
+    public int getUseDuration(ItemStack pStack) {
+        return 72000;
     }
 }
