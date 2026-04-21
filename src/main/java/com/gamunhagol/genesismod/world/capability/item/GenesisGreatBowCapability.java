@@ -15,6 +15,8 @@ public class GenesisGreatBowCapability extends BowCapability {
         this.zoomInType = CapabilityItem.ZoomInType.USE_TICK;
     }
 
+
+
     @Override
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
         // getTicksUsingItem이 아니라 isUsingItem만으로 체크해서
