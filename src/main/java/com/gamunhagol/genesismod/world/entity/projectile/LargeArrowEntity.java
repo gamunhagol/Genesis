@@ -107,7 +107,7 @@ public class LargeArrowEntity extends AbstractArrow {
             // [수정 3] 직접 피해 로직 (필요한 경우에만 추가)
             // LevelUtil의 피해량이 부족하거나 커스텀 경직을 주고 싶을 때만 아래를 사용하세요.
             List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class,
-                    new AABB(slamPos.add(-4, -1, -4), slamPos.add(4, 2, 4)));
+                    new AABB(slamPos.add(-3, -1, -3), slamPos.add(3, 2, 3)));
 
             EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner);
             shockwaveSource.setStunType(StunType.KNOCKDOWN);
