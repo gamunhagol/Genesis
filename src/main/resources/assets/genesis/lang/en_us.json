@@ -295,6 +295,7 @@
 
 
 
+
   "tooltip.genesis.spirit_compass.has_needle": "Needle: Installed",
   "tooltip.genesis.spirit_compass.no_needle": "Needle: Missing",
   "tooltip.genesis.spirit_compass.type": "Type: %s",
@@ -374,6 +375,9 @@
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
 
   "tooltip.genesis.fabricated_star.info": "Arranged in sequence to weave the world.",
+
+
+  "tooltip.genesis.great_bow.info": "By holding the bowstring longer, you can fire with greater force.",
 
 
 

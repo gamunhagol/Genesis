@@ -297,6 +297,8 @@
 
 
 
+
+
   "tooltip.genesis.spirit_compass.has_needle": "바늘: 있음",
   "tooltip.genesis.spirit_compass.no_needle": "바늘: 없음",
   "tooltip.genesis.spirit_compass.type": "속성: %s",
@@ -376,6 +378,9 @@
   "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
 
   "tooltip.genesis.fabricated_star.info": "순서대로 세워져 세상이 되었다",
+
+
+  "tooltip.genesis.great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사할 수 있다.",
 
 
 
