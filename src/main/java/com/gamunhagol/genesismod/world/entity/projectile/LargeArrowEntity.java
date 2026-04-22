@@ -1,5 +1,8 @@
 package com.gamunhagol.genesismod.world.entity.projectile;
 
+import com.gamunhagol.genesismod.api.DamageSnapshot;
+import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
+import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.core.particles.ParticleOptions;
@@ -23,6 +26,7 @@ import net.minecraft.world.phys.Vec3;
 import yesman.epicfight.api.utils.LevelUtil;
 import yesman.epicfight.gameasset.EpicFightSounds;
 import yesman.epicfight.particle.EpicFightParticles;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.world.damagesource.StunType;
@@ -87,6 +91,7 @@ public class LargeArrowEntity extends AbstractArrow {
     public boolean isEmpowered() {
         return this.entityData.get(EMPOWERED);
     }
+
     @Override
     protected void onHit(HitResult result) {
         super.onHit(result);
@@ -94,30 +99,41 @@ public class LargeArrowEntity extends AbstractArrow {
         if (!this.level().isClientSide && this.isEmpowered()) {
             Vec3 hitPos = result.getLocation();
             LivingEntity owner = (LivingEntity) this.getOwner();
-
-            // [수정 1] 높이 판정 보정
-            // hitPos는 블록 표면이라 공중 판정이 날 수 있습니다.
-            // 0.2 정도 아래를 타격점으로 잡아 블록 내부를 긁도록 수정했습니다.
             Vec3 slamPos = new Vec3(hitPos.x, hitPos.y - 0.2, hitPos.z);
 
-            // [수정 2] 지면 파괴 로직 호출 (반지름 5.0으로 상향)
-            // LevelUtil 내부에서 이미 광역 피해(true)를 입히므로 코드가 간결해집니다.
-            LevelUtil.circleSlamFracture(owner, this.level(), slamPos, 5.0D, false, false, true);
+            this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
+                DamageSnapshot snapshot = cap.getSnapshot();
 
-            // [수정 3] 직접 피해 로직 (필요한 경우에만 추가)
-            // LevelUtil의 피해량이 부족하거나 커스텀 경직을 주고 싶을 때만 아래를 사용하세요.
-            List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class,
-                    new AABB(slamPos.add(-3, -1, -3), slamPos.add(3, 2, 3)));
+                float shockwaveMultiplier = 0.33F;
+                float basePhysical = snapshot.physical() > 0 ? snapshot.physical() : 12.0F;
+                float finalDamage = basePhysical * shockwaveMultiplier;
 
-            EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner);
-            shockwaveSource.setStunType(StunType.KNOCKDOWN);
-            shockwaveSource.setBaseImpact(15.0F);
-
-            for (LivingEntity target : targets) {
-                if (target != owner) {
-                    target.hurt(shockwaveSource, 12.0F); // 12.0의 충격파 피해
+                float finalImpact = 15.0F;
+                var entityPatch = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY).resolve();
+                if (entityPatch.isPresent() && entityPatch.get() instanceof GenesisArrowPatch arrowPatch) {
+                    finalImpact = arrowPatch.getImpact();
                 }
-            }
+
+                EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner);
+                shockwaveSource.setStunType(StunType.KNOCKDOWN);
+                shockwaveSource.setBaseImpact(finalImpact);
+
+                // 광역 범위 탐색
+                List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class,
+                        new AABB(slamPos.add(-4, -1, -4), slamPos.add(4, 2, 4)));
+
+                for (LivingEntity target : targets) {
+                    if (target != owner) {
+                        // 직격 당한 대상에게 너무 과한 데미지가 들어가는 것이 싫다면
+                        // 여기서 '화살에 맞은 대상인지' 체크하는 로직을 넣을 수도 있습니다.
+                        target.hurt(shockwaveSource, finalDamage);
+                    }
+                }
+
+                // 시각 효과
+                LevelUtil.circleSlamFracture(owner, this.level(), slamPos, 5.0D, false, false, false);
+                this.setEmpowered(false);
+            });
         }
     }
 
