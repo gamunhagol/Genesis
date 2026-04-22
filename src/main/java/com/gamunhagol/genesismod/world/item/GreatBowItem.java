@@ -15,6 +15,8 @@ import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import yesman.epicfight.gameasset.EpicFightSounds;
@@ -142,7 +144,7 @@ public class GreatBowItem extends BowItem {
 
             if (chargeTicks == 100) {
                 EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(patch -> {
-                    float staminaCost = 15.0F; // 소모량
+                    float staminaCost = 20.0F; // 소모량
                     float currentStamina = patch.getStamina(); // 현재 스태미나 가져오기
 
                     if (currentStamina >= staminaCost) {
@@ -160,6 +162,15 @@ public class GreatBowItem extends BowItem {
                 });
             }
         }
+    }
+
+    @Override
+    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
+        // 무한(Infinity) 인챈트라면 적용 불가(false) 반환
+        if (enchantment == Enchantments.INFINITY_ARROWS) {
+            return false;
+        }
+        return super.canApplyAtEnchantingTable(stack, enchantment);
     }
 
     @Override
@@ -182,4 +193,5 @@ public class GreatBowItem extends BowItem {
     public int getUseDuration(ItemStack pStack) {
         return 72000;
     }
+
 }
