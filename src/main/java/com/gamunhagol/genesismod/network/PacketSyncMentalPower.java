@@ -1,10 +1,7 @@
 package com.gamunhagol.genesismod.network;
 
 import com.gamunhagol.genesismod.network.client.ClientPayloadHandler;
-import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
