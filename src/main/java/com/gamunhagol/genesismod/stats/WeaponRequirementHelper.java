@@ -41,27 +41,33 @@ public class WeaponRequirementHelper {
 
     /**
      * 물리 대미지 계산 로직
+     * vanillaBonus(인챈트 등)는 강화나 스탯 보정에 영향을 받지 않는 고정 추가 데미지로 처리됩니다.
      */
-    private static float calculatePhysical(Player player, ItemStack stack, float vanillaDamage) {
+    private static float calculatePhysical(Player player, ItemStack stack, float vanillaBonus) {
         WeaponStatData data = WeaponDataManager.get(stack.getItem());
-        int reinforceLevel = stack.getCapability(WeaponStatsProvider.WEAPON_STATS).map(s -> s.getReinforceLevel()).orElse(0);
+        int reinforceLevel = stack.getCapability(WeaponStatsProvider.WEAPON_STATS)
+                .map(s -> s.getReinforceLevel()).orElse(0);
 
-        float base = data.basePhysical() > 0 ? data.basePhysical() : vanillaDamage;
-        float reinforcedBase = base * (1.0f + (reinforceLevel * data.damageGrowth()));
-        float bonus = 0.0f;
+        //  순수 무기 기본 데미지만 강화 수치의 영향을 받음
+        float baseWeaponDamage = data.basePhysical();
+        float reinforcedBase = baseWeaponDamage * (1.0f + (reinforceLevel * data.damageGrowth()));
 
-        // 보정치(Scaling) 계산
+        float scalingBonus = 0.0f;
+
+        //  보정치(Scaling) 계산
+        // 강화된 기본 데미지(reinforcedBase)를 기준으로 스탯 효율을 계산합니다.
         Map<StatType, Float> currentScaling = getCurrentScaling(data, reinforceLevel);
         for (Map.Entry<StatType, Float> entry : currentScaling.entrySet()) {
             StatType statType = entry.getKey();
-            // 물리 대미지는 근력, 기량, 신비 스탯의 영향을 받습니다.
+            // 물리 대미지 보정 스탯: 근력, 기량, 신비
             if (statType == StatType.STRENGTH || statType == StatType.DEXTERITY || statType == StatType.ARCANE) {
                 int playerStat = getPlayerStat(player, statType);
-                bonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(playerStat);
+                scalingBonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(playerStat);
             }
         }
 
-        return reinforcedBase + bonus;
+        //  최종 합산: (강화된 데미지 + 스탯 보정 데미지) + 고정 인챈트 데미지
+        return reinforcedBase + scalingBonus + vanillaBonus;
     }
 
     /**

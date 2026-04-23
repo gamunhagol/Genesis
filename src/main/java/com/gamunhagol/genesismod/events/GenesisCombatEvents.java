@@ -12,6 +12,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -19,6 +20,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TridentItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -48,14 +50,27 @@ public class GenesisCombatEvents {
                 snapshot = cap.getSnapshot();
             }
         }
-        // 2. 플레이어 근접 공격 확인
+        // 플레이어 근접 공격 확인
         else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
                 if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
                     return;
                 }
-                snapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, event.getAmount());
+
+                // 기본 인챈트 보너스 (날카로움 등)
+                float enchantBonus = EnchantmentHelper.getDamageBonus(weapon, target.getMobType());
+
+                // 삼지창 전용: 찌르기(Impaling) 추가
+                if (weapon.getItem() instanceof TridentItem) {
+                    int impalingLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.IMPALING, weapon);
+                    // 자바 에디션 기준: 수중 생물(WATER)에게만 추가 대미지
+                    if (impalingLevel > 0 && target.getMobType() == MobType.WATER) {
+                        enchantBonus += (impalingLevel * 2.5f);
+                    }
+                }
+
+                snapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
             }
         }
 

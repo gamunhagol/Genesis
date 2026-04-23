@@ -5,7 +5,10 @@ import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
@@ -19,6 +22,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.BaseFireBlock;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -32,6 +36,8 @@ import yesman.epicfight.world.damagesource.EpicFightDamageSources;
 import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.List;
+
+import static net.minecraft.core.BlockPos.betweenClosed;
 
 public class LargeArrowEntity extends AbstractArrow {
     private static final EntityDataAccessor<Boolean> EMPOWERED = SynchedEntityData.defineId(LargeArrowEntity.class, EntityDataSerializers.BOOLEAN);
@@ -101,6 +107,8 @@ public class LargeArrowEntity extends AbstractArrow {
             LivingEntity owner = (LivingEntity) this.getOwner();
             Vec3 slamPos = new Vec3(hitPos.x, hitPos.y - 0.2, hitPos.z);
 
+            boolean isFlashing = this.isOnFire();
+
             this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
                 DamageSnapshot snapshot = cap.getSnapshot();
 
@@ -124,10 +132,32 @@ public class LargeArrowEntity extends AbstractArrow {
 
                 for (LivingEntity target : targets) {
                     if (target != owner) {
-                        // 직격 당한 대상에게 너무 과한 데미지가 들어가는 것이 싫다면
-                        // 여기서 '화살에 맞은 대상인지' 체크하는 로직을 넣을 수도 있습니다.
                         target.hurt(shockwaveSource, finalDamage);
+
+                        //  화염 인챈트 상태라면 주변 적들에게 불을 붙임
+                        if (isFlashing) {
+                            target.setSecondsOnFire(5);
+                        }
                     }
+                }
+
+                if (isFlashing) {
+                    BlockPos blockpos = BlockPos.containing(slamPos);
+                    for (BlockPos nearbyPos : betweenClosed(blockpos.offset(-2, 0, -2), blockpos.offset(2, 1, 2))) {
+                        if (this.level().random.nextFloat() < 0.3F) {
+                            if (this.level().isEmptyBlock(nearbyPos) && BaseFireBlock.canBePlacedAt(this.level(), nearbyPos, Direction.UP)) {
+                                this.level().setBlockAndUpdate(nearbyPos, BaseFireBlock.getState(this.level(), nearbyPos));
+                            }
+                        }
+                    }
+                }
+
+                // 화염 시각 효과
+                if (isFlashing && this.level() instanceof ServerLevel serverLevel) {
+                    serverLevel.sendParticles(ParticleTypes.FLAME,
+                            slamPos.x, slamPos.y, slamPos.z, 20, 0.5, 0.5, 0.5, 0.1);
+                    serverLevel.playSound(null, slamPos.x, slamPos.y, slamPos.z,
+                            SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
 
                 // 시각 효과

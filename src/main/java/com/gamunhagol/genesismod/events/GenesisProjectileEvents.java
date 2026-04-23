@@ -15,6 +15,7 @@ import net.minecraft.world.item.BowItem;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TridentItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -42,46 +43,56 @@ public class GenesisProjectileEvents {
 
         if (event.getEntity() instanceof Projectile projectile && projectile.getOwner() instanceof Player player) {
             ItemStack weaponStack = ItemStack.EMPTY;
+            float enchantBonus = 0.0f;
 
-            //  삼지창 처리 (리플렉션으로 protected 우회)
+            //  무기 스택 및 인챈트 보너스 판별
             if (projectile instanceof ThrownTrident trident) {
                 try {
                     weaponStack = (ItemStack) GET_PICKUP_ITEM.invoke(trident);
                 } catch (Exception e) {
-                    // 리플렉션 실패 시 플레이어의 손에서 삼지창을 찾는 폴백(Fallback) 로직
+                    // 리플렉션 실패 시 손에 든 무기로 폴백
                     if (player.getMainHandItem().getItem() instanceof TridentItem) weaponStack = player.getMainHandItem();
                     else if (player.getOffhandItem().getItem() instanceof TridentItem) weaponStack = player.getOffhandItem();
                 }
-            }
-            //  활/석궁 처리 (차징 중인 아이템 혹은 손에 들린 무기 확인)
-            else {
-                ItemStack useItem = player.getUseItem();
-                if (isBowOrCrossbow(useItem)) {
-                    weaponStack = useItem;
-                } else if (isBowOrCrossbow(player.getMainHandItem())) {
-                    weaponStack = player.getMainHandItem();
-                } else if (isBowOrCrossbow(player.getOffhandItem())) {
-                    weaponStack = player.getOffhandItem();
+
+                // 삼지창은 발사 시점에 누구를 맞출지 모르므로,
+                // '찌르기'를 기본 보너스에 넣을지 말지 결정해야 합니다.
+                // 보통은 '힘(Power)'처럼 항상 적용되게 하려면 아래 코드를 사용합니다.
+                int impalingLevel = EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.IMPALING, weaponStack);
+                if (impalingLevel > 0) {
+                    enchantBonus = impalingLevel * 2.5f;
                 }
             }
+            else if (isBowOrCrossbow(player.getUseItem())) {
+                weaponStack = player.getUseItem();
+            }
+            else if (isBowOrCrossbow(player.getMainHandItem())) {
+                weaponStack = player.getMainHandItem();
+            }
+            else if (isBowOrCrossbow(player.getOffhandItem())) {
+                weaponStack = player.getOffhandItem();
+            }
 
-            // 무기 데이터가 있고, 우리 모드 관리 대상인 경우
+            //  공통 계산 로직 (활, 삼지창 모두 여기서 처리)
             if (!weaponStack.isEmpty() && WeaponDataManager.hasData(weaponStack.getItem())) {
 
-                // [대미지 배율 계산]
-                // 마인크래프트 화살의 최대 속도는 약 3.0이며, 이 때를 100% 대미지로 봅니다.
+                // 활이라면 '힘' 인챈트 체크 (위에서 삼지창은 찌르기를 체크했으므로)
+                if (weaponStack.getItem() instanceof BowItem) {
+                    int powerLevel = EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.POWER_ARROWS, weaponStack);
+                    if (powerLevel > 0) enchantBonus = 0.5f * powerLevel + 0.5f;
+                }
+
+                // 스냅샷 생성
+                DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weaponStack, enchantBonus);
+
+                // 속도 배율 계산
                 double velocity = projectile.getDeltaMovement().length();
                 float chargeMultiplier = (float) (velocity / 3.0);
 
-                //  무기 종류에 따른 배율 제한(Cap) 설정
-                // 대궁은 탄속이 5.5이므로 약 1.83배 이상이 나오도록 제한을 2.5배까지 풀어줍니다.
+                // 대궁 배율 캡 적용
                 float maxMultiplier = (weaponStack.getItem() instanceof GreatBowItem) ? 2.5f : 1.2f;
                 chargeMultiplier = Math.min(Math.max(chargeMultiplier, 0.1f), maxMultiplier);
 
-                // 기초 스탯 대미지 계산 (기본 바닐라뎀 인자는 0으로 전달하여 JSON 스탯 중심 계산)
-                DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weaponStack, 0);
-
-                // 모든 속성에 차징 배율 적용
                 final float finalMul = chargeMultiplier;
                 DamageSnapshot scaledSnapshot = new DamageSnapshot(
                         rawSnapshot.physical() * finalMul,

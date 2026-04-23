@@ -106,6 +106,12 @@ public class GreatBowItem extends BowItem {
 
                     abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 5.6F, 1.0F);
 
+                    int flameLevel = net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, pStack);
+                    if (flameLevel > 0) {
+                        // 화살 엔티티에 불을 붙입니다 (기본 100틱 = 5초)
+                        abstractarrow.setSecondsOnFire(100);
+                    }
+
                     if (f == 1.0F) abstractarrow.setCritArrow(true);
 
                     // 크리에이티브 모드일 때 화살이 인벤토리에 다시 들어오지 않도록 설정
