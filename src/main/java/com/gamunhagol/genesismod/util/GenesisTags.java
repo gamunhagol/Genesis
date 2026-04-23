@@ -1,10 +1,12 @@
 package com.gamunhagol.genesismod.util;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
@@ -21,5 +23,10 @@ public class GenesisTags {
             return ItemTags.create(new ResourceLocation(GenesisMod.MODID, name));
 
         }
+    }
+
+    public static class EntityTypes {
+        public static final TagKey<EntityType<?>> FACTION_MOBS =
+                TagKey.create(Registries.ENTITY_TYPE, new ResourceLocation(GenesisMod.MODID, "faction_mobs"));
     }
 }

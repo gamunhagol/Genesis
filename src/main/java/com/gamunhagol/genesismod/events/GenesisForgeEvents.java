@@ -5,7 +5,9 @@ import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.entity.mob.AbstractWanderer;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import com.gamunhagol.genesismod.world.item.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
@@ -13,7 +15,6 @@ import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -31,8 +32,6 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -50,7 +49,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import static net.minecraft.world.item.ItemUtils.createFilledResult;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisForgeEvents {
@@ -66,13 +64,13 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {
-        Entity entity = event.getEntity();
-
-        // 소환된 엔티티가 일반 몬스터(Monster)이고, CollectorGuard가 아닌 경우
-        if (entity instanceof Monster monster && !(entity instanceof CollectorGuard)) {
-            // targetSelector에 CollectorGuard를 공격 목표로 추가 (우선순위 2)
-            // 이를 통해 좀비, 스켈레톤 등이 CollectorGuard를 인식하면 먼저 달려듭니다.
-            monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(monster, CollectorGuard.class, true));
+        if (event.getEntity() instanceof Monster monster) {
+            // "세력 태그"를 가진 모든 살아있는 존재를 공격 목표로 추가
+            // 우선순위 2번으로 설정하여 플레이어/골렘과 동급의 타겟으로 인식
+            monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(
+                    monster, LivingEntity.class, 10, true, false,
+                    (target) -> target.getType().is(GenesisTags.EntityTypes.FACTION_MOBS)
+            ));
         }
     }
 

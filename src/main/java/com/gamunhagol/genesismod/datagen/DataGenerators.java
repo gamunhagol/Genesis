@@ -37,6 +37,9 @@ public class DataGenerators {
             event.getGenerator().addProvider(true, new ModGlobalLootModifiersProvider(packOutput));
         }
 
+
+        generator.addProvider(event.includeServer(), new GenesisEntityTagProvider(packOutput, lookupProvider, existingFileHelper));
+
         ModWorldGenProvider worldGenProvider = new ModWorldGenProvider(packOutput, lookupProvider);
         generator.addProvider(event.includeServer(), worldGenProvider);
 
@@ -44,7 +47,7 @@ public class DataGenerators {
 
         generator.addProvider(event.includeServer(), new ModDamageTypeTagProvider(
                 packOutput,
-                worldGenProvider.getRegistryProvider(), // 이걸 써야 합니다!
+                worldGenProvider.getRegistryProvider(),
                 existingFileHelper
         ));
     }
