@@ -8,13 +8,16 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.DifficultyInstance;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.CrossbowAttackMob;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.RangedAttackMob;
@@ -35,7 +38,10 @@ import java.util.function.Predicate;
 
 public abstract class AbstractWanderer extends PathfinderMob implements RangedAttackMob, CrossbowAttackMob {
 
-    // 1. 누락되었던 데이터 시리얼라이저 정의
+    protected static final int INVENTORY_SIZE = 8;
+    protected final SimpleContainer inventory = new SimpleContainer(INVENTORY_SIZE);
+
+    //  누락되었던 데이터 시리얼라이저 정의
     private static final EntityDataAccessor<Boolean> IS_CHARGING_CROSSBOW = SynchedEntityData.defineId(AbstractWanderer.class, EntityDataSerializers.BOOLEAN);
 
     protected AbstractWanderer(EntityType<? extends PathfinderMob> pEntityType, Level pLevel) {
@@ -62,7 +68,7 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
                 (target) -> !(target instanceof AbstractWanderer)));
     }
 
-    // 2. 데이터 동기화 설정
+    // . 데이터 동기화 설정
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
@@ -77,7 +83,8 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
         return this.entityData.get(IS_CHARGING_CROSSBOW);
     }
 
-    // 3. 무기에 맞는 발사체 정보 가져오기 (Monster 클래스의 로직 복제)
+
+    // 무기에 맞는 발사체 정보 가져오기 (Monster 클래스의 로직 복제)
     public ItemStack getProjectile(ItemStack pShootable) {
         if (pShootable.getItem() instanceof ProjectileWeaponItem) {
             Predicate<ItemStack> predicate = ((ProjectileWeaponItem)pShootable.getItem()).getSupportedHeldProjectiles();
@@ -128,6 +135,45 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
                 pEntity instanceof Player ||
                 pEntity instanceof Villager ||
                 pEntity instanceof IronGolem;
+    }
+
+    @Override
+    public void addAdditionalSaveData(CompoundTag pCompound) {
+        super.addAdditionalSaveData(pCompound);
+        // 인벤토리를 NBT 리스트로 변환하여 저장
+        pCompound.put("Inventory", this.inventory.createTag());
+    }
+
+    @Override
+    public void readAdditionalSaveData(CompoundTag pCompound) {
+        super.readAdditionalSaveData(pCompound);
+        // NBT에서 데이터를 읽어와 인벤토리에 채움
+        this.inventory.fromTag(pCompound.getList("Inventory", 10));
+    }
+
+    @Override
+    protected void dropCustomDeathLoot(DamageSource pSource, int pLooting, boolean pRecentlyHit) {
+        super.dropCustomDeathLoot(pSource, pLooting, pRecentlyHit);
+        // 인벤토리의 모든 아이템을 월드에 뿌림
+        Containers.dropContents(this.level(), this, this.inventory);
+    }
+
+    @Override
+    public boolean canPickUpLoot() {
+        return true; // 아이템을 주울 수 있게 설정
+    }
+
+    @Override
+    protected void pickUpItem(ItemEntity pItemEntity) {
+        ItemStack itemstack = pItemEntity.getItem();
+        // 인벤토리에 아이템 추가 시도
+        ItemStack remainingStack = this.inventory.addItem(itemstack);
+
+        if (remainingStack.isEmpty()) {
+            pItemEntity.discard(); // 모두 주웠으면 아이템 엔티티 제거
+        } else {
+            itemstack.setCount(remainingStack.getCount()); // 남은 만큼만 다시 설정
+        }
     }
 
     // --- 기본 설정 및 스폰 ---
