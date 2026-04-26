@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.compat;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.item.DivineGrailItem;
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;

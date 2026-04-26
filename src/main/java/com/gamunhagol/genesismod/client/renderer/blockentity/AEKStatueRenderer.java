@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.client.renderer.blockentity;
 
 import com.gamunhagol.genesismod.client.model.block.AEKStatueModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.block.AEKStatueBlock;
+import com.gamunhagol.genesismod.world.block.custom.AEKStatueBlock;
 import com.gamunhagol.genesismod.world.block.entity.AEKStatueBlockEntity;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -14,7 +14,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.state.BlockState;
 
 public class AEKStatueRenderer implements BlockEntityRenderer<AEKStatueBlockEntity> {
     private final AEKStatueModel model;

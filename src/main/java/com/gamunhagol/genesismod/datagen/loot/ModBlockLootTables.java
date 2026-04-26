@@ -1,13 +1,12 @@
 package com.gamunhagol.genesismod.datagen.loot;
 
-import com.gamunhagol.genesismod.world.block.AmethystApplePuddingBlock;
+import com.gamunhagol.genesismod.world.block.nature.AmethystApplePuddingBlock;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SnowLayerBlock;

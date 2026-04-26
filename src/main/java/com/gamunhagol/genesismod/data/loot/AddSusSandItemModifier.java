@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.data.loot;
 
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -56,7 +57,7 @@ public class AddSusSandItemModifier extends LootModifier {
                     ItemStack stack = new ItemStack(entry.item);
 
                     // 성배 아이템 특수 처리
-                    if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+                    if (stack.getItem() instanceof DivineGrailItem grail) {
                         grail.setUses(stack, 0);
                     }
 

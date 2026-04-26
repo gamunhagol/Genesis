@@ -1,9 +1,9 @@
 package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.item.DivineGrailItem;
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
+import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;

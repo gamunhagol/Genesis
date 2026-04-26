@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.compat;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
+import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;

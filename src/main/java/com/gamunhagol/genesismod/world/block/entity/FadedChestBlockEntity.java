@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.world.block.entity;
 
 import com.gamunhagol.genesismod.util.IFadedDungeonElement;
 import com.gamunhagol.genesismod.util.SimpleContainerWrapper;
-import com.gamunhagol.genesismod.world.block.FadedChestBlock;
+import com.gamunhagol.genesismod.world.block.custom.FadedChestBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

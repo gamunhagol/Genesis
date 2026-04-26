@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
+import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;

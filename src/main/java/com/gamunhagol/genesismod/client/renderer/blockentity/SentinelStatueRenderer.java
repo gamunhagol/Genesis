@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.client.renderer.blockentity;
 
 import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.block.StatueBlock;
+import com.gamunhagol.genesismod.world.block.custom.StatueBlock;
 import com.gamunhagol.genesismod.world.block.entity.StatueBlockEntity;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;

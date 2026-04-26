@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.world.capability.item;
 
-import com.gamunhagol.genesismod.world.item.GreatBowItem;
+import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.world.InteractionHand;
 import yesman.epicfight.api.animation.LivingMotion;
 import yesman.epicfight.api.animation.LivingMotions;

@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.data.loot;
 
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -54,7 +55,7 @@ public class AddChestItemModifier extends LootModifier {
             ItemStack stack = new ItemStack(item, count);
 
             // 성배병일 경우 빈 상태로 설정
-            if (stack.getItem() instanceof com.gamunhagol.genesismod.world.item.DivineGrailItem grail) {
+            if (stack.getItem() instanceof DivineGrailItem grail) {
                 grail.setUses(stack, 0);
             }
 

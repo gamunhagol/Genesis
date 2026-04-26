@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.data.recipe;
 
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.DivineGrailItem;
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.CraftingContainer;

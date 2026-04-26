@@ -1,8 +1,8 @@
 package com.gamunhagol.genesismod.data.recipe;
 
-import com.gamunhagol.genesismod.datagen.ModItemTagGenerator;
+import com.gamunhagol.genesismod.datagen.tags.ModItemTagGenerator;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.SpiritCompassItem;
+import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.resources.ResourceLocation;

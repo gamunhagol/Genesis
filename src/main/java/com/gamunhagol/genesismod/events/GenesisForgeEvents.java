@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.events.common.GenesisCombatEvents;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketSyncStats;
@@ -7,9 +8,7 @@ import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
-import com.gamunhagol.genesismod.world.entity.mob.AbstractWanderer;
-import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
-import com.gamunhagol.genesismod.world.item.DivineGrailItem;
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;

@@ -1,5 +1,12 @@
 package com.gamunhagol.genesismod.datagen;
 
+import com.gamunhagol.genesismod.datagen.models.ModBlockStateProvider;
+import com.gamunhagol.genesismod.datagen.models.ModItemModelProvider;
+import com.gamunhagol.genesismod.datagen.tags.*;
+import com.gamunhagol.genesismod.datagen.world.ModGlobalLootModifiersProvider;
+import com.gamunhagol.genesismod.datagen.world.ModLootTableProvider;
+import com.gamunhagol.genesismod.datagen.world.ModRecipeProvider;
+import com.gamunhagol.genesismod.datagen.world.ModWorldGenProvider;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.core.HolderLookup;
