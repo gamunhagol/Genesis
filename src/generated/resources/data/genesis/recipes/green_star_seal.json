@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "a": {
+      "item": "minecraft:emerald"
+    },
+    "b": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    " b ",
+    "bab",
+    " b "
+  ],
+  "result": {
+    "item": "genesis:green_star_seal"
+  },
+  "show_notification": true
+}

@@ -115,7 +115,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.ELVENIA_HOE);
         handheldItem(GenesisItems.ELVENIA_SHOVEL);
 
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_AXE);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_PICKAXE);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_HOE);
@@ -128,6 +128,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.PEWRIESE_SHOVEL);
 
         handheldItem(GenesisItems.HOLY_KNIGHT_SWORD);
+
+        handheldItem(GenesisItems.AMETHYST_WAND);
+
+        handheldItem(GenesisItems.GREEN_STAR_SEAL);
 
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);

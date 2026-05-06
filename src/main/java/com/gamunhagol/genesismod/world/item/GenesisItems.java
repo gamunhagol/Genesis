@@ -330,6 +330,11 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> LARGE_ARROW = ITEMS.register("large_arrow", () -> new LargeArrowItem(new Item.Properties()));
 
+    //wand&seal
+    public static final RegistryObject<Item> AMETHYST_WAND = ITEMS.register("amethyst_wand", () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> GREEN_STAR_SEAL = ITEMS.register("green_star_seal", () -> new Item(new Item.Properties()));
+
     //armor
 
     public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,

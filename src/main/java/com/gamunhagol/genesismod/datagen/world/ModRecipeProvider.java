@@ -243,6 +243,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.AMETHYST_WAND.get())
+                .pattern("  a")
+                .pattern(" # ")
+                .pattern("#  ")
+                .define('a', Items.AMETHYST_SHARD)
+                .define('#', Items.STICK)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.GREEN_STAR_SEAL.get())
+                .pattern(" b ")
+                .pattern("bab")
+                .pattern(" b ")
+                .define('a', Items.EMERALD)
+                .define('b', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(Items.EMERALD), has(Items.EMERALD))
+                .save(pWriter);
+
 
         //misc
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_HELMET, GenesisItems.PADDED_CHAIN_HELMET.get(), " a ", "aba");

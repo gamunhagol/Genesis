@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "  a",
+    " # ",
+    "#  "
+  ],
+  "result": {
+    "item": "genesis:amethyst_wand"
+  },
+  "show_notification": true
+}
