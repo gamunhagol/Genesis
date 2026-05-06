@@ -9,6 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.armortrim.TrimMaterial;
 import net.minecraft.world.item.armortrim.TrimMaterials;
 import net.minecraft.world.level.block.Block;
@@ -129,10 +130,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         handheldItem(GenesisItems.HOLY_KNIGHT_SWORD);
 
-        handheldItem(GenesisItems.AMETHYST_WAND);
-
-        handheldItem(GenesisItems.GREEN_STAR_SEAL);
-
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
         simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
@@ -204,7 +201,6 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .predicate(new ResourceLocation(GenesisMod.MODID, "fill_level"), 0.9f)
                 .model(new ModelFile.UncheckedModelFile(modLoc("item/divine_grail_full")))
                 .end();
-
 
 
         // ─────────────── 블록 아이템 ───────────────
