@@ -38,14 +38,14 @@
   "item.genesis.beast_remains": "야수의 유해",
 
 
-  "item.genesis.copper_coin": "동 동전",
+  "item.genesis.copper_coin": "구리 동전",
   "item.genesis.silver_coin": "은 동전",
   "item.genesis.gold_coin": "금 동전",
   "item.genesis.platinum_coin": "백금 동전 ",
 
 
 
-  "item.genesis.copper_coin_pile": "동 동전 더미",
+  "item.genesis.copper_coin_pile": "구리 동전 더미",
   "item.genesis.silver_coin_pile": "은 동전 더미",
   "item.genesis.gold_coin_pile": "금 동전 더미",
   "item.genesis.platinum_coin_pile": "백금 동전 더미",
@@ -214,7 +214,7 @@
   "block.genesis.amethyst_apple_block": "자수정 사과",
   "block.genesis.amethyst_apple_pudding_block": "자수정 사과 푸딩",
 
-  "block.genesis.copper_coin_pile": "동 동전 더미",
+  "block.genesis.copper_coin_pile": "구리 동전 더미",
   "block.genesis.silver_coin_pile": "은 동전 더미",
   "block.genesis.gold_coin_pile": "금 동전 더미",
   "block.genesis.platinum_coin_pile": "백금 동전 더미",
