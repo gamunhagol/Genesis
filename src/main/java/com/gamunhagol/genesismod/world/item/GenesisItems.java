@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.world.item.custom.*;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.tool.GenericScrollItem;
 import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import com.gamunhagol.genesismod.world.item.weapon.LargeArrowItem;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -331,9 +332,11 @@ public class GenesisItems {
     public static final RegistryObject<Item> LARGE_ARROW = ITEMS.register("large_arrow", () -> new LargeArrowItem(new Item.Properties()));
 
     //wand&seal
-    public static final RegistryObject<Item> AMETHYST_WAND = ITEMS.register("amethyst_wand", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_WAND = ITEMS.register("amethyst_wand",
+            () -> new CatalystItem(new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> GREEN_STAR_SEAL = ITEMS.register("green_star_seal", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> GREEN_STAR_SEAL = ITEMS.register("green_star_seal",
+            () -> new CatalystItem(new Item.Properties().stacksTo(1)));
 
     //armor
 
