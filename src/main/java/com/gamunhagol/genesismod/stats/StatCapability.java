@@ -1,7 +1,13 @@
 package com.gamunhagol.genesismod.stats;
 
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.StringTag;
+import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class StatCapability implements INBTSerializable<CompoundTag> {
     private int vigor = 10;
@@ -22,6 +28,8 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     private boolean isDirty = false;
 
+    private final Set<String> learnedSpells = new HashSet<>();
+
     public void tick() {
         if (this.mental < this.maxMental) {
             this.mental = Math.min(this.maxMental, this.mental + this.regenRate);
@@ -33,6 +41,20 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         // 레벨 1일 때 2.0, 레벨 99일 때 약 200.0
         this.maxMental = 2.0f + (this.mind - 1) * 2.02f;
         this.isDirty = true;
+    }
+
+    public void learnSpell(String spellId) {
+        if (learnedSpells.add(spellId)) { // 새로운 마법이면 true 반환
+            this.setDirty(true);
+        }
+    }
+
+    public boolean hasSpell(String spellId) {
+        return learnedSpells.contains(spellId);
+    }
+
+    public Set<String> getLearnedSpells() {
+        return learnedSpells;
     }
 
     // Getter & Setter
@@ -75,28 +97,59 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.intelligence = source.intelligence; this.faith = source.faith; this.arcane = source.arcane;
         this.mental = source.mental; this.maxMental = source.maxMental;
         this.isLevelUpUnlocked = source.isLevelUpUnlocked;
+        // 마법 목록 복사
+        this.learnedSpells.clear();
+        this.learnedSpells.addAll(source.learnedSpells);
+
         this.isDirty = true;
     }
 
     @Override
     public CompoundTag serializeNBT() {
         CompoundTag nbt = new CompoundTag();
+        nbt.putInt("vigor", vigor);
+        nbt.putInt("mind", mind);
+        nbt.putInt("endurance", endurance);
+        nbt.putInt("strength", strength);
+        nbt.putInt("dexterity", dexterity);
+        nbt.putInt("intelligence", intelligence);
+        nbt.putInt("faith", faith);
+        nbt.putInt("arcane", arcane);
+        nbt.putFloat("mental", mental);
+        nbt.putFloat("maxMental", maxMental);
         nbt.putBoolean("isLevelUpUnlocked", isLevelUpUnlocked);
-        nbt.putInt("vigor", vigor); nbt.putInt("mind", mind); nbt.putInt("endurance", endurance);
-        nbt.putInt("strength", strength); nbt.putInt("dexterity", dexterity);
-        nbt.putInt("intelligence", intelligence); nbt.putInt("faith", faith); nbt.putInt("arcane", arcane);
-        nbt.putFloat("mental", mental); nbt.putFloat("maxMental", maxMental);
-        nbt.putBoolean("isLevelUpUnlocked", isLevelUpUnlocked);
+
+        // 마법 목록을 ListTag로 변환하여 저장
+        ListTag spellsTag = new ListTag();
+        for (String id : learnedSpells) {
+            spellsTag.add(StringTag.valueOf(id));
+        }
+        nbt.put("learnedSpells", spellsTag);
+
         return nbt;
     }
 
     @Override
     public void deserializeNBT(CompoundTag nbt) {
-        vigor = nbt.getInt("vigor"); mind = nbt.getInt("mind"); endurance = nbt.getInt("endurance");
-        strength = nbt.getInt("strength"); dexterity = nbt.getInt("dexterity");
-        intelligence = nbt.getInt("intelligence"); faith = nbt.getInt("faith");
-        arcane = nbt.getInt("arcane"); mental = nbt.getFloat("mental");
+        vigor = nbt.getInt("vigor");
+        mind = nbt.getInt("mind");
+        endurance = nbt.getInt("endurance");
+        strength = nbt.getInt("strength");
+        dexterity = nbt.getInt("dexterity");
+        intelligence = nbt.getInt("intelligence");
+        faith = nbt.getInt("faith");
+        arcane = nbt.getInt("arcane");
+        mental = nbt.getFloat("mental");
         maxMental = nbt.getFloat("maxMental");
         isLevelUpUnlocked = nbt.getBoolean("isLevelUpUnlocked");
+
+        // 마법 목록 불러오기
+        learnedSpells.clear();
+        if (nbt.contains("learnedSpells", Tag.TAG_LIST)) {
+            ListTag spellsTag = nbt.getList("learnedSpells", Tag.TAG_STRING);
+            for (int i = 0; i < spellsTag.size(); i++) {
+                learnedSpells.add(spellsTag.getString(i));
+            }
+        }
     }
 }

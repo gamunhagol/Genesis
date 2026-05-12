@@ -19,9 +19,12 @@ public class GenesisTags {
     }
 
     public static class Items {
+        // [추가] 마법/기적 구분 태그
+        public static final TagKey<Item> MAGIC_SPELLS = tag("magic_spells");
+        public static final TagKey<Item> MIRACLE_SPELLS = tag("miracle_spells");
+
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(GenesisMod.MODID, name));
-
         }
     }
 

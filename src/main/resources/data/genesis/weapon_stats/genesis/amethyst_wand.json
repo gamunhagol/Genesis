@@ -1,0 +1,36 @@
+{
+  "item": "genesis:amethyst_wand",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 1.0,
+    "magic": 5.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 6,
+    "intelligence": 10
+  },
+  "scaling": {
+    "strength": "E",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "E",
+      "intelligence": "D"
+    },
+    "16": {
+      "strength": "E",
+      "intelligence": "C"
+    },
+    "25": {
+      "strength": "D",
+      "intelligence": "C"
+    }
+  }
+}

@@ -150,7 +150,8 @@
   "item.genesis.green_star_seal": "Viridian Star Seal",
 
 
-
+  "item.genesis.fireball_book": "Fireball Book",
+  "item.genesis.little_heal_book": "Little Heal Book",
 
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
@@ -169,6 +170,8 @@
   "item.genesis.clump_of_the_mountain": "Clump of the Mountain",
   "item.genesis.tablet_shard": "Tablet Shard",
   "item.genesis.tablet_of_the_radiant_mountain": "Tablet of the Radiant Mountain",
+
+
 
 
   "item.genesis.key_of_oblivion": "Key of Oblivion",

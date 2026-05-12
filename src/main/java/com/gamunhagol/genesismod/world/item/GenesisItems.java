@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.world.item;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.util.GenesisItemTier;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.capability.spell.SpellBookItem;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import com.gamunhagol.genesismod.world.item.armor.*;
@@ -337,6 +338,15 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> GREEN_STAR_SEAL = ITEMS.register("green_star_seal",
             () -> new CatalystItem(new Item.Properties().stacksTo(1)));
+
+
+    //spell
+    public static final RegistryObject<Item> FIREBALL_BOOK = ITEMS.register("fireball_book",
+            () -> new SpellBookItem("fireball", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> LITTLE_HEAL_BOOK = ITEMS.register("little_heal_book",
+            () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
+
 
     //armor
 
