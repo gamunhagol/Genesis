@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.content.magic;
 
+import com.gamunhagol.genesismod.api.DamageSnapshot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
@@ -11,19 +12,30 @@ public abstract class AbstractSpell {
     }
 
     public String getId() { return id; }
-
     public abstract int getCastTime();
-
     public abstract int getRequiredStatLevel();
-
     public abstract float getMentalCost();
-
+    public abstract boolean canCast(LivingEntity caster);
     public void onCastingTick(LivingEntity caster, int remainingTicks) {}
 
-    public abstract void execute(Level level, LivingEntity caster);
+    // ★ CatalystItem에서 호출하는 시전 진입점
+    public void executeCast(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot) {
+        if (!level.isClientSide) {
+            // 촉매의 스탯을 바탕으로 이 주문만의 최종 스탯 스냅샷을 계산
+            DamageSnapshot spellSnapshot = calculateSpellSnapshot(catalystSnapshot);
 
-    public abstract boolean canCast(LivingEntity caster);
+            // 실제 주문 효과 발동
+            onExecute(level, caster, spellSnapshot);
 
+            consumeMental(caster);
+        }
+    }
+
+    // ★  자식 클래스(각 마법)가 구현할 데미지/효과량 계산식
+    protected abstract DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalystSnapshot);
+
+    // ★  자식 클래스가 구현할 실제 실행 로직 (투사체 소환, 즉발 효과 등)
+    protected abstract void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot);
 
     public void consumeMental(LivingEntity caster) {
         if (caster instanceof net.minecraft.world.entity.player.Player player) {

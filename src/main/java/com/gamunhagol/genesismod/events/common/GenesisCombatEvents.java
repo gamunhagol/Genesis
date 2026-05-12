@@ -7,6 +7,7 @@ import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffects;
@@ -43,19 +44,19 @@ public class GenesisCombatEvents {
 
         DamageSnapshot snapshot = null;
 
-        // 1. 투사체 확인
+        //  투사체 확인
         if (sourceEntity != null && sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).isPresent()) {
             var cap = sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).orElse(null);
             if (cap != null && !cap.getSnapshot().isEmpty()) {
                 snapshot = cap.getSnapshot();
             }
         }
-        // 플레이어 근접 공격 확인
+        //  플레이어 근접 공격 확인 (수정된 부분)
         else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
                 if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
-                    return;
+                    return; // 활이나 석궁으로 직접 때리는 건 스냅샷 적용 안 함
                 }
 
                 // 기본 인챈트 보너스 (날카로움 등)
@@ -64,24 +65,36 @@ public class GenesisCombatEvents {
                 // 삼지창 전용: 찌르기(Impaling) 추가
                 if (weapon.getItem() instanceof TridentItem) {
                     int impalingLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.IMPALING, weapon);
-                    // 자바 에디션 기준: 수중 생물(WATER)에게만 추가 대미지
                     if (impalingLevel > 0 && target.getMobType() == MobType.WATER) {
                         enchantBonus += (impalingLevel * 2.5f);
                     }
                 }
 
-                snapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
+                // 무기의 모든 스탯이 포함된 원본 스냅샷 계산
+                DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
+
+                // ★ 핵심: 지팡이나 성인으로 "근접 타격"을 한 경우 마법/신성 등 속성 피해 증발
+                if (weapon.getItem() instanceof CatalystItem) {
+                    snapshot = new DamageSnapshot(
+                            rawSnapshot.physical(),
+                            0, 0, 0, 0, 0,
+                            rawSnapshot.destruction() // 파괴 속성은 유지 (필요에 따라 0으로 바꿔도 됨)
+                    );
+                } else {
+                    // 일반 무기면 그대로 적용
+                    snapshot = rawSnapshot;
+                }
             }
         }
 
-        // 3. 스냅샷 적용
+        //  스냅샷 적용
         if (snapshot != null && !snapshot.isEmpty()) {
             if (snapshot.physical() > 0) {
                 event.setAmount(snapshot.physical());
             }
             applyElementalMarkers(target, snapshot);
         }
-        // 4. 레거시 지원
+        //  레거시 지원
         else if (attackerEntity instanceof Player player && snapshot == null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 // 기존 레거시 로직 유지

@@ -334,10 +334,10 @@ public class GenesisItems {
 
     //wand&seal
     public static final RegistryObject<Item> AMETHYST_WAND = ITEMS.register("amethyst_wand",
-            () -> new CatalystItem(new Item.Properties().stacksTo(1)));
+            () -> new CatalystItem(new Item.Properties().stacksTo(1).durability(193)));
 
     public static final RegistryObject<Item> GREEN_STAR_SEAL = ITEMS.register("green_star_seal",
-            () -> new CatalystItem(new Item.Properties().stacksTo(1)));
+            () -> new CatalystItem(new Item.Properties().stacksTo(1).durability(211)));
 
 
     //spell
