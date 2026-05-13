@@ -8,7 +8,7 @@ public class StatueMainScreen extends Screen {
     protected final String statueId;
 
     public StatueMainScreen(String statueId) {
-        super(Component.literal("Statue Main"));
+        super(Component.translatable("gui.genesis.statue_main"));
         this.statueId = statueId;
     }
 

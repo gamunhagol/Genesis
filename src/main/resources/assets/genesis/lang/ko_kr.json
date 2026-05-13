@@ -438,6 +438,9 @@
   "message.genesis.reset_success": "몸이 원상태로 돌아갔다",
 
   "gui.genesis.level_up.title": "능력치 강화",
+  "gui.genesis.statue_main": "신상 화면",
+
+
   "gui.genesis.level_up.hint": "§6[잠김]§r '창조의 서'를 사용하여 능력을 개방하십시오.",
   "gui.genesis.level_up.recovered_levels": "누적 레벨: +%s",
   "gui.genesis.level_up.current_xp": "소지 XP: %s",

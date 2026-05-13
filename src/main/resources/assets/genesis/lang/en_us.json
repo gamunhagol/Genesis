@@ -435,6 +435,10 @@
   "message.genesis.reset_success": "Your body has returned to its original state.",
 
   "gui.genesis.level_up.title": "Stat Enhancement",
+  "gui.genesis.statue_main": "Statue Menu",
+
+
+
   "gui.genesis.level_up.hint": "§6[Locked]§r Use the 'Book of Creation' to unlock this power.",
   "gui.genesis.level_up.recovered_levels": "Accumulated Levels: +%s",
   "gui.genesis.level_up.current_xp": "Current XP: %s",
