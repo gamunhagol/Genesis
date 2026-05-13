@@ -6,6 +6,7 @@ import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.world.capability.weapon.WeaponStatsProvider;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import com.gamunhagol.genesismod.world.weapon.WeaponStatData;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -14,66 +15,51 @@ import java.util.Map;
 
 public class WeaponRequirementHelper {
 
-    /**
-     * 모든 대미지를 계산하여 스냅샷으로 반환합니다.
-     * 요구치 미달 시 물리/속성 대미지에 페널티(40%만 적용)가 가해집니다.
-     */
-    public static DamageSnapshot calculateTotalDamage(Player player, ItemStack stack, float baseVanillaDamage) {
+    // [수정됨] Player -> LivingEntity로 인자 변경
+    public static DamageSnapshot calculateTotalDamage(LivingEntity entity, ItemStack stack, float baseVanillaDamage) {
         if (!WeaponDataManager.hasData(stack.getItem())) return DamageSnapshot.EMPTY;
 
-        // 1. 요구치 체크 (장비 보너스 포함된 수치로 판정)
-        boolean meetsReq = meetsRequirements(player, stack);
+        // 1. 요구치 체크 (몹은 무조건 통과)
+        boolean meetsReq = meetsRequirements(entity, stack);
         float penalty = meetsReq ? 1.0f : 0.4f;
 
-        // 2. 각 속성별 대미지 계산 및 페널티 적용
-        float phys = calculatePhysical(player, stack, baseVanillaDamage) * penalty;
-        float magic = calculateElemental(player, stack, "magic") * penalty;
-        float fire = calculateElemental(player, stack, "fire") * penalty;
-        float lightning = calculateElemental(player, stack, "lightning") * penalty;
-        float frost = calculateElemental(player, stack, "frost") * penalty;
-        float holy = calculateElemental(player, stack, "holy") * penalty;
+        // 2. 각 속성별 대미지 계산 (LivingEntity 전달)
+        float phys = calculatePhysical(entity, stack, baseVanillaDamage) * penalty;
+        float magic = calculateElemental(entity, stack, "magic") * penalty;
+        float fire = calculateElemental(entity, stack, "fire") * penalty;
+        float lightning = calculateElemental(entity, stack, "lightning") * penalty;
+        float frost = calculateElemental(entity, stack, "frost") * penalty;
+        float holy = calculateElemental(entity, stack, "holy") * penalty;
 
-        // 파괴(Destruction) 대미지는 페널티를 받지 않는 고정값입니다.
-        float destruction = calculateElemental(player, stack, "destruction");
+        float destruction = calculateElemental(entity, stack, "destruction");
 
         return new DamageSnapshot(phys, magic, fire, lightning, frost, holy, destruction);
     }
 
-    /**
-     * 물리 대미지 계산 로직
-     * vanillaBonus(인챈트 등)는 강화나 스탯 보정에 영향을 받지 않는 고정 추가 데미지로 처리됩니다.
-     */
-    private static float calculatePhysical(Player player, ItemStack stack, float vanillaBonus) {
+    private static float calculatePhysical(LivingEntity entity, ItemStack stack, float vanillaBonus) {
         WeaponStatData data = WeaponDataManager.get(stack.getItem());
         int reinforceLevel = stack.getCapability(WeaponStatsProvider.WEAPON_STATS)
                 .map(s -> s.getReinforceLevel()).orElse(0);
 
-        //  순수 무기 기본 데미지만 강화 수치의 영향을 받음
         float baseWeaponDamage = data.basePhysical();
         float reinforcedBase = baseWeaponDamage * (1.0f + (reinforceLevel * data.damageGrowth()));
 
         float scalingBonus = 0.0f;
-
-        //  보정치(Scaling) 계산
-        // 강화된 기본 데미지(reinforcedBase)를 기준으로 스탯 효율을 계산합니다.
         Map<StatType, Float> currentScaling = getCurrentScaling(data, reinforceLevel);
+
         for (Map.Entry<StatType, Float> entry : currentScaling.entrySet()) {
             StatType statType = entry.getKey();
-            // 물리 대미지 보정 스탯: 근력, 기량, 신비
             if (statType == StatType.STRENGTH || statType == StatType.DEXTERITY || statType == StatType.ARCANE) {
-                int playerStat = getPlayerStat(player, statType);
-                scalingBonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(playerStat);
+                // [수정됨]getEntityStat 호출
+                int entityStat = getEntityStat(entity, statType);
+                scalingBonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
         }
 
-        //  최종 합산: (강화된 데미지 + 스탯 보정 데미지) + 고정 인챈트 데미지
         return reinforcedBase + scalingBonus + vanillaBonus;
     }
 
-    /**
-     * 속성 대미지 계산 로직 (마법, 화염, 번개, 냉기, 신성, 파괴)
-     */
-    private static float calculateElemental(Player player, ItemStack stack, String type) {
+    private static float calculateElemental(LivingEntity entity, ItemStack stack, String type) {
         WeaponStatData data = WeaponDataManager.get(stack.getItem());
         if (type.equals("destruction")) return data.baseDestruction();
 
@@ -96,43 +82,38 @@ public class WeaponRequirementHelper {
             StatType statType = entry.getKey();
             boolean scales = false;
 
-            // 각 속성별 주력 보정 스탯 판정
             switch (type) {
                 case "magic" -> scales = (statType == StatType.INTELLIGENCE);
                 case "holy" -> scales = (statType == StatType.FAITH);
                 case "fire", "lightning", "frost" -> scales = (statType == StatType.ARCANE);
             }
-            // 신비(Arcane)는 모든 속성 대미지에 보조 보정치를 제공합니다.
             if (statType == StatType.ARCANE) scales = true;
 
             if (scales) {
-                int playerStat = getPlayerStat(player, statType);
-                bonus += base * entry.getValue() * StatApplier.calculateScaling(playerStat);
+                // [수정됨]getEntityStat 호출
+                int entityStat = getEntityStat(entity, statType);
+                bonus += base * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
         }
 
         return base + bonus;
     }
 
-    /**
-     * 무기 착용 요구치 충족 여부를 확인합니다.
-     */
-    public static boolean meetsRequirements(Player player, ItemStack stack) {
+    // [수정됨] 몹은 항상 요구치를 충족하는 것으로 처리
+    public static boolean meetsRequirements(LivingEntity entity, ItemStack stack) {
+        if (!(entity instanceof Player player)) return true; // 몹은 프리패스
+
         if (!WeaponDataManager.hasData(stack.getItem())) return true;
 
         WeaponStatData data = WeaponDataManager.get(stack.getItem());
         for (Map.Entry<StatType, Integer> entry : data.requirements().entrySet()) {
-            // 장비 보너스가 포함된 최종 스탯으로 요구치 대조
-            if (getPlayerStat(player, entry.getKey()) < entry.getValue()) {
+            if (getEntityStat(player, entry.getKey()) < entry.getValue()) {
                 return false;
             }
         }
         return true;
     }
 
-    /**
-     * 강화 수치에 따른 보정 등급(Scaling) 변화를 적용합니다.
-     */
     public static Map<StatType, Float> getCurrentScaling(WeaponStatData data, int level) {
         Map<StatType, Float> result = new java.util.HashMap<>(data.scaling());
         data.scalingOverrides().entrySet().stream()
@@ -143,23 +124,30 @@ public class WeaponRequirementHelper {
     }
 
     /**
-     * 플레이어의 최종 스탯 값을 가져오는 핵심 메서드입니다.
-     * 1. 먼저 GenesisAttributes(장비 보너스 포함)를 조회합니다.
-     * 2. 속성 시스템이 로드되지 않은 경우 Capability(순수 레벨)를 조회합니다.
+     * [핵심 리팩토링] 플레이어와 몹 공통 스탯 획득 로직
      */
-    public static int getPlayerStat(Player player, StatType type) {
-        int baseLevel = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
-                .map(cap -> switch (type) {
-                    case VIGOR -> cap.getVigor();
-                    case MIND -> cap.getMind();
-                    case ENDURANCE -> cap.getEndurance();
-                    case STRENGTH -> cap.getStrength();
-                    case DEXTERITY -> cap.getDexterity();
-                    case INTELLIGENCE -> cap.getIntelligence();
-                    case FAITH -> cap.getFaith();
-                    case ARCANE -> cap.getArcane();
-                }).orElse(10); // 데이터가 없으면 기본값 10
+    public static int getEntityStat(LivingEntity entity, StatType type) {
+        int baseLevel = 10; // 기본값
 
+        // 1. 플레이어라면 Capability에서 실제 레벨을 가져옴
+        if (entity instanceof Player player) {
+            baseLevel = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
+                    .map(cap -> switch (type) {
+                        case VIGOR -> cap.getVigor();
+                        case MIND -> cap.getMind();
+                        case ENDURANCE -> cap.getEndurance();
+                        case STRENGTH -> cap.getStrength();
+                        case DEXTERITY -> cap.getDexterity();
+                        case INTELLIGENCE -> cap.getIntelligence();
+                        case FAITH -> cap.getFaith();
+                        case ARCANE -> cap.getArcane();
+                    }).orElse(10);
+        } else {
+            // 2. 몹이라면 기본 스탯을 10으로 설정 (필요 시 몹 종류별로 분기 가능)
+            baseLevel = 10;
+        }
+
+        // 3. 공통: 장비 보너스(Attribute)는 몹에게도 적용될 수 있음 (네임드 몹 등)
         Attribute statAttr = switch (type) {
             case VIGOR -> GenesisAttributes.VIGOR.get();
             case MIND -> GenesisAttributes.MIND.get();
@@ -171,13 +159,12 @@ public class WeaponRequirementHelper {
             case ARCANE -> GenesisAttributes.ARCANE.get();
         };
 
-        int armorBonus = 0;
-        if (statAttr != null && player.getAttribute(statAttr) != null) {
-            var attrInst = player.getAttribute(statAttr);
-            // (현재 속성의 총합) - (속성의 기본값) = 순수 장비/버프 보너스
-            armorBonus = (int) (attrInst.getValue() - attrInst.getBaseValue());
+        int bonus = 0;
+        if (statAttr != null && entity.getAttribute(statAttr) != null) {
+            var attrInst = entity.getAttribute(statAttr);
+            bonus = (int) (attrInst.getValue() - attrInst.getBaseValue());
         }
 
-        return baseLevel + armorBonus;
+        return baseLevel + bonus;
     }
 }

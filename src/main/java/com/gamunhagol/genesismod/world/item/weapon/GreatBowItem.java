@@ -33,11 +33,11 @@ public class GreatBowItem extends BowItem {
         super(pProperties);
     }
 
-    // 활을 당길 수 있는지 결정하는 로직
+    // [참고] Item의 use 메서드는 플레이어의 우클릭에만 반응하므로 Player를 그대로 둡니다.
+    // 몹들은 AI Goal을 통해 직접 startUsingItem()을 호출하므로 이 메서드를 타지 않습니다.
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
-
         boolean hasAmmo = !pPlayer.getProjectile(itemstack).isEmpty();
 
         if (pPlayer.getAbilities().instabuild || hasAmmo) {
@@ -50,130 +50,150 @@ public class GreatBowItem extends BowItem {
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
-        if (pEntityLiving instanceof Player player) {
-            boolean isCreative = player.getAbilities().instabuild;
+        // 무조건 Player로 캐스팅하지 않고 범용적으로 사용할 변수 선언
+        boolean isPlayer = pEntityLiving instanceof Player;
+        boolean hasInfiniteAmmo = false;
+        ItemStack projectileStack = ItemStack.EMPTY;
 
-            // 인벤토리에서 화살을 찾음
-            ItemStack projectileStack = player.getProjectile(pStack);
+        // 1. 탄약(화살) 판별 로직
+        if (isPlayer) {
+            Player player = (Player) pEntityLiving;
+            hasInfiniteAmmo = player.getAbilities().instabuild;
+            projectileStack = player.getProjectile(pStack);
 
-            // [핵심 수정] 크리에이티브 모드인데 화살이 없거나, 엉뚱한 화살(일반 화살 등)이 잡힌 경우
-            // 커스텀 화살로 교체.
-            if (isCreative && (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem))) {
+            if (hasInfiniteAmmo && (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem))) {
                 projectileStack = new ItemStack(getCustomDefaultArrow());
             }
+        } else {
+            // 몹(Mob)일 경우 기본적으로 무한 탄창 및 커스텀 화살 강제 지급
+            hasInfiniteAmmo = true;
+            projectileStack = new ItemStack(getCustomDefaultArrow());
+        }
 
-            // 최종 확인: 여전히 화살이 없거나 커스텀 화살이 아니면 발사 중단 (서바이벌용)
-            if (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem)) {
-                return;
-            }
+        // 최종 확인: 여전히 화살이 없거나 커스텀 화살이 아니면 발사 중단
+        if (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem)) {
+            return;
+        }
 
-            int i = this.getUseDuration(pStack) - pTimeLeft;
-            float f = getPowerForTime(i);
+        int i = this.getUseDuration(pStack) - pTimeLeft;
+        float f = getPowerForTime(i);
 
-            if (!((double)f < 0.1D)) {
-                if (!pLevel.isClientSide) {
-                    LargeArrowItem arrowitem = (LargeArrowItem)projectileStack.getItem();
-                    AbstractArrow abstractarrow = arrowitem.createArrow(pLevel, projectileStack, player);
+        if (!((double) f < 0.1D)) {
+            if (!pLevel.isClientSide) {
+                LargeArrowItem arrowitem = (LargeArrowItem) projectileStack.getItem();
+                AbstractArrow abstractarrow = arrowitem.createArrow(pLevel, projectileStack, pEntityLiving);
 
-                    if (i >= 100) {
-                        if (abstractarrow instanceof LargeArrowEntity largeArrow) {
-                            largeArrow.setEmpowered(true);
-                        }
-
-                        if (!pLevel.isClientSide) {
-                            ServerLevel serverLevel = (ServerLevel) pLevel;
-
-                            // 1. 위치 계산 (플레이어 앞 0.8블록, 가슴 높이)
-                            Vec3 look = player.getLookAngle();
-                            Vec3 horizontalForward = new Vec3(look.x, 0, look.z).normalize();
-
-                            double px = player.getX() + horizontalForward.x * 0.8;
-                            double py = player.getY() + 1.2;
-                            double pz = player.getZ() + horizontalForward.z * 0.8;
-
-                            // 2. 파티클 발사
-                            // dx: 0.0F (세로로 세우기 위해 90도를 0도로 수정)
-                            // dy: player.getYRot() (플레이어가 보는 방향에 맞게 회전)
-                            // dz: -1.0F (Epic Fight 파티클 표준값)
-                            serverLevel.sendParticles((ParticleOptions) EpicFightParticles.AIR_BURST.get(),
-                                    px, py, pz,
-                                    0,
-                                    -90.0F, player.getYRot(), -1.0F, 1.0);
-
-                            serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
-                                    (SoundEvent) EpicFightSounds.NEUTRALIZE_MOBS.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                        }
+                // 2. 강화 사격 로직 (플레이어 & 몹 공통)
+                if (i >= 100) {
+                    if (abstractarrow instanceof LargeArrowEntity largeArrow) {
+                        largeArrow.setEmpowered(true);
                     }
 
-                    abstractarrow.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, f * 5.6F, 1.0F);
+                    ServerLevel serverLevel = (ServerLevel) pLevel;
 
-                    int flameLevel = net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, pStack);
-                    if (flameLevel > 0) {
-                        // 화살 엔티티에 불을 붙입니다 (기본 100틱 = 5초)
-                        abstractarrow.setSecondsOnFire(100);
-                    }
+                    // [수정됨] player 대신 pEntityLiving(주체)의 위치 사용
+                    Vec3 look = pEntityLiving.getLookAngle();
+                    Vec3 horizontalForward = new Vec3(look.x, 0, look.z).normalize();
 
-                    if (f == 1.0F) abstractarrow.setCritArrow(true);
+                    double px = pEntityLiving.getX() + horizontalForward.x * 0.8;
+                    double py = pEntityLiving.getY() + 1.2;
+                    double pz = pEntityLiving.getZ() + horizontalForward.z * 0.8;
 
-                    // 크리에이티브 모드일 때 화살이 인벤토리에 다시 들어오지 않도록 설정
-                    if (isCreative) {
-                        abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
-                    }
+                    serverLevel.sendParticles((ParticleOptions) EpicFightParticles.AIR_BURST.get(),
+                            px, py, pz,
+                            0,
+                            -90.0F, pEntityLiving.getYRot(), -1.0F, 1.0);
 
-                    pStack.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(player.getUsedItemHand()));
-                    pLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
-                            SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    // [수정됨] 사운드 소스를 무기 사용자에 맞춰 설정 (플레이어면 PLAYERS, 몹이면 HOSTILE 등)
+                    SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
+                    serverLevel.playSound(null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(),
+                            (SoundEvent) EpicFightSounds.NEUTRALIZE_MOBS.get(), source, 1.0F, 1.0F);
+                }
 
-                    if (!isCreative) {
+                // 화살 발사
+                abstractarrow.shootFromRotation(pEntityLiving, pEntityLiving.getXRot(), pEntityLiving.getYRot(), 0.0F, f * 5.6F, 1.0F);
+
+                int flameLevel = net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, pStack);
+                if (flameLevel > 0) {
+                    abstractarrow.setSecondsOnFire(100);
+                }
+
+                if (f == 1.0F) abstractarrow.setCritArrow(true);
+
+                // 크리에이티브 모드이거나 몹인 경우 화살이 필드에 남아 무한 파밍되는 것을 방지
+                if (hasInfiniteAmmo) {
+                    abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
+                }
+
+                // 무기 내구도 감소 (공통)
+                pStack.hurtAndBreak(1, pEntityLiving, (entity) -> entity.broadcastBreakEvent(pEntityLiving.getUsedItemHand()));
+
+                SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
+                pLevel.playSound(null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(),
+                        SoundEvents.ARROW_SHOOT, source, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+
+                // 3. 인벤토리 및 스탯 처리 (플레이어 전용)
+                if (isPlayer) {
+                    Player player = (Player) pEntityLiving;
+                    if (!hasInfiniteAmmo) {
                         projectileStack.shrink(1);
                         if (projectileStack.isEmpty()) {
                             player.getInventory().removeItem(projectileStack);
                         }
                     }
-
-                    pLevel.addFreshEntity(abstractarrow);
+                    player.awardStat(Stats.ITEM_USED.get(this));
                 }
-                player.awardStat(Stats.ITEM_USED.get(this));
+
+                pLevel.addFreshEntity(abstractarrow);
             }
         }
     }
 
     public static float getPowerForTime(int pCharge) {
-        float f = (float)pCharge / (float)MAX_CHARGE_TIME;
+        float f = (float) pCharge / (float) MAX_CHARGE_TIME;
         f = (f * f + f * 2.0F) / 3.0F;
         return Math.min(f, 1.0F);
     }
 
     @Override
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int count) {
-        if (!level.isClientSide && entity instanceof Player player) {
+        if (!level.isClientSide) {
             int chargeTicks = this.getUseDuration(stack) - count;
 
             if (chargeTicks == 100) {
-                EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(patch -> {
-                    float staminaCost = 20.0F; // 소모량
-                    float currentStamina = patch.getStamina(); // 현재 스태미나 가져오기
+                boolean isPlayer = entity instanceof Player;
+                SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
 
-                    if (currentStamina >= staminaCost) {
-                        patch.setStamina(currentStamina - staminaCost);
+                // [수정됨] 플레이어일 경우에만 Epic Fight 스태미나 소모 적용
+                if (isPlayer) {
+                    Player player = (Player) entity;
+                    EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(patch -> {
+                        float staminaCost = 20.0F;
+                        float currentStamina = patch.getStamina();
 
-                        // 강화 성공: 맑은 경험치 소리
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                                SoundEvents.ANVIL_PLACE, SoundSource.PLAYERS, 1.0F, 0.5F);
-                    } else {
-                        // 스태미나 부족 시: 활 사용 중지 및 '치익' 하는 불 꺼지는 소리
-                        player.stopUsingItem();
-                        level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                                SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.0F, 1.0F);
-                    }
-                });
+                        if (currentStamina >= staminaCost) {
+                            patch.setStamina(currentStamina - staminaCost);
+                            // 강화 성공 사운드
+                            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                    SoundEvents.ANVIL_PLACE, source, 1.0F, 0.5F);
+                        } else {
+                            // 스태미나 부족 시 활 사용 취소
+                            player.stopUsingItem();
+                            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                                    SoundEvents.FIRE_EXTINGUISH, source, 1.0F, 1.0F);
+                        }
+                    });
+                } else {
+                    // [수정됨] 몹일 경우 스태미나 소모 없이 바로 강화 성공 처리 (원한다면 확률이나 다른 조건 추가 가능)
+                    level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                            SoundEvents.ANVIL_PLACE, source, 1.0F, 0.5F);
+                }
             }
         }
     }
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        // 무한(Infinity) 인챈트라면 적용 불가(false) 반환
         if (enchantment == Enchantments.INFINITY_ARROWS) {
             return false;
         }
@@ -182,12 +202,10 @@ public class GreatBowItem extends BowItem {
 
     @Override
     public Predicate<ItemStack> getAllSupportedProjectiles() {
-        // 이 활은 오직 LargeArrowItem만 쏠 수 있음
         return stack -> stack.getItem() instanceof LargeArrowItem;
     }
 
     private LargeArrowItem getCustomDefaultArrow() {
-        // GenesisItems에서 등록한 화살 아이템을 반환
         return (LargeArrowItem) GenesisItems.LARGE_ARROW.get();
     }
 
@@ -200,5 +218,4 @@ public class GreatBowItem extends BowItem {
     public int getUseDuration(ItemStack pStack) {
         return 72000;
     }
-
 }
