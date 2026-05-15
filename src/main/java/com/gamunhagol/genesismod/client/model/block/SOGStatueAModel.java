@@ -8,14 +8,14 @@ import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.client.renderer.RenderType;
 
-public class StatueOfGodA extends Model {
+public class SOGStatueAModel extends Model {
     private final ModelPart root;
 
     private final ModelPart horn;
     private final ModelPart mask;
     private final ModelPart bb_main;
 
-    public StatueOfGodA(ModelPart root) {
+    public SOGStatueAModel(ModelPart root) {
         super(RenderType::entityCutoutNoCull);
 
         this.root = root;

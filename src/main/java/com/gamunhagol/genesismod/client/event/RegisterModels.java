@@ -1,10 +1,7 @@
 package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.client.model.armor.*;
-import com.gamunhagol.genesismod.client.model.block.AEKStatueModel;
-import com.gamunhagol.genesismod.client.model.block.GuideStatueModel;
-import com.gamunhagol.genesismod.client.model.block.HeraldStatueModel;
-import com.gamunhagol.genesismod.client.model.block.SentinelStatueModel;
+import com.gamunhagol.genesismod.client.model.block.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.LargeArrowModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
@@ -137,6 +134,8 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.AEK_STATUE_LAYER, AEKStatueModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_A_LAYER, SOGStatueAModel::createBodyLayer);
+
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
 
@@ -160,6 +159,8 @@ public class RegisterModels {
         event.registerBlockEntityRenderer(GenesisBlockEntities.AEK_STATUE_BE.get(), AEKStatueRenderer::new);
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.MIST_VAULT_BE.get(), MistVaultRenderer::new);
+
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_A_BE.get(), SOGStatueARenderer::new);
     }
     
 }

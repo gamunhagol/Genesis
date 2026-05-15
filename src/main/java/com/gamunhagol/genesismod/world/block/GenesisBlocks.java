@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 
 
 import com.gamunhagol.genesismod.world.block.custom.*;
+import com.gamunhagol.genesismod.world.block.custom.statue.GodAStatueBlock;
 import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.block.fluid.BloodFluidBlock;
 import com.gamunhagol.genesismod.world.block.fluid.QuicksandFluidBlock;
@@ -205,6 +206,15 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> MIST_VAULT_1 = register("mist_vault_1",
             () -> new MistVault1Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_GRAY).strength(-1.0F, 3600000.0F)
                     .sound(SoundType.POWDER_SNOW).noLootTable().noOcclusion().lightLevel(state -> 6)));
+
+
+    //god statue
+    public static final RegistryObject<Block> GOD_STATUE_A = register("god_statue_a",
+            () -> new GodAStatueBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(2.0F, 6.0F)
+                    .sound(SoundType.STONE)
+                    .noOcclusion()));
 
 
 

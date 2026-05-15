@@ -128,6 +128,15 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 )
         );
 
+        this.add(GenesisBlocks.GOD_STATUE_A.get(),
+                block -> LootTable.lootTable().withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(net.minecraft.world.item.Items.COBBLESTONE)
+                                .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
+                                .apply(ApplyExplosionDecay.explosionDecay()))
+                )
+        );
+
     }
 
     protected LootTable.Builder createCopperLikeOreDrops(Block pBlock, Item item) {
