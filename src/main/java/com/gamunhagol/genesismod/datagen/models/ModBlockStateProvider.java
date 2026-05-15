@@ -106,6 +106,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlock(GenesisBlocks.AEK_STATUE.get(),
                 models().cubeAll("ancient_elf_knight_statue", modLoc("block/ancient_elf_knight_statue")));
 
+        statueBlock(GenesisBlocks.GOD_STATUE_A, "god_statue_a", "statue_of_god_a");
+
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_ground"))).addModel()
@@ -260,6 +262,14 @@ public class ModBlockStateProvider extends BlockStateProvider {
         // 아이템 모델 설정 (인벤토리에서 보이는 모습)
         this.itemModels().withExistingParent(blockName, new ResourceLocation("item/generated"))
                 .texture("layer0", modLoc("item/" + blockName));
+    }
+
+    private void statueBlock(RegistryObject<Block> block, String modelName, String textureName) {
+        simpleBlock(block.get(),
+                models().withExistingParent(modelName, mcLoc("block/cube_all"))
+                        .texture("all", modLoc("block/" + textureName))
+                        .texture("particle", mcLoc("block/stone"))
+        );
     }
 
     private void customCandleBlock(RegistryObject<Block> block) {

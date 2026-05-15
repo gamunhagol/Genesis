@@ -1,6 +1,0 @@
-{
-  "loader": "minecraft:elements",
-  "textures": {
-    "particle": "genesismod:block/statue_of_god_a"
-  }
-}
