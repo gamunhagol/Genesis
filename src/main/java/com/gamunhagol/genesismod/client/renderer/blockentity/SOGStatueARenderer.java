@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.client.renderer.blockentity;
 import com.gamunhagol.genesismod.client.model.block.SOGStatueAModel; // 모델 import 추가
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.statue.StatueBaseBlock;
-import com.gamunhagol.genesismod.world.block.entity.statue.GodAStatueBlockEntity;
+import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -14,7 +14,7 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class SOGStatueARenderer implements BlockEntityRenderer<GodAStatueBlockEntity> {
+public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
     private final SOGStatueAModel model; // [수정] 타입 변경
 
     private static final ResourceLocation TEXTURE =
@@ -25,7 +25,7 @@ public class SOGStatueARenderer implements BlockEntityRenderer<GodAStatueBlockEn
     }
 
     @Override
-    public void render(GodAStatueBlockEntity entity, float partialTick, PoseStack poseStack,
+    public void render(GodStatueGenericBlockEntity entity, float partialTick, PoseStack poseStack,
                        MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         poseStack.pushPose();
 

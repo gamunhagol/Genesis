@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.world.block.entity;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
-import com.gamunhagol.genesismod.world.block.entity.statue.GodAStatueBlockEntity;
+import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -42,9 +42,10 @@ public class GenesisBlockEntities {
                     BlockEntityType.Builder.of(MistVaultBlockEntity::new,
                             GenesisBlocks.MIST_VAULT_1.get()).build(null));
 
-    public static final RegistryObject<BlockEntityType<GodAStatueBlockEntity>> GOD_STATUE_A_BE =
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_A_BE =
             BLOCK_ENTITIES.register("god_statue_a_be", () ->
-                    BlockEntityType.Builder.of(GodAStatueBlockEntity::new,
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_A_BE.get(), pos, state, "god_a"),
                             GenesisBlocks.GOD_STATUE_A.get()).build(null));
 
 
