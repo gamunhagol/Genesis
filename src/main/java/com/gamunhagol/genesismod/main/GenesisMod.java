@@ -9,7 +9,7 @@ import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.skill.GenesisSkillDataKeys;
 import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
-import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;

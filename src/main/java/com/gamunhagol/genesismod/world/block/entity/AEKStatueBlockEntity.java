@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.world.block.entity;
 
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.util.IFadedDungeonElement;
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.block.custom.AEKStatueBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

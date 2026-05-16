@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.block.custom;
 
 import com.gamunhagol.genesismod.world.block.entity.FadedChestBlockEntity;
-import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;

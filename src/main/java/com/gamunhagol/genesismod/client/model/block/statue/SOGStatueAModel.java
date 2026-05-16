@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.client.model.block;
+package com.gamunhagol.genesismod.client.model.block.statue;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

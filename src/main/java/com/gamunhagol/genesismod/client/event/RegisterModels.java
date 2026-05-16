@@ -2,13 +2,17 @@ package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.block.*;
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel;
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueBModel;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.LargeArrowModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
+import com.gamunhagol.genesismod.client.renderer.blockentity.statue.SOGStatueARenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.statue.SOGStatueBRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.LargeArrowRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
-import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
@@ -135,6 +139,7 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.AEK_STATUE_LAYER, AEKStatueModel::createBodyLayer);
 
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_A_LAYER, SOGStatueAModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_B_LAYER, SOGStatueBModel::createBodyLayer);
 
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
@@ -161,6 +166,7 @@ public class RegisterModels {
         event.registerBlockEntityRenderer(GenesisBlockEntities.MIST_VAULT_BE.get(), MistVaultRenderer::new);
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_A_BE.get(), SOGStatueARenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_B_BE.get(), SOGStatueBRenderer::new);
     }
     
 }

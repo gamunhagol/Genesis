@@ -107,6 +107,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 models().cubeAll("ancient_elf_knight_statue", modLoc("block/ancient_elf_knight_statue")));
 
         statueBlock(GenesisBlocks.GOD_STATUE_A, "god_statue_a", "statue_of_god_a");
+        statueBlock(GenesisBlocks.GOD_STATUE_B, "god_statue_b", "statue_of_god_b");
 
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)

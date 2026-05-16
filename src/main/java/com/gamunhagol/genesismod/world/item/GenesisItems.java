@@ -140,6 +140,8 @@ public class GenesisItems {
 
     public static final RegistryObject<BlockItem> GOD_STATUE_A = ITEMS.register("god_statue_a",
             () -> new BlockItem(GenesisBlocks.GOD_STATUE_A.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_B = ITEMS.register("god_statue_b",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_B.get(), new Item.Properties().fireResistant()));
 
 
 

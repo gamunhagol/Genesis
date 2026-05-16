@@ -22,4 +22,6 @@ public class ModModelLayers {
             new ResourceLocation("genesis", "aek_statue"), "main");
     public static final ModelLayerLocation STATUE_GOD_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_god_a"), "main");
+    public static final ModelLayerLocation STATUE_GOD_B_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_b"), "main");
 }

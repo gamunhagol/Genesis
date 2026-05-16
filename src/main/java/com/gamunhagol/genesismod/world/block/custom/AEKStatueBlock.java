@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.block.custom;
 
 import com.gamunhagol.genesismod.world.block.entity.AEKStatueBlockEntity;
-import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;

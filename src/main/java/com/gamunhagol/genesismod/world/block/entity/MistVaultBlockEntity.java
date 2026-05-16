@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.block.entity;
 
+import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;

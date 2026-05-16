@@ -5,7 +5,6 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 
 import com.gamunhagol.genesismod.world.block.custom.*;
 import com.gamunhagol.genesismod.world.block.custom.statue.GodStatueGenericBlock;
-import com.gamunhagol.genesismod.world.block.entity.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.block.fluid.BloodFluidBlock;
 import com.gamunhagol.genesismod.world.block.fluid.QuicksandFluidBlock;
 import com.gamunhagol.genesismod.world.block.nature.AmethystAppleBlock;
@@ -212,6 +211,9 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> GOD_STATUE_A = register("god_statue_a",
             () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
                     GenesisBlockEntities.GOD_STATUE_A_BE));
+    public static final RegistryObject<Block> GOD_STATUE_B = register("god_statue_b",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_B_BE));
 
 
 

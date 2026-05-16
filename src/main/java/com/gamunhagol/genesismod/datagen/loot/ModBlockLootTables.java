@@ -7,6 +7,7 @@ import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -22,6 +23,7 @@ import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
 public class ModBlockLootTables extends BlockLootSubProvider {
     public ModBlockLootTables() {
@@ -128,13 +130,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 )
         );
 
-        this.add(GenesisBlocks.GOD_STATUE_A.get(),
-                block -> LootTable.lootTable().withPool(LootPool.lootPool()
+        Stream.of(
+                GenesisBlocks.GOD_STATUE_A,
+                GenesisBlocks.GOD_STATUE_B
+        ).forEach(statue ->
+                this.add(statue.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(net.minecraft.world.item.Items.COBBLESTONE)
+                        .add(LootItem.lootTableItem(Items.COBBLESTONE)
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
                                 .apply(ApplyExplosionDecay.explosionDecay()))
-                )
+                ))
         );
 
     }

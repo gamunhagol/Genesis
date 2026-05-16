@@ -48,6 +48,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.AMETHYST_SAPLING.get()
                         ,GenesisBlocks.AEK_STATUE.get()
                         ,GenesisBlocks.GOD_STATUE_A.get()
+                        ,GenesisBlocks.GOD_STATUE_B.get()
                     ,GenesisBlocks.COPPER_COIN_PILE.get()
                     ,GenesisBlocks.SILVER_COIN_PILE.get()
                     ,GenesisBlocks.GOLD_COIN_PILE.get()
@@ -70,7 +71,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(GenesisBlocks.GIANT_STONE.get()
-                ,GenesisBlocks.GOD_STATUE_A.get());
+                ,GenesisBlocks.GOD_STATUE_A.get()
+                ,GenesisBlocks.GOD_STATUE_B.get());
 
         this.tag(BlockTags.WALLS)
                 .add(GenesisBlocks.FADED_BRICK_WALL.get());
