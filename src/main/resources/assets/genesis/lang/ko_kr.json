@@ -284,6 +284,8 @@
 
 
   "block.genesis.god_statue_a": "대지 신상",
+  "block.genesis.god_statue_b": "화염 신상",
+  "block.genesis.god_statue_c": "바다 신상",
 
 
   "entity.genesis.collector": "징수원",

@@ -21,7 +21,7 @@ public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericB
             new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_a.png");
 
     public SOGStatueARenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_B_LAYER));
+        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_A_LAYER));
     }
 
     @Override

@@ -281,7 +281,9 @@
   "block.genesis.mist_vault_1": "Mist Vault",
 
 
-  "block.genesis.god_statue_a": "Earth God Statue",
+  "block.genesis.god_statue_a": "Earth god Statue",
+  "block.genesis.god_statue_b": "Fire god Statue",
+  "block.genesis.god_statue_c": "Sea god Statue",
 
 
   "entity.genesis.collector": "Collector",
