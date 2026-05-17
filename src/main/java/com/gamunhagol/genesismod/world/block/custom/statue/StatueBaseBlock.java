@@ -31,6 +31,7 @@ public abstract class StatueBaseBlock extends Block implements EntityBlock {
         super(properties);
         // 기본 상태 설정
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
+
     }
 
     // 블록을 설치할 때 플레이어를 바라보도록 설정
