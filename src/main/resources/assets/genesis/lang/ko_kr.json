@@ -286,6 +286,11 @@
   "block.genesis.god_statue_a": "대지 신상",
   "block.genesis.god_statue_b": "화염 신상",
   "block.genesis.god_statue_c": "바다 신상",
+  "block.genesis.god_statue_d": "폭풍 신상",
+  "block.genesis.god_statue_e": "번개 신상",
+  "block.genesis.god_statue_f": "식물 신상",
+  "block.genesis.god_statue_g": "얼음 신상",
+  "block.genesis.god_statue_h": "냉기 신상",
 
 
   "entity.genesis.collector": "징수원",

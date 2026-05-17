@@ -170,6 +170,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.STATUE_OF_GUIDE_TO_OBLIVION);
         simpleItem(GenesisItems.AEK_STATUE);
 
+        simpleItem(GenesisItems.GOD_STATUE_A);
+        simpleItem(GenesisItems.GOD_STATUE_B);
+        simpleItem(GenesisItems.GOD_STATUE_C);
+        simpleItem(GenesisItems.GOD_STATUE_D);
+        simpleItem(GenesisItems.GOD_STATUE_E);
+        simpleItem(GenesisItems.GOD_STATUE_F);
+        simpleItem(GenesisItems.GOD_STATUE_G);
+        simpleItem(GenesisItems.GOD_STATUE_H);
+
         basicItemModel("divine_grail_empty");
         basicItemModel("divine_grail_near_empty");
         basicItemModel("divine_grail_half");

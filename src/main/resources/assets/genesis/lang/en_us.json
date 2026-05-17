@@ -281,9 +281,14 @@
   "block.genesis.mist_vault_1": "Mist Vault",
 
 
-  "block.genesis.god_statue_a": "Earth god Statue",
-  "block.genesis.god_statue_b": "Fire god Statue",
-  "block.genesis.god_statue_c": "Sea god Statue",
+  "block.genesis.god_statue_a": "Earth God Statue",
+  "block.genesis.god_statue_b": "Fire God Statue",
+  "block.genesis.god_statue_c": "Sea God Statue",
+  "block.genesis.god_statue_d": "Storm God Statue",
+  "block.genesis.god_statue_e": "Lightning God Statue",
+  "block.genesis.god_statue_f": "Plant God Statue",
+  "block.genesis.god_statue_g": "Ice God Statue",
+  "block.genesis.god_statue_h": "Frost God Statue",
 
 
   "entity.genesis.collector": "Collector",
