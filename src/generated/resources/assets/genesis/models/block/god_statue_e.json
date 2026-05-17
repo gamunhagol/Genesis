@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "genesis:block/statue_of_god_e",
+    "particle": "minecraft:block/stone"
+  }
+}
