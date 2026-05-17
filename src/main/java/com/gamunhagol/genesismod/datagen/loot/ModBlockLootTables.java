@@ -132,7 +132,13 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         Stream.of(
                 GenesisBlocks.GOD_STATUE_A,
-                GenesisBlocks.GOD_STATUE_B
+                GenesisBlocks.GOD_STATUE_B,
+                GenesisBlocks.GOD_STATUE_C,
+                GenesisBlocks.GOD_STATUE_D,
+                GenesisBlocks.GOD_STATUE_E,
+                GenesisBlocks.GOD_STATUE_F,
+                GenesisBlocks.GOD_STATUE_G,
+                GenesisBlocks.GOD_STATUE_H
         ).forEach(statue ->
                 this.add(statue.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))

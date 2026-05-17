@@ -214,7 +214,24 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> GOD_STATUE_B = register("god_statue_b",
             () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
                     GenesisBlockEntities.GOD_STATUE_B_BE));
-
+    public static final RegistryObject<Block> GOD_STATUE_C = register("god_statue_c",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_C_BE));
+    public static final RegistryObject<Block> GOD_STATUE_D = register("god_statue_d",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_D_BE));
+    public static final RegistryObject<Block> GOD_STATUE_E = register("god_statue_e",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_E_BE));
+    public static final RegistryObject<Block> GOD_STATUE_F = register("god_statue_f",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_F_BE));
+    public static final RegistryObject<Block> GOD_STATUE_G = register("god_statue_g",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_G_BE));
+    public static final RegistryObject<Block> GOD_STATUE_H = register("god_statue_h",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_H_BE));
 
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {

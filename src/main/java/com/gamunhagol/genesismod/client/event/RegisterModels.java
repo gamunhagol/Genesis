@@ -2,13 +2,11 @@ package com.gamunhagol.genesismod.client.event;
 
 import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.block.*;
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel;
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueBModel;
+import com.gamunhagol.genesismod.client.model.block.statue.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.LargeArrowModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
-import com.gamunhagol.genesismod.client.renderer.blockentity.statue.SOGStatueARenderer;
-import com.gamunhagol.genesismod.client.renderer.blockentity.statue.SOGStatueBRenderer;
+import com.gamunhagol.genesismod.client.renderer.blockentity.statue.*;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.LargeArrowRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
@@ -140,6 +138,12 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_A_LAYER, SOGStatueAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_B_LAYER, SOGStatueBModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_C_LAYER, SOGStatueCModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_D_LAYER, SOGStatueDModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_E_LAYER, SOGStatueEModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_F_LAYER, SOGStatueFModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_G_LAYER, SOGStatueGModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_H_LAYER, SOGStatueHModel::createBodyLayer);
 
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
@@ -167,6 +171,12 @@ public class RegisterModels {
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_A_BE.get(), SOGStatueARenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_B_BE.get(), SOGStatueBRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_C_BE.get(), SOGStatueCRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_D_BE.get(), SOGStatueDRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_E_BE.get(), SOGStatueERenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_F_BE.get(), SOGStatueFRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_G_BE.get(), SOGStatueGRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_H_BE.get(), SOGStatueHRenderer::new);
     }
     
 }

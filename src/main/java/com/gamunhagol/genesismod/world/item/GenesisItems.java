@@ -142,6 +142,18 @@ public class GenesisItems {
             () -> new BlockItem(GenesisBlocks.GOD_STATUE_A.get(), new Item.Properties().fireResistant()));
     public static final RegistryObject<BlockItem> GOD_STATUE_B = ITEMS.register("god_statue_b",
             () -> new BlockItem(GenesisBlocks.GOD_STATUE_B.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_C = ITEMS.register("god_statue_c",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_C.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_D = ITEMS.register("god_statue_d",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_D.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_E = ITEMS.register("god_statue_e",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_E.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_F = ITEMS.register("god_statue_f",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_F.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_G = ITEMS.register("god_statue_g",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_G.get(), new Item.Properties().fireResistant()));
+    public static final RegistryObject<BlockItem> GOD_STATUE_H = ITEMS.register("god_statue_h",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_H.get(), new Item.Properties().fireResistant()));
 
 
 

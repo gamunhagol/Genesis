@@ -15,7 +15,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
 public class SOGStatueBRenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
-    private final SOGStatueBModel model; // [수정] 타입 변경
+    private final SOGStatueBModel model;
 
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_b.png");

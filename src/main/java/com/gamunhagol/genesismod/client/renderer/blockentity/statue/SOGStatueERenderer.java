@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.client.renderer.blockentity.statue;
 
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel; // 모델 import 추가
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueEModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.statue.StatueBaseBlock;
 import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
@@ -14,14 +14,14 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
-    private final SOGStatueAModel model;
+public class SOGStatueERenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
+    private final SOGStatueEModel model;
 
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_a.png");
+            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_e.png");
 
-    public SOGStatueARenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_A_LAYER));
+    public SOGStatueERenderer(BlockEntityRendererProvider.Context context) {
+        this.model = new SOGStatueEModel(context.bakeLayer(ModModelLayers.STATUE_GOD_E_LAYER));
     }
 
     @Override

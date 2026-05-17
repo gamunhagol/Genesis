@@ -108,6 +108,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         statueBlock(GenesisBlocks.GOD_STATUE_A, "god_statue_a", "statue_of_god_a");
         statueBlock(GenesisBlocks.GOD_STATUE_B, "god_statue_b", "statue_of_god_b");
+        statueBlock(GenesisBlocks.GOD_STATUE_C, "god_statue_c", "statue_of_god_c");
+        statueBlock(GenesisBlocks.GOD_STATUE_D, "god_statue_d", "statue_of_god_d");
+        statueBlock(GenesisBlocks.GOD_STATUE_E, "god_statue_e", "statue_of_god_e");
+        statueBlock(GenesisBlocks.GOD_STATUE_F, "god_statue_f", "statue_of_god_f");
+        statueBlock(GenesisBlocks.GOD_STATUE_G, "god_statue_g", "statue_of_god_g");
+        statueBlock(GenesisBlocks.GOD_STATUE_H, "god_statue_h", "statue_of_god_h");
 
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)

@@ -24,4 +24,16 @@ public class ModModelLayers {
             new ResourceLocation("genesis", "statue_god_a"), "main");
     public static final ModelLayerLocation STATUE_GOD_B_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_god_b"), "main");
+    public static final ModelLayerLocation STATUE_GOD_C_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_c"), "main");
+    public static final ModelLayerLocation STATUE_GOD_D_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_d"), "main");
+    public static final ModelLayerLocation STATUE_GOD_E_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_e"), "main");
+    public static final ModelLayerLocation STATUE_GOD_F_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_f"), "main");
+    public static final ModelLayerLocation STATUE_GOD_G_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_g"), "main");
+    public static final ModelLayerLocation STATUE_GOD_H_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "statue_god_h"), "main");
 }
