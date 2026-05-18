@@ -49,13 +49,14 @@ public abstract class StatueBaseBlock extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        //if (level.isClientSide) {
-       //     BlockEntity be = level.getBlockEntity(pos);
-       //     if (be instanceof StatueBaseBlockEntity statueBe) {
-      //          this.openStatueGui(statueBe);
-      //      }
-       // }
-        //2026.5.15 기준 아직 ui 가 없어서 주석처리 해놓음
+        // 클라이언트 사이드(렌더링을 담당하는 쪽)일 때만 UI를 오픈
+        if (level.isClientSide) {
+            BlockEntity be = level.getBlockEntity(pos);
+            if (be instanceof StatueBaseBlockEntity statueBe) {
+                this.openStatueGui(statueBe);
+            }
+        }
+        // 서버와 클라이언트 모두에게 상호작용이 성공했음을 알림 (팔 흔들기 애니메이션 등 정상 작동)
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 

@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.network.client;
 
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 
@@ -11,6 +12,17 @@ public class ClientPayloadHandler {
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.setMental(mentalPower);
+            });
+        }
+    }
+    public static void handleSpellSlotSync(int maxSlots, int selectedSlot, java.util.List<String> equippedSpells) {
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player != null) {
+            mc.player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
+                cap.setMaxSlots(maxSlots);
+                cap.setSelectedSlot(selectedSlot);
+                cap.getEquippedSpells().clear();
+                cap.getEquippedSpells().addAll(equippedSpells);
             });
         }
     }

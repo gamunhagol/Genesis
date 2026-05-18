@@ -446,6 +446,12 @@
 
   "gui.genesis.level_up.title": "Stat Enhancement",
   "gui.genesis.statue_main": "Statue Menu",
+  "gui.genesis.statue_main.title" : "Statue Menu",
+  "gui.genesis.spell_menu.title" : "Spell Menu",
+
+  "gui.genesis.button.heal": "Pray",
+  "gui.genesis.button.spell_manage": "Spell",
+  "gui.genesis.button.spec_up": "Blessing",
 
 
 

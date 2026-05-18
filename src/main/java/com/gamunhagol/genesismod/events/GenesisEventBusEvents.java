@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatCapability;
+import com.gamunhagol.genesismod.world.capability.spell.ISpellSlot;
 import com.gamunhagol.genesismod.world.capability.weapon.IGenesisWeaponStats;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
@@ -49,5 +50,6 @@ public class GenesisEventBusEvents {
         event.register(StatCapability.class);
         event.register(IGenesisWeaponStats.class);
         event.register(ProjectileStatsProvider.ProjectileStats.class);
+        event.register(ISpellSlot.class);
     }
 }

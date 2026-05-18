@@ -3,11 +3,13 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.events.common.GenesisCombatEvents;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.PacketSyncSpellSlot;
 import com.gamunhagol.genesismod.network.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -58,6 +60,8 @@ public class GenesisForgeEvents {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             event.addCapability(new ResourceLocation(GenesisMod.MODID, "stats"), new StatCapabilityProvider());
+            event.addCapability(new ResourceLocation(GenesisMod.MODID, "spell_slot_data"),
+                    new SpellSlotProvider());
         }
     }
 
@@ -170,6 +174,26 @@ public class GenesisForgeEvents {
             });
         });
 
+        // 주문 슬롯 데이터
+        if (event.isWasDeath()) {
+            original.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(oldStore -> {
+                newPlayer.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+
+                    if (newPlayer instanceof ServerPlayer serverPlayer) {
+                        GenesisNetwork.sendToPlayer(
+                                new com.gamunhagol.genesismod.network.PacketSyncSpellSlot(
+                                        newStore.getMaxSlots(),
+                                        newStore.getSelectedSlot(),
+                                        newStore.getEquippedSpells()
+                                ),
+                                serverPlayer
+                        );
+                    }
+                });
+            });
+        }
+
         if (event.isWasDeath()) {
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);
@@ -208,6 +232,12 @@ public class GenesisForgeEvents {
                                 stats.getMental(), stats.getMaxMental(),
                                 stats.isLevelUpUnlocked() // 이 정보가 클라이언트로 가야 버튼이 생깁니다.
                         ),
+                        player
+                );
+            });
+            player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
+                GenesisNetwork.sendToPlayer(
+                        new PacketSyncSpellSlot(cap.getMaxSlots(), cap.getSelectedSlot(), cap.getEquippedSpells()),
                         player
                 );
             });

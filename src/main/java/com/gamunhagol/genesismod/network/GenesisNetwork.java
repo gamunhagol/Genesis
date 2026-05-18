@@ -24,7 +24,7 @@ public class GenesisNetwork {
 
         INSTANCE = net;
 
-        // 2. 사용할 패킷들 등록 (클래스 이름과 순서를 확인하세요)
+        // 사용할 패킷들 등록 (클래스 이름과 순서를 확인하세요)
         net.messageBuilder(PacketSyncStats.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(PacketSyncStats::new)
                 .encoder(PacketSyncStats::toBytes)
@@ -41,6 +41,24 @@ public class GenesisNetwork {
                 .decoder(PacketSyncMentalPower::new)
                 .encoder(PacketSyncMentalPower::toBytes)
                 .consumerMainThread(PacketSyncMentalPower::handle)
+                .add();
+
+        net.messageBuilder(PacketSyncSpellSlot.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncSpellSlot::decode)
+                .encoder(PacketSyncSpellSlot::encode)
+                .consumerMainThread(PacketSyncSpellSlot::handle)
+                .add();
+
+        net.messageBuilder(PacketChangeSpell.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketChangeSpell::decode)
+                .encoder(PacketChangeSpell::encode)
+                .consumerMainThread(PacketChangeSpell::handle)
+                .add();
+
+        net.messageBuilder(PacketStatueHeal.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketStatueHeal::decode)
+                .encoder(PacketStatueHeal::encode)
+                .consumerMainThread(PacketStatueHeal::handle)
                 .add();
     }
 
