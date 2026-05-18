@@ -17,22 +17,38 @@ import java.util.List;
 
 public class SpellManageScreen extends Screen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/spell_menu.png");
+    private static final ResourceLocation LOCKED_SLOT_ICON = new ResourceLocation("textures/gui/widgets.png");
     private final Screen lastScreen;
 
-    // 이미지 파일 원본 크기
-    private final int imageWidth = 256;
-    private final int imageHeight = 192;
+    private static final int TEXTURE_WIDTH = 768;
+    private static final int TEXTURE_HEIGHT = 544;
+
+    private int displayWidth;
+    private int displayHeight;
+    private float scale;
     private int leftPos;
     private int topPos;
 
-    // 제어 변수
-    private int selectedEquipSlot = 0; // 하단 10칸 중 선택된 슬롯 (0~9)
-    private int scrollRowOffset = 0;   // 위/아래 버튼으로 제어할 현재 줄 위치
+    private int selectedEquipSlot = 0;
+    private int currentPage = 0;
 
-    // 9x3 그리드 설정
+    // 더블 클릭 감지용 변수
+    private long lastClickTime = 0;
+    private int lastClickedSlot = -1;
+
     private final int gridCols = 9;
-    private final int gridRowsVisible = 3; // 눈에 보이는 줄 수
-    private final int slotSize = 22;       // 한 칸의 픽셀 크기
+    private final int gridRowsVisible = 3;
+    private final int spellsPerPage = gridCols * gridRowsVisible;
+
+    private final int rawUpperGridX = 32;
+    private final int rawUpperGridY = 69;
+    private final int rawBottomGridX = 27;
+    private final int rawBottomGridY = 448;
+
+    private final int rawSlotSize = 70;
+    private final int rawSlotHeight = 92;
+    private final int rawIconSize = 50;
+    private final int rawIconOffset = 2;
 
     public SpellManageScreen(Screen lastScreen) {
         super(Component.translatable("gui.genesis.spell_menu.title"));
@@ -42,35 +58,37 @@ public class SpellManageScreen extends Screen {
     @Override
     protected void init() {
         super.init();
-        this.leftPos = (this.width - this.imageWidth) / 2;
-        this.topPos = (this.height - this.imageHeight) / 2;
 
-        // [핵심 변경] 마인크래프트 순정 버튼 위젯으로 위/아래 내비게이션 구현
-        // 버튼 위치는 우측 스크롤바가 들어갈 법한 자리에 배치합니다.
-        int buttonX = this.leftPos + 215;
+        this.displayHeight = Math.min((int)(this.height * 0.85), TEXTURE_HEIGHT);
+        this.scale = (float) this.displayHeight / TEXTURE_HEIGHT;
+        this.displayWidth = (int)(TEXTURE_WIDTH * scale);
 
-        // 위로 가기 버튼 (▲)
+        this.leftPos = (this.width - this.displayWidth) / 2;
+        this.topPos = (this.height - this.displayHeight) / 2;
+
+        int buttonX = this.leftPos + (int)(685 * scale);
+
+        // 이전 페이지 버튼 (▲)
         this.addRenderableWidget(Button.builder(Component.literal("▲"), b -> {
-            if (this.scrollRowOffset > 0) {
-                this.scrollRowOffset--;
+            if (this.currentPage > 0) {
+                this.currentPage--;
             }
-        }).bounds(buttonX, this.topPos + 15, 20, 20).build());
+        }).bounds(buttonX, this.topPos + (int)(75 * scale), (int)(40 * scale), (int)(40 * scale)).build());
 
-        // 아래로 가기 버튼 (▼)
+        // 다음 페이지 버튼 (▼)
         this.addRenderableWidget(Button.builder(Component.literal("▼"), b -> {
             List<String> learnedSpells = getPlayerLearnedSpells();
-            int totalRows = (int) Math.ceil((double) learnedSpells.size() / gridCols);
+            int maxPage = (int) Math.ceil((double) learnedSpells.size() / spellsPerPage) - 1;
 
-            // 보여줄 마법이 남았을 때만 아래로 한 줄 내려감
-            if (this.scrollRowOffset < totalRows - gridRowsVisible) {
-                this.scrollRowOffset++;
+            if (this.currentPage < maxPage) {
+                this.currentPage++;
             }
-        }).bounds(buttonX, this.topPos + 40, 20, 20).build());
+        }).bounds(buttonX, this.topPos + (int)(120 * scale), (int)(40 * scale), (int)(40 * scale)).build());
 
         // 나가기 버튼
         this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.exit"), b -> {
             this.onClose();
-        }).bounds(this.leftPos + 205, this.topPos + 165, 40, 20).build());
+        }).bounds(this.leftPos + (int)(685 * scale), this.topPos + (int)(285 * scale), (int)(40 * scale), (int)(40 * scale)).build());
     }
 
     @Override
@@ -78,7 +96,7 @@ public class SpellManageScreen extends Screen {
         this.renderBackground(graphics);
 
         // 1. 배경 프레임 그리기
-        graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.imageWidth, this.imageHeight, this.imageWidth, this.imageHeight);
+        graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.displayWidth, this.displayHeight, this.displayWidth, this.displayHeight);
 
         if (this.minecraft.player == null) return;
 
@@ -86,59 +104,77 @@ public class SpellManageScreen extends Screen {
 
         this.minecraft.player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(spellSlot -> {
 
-            // 2. 상단 9x3 마법 상자 영역 아이콘 그리기
-            int upperGridX = this.leftPos + 12;
-            int upperGridY = this.topPos + 15;
+            int startIndex = this.currentPage * spellsPerPage;
+            int endIndex = Math.min(startIndex + spellsPerPage, learnedSpells.size());
 
-            // 버튼 방식이어도 경계면 침범 방지를 위해 시저 테스트(가두기)는 유지하는 것이 안전합니다.
-            graphics.enableScissor(upperGridX, upperGridY, upperGridX + (gridCols * slotSize), upperGridY + (gridRowsVisible * slotSize));
+            // 2. 상단 9x3 마법 상자 영역 아이콘 그리기 (습득한 마법)
+            for (int i = startIndex; i < endIndex; i++) {
+                int indexOnPage = i - startIndex;
+                int row = indexOnPage / gridCols;
+                int col = indexOnPage % gridCols;
 
-            for (int i = 0; i < learnedSpells.size(); i++) {
-                int row = (i / gridCols) - this.scrollRowOffset; // 버튼 입력으로 변한 offset 반영
-                int col = i % gridCols;
+                int slotX = this.leftPos + (int)((rawUpperGridX + (col * rawSlotSize)) * scale);
+                int slotY = this.topPos + (int)((rawUpperGridY + (row * rawSlotHeight)) * scale);
 
-                // 현재 3줄(0, 1, 2) 범위 안에 들어오는 마법들만 불러와서 렌더링
-                if (row >= 0 && row < gridRowsVisible) {
-                    int slotX = upperGridX + (col * slotSize);
-                    int slotY = upperGridY + (row * slotSize);
+                int currentSlotSize = (int)(rawSlotSize * scale);
+                int currentIconSize = (int)(rawIconSize * scale);
+                int currentIconOffset = (int)(rawIconOffset * scale);
 
-                    String spellId = learnedSpells.get(i);
-                    ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + spellId + ".png");
+                String spellId = learnedSpells.get(i);
+                ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + spellId + ".png");
+                graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
 
-                    // 주문 아이콘 렌더링
-                    graphics.blit(iconTex, slotX + 2, slotY + 2, 0, 0, 18, 18, 18, 18);
-
-                    // 마우스 호버 효과
-                    if (mouseX >= slotX && mouseX < slotX + slotSize && mouseY >= slotY && mouseY < slotY + slotSize) {
-                        graphics.fill(slotX, slotY, slotX + slotSize, slotY + slotSize, 0x55FFFFFF);
-                    }
+                if (mouseX >= slotX && mouseX < slotX + currentSlotSize && mouseY >= slotY && mouseY < slotY + currentSlotSize) {
+                    graphics.fill(slotX, slotY, slotX + currentSlotSize, slotY + currentSlotSize, 0x55FFFFFF);
                 }
             }
-            graphics.disableScissor();
 
-            // 3. 하단 장착 슬롯 10칸 그리기
-            int bottomGridX = this.leftPos + 12;
-            int bottomGridY = this.topPos + 125; // 이미지 레이아웃에 맞춰 Y축 조정 필요
+// 3. 하단 장착 슬롯 10칸 그리기
             List<String> equipped = spellSlot.getEquippedSpells();
+            int maxSlots = spellSlot.getMaxSlots(); // 플레이어의 현재 최대 해금 슬롯 수
 
             for (int i = 0; i < 10; i++) {
-                int slotX = bottomGridX + (i * slotSize);
+                int slotX = this.leftPos + (int)((rawBottomGridX + (i * rawSlotSize)) * scale);
+                int slotY = this.topPos + (int)(rawBottomGridY * scale);
 
-                // 현재 각인 대상으로 선택된 방 강조
-                if (i == this.selectedEquipSlot) {
-                    graphics.fill(slotX, bottomGridY, slotX + slotSize, bottomGridY + slotSize, 0x44FFFF00);
+                int currentSlotSize = (int)(rawSlotSize * scale);
+                int currentIconSize = (int)(rawIconSize * scale);
+                int currentIconOffset = (int)(rawIconOffset * scale);
+
+                // [복구 핵심] 현재 슬롯이 해금된 범위(maxSlots 미만)인지 먼저 확인합니다.
+                if (i < maxSlots) {
+                    // 1. 현재 선택된 슬롯이라면 안쪽 핏에 맞춰 노란색 박스 강조
+                    if (i == this.selectedEquipSlot) {
+                        graphics.fill(
+                                slotX + currentIconOffset,
+                                slotY + currentIconOffset,
+                                slotX + currentIconOffset + currentIconSize,
+                                slotY + currentIconOffset + currentIconSize,
+                                0x44FFFF00);
+                    }
+
+                    // 2. 마법이 장착되어 있다면 아이콘 출력 (선택 여부와 관계없이 해금된 칸이면 그려야 함)
+                    if (i < equipped.size() && equipped.get(i) != null && !equipped.get(i).isEmpty()) {
+                        String eqSpellId = equipped.get(i);
+                        ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + eqSpellId + ".png");
+                        graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
+                    }
+                    // 장착된 마법이 없는 빈 슬롯은 아무것도 그리지 않아 배경 이미지(투명 빈칸)가 그대로 보입니다.
                 }
-
-                // 각인된 마법 아이콘 그리기 (최대 10칸)
-                if (i < equipped.size() && !equipped.get(i).isEmpty()) {
-                    String eqSpellId = equipped.get(i);
-                    ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + eqSpellId + ".png");
-                    graphics.blit(iconTex, slotX + 2, bottomGridY + 2, 0, 0, 18, 18, 18, 18);
+                // [해금 안 됨] 최대 해금 수치를 넘어선 나머지 슬롯들만 자물쇠로 막기
+                else {
+                    graphics.blit(LOCKED_SLOT_ICON,
+                            slotX + currentIconOffset, slotY + currentIconOffset,
+                            currentIconSize, currentIconSize,
+                            0F, 186F,
+                            20, 20,
+                            256, 256
+                    );
                 }
             }
         });
 
-        // 4. 위젯들(위/아래 버튼, 나가기 버튼) 최종 출력
+        // 4. 위젯 출력
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
@@ -146,34 +182,48 @@ public class SpellManageScreen extends Screen {
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (this.minecraft.player == null) return super.mouseClicked(mouseX, mouseY, button);
 
-        int upperGridX = this.leftPos + 12;
-        int upperGridY = this.topPos + 15;
-        int bottomGridX = this.leftPos + 12;
-        int bottomGridY = this.topPos + 125;
+        int clickedRawX = (int)((mouseX - this.leftPos) / scale);
+        int clickedRawY = (int)((mouseY - this.topPos) / scale);
 
         List<String> learnedSpells = getPlayerLearnedSpells();
 
-        // [클릭 처리 1] 하단 10칸 슬롯 클릭 시 -> 선택된 슬롯 변경
-        if (mouseY >= bottomGridY && mouseY < bottomGridY + slotSize) {
-            int clickedIdx = (int) ((mouseX - bottomGridX) / slotSize);
-            if (clickedIdx >= 0 && clickedIdx < 10) {
-                this.selectedEquipSlot = clickedIdx;
+        // [클릭 처리 1] 하단 10칸 슬롯 클릭 시 (최대 슬롯 제한 및 더블 클릭 해제)
+        if (clickedRawY >= rawBottomGridY && clickedRawY < rawBottomGridY + rawSlotSize) {
+            int clickedIdx = (clickedRawX - rawBottomGridX) / rawSlotSize;
+
+            int maxSlots = this.minecraft.player.getCapability(SpellSlotProvider.SPELL_SLOT)
+                    .map(cap -> cap.getMaxSlots())
+                    .orElse(0);
+
+            // 자물쇠 칸은 클릭 무시
+            if (clickedIdx >= 0 && clickedIdx < maxSlots) {
+                long currentTime = net.minecraft.Util.getMillis();
+
+                // 더블 클릭 감지 (250ms 이내) -> 패킷으로 빈 문자열을 보내 마법 해제
+                if (this.lastClickedSlot == clickedIdx && currentTime - this.lastClickTime < 250) {
+                    GenesisNetwork.sendToServer(new PacketChangeSpell(clickedIdx, ""));
+                    this.lastClickedSlot = -1;
+                } else {
+                    // 일반 클릭 -> 슬롯 선택
+                    this.selectedEquipSlot = clickedIdx;
+                    this.lastClickedSlot = clickedIdx;
+                    this.lastClickTime = currentTime;
+                }
                 return true;
             }
         }
 
-        // [클릭 처리 2] 상단 9x3 상자 안의 주문 클릭 시 -> 아래에 각인(패킷 전송)
-        if (mouseX >= upperGridX && mouseX < upperGridX + (gridCols * slotSize) &&
-                mouseY >= upperGridY && mouseY < upperGridY + (gridRowsVisible * slotSize)) {
+        // [클릭 처리 2] 상단 9x3 상자 안의 주문 클릭 시 -> 아래 선택된 슬롯에 각인(패킷 전송)
+        if (clickedRawX >= rawUpperGridX && clickedRawX < rawUpperGridX + (gridCols * rawSlotSize) &&
+                clickedRawY >= rawUpperGridY && clickedRawY < rawUpperGridY + (gridRowsVisible * rawSlotHeight)) {
 
-            int col = (int) ((mouseX - upperGridX) / slotSize);
-            int row = (int) ((mouseY - upperGridY) / slotSize) + this.scrollRowOffset; // 현재 스크롤 줄 수 보정
-            int clickedSpellIdx = (row * gridCols) + col;
+            int col = (clickedRawX - rawUpperGridX) / rawSlotSize;
+            int row = (clickedRawY - rawUpperGridY) / rawSlotHeight;
+
+            int clickedSpellIdx = (this.currentPage * spellsPerPage) + (row * gridCols) + col;
 
             if (clickedSpellIdx >= 0 && clickedSpellIdx < learnedSpells.size()) {
                 String targetSpellId = learnedSpells.get(clickedSpellIdx);
-
-                // 서버로 각인 요청 패킷 송출!
                 GenesisNetwork.sendToServer(new PacketChangeSpell(this.selectedEquipSlot, targetSpellId));
                 return true;
             }
@@ -182,16 +232,17 @@ public class SpellManageScreen extends Screen {
         return super.mouseClicked(mouseX, mouseY, button);
     }
 
-    // 데이터 연동용 헬퍼 메서드 (추후 Capability 변수명 확정 시 이 함수 내부만 수정하면 됨)
+    // 데이터 연동용 헬퍼 메서드 (실제 플레이어 스탯 연동 완료)
     private List<String> getPlayerLearnedSpells() {
         List<String> learned = new ArrayList<>();
-        // TODO: 실제 적용 시 stats.getLearnedSpells() 형태로 연동
-        // 현재는 테스트용 더미 데이터
-        learned.add("fireball");
-        learned.add("heal");
-        for(int i = 0; i < 30; i++) {
-            learned.add("fireball"); // 스크롤 작동 확인용 임시 더미
+
+        if (this.minecraft.player != null) {
+            this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                // StatCapability에서 실제로 배운 마법 목록을 가져옵니다.
+                learned.addAll(stats.getLearnedSpells());
+            });
         }
+
         return learned;
     }
 

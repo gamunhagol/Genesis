@@ -26,7 +26,7 @@ public class SpellBookItem extends Item {
                 if (!stats.hasSpell(this.spellId)) {
                     stats.learnSpell(this.spellId);
 
-                    // 사용 후 아이템 소모
+                    // 사용 후 아이템 소모 (크리에이티브 모드가 아닐 때만)
                     if (!player.getAbilities().instabuild) {
                         stack.shrink(1);
                     }
