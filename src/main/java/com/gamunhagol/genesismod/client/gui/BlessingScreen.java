@@ -9,7 +9,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class BlessingScreen extends Screen {
     // 배경 이미지 (가장 기본적인 256x256 사이즈 하나만 준비해서 돌려쓰셔도 됩니다)
-    private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/statue/starry_path.png");
+    private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/starry_path.png");
 
     private final Screen lastScreen;
     private final String statueId;
