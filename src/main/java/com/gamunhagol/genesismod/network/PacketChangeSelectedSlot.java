@@ -5,6 +5,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class PacketChangeSelectedSlot {
@@ -30,24 +31,48 @@ public class PacketChangeSelectedSlot {
                 player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
                     int currentSlot = cap.getSelectedSlot();
                     int maxSlots = cap.getMaxSlots(); // 해금된 최대 슬롯 수
+                    List<String> equipped = cap.getEquippedSpells();
 
-                    // 새 슬롯 계산
-                    int newSlot = currentSlot + msg.direction;
-
-                    // 범위를 벗어나면 반대편으로 루프(순환)되도록 처리
-                    if (newSlot < 0) {
-                        newSlot = maxSlots - 1; // 0에서 위로 가면 맨 끝 슬롯으로
-                    } else if (newSlot >= maxSlots) {
-                        newSlot = 0; // 끝에서 아래로 가면 0번 슬롯으로
+                    // 장착된 마법이 최소 1개라도 있는지 확인
+                    boolean hasAnySpell = false;
+                    for (int i = 0; i < maxSlots; i++) {
+                        String s = equipped.get(i);
+                        if (s != null && !s.trim().isEmpty()) {
+                            hasAnySpell = true;
+                            break;
+                        }
                     }
 
-                    cap.setSelectedSlot(newSlot);
+                    // 장착된 마법이 있을 때만 슬롯을 변경
+                    if (hasAnySpell) {
+                        int newSlot = currentSlot;
 
-                    // 갱신된 슬롯 정보를 클라이언트로 동기화 (화면에 반영)
-                    GenesisNetwork.sendToPlayer(
-                            new PacketSyncSpellSlot(cap.getMaxSlots(), cap.getSelectedSlot(), cap.getEquippedSpells()),
-                            player
-                    );
+                        // 최대 maxSlots 만큼만 반복하여 빈칸을 건너뜀 (무한 루프 방지)
+                        for (int i = 0; i < maxSlots; i++) {
+                            newSlot += msg.direction;
+
+                            // 범위를 벗어나면 반대편으로 루프(순환)
+                            if (newSlot < 0) {
+                                newSlot = maxSlots - 1;
+                            } else if (newSlot >= maxSlots) {
+                                newSlot = 0;
+                            }
+
+                            // 해당 슬롯에 마법이 있다면 탐색 중지!
+                            String spellInSlot = equipped.get(newSlot);
+                            if (spellInSlot != null && !spellInSlot.trim().isEmpty()) {
+                                break;
+                            }
+                        }
+
+                        cap.setSelectedSlot(newSlot);
+
+                        // 갱신된 슬롯 정보를 클라이언트로 동기화
+                        GenesisNetwork.sendToPlayer(
+                                new PacketSyncSpellSlot(cap.getMaxSlots(), cap.getSelectedSlot(), cap.getEquippedSpells()),
+                                player
+                        );
+                    }
                 });
             }
         });

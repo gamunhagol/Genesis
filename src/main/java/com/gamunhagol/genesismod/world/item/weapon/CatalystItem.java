@@ -3,10 +3,14 @@ package com.gamunhagol.genesismod.world.item.weapon;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
+import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
+import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.capability.spell.ISpellSlot;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -28,11 +32,23 @@ public class CatalystItem extends Item {
         super(properties);
     }
 
+    // 촉매와 주문의 호환성을 검사하는 메서드
+    public boolean canCatalystCastSpell(ItemStack catalyst, AbstractSpell spell) {
+        if (spell instanceof MagicSpell) {
+            // 마법 주문일 경우, 촉매가 MAGIC_SPELLS 태그를 가지고 있어야 함
+            return catalyst.is(GenesisTags.Items.MAGIC_SPELLS);
+        } else if (spell instanceof MiracleSpell) {
+            // 기적 주문일 경우, 촉매가 MIRACLE_SPELLS 태그를 가지고 있어야 함
+            return catalyst.is(GenesisTags.Items.MIRACLE_SPELLS);
+        }
+        // 둘 다 아닌 알 수 없는 타입이라면 기본적으로 시전 차단
+        return false;
+    }
+
     // 플레이어의 Spell Capability를 조회하여 현재 활성화된 슬롯의 주문을 동적으로 가져옵니다.
     protected AbstractSpell getSelectedSpell(LivingEntity entity) {
         if (entity instanceof Player player) {
 
-            // 핵심 수정: map() 안에서 null을 반환하면 크래시가 나므로,
             // orElse(null)을 통해 Capability(ISpellSlot) 객체를 먼저 안전하게 꺼냅니다.
             ISpellSlot cap = player.getCapability(SpellSlotProvider.SPELL_SLOT).orElse(null);
 
@@ -72,13 +88,18 @@ public class CatalystItem extends Item {
             return InteractionResultHolder.fail(catalyst);
         }
 
+        // [핵심 추가] 촉매와 주문의 종류가 맞지 않으면 차단
+        if (!canCatalystCastSpell(catalyst, currentSpell)) {
+            return InteractionResultHolder.fail(catalyst);
+        }
+
         boolean success = castUniversalSpell(level, player, catalyst, currentSpell);
 
         if (success) {
             return InteractionResultHolder.sidedSuccess(catalyst, level.isClientSide());
         } else {
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
-                    SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.0F, 1.0F);
+                    SoundEvents.FIRE_EXTINGUISH, SoundSource.PLAYERS, 1.0F, 1.0F);//모션 추가되기 전까지 임시 사용
             return InteractionResultHolder.fail(catalyst);
         }
     }
@@ -86,7 +107,7 @@ public class CatalystItem extends Item {
     // 몹과 플레이어가 모두 사용하는 범용 시전 로직
     public boolean castUniversalSpell(Level level, LivingEntity caster, ItemStack catalyst, AbstractSpell spell) {
         // [안전장치 4] 혹시라도 null인 마법이 여기까지 넘어왔을 때 크래시를 막기 위한 최종 방어막
-        if (spell == null) {
+        if (spell == null || !canCatalystCastSpell(catalyst, spell)) {
             return false;
         }
 

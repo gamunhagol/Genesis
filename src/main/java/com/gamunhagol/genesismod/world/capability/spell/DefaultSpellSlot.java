@@ -32,6 +32,18 @@ public class DefaultSpellSlot implements ISpellSlot {
     @Override
     public void equipSpell(String spellId) {
         if (selectedSlot >= 0 && selectedSlot < maxSlots) {
+
+            // 장착하려는 마법이 빈칸 지우기가 아니라 실제 마법일 경우
+            if (spellId != null && !spellId.trim().isEmpty()) {
+                for (int i = 0; i < maxSlots; i++) {
+                    // 이미 다른 슬롯에 똑같은 마법이 있다면 그 자리를 비워줍니다.
+                    if (spellId.equals(equippedSpells.get(i))) {
+                        equippedSpells.set(i, "");
+                    }
+                }
+            }
+
+            // 선택된 슬롯에 마법 최종 장착
             equippedSpells.set(selectedSlot, spellId);
         }
     }

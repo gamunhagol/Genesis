@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.datagen.tags;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -55,6 +56,12 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.PADDED_CHAIN_LEGGINGS.get(),
                 GenesisItems.PADDED_CHAIN_BOOTS.get()
         );
+
+        tag(GenesisTags.Items.MAGIC_SPELLS)
+                .add(GenesisItems.AMETHYST_WAND.get());
+
+        tag(GenesisTags.Items.MIRACLE_SPELLS)
+                .add(GenesisItems.GREEN_STAR_SEAL.get());
 
 
 
