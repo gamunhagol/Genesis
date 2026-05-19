@@ -68,6 +68,8 @@ public class ClientTooltipHandler {
 
         register(GenesisItems.MEDALLION_OF_DOMINION.get(), "tooltip.genesis.medallion_of_dominion.info");
 
+        register(GenesisItems.LITTLE_STAR_OF_CLARITY.get(), "tooltip.genesis.little_star_of_clarity.info");
+
         register(GenesisItems.FABRICATED_STAR.get(), "tooltip.genesis.fabricated_star.info");
 
 

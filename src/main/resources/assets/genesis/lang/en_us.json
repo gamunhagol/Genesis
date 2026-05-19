@@ -181,6 +181,8 @@
 
   "item.genesis.medallion_of_dominion": "Medallion of Dominion",
 
+  "item.genesis.little_star_of_clarity": "Little Star of Clarity",
+
   "item.genesis.fabricated_star": "Fabricated Star",
 
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
@@ -394,6 +396,8 @@
   "tooltip.genesis.mist_core_1.info": "Forgotten by the world.",
 
   "tooltip.genesis.medallion_of_dominion.info": "A powerless medallion with the brand of dominion engraved. Only traces of its past allure remain.",
+
+  "tooltip.genesis.little_star_of_clarity.info": "The result of an ancient group's endeavor to transcend their innate limits and harness their hidden potential.",
 
   "tooltip.genesis.fabricated_star.info": "Arranged in sequence to weave the world.",
 

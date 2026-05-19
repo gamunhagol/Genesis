@@ -203,6 +203,8 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.MEDALLION_OF_DOMINION.get());
 
+                output.accept(GenesisItems.LITTLE_STAR_OF_CLARITY.get());
+
                 output.accept(GenesisItems.FABRICATED_STAR.get());
 
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());

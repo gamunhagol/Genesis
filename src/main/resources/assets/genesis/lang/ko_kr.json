@@ -183,6 +183,8 @@
 
   "item.genesis.medallion_of_dominion": "지배의 메달",
 
+  "item.genesis.little_star_of_clarity": "청명의 작은 별",
+
   "item.genesis.fabricated_star": "만들어진 별",
 
   "item.genesis.quicksand_bucket": "유사 양동이",
@@ -397,6 +399,8 @@
   "tooltip.genesis.mist_core_1.info": "세상이 망각한.",
 
   "tooltip.genesis.medallion_of_dominion.info": "지배의 낙인이 새겨진 힘 잃은 메달, 누군가를 홀리던 잔재만이 남아있다.",
+
+  "tooltip.genesis.little_star_of_clarity.info": "오래전, 타고남을 넘어 능력을 활용 하고자 했던 집단의 노력의 결과물",
 
   "tooltip.genesis.fabricated_star.info": "순서대로 세워져 세상이 되었다",
 

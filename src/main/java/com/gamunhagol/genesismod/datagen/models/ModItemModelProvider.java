@@ -157,6 +157,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.FABRICATED_STAR);
 
+        basicItem(GenesisItems.LITTLE_STAR_OF_CLARITY.get());
+
         simpleItem(GenesisItems.HEAL_SCROLL_1);
 
         simpleItem(GenesisItems.QUICKSAND_BUCKET);
