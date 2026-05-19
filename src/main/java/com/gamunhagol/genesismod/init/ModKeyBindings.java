@@ -18,4 +18,21 @@ public class ModKeyBindings {
             GLFW.GLFW_KEY_V,                         // 기본 키: V
             KEY_CATEGORY_GENESIS                     // 카테고리
     );
+    // 이전 주문 선택 (위 방향키)
+    public static final KeyMapping SPELL_PREV_KEY = new KeyMapping(
+            "key." + GenesisMod.MODID + ".spell_prev",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_UP, // 키보드 ↑ 키
+            KEY_CATEGORY_GENESIS
+    );
+
+    // 다음 주문 선택 (아래 방향키)
+    public static final KeyMapping SPELL_NEXT_KEY = new KeyMapping(
+            "key." + GenesisMod.MODID + ".spell_next",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_DOWN, // 키보드 ↓ 키
+            KEY_CATEGORY_GENESIS
+    );
 }

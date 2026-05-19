@@ -11,66 +11,60 @@ import net.minecraftforge.network.simple.SimpleChannel;
 public class GenesisNetwork {
     private static SimpleChannel INSTANCE;
     private static int packetId = 0;
-    private static int id() { return packetId++; }
+
+    private static int id() {
+        return packetId++;
+    }
 
     public static void register() {
-        // 1. 채널 생성 및 INSTANCE 초기화 (이 부분이 빠져있었습니다)
-        SimpleChannel net = NetworkRegistry.ChannelBuilder
+        INSTANCE = NetworkRegistry.ChannelBuilder
                 .named(new ResourceLocation(GenesisMod.MODID, "messages"))
                 .networkProtocolVersion(() -> "1.0")
                 .clientAcceptedVersions(s -> true)
                 .serverAcceptedVersions(s -> true)
                 .simpleChannel();
 
-        INSTANCE = net;
+        // ==========================================
+        // [S -> C] Server to Client Packets (동기화 등)
+        // ==========================================
+        INSTANCE.messageBuilder(PacketSyncStats.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncStats::new).encoder(PacketSyncStats::toBytes)
+                .consumerMainThread(PacketSyncStats::handle).add();
 
-        // 사용할 패킷들 등록 (클래스 이름과 순서를 확인하세요)
-        net.messageBuilder(PacketSyncStats.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(PacketSyncStats::new)
-                .encoder(PacketSyncStats::toBytes)
-                .consumerMainThread(PacketSyncStats::handle)
-                .add();
+        INSTANCE.messageBuilder(PacketSyncMentalPower.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncMentalPower::new).encoder(PacketSyncMentalPower::toBytes)
+                .consumerMainThread(PacketSyncMentalPower::handle).add();
 
-        net.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(PacketConfirmLevelUp::new)
-                .encoder(PacketConfirmLevelUp::toBytes)
-                .consumerMainThread(PacketConfirmLevelUp::handle)
-                .add();
+        INSTANCE.messageBuilder(PacketSyncSpellSlot.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncSpellSlot::decode).encoder(PacketSyncSpellSlot::encode)
+                .consumerMainThread(PacketSyncSpellSlot::handle).add();
 
-        net.messageBuilder(PacketSyncMentalPower.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(PacketSyncMentalPower::new)
-                .encoder(PacketSyncMentalPower::toBytes)
-                .consumerMainThread(PacketSyncMentalPower::handle)
-                .add();
+        // ==========================================
+        // [C -> S] Client to Server Packets (요청, 조작 등)
+        // ==========================================
+        INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketConfirmLevelUp::new).encoder(PacketConfirmLevelUp::toBytes)
+                .consumerMainThread(PacketConfirmLevelUp::handle).add();
 
-        net.messageBuilder(PacketSyncSpellSlot.class, id(), NetworkDirection.PLAY_TO_CLIENT)
-                .decoder(PacketSyncSpellSlot::decode)
-                .encoder(PacketSyncSpellSlot::encode)
-                .consumerMainThread(PacketSyncSpellSlot::handle)
-                .add();
+        INSTANCE.messageBuilder(PacketChangeSpell.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketChangeSpell::decode).encoder(PacketChangeSpell::encode)
+                .consumerMainThread(PacketChangeSpell::handle).add();
 
-        net.messageBuilder(PacketChangeSpell.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(PacketChangeSpell::decode)
-                .encoder(PacketChangeSpell::encode)
-                .consumerMainThread(PacketChangeSpell::handle)
-                .add();
+        INSTANCE.messageBuilder(PacketStatueHeal.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketStatueHeal::decode).encoder(PacketStatueHeal::encode)
+                .consumerMainThread(PacketStatueHeal::handle).add();
 
-        net.messageBuilder(PacketStatueHeal.class, id(), NetworkDirection.PLAY_TO_SERVER)
-                .decoder(PacketStatueHeal::decode)
-                .encoder(PacketStatueHeal::encode)
-                .consumerMainThread(PacketStatueHeal::handle)
-                .add();
+        INSTANCE.messageBuilder(PacketChangeSelectedSlot.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketChangeSelectedSlot::decode).encoder(PacketChangeSelectedSlot::encode)
+                .consumerMainThread(PacketChangeSelectedSlot::handle).add();
     }
 
-    // 서버에서 특정 플레이어에게 패킷을 보내는 메서드
     public static void sendToPlayer(Object message, ServerPlayer player) {
-        // INSTANCE가 null인지 체크하여 튕김 방지
         if (INSTANCE != null && player != null) {
             INSTANCE.send(PacketDistributor.PLAYER.with(() -> player), message);
         }
     }
 
-    // 클라이언트에서 서버로 패킷을 보내는 메서드
     public static void sendToServer(Object message) {
         if (INSTANCE != null) {
             INSTANCE.sendToServer(message);

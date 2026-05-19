@@ -6,7 +6,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
 public class HealMiracle extends MiracleSpell {
-    public HealMiracle() { super("heal"); }
+    public HealMiracle() { super("little_heal"); }
 
     @Override
     public int getCastTime() { return 45; }

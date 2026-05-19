@@ -5,6 +5,8 @@ import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.PacketChangeSelectedSlot;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -15,6 +17,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.event.TickEvent; // [추가]
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -24,7 +27,6 @@ public class GenesisClientEvents {
 
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        // "GREEN_FLAME 파티클은 GreenFlameParticle의 모양(Provider)을 쓴다"고 등록
         event.registerSpriteSet(GenesisParticles.GREEN_FLAME.get(), GreenFlameParticle.Provider::new);
     }
 
@@ -38,28 +40,17 @@ public class GenesisClientEvents {
     }
 
     private static void registerBowProperties() {
-        // GREAT_BOW 아이템에 'pulling' (당기는 중인지 여부) 속성 등록
         ItemProperties.register(
                 GenesisItems.GREAT_BOW.get(),
                 new ResourceLocation("pulling"),
-                (stack, level, entity, seed) -> {
-                    return entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F;
-                }
+                (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
         );
 
-        // GREAT_BOW 아이템에 'pull' (얼마나 당겼는지 수치 0~1) 속성 등록
         ItemProperties.register(
                 GenesisItems.GREAT_BOW.get(),
                 new ResourceLocation("pull"),
                 (stack, level, entity, seed) -> {
-                    if (entity == null) {
-                        return 0.0F;
-                    }
-                    // 현재 사용 중인 아이템이 활이 아니면 0
-                    if (entity.getUseItem() != stack) {
-                        return 0.0F;
-                    }
-                    // (최대 사용 시간 - 남은 시간) / 20틱(1초) -> 바닐라 활 기준 완충 시간
+                    if (entity == null || entity.getUseItem() != stack) return 0.0F;
                     return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 28.0F;
                 }
         );
@@ -68,10 +59,14 @@ public class GenesisClientEvents {
     @SubscribeEvent
     public static void onKeyRegister(RegisterKeyMappingsEvent event) {
         event.register(ModKeyBindings.LEVEL_UP_KEY);
+        event.register(ModKeyBindings.SPELL_PREV_KEY);
+        event.register(ModKeyBindings.SPELL_NEXT_KEY);
     }
 
+    // 포지 이벤트 버스 (인게임 이벤트를 받는 곳)
     @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
     public static class ForgeBusEvents {
+
         @SubscribeEvent
         public static void onComputeFovModifier(ComputeFovModifierEvent event) {
             if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().is(GenesisItems.GREAT_BOW.get())) {
@@ -82,9 +77,22 @@ public class GenesisClientEvents {
                 } else {
                     f *= f;
                 }
-
-                // 줌 세기 조절 (0.15F ~ 0.2F 사이에서 원하는 만큼 조절하세요)
                 event.setNewFovModifier(event.getFovModifier() * (1.0F - f * 0.15F));
+            }
+        }
+
+        // 방향키 단축키 입력을 매 틱마다 감지하는 핸들러
+        @SubscribeEvent
+        public static void onClientTick(TickEvent.ClientTickEvent event) {
+            // 중복 실행 방지를 위해 클라이언트 틱 종료 시점에만 1번 연산
+            if (event.phase != TickEvent.Phase.END) return;
+            // 위 방향키 입력 시 (-1을 보내서 이전 슬롯으로 이동 요청)
+            while (ModKeyBindings.SPELL_PREV_KEY.consumeClick()) {
+                GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(-1));
+            }
+            // 아래 방향키 입력 시 (+1을 보내서 다음 슬롯으로 이동 요청)
+            while (ModKeyBindings.SPELL_NEXT_KEY.consumeClick()) {
+                GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(1));
             }
         }
     }
