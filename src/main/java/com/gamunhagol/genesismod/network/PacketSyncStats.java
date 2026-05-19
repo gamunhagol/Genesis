@@ -5,20 +5,25 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.network.NetworkEvent;
+
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Supplier;
 
 public class PacketSyncStats {
     private final int vigor, mind, endurance, strength, dexterity, intelligence, faith, arcane;
     private final float mental, maxMental;
-    private final boolean isLevelUpUnlocked; // [추가됨] 해금 여부
+    private final boolean isLevelUpUnlocked;
+    private final Set<String> learnedSpells;
 
     // 생성자 수정
-    public PacketSyncStats(int vigor, int mind, int endurance, int strength, int dexterity, int intelligence, int faith, int arcane, float mental, float maxMental, boolean isLevelUpUnlocked) {
+    public PacketSyncStats(int vigor, int mind, int endurance, int strength, int dexterity, int intelligence, int faith, int arcane, float mental, float maxMental, boolean isLevelUpUnlocked, Set<String> learnedSpells) {
         this.vigor = vigor; this.mind = mind; this.endurance = endurance;
         this.strength = strength; this.dexterity = dexterity; this.intelligence = intelligence;
         this.faith = faith; this.arcane = arcane;
         this.mental = mental; this.maxMental = maxMental;
-        this.isLevelUpUnlocked = isLevelUpUnlocked; // [추가됨]
+        this.isLevelUpUnlocked = isLevelUpUnlocked;
+        this.learnedSpells = learnedSpells;
     }
 
     // 디코더 수정 (순서 중요)
@@ -27,7 +32,9 @@ public class PacketSyncStats {
         this.strength = buf.readInt(); this.dexterity = buf.readInt(); this.intelligence = buf.readInt();
         this.faith = buf.readInt(); this.arcane = buf.readInt();
         this.mental = buf.readFloat(); this.maxMental = buf.readFloat();
-        this.isLevelUpUnlocked = buf.readBoolean(); // [추가됨] 받아오기
+        this.isLevelUpUnlocked = buf.readBoolean();
+        // Set 컬렉션 받아오기
+        this.learnedSpells = buf.readCollection(HashSet::new, FriendlyByteBuf::readUtf);
     }
 
     // 인코더 수정
@@ -36,7 +43,9 @@ public class PacketSyncStats {
         buf.writeInt(strength); buf.writeInt(dexterity); buf.writeInt(intelligence);
         buf.writeInt(faith); buf.writeInt(arcane);
         buf.writeFloat(mental); buf.writeFloat(maxMental);
-        buf.writeBoolean(isLevelUpUnlocked); // [추가됨] 보내기
+        buf.writeBoolean(isLevelUpUnlocked);
+        // Set 컬렉션 보내기
+        buf.writeCollection(this.learnedSpells, FriendlyByteBuf::writeUtf);
     }
 
     // 핸들러 수정
@@ -51,9 +60,10 @@ public class PacketSyncStats {
                     stats.setStrength(this.strength); stats.setDexterity(this.dexterity);
                     stats.setIntelligence(this.intelligence); stats.setFaith(this.faith); stats.setArcane(this.arcane);
                     stats.setMental(this.mental); stats.setMaxMental(this.maxMental);
-
-                    // [추가됨] 해금 여부 동기화
                     stats.setLevelUpUnlocked(this.isLevelUpUnlocked);
+                    //  클라이언트의 마법 목록 동기화
+                    stats.getLearnedSpells().clear();
+                    stats.getLearnedSpells().addAll(this.learnedSpells);
                 });
             }
         });

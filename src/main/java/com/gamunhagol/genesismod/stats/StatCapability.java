@@ -6,7 +6,7 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class StatCapability implements INBTSerializable<CompoundTag> {
@@ -28,7 +28,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     private boolean isDirty = false;
 
-    private final Set<String> learnedSpells = new HashSet<>();
+    private final Set<String> learnedSpells = new LinkedHashSet<>();
 
     public void tick() {
         if (this.mental < this.maxMental) {

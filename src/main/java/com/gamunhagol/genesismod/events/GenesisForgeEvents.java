@@ -111,7 +111,8 @@ public class GenesisForgeEvents {
                                     stats.getArcane(),
                                     stats.getMental(),
                                     stats.getMaxMental(),
-                                    stats.isLevelUpUnlocked() // [수정됨] 맨 뒤에 해금 여부 추가!
+                                    stats.isLevelUpUnlocked(),
+                                    stats.getLearnedSpells()
                             ),
                             (ServerPlayer) player
                     );
@@ -166,7 +167,8 @@ public class GenesisForgeEvents {
                                     newStats.getStrength(), newStats.getDexterity(), newStats.getIntelligence(),
                                     newStats.getFaith(), newStats.getArcane(),
                                     newStats.getMental(), newStats.getMaxMental(),
-                                    newStats.isLevelUpUnlocked()
+                                    newStats.isLevelUpUnlocked(),
+                                    newStats.getLearnedSpells()
                             ),
                             serverPlayer
                     );
@@ -230,7 +232,8 @@ public class GenesisForgeEvents {
                                 stats.getStrength(), stats.getDexterity(), stats.getIntelligence(),
                                 stats.getFaith(), stats.getArcane(),
                                 stats.getMental(), stats.getMaxMental(),
-                                stats.isLevelUpUnlocked() // 이 정보가 클라이언트로 가야 버튼이 생깁니다.
+                                stats.isLevelUpUnlocked(),
+                                stats.getLearnedSpells()
                         ),
                         player
                 );

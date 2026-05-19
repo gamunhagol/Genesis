@@ -54,7 +54,8 @@ public class OpaqueJellyItem extends Item {
                             stats.getStrength(), stats.getDexterity(), stats.getIntelligence(),
                             stats.getFaith(), stats.getArcane(),
                             stats.getMental(), stats.getMaxMental(),
-                            stats.isLevelUpUnlocked()
+                            stats.isLevelUpUnlocked(),
+                            stats.getLearnedSpells()
                     ), player);
 
                     player.displayClientMessage(Component.translatable("message.genesis.reset_success").withStyle(ChatFormatting.AQUA), true);
