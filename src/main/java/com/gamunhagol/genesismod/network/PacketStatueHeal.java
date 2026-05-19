@@ -48,7 +48,7 @@ public class PacketStatueHeal {
 
                 // 성공 사운드 재생 (토템 사용 소리)
                 player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
-                        SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 0.5F, 1.0F);
+                        SoundEvents.ENCHANTMENT_TABLE_USE, SoundSource.PLAYERS, 0.5F, 1.0F);
 
                 // 다음 이용 가능 시간 설정 (현재 시간 + 8분)
                 player.getPersistentData().putLong("GenesisStatueHealReadyTick", currentTime + 9600);

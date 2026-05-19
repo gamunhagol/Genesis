@@ -192,6 +192,9 @@ public class GenesisForgeEvents {
                                 serverPlayer
                         );
                     }
+                    if (newPlayer.getPersistentData().contains("GenesisStatueHealReadyTick")) {
+                        newPlayer.getPersistentData().remove("GenesisStatueHealReadyTick");
+                    }
                 });
             });
         }
