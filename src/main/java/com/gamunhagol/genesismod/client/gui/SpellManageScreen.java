@@ -125,11 +125,16 @@ public class SpellManageScreen extends Screen {
                 graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
 
                 if (mouseX >= slotX && mouseX < slotX + currentSlotSize && mouseY >= slotY && mouseY < slotY + currentSlotSize) {
-                    graphics.fill(slotX, slotY, slotX + currentSlotSize, slotY + currentSlotSize, 0x55FFFFFF);
+                    graphics.fill(
+                            slotX + currentIconOffset,
+                            slotY + currentIconOffset,
+                            slotX + currentIconOffset + currentIconSize,
+                            slotY + currentIconOffset + currentIconSize,
+                            0x55FFFFFF); // 투명도 있는 흰색
                 }
             }
 
-// 3. 하단 장착 슬롯 10칸 그리기
+            // 3. 하단 장착 슬롯 10칸 그리기
             List<String> equipped = spellSlot.getEquippedSpells();
             int maxSlots = spellSlot.getMaxSlots(); // 플레이어의 현재 최대 해금 슬롯 수
 
