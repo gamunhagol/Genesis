@@ -316,8 +316,6 @@
   "attribute.name.genesis.magic_defense": "마법 방어력",
   "attribute.name.genesis.holy_defense": "신성 방어력",
 
-  "spell.genesis.fireball": "화염구",
-  "spell.genesis.heal": "작은 치유",
 
 
 
@@ -407,6 +405,19 @@
 
 
   "tooltip.genesis.great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+
+
+
+  "tooltip.genesis.spell.req_int": "요구 지력: %s",
+  "tooltip.genesis.spell.req_faith": "요구 신앙: %s",
+  "tooltip.genesis.spell.mental_cost": "정신력 소모: %s",
+  "tooltip.genesis.spell.memory_cost": "적합도: %s",
+
+  "spell.genesis.fireball": "화염구",
+  "spell.genesis.fireball.desc": "작은 불덩어리를 불러온다",
+
+  "spell.genesis.little_heal": "소회복",
+  "spell.genesis.little_heal.desc": "신앙으로 말미암아 치유를 기원하는 원초적인 기적",
 
 
 

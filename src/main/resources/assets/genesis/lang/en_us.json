@@ -314,8 +314,8 @@
   "attribute.name.genesis.magic_defense": "Magic Defense",
   "attribute.name.genesis.holy_defense": "Holy Defense",
 
-  "spell.genesis.fireball": "Fireball",
-  "spell.genesis.heal": "Little Healing",
+
+
 
 
 
@@ -404,6 +404,19 @@
 
 
   "tooltip.genesis.great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+
+
+
+  "tooltip.genesis.spell.req_int": "Required Intelligence: %s",
+  "tooltip.genesis.spell.req_faith": "Required Faith: %s",
+  "tooltip.genesis.spell.mental_cost": "Mana Cost: %s",
+  "tooltip.genesis.spell.memory_cost": "Attunement: %s",
+
+  "spell.genesis.fireball": "Fireball",
+  "spell.genesis.fireball.desc": "Summons a small fireball.",
+
+  "spell.genesis.little_heal": "Minor Heal",
+  "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
 
 
 
