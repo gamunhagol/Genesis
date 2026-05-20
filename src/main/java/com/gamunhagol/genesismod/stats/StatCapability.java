@@ -29,6 +29,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     private boolean isDirty = false;
 
     private final Set<String> learnedSpells = new LinkedHashSet<>();
+    private final Set<String> unlockedNodes = new LinkedHashSet<>();
 
     public void tick() {
         if (this.mental < this.maxMental) {
@@ -47,6 +48,17 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         if (learnedSpells.add(spellId)) { // 새로운 마법이면 true 반환
             this.setDirty(true);
         }
+    }
+
+    public void unlockNode(String statueId, int nodeId) {
+        String key = statueId + "_" + nodeId;
+        if (unlockedNodes.add(key)) {
+            this.setDirty(true);
+        }
+    }
+
+    public boolean isNodeUnlocked(String statueId, int nodeId) {
+        return unlockedNodes.contains(statueId + "_" + nodeId);
     }
 
     public boolean hasSpell(String spellId) {
@@ -97,9 +109,10 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.intelligence = source.intelligence; this.faith = source.faith; this.arcane = source.arcane;
         this.mental = source.mental; this.maxMental = source.maxMental;
         this.isLevelUpUnlocked = source.isLevelUpUnlocked;
-        // 마법 목록 복사
         this.learnedSpells.clear();
         this.learnedSpells.addAll(source.learnedSpells);
+        this.unlockedNodes.clear();
+        this.unlockedNodes.addAll(source.unlockedNodes);
 
         this.isDirty = true;
     }
@@ -126,6 +139,12 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         }
         nbt.put("learnedSpells", spellsTag);
 
+        ListTag nodesTag = new ListTag();
+        for (String key : unlockedNodes) {
+            nodesTag.add(StringTag.valueOf(key));
+        }
+        nbt.put("unlockedNodes", nodesTag);
+
         return nbt;
     }
 
@@ -151,5 +170,15 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
                 learnedSpells.add(spellsTag.getString(i));
             }
         }
+        unlockedNodes.clear();
+        if (nbt.contains("unlockedNodes", Tag.TAG_LIST)) {
+            ListTag nodesTag = nbt.getList("unlockedNodes", Tag.TAG_STRING);
+            for (int i = 0; i < nodesTag.size(); i++) {
+                unlockedNodes.add(nodesTag.getString(i));
+            }
+        }
+    }
+    public Set<String> getUnlockedNodes() {
+        return unlockedNodes;
     }
 }

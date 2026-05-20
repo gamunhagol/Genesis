@@ -99,23 +99,8 @@ public class GenesisForgeEvents {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.tick();
                 if (stats.isDirty()) {
-                    GenesisNetwork.sendToPlayer(
-                            new PacketSyncStats(
-                                    stats.getVigor(),
-                                    stats.getMind(),
-                                    stats.getEndurance(),
-                                    stats.getStrength(),
-                                    stats.getDexterity(),
-                                    stats.getIntelligence(),
-                                    stats.getFaith(),
-                                    stats.getArcane(),
-                                    stats.getMental(),
-                                    stats.getMaxMental(),
-                                    stats.isLevelUpUnlocked(),
-                                    stats.getLearnedSpells()
-                            ),
-                            (ServerPlayer) player
-                    );
+                    // 아주 간편하게 한 줄로 압축!
+                    GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), (ServerPlayer) player);
                     stats.setDirty(false);
                 }
             });
@@ -161,17 +146,8 @@ public class GenesisForgeEvents {
                 StatApplier.applyAll(newPlayer, newStats);
 
                 if (newPlayer instanceof ServerPlayer serverPlayer) {
-                    GenesisNetwork.sendToPlayer(
-                            new PacketSyncStats(
-                                    newStats.getVigor(), newStats.getMind(), newStats.getEndurance(),
-                                    newStats.getStrength(), newStats.getDexterity(), newStats.getIntelligence(),
-                                    newStats.getFaith(), newStats.getArcane(),
-                                    newStats.getMental(), newStats.getMaxMental(),
-                                    newStats.isLevelUpUnlocked(),
-                                    newStats.getLearnedSpells()
-                            ),
-                            serverPlayer
-                    );
+                    // 여기서도 한 줄로 압축!
+                    GenesisNetwork.sendToPlayer(new PacketSyncStats(newStats), serverPlayer);
                 }
             });
         });
@@ -229,17 +205,7 @@ public class GenesisForgeEvents {
         if (event.getEntity() instanceof ServerPlayer player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 // 접속하자마자 현재 상태를 패킷으로 보냄
-                GenesisNetwork.sendToPlayer(
-                        new PacketSyncStats(
-                                stats.getVigor(), stats.getMind(), stats.getEndurance(),
-                                stats.getStrength(), stats.getDexterity(), stats.getIntelligence(),
-                                stats.getFaith(), stats.getArcane(),
-                                stats.getMental(), stats.getMaxMental(),
-                                stats.isLevelUpUnlocked(),
-                                stats.getLearnedSpells()
-                        ),
-                        player
-                );
+                GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), player);
             });
             player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
                 GenesisNetwork.sendToPlayer(

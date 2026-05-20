@@ -57,6 +57,10 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketChangeSelectedSlot.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketChangeSelectedSlot::decode).encoder(PacketChangeSelectedSlot::encode)
                 .consumerMainThread(PacketChangeSelectedSlot::handle).add();
+
+        INSTANCE.messageBuilder(PacketStatueUnlockNode.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketStatueUnlockNode::new).encoder(PacketStatueUnlockNode::toBytes)
+                .consumerMainThread(PacketStatueUnlockNode::handle).add();
     }
 
     public static void sendToPlayer(Object message, ServerPlayer player) {

@@ -49,14 +49,7 @@ public class OpaqueJellyItem extends Item {
                     player.giveExperiencePoints(refundXp);
 
                     // 5. 클라이언트 동기화
-                    GenesisNetwork.sendToPlayer(new PacketSyncStats(
-                            stats.getVigor(), stats.getMind(), stats.getEndurance(),
-                            stats.getStrength(), stats.getDexterity(), stats.getIntelligence(),
-                            stats.getFaith(), stats.getArcane(),
-                            stats.getMental(), stats.getMaxMental(),
-                            stats.isLevelUpUnlocked(),
-                            stats.getLearnedSpells()
-                    ), player);
+                    GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), player);
 
                     player.displayClientMessage(Component.translatable("message.genesis.reset_success").withStyle(ChatFormatting.AQUA), true);
                 }
