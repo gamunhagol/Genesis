@@ -358,10 +358,10 @@ public class GenesisItems {
 
 
     //spell
-    public static final RegistryObject<Item> FIREBALL_BOOK = ITEMS.register("fireball_book",
+    public static final RegistryObject<Item> FIREBALL = ITEMS.register("fireball",
             () -> new SpellBookItem("fireball", new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> LITTLE_HEAL_BOOK = ITEMS.register("little_heal_book",
+    public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
 
 
@@ -451,7 +451,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-public static final RegistryObject<Item> LITTLE_STAR_OF_CLARITY = ITEMS.register("little_star_of_clarity",
+    public static final RegistryObject<Item> LITTLE_STAR_OF_CLARITY = ITEMS.register("little_star_of_clarity",
         () -> new SpellExtensionItem(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));

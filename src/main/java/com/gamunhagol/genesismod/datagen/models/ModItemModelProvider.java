@@ -110,6 +110,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.OBLIVION_CANDLE);
 
+        simpleItem(GenesisItems.FIREBALL);
+        simpleItem(GenesisItems.LITTLE_HEAL);
+
         handheldItem(GenesisItems.ELVENIA_SWORD);
         handheldItem(GenesisItems.ELVENIA_AXE);
         handheldItem(GenesisItems.ELVENIA_PICKAXE);

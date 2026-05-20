@@ -171,9 +171,9 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.GREEN_STAR_SEAL.get());
 
 
-                output.accept(GenesisItems.FIREBALL_BOOK.get());
+                output.accept(GenesisItems.FIREBALL.get());
 
-                output.accept(GenesisItems.LITTLE_HEAL_BOOK.get());
+                output.accept(GenesisItems.LITTLE_HEAL.get());
 
 
 
