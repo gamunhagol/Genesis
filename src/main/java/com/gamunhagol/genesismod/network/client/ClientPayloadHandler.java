@@ -19,7 +19,7 @@ public class ClientPayloadHandler {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
             mc.player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
-                cap.setMaxSlots(maxSlots);
+                cap.setMemoryCapacity(maxSlots);
                 cap.setSelectedSlot(selectedSlot);
                 cap.getEquippedSpells().clear();
                 cap.getEquippedSpells().addAll(equippedSpells);

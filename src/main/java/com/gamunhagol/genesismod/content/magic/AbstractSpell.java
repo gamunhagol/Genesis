@@ -16,6 +16,7 @@ public abstract class AbstractSpell {
     public abstract int getRequiredStatLevel();
     public abstract float getMentalCost();
     public abstract boolean canCast(LivingEntity caster);
+    public abstract int getMemoryCost();
     public void onCastingTick(LivingEntity caster, int remainingTicks) {}
 
     // ★ CatalystItem에서 호출하는 시전 진입점

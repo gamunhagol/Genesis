@@ -451,7 +451,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> MEDALLION_OF_DOMINION = ITEMS.register("medallion_of_dominion",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> LITTLE_STAR_OF_CLARITY = ITEMS.register("little_star_of_clarity", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
+public static final RegistryObject<Item> LITTLE_STAR_OF_CLARITY = ITEMS.register("little_star_of_clarity",
+        () -> new SpellExtensionItem(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> FABRICATED_STAR = ITEMS.register("fabricated_star", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 

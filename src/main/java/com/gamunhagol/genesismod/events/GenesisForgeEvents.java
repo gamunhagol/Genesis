@@ -185,7 +185,7 @@ public class GenesisForgeEvents {
                     if (newPlayer instanceof ServerPlayer serverPlayer) {
                         GenesisNetwork.sendToPlayer(
                                 new com.gamunhagol.genesismod.network.PacketSyncSpellSlot(
-                                        newStore.getMaxSlots(),
+                                        newStore.getMemoryCapacity(),
                                         newStore.getSelectedSlot(),
                                         newStore.getEquippedSpells()
                                 ),
@@ -243,7 +243,7 @@ public class GenesisForgeEvents {
             });
             player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
                 GenesisNetwork.sendToPlayer(
-                        new PacketSyncSpellSlot(cap.getMaxSlots(), cap.getSelectedSlot(), cap.getEquippedSpells()),
+                        new PacketSyncSpellSlot(cap.getMemoryCapacity(), cap.getSelectedSlot(), cap.getEquippedSpells()),
                         player
                 );
             });

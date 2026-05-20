@@ -17,7 +17,7 @@ import java.util.List;
 
 public class SpellManageScreen extends Screen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/spell_menu.png");
-    private static final ResourceLocation LOCKED_SLOT_ICON = new ResourceLocation("textures/gui/widgets.png");
+    private static final ResourceLocation BARS_TEXTURE = new ResourceLocation("textures/gui/bars.png");
     private final Screen lastScreen;
 
     private static final int TEXTURE_WIDTH = 768;
@@ -95,7 +95,7 @@ public class SpellManageScreen extends Screen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         this.renderBackground(graphics);
 
-        // 1. 배경 프레임 그리기
+        //  배경 프레임 그리기
         graphics.blit(BACKGROUND, this.leftPos, this.topPos, 0, 0, this.displayWidth, this.displayHeight, this.displayWidth, this.displayHeight);
 
         if (this.minecraft.player == null) return;
@@ -107,7 +107,7 @@ public class SpellManageScreen extends Screen {
             int startIndex = this.currentPage * spellsPerPage;
             int endIndex = Math.min(startIndex + spellsPerPage, learnedSpells.size());
 
-            // 2. 상단 9x3 마법 상자 영역 아이콘 그리기 (습득한 마법)
+            //  상단 9x3 마법 상자 영역 아이콘 그리기 (습득한 마법)
             for (int i = startIndex; i < endIndex; i++) {
                 int indexOnPage = i - startIndex;
                 int row = indexOnPage / gridCols;
@@ -134,9 +134,9 @@ public class SpellManageScreen extends Screen {
                 }
             }
 
-            // 3. 하단 장착 슬롯 10칸 그리기
+            //  하단 장착 슬롯 10칸 그리기
             List<String> equipped = spellSlot.getEquippedSpells();
-            int maxSlots = spellSlot.getMaxSlots(); // 플레이어의 현재 최대 해금 슬롯 수
+            int maxMemory = spellSlot.getMemoryCapacity(); // 플레이어의 현재 최대 메모리(코스트) 수용량
 
             for (int i = 0; i < 10; i++) {
                 int slotX = this.leftPos + (int)((rawBottomGridX + (i * rawSlotSize)) * scale);
@@ -146,40 +146,61 @@ public class SpellManageScreen extends Screen {
                 int currentIconSize = (int)(rawIconSize * scale);
                 int currentIconOffset = (int)(rawIconOffset * scale);
 
-                // [복구 핵심] 현재 슬롯이 해금된 범위(maxSlots 미만)인지 먼저 확인합니다.
-                if (i < maxSlots) {
-                    // 1. 현재 선택된 슬롯이라면 안쪽 핏에 맞춰 노란색 박스 강조
-                    if (i == this.selectedEquipSlot) {
-                        graphics.fill(
-                                slotX + currentIconOffset,
-                                slotY + currentIconOffset,
-                                slotX + currentIconOffset + currentIconSize,
-                                slotY + currentIconOffset + currentIconSize,
-                                0x44FFFF00);
-                    }
-
-                    // 2. 마법이 장착되어 있다면 아이콘 출력 (선택 여부와 관계없이 해금된 칸이면 그려야 함)
-                    if (i < equipped.size() && equipped.get(i) != null && !equipped.get(i).isEmpty()) {
-                        String eqSpellId = equipped.get(i);
-                        ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + eqSpellId + ".png");
-                        graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
-                    }
-                    // 장착된 마법이 없는 빈 슬롯은 아무것도 그리지 않아 배경 이미지(투명 빈칸)가 그대로 보입니다.
+                // 현재 선택된 슬롯이라면 안쪽 핏에 맞춰 노란색 박스 강조
+                if (i == this.selectedEquipSlot) {
+                    graphics.fill(
+                            slotX + currentIconOffset,
+                            slotY + currentIconOffset,
+                            slotX + currentIconOffset + currentIconSize,
+                            slotY + currentIconOffset + currentIconSize,
+                            0x44FFFF00);
                 }
-                // [해금 안 됨] 최대 해금 수치를 넘어선 나머지 슬롯들만 자물쇠로 막기
-                else {
-                    graphics.blit(LOCKED_SLOT_ICON,
-                            slotX + currentIconOffset, slotY + currentIconOffset,
-                            currentIconSize, currentIconSize,
-                            0F, 186F,
-                            20, 20,
-                            256, 256
-                    );
+
+                // 마법이 장착되어 있다면 아이콘 출력
+                if (i < equipped.size() && equipped.get(i) != null && !equipped.get(i).isEmpty()) {
+                    String eqSpellId = equipped.get(i);
+                    ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + eqSpellId + ".png");
+                    graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
                 }
             }
+
+            //용량 표시 슬롯
+            int currentCost = 0;
+            for (String s : equipped) {
+                if (s != null && !s.isEmpty()) {
+                    com.gamunhagol.genesismod.content.magic.AbstractSpell spell =
+                            com.gamunhagol.genesismod.content.magic.GenesisSpells.get(s);
+                    if (spell != null) {
+                        currentCost += spell.getMemoryCost();
+                    }
+                }
+            }
+
+            float costRatio = maxMemory > 0 ? Math.min(1.0F, (float) currentCost / maxMemory) : 0.0F;
+
+            int barRawX = 16;
+            int barRawY = 376;
+            int barRawWidth = 705;
+            int barRawHeight = 18;
+
+            int barX = this.leftPos + (int)(barRawX * scale);
+            int barY = this.topPos + (int)(barRawY * scale);
+            int barWidth = (int)(barRawWidth * scale);
+            int barHeight = (int)(barRawHeight * scale);
+
+            int filledWidth = (int)(barWidth * costRatio);
+
+            // 1층 - 베이스 텅 빈 바 (상시 전체 출력)
+            graphics.blit(BARS_TEXTURE, barX, barY, barWidth, barHeight, 0, 60, 182, 5, 256, 256);
+
+            // 2층 - 색이 있는 알맹이 바 (장착된 비율만큼 출력)
+            if (filledWidth > 0) {
+                graphics.blit(BARS_TEXTURE, barX, barY, filledWidth, barHeight, 0, 45, (int)(182 * costRatio), 5, 256, 256);
+            }
+
         });
 
-        // 4. 위젯 출력
+        // 위젯 출력
         super.render(graphics, mouseX, mouseY, partialTick);
     }
 
@@ -192,16 +213,12 @@ public class SpellManageScreen extends Screen {
 
         List<String> learnedSpells = getPlayerLearnedSpells();
 
-        // [클릭 처리 1] 하단 10칸 슬롯 클릭 시 (최대 슬롯 제한 및 더블 클릭 해제)
+        // [클릭 처리 1] 하단 10칸 슬롯 클릭 시
         if (clickedRawY >= rawBottomGridY && clickedRawY < rawBottomGridY + rawSlotSize) {
             int clickedIdx = (clickedRawX - rawBottomGridX) / rawSlotSize;
 
-            int maxSlots = this.minecraft.player.getCapability(SpellSlotProvider.SPELL_SLOT)
-                    .map(cap -> cap.getMaxSlots())
-                    .orElse(0);
-
-            // 자물쇠 칸은 클릭 무시
-            if (clickedIdx >= 0 && clickedIdx < maxSlots) {
+            // UI의 10칸 중 어느 곳을 눌렀든 작동하도록 고정값 10으로 변경
+            if (clickedIdx >= 0 && clickedIdx < 10) {
                 long currentTime = net.minecraft.Util.getMillis();
 
                 // 더블 클릭 감지 (250ms 이내) -> 패킷으로 빈 문자열을 보내 마법 해제

@@ -30,12 +30,12 @@ public class PacketChangeSelectedSlot {
             if (player != null) {
                 player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
                     int currentSlot = cap.getSelectedSlot();
-                    int maxSlots = cap.getMaxSlots(); // 해금된 최대 슬롯 수
+
+                    int UI_SLOTS = 10;
                     List<String> equipped = cap.getEquippedSpells();
 
-                    // 장착된 마법이 최소 1개라도 있는지 확인
                     boolean hasAnySpell = false;
-                    for (int i = 0; i < maxSlots; i++) {
+                    for (int i = 0; i < UI_SLOTS; i++) {
                         String s = equipped.get(i);
                         if (s != null && !s.trim().isEmpty()) {
                             hasAnySpell = true;
@@ -43,22 +43,18 @@ public class PacketChangeSelectedSlot {
                         }
                     }
 
-                    // 장착된 마법이 있을 때만 슬롯을 변경
                     if (hasAnySpell) {
                         int newSlot = currentSlot;
 
-                        // 최대 maxSlots 만큼만 반복하여 빈칸을 건너뜀 (무한 루프 방지)
-                        for (int i = 0; i < maxSlots; i++) {
+                        for (int i = 0; i < UI_SLOTS; i++) {
                             newSlot += msg.direction;
 
-                            // 범위를 벗어나면 반대편으로 루프(순환)
                             if (newSlot < 0) {
-                                newSlot = maxSlots - 1;
-                            } else if (newSlot >= maxSlots) {
+                                newSlot = UI_SLOTS - 1;
+                            } else if (newSlot >= UI_SLOTS) {
                                 newSlot = 0;
                             }
 
-                            // 해당 슬롯에 마법이 있다면 탐색 중지!
                             String spellInSlot = equipped.get(newSlot);
                             if (spellInSlot != null && !spellInSlot.trim().isEmpty()) {
                                 break;
@@ -66,10 +62,8 @@ public class PacketChangeSelectedSlot {
                         }
 
                         cap.setSelectedSlot(newSlot);
-
-                        // 갱신된 슬롯 정보를 클라이언트로 동기화
                         GenesisNetwork.sendToPlayer(
-                                new PacketSyncSpellSlot(cap.getMaxSlots(), cap.getSelectedSlot(), cap.getEquippedSpells()),
+                                new PacketSyncSpellSlot(cap.getMemoryCapacity(), cap.getSelectedSlot(), cap.getEquippedSpells()),
                                 player
                         );
                     }

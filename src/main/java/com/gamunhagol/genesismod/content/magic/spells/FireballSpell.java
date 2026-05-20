@@ -17,6 +17,8 @@ public class FireballSpell extends MagicSpell {
     public int getRequiredStatLevel() { return 10; }
     @Override
     public float getMentalCost() { return 2.0f; }
+    @Override
+    public int getMemoryCost() {return 1;} // 기본 마법은 1칸, 강력한 궁극기는 2~3칸으로 설정
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalyst) {
