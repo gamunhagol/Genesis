@@ -31,7 +31,7 @@ public class MentalPowerGui {
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player == null) return;
 
-            // [추가] 에픽파이트 배틀 모드인지 확인
+            // 에픽파이트 배틀 모드인지 확인
             LocalPlayerPatch playerPatch = ClientEngine.getInstance().getPlayerPatch();
             boolean isBattleMode = (playerPatch != null && playerPatch.isEpicFightMode());
 

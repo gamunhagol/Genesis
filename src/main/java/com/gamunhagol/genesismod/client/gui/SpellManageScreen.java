@@ -2,8 +2,6 @@ package com.gamunhagol.genesismod.client.gui;
 
 import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
-import com.gamunhagol.genesismod.content.magic.MagicSpell;
-import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketChangeSpell;

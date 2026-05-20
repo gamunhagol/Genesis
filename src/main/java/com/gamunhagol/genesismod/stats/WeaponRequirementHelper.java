@@ -15,7 +15,6 @@ import java.util.Map;
 
 public class WeaponRequirementHelper {
 
-    // [수정됨] Player -> LivingEntity로 인자 변경
     public static DamageSnapshot calculateTotalDamage(LivingEntity entity, ItemStack stack, float baseVanillaDamage) {
         if (!WeaponDataManager.hasData(stack.getItem())) return DamageSnapshot.EMPTY;
 
@@ -50,7 +49,7 @@ public class WeaponRequirementHelper {
         for (Map.Entry<StatType, Float> entry : currentScaling.entrySet()) {
             StatType statType = entry.getKey();
             if (statType == StatType.STRENGTH || statType == StatType.DEXTERITY || statType == StatType.ARCANE) {
-                // [수정됨]getEntityStat 호출
+                // getEntityStat 호출
                 int entityStat = getEntityStat(entity, statType);
                 scalingBonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
@@ -82,15 +81,15 @@ public class WeaponRequirementHelper {
             StatType statType = entry.getKey();
             boolean scales = false;
 
+            //  신비(ARCANE) 스탯이 마법/신성 대미지까지 올리는 덮어씌우기 버그 제거
             switch (type) {
                 case "magic" -> scales = (statType == StatType.INTELLIGENCE);
                 case "holy" -> scales = (statType == StatType.FAITH);
                 case "fire", "lightning", "frost" -> scales = (statType == StatType.ARCANE);
             }
-            if (statType == StatType.ARCANE) scales = true;
 
             if (scales) {
-                // [수정됨]getEntityStat 호출
+                // getEntityStat 호출
                 int entityStat = getEntityStat(entity, statType);
                 bonus += base * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
@@ -99,7 +98,7 @@ public class WeaponRequirementHelper {
         return base + bonus;
     }
 
-    // [수정됨] 몹은 항상 요구치를 충족하는 것으로 처리
+    //  몹은 항상 요구치를 충족하는 것으로 처리
     public static boolean meetsRequirements(LivingEntity entity, ItemStack stack) {
         if (!(entity instanceof Player player)) return true; // 몹은 프리패스
 
