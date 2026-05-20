@@ -171,9 +171,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.GREEN_STAR_SEAL.get());
 
 
-                output.accept(GenesisItems.FIREBALL.get());
-
-                output.accept(GenesisItems.LITTLE_HEAL.get());
 
 
 
@@ -235,7 +232,18 @@ public class GenesisCreativeTabs {
             })
             .title(Component.translatable("itemGroup.genesis_block.blocks"))
             .build()
+    );
 
+    public static final RegistryObject<CreativeModeTab> GENESIS_SPELL_TAB = TABS.register("genesis_spell", () -> CreativeModeTab.builder()
+            .icon(() -> new ItemStack(GenesisItems.BASE_SPELL.get()))
+            .withTabsBefore(GENESIS_BLOCK_TAB.getKey())
+            .displayItems((params, output) -> {
+                output.accept(GenesisItems.FIREBALL.get());
 
+                output.accept(GenesisItems.LITTLE_HEAL.get());
+            })
+
+            .title(Component.translatable("itemGroup.genesis_spell.spell"))
+            .build()
     );
 }

@@ -469,6 +469,8 @@ public class GenesisItems {
                     () -> new BucketItem(GenesisFluids.BLOOD,
                             new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
+    public static final RegistryObject<Item> BASE_SPELL = ITEMS.register("base_spell", () -> new Item(new Item.Properties()));
+
     //Scroll
     public static final RegistryObject<Item> HEAL_SCROLL_1 = ITEMS.register("heal_scroll_1",
             () -> new GenericScrollItem(

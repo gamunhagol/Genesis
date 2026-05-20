@@ -155,6 +155,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.MISY_CORE_1);
 
+        simpleItem(GenesisItems.BASE_SPELL);
 
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
 

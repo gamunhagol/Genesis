@@ -307,6 +307,7 @@
 
   "itemGroup.genesis.items": "창세기 아이템",
   "itemGroup.genesis_block.blocks": "창세기 블럭",
+  "itemGroup.genesis_spell.spell": "창세기 주문",
 
   "item.genesis.spirit_compass.no_target":"목표: 설정되지 않음",
   "item.genesis.spirit_compass.not_found":"탐색: 범위 밖 (1.2km)",

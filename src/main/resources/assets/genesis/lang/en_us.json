@@ -305,6 +305,7 @@
 
   "itemGroup.genesis.items": "Genesis Items",
   "itemGroup.genesis_block.blocks": "Genesis Blocks",
+  "itemGroup.genesis_spell.spell": "Genesis Spell",
 
   "item.genesis.spirit_compass.no_target": "Target: Not set",
   "item.genesis.spirit_compass.not_found": "Search: Out of range (1.2km)",

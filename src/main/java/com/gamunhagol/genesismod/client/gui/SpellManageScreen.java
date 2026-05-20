@@ -159,7 +159,7 @@ public class SpellManageScreen extends Screen {
                 // 마법이 장착되어 있다면 아이콘 출력
                 if (i < equipped.size() && equipped.get(i) != null && !equipped.get(i).isEmpty()) {
                     String eqSpellId = equipped.get(i);
-                    ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/gui/spell/icon_" + eqSpellId + ".png");
+                    ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/item/icon_" + eqSpellId + ".png");
                     graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
                 }
             }
