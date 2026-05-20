@@ -199,7 +199,7 @@ public class SpellManageScreen extends Screen {
 
         List<Component> tooltipLines = new ArrayList<>();
         // 주문 이름
-        tooltipLines.add(Component.translatable("spell.genesis." + spellId).withStyle(ChatFormatting.GOLD, ChatFormatting.WHITE));
+        tooltipLines.add(Component.translatable("spell.genesis." + spellId).withStyle(ChatFormatting.WHITE, ChatFormatting.WHITE));
         tooltipLines.add(Component.empty());
         // 요구 스탯 (마술/기적 구분)
         if (spell instanceof MagicSpell) {
