@@ -192,28 +192,38 @@ public class SpellManageScreen extends Screen {
         }
     }
 
-    //  툴팁 생성 및 렌더링을 담당하는 새로운 헬퍼 메서드
+    //  툴팁 생성 및 렌더링을 담당하는 헬퍼 메서드
     private void drawSpellTooltip(GuiGraphics graphics, int mouseX, int mouseY, String spellId) {
         AbstractSpell spell = GenesisSpells.get(spellId);
         if (spell == null) return;
 
         List<Component> tooltipLines = new ArrayList<>();
         // 주문 이름
-        tooltipLines.add(Component.translatable("spell.genesis." + spellId).withStyle(ChatFormatting.WHITE, ChatFormatting.WHITE));
+        tooltipLines.add(Component.translatable("spell.genesis." + spellId).withStyle(ChatFormatting.WHITE));
         tooltipLines.add(Component.empty());
-        // 요구 스탯 (마술/기적 구분)
-        if (spell instanceof MagicSpell) {
-            tooltipLines.add(Component.translatable("tooltip.genesis.spell.req_int", spell.getRequiredStatLevel()).withStyle(ChatFormatting.GRAY));
-        } else if (spell instanceof MiracleSpell) {
-            tooltipLines.add(Component.translatable("tooltip.genesis.spell.req_faith", spell.getRequiredStatLevel()).withStyle(ChatFormatting.GRAY));
+
+        // ★ [수정된 부분] 요구 스탯 (다중 스탯 동적 처리)
+        java.util.Map<com.gamunhagol.genesismod.api.StatType, Integer> requiredStats = spell.getRequiredStats();
+        if (!requiredStats.isEmpty()) {
+            for (java.util.Map.Entry<com.gamunhagol.genesismod.api.StatType, Integer> entry : requiredStats.entrySet()) {
+                String statNameKey = "stat.genesis." + entry.getKey().getName(); // 예: stat.genesis.intelligence
+                int requiredLevel = entry.getValue();
+
+                // "지력 요구치: 10" 형태로 출력하기 위해 동적 포맷팅
+                tooltipLines.add(Component.translatable("tooltip.genesis.spell.req_stat",
+                        Component.translatable(statNameKey), requiredLevel).withStyle(ChatFormatting.GRAY));
+            }
         }
+
         // 정신력(마나) 소모량
         tooltipLines.add(Component.translatable("tooltip.genesis.spell.mental_cost", String.format("%.1f", spell.getMentalCost())).withStyle(ChatFormatting.GRAY));
         // 슬롯 메모리 차지량
         tooltipLines.add(Component.translatable("tooltip.genesis.spell.memory_cost", spell.getMemoryCost()).withStyle(ChatFormatting.GRAY));
+
         // 상세 설명
         tooltipLines.add(Component.empty());
         tooltipLines.add(Component.translatable("spell.genesis." + spellId + ".desc").withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
+
         // 툴팁 화면에 렌더링
         graphics.renderComponentTooltip(this.font, tooltipLines, mouseX, mouseY);
     }

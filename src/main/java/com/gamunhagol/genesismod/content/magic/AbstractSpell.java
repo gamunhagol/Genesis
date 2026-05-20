@@ -1,8 +1,11 @@
 package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
+import com.gamunhagol.genesismod.api.StatType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+
+import java.util.Map;
 
 public abstract class AbstractSpell {
     private final String id;
@@ -13,7 +16,15 @@ public abstract class AbstractSpell {
 
     public String getId() { return id; }
     public abstract int getCastTime();
+
+    // 기존의 단일 주력 스탯 요구치 (하위 호환성 및 단순함을 위해 유지)
     public abstract int getRequiredStatLevel();
+
+    // 기본적으로는 빈 Map을 반환하지만, MagicSpell과 MiracleSpell에서 오버라이드하여 기본값을 채워줍니다.
+    public Map<StatType, Integer> getRequiredStats() {
+        return Map.of();
+    }
+
     public abstract float getMentalCost();
     public abstract boolean canCast(LivingEntity caster);
     public abstract int getMemoryCost();
@@ -32,10 +43,10 @@ public abstract class AbstractSpell {
         }
     }
 
-    // ★  자식 클래스(각 마법)가 구현할 데미지/효과량 계산식
+    // ★ 자식 클래스(각 마법)가 구현할 데미지/효과량 계산식
     protected abstract DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalystSnapshot);
 
-    // ★  자식 클래스가 구현할 실제 실행 로직 (투사체 소환, 즉발 효과 등)
+    // ★ 자식 클래스가 구현할 실제 실행 로직 (투사체 소환, 즉발 효과 등)
     protected abstract void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot);
 
     public void consumeMental(LivingEntity caster) {

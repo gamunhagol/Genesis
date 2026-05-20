@@ -110,9 +110,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.BOOK_OF_CREATION.get())
                 .requires(Items.BOOK)
-                .requires(Items.EMERALD)
+                .requires(Items.EXPERIENCE_BOTTLE)
                 .unlockedBy(getHasName(Items.BOOK), has(Items.BOOK))
-                .unlockedBy(getHasName(Items.EMERALD), has(Items.EMERALD))
+                .unlockedBy(getHasName(Items.EXPERIENCE_BOTTLE), has(Items.EXPERIENCE_BOTTLE))
                 .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get())

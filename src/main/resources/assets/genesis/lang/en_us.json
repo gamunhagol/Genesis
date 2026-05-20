@@ -407,8 +407,7 @@
 
 
 
-  "tooltip.genesis.spell.req_int": "Required Intelligence: %s",
-  "tooltip.genesis.spell.req_faith": "Required Faith: %s",
+  "tooltip.genesis.spell.req_stat": "Requires %s: %s",
   "tooltip.genesis.spell.mental_cost": "Mana Cost: %s",
   "tooltip.genesis.spell.memory_cost": "Attunement: %s",
 

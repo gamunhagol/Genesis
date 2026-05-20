@@ -130,6 +130,10 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.HOLY_KNIGHT_DAGGER.get());
 
 
+                output.accept(GenesisItems.AMETHYST_WAND.get());
+
+                output.accept(GenesisItems.GREEN_STAR_SEAL.get());
+
 
                 output.accept(GenesisItems.PADDED_CHAIN_HELMET.get());
                 output.accept(GenesisItems.PADDED_CHAIN_CHESTPLATE.get());
@@ -165,10 +169,6 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.LARGE_ARROW.get());
 
-
-                output.accept(GenesisItems.AMETHYST_WAND.get());
-
-                output.accept(GenesisItems.GREEN_STAR_SEAL.get());
 
 
 

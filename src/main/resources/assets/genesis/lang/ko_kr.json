@@ -408,8 +408,7 @@
 
 
 
-  "tooltip.genesis.spell.req_int": "요구 지력: %s",
-  "tooltip.genesis.spell.req_faith": "요구 신앙: %s",
+  "tooltip.genesis.spell.req_stat": "%s 요구치: %s",
   "tooltip.genesis.spell.mental_cost": "정신력 소모: %s",
   "tooltip.genesis.spell.memory_cost": "적합도: %s",
 
