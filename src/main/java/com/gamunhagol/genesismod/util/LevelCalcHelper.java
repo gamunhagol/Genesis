@@ -12,13 +12,13 @@ public class LevelCalcHelper {
         return (totalStats - 79) + 1;
     }
 
-    // 다음 레벨업에 필요한 우리 모드 전용 XP 비용 (수치 살짝 조정: 80 -> 50) [cite: 2026-02-16]
+    // 다음 레벨업에 필요한 우리 모드 전용 XP 비용 (수치 살짝 조정: 80 -> 50)
     public static int getXpCostForNextLevel(int currentLevel) {
         if (currentLevel >= 713) return 0;
-        return (int) (Math.pow(currentLevel - 1, 2.0) * 14 + 80);
+        return (int) (Math.pow(currentLevel - 1, 2.0) * 12 + 80);
     }
 
-    // 플레이어의 현재 총 '바닐라 XP 포인트' 합계 계산 [cite: 2026-02-16]
+    // 플레이어의 현재 총 '바닐라 XP 포인트' 합계 계산
     public static int getPlayerTotalXp(Player player) {
         int level = player.experienceLevel;
         int total = 0;
@@ -29,7 +29,7 @@ public class LevelCalcHelper {
         return total;
     }
 
-    // 바닐라 레벨당 요구 경험치량 (마인크래프트 공식) [cite: 2026-02-16]
+    // 바닐라 레벨당 요구 경험치량 (마인크래프트 공식)
     private static int getXpNeededForLevel(int level) {
         if (level >= 30) return 112 + (level - 30) * 9;
         if (level >= 15) return 37 + (level - 15) * 5;
