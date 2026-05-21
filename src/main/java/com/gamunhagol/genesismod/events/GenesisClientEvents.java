@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.client.gui.hud.SpellHudOverlay;
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
 import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
@@ -15,8 +16,10 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
+import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.event.TickEvent; // [추가]
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -61,6 +64,12 @@ public class GenesisClientEvents {
         event.register(ModKeyBindings.LEVEL_UP_KEY);
         event.register(ModKeyBindings.SPELL_PREV_KEY);
         event.register(ModKeyBindings.SPELL_NEXT_KEY);
+    }
+
+    @SubscribeEvent
+    public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
+        // 바닐라 핫바(HOTBAR) 바로 위에 우리의 커스텀 주문 HUD를 쌓아서 렌더링합니다.
+        event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "spell_hud", SpellHudOverlay.HUD_SPELL);
     }
 
     // 포지 이벤트 버스 (인게임 이벤트를 받는 곳)

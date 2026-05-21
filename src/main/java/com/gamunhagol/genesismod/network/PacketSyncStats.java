@@ -29,7 +29,7 @@ public class PacketSyncStats {
         this.unlockedNodes = unlockedNodes;
     }
 
-    // 📝 [편의성] 서버에서 패킷 보낼 때 아주 편하게 쓸 수 있는 생성자
+    // 서버에서 패킷 보낼 때 아주 편하게 쓸 수 있는 생성자
     public PacketSyncStats(StatCapability cap) {
         this(cap.getVigor(), cap.getMind(), cap.getEndurance(), cap.getStrength(), cap.getDexterity(), cap.getIntelligence(), cap.getFaith(), cap.getArcane(),
                 cap.getMental(), cap.getMaxMental(), cap.isLevelUpUnlocked(), cap.getLearnedSpells(), cap.getUnlockedNodes());
