@@ -362,6 +362,10 @@
   "tooltip.genesis.scaling": "보정치:",
   "tooltip.genesis.requirements": "요구치:",
 
+  "gui.genesis.blessing.reward": "보상:%s",
+  "gui.genesis.blessing.cost" : "필요:%s",
+
+
 
 
 
