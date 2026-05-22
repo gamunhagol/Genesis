@@ -33,6 +33,7 @@ public class BlessingScreen extends Screen {
 
     private float panX = 0;
     private float panY = 0;
+    private float zoom = 1.0f;
 
     private final List<StatueRewardManager.NodeInfo> nodes = new ArrayList<>();
 
@@ -50,9 +51,23 @@ public class BlessingScreen extends Screen {
     @Override
     protected void init() {
         super.init();
+
+        // 화면이 켜질 때 화면 크기에 맞춰 초기 줌 상태와 이동 한계치 재조정
+        clampPan();
+
         this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.exit"), b -> {
             this.minecraft.setScreen(this.lastScreen);
         }).bounds(this.width - 30, this.height - 25, 20, 20).build());
+    }
+
+    // 줌 배율을 고려하여 드래그(Pan)가 화면 밖으로 나가지 않게 막아주는 헬퍼 메서드
+    private void clampPan() {
+        // 줌이 적용되었을 때 화면 바깥으로 나갈 수 있는 최대 X, Y 거리를 계산
+        float maxPanX = Math.max(0, (BG_WIDTH * zoom - this.width) / 2.0F);
+        float maxPanY = Math.max(0, (BG_HEIGHT * zoom - this.height) / 2.0F);
+
+        this.panX = Mth.clamp(this.panX, -maxPanX, maxPanX);
+        this.panY = Mth.clamp(this.panY, -maxPanY, maxPanY);
     }
 
     @Override
@@ -60,20 +75,22 @@ public class BlessingScreen extends Screen {
         this.renderBackground(graphics);
         graphics.pose().pushPose();
 
+        // 화면 중앙으로 이동 + 드래그 위치 반영
         graphics.pose().translate(this.width / 2.0F + panX, this.height / 2.0F + panY, 0);
+        // 줌 배율 적용 (반드시 위치를 잡은 뒤에 확대/축소해야 함)
+        graphics.pose().scale(zoom, zoom, 1.0f);
 
         graphics.blit(backgroundTexture, -BG_WIDTH / 2, -BG_HEIGHT / 2, 0, 0, BG_WIDTH, BG_HEIGHT, BG_WIDTH, BG_HEIGHT);
 
         int nodeSize = 16;
-        int halfSize = 8; // 호버 판정용 절반 크기
+        int halfSize = 8;
 
-        // 마우스가 올라간 노드 정보와 해당 노드의 해금 상태를 저장할 변수
         AtomicReference<StatueRewardManager.NodeInfo> hoveredNode = new AtomicReference<>();
         AtomicBoolean isHoveredUnlocked = new AtomicBoolean(false);
 
-        // 마우스 절대 좌표를 화면 중심 + Pan이 적용된 '노드 좌표계'로 변환
-        double worldMouseX = mouseX - (this.width / 2.0) - this.panX + (BG_WIDTH / 2.0);
-        double worldMouseY = mouseY - (this.height / 2.0) - this.panY + (BG_HEIGHT / 2.0);
+        // 마우스 좌표 역계산: (현재 마우스 - 화면중앙 - 드래그위치) / 줌배율
+        double worldMouseX = ((mouseX - (this.width / 2.0) - this.panX) / zoom) + (BG_WIDTH / 2.0);
+        double worldMouseY = ((mouseY - (this.height / 2.0) - this.panY) / zoom) + (BG_HEIGHT / 2.0);
 
         var player = Minecraft.getInstance().player;
         if (player != null) {
@@ -87,7 +104,7 @@ public class BlessingScreen extends Screen {
                     int renderY = (-BG_HEIGHT / 2) + node.y;
 
                     graphics.blit(icon, renderX - nodeSize / 2, renderY - nodeSize / 2, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
-                    // 마우스가 노드 영역 안에 있는지 검사
+
                     if (worldMouseX >= node.x - halfSize && worldMouseX <= node.x + halfSize &&
                             worldMouseY >= node.y - halfSize && worldMouseY <= node.y + halfSize) {
                         hoveredNode.set(node);
@@ -97,30 +114,28 @@ public class BlessingScreen extends Screen {
             });
         }
 
-        graphics.pose().popPose(); // 툴팁이 마우스 위치에 정상 출력되도록 매트릭스 팝
+        graphics.pose().popPose();
         super.render(graphics, mouseX, mouseY, partialTick);
-        // 마우스가 올라간 노드가 있다면 툴팁 렌더링 (해금 상태를 함께 넘겨줍니다)
+
         if (hoveredNode.get() != null) {
             drawNodeTooltip(graphics, mouseX, mouseY, hoveredNode.get(), isHoveredUnlocked.get());
         }
     }
 
-    // 툴팁을 생성하고 그리는 헬퍼 메서드
     private void drawNodeTooltip(GuiGraphics graphics, int mouseX, int mouseY, StatueRewardManager.NodeInfo node, boolean isUnlocked) {
         List<Component> tooltipLines = new ArrayList<>();
-        // 아이템 이름 정보 가져오기
+
         Component rewardName = node.rewardItem.getDescription();
         Component costName = node.costItem.getDescription();
-        // 보상 아이템을 항상 가장 첫 줄(위)에 추가합니다.
+
         tooltipLines.add(Component.translatable("gui.genesis.blessing.reward", rewardName)
                 .withStyle(ChatFormatting.GRAY));
-        //  아직 해금되지 않은 상태일 때만 '필요 비용'을 그 다음 줄(아래)에 추가합니다.
+
         if (!isUnlocked) {
             tooltipLines.add(Component.translatable("gui.genesis.blessing.cost", costName)
                     .withStyle(ChatFormatting.GRAY));
         }
 
-        // 화면에 최종 툴팁 렌더링
         graphics.renderComponentTooltip(this.font, tooltipLines, mouseX, mouseY);
     }
 
@@ -130,22 +145,43 @@ public class BlessingScreen extends Screen {
             this.panX += (float) dragX;
             this.panY += (float) dragY;
 
-            float maxPanX = Math.max(0, (BG_WIDTH - this.width) / 2.0F);
-            float maxPanY = Math.max(0, (BG_HEIGHT - this.height) / 2.0F);
-
-            this.panX = Mth.clamp(this.panX, -maxPanX, maxPanX);
-            this.panY = Mth.clamp(this.panY, -maxPanY, maxPanY);
+            // 드래그 후 화면 바깥으로 나갔는지 확인 후 보정
+            clampPan();
 
             return true;
         }
         return super.mouseDragged(mouseX, mouseY, button, dragX, dragY);
     }
 
+    // 마우스 휠 이벤트 오버라이드
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta) {
+        float zoomStep = 0.1f; // 한 칸 굴릴 때마다 변하는 줌 배율
+        if (delta > 0) {
+            this.zoom += zoomStep; // 마우스 휠 위로 (확대)
+        } else if (delta < 0) {
+            this.zoom -= zoomStep; // 마우스 휠 아래로 (축소)
+        }
+
+        // 축소 제한: 배경(1280x720)이 현재 마인크래프트 창 화면보다 작아져서 바깥 여백이 생기는 것을 방지
+        float minZoomX = (float) this.width / BG_WIDTH;
+        float minZoomY = (float) this.height / BG_HEIGHT;
+        float minZoom = Math.max(minZoomX, minZoomY);
+
+        // 배율 한계 설정 (최소: 화면에 딱 맞게, 최대: 3배)
+        this.zoom = Mth.clamp(this.zoom, minZoom, 3.0f);
+
+        // 줌이 바뀌면 배경 크기가 변하므로 한계선 재계산
+        clampPan();
+        return super.mouseScrolled(mouseX, mouseY, delta);
+    }
+
     @Override
     public boolean mouseClicked(double mouseX, double mouseY, int button) {
         if (button == 0) {
-            double clickedWorldX = mouseX - (this.width / 2.0) - this.panX + (BG_WIDTH / 2.0);
-            double clickedWorldY = mouseY - (this.height / 2.0) - this.panY + (BG_HEIGHT / 2.0);
+            //  클릭 시에도 줌 배율을 동일하게 역산하여 월드 좌표를 잡아야 함
+            double clickedWorldX = ((mouseX - (this.width / 2.0) - this.panX) / zoom) + (BG_WIDTH / 2.0);
+            double clickedWorldY = ((mouseY - (this.height / 2.0) - this.panY) / zoom) + (BG_HEIGHT / 2.0);
 
             int halfSize = 8;
 
@@ -154,7 +190,6 @@ public class BlessingScreen extends Screen {
                         clickedWorldY >= node.y - halfSize && clickedWorldY <= node.y + halfSize) {
 
                     GenesisNetwork.sendToServer(new PacketStatueUnlockNode(this.statueId, node.id));
-
                     return true;
                 }
             }
