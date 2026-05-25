@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.world.item.tool;
 
-import com.gamunhagol.genesismod.world.structure.SpiritStructureFinder;
+import com.gamunhagol.genesismod.world.structure.SpiritBlockFinder;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
@@ -22,14 +22,13 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import org.joml.Vector3f;
 
-
 import javax.annotation.Nullable;
 import java.util.List;
 
 public class SpiritCompassItem extends CompassItem {
     public static final String KEY_HAS_NEEDLE = "HasNeedle";
     public static final String KEY_NEEDLE_TYPE = "NeedleType";
-    public static final String KEY_TARGET = "TargetStructure";
+    public static final String KEY_TARGET = "TargetBlock";
 
     private static final Vector3f COLOR_FIRE      = new Vector3f(1.00f, 0.35f, 0.35f);
     private static final Vector3f COLOR_WATER     = new Vector3f(0.38f, 0.56f, 1.00f);
@@ -102,7 +101,6 @@ public class SpiritCompassItem extends CompassItem {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
 
-        // 1. 쿨다운 체크
         if (player.getCooldowns().isOnCooldown(this)) {
             if (level.isClientSide) {
                 player.playSound(SoundEvents.NOTE_BLOCK_BELL.value(), 0.5f, 1.6f);
@@ -110,7 +108,6 @@ public class SpiritCompassItem extends CompassItem {
             return InteractionResultHolder.fail(stack);
         }
 
-        // 2. 서버 측 로직
         if (!level.isClientSide && level instanceof ServerLevel serverLevel) {
             CompoundTag tag = stack.getOrCreateTag();
             String targetStr = tag.getString(KEY_TARGET);
@@ -121,47 +118,59 @@ public class SpiritCompassItem extends CompassItem {
                 return InteractionResultHolder.fail(stack);
             }
 
-            // 쿨다운 즉시 적용 (중복 클릭 방지)
-            player.getCooldowns().addCooldown(this, 100);
+            player.getCooldowns().addCooldown(this, 60);
 
             BlockPos playerPos = player.blockPosition();
+            List<String> targetList = java.util.Arrays.asList(targetStr.split(","));
 
-            //  비동기 탐색: 별도의 스레드에서 구조물을 찾습니다.
-            java.util.concurrent.CompletableFuture.supplyAsync(() -> {
-                List<String> targetList = java.util.Arrays.asList(targetStr.split(","));
+            // 최대 5개의 블록을 찾아 리스트로 반환받습니다. (반경 7청크)
+            List<BlockPos> targetPositions = SpiritBlockFinder.findNearestBlocksByChunk(serverLevel, targetList, playerPos, 7, -64, 320, 7);
 
-                return SpiritStructureFinder.findNearest(serverLevel, targetList, playerPos, 1200);
-            }).thenAccept(target -> {
-                // 탐색이 완료되면 다시 메인 스레드에서 결과를 처리합니다.
-                serverLevel.getServer().execute(() -> {
-                    if (target != null && player.isAlive()) {
-                        // 성공 이펙트 실행
-                        this.spawnCompassParticles(serverLevel, player, target, needleType);
-                        serverLevel.playSound(null, player.getX(), player.getY(), player.getZ(),
-                                SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
-                    } else {
-                        player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.not_found").withStyle(ChatFormatting.GRAY), true);
-                    }
-                });
-            });
+            if (!targetPositions.isEmpty()) {
+                this.spawnCompassParticles(serverLevel, player, targetPositions, needleType);
+                serverLevel.playSound(null, player.blockPosition(), SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+            } else {
+                player.displayClientMessage(Component.translatable("item.genesis.spirit_compass.not_found").withStyle(ChatFormatting.GRAY), true);
+            }
         }
 
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide());
     }
 
-    // 파티클 생성 로직을 별도 메서드로 분리 (가독성용)
-    private void spawnCompassParticles(ServerLevel serverLevel, Player player, BlockPos target, String needle) {
-        double dx = target.getX() + 0.5 - player.getX();
-        double dy = (target.getY() + 1.5) - player.getEyeY();
-        double dz = target.getZ() + 0.5 - player.getZ();
-        double len = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
-        dx /= len; dy /= len; dz /= len;
-
+    private void spawnCompassParticles(ServerLevel serverLevel, Player player, List<BlockPos> targets, String needle) {
         net.minecraft.core.particles.DustParticleOptions dust = new net.minecraft.core.particles.DustParticleOptions(colorFor(needle), 1.2f);
-        for (int i = 1; i <= 14; i++) {
-            double t = i * 0.5;
-            serverLevel.sendParticles(dust, player.getX() + dx * t, player.getEyeY() + dy * t, player.getZ() + dz * t, 4, 0.02, 0.02, 0.02, 0.0);
+
+        // 발견된 블록 개수(최대 5개)만큼 파티클 줄기를 생성합니다.
+        for (BlockPos target : targets) {
+            double dx = target.getX() + 0.5 - player.getX();
+            double dy = target.getY() + 0.5 - player.getEyeY();
+            double dz = target.getZ() + 0.5 - player.getZ();
+
+            double distance = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
+
+            // 산개 효과 (Spread): 블록들이 뭉쳐있어도 파티클 줄기가 부채꼴처럼 퍼져나가도록 랜덤 각도를 더해줍니다.
+            double spread = 0.25;
+            double dirX = (dx / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
+            double dirY = (dy / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
+            double dirZ = (dz / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
+
+            // 퍼진 방향으로 다시 정규화(Normalize)
+            double newDist = Math.sqrt(dirX*dirX + dirY*dirY + dirZ*dirZ);
+            dirX /= newDist;
+            dirY /= newDist;
+            dirZ /= newDist;
+
+            // 파티클 개수를
+            int particleCount = 5;
+            for (int i = 1; i <= particleCount; i++) {
+                double t = i * 0.45; // 간격 조절
+                serverLevel.sendParticles(dust,
+                        player.getX() + dirX * t,
+                        player.getEyeY() + dirY * t,
+                        player.getZ() + dirZ * t,
+                        1, 0.02, 0.02, 0.02, 0.0);
+            }
+
         }
     }
-
 }

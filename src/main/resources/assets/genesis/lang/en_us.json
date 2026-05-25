@@ -308,7 +308,7 @@
   "itemGroup.genesis_spell.spell": "Genesis Spell",
 
   "item.genesis.spirit_compass.no_target": "Target: Not set",
-  "item.genesis.spirit_compass.not_found": "Search: Out of range (1.2km)",
+  "item.genesis.spirit_compass.not_found": "Search: Not found nearby",
 
 
   "attribute.name.genesis.magic_defense": "Magic Defense",

@@ -27,22 +27,20 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
             GenesisItems.ICE_FLOWER_SHARD.getId(), "ice"
     );
 
-    // ✅ 타입별로 여러 구조물 지원
-    private static final Map<String, List<String>> COLOR_TO_STRUCTURES = Map.of(
-            "water", List.of("shipwreck_beached","minecraft:monument","minecraft:shipwreck"),
-            "fire", List.of("minecraft:fortress"),
-            "earth", List.of("minecraft:ancient_city","desert_pyramid"),
-            "storm", List.of("minecraft:ruined_portal","minecraft:pillager_outpost"),
-            "lightning", List.of("minecraft:stronghold"),
-            "plants", List.of("minecraft:jungle_pyramid"),
-            "ice", List.of("minecraft:igloo")
+    private static final Map<String, List<String>> COLOR_TO_BLOCKS = Map.of(
+            "water", List.of("genesis:blue_crystal_cluster"),
+            "fire", List.of("genesis:red_crystal_cluster"),
+            "earth", List.of("genesis:citrine_cluster"),
+            "storm", List.of("genesis:wind_stone_cluster"),
+            "lightning", List.of("genesis:lighting_crystal_cluster"),
+            "plants", List.of("genesis:green_amber_cluster"),
+            "ice", List.of("genesis:ice_flower_cluster")
     );
 
     public SpiritCompassCombineRecipe(ResourceLocation id, CraftingBookCategory category) {
         super(id, category);
     }
 
-    // ✅ 조합 조건: 나침반 1개 + 정령석 1개
     @Override
     public boolean matches(CraftingContainer inv, Level level) {
         int compassCount = 0;
@@ -54,19 +52,18 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
 
             if (stack.is(GenesisItems.SPIRIT_COMPASS.get())) {
                 if (stack.getOrCreateTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE))
-                    return false; // 이미 침이 있으면 불가능
+                    return false;
                 compassCount++;
             } else if (stack.is(ModItemTagGenerator.SPIRIT_STONES)) {
                 stoneCount++;
             } else {
-                return false; // 다른 아이템 포함 시 조합 불가
+                return false;
             }
         }
 
         return compassCount == 1 && stoneCount == 1;
     }
 
-    // ✅ 결과 생성: 침 속성 추가
     @Override
     public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess) {
         ItemStack compass = ItemStack.EMPTY;
@@ -85,25 +82,22 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
 
         String color = STONE_COLOR_MAP.getOrDefault(ForgeRegistries.ITEMS.getKey(stone.getItem()), "water");
 
-        // ✅ 여러 구조물 중 첫 번째로 찾은 것을 선택
-        String structureKey = "minecraft:ancient_city"; // 기본값
-        List<String> structures = COLOR_TO_STRUCTURES.get(color);
+        // 기본값을 블록으로 변경
+        String targetBlockKey = "genesis:blue_crystal_cluster";
+        List<String> blocks = COLOR_TO_BLOCKS.get(color);
 
-        if (structures != null && !structures.isEmpty()) {
-            // ✅ 리스트에 있는 모든 구조물을 쉼표(,)로 이어 붙입니다.
-            // 예: "minecraft:shipwreck,minecraft:monument,minecraft:shipwreck_beached"
-            structureKey = String.join(",", structures);
+        if (blocks != null && !blocks.isEmpty()) {
+            targetBlockKey = String.join(",", blocks);
         }
 
         ItemStack result = compass.copy();
         result.getOrCreateTag().putBoolean(SpiritCompassItem.KEY_HAS_NEEDLE, true);
         result.getOrCreateTag().putString(SpiritCompassItem.KEY_NEEDLE_TYPE, color);
-        result.getOrCreateTag().putString(SpiritCompassItem.KEY_TARGET, structureKey);
+        result.getOrCreateTag().putString(SpiritCompassItem.KEY_TARGET, targetBlockKey);
 
         return result;
     }
 
-    // ✅ 남는 아이템 처리 — 조합 재료 소모 확정
     @Override
     public NonNullList<ItemStack> getRemainingItems(CraftingContainer inv) {
         NonNullList<ItemStack> remains = NonNullList.withSize(inv.getContainerSize(), ItemStack.EMPTY);
@@ -112,11 +106,9 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
             ItemStack stack = inv.getItem(i);
             if (stack.isEmpty()) continue;
 
-            // 나침반과 정령석은 소모됨
             if (stack.is(GenesisItems.SPIRIT_COMPASS.get()) || stack.is(ModItemTagGenerator.SPIRIT_STONES)) {
                 remains.set(i, ItemStack.EMPTY);
             }
-            // 버킷류 등 조합 후 남는 아이템은 반환
             else if (stack.getItem().hasCraftingRemainingItem()) {
                 remains.set(i, new ItemStack(stack.getItem().getCraftingRemainingItem()));
             }

@@ -26,18 +26,16 @@ public class SpiritCompassRecipeMaker {
         return recipes;
     }
 
-    // --- 강화 레시피 생성 로직 ---
     private static List<CraftingRecipe> createCombineRecipes() {
         List<CraftingRecipe> list = new ArrayList<>();
 
-        // CombineRecipe 클래스에 정의했던 데이터와 동일하게 매칭
-        addCombine(list, GenesisItems.BLUE_CRYSTAL_SHARD.get(), "water", "minecraft:monument");
-        addCombine(list, GenesisItems.RED_CRYSTAL_SHARD.get(), "fire", "minecraft:fortress");
-        addCombine(list, GenesisItems.CITRINE_SHARD.get(), "earth", "minecraft:ancient_city");
-        addCombine(list, GenesisItems.WIND_STONE.get(), "storm", "minecraft:pillager_outpost");
-        addCombine(list, GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), "lightning", "minecraft:stronghold");
-        addCombine(list, GenesisItems.GREEN_AMBER.get(), "plants", "minecraft:jungle_pyramid");
-        addCombine(list, GenesisItems.ICE_FLOWER_SHARD.get(), "ice", "minecraft:igloo");
+        addCombine(list, GenesisItems.BLUE_CRYSTAL_SHARD.get(), "water", "genesis:blue_crystal_cluster");
+        addCombine(list, GenesisItems.RED_CRYSTAL_SHARD.get(), "fire", "genesis:red_crystal_cluster");
+        addCombine(list, GenesisItems.CITRINE_SHARD.get(), "earth", "genesis:citrine_cluster");
+        addCombine(list, GenesisItems.WIND_STONE.get(), "storm", "genesis:wind_stone_cluster");
+        addCombine(list, GenesisItems.LIGHTING_CRYSTAL_SHARD.get(), "lightning", "genesis:lighting_crystal_cluster");
+        addCombine(list, GenesisItems.GREEN_AMBER.get(), "plants", "genesis:green_amber_cluster");
+        addCombine(list, GenesisItems.ICE_FLOWER_SHARD.get(), "ice", "genesis:ice_flower_cluster");
 
         return list;
     }
@@ -62,14 +60,11 @@ public class SpiritCompassRecipeMaker {
         ));
     }
 
-    // --- 제거 레시피 생성 로직 ---
     private static ShapelessRecipe createRemoveRecipe() {
-        // 입력값: 침이 있는 상태의 예시 나침반 (NBT 설정)
         ItemStack inputCompass = new ItemStack(GenesisItems.SPIRIT_COMPASS.get());
         inputCompass.getOrCreateTag().putBoolean(SpiritCompassItem.KEY_HAS_NEEDLE, true);
         inputCompass.getOrCreateTag().putString(SpiritCompassItem.KEY_NEEDLE_TYPE, "any");
 
-        // 결과물: 완전히 초기화된 나침반
         ItemStack result = new ItemStack(GenesisItems.SPIRIT_COMPASS.get());
         result.getOrCreateTag().putBoolean(SpiritCompassItem.KEY_HAS_NEEDLE, false);
 
