@@ -45,7 +45,7 @@ public class WeaponDataManager extends SimpleJsonResourceReloadListener {
                     return;
                 }
 
-                // 1. 기본 스탯 파싱 (모든 속성 추가)
+                // 기본 스탯 파싱 (모든 속성 추가)
                 JsonObject baseStats = jsonObject.has("base_stats") ? jsonObject.getAsJsonObject("base_stats") : new JsonObject();
                 float physical = getFloat(baseStats, "physical");
                 float magic = getFloat(baseStats, "magic");
@@ -55,7 +55,7 @@ public class WeaponDataManager extends SimpleJsonResourceReloadListener {
                 float holy = getFloat(baseStats, "holy");
                 float destruction = getFloat(baseStats, "destruction");
 
-                // 2. 요구치 파싱
+                // 요구치 파싱
                 Map<StatType, Integer> requirements = new HashMap<>();
                 if (jsonObject.has("requirements")) {
                     JsonObject reqObj = jsonObject.getAsJsonObject("requirements");
@@ -65,7 +65,7 @@ public class WeaponDataManager extends SimpleJsonResourceReloadListener {
                     }
                 }
 
-                // 3. 보정치 파싱
+                // 보정치 파싱
                 Map<StatType, Float> scaling = new HashMap<>();
                 if (jsonObject.has("scaling")) {
                     JsonObject scaleObj = jsonObject.getAsJsonObject("scaling");
@@ -81,7 +81,7 @@ public class WeaponDataManager extends SimpleJsonResourceReloadListener {
                 boolean isSpecial = jsonObject.has("is_special") && jsonObject.get("is_special").getAsBoolean();
                 float growth = jsonObject.has("damage_growth") ? jsonObject.get("damage_growth").getAsFloat() : 0.05f;
 
-                // 4. 보정치 오버라이드 파싱
+                // 보정치 오버라이드 파싱
                 Map<Integer, Map<StatType, Float>> overrides = new HashMap<>();
                 if (jsonObject.has("scaling_overrides")) {
                     JsonObject overrideObj = jsonObject.getAsJsonObject("scaling_overrides");

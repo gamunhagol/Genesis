@@ -10,7 +10,7 @@ public record WeaponStatData(
         float baseLightning,
         float baseFrost,
         float baseHoly,
-        float baseDestruction, // ★ 파괴 피해 (고정값)
+        float baseDestruction, // 파괴 피해 (고정값)
 
         Map<StatType, Integer> requirements,
         Map<StatType, Float> scaling,
