@@ -25,6 +25,7 @@ public class AddCustomTrades {
 
         int shardRewardAmount = random.nextInt(5) + 1;
         int shardSellingAmount = (shardRewardAmount * 5) + random.nextInt(15) + 4;
+        int compassRewardAmount = 37 + random.nextInt(28);
 
         event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
                 , new ItemStack(GenesisItems.BLUE_CRYSTAL_SHARD.get(), shardRewardAmount),3,10,1));
@@ -42,6 +43,8 @@ public class AddCustomTrades {
                 , new ItemStack(GenesisItems.WIND_STONE.get(), shardRewardAmount),3,10,1));
         event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, 48), new ItemStack(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(), 1),4,24,1));
         event.getRareTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD_BLOCK, 24), new ItemStack(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get(), 1),3,64,1));
+        event.getRareTrades().add(new BasicItemListing(new ItemStack(GenesisItems.SPIRIT_COMPASS.get(), 1),
+                new ItemStack(Items.EMERALD, compassRewardAmount),5, 12, 1));
     }
 
     @SubscribeEvent
@@ -49,18 +52,22 @@ public class AddCustomTrades {
 
         if (event.getType() == VillagerProfession.CLERIC) {
 
-
-            List<VillagerTrades.ItemListing> trades = event.getTrades().get(4);
-
             Random random = new Random();
+
+            List<VillagerTrades.ItemListing> trades4 = event.getTrades().get(4);
             if (random.nextFloat() < 0.2f) {
-                trades.add(new BasicItemListing(
+                trades4.add(new BasicItemListing(
                         new ItemStack(Items.EMERALD, 6),
                         new ItemStack(GenesisItems.HEAL_SCROLL_1.get(), 1),
-                        3,
-                        6,
-                        0.05f
-                ));
+                        3, 6, 0.05f));
+            }
+
+            List<VillagerTrades.ItemListing> trades5 = event.getTrades().get(5);
+            if (random.nextFloat() < 0.2f) {
+                trades5.add(new BasicItemListing(
+                        new ItemStack(Items.EMERALD, 13),
+                        new ItemStack(GenesisItems.LITTLE_HEAL.get(), 1),
+                        1, 8, 0.05f));
             }
         }
     }
