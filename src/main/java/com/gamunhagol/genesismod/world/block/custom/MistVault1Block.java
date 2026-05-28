@@ -96,4 +96,24 @@ public class MistVault1Block extends BaseEntityBlock {
             level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z, 0.0D, -0.05D, 0.0D);
         }
     }
+
+    // 블록이 월드에 배치 완료되었을 때 호출 (주소록 등록)
+    @Override
+    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
+        super.onPlace(state, level, pos, oldState, isMoving);
+        if (!level.isClientSide) {
+            com.gamunhagol.genesismod.world.structure.MistVaultTracker.register(level, pos);
+        }
+    }
+
+    // 블록이 캐지거나 파괴되어 사라질 때 호출 (주소록 삭제)
+    @Override
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (state.getBlock() != newState.getBlock()) {
+            if (!level.isClientSide) {
+                com.gamunhagol.genesismod.world.structure.MistVaultTracker.unregister(level, pos);
+            }
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
+    }
 }
