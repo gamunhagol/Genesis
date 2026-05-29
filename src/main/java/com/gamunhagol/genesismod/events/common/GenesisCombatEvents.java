@@ -51,7 +51,7 @@ public class GenesisCombatEvents {
                 snapshot = cap.getSnapshot();
             }
         }
-        //  플레이어 근접 공격 확인 (수정된 부분)
+        //  플레이어 근접 공격 확인
         else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {

@@ -105,7 +105,7 @@ public class GenesisForgeEvents {
                 }
             });
 
-            // 파괴 효과 체크 (기존 유지)
+            // 파괴 효과 체크
             if (player.tickCount % 20 == 0) {
                 if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
                     long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
@@ -146,7 +146,6 @@ public class GenesisForgeEvents {
                 StatApplier.applyAll(newPlayer, newStats);
 
                 if (newPlayer instanceof ServerPlayer serverPlayer) {
-                    // 여기서도 한 줄로 압축!
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(newStats), serverPlayer);
                 }
             });
