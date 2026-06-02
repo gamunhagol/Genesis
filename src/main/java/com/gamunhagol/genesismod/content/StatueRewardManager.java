@@ -75,7 +75,7 @@ public class StatueRewardManager {
         }
 
         else if ("god_h".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 640, 650, GenesisItems.FABRICATED_STAR.get(), 1, Items.GOLD_INGOT, 1));
+            nodes.add(new NodeInfo(1, 640, 650, GenesisItems.FABRICATED_STAR.get(), 1, GenesisItems.LITTLE_HEAL.get(), 1));
             // nodes.add(new NodeInfo(2, 640, 450, Items.GOLD_INGOT, 5, Items.DIAMOND, 1));
         }
 
