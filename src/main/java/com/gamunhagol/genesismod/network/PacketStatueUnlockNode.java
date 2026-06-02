@@ -34,15 +34,22 @@ public class PacketStatueUnlockNode {
             ServerPlayer player = context.getSender();
             if (player == null) return;
 
-            // 1. 매니저에서 노드 정보 가져오기
             StatueRewardManager.NodeInfo nodeInfo = StatueRewardManager.getNode(this.statueId, this.nodeId);
             if (nodeInfo == null) return;
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-                // 2. 이미 해금되었는지 검사
+                // 이미 해금되었는지 검사
                 if (cap.isNodeUnlocked(this.statueId, this.nodeId)) return;
 
-                // 3. 인벤토리에 아이템이 충분한지 계산
+                // 선행 노드 해금 여부 검사 추가
+                for (int requiredId : nodeInfo.requiredNodes) {
+                    if (!cap.isNodeUnlocked(this.statueId, requiredId)) {
+                        // 선행 노드가 하나라도 해금되지 않았다면 즉시 종료
+                        return;
+                    }
+                }
+
+                // 인벤토리에 아이템이 충분한지 계산
                 int totalFound = 0;
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
@@ -51,7 +58,7 @@ public class PacketStatueUnlockNode {
                     }
                 }
 
-                // 4. 아이템이 충분하다면 소모 처리 후 보상 지급
+                // 아이템이 충분하다면 소모 처리 후 보상 지급
                 if (totalFound >= nodeInfo.costCount) {
                     int toRemove = nodeInfo.costCount;
                     for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
@@ -60,20 +67,20 @@ public class PacketStatueUnlockNode {
                             int shrinkAmount = Math.min(toRemove, stack.getCount());
                             stack.shrink(shrinkAmount);
                             toRemove -= shrinkAmount;
-                            if (toRemove <= 0) break; // 다 뺐으면 종료
+                            if (toRemove <= 0) break;
                         }
                     }
 
                     // 해금 저장
                     cap.unlockNode(this.statueId, this.nodeId);
 
-                    // 보상 아이템 지급
+                    // 보상 지급
                     ItemStack reward = new ItemStack(nodeInfo.rewardItem, nodeInfo.rewardCount);
                     if (!player.getInventory().add(reward)) {
-                        player.drop(reward, false); // 꽉 차면 바닥에 드랍
+                        player.drop(reward, false);
                     }
 
-                    // 5. 클라이언트로 변경된 상태 동기화 (위에 만든 편의성 생성자 사용)
+                    // 동기화
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(cap), player);
                 }
             });
