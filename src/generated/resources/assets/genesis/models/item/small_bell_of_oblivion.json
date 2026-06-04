@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "genesis:item/small_bell_of_oblivion"
+  }
+}

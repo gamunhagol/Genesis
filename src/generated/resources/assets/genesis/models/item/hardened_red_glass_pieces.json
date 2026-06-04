@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "genesis:item/hardened_red_glass_pieces"
+  }
+}
