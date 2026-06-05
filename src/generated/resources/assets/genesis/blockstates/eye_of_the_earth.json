@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "genesis:block/eye_of_the_earth",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "genesis:block/eye_of_the_earth"
+    },
+    "facing=south": {
+      "model": "genesis:block/eye_of_the_earth",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "genesis:block/eye_of_the_earth",
+      "y": 270
+    }
+  }
+}
