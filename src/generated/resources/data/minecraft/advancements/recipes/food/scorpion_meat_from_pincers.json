@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_large_desert_scorpion_pincers": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:large_desert_scorpion_pincers"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:scorpion_meat_from_pincers"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_large_desert_scorpion_pincers",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:scorpion_meat_from_pincers"
+    ]
+  },
+  "sends_telemetry_event": false
+}
