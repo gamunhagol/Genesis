@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "genesis:block/fusion_stone_block"
+    }
+  }
+}
