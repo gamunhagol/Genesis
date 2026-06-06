@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_scorpion_meat": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:scorpion_meat"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "genesis:cooked_scorpion_meat_from_smelting_scorpion_meat"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_scorpion_meat",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "genesis:cooked_scorpion_meat_from_smelting_scorpion_meat"
+    ]
+  },
+  "sends_telemetry_event": false
+}

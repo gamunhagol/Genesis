@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:amethyst_heart_piece"
+  },
+  "base": {
+    "item": "epicfight:diamond_longsword"
+  },
+  "result": {
+    "item": "genesis:crystal_grown_longsword"
+  },
+  "template": {
+    "item": "genesis:amethyst_magic_core"
+  }
+}

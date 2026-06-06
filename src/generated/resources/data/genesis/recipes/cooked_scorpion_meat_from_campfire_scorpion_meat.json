@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "category": "food",
+  "cookingtime": 600,
+  "experience": 0.35,
+  "group": "mystery_meat",
+  "ingredient": {
+    "item": "genesis:scorpion_meat"
+  },
+  "result": "genesis:cooked_scorpion_meat"
+}
