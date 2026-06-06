@@ -8,6 +8,8 @@
     "genesis:ancient_elvenia_block",
     "genesis:weathered_ancient_dragon_rock",
     "genesis:ancient_dragon_rock",
-    "genesis:activated_giant_stone"
+    "genesis:activated_giant_stone",
+    "genesis:fusion_stone_block",
+    "genesis:eye_of_the_earth"
   ]
 }

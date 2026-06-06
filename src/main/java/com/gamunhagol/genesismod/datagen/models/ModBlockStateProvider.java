@@ -13,6 +13,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -35,6 +36,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(GenesisBlocks.PYULITELA_ORE);
         blockWithItem(GenesisBlocks.PYULITELA_BLOCK);
+        blockWithItem(GenesisBlocks.WHITE_IRON_BLOCK);
+        blockWithItem(GenesisBlocks.FUSION_STONE_BLOCK);
 
         blockWithItem(GenesisBlocks.GIANT_STONE);
         blockWithItem(GenesisBlocks.ACTIVATED_GIANT_STONE);
@@ -55,7 +58,18 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK);
         blockWithItem(GenesisBlocks.ANCIENT_DRAGON_ROCK);
 
+        blockWithItem(GenesisBlocks.UNDEAD_SHARD);
+
+        simpleBlock(GenesisBlocks.HARDENED_RED_GLASS.get(),
+                models().cubeAll("hardened_red_glass", modLoc("block/hardened_red_glass"))
+                        .renderType("translucent")
+        );
+        blockWithItem(GenesisBlocks.RED_PEARL_OF_THE_DESERT);
+
         blockWithItem(GenesisBlocks.PRECIPITATE);
+
+        horizontalBlock(GenesisBlocks.EYE_OF_THE_EARTH.get(),
+                models().getExistingFile(modLoc("block/eye_of_the_earth")));
 
         blockWithItem(GenesisBlocks.FADED_STONE);
         blockWithItem(GenesisBlocks.FADED_BRICK);
@@ -95,6 +109,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
                             ).texture("particle", modLoc("block/faded_chest_side")))
                             .build();
                 });
+
+        simpleBlock(GenesisBlocks.AMETHYST_HEART.get(),
+                models().getBuilder("amethyst_heart")
+                        .parent(new ModelFile.UncheckedModelFile(mcLoc("builtin/entity")))
+                        .texture("particle", modLoc("block/amethyst_heart")));
 
         simpleBlock(GenesisBlocks.STATUE_OF_SENTINEL_OF_OBLIVION.get(),
                 models().cubeAll("statue_of_sentinel_of_oblivion", modLoc("block/statue_of_sentinel_of_oblivion")));

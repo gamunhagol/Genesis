@@ -1,0 +1,36 @@
+{
+  "item": "genesis:bloody_flag",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 6.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.6,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 10,
+    "dexterity": 9,
+    "faith": 10
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "faith": "E"
+  },
+  "scaling_overrides": {
+    "12": {
+      "strength": "D",
+      "dexterity": "E",
+      "faith": "E"
+    },
+    "25": {
+      "strength": "C",
+      "dexterity": "D",
+      "faith": "E"
+    }
+  }
+}

@@ -156,6 +156,9 @@ public class CatalystItem extends Item {
         if (pToRepair.is(GenesisItems.GREEN_STAR_SEAL.get())) {
             return pRepair.is(Items.EMERALD);
         }
+        if (pToRepair.is(GenesisItems.HAND_HARBORING_OBLIVION.get())) {
+            return pRepair.is(GenesisItems.SCATTERED_MEMORIES.get());
+        }
         return super.isValidRepairItem(pToRepair, pRepair);
     }
 }

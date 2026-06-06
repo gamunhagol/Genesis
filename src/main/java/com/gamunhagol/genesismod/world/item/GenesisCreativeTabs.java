@@ -20,51 +20,13 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 output.accept(GenesisItems.BOOK_OF_CREATION.get());
 
-                output.accept(GenesisItems.SCATTERED_MEMORIES.get());
-                output.accept(GenesisItems.DREAM_POWDER.get());
-                output.accept(GenesisItems.DREAM_DANGO.get());
-                output.accept(GenesisItems.REMNANTS_OF_A_DREAM.get());
-                output.accept(GenesisItems.FRAGMENT_OF_MEMORY.get());
 
-                output.accept(GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get());
+                output.accept(GenesisItems.LUMINOUS_INSECT_JUICE.get());
 
-                output.accept(GenesisItems.BLUE_CRYSTAL_SHARD.get());
-                output.accept(GenesisItems.CITRINE_SHARD.get());
-                output.accept(GenesisItems.RED_CRYSTAL_SHARD.get());
-                output.accept(GenesisItems.WIND_STONE.get());
-                output.accept(GenesisItems.LIGHTING_CRYSTAL_SHARD.get());
-                output.accept(GenesisItems.GREEN_AMBER.get());
-                output.accept(GenesisItems.ICE_FLOWER_SHARD.get());
+                output.accept(GenesisItems.SCORPION_MEAT.get());
+                output.accept(GenesisItems.COOKED_SCORPION_MEAT.get());
 
-
-
-
-                output.accept(GenesisItems.PEWRIESE_ORE_PIECE.get());
-
-
-                output.accept(GenesisItems.PEWRIESE_PIECE.get());
-
-                output.accept(GenesisItems.ELVENIA_PIECE.get());
-                output.accept(GenesisItems.ELVENIA_INGOT.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_PIECE.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
-
-
-
-                output.accept(GenesisItems.PEWRIESE_CRYSTAL.get());
-
-                output.accept(GenesisItems.PYULITELA.get());
-
-                output.accept(GenesisItems.FLASK_SHARD.get());
-
-                output.accept(GenesisItems.BEAST_REMAINS.get());
-
-                output.accept(GenesisItems.COPPER_COIN.get());
-                output.accept(GenesisItems.SILVER_COIN.get());
-                output.accept(GenesisItems.GOLD_COIN.get());
-                output.accept(GenesisItems.PLATINUM_COIN.get());
-
-
+                output.accept(GenesisItems.ENCHANTED_GLOWING_HEART.get());
 
                 output.accept(GenesisItems.AMETHYST_APPLE.get());
 
@@ -73,9 +35,20 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.OPAQUE_JELLY.get());
 
+                output.accept(GenesisItems.SCATTERED_MEMORIES.get());
+                output.accept(GenesisItems.DREAM_POWDER.get());
+                output.accept(GenesisItems.DREAM_DANGO.get());
+                output.accept(GenesisItems.REMNANTS_OF_A_DREAM.get());
+                output.accept(GenesisItems.FRAGMENT_OF_MEMORY.get());
+
                 output.accept(GenesisItems.AMETHYST_APPLE_PUDDING_BLOCK.get());
 
                 output.accept(GenesisItems.BLOOD_BOTTLE.get());
+
+                output.accept(GenesisItems.FADED_MEMORY.get());
+                output.accept(GenesisItems.FORGOTTEN_MEMORY.get());
+                output.accept(GenesisItems.UNRELATED_MEMORY.get());
+                output.accept(GenesisItems.OBLIVION_SPHERE.get());
 
 
 
@@ -83,6 +56,22 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.DIVINE_GRAIL.get());
 
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
+
+                output.accept(GenesisItems.BLOODY_FLAG.get());
+
+                output.accept(GenesisItems.HARDENED_GLASS_SWORD.get());
+                output.accept(GenesisItems.HARDENED_GLASS_GREATSWORD.get());
+                output.accept(GenesisItems.HARDENED_GLASS_SPEAR.get());
+                output.accept(GenesisItems.HARDENED_GLASS_TACHI.get());
+                output.accept(GenesisItems.HARDENED_GLASS_LONGSWORD.get());
+                output.accept(GenesisItems.HARDENED_GLASS_DAGGER.get());
+
+                output.accept(GenesisItems.HARDENED_RED_GLASS_SWORD.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_GREATSWORD.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_SPEAR.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_TACHI.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_LONGSWORD.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_DAGGER.get());
 
                 output.accept(GenesisItems.ELVENIA_SWORD.get());
                 output.accept(GenesisItems.ELVENIA_SHOVEL.get());
@@ -121,6 +110,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PEWRIESE_LONGSWORD.get());
                 output.accept(GenesisItems.PEWRIESE_DAGGER.get());
 
+                output.accept(GenesisItems.PEWRIESE_GAUNTLET.get());
+
                 output.accept(GenesisItems.HOLY_KNIGHT_SWORD.get());
 
                 output.accept(GenesisItems.HOLY_KNIGHT_GREATSWORD.get());
@@ -129,10 +120,17 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.HOLY_KNIGHT_LONGSWORD.get());
                 output.accept(GenesisItems.HOLY_KNIGHT_DAGGER.get());
 
+                output.accept(GenesisItems.CRYSTAL_GROWN_LONGSWORD.get());
+
+                output.accept(GenesisItems.OATH_IN_DEEP_DARK.get());
+
+
+
 
                 output.accept(GenesisItems.AMETHYST_WAND.get());
 
                 output.accept(GenesisItems.GREEN_STAR_SEAL.get());
+                output.accept(GenesisItems.HAND_HARBORING_OBLIVION.get());
 
 
                 output.accept(GenesisItems.PADDED_CHAIN_HELMET.get());
@@ -165,6 +163,12 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.HOLY_KNIGHT_LEGGINGS.get());
                 output.accept(GenesisItems.HOLY_KNIGHT_BOOTS.get());
 
+
+                output.accept(GenesisItems.INTACT_AMETHYST_HEART.get());
+                output.accept(GenesisItems.STAR_OF_DOMINATION.get());
+
+
+
                 output.accept(GenesisItems.GREAT_BOW.get());
 
                 output.accept(GenesisItems.LARGE_ARROW.get());
@@ -174,7 +178,103 @@ public class GenesisCreativeTabs {
 
 
 
+                output.accept(GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get());
+                output.accept(GenesisItems.STAR_FRAGMENT.get());
+
+                output.accept(GenesisItems.AMETHYST_MAGIC_CORE.get());
+
+                output.accept(GenesisItems.BLUE_CRYSTAL_SHARD.get());
+                output.accept(GenesisItems.CITRINE_SHARD.get());
+                output.accept(GenesisItems.RED_CRYSTAL_SHARD.get());
+                output.accept(GenesisItems.WIND_STONE.get());
+                output.accept(GenesisItems.LIGHTING_CRYSTAL_SHARD.get());
+                output.accept(GenesisItems.GREEN_AMBER.get());
+                output.accept(GenesisItems.ICE_FLOWER_SHARD.get());
+
+
+
+                output.accept(GenesisItems.PEWRIESE_ORE_PIECE.get());
+
+
+                output.accept(GenesisItems.PEWRIESE_PIECE.get());
+
+                output.accept(GenesisItems.ELVENIA_PIECE.get());
+                output.accept(GenesisItems.ELVENIA_INGOT.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_PIECE.get());
+                output.accept(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+
+
+                output.accept(GenesisItems.FUSION_ORE.get());
+
+                output.accept(GenesisItems.GIANT_STONE_FRAGMENT.get());
+
+                output.accept(GenesisItems.FUSION_STONE.get());
+
+                output.accept(GenesisItems.WHITE_IRON_INGOT.get());
+                output.accept(GenesisItems.BASED_SCULPTURE.get());
+
+
+                output.accept(GenesisItems.PEWRIESE_CRYSTAL.get());
+
+                output.accept(GenesisItems.PYULITELA.get());
+
+                output.accept(GenesisItems.FLASK_SHARD.get());
+
+                output.accept(GenesisItems.BEAST_REMAINS.get());
+
+                output.accept(GenesisItems.COPPER_COIN.get());
+                output.accept(GenesisItems.SILVER_COIN.get());
+                output.accept(GenesisItems.GOLD_COIN.get());
+                output.accept(GenesisItems.PLATINUM_COIN.get());
+
+                output.accept(GenesisItems.AMETHYST_HUMAN_STATUE.get());
+
+                output.accept(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get());
+                output.accept(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get());
+
+                output.accept(GenesisItems.SCORPION_CARAPACE.get());
+
+                output.accept(GenesisItems.SACRED_STONE.get());
+
+                output.accept(GenesisItems.CLOTH.get());
+                output.accept(GenesisItems.ENCHANTED_CLOTH.get());
+                output.accept(GenesisItems.BLESSED_CLOTH.get());
+                output.accept(GenesisItems.ILLUSION_SILK.get());
+
+                output.accept(GenesisItems.METAL_FIBER.get());
+
+                output.accept(GenesisItems.RED_EYE_SMALL.get());
+                output.accept(GenesisItems.RED_EYE_MEDIUM.get());
+                output.accept(GenesisItems.RED_EYE_LARGE.get());
+
+                output.accept(GenesisItems.HARDENED_GLASS_PIECES.get());
+                output.accept(GenesisItems.HARDENED_RED_GLASS_PIECES.get());
+                output.accept(GenesisItems.HARDENED_RED_MASS.get());
+
+                output.accept(GenesisItems.ECHOING_SOUL.get());
+                output.accept(GenesisItems.SOUL_PUS.get());
+
                 output.accept(GenesisItems.AMETHYST_NEEDLE.get());
+                output.accept(GenesisItems.CRYSTAL_BAT_HIDE.get());
+
+                output.accept(GenesisItems.AMETHYST_BONE.get());
+                output.accept(GenesisItems.AMETHYST_HEART_PIECE.get());
+                output.accept(GenesisItems.AMETHYST_SHIELD_SHARD.get());
+
+                output.accept(GenesisItems.SMALL_BELL_OF_OBLIVION.get());
+
+                output.accept(GenesisItems.FOG_GUARDIAN_SHARD.get());
+
+                output.accept(GenesisItems.UNDERGROUND_BONE.get());
+
+                output.accept(GenesisItems.UNDEAD_REMNANT.get());
+
+                output.accept(GenesisItems.UNFINISHED_SHIELD.get());
+
+                output.accept(GenesisItems.SKULLK_SPROUT.get());
+
+                output.accept(GenesisItems.CRYSTALS_OF_THE_LAND.get());
+
                 output.accept(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get());
                 output.accept(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get());
 
@@ -192,6 +292,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.TABLET_SHARD.get());
                 output.accept(GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get());
 
+                output.accept(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get());
+
 
                 output.accept(GenesisItems.KEY_OF_OBLIVION.get());
 
@@ -203,6 +305,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.LITTLE_STAR_OF_CLARITY.get());
 
                 output.accept(GenesisItems.FABRICATED_STAR.get());
+                output.accept(GenesisItems.CELESTIAL_STAR.get());
+                output.accept(GenesisItems.EPONYMOUS_STAR.get());
 
                 output.accept(GenesisItems.QUICKSAND_BUCKET.get());
                 output.accept(GenesisItems.BLOOD_BUCKET.get());

@@ -8,6 +8,8 @@
   "item.genesis.fragment_of_memory": "기억의 편린",
 
   "item.genesis.mana_imbued_amethyst_shard": "마력을 품은 자수정 조각",
+  "item.genesis.star_fragment": "별의 조각",
+  "item.genesis.amethyst_magic_core": "자수정 마력 핵",
 
   "item.genesis.blue_crystal_shard": "청수정 조각",
   "item.genesis.citrine_shard": "황수정 조각",
@@ -37,6 +39,14 @@
 
   "item.genesis.beast_remains": "야수의 유해",
 
+  "item.genesis.fusion_ore": "융화된 광석",
+  "item.genesis.giant_stone_fragment": "거인석 파편",
+
+  "item.genesis.fusion_stone": "융합석",
+
+  "item.genesis.white_iron_ingot": "백철 주괴",
+  "item.genesis.based_sculpture": "기반조각",
+
 
   "item.genesis.copper_coin": "구리 동전",
   "item.genesis.silver_coin": "은 동전",
@@ -50,6 +60,12 @@
   "item.genesis.gold_coin_pile": "금 동전 더미",
   "item.genesis.platinum_coin_pile": "백금 동전 더미",
 
+  "item.genesis.luminous_insect_juice": "발광벌레 즙",
+  "item.genesis.scorpion_meat": "전갈살",
+  "item.genesis.cooked_scorpion_meat": "요리된 전갈살",
+  "item.genesis.enchanted_glowing_heart": "마법부여된 발광 심장",
+
+
   "item.genesis.amethyst_apple_slices": "자수정 사과 조각",
   "item.genesis.amethyst_apple_pudding": "그릇에 담긴 자수정 사과 푸딩",
 
@@ -61,10 +77,32 @@
   "item.genesis.blood_bottle": "피 담긴 병",
 
 
+  "item.genesis.faded_memory": "흐려진 기억",
+  "item.genesis.forgotten_memory": "잊혀진 기억",
+  "item.genesis.unrelated_memory": "무연의 기억",
+  "item.genesis.oblivion_sphere": "망각의 구체",
+
 
   "item.genesis.divine_grail": "신대의 성배병",
 
   "item.genesis.spirit_compass": "정령 나침반",
+
+
+  "item.genesis.bloody_flag": "피 묻은 깃발",
+
+  "item.genesis.hardened_glass_sword": "경화된 유리 검",
+  "item.genesis.hardened_glass_greatsword": "경화된 유리 대검",
+  "item.genesis.hardened_glass_spear": "경화된 유리 창",
+  "item.genesis.hardened_glass_tachi": "경화된 유리 태도",
+  "item.genesis.hardened_glass_longsword": "경화된 유리 장검",
+  "item.genesis.hardened_glass_dagger": "경화된 유리 단검",
+
+  "item.genesis.hardened_red_glass_sword": "경화된 붉은 유리 검",
+  "item.genesis.hardened_red_glass_greatsword": "경화된 붉은 유리 대검",
+  "item.genesis.hardened_red_glass_spear": "경화된 붉은 유리 창",
+  "item.genesis.hardened_red_glass_tachi": "경화된 붉은 유리 태도",
+  "item.genesis.hardened_red_glass_longsword": "경화된 붉은 유리 장검",
+  "item.genesis.hardened_red_glass_dagger": "경화된 붉은 유리 단검",
 
   "item.genesis.elvenia_sword": "엘브니아 검",
   "item.genesis.elvenia_shovel": "엘브니아 삽",
@@ -102,6 +140,8 @@
   "item.genesis.pewriese_longsword": "퓨리즌 장검",
   "item.genesis.pewriese_dagger": "퓨리즌 단검",
 
+  "item.genesis.pewriese_gauntlet": "퓨리즌 건틀릿",
+
   "item.genesis.holy_knight_sword": "신성기사 검",
 
   "item.genesis.holy_knight_greatsword": "신성기사 대검",
@@ -109,6 +149,10 @@
   "item.genesis.holy_knight_tachi": "신성기사 태도",
   "item.genesis.holy_knight_longsword": "신성기사 장검",
   "item.genesis.holy_knight_dagger": "신성기사 단검",
+
+  "item.genesis.crystal_grown_longsword": "수정이 자라난 장검",
+
+  "item.genesis.oath_in_deep_dark": "깊은 어둠속의 맹세",
 
 
 
@@ -150,15 +194,66 @@
   "item.genesis.amethyst_wand": "자수정 지팡이",
 
   "item.genesis.green_star_seal": "녹성의 성인",
+  "item.genesis.hand_harboring_oblivion": "망각을 품은 손",
 
 
   "item.genesis.fireball": "화염구",
   "item.genesis.little_heal": "작은 치유",
 
+  "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
+  "item.genesis.star_of_domination": "지배의 별",
 
 
+  "item.genesis.amethyst_human_statue": "자수정 인간 조각상",
+
+  "item.genesis.large_desert_scorpion_tail": "큰 사막 전갈 꼬리",
+  "item.genesis.large_desert_scorpion_pincers": "큰 사막 전갈 집게",
+
+  "item.genesis.scorpion_carapace": "전갈 갑각",
+
+  "item.genesis.sacred_stone": "성석",
+
+  "item.genesis.cloth": "천",
+  "item.genesis.enchanted_cloth": "마법부여된 천",
+  "item.genesis.blessed_cloth": "축복받은 천",
+  "item.genesis.metal_fiber": "금속 섬유",
+
+  "item.genesis.red_eye_small": "붉은눈 (소)",
+  "item.genesis.red_eye_medium": "붉은눈 (중)",
+  "item.genesis.red_eye_large": "붉은눈 (대)",
+
+  "item.genesis.hardened_glass_pieces": "경화된 유리 조각",
+  "item.genesis.hardened_red_glass_pieces": "경화된 붉은 유리 조각",
+  "item.genesis.hardened_red_mass": "경화된 유리 덩어리",
+
+  "item.genesis.echoing_soul": "메아리치는 영혼",
+  "item.genesis.soul_pus": "영혼 고름",
 
   "item.genesis.amethyst_needle": "자수정 바늘",
+  "item.genesis.crystal_bat_hide": "수정 박쥐 털",
+
+  "item.genesis.amethyst_bone": "자수정 뼈",
+
+  "item.genesis.amethyst_heart_piece": "자수정 심장 조각",
+
+  "item.genesis.amethyst_shield_shard": "자수정 방패 조각",
+
+  "item.genesis.small_bell_of_oblivion": "망각의 작은 종",
+
+  "item.genesis.fog_guardian_shard": "안개 수호자 조각",
+
+  "item.genesis.illusion_silk": "환영 비단",
+
+  "item.genesis.underground_bone": "지저의 뼈",
+
+  "item.genesis.undead_remnant": "불사의 흔적",
+
+  "item.genesis.unfinished_shield": "미완성 방패",
+
+  "item.genesis.skullk_sprout": "스컬크 싹",
+
+  "item.genesis.crystals_of_the_land": "땅의 결정",
+
   "item.genesis.elvenia_upgrade_smithing_template": "엘브니아 형판",
   "item.genesis.pewriese_upgrade_smithing_template": "퓨리즌 강화 형판",
 
@@ -176,6 +271,10 @@
   "item.genesis.tablet_of_the_radiant_mountain": "빛의 산 석판",
 
 
+
+  "item.genesis.blade_of_destruction_fragment": "파괴의 검 조각",
+
+
   "item.genesis.key_of_oblivion": "망각의 열쇠",
 
   "item.genesis.mist_core_1": "사바나의 안개",
@@ -186,6 +285,8 @@
   "item.genesis.little_star_of_clarity": "청명의 작은 별",
 
   "item.genesis.fabricated_star": "만들어진 별",
+  "item.genesis.celestial_star": "천상의 별",
+  "item.genesis.eponymous_star": "시조의 별",
 
   "item.genesis.quicksand_bucket": "유사 양동이",
   "item.genesis.blood_bucket": "피 양동이",
@@ -212,6 +313,9 @@
   "block.genesis.pewriese_crystal_block": "퓨리즌 결정 블럭",
 
   "block.genesis.pyulitela_block": "땅의 순수 블럭",
+  "block.genesis.white_iron_block": "백철 블럭",
+
+  "block.genesis.fusion_stone_block": "융합석 블럭",
 
   "block.genesis.giant_stone": "거인석",
   "block.genesis.activated_giant_stone": "활성화된 거인석",
@@ -224,6 +328,8 @@
   "block.genesis.silver_coin_pile": "은 동전 더미",
   "block.genesis.gold_coin_pile": "금 동전 더미",
   "block.genesis.platinum_coin_pile": "백금 동전 더미",
+
+  "block.genesis.amethyst_heart": "자수정 심장",
 
 
 
@@ -253,6 +359,13 @@
 
   "block.genesis.precipitate": "침전물",
 
+
+  "block.genesis.undead_shard": "불사의 조각",
+
+  "block.genesis.hardened_red_glass": "경화된 붉은 유리",
+  "block.genesis.red_pearl_of_the_desert": "사막의 붉은 진주",
+
+  "block.genesis.eye_of_the_earth": "땅의 눈",
 
 
 

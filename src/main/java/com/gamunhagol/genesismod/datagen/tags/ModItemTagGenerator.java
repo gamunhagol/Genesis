@@ -60,8 +60,10 @@ public class ModItemTagGenerator extends ItemTagsProvider {
         tag(GenesisTags.Items.MAGIC_SPELLS)
                 .add(GenesisItems.AMETHYST_WAND.get());
 
-        tag(GenesisTags.Items.MIRACLE_SPELLS)
-                .add(GenesisItems.GREEN_STAR_SEAL.get());
+        tag(GenesisTags.Items.MIRACLE_SPELLS).add(
+                GenesisItems.GREEN_STAR_SEAL.get(),
+                GenesisItems.HAND_HARBORING_OBLIVION.get());
+
 
 
 

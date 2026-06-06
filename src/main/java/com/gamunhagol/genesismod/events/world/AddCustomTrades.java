@@ -26,6 +26,10 @@ public class AddCustomTrades {
         int shardRewardAmount = random.nextInt(5) + 1;
         int shardSellingAmount = (shardRewardAmount * 5) + random.nextInt(15) + 4;
         int compassRewardAmount = 37 + random.nextInt(28);
+        int pearlRewardAmount = 10 + random.nextInt(13);
+
+        event.getGenericTrades().add(new BasicItemListing(new ItemStack(GenesisItems.RED_PEARL_OF_THE_DESERT.get(),1),
+                new ItemStack(Items.EMERALD_BLOCK, pearlRewardAmount),5, 12, 1));
 
         event.getGenericTrades().add(new BasicItemListing(new ItemStack(Items.EMERALD, shardSellingAmount)
                 , new ItemStack(GenesisItems.BLUE_CRYSTAL_SHARD.get(), shardRewardAmount),3,10,1));

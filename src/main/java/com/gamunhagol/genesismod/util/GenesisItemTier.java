@@ -13,6 +13,16 @@ import java.util.List;
 
 public class GenesisItemTier {
 
+    public static final Tier HARDENED_GLASS = TierSortingRegistry.registerTier(
+            new ForgeTier(2, 430, 6f, 3F, 18, BlockTags.create(GenesisMod.prefix("need_hardened_glass_tool")),
+                    () -> Ingredient.of(GenesisItems.HARDENED_GLASS_PIECES.get())),
+            GenesisMod.prefix("hardened_glass"), List.of(Tiers.IRON), List.of());
+
+    public static final Tier HARDENED_RED_GLASS = TierSortingRegistry.registerTier(
+            new ForgeTier(3, 1231, 8f, 4F, 18, BlockTags.create(GenesisMod.prefix("need_hardened_red_glass_tool")),
+                    () -> Ingredient.of(GenesisItems.HARDENED_RED_GLASS_PIECES.get())),
+            GenesisMod.prefix("hardened_red_glass"), List.of(Tiers.DIAMOND), List.of());
+
     public static final Tier ELVENIA = TierSortingRegistry.registerTier(
             new ForgeTier(2, 500, 6f, 2F, 24, BlockTags.create(GenesisMod.prefix("need_elvenia_tool")),
                     () -> Ingredient.of(GenesisItems.ELVENIA_INGOT.get())),

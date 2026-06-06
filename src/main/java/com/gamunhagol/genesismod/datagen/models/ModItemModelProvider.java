@@ -55,6 +55,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         basicItem(GenesisItems.MANA_IMBUED_AMETHYST_SHARD.get());
 
+        simpleItem(GenesisItems.STAR_FRAGMENT);
+        simpleItem(GenesisItems.AMETHYST_MAGIC_CORE);
+
         simpleItem(GenesisItems.BLUE_CRYSTAL_SHARD);
         simpleItem(GenesisItems.CITRINE_SHARD);
         simpleItem(GenesisItems.RED_CRYSTAL_SHARD);
@@ -91,12 +94,24 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.BEAST_REMAINS);
         simpleItem(GenesisItems.FLASK_SHARD);
 
+        simpleItem(GenesisItems.FUSION_ORE);
+        simpleItem(GenesisItems.GIANT_STONE_FRAGMENT);
+        simpleItem(GenesisItems.FUSION_STONE);
+
+        simpleItem(GenesisItems.WHITE_IRON_INGOT);
+        simpleItem(GenesisItems.BASED_SCULPTURE);
+
         simpleItem(GenesisItems.COPPER_COIN);
         simpleItem(GenesisItems.SILVER_COIN);
         simpleItem(GenesisItems.GOLD_COIN);
         simpleItem(GenesisItems.PLATINUM_COIN);
 
 
+
+        simpleItem(GenesisItems.LUMINOUS_INSECT_JUICE);
+        simpleItem(GenesisItems.SCORPION_MEAT);
+        simpleItem(GenesisItems.COOKED_SCORPION_MEAT);
+        simpleItem(GenesisItems.ENCHANTED_GLOWING_HEART);
 
         simpleItem(GenesisItems.AMETHYST_APPLE);
 
@@ -108,10 +123,18 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.OPAQUE_JELLY);
 
+        simpleItem(GenesisItems.FADED_MEMORY);
+        simpleItem(GenesisItems.FORGOTTEN_MEMORY);
+        simpleItem(GenesisItems.UNRELATED_MEMORY);
+        simpleItem(GenesisItems.OBLIVION_SPHERE);
+
         simpleItem(GenesisItems.OBLIVION_CANDLE);
 
         simpleItem(GenesisItems.FIREBALL);
         simpleItem(GenesisItems.LITTLE_HEAL);
+
+        handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
+        handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);
 
         handheldItem(GenesisItems.ELVENIA_SWORD);
         handheldItem(GenesisItems.ELVENIA_AXE);
@@ -133,7 +156,57 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         handheldItem(GenesisItems.HOLY_KNIGHT_SWORD);
 
+        handheldItem(GenesisItems.OATH_IN_DEEP_DARK);
+
+        simpleItem(GenesisItems.AMETHYST_HUMAN_STATUE);
+
+        simpleItem(GenesisItems.LAGER_DESERT_SCORPION_TAIL);
+        simpleItem(GenesisItems.LAGER_DESERT_SCORPION_PINCERS);
+
+        simpleItem(GenesisItems.SCORPION_CARAPACE);
+        simpleItem(GenesisItems.SACRED_STONE);
+
+        simpleItem(GenesisItems.CLOTH);
+
+        simpleItem(GenesisItems.ENCHANTED_CLOTH);
+        simpleItem(GenesisItems.BLESSED_CLOTH);
+
+        simpleItem(GenesisItems.METAL_FIBER);
+
+        simpleItem(GenesisItems.RED_EYE_SMALL);
+        simpleItem(GenesisItems.RED_EYE_MEDIUM);
+        simpleItem(GenesisItems.RED_EYE_LARGE);
+
+        simpleItem(GenesisItems.HARDENED_GLASS_PIECES);
+        simpleItem(GenesisItems.HARDENED_RED_GLASS_PIECES);
+        simpleItem(GenesisItems.HARDENED_RED_MASS);
+
+        simpleItem(GenesisItems.ECHOING_SOUL);
+        simpleItem(GenesisItems.SOUL_PUS);
+
         simpleItem(GenesisItems.AMETHYST_NEEDLE);
+        simpleItem(GenesisItems.CRYSTAL_BAT_HIDE);
+
+        simpleItem(GenesisItems.AMETHYST_BONE);
+        simpleItem(GenesisItems.AMETHYST_HEART_PIECE);
+        simpleItem(GenesisItems.AMETHYST_SHIELD_SHARD);
+
+        simpleItem(GenesisItems.SMALL_BELL_OF_OBLIVION);
+
+        simpleItem(GenesisItems.FOG_GUARDIAN_SHARD);
+
+        simpleItem(GenesisItems.ILLUSION_SILK);
+
+        simpleItem(GenesisItems.UNDERGROUND_BONE);
+
+        simpleItem(GenesisItems.UNDEAD_REMNANT);
+
+        simpleItem(GenesisItems.UNFINISHED_SHIELD);
+
+        simpleItem(GenesisItems.SKULLK_SPROUT);
+
+        simpleItem(GenesisItems.CRYSTALS_OF_THE_LAND);
+
         simpleItem(GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE);
         simpleItem(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE);
 
@@ -151,6 +224,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.LARGE_ARROW);
 
+        simpleItem(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT);
+
         basicItem(GenesisItems.KEY_OF_OBLIVION.get());
 
         simpleItem(GenesisItems.MISY_CORE_1);
@@ -160,6 +235,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.MEDALLION_OF_DOMINION);
 
         simpleItem(GenesisItems.FABRICATED_STAR);
+        simpleItem(GenesisItems.CELESTIAL_STAR);
+        simpleItem(GenesisItems.EPONYMOUS_STAR);
 
         basicItem(GenesisItems.LITTLE_STAR_OF_CLARITY.get());
 
@@ -170,6 +247,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.COLLECTOR_SPAWN_EGG);
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
+
+        simpleItem(GenesisItems.AMETHYST_HEART);
 
         simpleItem(GenesisItems.STATUE_OF_SENTINEL_OF_OBLIVION);
         simpleItem(GenesisItems.STATUE_OF_HERALD_OF_OBLIVION);
@@ -228,6 +307,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
         withExistingParent("mist_vault_1", modLoc("block/mist_vault_1"));
+        withExistingParent("hardened_red_glass", modLoc("block/hardened_red_glass"));
+        withExistingParent("eye_of_the_earth", modLoc("block/eye_of_the_earth"));
 
         this.withExistingParent("faded_chest", modLoc("block/faded_chest_closed"));
 
@@ -264,6 +345,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.HOLY_KNIGHT_CHESTPLATE);
         simpleItem(GenesisItems.HOLY_KNIGHT_LEGGINGS);
         simpleItem(GenesisItems.HOLY_KNIGHT_BOOTS);
+
+        simpleItem(GenesisItems.INTACT_AMETHYST_HEART);
+        simpleItem(GenesisItems.STAR_OF_DOMINATION);
 
         // ─────────────── 정령 나침반 시리즈 ───────────────
         String[] types = {"fire", "water", "earth", "storm", "lightning", "plants", "ice"};

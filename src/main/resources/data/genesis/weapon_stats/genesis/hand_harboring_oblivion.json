@@ -1,0 +1,41 @@
+{
+  "item": "genesis:hand_harboring_oblivion",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 1.0,
+    "magic": 1.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 5.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 6,
+    "intelligence": 10,
+    "faith": 15
+  },
+  "scaling": {
+    "strength": "E",
+    "intelligence": "E",
+    "faith": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "E",
+      "intelligence": "E",
+      "faith": "D"
+    },
+    "16": {
+      "strength": "E",
+      "intelligence": "D",
+      "faith": "C"
+    },
+    "25": {
+      "strength": "E",
+      "intelligence": "C",
+      "faith": "B"
+    }
+  }
+}

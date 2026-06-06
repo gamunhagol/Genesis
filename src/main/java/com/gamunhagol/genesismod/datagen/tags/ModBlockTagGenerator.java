@@ -24,6 +24,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ,GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get()
                 ,GenesisBlocks.PYULITELA_ORE.get()
                 ,GenesisBlocks.PYULITELA_BLOCK.get()
+                ,GenesisBlocks.WHITE_IRON_BLOCK.get()
+                ,GenesisBlocks.FUSION_STONE_BLOCK.get()
                         ,GenesisBlocks.ELVENIA_BLOCK.get()
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
@@ -58,7 +60,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                     ,GenesisBlocks.COPPER_COIN_PILE.get()
                     ,GenesisBlocks.SILVER_COIN_PILE.get()
                     ,GenesisBlocks.GOLD_COIN_PILE.get()
-                    ,GenesisBlocks.PLATINUM_COIN_PILE.get());
+                    ,GenesisBlocks.PLATINUM_COIN_PILE.get()
+                    ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
+                    ,GenesisBlocks.EYE_OF_THE_EARTH.get()
+                    ,GenesisBlocks.AMETHYST_HEART.get()
+                    ,GenesisBlocks.HARDENED_RED_GLASS.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -70,10 +76,16 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get()
                         ,GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK.get()
                         ,GenesisBlocks.ANCIENT_DRAGON_ROCK.get()
-                        ,GenesisBlocks.ACTIVATED_GIANT_STONE.get());
+                        ,GenesisBlocks.ACTIVATED_GIANT_STONE.get()
+                        ,GenesisBlocks.FUSION_STONE_BLOCK.get()
+                        ,GenesisBlocks.EYE_OF_THE_EARTH.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(GenesisBlocks.ELVENIA_BLOCK.get());
+                .add(GenesisBlocks.ELVENIA_BLOCK.get()
+                ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
+                ,GenesisBlocks.AMETHYST_HEART.get()
+                ,GenesisBlocks.WHITE_IRON_BLOCK.get()
+                ,GenesisBlocks.HARDENED_RED_GLASS.get());
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
                 .add(GenesisBlocks.GIANT_STONE.get()

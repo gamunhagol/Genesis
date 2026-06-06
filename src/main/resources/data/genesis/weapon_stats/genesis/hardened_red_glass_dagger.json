@@ -1,0 +1,41 @@
+{
+  "item": "genesis:hardened_red_glass_dagger",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 6.0,
+    "magic": 0.0,
+    "fire": 0.5,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 6,
+    "dexterity": 10,
+    "arcane": 10
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "E",
+      "dexterity": "C",
+      "arcane": "E"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "C",
+      "arcane": "E"
+    },
+    "25": {
+      "strength": "D",
+      "dexterity": "A",
+      "arcane": "E"
+    }
+  }
+}

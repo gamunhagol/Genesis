@@ -6,7 +6,7 @@
       "tag": "minecraft:stone_tool_materials"
     },
     "a": {
-      "item": "minecraft:enchanted_book"
+      "tag": "minecraft:bookshelf_books"
     },
     "b": {
       "item": "minecraft:gold_nugget"

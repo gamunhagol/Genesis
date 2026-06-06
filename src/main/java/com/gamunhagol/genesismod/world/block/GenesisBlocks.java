@@ -7,10 +7,7 @@ import com.gamunhagol.genesismod.world.block.custom.*;
 import com.gamunhagol.genesismod.world.block.custom.statue.GodStatueGenericBlock;
 import com.gamunhagol.genesismod.world.block.fluid.BloodFluidBlock;
 import com.gamunhagol.genesismod.world.block.fluid.QuicksandFluidBlock;
-import com.gamunhagol.genesismod.world.block.nature.AmethystAppleBlock;
-import com.gamunhagol.genesismod.world.block.nature.AmethystApplePuddingBlock;
-import com.gamunhagol.genesismod.world.block.nature.AmethystSaplingBlock;
-import com.gamunhagol.genesismod.world.block.nature.LightingCrystalClusterBlock;
+import com.gamunhagol.genesismod.world.block.nature.*;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 
 import net.minecraft.util.valueproviders.UniformInt;
@@ -48,6 +45,13 @@ public class GenesisBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(120.0F, 2400.0F).requiresCorrectToolForDrops(), UniformInt.of(4, 9)));
     public static final RegistryObject<Block> PYULITELA_BLOCK = register("pyulitela_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(360.0F, 2400.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
+
+    public static final RegistryObject<Block> WHITE_IRON_BLOCK = register("white_iron_block",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(10.0F, 400.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
+
+    public static final RegistryObject<Block> FUSION_STONE_BLOCK = register("fusion_stone_block",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 1500.0F)
+                    .lightLevel(state -> 5)));
 
     public static final RegistryObject<Block> GIANT_STONE = register("giant_stone",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 15000.0F)));
@@ -103,6 +107,9 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
                     .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
 
+    public static final RegistryObject<Block> AMETHYST_HEART = register("amethyst_heart",
+            () -> new AmethystHeartBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).requiresCorrectToolForDrops()
+                    .strength(4.0F, 800.0F).noOcclusion().lightLevel(state -> 8)));
 
     public static final RegistryObject<Block> WEATHERED_ANCIENT_DRAGON_ROCK = register("weathered_ancient_dragon_rock",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).requiresCorrectToolForDrops().strength(60.0F, 1800.0F)));
@@ -152,11 +159,23 @@ public class GenesisBlocks {
 
 
     //Get mob
+    public static final RegistryObject<Block> HARDENED_RED_GLASS = register("hardened_red_glass",
+            () -> new GlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(6.0F, 12.0F)
+                    .sound(SoundType.GLASS).noOcclusion()));
+    public static final RegistryObject<Block> RED_PEARL_OF_THE_DESERT = register("red_pearl_of_the_desert",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(8.0F, 20.0F)
+                    .sound(SoundType.STONE)));
+
+    public static final RegistryObject<Block> EYE_OF_THE_EARTH = register("eye_of_the_earth",
+            () -> new LandEyeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).requiresCorrectToolForDrops().strength(10.0F, 1000.0F)
+                    .sound(SoundType.AMETHYST).noCollission()));
 
     //misc
     public static final RegistryObject<Block> PRECIPITATE = register("precipitate",
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.SAND).strength(0.1f,0.1f).noLootTable()));
 
+    public static final RegistryObject<Block> UNDEAD_SHARD = register("undead_shard",
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.BONE_BLOCK).strength(10.0f,100.0f)));
 
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",

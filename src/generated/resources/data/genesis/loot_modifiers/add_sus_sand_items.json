@@ -22,12 +22,24 @@
       {
         "chance": 0.012,
         "item": "genesis:divine_grail"
+      },
+      {
+        "chance": 0.12,
+        "item": "genesis:hardened_glass_pieces"
+      },
+      {
+        "chance": 0.23,
+        "item": "genesis:hardened_red_glass_pieces"
       }
     ],
     "minecraft:archaeology/desert_well": [
       {
         "chance": 0.66,
         "item": "genesis:opaque_jelly"
+      },
+      {
+        "chance": 0.06,
+        "item": "genesis:citrine_shard"
       }
     ],
     "minecraft:archaeology/ocean_ruins_cold": [

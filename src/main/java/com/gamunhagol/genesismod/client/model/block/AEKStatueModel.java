@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 public class AEKStatueModel extends Model {
     private final ModelPart root;
 
-    // 나중에 애니메이션을 넣을 수도 있으니 개별 파트 변수는 남겨둡니다.
     private final ModelPart body;
     private final ModelPart head;
     private final ModelPart headwear;

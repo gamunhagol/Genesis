@@ -1,7 +1,7 @@
 {
   "type": "minecraft:blasting",
   "category": "misc",
-  "cookingtime": 10000,
+  "cookingtime": 150,
   "experience": 0.8,
   "group": "ancient_elvenia",
   "ingredient": {

@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/cube_all",
+  "parent": "minecraft:builtin/entity",
   "textures": {
-    "all": "genesis:block/amethyst_heart"
+    "particle": "genesis:block/amethyst_heart"
   }
 }

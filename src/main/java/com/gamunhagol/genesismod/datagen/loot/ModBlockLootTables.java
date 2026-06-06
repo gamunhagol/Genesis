@@ -52,6 +52,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.PYULITELA_BLOCK.get());
+        this.dropSelf(GenesisBlocks.WHITE_IRON_BLOCK.get());
+        this.dropSelf(GenesisBlocks.FUSION_STONE_BLOCK.get());
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
         this.dropSelf(GenesisBlocks.RED_CRYSTAL_BLOCK.get());
@@ -66,9 +68,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.AMETHYST_SAPLING.get());
         this.dropSelf(GenesisBlocks.GIANT_STONE.get());
         this.dropSelf(GenesisBlocks.ACTIVATED_GIANT_STONE.get());
+        this.dropSelf(GenesisBlocks.RED_PEARL_OF_THE_DESERT.get());
+        this.dropSelf(GenesisBlocks.HARDENED_RED_GLASS.get());
+        this.dropSelf(GenesisBlocks.EYE_OF_THE_EARTH.get());
+        this.dropSelf(GenesisBlocks.UNDEAD_SHARD.get());
 
 
         this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
+
 
         //portions가 0(가득 참)일 때만 자기 자신을 드롭함
         this.add(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), (block) ->
@@ -84,7 +91,13 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
 
 
-
+        this.add(GenesisBlocks.AMETHYST_HEART.get(), block ->
+                LootTable.lootTable().withPool(LootPool.lootPool()
+                        .setRolls(ConstantValue.exactly(1.0F))
+                        .add(LootItem.lootTableItem(GenesisItems.AMETHYST_HEART_PIECE.get())
+                                .apply(ApplyExplosionDecay.explosionDecay()))
+                )
+        );
 
         this.add(GenesisBlocks.PEWRIESE_ORE.get(),
                 block -> createCopperLikeOreDrops(GenesisBlocks.PEWRIESE_ORE.get(), GenesisItems.PEWRIESE_ORE_PIECE.get()));

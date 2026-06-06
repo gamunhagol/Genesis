@@ -136,6 +136,8 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.AEK_STATUE_LAYER, AEKStatueModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.AM_HEART_LAYER, AmHeartModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_A_LAYER, SOGStatueAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_B_LAYER, SOGStatueBModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_C_LAYER, SOGStatueCModel::createBodyLayer);
@@ -166,6 +168,8 @@ public class RegisterModels {
         event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.GUIDE_STATUE_BE.get(), GuideStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.AEK_STATUE_BE.get(), AEKStatueRenderer::new);
+
+        event.registerBlockEntityRenderer(GenesisBlockEntities.AM_HEART_BE.get(), AmHeartRenderer::new);
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.MIST_VAULT_BE.get(), MistVaultRenderer::new);
 

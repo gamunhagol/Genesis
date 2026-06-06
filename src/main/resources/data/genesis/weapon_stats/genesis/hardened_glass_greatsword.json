@@ -1,0 +1,36 @@
+{
+  "item": "genesis:hardened_glass_greatsword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 16.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 17,
+    "dexterity": 7
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "E"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "D"
+    },
+    "25": {
+      "strength": "C",
+      "dexterity": "D"
+    }
+  }
+}

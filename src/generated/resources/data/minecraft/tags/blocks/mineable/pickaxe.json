@@ -4,6 +4,8 @@
     "genesis:pewriese_crystal_block",
     "genesis:pyulitela_ore",
     "genesis:pyulitela_block",
+    "genesis:white_iron_block",
+    "genesis:fusion_stone_block",
     "genesis:elvenia_block",
     "genesis:ancient_elvenia_block",
     "genesis:amethyst_apple_block",
@@ -38,6 +40,10 @@
     "genesis:copper_coin_pile",
     "genesis:silver_coin_pile",
     "genesis:gold_coin_pile",
-    "genesis:platinum_coin_pile"
+    "genesis:platinum_coin_pile",
+    "genesis:red_pearl_of_the_desert",
+    "genesis:eye_of_the_earth",
+    "genesis:amethyst_heart",
+    "genesis:hardened_red_glass"
   ]
 }

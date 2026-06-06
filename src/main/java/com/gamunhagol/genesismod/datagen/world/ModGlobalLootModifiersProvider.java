@@ -28,13 +28,16 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
         // 사막 우물
         addArc(susSandEntries, "archaeology/desert_well", GenesisItems.OPAQUE_JELLY.get(), 0.66f);
+        addArc(susSandEntries, "archaeology/desert_well", GenesisItems.CITRINE_SHARD.get(), 0.06f);
 
         // 사막 피라미드
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.45f);
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SCALE_FOSSIL.get(), 0.34f);
-        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SCALE_FOSSIL_CLUMP.get(), 0.14f); // 오타 수정: , -> /
+        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SCALE_FOSSIL_CLUMP.get(), 0.14f);
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SPIRIT_COMPASS.get(), 0.025f);
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.DIVINE_GRAIL.get(), 0.012f);
+        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.HARDENED_GLASS_PIECES.get(), 0.12f);
+        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.HARDENED_RED_GLASS_PIECES.get(), 0.23f);
 
         // 트레일 유적
         addArc(susSandEntries, "archaeology/trail_ruins_common", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.16f);
@@ -68,14 +71,22 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/abandoned_mineshaft")).build() },
                 GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.15f, 1, 2));
 
-        // 사막 피라미드 (이름 중복 해결)
+        // 사막 피라미드
         add("desert_pyramid_grail", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
                 GenesisItems.DIVINE_GRAIL.get(), 0.02f, 1, 1));
 
-        add("desert_pyramid_tablet_shard", new AddChestItemModifier( // 이름 변경
+        add("desert_pyramid_tablet_shard", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
                 GenesisItems.TABLET_SHARD.get(), 0.002f, 1, 1));
+
+        add("desert_pyramid_glass_pieces", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
+                GenesisItems.HARDENED_GLASS_PIECES.get(), 0.26f, 1, 3));
+
+        add("desert_pyramid_red_glass_pieces", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
+                GenesisItems.HARDENED_RED_GLASS_PIECES.get(), 0.13f, 1, 2));
 
         // 삼림 대저택 & 보물
         add("mansion_shard", new AddChestItemModifier(

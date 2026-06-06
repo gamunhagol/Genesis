@@ -3,14 +3,14 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "genesis:amethyst_apple"
+      "item": "genesis:large_desert_scorpion_pincers"
     },
     {
-      "item": "genesis:amethyst_needle"
+      "item": "minecraft:flint"
     }
   ],
   "result": {
-    "count": 4,
-    "item": "genesis:amethyst_apple_slices"
+    "count": 3,
+    "item": "genesis:scorpion_meat"
   }
 }

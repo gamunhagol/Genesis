@@ -1,10 +1,7 @@
 package com.gamunhagol.genesismod.world.block;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
-import com.gamunhagol.genesismod.world.block.entity.AEKStatueBlockEntity;
-import com.gamunhagol.genesismod.world.block.entity.FadedChestBlockEntity;
-import com.gamunhagol.genesismod.world.block.entity.MistVaultBlockEntity;
-import com.gamunhagol.genesismod.world.block.entity.StatueBlockEntity;
+import com.gamunhagol.genesismod.world.block.entity.*;
 import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -39,6 +36,12 @@ public class GenesisBlockEntities {
             BLOCK_ENTITIES.register("aek_statue_be", () ->
                     BlockEntityType.Builder.of(AEKStatueBlockEntity::new,
                             GenesisBlocks.AEK_STATUE.get()).build(null));
+
+    public static final RegistryObject<BlockEntityType<AmHeartBlockEntity>> AM_HEART_BE =
+            BLOCK_ENTITIES.register("am_heart_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new AmHeartBlockEntity(GenesisBlockEntities.AM_HEART_BE.get(), pos, state),
+                            GenesisBlocks.AMETHYST_HEART.get()).build(null));
 
     public static final RegistryObject<BlockEntityType<MistVaultBlockEntity>> MIST_VAULT_BE =
             BLOCK_ENTITIES.register("mist_vault_be", () ->

@@ -1,0 +1,29 @@
+{
+  "item": "genesis:crystal_grown_longsword",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 8.0,
+    "magic": 2.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 18,
+    "dexterity": 12,
+    "intelligence": 16
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "intelligence": "E"
+  },
+  "scaling_overrides": {
+    "4": { "strength": "D", "dexterity": "E", "intelligence": "D" },
+    "7": { "strength": "B", "dexterity": "D", "intelligence": "C" },
+    "10": { "strength": "A", "dexterity": "D", "intelligence": "B" }
+  }
+}

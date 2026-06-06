@@ -1,0 +1,31 @@
+{
+  "item": "genesis:oath_in_deep_dark",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 10.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 2.1
+  },
+  "requirements": {
+    "strength": 15,
+    "dexterity": 15,
+    "intelligence": 0,
+    "faith": 20,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E",
+    "faith": "D"
+  },
+  "scaling_overrides": {
+    "4": { "strength": "D", "dexterity": "E", "faith": "D" },
+    "7": { "strength": "C", "dexterity": "D", "faith": "C" },
+    "10": { "strength": "B", "dexterity": "C", "faith": "A" }
+  }
+}

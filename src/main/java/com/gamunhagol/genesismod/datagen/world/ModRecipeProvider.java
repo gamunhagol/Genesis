@@ -14,6 +14,7 @@ import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraftforge.client.model.IQuadTransformer;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import yesman.epicfight.world.item.EpicFightItems;
 
@@ -22,8 +23,18 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
+    private static final List<ItemLike> HARDENED_RED_SMELTING = List.of(GenesisItems.HARDENED_RED_MASS.get());
     private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
+    private static final List<ItemLike> ANCIENT_ELVENIA_SMELTING = List.of(GenesisItems.SMALL_BELL_OF_OBLIVION.get());
 
+
+    private static final Map<Item, Item> HARDENED_RED_GLASS_SMITHING_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.HARDENED_GLASS_SWORD.get(), GenesisItems.HARDENED_RED_GLASS_SWORD.get()),
+            Map.entry(GenesisItems.HARDENED_GLASS_GREATSWORD.get(), GenesisItems.HARDENED_RED_GLASS_GREATSWORD.get()),
+            Map.entry(GenesisItems.HARDENED_GLASS_SPEAR.get(), GenesisItems.HARDENED_RED_GLASS_SPEAR.get()),
+            Map.entry(GenesisItems.HARDENED_GLASS_TACHI.get(), GenesisItems.HARDENED_RED_GLASS_TACHI.get()),
+            Map.entry(GenesisItems.HARDENED_GLASS_LONGSWORD.get(), GenesisItems.HARDENED_RED_GLASS_LONGSWORD.get()),
+            Map.entry(GenesisItems.HARDENED_GLASS_DAGGER.get(), GenesisItems.HARDENED_RED_GLASS_DAGGER.get()));
 
     private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.GOLDEN_SWORD, GenesisItems.ELVENIA_SWORD.get()),
@@ -72,7 +83,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(EpicFightItems.IRON_GREATSWORD.get(), GenesisItems.PEWRIESE_GREATSWORD.get()),
             Map.entry(EpicFightItems.IRON_LONGSWORD.get(), GenesisItems.PEWRIESE_LONGSWORD.get()),
             Map.entry(EpicFightItems.IRON_SPEAR.get(), GenesisItems.PEWRIESE_SPEAR.get()),
-            Map.entry(EpicFightItems.IRON_TACHI.get(), GenesisItems.PEWRIESE_TACHI.get()));
+            Map.entry(EpicFightItems.IRON_TACHI.get(), GenesisItems.PEWRIESE_TACHI.get()),
+            Map.entry(EpicFightItems.GLOVE.get(), GenesisItems.PEWRIESE_GAUNTLET.get()));
 
     private static final Map<Item, Item> PEWRIESE_ARMOR_T1_MAP = Map.ofEntries(
             Map.entry(GenesisItems.PEWRIESE_HELMET.get(), GenesisItems.PEWRIESE_PLATE_HELMET.get()),
@@ -96,6 +108,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.PEWRIESE_SPEAR.get(), GenesisItems.HOLY_KNIGHT_SPEAR.get()),
             Map.entry(GenesisItems.PEWRIESE_TACHI.get(), GenesisItems.HOLY_KNIGHT_TACHI.get())
     );
+
+    private static final Map<Item, Item> AMETHYST_HEART_SMITHING_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.AMETHYST_HEART_PIECE.get(), GenesisItems.INTACT_AMETHYST_HEART.get()),
+            Map.entry(EpicFightItems.DIAMOND_LONGSWORD.get(), GenesisItems.CRYSTAL_GROWN_LONGSWORD.get())
+    );
+
 
 
 
@@ -126,9 +144,38 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
                 .save(pWriter);
 
+        oreSmelting(pWriter, HARDENED_RED_SMELTING, RecipeCategory.MISC, GenesisItems.HARDENED_RED_GLASS.get(), 0.2f, 250, "hardened_red_glass");
+
+        oreSmelting(pWriter, ANCIENT_ELVENIA_SMELTING, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), 0.8f, 300, "ancient_elvenia");
+        oreBlasting(pWriter, ANCIENT_ELVENIA_SMELTING, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), 0.8f, 150, "ancient_elvenia");
 
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
         oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
+
+
+        //cooked
+        List<ItemLike> MYSTERY_MEAT_COOKING = List.of(GenesisItems.SCORPION_MEAT.get());
+
+        foodSmelting(pWriter, MYSTERY_MEAT_COOKING, RecipeCategory.FOOD, GenesisItems.COOKED_SCORPION_MEAT.get(), 0.35f, 200, "mystery_meat");
+        foodSmoking(pWriter, MYSTERY_MEAT_COOKING, RecipeCategory.FOOD, GenesisItems.COOKED_SCORPION_MEAT.get(), 0.35f, 100, "mystery_meat");
+        foodCampfire(pWriter, MYSTERY_MEAT_COOKING, RecipeCategory.FOOD, GenesisItems.COOKED_SCORPION_MEAT.get(), 0.35f, 600, "mystery_meat");
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.GIANT_STONE.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', GenesisItems.GIANT_STONE_FRAGMENT.get())
+                .unlockedBy(getHasName(GenesisItems.GIANT_STONE_FRAGMENT.get()), has(GenesisItems.GIANT_STONE_FRAGMENT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.FUSION_STONE_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', GenesisItems.FUSION_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.FUSION_STONE.get()), has(GenesisItems.FUSION_STONE.get()))
+                .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get())
                 .pattern(" # ")
@@ -164,6 +211,41 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.CLOTH.get())
+                .pattern("  #")
+                .pattern("###")
+                .pattern("#  ")
+                .define('#', Items.STRING)
+                .unlockedBy(getHasName(Items.STRING), has(Items.STRING))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.ENCHANTED_CLOTH.get())
+                .pattern("###")
+                .pattern("#a#")
+                .pattern("###")
+                .define('#', GenesisItems.CLOTH.get())
+                .define('a', Items.LAPIS_LAZULI)
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.BLESSED_CLOTH.get())
+                .pattern("###")
+                .pattern("#a#")
+                .pattern("###")
+                .define('#', GenesisItems.CLOTH.get())
+                .define('a', GenesisItems.SACRED_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.SACRED_STONE.get())
+                .pattern("b#b")
+                .pattern("#a#")
+                .pattern("b#b")
+                .define('#', ItemTags.STONE_TOOL_MATERIALS)
+                .define('a', ItemTags.BOOKSHELF_BOOKS)
+                .define('b', Items.GOLD_NUGGET)
+                .unlockedBy(getHasName(Items.GOLD_NUGGET), has(Items.GOLD_NUGGET))
+                .save(pWriter);
 
 
 ;
@@ -177,6 +259,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PYULITELA.get(), RecipeCategory.MISC, GenesisBlocks.PYULITELA_BLOCK.get());
+        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.WHITE_IRON_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.WHITE_IRON_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.COPPER_COIN.get(), RecipeCategory.MISC, GenesisItems.COPPER_COIN_PILE.get());
@@ -189,13 +272,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         coinDeconstruct(pWriter, GenesisItems.PLATINUM_COIN.get(), GenesisItems.GOLD_COIN.get(), 9);
 
         //food
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.AMETHYST_APPLE_SLICES.get(), 4)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.SCORPION_MEAT.get(), 2)
+                .requires(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get())
+                .requires(Items.FLINT)
+                .unlockedBy(getHasName(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get()), has(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get()))
+                .save(pWriter, "scorpion_meat_from_tail");
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.SCORPION_MEAT.get(), 3)
+                .requires(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get())
+                .requires(Items.FLINT)
+                .unlockedBy(getHasName(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get()), has(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get()))
+                .save(pWriter, "scorpion_meat_from_pincers");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.AMETHYST_APPLE_SLICES.get(), 4)
                 .requires(GenesisItems.AMETHYST_APPLE.get())
                 .requires(GenesisItems.AMETHYST_NEEDLE.get())
                 .unlockedBy(getHasName(GenesisItems.AMETHYST_APPLE.get()), has(GenesisItems.AMETHYST_APPLE.get()))
                 .save(pWriter);
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), 1)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), 1)
                 .requires(GenesisItems.AMETHYST_APPLE_SLICES.get())
                 .requires(Items.MILK_BUCKET)
                 .requires(Items.SUGAR)
@@ -243,7 +337,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.IRON_INGOT), has(Items.IRON_INGOT))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.AMETHYST_WAND.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.AMETHYST_WAND.get())
                 .pattern("  a")
                 .pattern(" # ")
                 .pattern("#  ")
@@ -252,7 +346,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.GREEN_STAR_SEAL.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.GREEN_STAR_SEAL.get())
                 .pattern(" b ")
                 .pattern("bab")
                 .pattern(" b ")
@@ -266,6 +360,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_HELMET, GenesisItems.PADDED_CHAIN_HELMET.get(), " a ", "aba");
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_CHESTPLATE, GenesisItems.PADDED_CHAIN_CHESTPLATE.get(), "aaa", "aba");
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_LEGGINGS, GenesisItems.PADDED_CHAIN_LEGGINGS.get(), "aba", "a a");
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.WHITE_IRON_INGOT.get())
+                .requires(Items.IRON_INGOT)
+                .requires(GenesisItems.PEWRIESE_PIECE.get())
+                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
+                .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STONE)
                 .requires(Items.COBBLESTONE)
@@ -339,6 +439,20 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.BASED_SCULPTURE.get())
+                .requires(Items.NETHERITE_BLOCK)
+                .requires(GenesisItems.FUSION_STONE_BLOCK.get())
+                .requires(GenesisItems.PEWRIESE_CRYSTAL_BLOCK.get())
+                .unlockedBy(getHasName(GenesisItems.FUSION_STONE_BLOCK.get()), has(GenesisItems.FUSION_STONE_BLOCK.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.STAR_OF_DOMINATION.get())
+                .requires(GenesisItems.MEDALLION_OF_DOMINION.get())
+                .requires(GenesisItems.EPONYMOUS_STAR.get())
+                .unlockedBy(getHasName(GenesisItems.EPONYMOUS_STAR.get()), has(GenesisItems.EPONYMOUS_STAR.get()))
+                .save(pWriter);
+
+
 
 
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PADDED_CHAIN_BOOTS.get())
@@ -404,6 +518,53 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         SpecialRecipeBuilder.special(GenesisRecipeSerializers.SPIRIT_COMPASS_REMOVE.get())
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, "spirit_compass_remove").toString());
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("#")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_DAGGER.get())
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_GREATSWORD.get())
+                .pattern(" aa")
+                .pattern("aaa")
+                .pattern("#a ")
+                .define('#', ItemTags.PLANKS)
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_LONGSWORD.get())
+                .pattern("  a")
+                .pattern(" a ")
+                .pattern("#  ")
+                .define('#', GenesisItems.HARDENED_GLASS_SWORD.get())
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_SPEAR.get())
+                .pattern("  #")
+                .pattern(" a ")
+                .pattern("a  ")
+                .define('#', GenesisItems.HARDENED_GLASS_SWORD.get())
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.HARDENED_GLASS_TACHI.get())
+                .pattern(" a")
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', GenesisItems.HARDENED_GLASS_SWORD.get())
+                .define('a', GenesisItems.HARDENED_GLASS_PIECES.get())
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
 
 
 
@@ -431,6 +592,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
 
         //smithing table upgrade
+
+        for (var entry : HARDENED_RED_GLASS_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.HARDENED_RED_GLASS.get(),
+                    entry.getKey(),
+                    GenesisItems.HARDENED_RED_GLASS_PIECES.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
+        }
 
         // 일반 엘브니아 (금 갑옷 -> 엘브니아)
         for (var entry : ELVENIA_SMITHING_MAP.entrySet()) {
@@ -477,9 +647,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         for (var entry : PEWRIESE_TOOL_UPGRADE_MAP.entrySet()) {
             pewrieseAdvancedSmithing(pWriter,
                     entry.getKey(),
-                    GenesisItems.PYULITELA.get(),             // 같은 재료로 강화 가능
+                    GenesisItems.PYULITELA.get(),
                     entry.getValue(),
                     getItemName(entry.getValue()));
+        }
+
+        for (var entry : AMETHYST_HEART_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.AMETHYST_MAGIC_CORE.get(),
+                    entry.getKey(),
+                    GenesisItems.AMETHYST_HEART_PIECE.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
         }
 
     }
@@ -494,7 +673,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pLow) + "_from_" + getItemName(pHigh)));
     }
 
-    // [New] 2x2 압축 레시피 헬퍼
+    // 2x2 압축 레시피 헬퍼
     protected static void compress2x2(Consumer<FinishedRecipe> consumer, ItemLike small, ItemLike big) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, big)
                 .pattern("aa")
@@ -504,7 +683,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer);
     }
 
-    // [New] 패딩 갑옷 레시피 헬퍼
+    // 패딩 갑옷 레시피 헬퍼
     protected static void paddedArmorRecipe(Consumer<FinishedRecipe> consumer, ItemLike chainmail, ItemLike result, String line1, String line2) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, result)
                 .pattern(line1)
@@ -515,8 +694,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer);
     }
 
-    // [New] Vanilla 스타일 9개 압축/해제 자동화 헬퍼 (Item -> Block, Block -> Item)
-    // 원래는 RecipeProvider에 nineBlockStorageRecipe가 있지만, 양방향을 한 번에 처리하려면 직접 만드는 게 편함.
     protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> pWriter, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
         // Packed -> Unpacked (1 -> 9)
         ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
@@ -549,6 +726,26 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     .save(pFinishedRecipeConsumer, GenesisMod.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
         }
 
+    }
+    protected static void foodSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        cookFood(pFinishedRecipeConsumer, RecipeSerializer.SMELTING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_smelting");
+    }
+
+    protected static void foodSmoking(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        cookFood(pFinishedRecipeConsumer, RecipeSerializer.SMOKING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_smoking");
+    }
+
+    protected static void foodCampfire(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
+        cookFood(pFinishedRecipeConsumer, RecipeSerializer.CAMPFIRE_COOKING_RECIPE, pIngredients, pCategory, pResult, pExperience, pCookingTime, pGroup, "_from_campfire");
+    }
+
+    protected static void cookFood(Consumer<FinishedRecipe> pFinishedRecipeConsumer, RecipeSerializer<? extends AbstractCookingRecipe> pCookingSerializer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup, String pRecipeName) {
+        for(ItemLike itemlike : pIngredients) {
+            SimpleCookingRecipeBuilder.generic(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime, pCookingSerializer)
+                    .group(pGroup)
+                    .unlockedBy(getHasName(itemlike), has(itemlike))
+                    .save(pFinishedRecipeConsumer, GenesisMod.MODID + ":" + getItemName(pResult) + pRecipeName + "_" + getItemName(itemlike));
+        }
     }
     protected static void pewrieseSmithing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, Item pIngredientItem, RecipeCategory pCategory, Item pResultItem) {
         SmithingTransformRecipeBuilder.smithing(Ingredient.of(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(pIngredientItem),

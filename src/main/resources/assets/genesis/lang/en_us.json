@@ -8,6 +8,8 @@
   "item.genesis.fragment_of_memory": "Fragment of Memory",
 
   "item.genesis.mana_imbued_amethyst_shard": "Mana imbued Amethyst Shard",
+  "item.genesis.star_fragment": "Star Fragment",
+  "item.genesis.amethyst_magic_core": "Amethyst Magic Core",
 
   "item.genesis.blue_crystal_shard": "Blue Crystal Shard",
   "item.genesis.citrine_shard": "Citrine Shard",
@@ -38,6 +40,14 @@
 
   "item.genesis.beast_remains": "Beast Remains",
 
+  "item.genesis.fusion_ore": "Fusion Ore",
+  "item.genesis.giant_stone_fragment": "Giant Stone Fragment",
+
+  "item.genesis.fusion_stone": "Fusion Stone",
+
+  "item.genesis.white_iron_ingot": "White Iron Ingot",
+  "item.genesis.based_sculpture": "Based Sculpture",
+
   "item.genesis.copper_coin": "Copper coin",
   "item.genesis.silver_coin": "Silver coin",
   "item.genesis.gold_coin": "Gold coin",
@@ -50,6 +60,11 @@
   "item.genesis.gold_coin_pile": "Gold coin Pile",
   "item.genesis.platinum_coin_pile": "Platinum coin Pile",
 
+  "item.genesis.luminous_insect_juice": "Luminous Insect Juice",
+  "item.genesis.scorpion_meat": "Scorpion Meat",
+  "item.genesis.cooked_scorpion_meat": "Cooked Scorpion Meat",
+  "item.genesis.enchanted_glowing_heart": "Enchanted Glowing Heart",
+
   "item.genesis.amethyst_apple_slices": "Amethyst Apple Slices",
   "item.genesis.amethyst_apple_pudding": "Amethyst Apple Pudding in a Bowl",
 
@@ -61,9 +76,32 @@
   "item.genesis.blood_bottle": "Blood Bottle",
 
 
+  "item.genesis.faded_memory": "Faded Memory",
+  "item.genesis.forgotten_memory": "Forgotten Memory",
+  "item.genesis.unrelated_memory": "Unrelated Memory",
+  "item.genesis.oblivion_sphere": "Oblivion Sphere",
+
+
   "item.genesis.divine_grail": "Holy Grail Bottle of Mythical Age",
 
   "item.genesis.spirit_compass": "Spirit Compass",
+
+
+  "item.genesis.bloody_flag": "Bloody Flag",
+
+  "item.genesis.hardened_glass_sword": "Hardened Glass Sword",
+  "item.genesis.hardened_glass_greatsword": "Hardened Glass Greatsword",
+  "item.genesis.hardened_glass_spear": "Hardened Glass Spear",
+  "item.genesis.hardened_glass_tachi": "Hardened Glass Tachi",
+  "item.genesis.hardened_glass_longsword": "Hardened Glass Longsword",
+  "item.genesis.hardened_glass_dagger": "Hardened Glass Dagger",
+
+  "item.genesis.hardened_red_glass_sword": "Hardened Red Glass Sword",
+  "item.genesis.hardened_red_glass_greatsword": "Hardened Red Glass Greatsword",
+  "item.genesis.hardened_red_glass_spear": "Hardened Red Glass Spear",
+  "item.genesis.hardened_red_glass_tachi": "Hardened Red Glass Tachi",
+  "item.genesis.hardened_red_glass_longsword": "Hardened Red Glass Longsword",
+  "item.genesis.hardened_red_glass_dagger": "Hardened Red Glass  Dagger",
 
   "item.genesis.elvenia_sword": "Elvenia Sword",
   "item.genesis.elvenia_shovel": "Elvenia Shovel",
@@ -101,6 +139,8 @@
   "item.genesis.pewriese_longsword": "Pewriese Longsword",
   "item.genesis.pewriese_dagger": "Pewriese Dagger",
 
+  "item.genesis.pewriese_gauntlet": "Pewriese Gauntlet",
+
   "item.genesis.holy_knight_sword": "Holy Knight Sword",
 
   "item.genesis.holy_knight_greatsword": "Holy Knight Greatsword",
@@ -108,6 +148,10 @@
   "item.genesis.holy_knight_tachi": "Holy Knight Tachi",
   "item.genesis.holy_knight_longsword": "Holy Knight Longsword",
   "item.genesis.holy_knight_dagger": "Holy Knight Dagger",
+
+  "item.genesis.crystal_grown_longsword": "Crystal Grown Longsword",
+
+  "item.genesis.oath_in_deep_dark": "Oath in Deep Dark",
 
 
 
@@ -148,13 +192,68 @@
   "item.genesis.amethyst_wand": "Amethyst Wand",
 
   "item.genesis.green_star_seal": "Viridian Star Seal",
+  "item.genesis.hand_harboring_oblivion": "Hand Harboring Oblivion",
+
 
 
   "item.genesis.fireball": "Fireball",
   "item.genesis.little_heal": "Little Heal",
 
+  "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
+  "item.genesis.star_of_domination": "Star of Domination",
+
+
+  "item.genesis.amethyst_human_statue": "Amethyst Human Statue",
+
+  "item.genesis.large_desert_scorpion_tail": "Large Desert Scorpion Tail",
+  "item.genesis.large_desert_scorpion_pincers": "Large Desert Scorpion Pincers",
+
+  "item.genesis.scorpion_carapace": "Scorpion Carapace",
+
+  "item.genesis.sacred_stone": "Sacred Stone",
+
+  "item.genesis.cloth": "Cloth",
+  "item.genesis.enchanted_cloth": "Enchanted Cloth",
+  "item.genesis.blessed_cloth": "Blessed Cloth",
+  "item.genesis.metal_fiber": "Metal Fiber",
+
+  "item.genesis.red_eye_small": "Red Eye (Small)",
+  "item.genesis.red_eye_medium": "Red Eye (Medium)",
+  "item.genesis.red_eye_large": "Red Eye (Large)",
+
+  "item.genesis.hardened_glass_pieces": "Hardened Glass Pieces",
+  "item.genesis.hardened_red_glass_pieces": "Hardened Red Glass Pieces",
+  "item.genesis.hardened_red_mass": "Hardened Red Mass",
+
+  "item.genesis.echoing_soul": "Echoing Soul",
+  "item.genesis.soul_pus": "Soul Pus",
 
   "item.genesis.amethyst_needle": "Amethyst Needle",
+  "item.genesis.crystal_bat_hide": "Crystal Bat Hide",
+
+  "item.genesis.amethyst_bone": "Amethyst Bone",
+
+  "item.genesis.amethyst_heart_piece": "Amethyst Heart Piece",
+
+  "item.genesis.amethyst_shield_shard": "Amethyst Shield Shard",
+
+  "item.genesis.small_bell_of_oblivion": "Small Bell of Oblivion",
+
+  "item.genesis.fog_guardian_shard": "Fog Guardian Shard",
+
+  "item.genesis.illusion_silk": "Illusion Silk",
+
+  "item.genesis.underground_bone": "Underground Bone",
+
+  "item.genesis.undead_remnant": "Undead Remnant",
+
+  "item.genesis.unfinished_shield": "Unfinished Shield",
+
+  "item.genesis.skullk_sprout": "Skullk Sprout",
+
+  "item.genesis.crystals_of_the_land": "Crystals of the Land",
+
+
   "item.genesis.elvenia_upgrade_smithing_template": "Elvenia Upgrade Smithing Template",
   "item.genesis.pewriese_upgrade_smithing_template": "Pewriese Upgrade Smithing Template",
 
@@ -173,6 +272,10 @@
 
 
 
+  "item.genesis.blade_of_destruction_fragment": "Blade of Destruction Fragment",
+
+
+
 
   "item.genesis.key_of_oblivion": "Key of Oblivion",
 
@@ -184,6 +287,8 @@
   "item.genesis.little_star_of_clarity": "Little Star of Clarity",
 
   "item.genesis.fabricated_star": "Fabricated Star",
+  "item.genesis.celestial_star": "Celestial Star",
+  "item.genesis.eponymous_star": "Eponymous Star",
 
   "item.genesis.quicksand_bucket": "Quicksand Bucket",
   "item.genesis.blood_bucket": "Blood Bucket",
@@ -210,6 +315,9 @@
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.pyulitela_block": "Pyulitela Block",
+  "block.genesis.white_iron_block": "White iron Block",
+
+  "block.genesis.fusion_stone_block": "Fusion Stone Block",
 
   "block.genesis.giant_stone": "Giant Stone",
   "block.genesis.activated_giant_stone": "Activated Giant Stone",
@@ -222,6 +330,8 @@
   "block.genesis.silver_coin_pile": "Silver coin Pile",
   "block.genesis.gold_coin_pile": "Gold coin Pile",
   "block.genesis.platinum_coin_pile": "Platinum coin Pile",
+
+  "block.genesis.amethyst_heart": "Amethyst Heart",
 
 
 
@@ -250,6 +360,13 @@
 
 
   "block.genesis.precipitate": "Precipitate",
+
+  "block.genesis.undead_shard": "Undead Shard",
+
+  "block.genesis.hardened_red_glass": "Hardened Red Glass",
+  "block.genesis.red_pearl_of_the_desert": "Red Pearl of the Desert",
+
+  "block.genesis.eye_of_the_earth": "Eye of the Earth",
 
 
 
