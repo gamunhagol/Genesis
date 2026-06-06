@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_large_desert_scorpion_tail": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:large_desert_scorpion_tail"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:scorpion_meat_from_tail"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_large_desert_scorpion_tail",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:scorpion_meat_from_tail"
+    ]
+  },
+  "sends_telemetry_event": false
+}
