@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:white_iron_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "genesis:white_iron_ingot"
+  }
+}

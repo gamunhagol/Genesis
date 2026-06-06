@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:netherite_block"
+    },
+    {
+      "item": "genesis:fusion_stone_block"
+    },
+    {
+      "item": "genesis:pewriese_crystal_block"
+    }
+  ],
+  "result": {
+    "item": "genesis:based_sculpture"
+  }
+}
