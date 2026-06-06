@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:amethyst_heart_piece"
+  },
+  "base": {
+    "item": "genesis:amethyst_heart_piece"
+  },
+  "result": {
+    "item": "genesis:intact_amethyst_heart"
+  },
+  "template": {
+    "item": "genesis:amethyst_magic_core"
+  }
+}

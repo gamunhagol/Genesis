@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "genesis:hardened_glass_pieces"
+    }
+  },
+  "pattern": [
+    " a",
+    "# "
+  ],
+  "result": {
+    "item": "genesis:hardened_glass_dagger"
+  },
+  "show_notification": true
+}

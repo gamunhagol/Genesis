@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:hardened_red_glass_pieces"
+  },
+  "base": {
+    "item": "genesis:hardened_glass_dagger"
+  },
+  "result": {
+    "item": "genesis:hardened_red_glass_dagger"
+  },
+  "template": {
+    "item": "genesis:hardened_red_glass"
+  }
+}

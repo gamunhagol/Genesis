@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "a": {
+      "item": "genesis:hardened_glass_pieces"
+    }
+  },
+  "pattern": [
+    " aa",
+    "aaa",
+    "#a "
+  ],
+  "result": {
+    "item": "genesis:hardened_glass_greatsword"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "genesis:hardened_glass_sword"
+    },
+    "a": {
+      "item": "genesis:hardened_glass_pieces"
+    }
+  },
+  "pattern": [
+    "  #",
+    " a ",
+    "a  "
+  ],
+  "result": {
+    "item": "genesis:hardened_glass_spear"
+  },
+  "show_notification": true
+}

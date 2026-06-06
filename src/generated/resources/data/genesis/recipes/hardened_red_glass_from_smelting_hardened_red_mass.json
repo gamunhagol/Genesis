@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 250,
+  "experience": 0.2,
+  "group": "hardened_red_glass",
+  "ingredient": {
+    "item": "genesis:hardened_red_mass"
+  },
+  "result": "genesis:hardened_red_glass"
+}
