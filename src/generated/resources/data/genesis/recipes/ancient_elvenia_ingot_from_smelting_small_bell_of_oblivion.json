@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 20000,
+  "experience": 0.8,
+  "group": "ancient_elvenia",
+  "ingredient": {
+    "item": "genesis:small_bell_of_oblivion"
+  },
+  "result": "genesis:ancient_elvenia_ingot"
+}
