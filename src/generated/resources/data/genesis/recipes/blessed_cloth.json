@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "item": "genesis:cloth"
+    },
+    "a": {
+      "item": "genesis:sacred_stone"
+    }
+  },
+  "pattern": [
+    "###",
+    "#a#",
+    "###"
+  ],
+  "result": {
+    "item": "genesis:blessed_cloth"
+  },
+  "show_notification": true
+}

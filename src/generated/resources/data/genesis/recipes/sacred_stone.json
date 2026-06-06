@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "#": {
+      "tag": "minecraft:stone_tool_materials"
+    },
+    "a": {
+      "item": "minecraft:enchanted_book"
+    },
+    "b": {
+      "item": "minecraft:gold_nugget"
+    }
+  },
+  "pattern": [
+    "b#b",
+    "#a#",
+    "b#b"
+  ],
+  "result": {
+    "item": "genesis:sacred_stone"
+  },
+  "show_notification": true
+}
