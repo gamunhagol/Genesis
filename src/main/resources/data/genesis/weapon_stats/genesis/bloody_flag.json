@@ -14,7 +14,7 @@
   "requirements": {
     "strength": 10,
     "dexterity": 9,
-    "faith": 10
+    "faith": 8
   },
   "scaling": {
     "strength": "E",
