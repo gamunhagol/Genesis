@@ -619,5 +619,8 @@
 
 
   "key.categories.genesis": "Genesis Mod",
-  "key.genesis.level_up": "Open Stat Menu"
+  "key.genesis.level_up": "Open Stat Menu",
+  "key.genesis.spell_next": "Next Skill",
+  "key.genesis.spell_prev": "Previous Skill"
+
 }

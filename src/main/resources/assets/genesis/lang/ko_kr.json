@@ -616,5 +616,7 @@
 
 
   "key.categories.genesis": "창세기 모드",
-  "key.genesis.level_up": "스탯 설정 화면 열기"
+  "key.genesis.level_up": "스탯 설정 화면 열기",
+  "key.genesis.spell_next": "다음 주문 선택",
+  "key.genesis.spell_prev": "이전 주문 선택"
 }
