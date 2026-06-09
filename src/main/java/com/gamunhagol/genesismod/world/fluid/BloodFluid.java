@@ -13,8 +13,8 @@ public class BloodFluid {
             )
                     .bucket(GenesisItems.BLOOD_BUCKET)
                     .block(GenesisBlocks.BLOOD_BLOCK)
-                    .slopeFindDistance(3) // 물(4)보다 조금 덜 흐르게
+                    .slopeFindDistance(3)
                     .levelDecreasePerBlock(1)
-                    .tickRate(10)         // 흐르는 속도를 물보다 약간 느리게 (숫자가 높을수록 느림)
+                    .tickRate(10)
                     .explosionResistance(100f);
 }

@@ -20,7 +20,6 @@ public class LargeArrowRenderer extends EntityRenderer<LargeArrowEntity> {
 
     public LargeArrowRenderer(EntityRendererProvider.Context context) {
         super(context);
-        // 이전에 등록한 레이어에서 모델을 구워옵니다.
         this.model = new LargeArrowModel<>(context.bakeLayer(ModModelLayers.LARGE_ARROW_LAYER));
     }
 
@@ -35,7 +34,6 @@ public class LargeArrowRenderer extends EntityRenderer<LargeArrowEntity> {
 
         poseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
 
-        // 흔들림 효과
         float shake = (float)entity.shakeTime - partialTicks;
         if (shake > 0.0F) {
             float f = -Mth.sin(shake * 3.0F) * shake;

@@ -14,13 +14,12 @@ public class GenesisFluidTypes {
             DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, GenesisMod.MODID);
 
 
-    // --- 유사 (Quicksand) 타입 ---
     public static final RegistryObject<FluidType> QUICKSAND_TYPE =
             FLUID_TYPES.register("quicksand", () ->
                     new QuicksandFluidType(FluidType.Properties.create()
-                            .density(3000)      // 물보다 무겁게
-                            .viscosity(6000)    // 용암보다 끈적하게
-                            .motionScale(0.007F) // [중요] 0.01보다 낮춰서 더 꾸덕하게 이동
+                            .density(3000)
+                            .viscosity(6000)
+                            .motionScale(0.007F)
                             .canPushEntity(true)
                             .supportsBoating(false)
                             .fallDistanceModifier(0.0F)
@@ -32,8 +31,8 @@ public class GenesisFluidTypes {
             FLUID_TYPES.register("blood", () ->
                     new BloodFluidType(FluidType.Properties.create()
                             .descriptionId("fluid.genesis.blood")
-                            .density(1100)   // 물보다 살짝 무겁게
-                            .viscosity(1500) // 살짝 끈적하게
+                            .density(1100)
+                            .viscosity(1500)
                             .canPushEntity(true)
                             .canDrown(true)
                             .pathType(BlockPathTypes.WATER)

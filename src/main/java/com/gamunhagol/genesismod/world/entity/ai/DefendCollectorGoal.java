@@ -29,9 +29,9 @@ public class DefendCollectorGoal extends TargetGoal {
             int i = collector.getLastHurtByMobTimestamp();
             LivingEntity attacker = collector.getLastHurtByMob();
 
-            // [수정] 공격자가 있고 + 타임스탬프가 다르고 + "최근 200틱(10초) 이내에 맞았을 때만" 반응
+            // 공격자가 있고 + 타임스탬프가 다르고 + "최근 200틱(10초) 이내에 맞았을 때만" 반응
             if (i != this.lastTimestamp && attacker != null) {
-                if (this.guard.tickCount - i < 200) { // <-- 시간 체크 추가 권장 (선택사항이지만 넣는 게 자연스러움)
+                if (this.guard.tickCount - i < 200) {
                     this.attacker = attacker;
                     this.lastTimestamp = i;
                     return true;
@@ -43,7 +43,6 @@ public class DefendCollectorGoal extends TargetGoal {
 
     @Override
     public boolean canContinueToUse() {
-        // 타겟이 죽거나 멀어지면 타겟팅 해제
         LivingEntity target = this.mob.getTarget();
         if (target != null && target.isAlive()) {
             return this.mob.distanceToSqr(target) < 256.0D; // 16블록 이내면 계속 추격

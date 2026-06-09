@@ -32,7 +32,6 @@ public class LandEyeBlock extends Block {
     @Override
     @Nullable
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        // 설치 시 플레이어가 바라보는 방향의 반대(플레이어를 정면으로 바라보게) 설정
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 

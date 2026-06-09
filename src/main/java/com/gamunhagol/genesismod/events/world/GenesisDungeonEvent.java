@@ -16,7 +16,6 @@ public class GenesisDungeonEvent extends Event {
     public ServerLevel getLevel() { return level; }
     public BlockPos getPos() { return pos; }
 
-    // 던전 활성화용 내부 클래스
     public static class Activate extends GenesisDungeonEvent {
         public Activate(ServerLevel level, BlockPos pos) {
             super(level, pos);

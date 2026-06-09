@@ -24,7 +24,6 @@ public class CollectorModel<T extends LivingEntity> extends VillagerModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        // 핵심: super를 호출해야 주민의 기본 애니메이션(걷기, 팔 흔들기 등)이 작동합니다.
         super.setupAnim(entity, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
     }
 

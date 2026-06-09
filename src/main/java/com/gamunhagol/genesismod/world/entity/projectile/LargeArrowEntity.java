@@ -48,7 +48,6 @@ public class LargeArrowEntity extends AbstractArrow {
     }
 
     public LargeArrowEntity(Level level, LivingEntity shooter) {
-        // 변수명을 LARGE_ARROW_ENTITY로 수정했다고 가정
         super(GenesisEntities.LARGE_ARROW.get(), shooter, level);
     }
 
@@ -56,10 +55,7 @@ public class LargeArrowEntity extends AbstractArrow {
     public void tick() {
         super.tick();
 
-        // 화살이 공중에 있고, 중력의 영향을 받는 상태일 때만 추가 중력 적용
         if (!this.onGround() && !this.isNoGravity()) {
-            // 바닐라 기본 중력은 0.05입니다.
-            // 여기에 0.03을 더하면 총 0.08의 중력이 되어 확실히 묵직하게 떨어집니다.
             double extraGravity = 0.03D;
 
             net.minecraft.world.phys.Vec3 motion = this.getDeltaMovement();
@@ -67,15 +63,12 @@ public class LargeArrowEntity extends AbstractArrow {
         }
     }
 
-    // 추가 권장 생성자 (좌표 기반 소환용)
     public LargeArrowEntity(Level level, double x, double y, double z) {
         super(GenesisEntities.LARGE_ARROW.get(), x, y, z, level);
     }
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        // 에픽 파이트 연동 시 이 부분에서 커스텀 DamageSource를 사용하게 됩니다.
-        // 지금은 단계적 확인 중이니 기본 로직을 먼저 태우세요.
         super.onHitEntity(result);
 
         /* 추후 에픽 파이트 로직 예시:
@@ -151,16 +144,12 @@ public class LargeArrowEntity extends AbstractArrow {
                         }
                     }
                 }
-
-                // 화염 시각 효과
                 if (isFlashing && this.level() instanceof ServerLevel serverLevel) {
                     serverLevel.sendParticles(ParticleTypes.FLAME,
                             slamPos.x, slamPos.y, slamPos.z, 20, 0.5, 0.5, 0.5, 0.1);
                     serverLevel.playSound(null, slamPos.x, slamPos.y, slamPos.z,
                             SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 }
-
-                // 시각 효과
                 LevelUtil.circleSlamFracture(owner, this.level(), slamPos, 5.0D, false, false, false);
                 this.setEmpowered(false);
             });

@@ -21,7 +21,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     private boolean isLevelUpUnlocked = false;
 
-    // 초기 리소스 상태 (StatApplier에 의해 갱신되기 전 기본값)
     private float mental = 20.0f;
     private float maxMental = 20.0f;
     private float regenRate = 0.005f;
@@ -39,13 +38,12 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     }
 
     public void updateMaxMental() {
-        // 레벨 1일 때 2.0, 레벨 99일 때 약 200.0
         this.maxMental = 2.0f + (this.mind - 1) * 2.02f;
         this.isDirty = true;
     }
 
     public void learnSpell(String spellId) {
-        if (learnedSpells.add(spellId)) { // 새로운 마법이면 true 반환
+        if (learnedSpells.add(spellId)) {
             this.setDirty(true);
         }
     }
@@ -132,7 +130,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         nbt.putFloat("maxMental", maxMental);
         nbt.putBoolean("isLevelUpUnlocked", isLevelUpUnlocked);
 
-        // 마법 목록을 ListTag로 변환하여 저장
         ListTag spellsTag = new ListTag();
         for (String id : learnedSpells) {
             spellsTag.add(StringTag.valueOf(id));
@@ -162,7 +159,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         maxMental = nbt.getFloat("maxMental");
         isLevelUpUnlocked = nbt.getBoolean("isLevelUpUnlocked");
 
-        // 마법 목록 불러오기
         learnedSpells.clear();
         if (nbt.contains("learnedSpells", Tag.TAG_LIST)) {
             ListTag spellsTag = nbt.getList("learnedSpells", Tag.TAG_STRING);

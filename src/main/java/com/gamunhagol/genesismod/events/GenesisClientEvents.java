@@ -68,11 +68,9 @@ public class GenesisClientEvents {
 
     @SubscribeEvent
     public static void registerGuiOverlays(RegisterGuiOverlaysEvent event) {
-        // 바닐라 핫바(HOTBAR) 바로 위에 우리의 커스텀 주문 HUD를 쌓아서 렌더링합니다.
         event.registerAbove(VanillaGuiOverlay.HOTBAR.id(), "spell_hud", SpellHudOverlay.HUD_SPELL);
     }
 
-    // 포지 이벤트 버스 (인게임 이벤트를 받는 곳)
     @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
     public static class ForgeBusEvents {
 
@@ -90,16 +88,12 @@ public class GenesisClientEvents {
             }
         }
 
-        // 방향키 단축키 입력을 매 틱마다 감지하는 핸들러
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
-            // 중복 실행 방지를 위해 클라이언트 틱 종료 시점에만 1번 연산
             if (event.phase != TickEvent.Phase.END) return;
-            // 위 방향키 입력 시 (-1을 보내서 이전 슬롯으로 이동 요청)
             while (ModKeyBindings.SPELL_PREV_KEY.consumeClick()) {
                 GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(-1));
             }
-            // 아래 방향키 입력 시 (+1을 보내서 다음 슬롯으로 이동 요청)
             while (ModKeyBindings.SPELL_NEXT_KEY.consumeClick()) {
                 GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(1));
             }

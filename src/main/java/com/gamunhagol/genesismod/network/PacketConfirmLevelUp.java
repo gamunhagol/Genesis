@@ -27,21 +27,14 @@ public class PacketConfirmLevelUp {
                 int totalInc = 0;
                 for (int i : increases) totalInc += i;
 
-                // 필요한 총 XP 계산
                 for (int i = 0; i < totalInc; i++) {
                     totalCost += LevelCalcHelper.getXpCostForNextLevel(baseLevel + i);
                 }
 
-                //  플레이어의 현재 총 경험치 가져오기
                 int playerTotalXp = LevelCalcHelper.getPlayerTotalXp(player);
 
-                //  비용을 지불할 수 있는지 확인 (현재 경험치 >= 필요 비용)
                 if (playerTotalXp >= totalCost) {
-
-                    //  ★ 실제 XP 차감 (음수를 넣으면 차감됩니다) ★
                     player.giveExperiencePoints(-totalCost);
-
-                    //  스탯 적용
                     stats.setVigor(stats.getVigor() + increases[0]);
                     stats.setMind(stats.getMind() + increases[1]);
                     stats.setEndurance(stats.getEndurance() + increases[2]);
@@ -51,11 +44,8 @@ public class PacketConfirmLevelUp {
                     stats.setFaith(stats.getFaith() + increases[6]);
                     stats.setArcane(stats.getArcane() + increases[7]);
 
-
-                    //  속성 재계산 및 동기화
                     StatApplier.applyAll(player, stats);
 
-                    // 데이터 변경 알림 (동기화 패킷 자동 발송 유도)
                     stats.setDirty(true);
                 }
             });

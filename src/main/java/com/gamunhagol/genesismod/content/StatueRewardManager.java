@@ -9,7 +9,6 @@ import java.util.List;
 
 public class StatueRewardManager {
 
-    // 노드의 모든 정보를 담는 그릇 (좌표, 비용, 보상)
     public static class NodeInfo {
         public final int id;
         public final int x, y;
@@ -31,12 +30,10 @@ public class StatueRewardManager {
         }
     }
 
-    // UI 렌더링용: 해당 신상의 모든 노드를 리스트로 반환
     public static List<NodeInfo> getNodesForStatue(String statueId) {
         List<NodeInfo> nodes = new ArrayList<>();
 
         if ("god_a".equals(statueId)) {
-            // 구조: NodeInfo(노드번호, X좌표, Y좌표, 요구아이템, 요구수량, 보상아이템, 보상수량, 선행노드)
 
             nodes.add(new NodeInfo(1, 640, 620, GenesisItems.FABRICATED_STAR.get(), 1, Items.DIAMOND, 1));
             nodes.add(new NodeInfo(2, 540, 480, Items.GOLD_INGOT, 3, Items.EMERALD, 2, 1));
@@ -82,13 +79,12 @@ public class StatueRewardManager {
         return nodes;
     }
 
-    //  서버 패킷 검증용: 특정 신상의 특정 노드 정보 하나만 반환
     public static NodeInfo getNode(String statueId, int nodeId) {
         for (NodeInfo node : getNodesForStatue(statueId)) {
             if (node.id == nodeId) {
                 return node;
             }
         }
-        return null; // 해당 노드가 없으면 null 반환
+        return null;
     }
 }

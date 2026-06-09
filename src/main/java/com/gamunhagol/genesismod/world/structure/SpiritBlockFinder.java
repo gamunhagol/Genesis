@@ -71,7 +71,6 @@ public class SpiritBlockFinder {
                     }
                 }
             }
-            // 안쪽 레이어에서 블록을 1개라도 찾았다면 굳이 더 먼 청크를 뒤지지 않고 반환 (최적화 및 군집 탐색)
             if (foundInLayer) {
                 return foundBlocks;
             }

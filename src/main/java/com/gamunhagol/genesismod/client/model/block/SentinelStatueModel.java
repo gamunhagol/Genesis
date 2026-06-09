@@ -14,7 +14,7 @@ public class SentinelStatueModel extends Model {
 
     public SentinelStatueModel(ModelPart root) {
         super(RenderType::entityCutoutNoCull);
-        this.root = root; // 파라미터로 들어온 root가 전체를 포함함
+        this.root = root;
     }
 
     public static LayerDefinition createBodyLayer() {
@@ -23,7 +23,6 @@ public class SentinelStatueModel extends Model {
 
         PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.ZERO);
 
-        // [주의] 좌표값들은 사용자분이 주신 그대로 유지했습니다.
         root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(32, 16).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -15.0F, 0.0F));
         root.addOrReplaceChild("head", CubeListBuilder.create().texOffs(0, 0).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F)), PartPose.offset(0.0F, -15.0F, 0.0F));
         root.addOrReplaceChild("headwear", CubeListBuilder.create().texOffs(0, 16).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(-0.5F)), PartPose.offset(0.0F, -15.0F, 0.0F));

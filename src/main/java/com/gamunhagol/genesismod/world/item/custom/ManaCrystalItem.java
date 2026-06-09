@@ -29,19 +29,16 @@ public class ManaCrystalItem extends Item {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 float recoveryAmount = 5.0f;
                 stats.setMental(Math.min(stats.getMaxMental(), stats.getMental() + recoveryAmount));
-
-                // [★버그 수정] 값이 변했으니 클라이언트에게 즉시 "야! 값 바뀌었어!" 하고 소리쳐야 합니다.
                 if (player instanceof ServerPlayer serverPlayer) {
                     GenesisNetwork.sendToPlayer(new PacketSyncMentalPower(stats.getMental()), serverPlayer);
                 }
             });
-            //  효과음 재생
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
             float angle = player.yBodyRot * ((float)Math.PI / 180F);
             double sideOffset = (hand == InteractionHand.MAIN_HAND ? 1.0 : -1.0) * 0.4D;
             double spawnX = player.getX() - (double)(Math.cos(angle) * sideOffset);
-            double spawnY = player.getY() + 1.2D; // 눈높이보다 살짝 아래 (손 높이)
+            double spawnY = player.getY() + 1.2D;
             double spawnZ = player.getZ() - (double)(Math.sin(angle) * sideOffset);
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, itemstack),
@@ -52,7 +49,6 @@ public class ManaCrystalItem extends Item {
                         5, 0.3D, 0.5D, 0.3D, 0.05D);
             }
         }
-        //소모
         player.swing(hand, true);
         if (!player.getAbilities().instabuild) {
             itemstack.shrink(1);

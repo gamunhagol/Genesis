@@ -10,7 +10,6 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
 public class GenesisDamageTypes {
-    // 1. ResourceKey 정의
     public static final ResourceKey<DamageType> HOLY = ResourceKey.create(
             Registries.DAMAGE_TYPE,
             new ResourceLocation("genesis", "holy"));
@@ -19,7 +18,6 @@ public class GenesisDamageTypes {
             Registries.DAMAGE_TYPE,
             new ResourceLocation("genesis", "destruction"));
 
-    // 2. DamageSource를 쉽게 가져오기 위한 헬퍼 메서드
     public static DamageSource getSource(Level level, ResourceKey<DamageType> type) {
         return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(type));
     }

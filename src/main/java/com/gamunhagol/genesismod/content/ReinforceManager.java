@@ -6,7 +6,6 @@ import net.minecraft.world.item.Item;
 
 public class ReinforceManager {
 
-    // 일반 무기 재료 (최대 25강)
     public static Item getStandardMaterial(int nextLevel) {
         if (nextLevel <= 5) return GenesisItems.SCALE_FOSSIL_SHARD.get();       // 1~5
         if (nextLevel <= 10) return GenesisItems.SCALE_FOSSIL.get();      // 6~10
@@ -15,10 +14,9 @@ public class ReinforceManager {
         if (nextLevel <= 22) return GenesisItems.ANCIENT_DRAGON_ROCK.get(); // 21~22
         if (nextLevel <= 24) return GenesisItems.ANCIENT_DRAGON_SCALE.get();     // 23~24
         if (nextLevel == 25) return GenesisItems.DRAGON_KING_SCALE.get();         // 25
-        return null; // 강화 불가
+        return null;
     }
 
-    // 특수 무기 재료 (최대 10강)
     public static Item getSpecialMaterial(int nextLevel) {
         if (nextLevel <= 3) return GenesisItems.SHARD_OF_THE_MOUNTAIN.get();       // 1~3
         if (nextLevel <= 6) return GenesisItems.FRAGMENT_OF_THE_MOUNTAIN.get();       // 4~6

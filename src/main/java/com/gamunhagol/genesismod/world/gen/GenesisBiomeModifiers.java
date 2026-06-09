@@ -14,7 +14,6 @@ import net.minecraftforge.common.world.ForgeBiomeModifiers;
 import net.minecraftforge.registries.ForgeRegistries;
 
 public class GenesisBiomeModifiers {
-    // 바이옴 모디파이어 리소스 키 정의
     public static final ResourceKey<BiomeModifier> ADD_PEWRIESE_ORE = registerKey("add_pewriese_ore");
     public static final ResourceKey<BiomeModifier> ADD_PYULITELA_ORE = registerKey("add_pyulitela_ore");
 
@@ -37,7 +36,6 @@ public class GenesisBiomeModifiers {
         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
         var biomes = context.lookup(Registries.BIOME);
 
-        // 오버월드 바이옴 태그를 가진 모든 곳에 광물 추가
         context.register(ADD_PEWRIESE_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_ORE_PLACED_KEY)), // 배치 규칙 연결
@@ -60,41 +58,34 @@ public class GenesisBiomeModifiers {
                 GenerationStep.Decoration.VEGETAL_DECORATION
         ));
 
-        // 1. 황수정 (Citrine): 오버월드 전체 (자수정보다 희귀하게 설정됨)
         context.register(ADD_CITRINE_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.CITRINE_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 2. 적수정 (Red Crystal): 오버월드 지하 용암층 대상
         context.register(ADD_RED_CRYSTAL_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.RED_CRYSTAL_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 3. 청수정 (Blue Crystal): 따뜻한 바다 (산호초 바이옴)
         context.register(ADD_BLUE_CRYSTAL_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.WARM_OCEAN)),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.BLUE_CRYSTAL_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 4. 녹호박 (Green Amber): 정글 바이옴
         context.register(ADD_GREEN_AMBER_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 biomes.getOrThrow(BiomeTags.IS_JUNGLE),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.GREEN_AMBER_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 5. 뇌전수정 (Lightning): 사막
         context.register(ADD_LIGHTING_CRYSTAL_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.DESERT)),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.LIGHTING_CRYSTAL_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 6. 바람석 (Wind Stone): 뾰족한 봉우리 등 고지대
         context.register(ADD_WIND_STONE_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(
-                        biomes.getOrThrow(Biomes.JAGGED_PEAKS), // 뾰족한 봉우리
-                        biomes.getOrThrow(Biomes.FROZEN_PEAKS), // 얼어붙은 봉우리
-                        biomes.getOrThrow(Biomes.STONY_PEAKS)   // 돌 봉우리
+                        biomes.getOrThrow(Biomes.JAGGED_PEAKS),
+                        biomes.getOrThrow(Biomes.FROZEN_PEAKS),
+                        biomes.getOrThrow(Biomes.STONY_PEAKS)
                 ),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.WIND_STONE_GEODE_PLACED_KEY)),
                 GenerationStep.Decoration.LOCAL_MODIFICATIONS));
-        // 7. 얼음꽃 (Ice Flower): 빙하 (역고드름 지형)
         context.register(ADD_ICE_FLOWER_GEODE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
                 HolderSet.direct(biomes.getOrThrow(Biomes.ICE_SPIKES)),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.ICE_FLOWER_GEODE_PLACED_KEY)),
@@ -102,14 +93,14 @@ public class GenesisBiomeModifiers {
 
 
         context.register(ADD_PEWRIESE_METEORITE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 모든 오버월드 바이옴
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_METEORITE_PLACED_KEY)),
-                GenerationStep.Decoration.SURFACE_STRUCTURES // 지상 구조물 단계
+                GenerationStep.Decoration.SURFACE_STRUCTURES
         ));
         context.register(ADD_PEWRIESE_SUBSPECIES_METEORITE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(
-                biomes.getOrThrow(BiomeTags.IS_OVERWORLD), // 모든 오버월드 바이옴
+                biomes.getOrThrow(BiomeTags.IS_OVERWORLD),
                 HolderSet.direct(placedFeatures.getOrThrow(GenesisPlacedFeatures.PEWRIESE_METEORITE_SUBSPECIES_PLACED_KEY)),
-                GenerationStep.Decoration.SURFACE_STRUCTURES // 지상 구조물 단계
+                GenerationStep.Decoration.SURFACE_STRUCTURES
         ));
 
     }

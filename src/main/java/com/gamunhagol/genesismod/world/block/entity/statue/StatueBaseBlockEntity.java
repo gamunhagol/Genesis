@@ -10,6 +10,5 @@ public abstract class StatueBaseBlockEntity extends BlockEntity {
         super(type, pos, state);
     }
 
-    // "fire_god", "water_god" 등 신상 식별자
     public abstract String getStatueId();
 }

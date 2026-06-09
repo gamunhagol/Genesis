@@ -24,9 +24,7 @@ public class GenesisNetwork {
                 .serverAcceptedVersions(s -> true)
                 .simpleChannel();
 
-        // ==========================================
         // [S -> C] Server to Client Packets (동기화 등)
-        // ==========================================
         INSTANCE.messageBuilder(PacketSyncStats.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(PacketSyncStats::new).encoder(PacketSyncStats::toBytes)
                 .consumerMainThread(PacketSyncStats::handle).add();
@@ -39,9 +37,7 @@ public class GenesisNetwork {
                 .decoder(PacketSyncSpellSlot::decode).encoder(PacketSyncSpellSlot::encode)
                 .consumerMainThread(PacketSyncSpellSlot::handle).add();
 
-        // ==========================================
         // [C -> S] Client to Server Packets (요청, 조작 등)
-        // ==========================================
         INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketConfirmLevelUp::new).encoder(PacketConfirmLevelUp::toBytes)
                 .consumerMainThread(PacketConfirmLevelUp::handle).add();

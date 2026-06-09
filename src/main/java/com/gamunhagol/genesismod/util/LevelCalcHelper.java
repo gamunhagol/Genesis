@@ -4,7 +4,6 @@ import com.gamunhagol.genesismod.stats.StatCapability;
 import net.minecraft.world.entity.player.Player;
 
 public class LevelCalcHelper {
-    // 기본 스탯 합 79 기준 레벨 계산
     public static int getCharacterLevel(StatCapability stats) {
         int totalStats = stats.getVigor() + stats.getMind() + stats.getEndurance()
                 + stats.getStrength() + stats.getDexterity()
@@ -12,13 +11,11 @@ public class LevelCalcHelper {
         return (totalStats - 79) + 1;
     }
 
-    // 다음 레벨업에 필요한 우리 모드 전용 XP 비용 (수치 살짝 조정: 80 -> 50)
     public static int getXpCostForNextLevel(int currentLevel) {
         if (currentLevel >= 713) return 0;
         return (int) (Math.pow(currentLevel - 1, 2.0) * 12 + 80);
     }
 
-    // 플레이어의 현재 총 '바닐라 XP 포인트' 합계 계산
     public static int getPlayerTotalXp(Player player) {
         int level = player.experienceLevel;
         int total = 0;
@@ -29,18 +26,14 @@ public class LevelCalcHelper {
         return total;
     }
 
-    // 바닐라 레벨당 요구 경험치량 (마인크래프트 공식)
     private static int getXpNeededForLevel(int level) {
         if (level >= 30) return 112 + (level - 30) * 9;
         if (level >= 15) return 37 + (level - 15) * 5;
         return 7 + level * 2;
     }
 
-    // 1레벨부터 targetLevel까지 성장하는 데 필요한 누적 XP 계산
     public static int calculateTotalXpSpent(int currentLevel) {
         int totalCost = 0;
-        // 1레벨부터 현재 레벨 직전까지 반복하며 비용 합산
-        // 예: 현재 3레벨이면 (1->2 비용) + (2->3 비용) 환급
         for (int i = 1; i < currentLevel; i++) {
             totalCost += getXpCostForNextLevel(i);
         }

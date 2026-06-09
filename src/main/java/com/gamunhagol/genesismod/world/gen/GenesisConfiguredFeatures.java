@@ -56,47 +56,41 @@ public class GenesisConfiguredFeatures {
 
         register(context, AMETHYST_TREE_KEY, GenesisFeatures.AMETHYST_TREE.get(), NoneFeatureConfiguration.INSTANCE);
 
-        // 1. 황수정 (Citrine): 땅속 매립형. 40% 공기 치환
         register(context, CITRINE_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "citrine_geode"),
-                2, // variants (_1, _2)
+                2,
                 GenesisBlocks.CITRINE_CLUSTER.get().defaultBlockState(),
-                0.4f, // 40% 확률로 클러스터 제거 (적당히 꽉 참)
-                -2 // Y 오프셋 (땅에 약간 파묻힘)
+                0.4f,
+                -2
         ));
-        // 2. 적수정 (Red Crystal): 용암 호수. 70% 공기 치환 (가시 형상 강조)
         register(context, RED_CRYSTAL_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "red_crystal_geode"),
                 2,
                 GenesisBlocks.RED_CRYSTAL_CLUSTER.get().defaultBlockState(),
-                0.6f, // 많이 비워내서 뾰족한 가시만 남김
-                -1 // 용암 바닥에서 깊게 솟아오름
+                0.6f,
+                -1
         ));
-        // 3. 청수정 (Blue Crystal): 산호초. 30% 공기 치환 (덩어리감 유지)
         register(context, BLUE_CRYSTAL_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "blue_crystal_geode"),
                 2,
                 GenesisBlocks.BLUE_CRYSTAL_CLUSTER.get().defaultBlockState(),
-                0.3f, // 꽤 빽빽하게 유지
-                -1 // 모래에 살짝 박힘
+                0.3f,
+                -1
         ));
-        // 4. 녹호박 (Green Amber): 정글. 50% 치환
         register(context, GREEN_AMBER_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "green_amber_geode"),
                 2,
                 GenesisBlocks.GREEN_AMBER_CLUSTER.get().defaultBlockState(),
                 0.5f,
-                0 // 지면(혹은 나무) 위에 딱 붙음
+                0
         ));
-        // 5. 바람석 (Wind Stone): 절벽. 20% 치환 (단단한 바위 느낌)
         register(context, WIND_STONE_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "wind_stone_geode"),
                 2,
                 GenesisBlocks.WIND_STONE_CLUSTER.get().defaultBlockState(),
-                0.4f, // 거의 꽉 찬 상태
-                0 // 절벽 옆면에 붙음
+                0.4f,
+                0
         ));
-        // 6. 뇌전수정 (Lightning): 사막. 60% 치환 (번개 맞은 흔적)
         register(context, LIGHTING_CRYSTAL_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "lighting_crystal_geode"),
                 2,
@@ -104,7 +98,6 @@ public class GenesisConfiguredFeatures {
                 0.7f,
                 0
         ));
-        // 7. 얼음꽃 (Ice Flower): 빙하. 40% 치환 (꽃잎 모양)
         register(context, ICE_FLOWER_GEODE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "ice_flower_geode"),
                 2,
@@ -116,17 +109,17 @@ public class GenesisConfiguredFeatures {
 
         register(context, PEWRIESE_METEORITE_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "pewriese_meteorite"),
-                1,    // 변주가 없다면 1 (pewriese_meteorite_1.nbt 하나만 사용)
-                Blocks.AIR.defaultBlockState(), // 딱히 바꿀 블록이 없다면 AIR
-                0.0f, // 공기 치환 없음 (덩어리 그대로 생성)
-                -1    // 땅에 1칸 박힘
+                1,
+                Blocks.AIR.defaultBlockState(),
+                0.0f,
+                -1
         ));
         register(context, PEWRIESE_METEORITE_SUBSPECIES_KEY, GenesisFeatures.GENESIS_CRYSTAL.get(), new GenesisCrystalConfiguration(
                 new ResourceLocation(GenesisMod.MODID, "pewriese_meteorite_subspecies"),
-                1,    // 변주가 없다면 1 (pewriese_meteorite_1.nbt 하나만 사용)
-                Blocks.AIR.defaultBlockState(), // 딱히 바꿀 블록이 없다면 AIR
-                0.0f, // 공기 치환 없음 (덩어리 그대로 생성)
-                -1    // 땅에 1칸 박힘
+                1,
+                Blocks.AIR.defaultBlockState(),
+                0.0f,
+                -1
         ));
     }
 

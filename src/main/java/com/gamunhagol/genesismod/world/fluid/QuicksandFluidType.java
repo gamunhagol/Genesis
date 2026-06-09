@@ -13,8 +13,6 @@ import org.joml.Vector3f;
 import java.util.function.Consumer;
 
 public class QuicksandFluidType extends FluidType {
-
-    // [최적화] 상수화: 텍스처 경로와 안개 색상을 미리 정의
     private static final ResourceLocation QUICKSAND_STILL = new ResourceLocation(GenesisMod.MODID, "block/quicksand_still");
     private static final ResourceLocation QUICKSAND_FLOW = new ResourceLocation(GenesisMod.MODID, "block/quicksand_flow");
 
@@ -37,7 +35,6 @@ public class QuicksandFluidType extends FluidType {
             @Override
             public Vector3f modifyFogColor(Camera camera, float partialTick, ClientLevel level,
                                            int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
-                // 캐싱된 객체 반환 (메모리 절약)
                 return FOG_COLOR;
             }
 
@@ -45,7 +42,6 @@ public class QuicksandFluidType extends FluidType {
                                         int renderDistance, float darkenWorldAmount, FogType fogType) {
                 RenderSystem.setShaderFogStart(-1.0F);
                 RenderSystem.setShaderFogEnd(2.0F);
-                // 상수의 값 사용
                 RenderSystem.setShaderFogColor(FOG_COLOR.x(), FOG_COLOR.y(), FOG_COLOR.z());
             }
         });

@@ -44,25 +44,21 @@ public class GenesisCombatEvents {
 
         DamageSnapshot snapshot = null;
 
-        //  투사체 확인
         if (sourceEntity != null && sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).isPresent()) {
             var cap = sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).orElse(null);
             if (cap != null && !cap.getSnapshot().isEmpty()) {
                 snapshot = cap.getSnapshot();
             }
         }
-        //  플레이어 근접 공격 확인
         else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
                 if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
-                    return; // 활이나 석궁으로 직접 때리는 건 스냅샷 적용 안 함
+                    return;
                 }
 
-                // 기본 인챈트 보너스 (날카로움 등)
                 float enchantBonus = EnchantmentHelper.getDamageBonus(weapon, target.getMobType());
 
-                // 삼지창 전용: 찌르기(Impaling) 추가
                 if (weapon.getItem() instanceof TridentItem) {
                     int impalingLevel = EnchantmentHelper.getItemEnchantmentLevel(Enchantments.IMPALING, weapon);
                     if (impalingLevel > 0 && target.getMobType() == MobType.WATER) {
@@ -70,34 +66,28 @@ public class GenesisCombatEvents {
                     }
                 }
 
-                // 무기의 모든 스탯이 포함된 원본 스냅샷 계산
                 DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
 
-                // ★ 핵심: 지팡이나 성인으로 "근접 타격"을 한 경우 마법/신성 등 속성 피해 증발
                 if (weapon.getItem() instanceof CatalystItem) {
                     snapshot = new DamageSnapshot(
                             rawSnapshot.physical(),
                             0, 0, 0, 0, 0,
-                            rawSnapshot.destruction() // 파괴 속성은 유지 (필요에 따라 0으로 바꿔도 됨)
+                            rawSnapshot.destruction()
                     );
                 } else {
-                    // 일반 무기면 그대로 적용
                     snapshot = rawSnapshot;
                 }
             }
         }
 
-        //  스냅샷 적용
         if (snapshot != null && !snapshot.isEmpty()) {
             if (snapshot.physical() > 0) {
                 event.setAmount(snapshot.physical());
             }
             applyElementalMarkers(target, snapshot);
         }
-        //  레거시 지원
         else if (attackerEntity instanceof Player player && snapshot == null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                // 기존 레거시 로직 유지
             });
         }
     }
@@ -117,14 +107,12 @@ public class GenesisCombatEvents {
         LivingEntity target = event.getEntity();
         float finalDamage = event.getAmount();
 
-        // 1. 마법 (Magic)
         if (target.getPersistentData().contains("GenesisExtraMagic")) {
             float magicDmg = target.getPersistentData().getFloat("GenesisExtraMagic");
             finalDamage += calculateMagicDamage(target, magicDmg);
             target.getPersistentData().remove("GenesisExtraMagic");
         }
 
-        // 2. 화염 (Fire)
         if (target.getPersistentData().contains("GenesisExtraFire")) {
             float fireDmg = target.getPersistentData().getFloat("GenesisExtraFire");
             fireDmg = calculateFireDamage(target, fireDmg); // 저항 계산
@@ -133,7 +121,6 @@ public class GenesisCombatEvents {
             target.getPersistentData().remove("GenesisExtraFire");
         }
 
-        // 3. 번개 (Lightning) - 물/비 연동만 유지
         if (target.getPersistentData().contains("GenesisExtraLightning")) {
             float lightDmg = target.getPersistentData().getFloat("GenesisExtraLightning");
             if (target.isInWaterOrRain()) lightDmg *= 1.5f;
@@ -141,10 +128,8 @@ public class GenesisCombatEvents {
             target.getPersistentData().remove("GenesisExtraLightning");
         }
 
-        // 4. 동상 (Frost) - 태그 및 가루눈 동결만 유지
         if (target.getPersistentData().contains("GenesisExtraFrost")) {
             float frostDmg = target.getPersistentData().getFloat("GenesisExtraFrost");
-            // 바닐라 동결 면역 몹(블레이즈 등) 확인
             if (target.getType().is(net.minecraft.tags.EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
                 frostDmg *= 0.5f;
             }
@@ -153,14 +138,12 @@ public class GenesisCombatEvents {
             target.getPersistentData().remove("GenesisExtraFrost");
         }
 
-        // 5. 신성 (Holy)
         if (target.getPersistentData().contains("GenesisExtraHoly")) {
             float holyDmg = target.getPersistentData().getFloat("GenesisExtraHoly");
             finalDamage += calculateHolyDamage(target, holyDmg);
             target.getPersistentData().remove("GenesisExtraHoly");
         }
 
-        // 6. 파괴 (Destruction)
         if (target.getPersistentData().contains("GenesisExtraDestruction")) {
             float destDmg = target.getPersistentData().getFloat("GenesisExtraDestruction");
             applyDestructionEffect(target, destDmg);
@@ -168,7 +151,6 @@ public class GenesisCombatEvents {
             target.getPersistentData().remove("GenesisExtraDestruction");
         }
 
-        // 파괴 소스 직접 처리
         if (event.getSource().is(GenesisDamageTypes.DESTRUCTION)) {
             applyDestructionEffect(target, event.getAmount());
         }
@@ -181,13 +163,12 @@ public class GenesisCombatEvents {
         removeDestructionEffect(event.getEntity());
     }
 
-    // --- Helper Methods ---
+    //Helper Methods
 
     private static float calculateHolyDamage(LivingEntity target, float damage) {
         float result = damage;
 
 
-        // 신성 방어력 적용
         AttributeInstance holyDef = target.getAttribute(GenesisAttributes.HOLY_DEFENSE.get());
         if (holyDef != null && holyDef.getValue() > 0) {
             float reductionMultiplier = (float) (1.0 - (holyDef.getValue() / (holyDef.getValue() + 30.0)));
@@ -200,12 +181,10 @@ public class GenesisCombatEvents {
         float result = damage;
         if (target.isInvertedHealAndHarm()) return 0;
 
-        // 바닐라 마녀(Witch) 엔티티 체크 (태생적 마법 저항)
         if (target.getType() == net.minecraft.world.entity.EntityType.WITCH) {
             result *= 0.15f;
         }
 
-        // 모드 마법 방어력 속성 적용
         AttributeInstance magicDef = target.getAttribute(GenesisAttributes.MAGIC_DEFENSE.get());
         if (magicDef != null && magicDef.getValue() > 0) {
             float multiplier = (float) (1.0 - (magicDef.getValue() / (magicDef.getValue() + 30.0)));
@@ -215,10 +194,8 @@ public class GenesisCombatEvents {
     }
 
     private static float calculateFireDamage(LivingEntity target, float damage) {
-        // 화염 저항 포션
         if (target.hasEffect(MobEffects.FIRE_RESISTANCE)) return 0;
 
-        // 화염으로부터 보호 인챈트 (바닐라 공식 유사 적용)
         int prot = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_PROTECTION, target);
         if (prot > 0) {
             float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
@@ -239,7 +216,6 @@ public class GenesisCombatEvents {
         }
 
         double newReductionValue = currentModifierValue - damageAmount;
-        // 최대 체력이 1 미만이 되지 않도록 방지
         if (maxHealthAttr.getBaseValue() + newReductionValue < 1.0D) newReductionValue = -maxHealthAttr.getBaseValue() + 1.0D;
 
         maxHealthAttr.addPermanentModifier(new AttributeModifier(DESTRUCTION_HP_MOD_UUID, "Destruction Max HP Reduction", newReductionValue, AttributeModifier.Operation.ADDITION));

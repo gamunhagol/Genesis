@@ -28,28 +28,22 @@ public class GuiInjectionEvents {
         Minecraft mc = Minecraft.getInstance();
         if (mc.player == null) return;
 
-        // 화면이 바뀔 때마다 버튼 상태 초기화
         if (statButton != null) {
             statButton.visible = false;
         }
 
-        // 오직 서바이벌 인벤토리(InventoryScreen)에서만 버튼 생성
         if (event.getScreen() instanceof InventoryScreen inv) {
             createPersistentButton(event, inv.getGuiLeft() + 155, inv.getGuiTop() + 7, inv);
         }
-        // 크리에이티브 인벤토리 관련 else if 블록을 완전히 제거함
     }
 
     @SubscribeEvent
     public static void onScreenRenderPre(ScreenEvent.Render.Pre event) {
         if (statButton == null) return;
-
-        // 일반 서바이벌 인벤토리 화면인 경우에만 활성화
         if (event.getScreen() instanceof InventoryScreen) {
             statButton.visible = true;
             statButton.active = true;
         }
-        // 그 외 모든 화면(크리에이티브 포함)에서는 버튼을 숨기고 비활성화
         else {
             statButton.visible = false;
             statButton.active = false;
@@ -76,7 +70,7 @@ public class GuiInjectionEvents {
                 .build();
 
         updateButtonTooltip(mc);
-        event.addListener(statButton); // 해당 화면의 위젯 리스트에 추가
+        event.addListener(statButton);
     }
 
     private static void updateButtonTooltip(Minecraft mc) {
@@ -96,16 +90,11 @@ public class GuiInjectionEvents {
     @SubscribeEvent
     public static void onKeyInput(InputEvent.Key event) {
         Minecraft mc = Minecraft.getInstance();
-
-        // 1. 플레이어가 존재하고, 현재 열린 화면이 없을 때만 단축키 작동
-        // (채팅창이나 다른 메뉴가 열려있을 때 중복으로 열리는 것 방지)
         if (mc.player == null || mc.screen != null) return;
 
-        // 2. 단축키 입력 확인 (GLFW.GLFW_PRESS는 키를 누른 순간 한 번만 실행됨)
         if (ModKeyBindings.LEVEL_UP_KEY.consumeClick()) {
             mc.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 if (stats.isLevelUpUnlocked()) {
-                    // 단축키로 열 때는 부모 화면이 없으므로 null 전달
                     mc.setScreen(new LevelUpScreen(null));
                 } else {
                     mc.player.displayClientMessage(

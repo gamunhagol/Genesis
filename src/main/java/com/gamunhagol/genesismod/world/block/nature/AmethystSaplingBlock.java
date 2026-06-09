@@ -51,9 +51,7 @@ public class AmethystSaplingBlock extends Block {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemstack = player.getItemInHand(hand);
 
-        // 자수정 조각으로 상호작용
         if (itemstack.is(Items.AMETHYST_SHARD)) {
-            // [클라이언트] 초록색 입자 효과 (뼛가루 느낌)
             if (level.isClientSide) {
                 for(int i = 0; i < 15; ++i) {
                     double d0 = level.random.nextGaussian() * 0.02D;
@@ -67,17 +65,13 @@ public class AmethystSaplingBlock extends Block {
                 }
             }
 
-            // [서버] 성장 로직 및 소리 재생
             if (level instanceof ServerLevel serverLevel) {
-                // 45% 확률로 성장 성공
                 if (serverLevel.random.nextFloat() < 0.45D) {
                     this.advanceTree(serverLevel, pos, state, serverLevel.random);
                 }
-                // 자수정 차임 소리 재생
                 level.playSound(null, pos, SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.BLOCKS, 1.0F, 1.0F + level.random.nextFloat() * 1.2F);
             }
 
-            // 크리에이티브가 아니면 아이템 소모
             if (!player.getAbilities().instabuild) {
                 itemstack.shrink(1);
             }
@@ -105,7 +99,6 @@ public class AmethystSaplingBlock extends Block {
         }
     }
 
-    // 핵심 수정 부분: 구조물 소환 및 위치 보정
     public void performSpawning(ServerLevel level, BlockPos pos, BlockState state, RandomSource random) {
         StructureTemplateManager manager = level.getStructureManager();
 
@@ -124,18 +117,12 @@ public class AmethystSaplingBlock extends Block {
                                     Blocks.BUDDING_AMETHYST.defaultBlockState()
                             )
                     )));
-
-            // [수정됨] 회전을 고려한 중심점 좌표 계산
             Vec3i size = t.getSize();
-            // 구조물의 바닥 정중앙을 기준점(Pivot)으로 설정
             BlockPos pivotPos = new BlockPos(size.getX() / 2, 0, size.getZ() / 2);
-
-            // 회전된 상태에서의 상대적 위치를 계산하여 묘목 위치(pos)에서 뺌
             BlockPos originPos = pos.subtract(StructureTemplate.calculateRelativePosition(settings, pivotPos));
 
             level.setBlock(pos, Blocks.AIR.defaultBlockState(), 4);
 
-            // 구조물 배치 시도
             if (!t.placeInWorld(level, originPos, originPos, settings, random, 3)) {
                 level.setBlock(pos, state, 4); // 실패 시 복구
             }

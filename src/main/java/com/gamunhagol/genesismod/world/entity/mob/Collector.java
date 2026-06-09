@@ -66,7 +66,6 @@ public class Collector extends WanderingTrader {
     }
 
     protected void updateTrades() {
-        //  기존 떠돌이 상인의 랜덤 거래 목록을 완전히 무시하고 비어있는 리스트를 가져옵니다.
         MerchantOffers merchantoffers = this.getOffers();
 
         int infiniteTrades = 99999;

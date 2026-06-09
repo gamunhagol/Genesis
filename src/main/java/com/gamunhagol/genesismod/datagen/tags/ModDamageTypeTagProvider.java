@@ -18,7 +18,6 @@ public class ModDamageTypeTagProvider extends DamageTypeTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider provider) {
-        // 신성 대미지가 방어력을 무시하도록 설정
         this.tag(DamageTypeTags.BYPASSES_ARMOR).add(GenesisDamageTypes.HOLY);
 
         this.tag(DamageTypeTags.BYPASSES_ARMOR).add(GenesisDamageTypes.DESTRUCTION);

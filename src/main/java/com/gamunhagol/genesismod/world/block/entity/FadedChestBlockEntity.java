@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.items.ItemStackHandler;
 
 public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, IFadedDungeonElement {
-    // 27칸 인벤토리
     private final ItemStackHandler inventory = new ItemStackHandler(27) {
         @Override
         protected void onContentsChanged(int slot) {
@@ -34,7 +33,6 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
     @Override
     public void activateElement() {
         if (this.level != null) {
-            // 관문 신호를 받으면 LOCKED를 false로 변경
             this.level.setBlock(this.worldPosition, this.getBlockState().setValue(FadedChestBlock.LOCKED, false), 3);
         }
     }
@@ -42,7 +40,6 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
     @Override
     public boolean triggerEvent(int pId, int pType) {
         if (pId == 1) {
-            // 가루눈 부서지는/밟는 소리
             this.level.playSound(null, this.worldPosition,
                     SoundEvents.POWDER_SNOW_BREAK,
                     SoundSource.BLOCKS, 0.8F, 0.5F); // 피치를 낮추면 더 맥빠집니다.
@@ -58,7 +55,6 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
 
     public void startOpen(Player pPlayer) {
         if (!pPlayer.isSpectator() && this.level != null) {
-            // 창을 열 때 OPEN을 true로 변경
             BlockState state = this.getBlockState();
             if (state.hasProperty(FadedChestBlock.OPEN)) {
                 this.level.setBlock(this.worldPosition, state.setValue(FadedChestBlock.OPEN, true), 3);
@@ -69,7 +65,6 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
 
     public void stopOpen(Player pPlayer) {
         if (!pPlayer.isSpectator() && this.level != null) {
-            // 창을 닫을 때 OPEN을 false로 변경
             BlockState state = this.getBlockState();
             if (state.hasProperty(FadedChestBlock.OPEN)) {
                 this.level.setBlock(this.worldPosition, state.setValue(FadedChestBlock.OPEN, false), 3);
@@ -81,15 +76,12 @@ public class FadedChestBlockEntity extends BlockEntity implements MenuProvider, 
     @Override
     protected void saveAdditional(CompoundTag pTag) {
         super.saveAdditional(pTag);
-        // 키 이름을 "inventory" 대신 더 명확하게 하거나,
-        // 핸들러 자체의 serialize를 믿고 넣어줍니다.
         pTag.put("genesis_inventory", this.inventory.serializeNBT());
     }
 
     @Override
     public void load(CompoundTag pTag) {
         super.load(pTag);
-        // 저장할 때 쓴 키와 똑같은 키로 읽어와야 합니다.
         if (pTag.contains("genesis_inventory")) {
             this.inventory.deserializeNBT(pTag.getCompound("genesis_inventory"));
         }

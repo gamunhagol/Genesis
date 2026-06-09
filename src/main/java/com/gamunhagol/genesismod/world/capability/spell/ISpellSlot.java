@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface ISpellSlot {
     List<String> getEquippedSpells();
-    void equipSpell(String spellId); // 아이템 사용 시 호출
+    void equipSpell(String spellId);
     int getSelectedSlot();
     void setSelectedSlot(int slot);
 

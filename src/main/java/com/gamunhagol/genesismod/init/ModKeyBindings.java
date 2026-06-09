@@ -7,32 +7,28 @@ import net.minecraftforge.client.settings.KeyConflictContext;
 import org.lwjgl.glfw.GLFW;
 
 public class ModKeyBindings {
-    // 단축키 카테고리 이름 (설정 화면에서 보일 이름)
     public static final String KEY_CATEGORY_GENESIS = "key.categories." + GenesisMod.MODID;
 
-    // 레벨업 화면 단축키 정의
     public static final KeyMapping LEVEL_UP_KEY = new KeyMapping(
-            "key." + GenesisMod.MODID + ".level_up", // 번역 키
-            KeyConflictContext.IN_GAME,              // 인게임에서만 작동
-            InputConstants.Type.KEYSYM,              // 키보드 타입
-            GLFW.GLFW_KEY_V,                         // 기본 키: V
-            KEY_CATEGORY_GENESIS                     // 카테고리
+            "key." + GenesisMod.MODID + ".level_up",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_V,
+            KEY_CATEGORY_GENESIS
     );
-    // 이전 주문 선택 (위 방향키)
+
     public static final KeyMapping SPELL_PREV_KEY = new KeyMapping(
             "key." + GenesisMod.MODID + ".spell_prev",
             KeyConflictContext.IN_GAME,
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_UP, // 키보드 ↑ 키
+            GLFW.GLFW_KEY_UP,
             KEY_CATEGORY_GENESIS
     );
-
-    // 다음 주문 선택 (아래 방향키)
     public static final KeyMapping SPELL_NEXT_KEY = new KeyMapping(
             "key." + GenesisMod.MODID + ".spell_next",
             KeyConflictContext.IN_GAME,
             InputConstants.Type.KEYSYM,
-            GLFW.GLFW_KEY_DOWN, // 키보드 ↓ 키
+            GLFW.GLFW_KEY_DOWN,
             KEY_CATEGORY_GENESIS
     );
 }

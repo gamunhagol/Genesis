@@ -38,7 +38,6 @@ public class GenesisDimensions {
         HolderGetter<DimensionType> dimTypeGetter = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<NoiseGeneratorSettings> noiseGetter = context.lookup(Registries.NOISE_SETTINGS);
 
-        // 1번 차원 등록 (평지)
         registerFlatDimension(context, APERTURE_LEVEL_STEM, dimTypeGetter,
                 biomeGetter.getOrThrow(GenesisBiomes.APERTURE_BIOME), GenesisBlocks.PRECIPITATE.get());
 
@@ -47,7 +46,6 @@ public class GenesisDimensions {
         //         biomeGetter.getOrThrow(GenesisBiomes.ABYSS_BIOME), Blocks.OBSIDIAN);
     }
 
-    // 반복되는 등록 로직을 메서드로 분리하면 관리가 편합니다
     private static void registerFlatDimension(BootstapContext<LevelStem> context,
                                               ResourceKey<LevelStem> stemKey,
                                               HolderGetter<DimensionType> dimTypeGetter,

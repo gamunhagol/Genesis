@@ -165,7 +165,6 @@ public class LevelUpScreen extends Screen {
             for (int i = 0; i < 8; i++) {
                 int rowY = y + (int)(yCoords[i] * scale) + 4;
 
-                // 헬퍼 메서드 사용 (Capability 기본 스탯 + 장비 추가 스탯)
                 int currentTotalWithArmor = getTotalStatValue(i, stats);
 
                 // 최종 표시 수치 = (현재 최종값) + (GUI에서 찍으려는 포인트)
@@ -175,7 +174,6 @@ public class LevelUpScreen extends Screen {
                 Component statName = Component.translatable("stat.genesis." + StatType.values()[i].getName());
                 graphics.drawString(this.font, statName, x + (int)(15 * scale), rowY, textColor, false);
 
-                // [수정됨] "/99" 부분을 제거하고 숫자만 깔끔하게 출력합니다.
                 graphics.drawString(this.font, String.valueOf(displayStat), x + (int)(155 * scale), rowY, color, false);
             }
 
@@ -218,7 +216,6 @@ public class LevelUpScreen extends Screen {
         });
     }
 
-    // 루프 인덱스를 GenesisAttributes 속성으로 매칭합니다.
     private Attribute getAttributeForStat(int index) {
         return switch (index) {
             case 0 -> GenesisAttributes.VIGOR.get();
@@ -233,7 +230,6 @@ public class LevelUpScreen extends Screen {
         };
     }
 
-    // Capability의 순수 레벨과 Attribute의 장비 보너스를 안전하게 합칩니다.
     private int getTotalStatValue(int statIndex, com.gamunhagol.genesismod.stats.StatCapability stats) {
         int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
         int baseLevel = baseValues[statIndex];

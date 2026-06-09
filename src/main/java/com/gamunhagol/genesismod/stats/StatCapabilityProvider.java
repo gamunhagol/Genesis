@@ -13,7 +13,6 @@ import org.jetbrains.annotations.Nullable;
 
 public class StatCapabilityProvider implements ICapabilityProvider, INBTSerializable<CompoundTag> {
 
-    // Capability 등록 토큰 (열쇠)
     public static final Capability<StatCapability> STAT_CAPABILITY = CapabilityManager.get(new CapabilityToken<>() {});
 
     private StatCapability backend = null;

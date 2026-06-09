@@ -23,7 +23,6 @@ public class BlessingScreen extends Screen {
     private final Screen lastScreen;
     private final String statueId;
 
-    // 통합된 텍스처 상수 사용
     private static final ResourceLocation NODE_LOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/blank_constellation.png");
     private static final ResourceLocation NODE_UNLOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/constellation.png");
     private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/starry_path.png");

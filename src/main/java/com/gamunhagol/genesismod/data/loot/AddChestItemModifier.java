@@ -40,21 +40,14 @@ public class AddChestItemModifier extends LootModifier {
 
     @Override
     protected @NotNull ObjectArrayList<ItemStack> doApply(@NotNull ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-        //  행운(Luck) 수치 가져오기 (기본 0, 행운 포션 효과 등에 따라 증가)
         float luck = context.getLuck();
 
-        //  행운에 따른 최종 확률 계산
-        // 공식: 기본 확률 * (1 + 행운 수치 * 0.05)
-        // 행운 1당 기본 확률의 5%만큼 보너스 확률이 생깁니다.
         float finalChance = this.chance * (1.0f + (luck * 0.05f));
 
-        // 확률 체크
         if (context.getRandom().nextFloat() < finalChance) {
-            // 개수 랜덤 (min ~ max)
             int count = context.getRandom().nextInt(maxCount - minCount + 1) + minCount;
             ItemStack stack = new ItemStack(item, count);
 
-            // 성배병일 경우 빈 상태로 설정
             if (stack.getItem() instanceof DivineGrailItem grail) {
                 grail.setUses(stack, 0);
             }

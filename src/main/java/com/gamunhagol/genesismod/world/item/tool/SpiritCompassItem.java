@@ -123,7 +123,6 @@ public class SpiritCompassItem extends CompassItem {
             BlockPos playerPos = player.blockPosition();
             List<String> targetList = java.util.Arrays.asList(targetStr.split(","));
 
-            // 최대 5개의 블록을 찾아 리스트로 반환받습니다. (반경 7청크)
             List<BlockPos> targetPositions = SpiritBlockFinder.findNearestBlocksByChunk(serverLevel, targetList, playerPos, 7, -64, 320, 7);
 
             if (!targetPositions.isEmpty()) {
@@ -140,7 +139,6 @@ public class SpiritCompassItem extends CompassItem {
     private void spawnCompassParticles(ServerLevel serverLevel, Player player, List<BlockPos> targets, String needle) {
         net.minecraft.core.particles.DustParticleOptions dust = new net.minecraft.core.particles.DustParticleOptions(colorFor(needle), 1.2f);
 
-        // 발견된 블록 개수(최대 5개)만큼 파티클 줄기를 생성합니다.
         for (BlockPos target : targets) {
             double dx = target.getX() + 0.5 - player.getX();
             double dy = target.getY() + 0.5 - player.getEyeY();
@@ -148,22 +146,19 @@ public class SpiritCompassItem extends CompassItem {
 
             double distance = Math.max(Math.sqrt(dx*dx + dy*dy + dz*dz), 0.0001);
 
-            // 산개 효과 (Spread): 블록들이 뭉쳐있어도 파티클 줄기가 부채꼴처럼 퍼져나가도록 랜덤 각도를 더해줍니다.
             double spread = 0.25;
             double dirX = (dx / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
             double dirY = (dy / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
             double dirZ = (dz / distance) + (serverLevel.random.nextDouble() - 0.5) * spread;
 
-            // 퍼진 방향으로 다시 정규화(Normalize)
             double newDist = Math.sqrt(dirX*dirX + dirY*dirY + dirZ*dirZ);
             dirX /= newDist;
             dirY /= newDist;
             dirZ /= newDist;
 
-            // 파티클 개수를
             int particleCount = 5;
             for (int i = 1; i <= particleCount; i++) {
-                double t = i * 0.45; // 간격 조절
+                double t = i * 0.45;
                 serverLevel.sendParticles(dust,
                         player.getX() + dirX * t,
                         player.getEyeY() + dirY * t,

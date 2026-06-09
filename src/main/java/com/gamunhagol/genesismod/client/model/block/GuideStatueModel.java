@@ -15,7 +15,6 @@ public class GuideStatueModel extends Model {
 
     public GuideStatueModel(ModelPart root) {
         super(RenderType::entityCutoutNoCull);
-        // createBodyLayer에서 만든 "root" 파트를 가져옵니다.
         this.root = root.getChild("root");
     }
 
@@ -23,7 +22,6 @@ public class GuideStatueModel extends Model {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        // 모든 부품을 포함할 최상위 부모 "root"
         PartDefinition root = partdefinition.addOrReplaceChild("root", CubeListBuilder.create(), PartPose.ZERO);
 
         root.addOrReplaceChild("body", CubeListBuilder.create().texOffs(32, 16)

@@ -44,15 +44,11 @@ public abstract class AbstractScrollItem extends Item {
             }).orElse(false);
 
             if (success) {
-                // 1. 사운드 재생 (책장 넘기는 소리)
-                // 첫 번째 인자가 null이면 서버가 주변 모든 플레이어에게 소리를 보냅니다.
                 level.playSound(null, player.getX(), player.getY(), player.getZ(),
                         SoundEvents.VILLAGER_WORK_LIBRARIAN, SoundSource.PLAYERS, 1.0F, 1.0F);
 
-                // 2. 효과 실행
                 this.executeEffect(level, serverPlayer);
 
-                // 3. 공통 처리 (쿨타임, 스윙, 아이템 소모)
                 player.getCooldowns().addCooldown(this, cooldownTicks);
                 player.swing(hand, true);
 

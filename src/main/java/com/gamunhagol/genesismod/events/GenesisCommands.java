@@ -79,7 +79,6 @@ public class GenesisCommands {
             }
         });
 
-        // 서버 로그에는 기록을 남겨 추적이 가능하게 함
         LOGGER.info("[GenesisMod] Stat Update: {} set {}'s {} to {}",
                 source.getTextName(), target.getScoreboardName(), statName, value);
 
@@ -88,8 +87,6 @@ public class GenesisCommands {
 
     private static int setMental(CommandSourceStack source, ServerPlayer target, float value) {
         target.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> stats.setMental(value));
-
-        // 플레이어 대상 메시지 전송 로직 제거됨
 
         LOGGER.info("[GenesisMod] Mental Update: {} set {}'s mental to {}",
                 source.getTextName(), target.getScoreboardName(), value);

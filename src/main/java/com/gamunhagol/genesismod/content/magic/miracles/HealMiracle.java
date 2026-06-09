@@ -15,11 +15,10 @@ public class HealMiracle extends MiracleSpell {
     @Override
     public float getMentalCost() { return 3.0f; }
     @Override
-    public int getMemoryCost() {return 1;} // 기본 마법은 1칸, 강력한 궁극기는 2~3칸으로 설정
+    public int getMemoryCost() {return 1;}
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalyst) {
-        // 기본 회복량 4.0 + 촉매의 신성력(Holy)의 100%
         float healAmount = 4.0f + catalyst.holy();
 
         float efficiency = 0.3f;
@@ -30,7 +29,6 @@ public class HealMiracle extends MiracleSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        // holy 칸에 담아둔 수치를 회복량으로 사용
         caster.heal(spellSnapshot.holy());
     }
 }

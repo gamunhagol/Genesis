@@ -23,9 +23,7 @@ public class SpellExtensionItem extends Item {
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack itemStack = player.getItemInHand(hand);
 
-        // 클라이언트가 아닌 서버사이드에서만 데이터 처리
         if (!level.isClientSide()) {
-            // 플레이어의 마법 슬롯 Capability 가져오기
             player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(spellSlot -> {
                 int currentMax = spellSlot.getMemoryCapacity();
                 int absoluteMax = 20;
@@ -33,7 +31,6 @@ public class SpellExtensionItem extends Item {
                 if (currentMax < absoluteMax) {
                     spellSlot.setMemoryCapacity(currentMax + 1);
 
-                    // 클라이언트로 변경된 슬롯 데이터 동기화 패킷 전송
                     GenesisNetwork.sendToPlayer(
                             new PacketSyncSpellSlot(
                                     spellSlot.getMemoryCapacity(),

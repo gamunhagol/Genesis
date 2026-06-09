@@ -24,17 +24,13 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.Nullable;
 
 public abstract class StatueBaseBlock extends Block implements EntityBlock {
-    // 방향 속성 정의 (수평 방향: 북, 남, 동, 서)
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
 
     public StatueBaseBlock(Properties properties) {
         super(properties);
-        // 기본 상태 설정
         this.registerDefaultState(this.stateDefinition.any().setValue(FACING, Direction.NORTH));
 
     }
-
-    // 블록을 설치할 때 플레이어를 바라보도록 설정
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
@@ -49,14 +45,12 @@ public abstract class StatueBaseBlock extends Block implements EntityBlock {
 
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        // 클라이언트 사이드(렌더링을 담당하는 쪽)일 때만 UI를 오픈
         if (level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof StatueBaseBlockEntity statueBe) {
                 this.openStatueGui(statueBe);
             }
         }
-        // 서버와 클라이언트 모두에게 상호작용이 성공했음을 알림 (팔 흔들기 애니메이션 등 정상 작동)
         return InteractionResult.sidedSuccess(level.isClientSide);
     }
 

@@ -20,7 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class MistVault1Block extends BaseEntityBlock {
     public MistVault1Block(Properties properties) {
-        super(properties.noOcclusion()); // 반투명을 위해 필수
+        super(properties.noOcclusion());
     }
 
     @Override
@@ -38,17 +38,13 @@ public class MistVault1Block extends BaseEntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldItem = player.getItemInHand(hand);
 
-        // 망각의 열쇠(KEY_OF_OBLIVION)를 들고 우클릭했을 때
         if (heldItem.is(GenesisItems.KEY_OF_OBLIVION.get())) {
             if (!level.isClientSide) {
-                // 사바나의 안개 코어(MIST_CORE_1) 드롭
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(),
                         new ItemStack(GenesisItems.MISY_CORE_1.get()));
 
-                // 블록 파괴 (효과음과 입자 포함)
                 level.destroyBlock(pos, false);
 
-                // 열쇠 소모
                 heldItem.shrink(1);
             }
             return InteractionResult.sidedSuccess(level.isClientSide);
@@ -57,13 +53,11 @@ public class MistVault1Block extends BaseEntityBlock {
     }
     @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
-        // 파티클 발생 빈도 (숫자가 낮을수록 많이 발생)
         if (random.nextInt(3) == 0) {
             double x = pos.getX();
             double y = pos.getY();
             double z = pos.getZ();
 
-            // 0: 윗면, 1~4: 옆면(북, 남, 서, 동) 중 하나를 선택하여 좌표 설정
             int side = random.nextInt(5);
             switch (side) {
                 case 0 -> { // Top
@@ -97,7 +91,6 @@ public class MistVault1Block extends BaseEntityBlock {
         }
     }
 
-    // 블록이 월드에 배치 완료되었을 때 호출 (주소록 등록)
     @Override
     public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
         super.onPlace(state, level, pos, oldState, isMoving);
@@ -106,7 +99,6 @@ public class MistVault1Block extends BaseEntityBlock {
         }
     }
 
-    // 블록이 캐지거나 파괴되어 사라질 때 호출 (주소록 삭제)
     @Override
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (state.getBlock() != newState.getBlock()) {

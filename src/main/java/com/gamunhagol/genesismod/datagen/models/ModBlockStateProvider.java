@@ -83,13 +83,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
         getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())
                 .forAllStates(state -> {
                     int light = state.getValue(FadedGatewayBlock.LIGHT_LEVEL);
-                    // 5 이하는 정지된 기본 모델, 그 외(15)는 애니메이션 모델 사용
                     String modelName = (light <= 5) ? "faded_gateway" : "enable_faded_gateway";
                     return ConfiguredModel.builder()
                             .modelFile(models().cubeAll(modelName, modLoc("block/" + modelName)))
                             .build();
                 });
-        // 아이템 모델 설정 (인벤토리에서는 항상 꺼진 상태인 faded_gateway 사용)
         simpleBlockItem(GenesisBlocks.FADED_GATEWAY.get(),
                 models().cubeAll("faded_gateway", modLoc("block/faded_gateway")));
 
@@ -154,7 +152,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         default -> modelName = "pudding_full";
                     }
 
-                    // 방향(FACING)에 따른 모델 회전 적용
                     return ConfiguredModel.builder()
                             .modelFile(models().getExistingFile(modLoc("block/" + modelName)))
                             .rotationY((int) state.getValue(AmethystApplePuddingBlock.FACING).toYRot())
@@ -166,9 +163,9 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         simpleBlock(GenesisBlocks.CHISELED_FADED_BRICK.get(),
                 models().cubeColumn(
-                        "chiseled_faded_brick", // 모델 파일 이름
-                        blockTexture(GenesisBlocks.CHISELED_FADED_BRICK.get()), // 옆면 텍스처 (기본)
-                        new ResourceLocation(GenesisMod.MODID, "block/chiseled_faded_brick_top") // 윗면/아랫면 텍스처
+                        "chiseled_faded_brick",
+                        blockTexture(GenesisBlocks.CHISELED_FADED_BRICK.get()),
+                        new ResourceLocation(GenesisMod.MODID, "block/chiseled_faded_brick_top")
                 )
         );
 
@@ -269,14 +266,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
             int layers = state.getValue(BlockStateProperties.LAYERS);
 
             if (layers == 8) {
-                // 8층(전체 블록)일 때
                 return ConfiguredModel.builder()
                         .modelFile(models().withExistingParent(blockName + "_all", mcLoc("block/cube_all"))
                                 .texture("all", modLoc("block/" + blockName))
                                 .texture("particle", modLoc("item/" + particleItemName))) // 아이템 파티클 적용
                         .build();
             } else {
-                // 1~7층일 때
                 return ConfiguredModel.builder()
                         .modelFile(models().withExistingParent(blockName + "_height" + layers, mcLoc("block/snow_height" + (layers * 2)))
                                 .texture("texture", modLoc("block/" + blockName))
@@ -284,8 +279,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
                         .build();
             }
         });
-
-        // 아이템 모델 설정 (인벤토리에서 보이는 모습)
         this.itemModels().withExistingParent(blockName, new ResourceLocation("item/generated"))
                 .texture("layer0", modLoc("item/" + blockName));
     }

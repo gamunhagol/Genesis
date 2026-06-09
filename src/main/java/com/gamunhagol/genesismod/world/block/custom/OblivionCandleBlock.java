@@ -23,7 +23,6 @@ public class OblivionCandleBlock extends CandleBlock {
 
     public OblivionCandleBlock(Properties properties) {
         super(properties);
-        // 기본 상태: 초 1개, 불 켜짐(LIT=true), 물에 안잠김
         this.registerDefaultState(this.stateDefinition.any()
                 .setValue(CANDLES, 1)
                 .setValue(LIT, true)
@@ -51,10 +50,6 @@ public class OblivionCandleBlock extends CandleBlock {
         return super.getStateForPlacement(context).setValue(LIT, true);
     }
 
-    /**
-     * 바닐라 양초는 물에 잠기면 불이 꺼지지만, 이 메서드를 오버라이드하여
-     * 물 속에서도 LIT=true를 유지하게 할 수 있습니다.
-     */
     @Override
     protected boolean canBeLit(BlockState state) {
         return false; // 이미 켜져 있으므로 추가로 켤 수 없음 (끄는 것도 방지)

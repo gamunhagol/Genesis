@@ -68,8 +68,6 @@ public class GenesisForgeEvents {
     @SubscribeEvent
     public static void onEntityJoin(EntityJoinLevelEvent event) {
         if (event.getEntity() instanceof Monster monster) {
-            // "세력 태그"를 가진 모든 살아있는 존재를 공격 목표로 추가
-            // 우선순위 2번으로 설정하여 플레이어/골렘과 동급의 타겟으로 인식
             monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(
                     monster, LivingEntity.class, 10, true, false,
                     (target) -> target.getType().is(GenesisTags.EntityTypes.FACTION_MOBS)
@@ -81,11 +79,8 @@ public class GenesisForgeEvents {
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         LivingEntity entity = event.getEntity();
 
-        // 서버에서만 계산하고, 1초(20틱)마다 체크해서 렉 방지
         if (!entity.level().isClientSide && entity.tickCount % 20 == 0) {
-            // 기존 클래스에 있던 메서드 그대로 사용
             if (hasFullPaddedChainSet(entity)) {
-                // 이펙트 부여 (지속시간을 여유 있게 200틱(10초) 줘서 아이콘 깜빡임 방지)
                 entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false, true));
             }
         }
@@ -99,13 +94,11 @@ public class GenesisForgeEvents {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.tick();
                 if (stats.isDirty()) {
-                    // 아주 간편하게 한 줄로 압축!
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), (ServerPlayer) player);
                     stats.setDirty(false);
                 }
             });
 
-            // 파괴 효과 체크
             if (player.tickCount % 20 == 0) {
                 if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
                     long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
@@ -119,13 +112,10 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
-        // 플레이어가 죽는 순간 실행
         if (event.getEntity() instanceof Player player) {
-            // getContainerSize()는 메인 인벤토리(0~35), 갑옷(36~39), 오프핸드(40)를 모두 포함합니다.
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
 
-                // 아이템이 성배라면 리필!
                 if (!stack.isEmpty() && stack.getItem() instanceof DivineGrailItem grail) {
                     grail.refill(stack);
                 }
@@ -151,7 +141,6 @@ public class GenesisForgeEvents {
             });
         });
 
-        // 주문 슬롯 데이터
         if (event.isWasDeath()) {
             original.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(oldStore -> {
                 newPlayer.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(newStore -> {
@@ -203,7 +192,6 @@ public class GenesisForgeEvents {
     public static void onPlayerLoggedIn(PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                // 접속하자마자 현재 상태를 패킷으로 보냄
                 GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), player);
             });
             player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
@@ -223,13 +211,10 @@ public class GenesisForgeEvents {
         InteractionHand hand = event.getHand();
         if (itemStack.is(Items.GLASS_BOTTLE)) {
 
-            // 도달 거리 가져오기
             double reach = player.getAttributeValue(ForgeMod.BLOCK_REACH.get());
-            //  시선 레이트레이싱 설정
             Vec3 startVec = player.getEyePosition();
             Vec3 lookVec = player.getViewVector(1.0F);
             Vec3 endVec = startVec.add(lookVec.x * reach, lookVec.y * reach, lookVec.z * reach);
-            // 액체 감지를 포함한 클립(Clip) 수행
             BlockHitResult hitResult = level.clip(new ClipContext(
                     startVec, endVec,
                     ClipContext.Block.OUTLINE,

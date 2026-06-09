@@ -36,7 +36,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         LootItem.Builder<?> itemEntry = LootItem.lootTableItem(item);
 
-        // 1층부터 8층까지 루프를 돌며 조건을 추가
         for (int i = 1; i <= 8; i++) {
             final int count = i;
             itemEntry.apply(SetItemCountFunction.setCount(ConstantValue.exactly((float) count))
@@ -77,7 +76,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(Block.byItem(GenesisItems.AMETHYST_APPLE.get()));
 
 
-        //portions가 0(가득 참)일 때만 자기 자신을 드롭함
         this.add(GenesisBlocks.AMETHYST_APPLE_PUDDING_BLOCK.get(), (block) ->
                 LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))

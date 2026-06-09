@@ -50,9 +50,6 @@ public class RegisterModels {
     public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
         // 리소스(텍스처 등)가 다시 로딩될 때 실행되는 리스너 등록
         event.registerReloadListener((ResourceManagerReloadListener) (resourceManager) -> {
-            // 기존에 만들어둔 모델 캐시를 싹 비웁니다.
-            // 그러면 다음 렌더링 때 checkForInitModels()가 다시 실행되면서
-            // 새로운 텍스처와 모델을 안전하게 로딩합니다.
 
             RegisterModels.ELVENIA_HELMET_MODEL = null;
             RegisterModels.ELVENIA_CHESTPLATE_MODEL = null;
@@ -157,7 +154,6 @@ public class RegisterModels {
 
     @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-        // 엔티티와 렌더러를 연결합니다.
         event.registerEntityRenderer(GenesisEntities.COLLECTOR.get(), CollectorRenderer::new);
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
 

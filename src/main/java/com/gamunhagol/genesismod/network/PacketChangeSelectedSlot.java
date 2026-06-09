@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 public class PacketChangeSelectedSlot {
-    private final int direction; // -1: 이전 슬롯, 1: 다음 슬롯
+    private final int direction;
 
     public PacketChangeSelectedSlot(int direction) {
         this.direction = direction;

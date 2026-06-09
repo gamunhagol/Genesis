@@ -23,17 +23,13 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
     }
 
     public static void tick(Level level, BlockPos pos, BlockState state, AEKStatueBlockEntity be) {
-        // 잠금이 풀려있을 때만 작동
         if (!state.getValue(AEKStatueBlock.LOCKED)) {
 
-            // 1. 클라이언트: 눈에서 불꽃 파티클 생성
             if (level.isClientSide) {
-                // [설정] 눈 위치 상세 조정
-                double sideOffset = 0.15; // 눈 사이 간격
-                double height = 2.15;     // 눈 높이
-                double forward = 0.32;    // 얼굴 튀어나옴 정도
+                double sideOffset = 0.15;
+                double height = 2.15;
+                double forward = 0.32;
 
-                // 블럭이 바라보는 방향 가져오기
                 Direction facing = state.getValue(AEKStatueBlock.FACING);
 
                 for (int i = 0; i < 2; i++) {
@@ -41,13 +37,12 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
                     double offsetX = 0;
                     double offsetZ = 0;
 
-                    // 방향에 따라 좌표 회전 (Switch 문)
                     switch (facing) {
                         case NORTH -> { offsetX = currentSide; offsetZ = -forward; }
                         case SOUTH -> { offsetX = -currentSide; offsetZ = forward; }
                         case WEST  -> { offsetX = -forward; offsetZ = -currentSide; }
                         case EAST  -> { offsetX = forward; offsetZ = currentSide; }
-                        default -> { } // [중요] 예외 방지용 기본값
+                        default -> { }
                     }
 
                     if (level.random.nextFloat() < 0.085f) {
@@ -55,11 +50,10 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
                                 pos.getX() + 0.5 + offsetX,
                                 pos.getY() + height,
                                 pos.getZ() + 0.5 + offsetZ,
-                                0.0, 0.001, 0.0); // 위로 살짝 올라가는 횃불 느낌
+                                0.0, 0.001, 0.0);
                     }
                 }
             }
-            // 2. 서버: 몹 소환 로직
             else {
                 be.spawnTick++;
                 if (be.spawnTick >= 700) {
@@ -71,7 +65,6 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
     }
 
     private static void spawnKnight(Level level, BlockPos pos) {
-        // 서버인지 한 번 더 확인 (안전장치)
         if (!level.isClientSide) {
             int spawnCount = 4;
             int range = 4;

@@ -11,7 +11,6 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class WeaponStatsProvider implements ICapabilitySerializable<CompoundTag> {
-    // 캡슐화(Capability) 등록을 위한 토큰
     public static final Capability<IGenesisWeaponStats> WEAPON_STATS = CapabilityManager.get(new CapabilityToken<>() {});
 
     private final GenesisWeaponStats backend = new GenesisWeaponStats();

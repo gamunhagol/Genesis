@@ -33,13 +33,8 @@ public class CollectorGuard extends AbstractWanderer {
 
     @Override
     protected void registerGoals() {
-        // 1. 부모 클래스의 공통 AI(기본 이동, 몬스터 사냥 등)를 먼저 등록합니다.
         super.registerGoals();
-
-        // 2. 호위병 전용 특수 AI 추가 (우선순위 조절)
         this.targetSelector.addGoal(0, new DefendCollectorGoal(this));
-
-        // 징수원 주변에서만 몬스터를 타겟팅하는 특수 조건 (기존 로직 유지)
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,
                 (target) -> {
                     if (target instanceof AbstractWanderer) return false; // 모든 방랑자 세력 보호
@@ -65,7 +60,6 @@ public class CollectorGuard extends AbstractWanderer {
                 .add(Attributes.FOLLOW_RANGE, 35.0D);
     }
 
-    // --- 아군 판정 확장 ---
     @Override
     public boolean isAlliedTo(Entity pEntity) {
         // 부모 클래스(AbstractWanderer)에서 이미 플레이어, 골렘, 주민을 아군으로 설정함
@@ -90,7 +84,6 @@ public class CollectorGuard extends AbstractWanderer {
         }
     }
 
-    // --- 호위병 전용: 사망 시 좀비 변이 로직 ---
     @Override
     public void die(DamageSource pCause) {
         if (pCause.getEntity() instanceof Zombie && !this.level().isClientSide && this.random.nextFloat() < 0.5f) {
@@ -116,7 +109,6 @@ public class CollectorGuard extends AbstractWanderer {
         super.die(pCause);
     }
 
-    // --- 장비 티어 결정 로직 (호위병 고유 특징) ---
     @Override
     protected void populateDefaultEquipmentSlots(RandomSource pRandom, DifficultyInstance pDifficulty) {
         int armorTier = pRandom.nextInt(6);

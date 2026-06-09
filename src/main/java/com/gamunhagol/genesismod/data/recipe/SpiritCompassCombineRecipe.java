@@ -82,7 +82,6 @@ public class SpiritCompassCombineRecipe extends CustomRecipe {
 
         String color = STONE_COLOR_MAP.getOrDefault(ForgeRegistries.ITEMS.getKey(stone.getItem()), "water");
 
-        // 기본값을 블록으로 변경
         String targetBlockKey = "genesis:blue_crystal_cluster";
         List<String> blocks = COLOR_TO_BLOCKS.get(color);
 

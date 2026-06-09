@@ -11,7 +11,6 @@ public class GenesisAnimations {
 
     @SubscribeEvent
     public static void registerAnimations(AnimationManager.AnimationRegistryEvent event) {
-        // "genesis" 네임스페이스로 빌더 생성
         event.newBuilder("genesis", GenesisAnimations::build);
     }
 

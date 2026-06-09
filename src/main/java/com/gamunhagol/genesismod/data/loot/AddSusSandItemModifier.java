@@ -20,7 +20,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 public class AddSusSandItemModifier extends LootModifier {
-    // 한 위치에 여러 아이템이 들어갈 수 있도록 .listOf() 코덱을 사용합니다.
     public static final Codec<Pair> PAIR_CODEC = RecordCodecBuilder.create(inst ->
             inst.group(
                     ForgeRegistries.ITEMS.getCodec().fieldOf("item").forGetter(Pair::getItem),
@@ -51,12 +50,10 @@ public class AddSusSandItemModifier extends LootModifier {
 
         List<Pair> lootList = entries.get(tableId);
         if (lootList != null) {
-            // 해당 장소에 등록된 모든 아이템 후보를 검사합니다.
             for (Pair entry : lootList) {
                 if (context.getRandom().nextFloat() < entry.chance) {
                     ItemStack stack = new ItemStack(entry.item);
 
-                    // 성배 아이템 특수 처리
                     if (stack.getItem() instanceof DivineGrailItem grail) {
                         grail.setUses(stack, 0);
                     }

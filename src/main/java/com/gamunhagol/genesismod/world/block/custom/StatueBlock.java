@@ -30,20 +30,17 @@ public class StatueBlock extends BaseEntityBlock {
     }
 
 
-    // 설치할 때 플레이어가 보는 방향의 반대(나를 보게)로 설정
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
     }
 
-    // 블럭 상태에 FACING 속성 등록
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
     }
 
-    //  회전/대칭 관련 필수 메서드 (이게 있어야 구조물 블럭 등으로 돌릴 때도 돌아감)
     @Override
     public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(FACING, rotation.rotate(state.getValue(FACING)));
@@ -60,7 +57,6 @@ public class StatueBlock extends BaseEntityBlock {
         return SHAPE;
     }
 
-    // 중요: 렌더링 타입을 ENTITYBLOCK_ANIMATED로 해야 기본 네모 모델을 안 그립니다.
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.ENTITYBLOCK_ANIMATED;
@@ -69,7 +65,6 @@ public class StatueBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        // 생성자에서 받은 타입을 사용하여 BE를 생성합니다.
         return this.blockEntityType.get().create(pos, state);
     }
 }

@@ -100,7 +100,7 @@ public class SpellManageScreen extends Screen {
 
         List<String> learnedSpells = getPlayerLearnedSpells();
 
-        // 툴팁 대상 마법 ID를 캡처하기 위한 배열 (람다 내부에서 수정하기 위함)
+        // 툴팁 대상 마법 ID를 캡처하기 위한 배열
         String[] hoveredSpellId = new String[]{null};
 
         this.minecraft.player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(spellSlot -> {
@@ -108,7 +108,6 @@ public class SpellManageScreen extends Screen {
             int startIndex = this.currentPage * spellsPerPage;
             int endIndex = Math.min(startIndex + spellsPerPage, learnedSpells.size());
 
-            // --- 상단 상자 (습득한 마법) ---
             for (int i = startIndex; i < endIndex; i++) {
                 int indexOnPage = i - startIndex;
                 int row = indexOnPage / gridCols;
@@ -127,12 +126,9 @@ public class SpellManageScreen extends Screen {
 
                 if (mouseX >= slotX && mouseX < slotX + currentSlotSize && mouseY >= slotY && mouseY < slotY + currentSlotSize) {
                     graphics.fill(slotX + currentIconOffset, slotY + currentIconOffset, slotX + currentIconOffset + currentIconSize, slotY + currentIconOffset + currentIconSize, 0x55FFFFFF);
-                    // 마우스가 올라간 마법 ID 저장
                     hoveredSpellId[0] = spellId;
                 }
             }
-
-            // --- 하단 상자 (장착 슬롯 10칸) ---
             List<String> equipped = spellSlot.getEquippedSpells();
             int maxMemory = spellSlot.getMemoryCapacity();
 
@@ -153,14 +149,12 @@ public class SpellManageScreen extends Screen {
                     ResourceLocation iconTex = new ResourceLocation(GenesisMod.MODID, "textures/item/" + eqSpellId + ".png");
                     graphics.blit(iconTex, slotX + currentIconOffset, slotY + currentIconOffset, 0, 0, currentIconSize, currentIconSize, currentIconSize, currentIconSize);
 
-                    // 하단 슬롯 마우스 호버 감지
                     if (mouseX >= slotX && mouseX < slotX + currentSlotSize && mouseY >= slotY && mouseY < slotY + currentSlotSize) {
                         hoveredSpellId[0] = eqSpellId;
                     }
                 }
             }
 
-            // 용량 바 렌더링
             int currentCost = 0;
             for (String s : equipped) {
                 if (s != null && !s.isEmpty()) {
@@ -180,49 +174,36 @@ public class SpellManageScreen extends Screen {
                 graphics.blit(BARS_TEXTURE, barX, barY, (int)(barWidth * costRatio), barHeight, 0, 45, (int)(182 * costRatio), 5, 256, 256);
             }
         });
-
-        // 위젯 출력
         super.render(graphics, mouseX, mouseY, partialTick);
 
-        // 툴팁 렌더링 (화면의 맨 마지막에 그려야 다른 UI 뒤로 숨지 않음)
         if (hoveredSpellId[0] != null) {
             drawSpellTooltip(graphics, mouseX, mouseY, hoveredSpellId[0]);
         }
     }
-
-    //  툴팁 생성 및 렌더링을 담당하는 헬퍼 메서드
     private void drawSpellTooltip(GuiGraphics graphics, int mouseX, int mouseY, String spellId) {
         AbstractSpell spell = GenesisSpells.get(spellId);
         if (spell == null) return;
 
         List<Component> tooltipLines = new ArrayList<>();
-        // 주문 이름
         tooltipLines.add(Component.translatable("spell.genesis." + spellId).withStyle(ChatFormatting.WHITE));
         tooltipLines.add(Component.empty());
 
-        // ★ [수정된 부분] 요구 스탯 (다중 스탯 동적 처리)
         java.util.Map<com.gamunhagol.genesismod.api.StatType, Integer> requiredStats = spell.getRequiredStats();
         if (!requiredStats.isEmpty()) {
             for (java.util.Map.Entry<com.gamunhagol.genesismod.api.StatType, Integer> entry : requiredStats.entrySet()) {
                 String statNameKey = "stat.genesis." + entry.getKey().getName(); // 예: stat.genesis.intelligence
                 int requiredLevel = entry.getValue();
 
-                // "지력 요구치: 10" 형태로 출력하기 위해 동적 포맷팅
                 tooltipLines.add(Component.translatable("tooltip.genesis.spell.req_stat",
                         Component.translatable(statNameKey), requiredLevel).withStyle(ChatFormatting.GRAY));
             }
         }
-
-        // 정신력(마나) 소모량
         tooltipLines.add(Component.translatable("tooltip.genesis.spell.mental_cost", String.format("%.1f", spell.getMentalCost())).withStyle(ChatFormatting.GRAY));
-        // 슬롯 메모리 차지량
         tooltipLines.add(Component.translatable("tooltip.genesis.spell.memory_cost", spell.getMemoryCost()).withStyle(ChatFormatting.GRAY));
 
-        // 상세 설명
         tooltipLines.add(Component.empty());
         tooltipLines.add(Component.translatable("spell.genesis." + spellId + ".desc").withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 
-        // 툴팁 화면에 렌더링
         graphics.renderComponentTooltip(this.font, tooltipLines, mouseX, mouseY);
     }
 

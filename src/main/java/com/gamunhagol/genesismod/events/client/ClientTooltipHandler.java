@@ -21,7 +21,6 @@ import java.util.Map;
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ClientTooltipHandler {
 
-    // 아이템과 툴팁 키를 연결해줄 맵(Map)
     private static final Map<Item, String> LORE_MAP = new HashMap<>();
 
     /**
@@ -29,7 +28,6 @@ public class ClientTooltipHandler {
      * 어떤 아이템에 어떤 툴팁을 띄울지 등록하는 메서드입니다.
      */
     public static void init() {
-        // 여기에 툴팁을 추가하고 싶은 아이템들을 등록하세요.
         register(GenesisItems.BOOK_OF_CREATION.get(), "tooltip.genesis.book_of_creation.info");
 
         register(GenesisItems.DREAM_POWDER.get(), "tooltip.genesis.dream_powder.info");
@@ -73,7 +71,6 @@ public class ClientTooltipHandler {
         register(GenesisItems.FABRICATED_STAR.get(), "tooltip.genesis.fabricated_star.info");
 
 
-        // 나중에 아이템이 늘어나면 여기에 한 줄씩만 추가하면 됩니다.
     }
 
     private static void register(Item item, String key) {

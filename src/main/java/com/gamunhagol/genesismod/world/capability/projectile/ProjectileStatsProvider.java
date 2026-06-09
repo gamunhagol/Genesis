@@ -32,8 +32,6 @@ public class ProjectileStatsProvider implements ICapabilitySerializable<Compound
         backend.deserializeNBT(nbt);
     }
 
-    // 내부 클래스: 실제 데이터 저장 로직
-    // [중요] 외부에서 등록(Register)할 수 있도록 static이어야 합니다.
     public static class ProjectileStats {
         private DamageSnapshot snapshot = DamageSnapshot.EMPTY;
 

@@ -17,7 +17,6 @@ public class BloodBottleItem extends Item {
         super(properties);
     }
 
-    // 마시는 아이템임을 명시
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity entity) {
         super.finishUsingItem(stack, level, entity);
@@ -27,7 +26,6 @@ public class BloodBottleItem extends Item {
             serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
 
-        // 다 마셨을 때 빈 병 반환 로직
         if (stack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         } else {

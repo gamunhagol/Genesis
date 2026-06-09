@@ -19,15 +19,12 @@ public class GenesisBiomes {
     }
 
     private static Biome voidBiome(BootstapContext<Biome> context) {
-        // 1. 몹 스폰 설정: 아무것도 스폰되지 않음
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
 
-        // 2. 지형지물(나무, 꽃 등) 설정: 아무것도 생성되지 않음
         BiomeGenerationSettings.Builder generationBuilder = new BiomeGenerationSettings.Builder(
                 context.lookup(Registries.PLACED_FEATURE), context.lookup(Registries.CONFIGURED_CARVER)
         );
 
-        // 3. 바이옴 분위기 설정 (색상 및 효과)
         return new Biome.BiomeBuilder()
                 .hasPrecipitation(false) // 비 안 옴
                 .downfall(0.0f)

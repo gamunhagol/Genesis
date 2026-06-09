@@ -18,7 +18,6 @@ public class PacketSyncStats {
     private final Set<String> learnedSpells;
     private final Set<String> unlockedNodes; // 추가됨
 
-    // 기존 생성자 유지 (+ unlockedNodes 추가)
     public PacketSyncStats(int vigor, int mind, int endurance, int strength, int dexterity, int intelligence, int faith, int arcane, float mental, float maxMental, boolean isLevelUpUnlocked, Set<String> learnedSpells, Set<String> unlockedNodes) {
         this.vigor = vigor; this.mind = mind; this.endurance = endurance;
         this.strength = strength; this.dexterity = dexterity; this.intelligence = intelligence;
@@ -29,7 +28,6 @@ public class PacketSyncStats {
         this.unlockedNodes = unlockedNodes;
     }
 
-    // 서버에서 패킷 보낼 때 아주 편하게 쓸 수 있는 생성자
     public PacketSyncStats(StatCapability cap) {
         this(cap.getVigor(), cap.getMind(), cap.getEndurance(), cap.getStrength(), cap.getDexterity(), cap.getIntelligence(), cap.getFaith(), cap.getArcane(),
                 cap.getMental(), cap.getMaxMental(), cap.isLevelUpUnlocked(), cap.getLearnedSpells(), cap.getUnlockedNodes());

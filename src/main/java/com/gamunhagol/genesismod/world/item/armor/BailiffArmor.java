@@ -20,11 +20,9 @@ public class BailiffArmor extends GenesisArmorItem {
     }
     @Override
     public Multimap<Attribute, AttributeModifier> getDefaultAttributeModifiers(EquipmentSlot slot) {
-        // 1. 부모 클래스(GenesisArmorItem)에 정의된 기본 마법/신성 방어력을 먼저 가져옵니다.
         ImmutableMultimap.Builder<Attribute, AttributeModifier> builder = ImmutableMultimap.builder();
         builder.putAll(super.getDefaultAttributeModifiers(slot));
 
-        // 2. 현재 아이템이 들어가야 할 슬롯과 실제로 장착된 슬롯이 일치하는지 확인합니다.
         if (slot == this.type.getSlot()) {
 
             if (this.type == Type.HELMET) {

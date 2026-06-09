@@ -29,7 +29,6 @@ public class AmethystTreeFeature extends Feature<NoneFeatureConfiguration> {
         BlockPos pos = context.origin();
         RandomSource random = context.random();
 
-        // 지표면인지 확인 (공기 블록이고 바닥이 고체여야 함)
         if (!level.isEmptyBlock(pos) || level.isEmptyBlock(pos.below())) {
             return false;
         }
@@ -54,7 +53,6 @@ public class AmethystTreeFeature extends Feature<NoneFeatureConfiguration> {
                 )));
 
         Vec3i size = t.getSize();
-        // 앞서 설정한 -4, 1, -4 오프셋을 고려한 중앙 정렬 로직
         BlockPos pivotPos = new BlockPos(size.getX() / 2, 0, size.getZ() / 2);
         BlockPos originPos = pos.subtract(StructureTemplate.calculateRelativePosition(settings, pivotPos));
 

@@ -22,7 +22,6 @@ public class HeraldStatueRenderer implements BlockEntityRenderer<StatueBlockEnti
             new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_herald_of_oblivion.png"); // Herald 텍스처 경로
 
     public HeraldStatueRenderer(BlockEntityRendererProvider.Context context) {
-        // ModModelLayers에도 HERALD_LAYER가 정의되어 있어야 합니다.
         this.model = new HeraldStatueModel(context.bakeLayer(ModModelLayers.HERALD_LAYER));
     }
 

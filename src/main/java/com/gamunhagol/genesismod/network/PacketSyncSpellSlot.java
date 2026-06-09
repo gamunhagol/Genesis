@@ -34,8 +34,6 @@ public class PacketSyncSpellSlot {
 
     public static void handle(PacketSyncSpellSlot msg, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
-        // ★ 핵심: 서버 코드에서는 절대 클라이언트 클래스를 직접 읽지 않고,
-        // ClientPayloadHandler에게 데이터만 넘겨서 클라이언트 스레드에서 안전하게 실행하도록 위임합니다.
         context.enqueueWork(() -> ClientPayloadHandler.handleSpellSlotSync(msg.maxSlots, msg.selectedSlot, msg.equippedSpells));
         context.setPacketHandled(true);
     }

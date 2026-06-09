@@ -33,8 +33,6 @@ public class GreatBowItem extends BowItem {
         super(pProperties);
     }
 
-    // [참고] Item의 use 메서드는 플레이어의 우클릭에만 반응하므로 Player를 그대로 둡니다.
-    // 몹들은 AI Goal을 통해 직접 startUsingItem()을 호출하므로 이 메서드를 타지 않습니다.
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
@@ -50,12 +48,10 @@ public class GreatBowItem extends BowItem {
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntityLiving, int pTimeLeft) {
-        // 무조건 Player로 캐스팅하지 않고 범용적으로 사용할 변수 선언
         boolean isPlayer = pEntityLiving instanceof Player;
         boolean hasInfiniteAmmo = false;
         ItemStack projectileStack = ItemStack.EMPTY;
 
-        // 1. 탄약(화살) 판별 로직
         if (isPlayer) {
             Player player = (Player) pEntityLiving;
             hasInfiniteAmmo = player.getAbilities().instabuild;
@@ -65,12 +61,10 @@ public class GreatBowItem extends BowItem {
                 projectileStack = new ItemStack(getCustomDefaultArrow());
             }
         } else {
-            // 몹(Mob)일 경우 기본적으로 무한 탄창 및 커스텀 화살 강제 지급
             hasInfiniteAmmo = true;
             projectileStack = new ItemStack(getCustomDefaultArrow());
         }
 
-        // 최종 확인: 여전히 화살이 없거나 커스텀 화살이 아니면 발사 중단
         if (projectileStack.isEmpty() || !(projectileStack.getItem() instanceof LargeArrowItem)) {
             return;
         }
@@ -83,15 +77,12 @@ public class GreatBowItem extends BowItem {
                 LargeArrowItem arrowitem = (LargeArrowItem) projectileStack.getItem();
                 AbstractArrow abstractarrow = arrowitem.createArrow(pLevel, projectileStack, pEntityLiving);
 
-                // 2. 강화 사격 로직 (플레이어 & 몹 공통)
                 if (i >= 100) {
                     if (abstractarrow instanceof LargeArrowEntity largeArrow) {
                         largeArrow.setEmpowered(true);
                     }
 
                     ServerLevel serverLevel = (ServerLevel) pLevel;
-
-                    // [수정됨] player 대신 pEntityLiving(주체)의 위치 사용
                     Vec3 look = pEntityLiving.getLookAngle();
                     Vec3 horizontalForward = new Vec3(look.x, 0, look.z).normalize();
 
@@ -104,13 +95,11 @@ public class GreatBowItem extends BowItem {
                             0,
                             -90.0F, pEntityLiving.getYRot(), -1.0F, 1.0);
 
-                    // [수정됨] 사운드 소스를 무기 사용자에 맞춰 설정 (플레이어면 PLAYERS, 몹이면 HOSTILE 등)
                     SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
                     serverLevel.playSound(null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(),
                             (SoundEvent) EpicFightSounds.NEUTRALIZE_MOBS.get(), source, 1.0F, 1.0F);
                 }
 
-                // 화살 발사
                 abstractarrow.shootFromRotation(pEntityLiving, pEntityLiving.getXRot(), pEntityLiving.getYRot(), 0.0F, f * 5.6F, 1.0F);
 
                 int flameLevel = net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(Enchantments.FLAMING_ARROWS, pStack);
@@ -120,19 +109,16 @@ public class GreatBowItem extends BowItem {
 
                 if (f == 1.0F) abstractarrow.setCritArrow(true);
 
-                // 크리에이티브 모드이거나 몹인 경우 화살이 필드에 남아 무한 파밍되는 것을 방지
                 if (hasInfiniteAmmo) {
                     abstractarrow.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                 }
 
-                // 무기 내구도 감소 (공통)
                 pStack.hurtAndBreak(1, pEntityLiving, (entity) -> entity.broadcastBreakEvent(pEntityLiving.getUsedItemHand()));
 
                 SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
                 pLevel.playSound(null, pEntityLiving.getX(), pEntityLiving.getY(), pEntityLiving.getZ(),
                         SoundEvents.ARROW_SHOOT, source, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
 
-                // 3. 인벤토리 및 스탯 처리 (플레이어 전용)
                 if (isPlayer) {
                     Player player = (Player) pEntityLiving;
                     if (!hasInfiniteAmmo) {
@@ -164,7 +150,6 @@ public class GreatBowItem extends BowItem {
                 boolean isPlayer = entity instanceof Player;
                 SoundSource source = isPlayer ? SoundSource.PLAYERS : SoundSource.HOSTILE;
 
-                // [수정됨] 플레이어일 경우에만 Epic Fight 스태미나 소모 적용
                 if (isPlayer) {
                     Player player = (Player) entity;
                     EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(patch -> {
@@ -173,18 +158,15 @@ public class GreatBowItem extends BowItem {
 
                         if (currentStamina >= staminaCost) {
                             patch.setStamina(currentStamina - staminaCost);
-                            // 강화 성공 사운드
                             level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                                     SoundEvents.ANVIL_PLACE, source, 1.0F, 0.5F);
                         } else {
-                            // 스태미나 부족 시 활 사용 취소
                             player.stopUsingItem();
                             level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                                     SoundEvents.FIRE_EXTINGUISH, source, 1.0F, 1.0F);
                         }
                     });
                 } else {
-                    // [수정됨] 몹일 경우 스태미나 소모 없이 바로 강화 성공 처리 (원한다면 확률이나 다른 조건 추가 가능)
                     level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
                             SoundEvents.ANVIL_PLACE, source, 1.0F, 0.5F);
                 }

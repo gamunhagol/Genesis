@@ -25,7 +25,6 @@ public class BloodFluidType extends FluidType {
             @Override
             public int getTintColor() { return BLOOD_TINT; }
 
-            // 안개 색상만 지정 (로직 없이 상수 반환)
             @Override
             public Vector3f modifyFogColor(net.minecraft.client.Camera camera, float partialTick, net.minecraft.client.multiplayer.ClientLevel level, int renderDistance, float darkenWorldAmount, Vector3f fluidFogColor) {
                 return new Vector3f(0.4F, 0.0F, 0.0F);

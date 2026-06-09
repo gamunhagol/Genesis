@@ -44,7 +44,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        // ─────────────── 일반 아이템 ───────────────
+        // item
         simpleItem(GenesisItems.BOOK_OF_CREATION);
 
         simpleItem(GenesisItems.SCATTERED_MEMORIES);
@@ -297,7 +297,7 @@ public class ModItemModelProvider extends ItemModelProvider {
                 .end();
 
 
-        // ─────────────── 블록 아이템 ───────────────
+        // blockitem
         wallItem(GenesisBlocks.FADED_BRICK_WALL, GenesisBlocks.FADED_BRICK);
         evenSimpleBlockItem(GenesisBlocks.CHISELED_FADED_BRICK);
         evenSimpleBlockItem(GenesisBlocks.FADED_BRICK_STAIRS);
@@ -315,7 +315,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
 
-        // ─────────────── 방어구 ───────────────
+        //armor
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_HELMET);
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_CHESTPLATE);
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
@@ -349,7 +349,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.INTACT_AMETHYST_HEART);
         simpleItem(GenesisItems.STAR_OF_DOMINATION);
 
-        // ─────────────── 정령 나침반 시리즈 ───────────────
+        // compass
         String[] types = {"fire", "water", "earth", "storm", "lightning", "plants", "ice"};
         for (String type : types) {
             basicItemModel("spirit_compass_" + type);
@@ -358,9 +358,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     }
 
-    // ─────────────────────────────
-    //  아이템 모델 생성 헬퍼
-    // ─────────────────────────────
+
+    // helper
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
         return withExistingParent(item.getId().getPath(),
@@ -382,9 +381,8 @@ public class ModItemModelProvider extends ItemModelProvider {
     }
 
 
-    // ─────────────────────────────
-    //  오버라이드 추가 헬퍼 메서드
-    // ─────────────────────────────
+
+    //override
 
     private void addCompassOverride(ItemModelBuilder builder, float value, String type) {
         builder.override()
@@ -396,9 +394,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
 
-    // ─────────────────────────────
-    //  블록 아이템용 헬퍼
-    // ─────────────────────────────
+
+    // blockhelper
     public void clusterItem(RegistryObject<Block> block) {
         String name = ForgeRegistries.BLOCKS.getKey(block.get()).getPath();
         withExistingParent(name, new ResourceLocation("item/generated"))
@@ -449,23 +446,17 @@ public class ModItemModelProvider extends ItemModelProvider {
                     default -> "";
                 };
 
-                // 트리밍 텍스처 경로 (예: trims/items/helmet_trim_quartz)
                 String trimPath = "trims/items/" + armorType + "_trim_" + trimMaterial.location().getPath();
                 String currentTrimName = itemName + "_" + trimMaterial.location().getPath() + "_trim";
                 ResourceLocation armorItemResLoc = new ResourceLocation(MOD_ID, "item/" + itemName);
-                // [수정 1] 트리밍 텍스처는 'minecraft' 네임스페이스를 써야 합니다.
                 ResourceLocation trimResLoc = new ResourceLocation("minecraft", trimPath);
-                // [수정 2] 모델을 참조할 때는 'item/' 폴더 경로를 명시해야 게임이 찾을 수 있습니다.
                 ResourceLocation trimNameResLoc = new ResourceLocation(MOD_ID, "item/" + currentTrimName);
 
-                // 텍스처 존재 여부 확인 (DataGen 에러 방지용)
                 existingFileHelper.trackGenerated(trimResLoc, PackType.CLIENT_RESOURCES, ".png", "textures");
-                // 트리밍 전용 모델 파일 생성 (.json 파일 생성)
                 getBuilder(currentTrimName)
                         .parent(new ModelFile.UncheckedModelFile("item/generated"))
                         .texture("layer0", armorItemResLoc)
                         .texture("layer1", trimResLoc);
-                // [핵심] 기본 모델에 오버라이드 추가 (수정된 trimNameResLoc 사용)
                 builder.override()
                         .model(new ModelFile.UncheckedModelFile(trimNameResLoc))
                         .predicate(mcLoc("trim_type"), trimValue)

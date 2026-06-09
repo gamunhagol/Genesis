@@ -23,7 +23,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
 
     @Override
     protected void start() {
-        // --- 고고학 (수상한 모래/자갈) ---
+        // sussnad
         Map<ResourceLocation, List<AddSusSandItemModifier.Pair>> susSandEntries = new HashMap<>();
 
         // 사막 우물
@@ -60,7 +60,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         add("add_sus_sand_items", new AddSusSandItemModifier(new LootItemCondition[0], susSandEntries));
 
 
-        // --- 상자 (Chest) 전리품 ---
+        // Chest
 
         // 던전 & 폐광
         add("simple_dungeon_shard", new AddChestItemModifier(
@@ -147,7 +147,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 GenesisItems.DREAM_DANGO.get(), 0.35f, 1, 3));
 
 
-        // --- 몹 드롭 (Fish Drops) ---
+        // Fish Drops
 
         add("cod_jelly_drop", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "entities/cod")).build() },

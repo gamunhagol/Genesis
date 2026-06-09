@@ -15,14 +15,9 @@ import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-/**
- * 🌫️ FluidVisionHandler — 온천수 시야색상 및 안개 효과 통합 제어
- * (오버레이 없이, HUD 가림 없이)
- */
+
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FluidVisionHandler {
-
-    // 🔹 카메라 기준으로 현재 블록/유체 상태 가져오기
 
     private static FluidState getEyeFluid(Camera camera) {
         Minecraft mc = Minecraft.getInstance();
@@ -31,7 +26,6 @@ public class FluidVisionHandler {
         return mc.level.getFluidState(eyePos);
     }
 
-    // 🟤 1️⃣ 안개 거리 및 색상
     @SubscribeEvent
     public static void onRenderFog(ViewportEvent.RenderFog event) {
         Camera camera = event.getCamera();
@@ -39,13 +33,10 @@ public class FluidVisionHandler {
         if (fluid == null) return;
 
         if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
-            // 1. 안개 계산 방식 강제 설정
-            event.setFogShape(FogShape.CYLINDER); // 용암과 유사한 평면 안개 방식
+            event.setFogShape(FogShape.CYLINDER);
 
-            // 2. 안개 거리 설정 (용암처럼 매우 가깝게)
-            // 시작 지점을 마이너스로 주면 화면 바로 앞부터 안개가 낍니다.
             float near = 0.0F;
-            float far = 0.5F; // 0.5블록 앞까지만 보임 (거의 안 보임)
+            float far = 0.5F;
 
             event.setNearPlaneDistance(near);
             event.setFarPlaneDistance(far);
@@ -53,7 +44,6 @@ public class FluidVisionHandler {
             RenderSystem.setShaderFogStart(near);
             RenderSystem.setShaderFogEnd(far);
 
-            // 4. 이벤트 취소 (중요: 마인크래프트 기본 안개 설정을 무시하고 내 설정을 강제함)
             event.setCanceled(true);
         }
         if (fluid.is(GenesisFluids.BLOOD.get()) || fluid.is(GenesisFluids.BLOOD_FLOWING.get())) {
@@ -69,7 +59,6 @@ public class FluidVisionHandler {
         }
     }
 
-    // 🔵 2️⃣ 시야 내부 색상 (FogColor)
     @SubscribeEvent
     public static void onFogColor(ViewportEvent.ComputeFogColor event) {
         Camera camera = event.getCamera();
@@ -77,7 +66,6 @@ public class FluidVisionHandler {
         if (fluid == null) return;
 
         if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
-            // 모래색 (DACFA3) 비율 설정
             event.setRed(0.85F);
             event.setGreen(0.81F);
             event.setBlue(0.63F);

@@ -26,11 +26,11 @@ public class FollowCollectorGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        // [최적화] 단순히 리스트를 가져오는 게 아니라, '가장 가까운' 녀석을 찾습니다.
+        // 단순히 리스트를 가져오는 게 아니라, '가장 가까운' 녀석을 찾습니다.
         List<Collector> list = this.guard.level().getEntitiesOfClass(
                 Collector.class,
                 this.guard.getBoundingBox().inflate(16.0D),
-                collector -> !collector.isDeadOrDying() // 살아있는 징수원만
+                collector -> !collector.isDeadOrDying()
         );
 
         if (list.isEmpty()) return false;

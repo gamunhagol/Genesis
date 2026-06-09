@@ -17,12 +17,10 @@ import net.minecraft.resources.ResourceLocation;
 
 public class AEKStatueRenderer implements BlockEntityRenderer<AEKStatueBlockEntity> {
     private final AEKStatueModel model;
-    // [중요] 텍스처 경로를 정확히 입력하세요!
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(GenesisMod.MODID, "textures/block/ancient_elf_knight_statue.png");
 
     public AEKStatueRenderer(BlockEntityRendererProvider.Context context) {
-        // Layer 등록 필요 (4단계 참조)
         this.model = new AEKStatueModel(context.bakeLayer(ModModelLayers.AEK_STATUE_LAYER));
     }
 
@@ -36,8 +34,6 @@ public class AEKStatueRenderer implements BlockEntityRenderer<AEKStatueBlockEnti
         poseStack.translate(0.5D, 1.5D, 0.5D);
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 
-        // [수정] 각 방향에 따른 회전 각도를 수동으로 지정합니다.
-        // 만약 시선이 여전히 반대라면 각 숫자에 180을 더하거나 빼보세요.
         float rotation = switch (direction) {
             case NORTH -> 0f;
             case SOUTH -> 180f;

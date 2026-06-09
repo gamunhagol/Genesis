@@ -77,7 +77,6 @@ public class WandererCrossbowAttackGoal<T extends PathfinderMob & CrossbowAttack
 
         this.mob.getLookControl().setLookAt(target, 30.0F, 30.0F);
 
-        // 석궁 장전 로직 제어
         if (this.state == CrossbowState.UNCHARGED) {
             if (canSee) {
                 this.mob.startUsingItem(ProjectileUtil.getWeaponHoldingHand(this.mob, Items.CROSSBOW));

@@ -19,8 +19,6 @@ public class GenesisGreatBowCapability extends BowCapability {
 
     @Override
     public LivingMotion getLivingMotion(LivingEntityPatch<?> entitypatch, InteractionHand hand) {
-        // getTicksUsingItem이 아니라 isUsingItem만으로 체크해서
-        // 아주 미세한 딜레이라도 있으면 즉시 AIM 상태로 밀어넣어야 합니다.
         if (entitypatch.getOriginal().isUsingItem() &&
                 entitypatch.getOriginal().getUseItem().getItem() instanceof GreatBowItem) {
             return LivingMotions.AIM;

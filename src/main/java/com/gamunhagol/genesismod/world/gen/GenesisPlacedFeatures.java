@@ -127,7 +127,6 @@ public class GenesisPlacedFeatures {
                 List.of(
                         RarityFilter.onAverageOnceEvery(9250),
                         InSquarePlacement.spread(),
-                        // 지상(World Surface)에 배치
                         HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
                         BiomeFilter.biome()
                 ));
@@ -135,7 +134,6 @@ public class GenesisPlacedFeatures {
                 List.of(
                         RarityFilter.onAverageOnceEvery(25759),
                         InSquarePlacement.spread(),
-                        // 지상(World Surface)에 배치
                         HeightmapPlacement.onHeightmap(Heightmap.Types.OCEAN_FLOOR_WG),
                         BiomeFilter.biome()
                 ));

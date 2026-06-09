@@ -27,17 +27,15 @@ public class SpiritCompassRemoveRecipe extends CustomRecipe {
 
             if (stack.isEmpty()) continue;
 
-            // 정령 나침반만 허용
             if (stack.is(GenesisItems.SPIRIT_COMPASS.get())) {
-                // 침이 있는 나침반만 인정
                 if (stack.hasTag() && stack.getTag().getBoolean(SpiritCompassItem.KEY_HAS_NEEDLE)) {
-                    if (found) return false; // 두 개 이상이면 무효
+                    if (found) return false;
                     found = true;
                 } else {
-                    return false; // 침 없는 나침반은 무효
+                    return false;
                 }
             } else {
-                return false; // 다른 아이템 있으면 무효
+                return false;
             }
         }
         return found;
@@ -49,7 +47,6 @@ public class SpiritCompassRemoveRecipe extends CustomRecipe {
             ItemStack stack = inv.getItem(i);
             if (stack.is(GenesisItems.SPIRIT_COMPASS.get()) && stack.hasTag()) {
                 ItemStack result = stack.copy();
-                // NBT 초기화
                 result.getOrCreateTag().putBoolean(SpiritCompassItem.KEY_HAS_NEEDLE, false);
                 result.getOrCreateTag().remove(SpiritCompassItem.KEY_NEEDLE_TYPE);
                 result.getOrCreateTag().remove(SpiritCompassItem.KEY_TARGET);

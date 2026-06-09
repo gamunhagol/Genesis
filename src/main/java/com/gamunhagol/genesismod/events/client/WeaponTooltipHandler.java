@@ -33,7 +33,6 @@ public class WeaponTooltipHandler {
         long window = Minecraft.getInstance().getWindow().getWindow();
         boolean isTabDown = InputConstants.isKeyDown(window, GLFW.GLFW_KEY_TAB);
 
-        // 강화 수치 표시 (+n)
         stack.getCapability(WeaponStatsProvider.WEAPON_STATS).ifPresent(cap -> {
             int level = cap.getReinforceLevel();
             if (level > 0) {
@@ -42,12 +41,10 @@ public class WeaponTooltipHandler {
             }
         });
 
-        // 상시 표시 로직 (TAB 안 누를 때 기본 속성 대미지 노출)
         if (!isTabDown) {
             addDefaultElementalTooltips(event.getToolTip(), data);
             event.getToolTip().add(Component.translatable("tooltip.genesis.hold_tab").withStyle(ChatFormatting.DARK_GRAY));
         } else {
-            // TAB 상세 창 (보너스 수치 및 등급/요구치 노출)
             int currentLevel = stack.getCapability(WeaponStatsProvider.WEAPON_STATS).map(s -> s.getReinforceLevel()).orElse(0);
             addStatsTooltip(event.getToolTip(), data, event.getEntity(), currentLevel);
         }
@@ -55,7 +52,6 @@ public class WeaponTooltipHandler {
 
     private static void addDefaultElementalTooltips(java.util.List<Component> tooltip, WeaponStatData data) {
         int insertIndex = findAttackDamageIndex(tooltip);
-        // 기본 속성 대미지 상시 표시
         if (data.baseMagic() > 0) tooltip.add(insertIndex, Component.translatable("tooltip.genesis.magic_damage_simple", String.format("%.1f", data.baseMagic())).withStyle(ChatFormatting.AQUA));
         if (data.baseFire() > 0) tooltip.add(insertIndex, Component.translatable("tooltip.genesis.fire_damage_simple", String.format("%.1f", data.baseFire())).withStyle(ChatFormatting.RED));
         if (data.baseLightning() > 0) tooltip.add(insertIndex, Component.translatable("tooltip.genesis.lightning_damage_simple", String.format("%.1f", data.baseLightning())).withStyle(ChatFormatting.YELLOW));
@@ -78,7 +74,6 @@ public class WeaponTooltipHandler {
 
         Map<StatType, Float> currentScaling = WeaponRequirementHelper.getCurrentScaling(data, level);
 
-        //  보너스 라인에 cap 대신 player 객체를 넘깁니다.
         addBonusOnlyLine(tooltip, "tooltip.genesis.attack_power", data.basePhysical(), data, level, player, currentScaling, "physical");
         addBonusOnlyLine(tooltip, "tooltip.genesis.magic_damage_label", data.baseMagic(), data, level, player, currentScaling, "magic");
         addBonusOnlyLine(tooltip, "tooltip.genesis.fire_damage_label", data.baseFire(), data, level, player, currentScaling, "fire");
@@ -90,7 +85,6 @@ public class WeaponTooltipHandler {
             tooltip.add(Component.translatable("tooltip.genesis.destruction_damage_label").append(": " + data.baseDestruction()).withStyle(ChatFormatting.GRAY));
         }
 
-        // 보정 등급 (Scaling) 표시
         MutableComponent scalingLine = Component.translatable("tooltip.genesis.scaling").withStyle(ChatFormatting.GRAY);
         currentScaling.forEach((type, value) -> {
             String grade = getGradeFromValue(value);
@@ -102,11 +96,9 @@ public class WeaponTooltipHandler {
         });
         tooltip.add(scalingLine);
 
-        // 요구 능력치 (Requirements) 표시
         MutableComponent reqLine = Component.translatable("tooltip.genesis.requirements").withStyle(ChatFormatting.GRAY);
         data.requirements().forEach((type, reqValue) -> {
             if (reqValue > 0) {
-                // Helper의 getEntityStat을 사용하여 플레이어의 최종 스탯 가져오기
                 int currentPlayerStat = (player != null) ? WeaponRequirementHelper.getEntityStat(player, type) : 0;
                 boolean met = player == null || currentPlayerStat >= reqValue;
 
@@ -119,7 +111,6 @@ public class WeaponTooltipHandler {
         tooltip.add(reqLine);
     }
 
-    //  cap 대신 player를 받습니다.
     private static void addBonusOnlyLine(java.util.List<Component> tooltip, String langKey, float base, WeaponStatData data, int level, Player player, Map<StatType, Float> scaling, String type) {
         if (base <= 0) return;
 
@@ -135,7 +126,6 @@ public class WeaponTooltipHandler {
         }
     }
 
-    //  cap 대신 player를 받아서 Helper를 통해 스탯을 조회합니다.
     private static float calculateScalingOnly(float effectiveBase, Player player, Map<StatType, Float> scaling, String type) {
         if (player == null) return 0.0f;
         float bonus = 0.0f;
@@ -155,7 +145,6 @@ public class WeaponTooltipHandler {
             if (statType == StatType.ARCANE) scales = true;
 
             if (scales) {
-                // [수정됨] Helper를 사용해 '장비 보너스 포함' 최종 스탯으로 보정치 계산
                 int statValue = WeaponRequirementHelper.getEntityStat(player, statType);
                 bonus += effectiveBase * scalingGrade * com.gamunhagol.genesismod.stats.StatApplier.calculateScaling(statValue);
             }

@@ -64,10 +64,8 @@ public class SpellBookItem extends Item {
         AbstractSpell spell = GenesisSpells.get(this.spellId);
         if (spell == null) return;
 
-        // Alt 키를 누르고 있을 때만 모든 툴팁 정보를 출력합니다.
         if (Screen.hasAltDown()) {
 
-            // 요구 스탯 동적 출력
             Map<StatType, Integer> requiredStats = spell.getRequiredStats();
             if (!requiredStats.isEmpty()) {
                 for (Map.Entry<StatType, Integer> entry : requiredStats.entrySet()) {
@@ -79,17 +77,14 @@ public class SpellBookItem extends Item {
                 }
             }
 
-            // 정신력 및 메모리 소모량 출력
             tooltip.add(Component.translatable("tooltip.genesis.spell.mental_cost", String.format("%.1f", spell.getMentalCost())).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("tooltip.genesis.spell.memory_cost", spell.getMemoryCost()).withStyle(ChatFormatting.GRAY));
 
-            // 마법 설명
             tooltip.add(Component.empty());
             tooltip.add(Component.translatable("spell.genesis." + this.spellId + ".desc")
                     .withStyle(ChatFormatting.DARK_GRAY, ChatFormatting.ITALIC));
 
         } else {
-            // Alt 키를 누르지 않았다면 안내 문구 딱 한 줄만 표시합니다.
             tooltip.add(Component.translatable("tooltip.genesis.hold_alt")
                     .withStyle(style -> style.withColor(ChatFormatting.DARK_GRAY)));
         }

@@ -35,7 +35,7 @@ public class SOGStatueERenderer implements BlockEntityRenderer<GodStatueGenericB
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 
         float rotation = switch (direction) {
-            case NORTH -> 180f; // 북쪽을 볼 때 모델의 남쪽 면이 보이도록 180도 회전
+            case NORTH -> 180f;
             case SOUTH -> 0f;
             case WEST  -> 90f;
             case EAST  -> 270f;

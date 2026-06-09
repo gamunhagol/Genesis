@@ -18,7 +18,6 @@ public class DivineGrailRecipe extends CustomRecipe {
         super(id, category);
     }
 
-    // 1. 조합대에 올린 재료가 유효한지 검사
     @Override
     public boolean matches(CraftingContainer inv, Level level) {
         ItemStack grailStack = ItemStack.EMPTY;
@@ -27,7 +26,6 @@ public class DivineGrailRecipe extends CustomRecipe {
         boolean hasShard = false;
         boolean hasRemains = false;
 
-        // 인벤토리 스캔
         for (int i = 0; i < inv.getContainerSize(); i++) {
             ItemStack stack = inv.getItem(i);
             if (stack.isEmpty()) continue;
@@ -51,30 +49,21 @@ public class DivineGrailRecipe extends CustomRecipe {
         if (grailStack.isEmpty()) return false;
         DivineGrailItem grailItem = (DivineGrailItem) grailStack.getItem();
 
-        // Case 1: 재충전 (성배 + 꽃 + 꿀)
-        // 조건: 현재 횟수가 최대 횟수보다 적어야 함 (꽉 차 있으면 조합 안 됨)
         if (hasTorchflower && hasHoney && !hasShard && !hasRemains) {
             return grailItem.getUses(grailStack) < grailItem.getMaxUses(grailStack);
         }
 
-        // Case 2: 최대 횟수 강화 (성배 + 파편)
-        // 조건: 최대 횟수가 16 미만이어야 함
         if (hasShard && !hasTorchflower && !hasHoney && !hasRemains) {
             return grailItem.getMaxUses(grailStack) < 16;
         }
 
-        // Case 3: 회복량 강화 (성배 + 유해)
-        // 조건: 강화 레벨이 10 미만이어야 함 (로직상 10강 제한이라고 가정)
         if (hasRemains && !hasTorchflower && !hasHoney && !hasShard) {
-            // HealLevel 태그를 직접 확인하거나 헬퍼 메서드 활용
             int currentLevel = grailStack.getOrCreateTag().getInt("HealLevel");
             return currentLevel < 10;
         }
 
         return false;
     }
-
-    // 2. 결과물 생성
     @Override
     public ItemStack assemble(CraftingContainer inv, RegistryAccess registryAccess) {
         ItemStack grailStack = ItemStack.EMPTY;
@@ -86,24 +75,23 @@ public class DivineGrailRecipe extends CustomRecipe {
             if (stack.isEmpty()) continue;
 
             if (stack.getItem() instanceof DivineGrailItem) {
-                grailStack = stack.copy(); // NBT 복사
+                grailStack = stack.copy();
             } else if (stack.is(Items.TORCHFLOWER)) {
                 isRefill = true;
             } else if (!stack.is(Items.HONEY_BOTTLE)) {
-                materialStack = stack; // 파편 또는 유해
+                materialStack = stack;
             }
         }
 
         if (grailStack.isEmpty()) return ItemStack.EMPTY;
         DivineGrailItem grailItem = (DivineGrailItem) grailStack.getItem();
 
-        // 기능 실행
         if (isRefill) {
-            grailItem.refill(grailStack); // 꽉 채움
+            grailItem.refill(grailStack);
         } else if (materialStack.is(GenesisItems.FLASK_SHARD.get())) {
-            grailItem.upgradeMaxUses(grailStack); // 최대 횟수 +1
+            grailItem.upgradeMaxUses(grailStack);
         } else if (materialStack.is(GenesisItems.BEAST_REMAINS.get())) {
-            grailItem.upgradeHealAmount(grailStack); // 회복량 +1
+            grailItem.upgradeHealAmount(grailStack);
         }
 
         return grailStack;

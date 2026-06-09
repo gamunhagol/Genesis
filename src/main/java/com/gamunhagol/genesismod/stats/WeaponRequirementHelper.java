@@ -18,11 +18,9 @@ public class WeaponRequirementHelper {
     public static DamageSnapshot calculateTotalDamage(LivingEntity entity, ItemStack stack, float baseVanillaDamage) {
         if (!WeaponDataManager.hasData(stack.getItem())) return DamageSnapshot.EMPTY;
 
-        // 1. 요구치 체크 (몹은 무조건 통과)
         boolean meetsReq = meetsRequirements(entity, stack);
         float penalty = meetsReq ? 1.0f : 0.4f;
 
-        // 2. 각 속성별 대미지 계산 (LivingEntity 전달)
         float phys = calculatePhysical(entity, stack, baseVanillaDamage) * penalty;
         float magic = calculateElemental(entity, stack, "magic") * penalty;
         float fire = calculateElemental(entity, stack, "fire") * penalty;
@@ -49,7 +47,6 @@ public class WeaponRequirementHelper {
         for (Map.Entry<StatType, Float> entry : currentScaling.entrySet()) {
             StatType statType = entry.getKey();
             if (statType == StatType.STRENGTH || statType == StatType.DEXTERITY || statType == StatType.ARCANE) {
-                // getEntityStat 호출
                 int entityStat = getEntityStat(entity, statType);
                 scalingBonus += reinforcedBase * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
@@ -81,7 +78,6 @@ public class WeaponRequirementHelper {
             StatType statType = entry.getKey();
             boolean scales = false;
 
-            //  신비(ARCANE) 스탯이 마법/신성 대미지까지 올리는 덮어씌우기 버그 제거
             switch (type) {
                 case "magic" -> scales = (statType == StatType.INTELLIGENCE);
                 case "holy" -> scales = (statType == StatType.FAITH);
@@ -89,7 +85,6 @@ public class WeaponRequirementHelper {
             }
 
             if (scales) {
-                // getEntityStat 호출
                 int entityStat = getEntityStat(entity, statType);
                 bonus += base * entry.getValue() * StatApplier.calculateScaling(entityStat);
             }
@@ -98,7 +93,6 @@ public class WeaponRequirementHelper {
         return base + bonus;
     }
 
-    //  몹은 항상 요구치를 충족하는 것으로 처리
     public static boolean meetsRequirements(LivingEntity entity, ItemStack stack) {
         if (!(entity instanceof Player player)) return true; // 몹은 프리패스
 
@@ -126,9 +120,8 @@ public class WeaponRequirementHelper {
      * [핵심 리팩토링] 플레이어와 몹 공통 스탯 획득 로직
      */
     public static int getEntityStat(LivingEntity entity, StatType type) {
-        int baseLevel = 10; // 기본값
+        int baseLevel = 10;
 
-        // 1. 플레이어라면 Capability에서 실제 레벨을 가져옴
         if (entity instanceof Player player) {
             baseLevel = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
                     .map(cap -> switch (type) {
@@ -142,11 +135,9 @@ public class WeaponRequirementHelper {
                         case ARCANE -> cap.getArcane();
                     }).orElse(10);
         } else {
-            // 2. 몹이라면 기본 스탯을 10으로 설정 (필요 시 몹 종류별로 분기 가능)
             baseLevel = 10;
         }
 
-        // 3. 공통: 장비 보너스(Attribute)는 몹에게도 적용될 수 있음 (네임드 몹 등)
         Attribute statAttr = switch (type) {
             case VIGOR -> GenesisAttributes.VIGOR.get();
             case MIND -> GenesisAttributes.MIND.get();
