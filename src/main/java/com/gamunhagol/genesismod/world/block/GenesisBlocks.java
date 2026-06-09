@@ -175,7 +175,7 @@ public class GenesisBlocks {
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.SAND).strength(0.1f,0.1f).noLootTable()));
 
     public static final RegistryObject<Block> UNDEAD_SHARD = register("undead_shard",
-            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.BONE_BLOCK).strength(10.0f,100.0f)));
+            () -> new UndeadBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.BONE_BLOCK).strength(10.0f,100.0f)));
 
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",

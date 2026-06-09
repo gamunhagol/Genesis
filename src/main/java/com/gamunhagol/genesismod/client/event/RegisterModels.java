@@ -48,7 +48,6 @@ public class RegisterModels {
 
     @SubscribeEvent
     public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
-        // 리소스(텍스처 등)가 다시 로딩될 때 실행되는 리스너 등록
         event.registerReloadListener((ResourceManagerReloadListener) (resourceManager) -> {
 
             RegisterModels.ELVENIA_HELMET_MODEL = null;

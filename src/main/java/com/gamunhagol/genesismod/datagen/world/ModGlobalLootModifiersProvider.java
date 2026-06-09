@@ -29,6 +29,7 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         // 사막 우물
         addArc(susSandEntries, "archaeology/desert_well", GenesisItems.OPAQUE_JELLY.get(), 0.66f);
         addArc(susSandEntries, "archaeology/desert_well", GenesisItems.CITRINE_SHARD.get(), 0.06f);
+        addArc(susSandEntries, "archaeology/desert_well", GenesisItems.FADED_MEMORY.get(), 0.16f);
 
         // 사막 피라미드
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.45f);
@@ -38,6 +39,8 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.DIVINE_GRAIL.get(), 0.012f);
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.HARDENED_GLASS_PIECES.get(), 0.12f);
         addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.HARDENED_RED_GLASS_PIECES.get(), 0.23f);
+        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.FADED_MEMORY.get(), 0.17f);
+        addArc(susSandEntries, "archaeology/desert_pyramid", GenesisItems.FORGOTTEN_MEMORY.get(), 0.06f);
 
         // 트레일 유적
         addArc(susSandEntries, "archaeology/trail_ruins_common", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.16f);
@@ -45,17 +48,23 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         addArc(susSandEntries, "archaeology/trail_ruins_rare", GenesisItems.PEWRIESE_ORE_PIECE.get(), 0.051f);
         addArc(susSandEntries, "archaeology/trail_ruins_rare", GenesisItems.SCALE_FOSSIL_CLUMP.get(), 0.021f);
         addArc(susSandEntries, "archaeology/trail_ruins_rare", GenesisItems.DIVINE_GRAIL.get(), 0.008f);
+        addArc(susSandEntries, "archaeology/trail_ruins_rare", GenesisItems.FADED_MEMORY.get(), 0.12f);
 
         // 해양 유적
         addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.51f);
         addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.SCALE_FOSSIL.get(), 0.27f);
         addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.SCALE_FOSSIL_CLUMP.get(), 0.06f);
         addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.SPIRIT_COMPASS.get(), 0.008f);
+        addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.FADED_MEMORY.get(), 0.18f);
+        addArc(susSandEntries, "archaeology/ocean_ruins_cold", GenesisItems.FORGOTTEN_MEMORY.get(), 0.08f);
 
         addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.51f);
         addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.SCALE_FOSSIL.get(), 0.27f);
         addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.SCALE_FOSSIL_CLUMP.get(), 0.06f);
         addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.SPIRIT_COMPASS.get(), 0.012f);
+        addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.FADED_MEMORY.get(), 0.12f);
+        addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.FORGOTTEN_MEMORY.get(), 0.09f);
+        addArc(susSandEntries, "archaeology/ocean_ruins_warm", GenesisItems.UNRELATED_MEMORY.get(), 0.02f);
 
         add("add_sus_sand_items", new AddSusSandItemModifier(new LootItemCondition[0], susSandEntries));
 
@@ -67,11 +76,39 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/simple_dungeon")).build() },
                 GenesisItems.SHARD_OF_THE_MOUNTAIN.get(), 0.11f, 1, 3));
 
+        add("faded_dungeon_memory", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/simple_dungeon")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.19f, 1, 3));
+
+        add("forgotten_dungeon_memory", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/simple_dungeon")).build() },
+                GenesisItems.FORGOTTEN_MEMORY.get(), 0.09f, 1, 2));
+
+        add("unrelated_dungeon_memory", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/simple_dungeon")).build() },
+                GenesisItems.UNRELATED_MEMORY.get(), 0.004f, 1, 1));
+
         add("mineshaft_fossil", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/abandoned_mineshaft")).build() },
                 GenesisItems.SCALE_FOSSIL_SHARD.get(), 0.15f, 1, 2));
 
+        add("faded_mineshaft", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/abandoned_mineshaft")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.1f, 1, 2));
+
         // 사막 피라미드
+        add("faded_desert_pyramid", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.2f, 1, 3));
+
+        add("forgotten_desert_pyramid", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
+                GenesisItems.FORGOTTEN_MEMORY.get(), 0.1f, 1, 2));
+
+        add("unrelated_desert_pyramid", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
+                GenesisItems.UNRELATED_MEMORY.get(), 0.008f, 1, 1));
+
         add("desert_pyramid_grail", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/desert_pyramid")).build() },
                 GenesisItems.DIVINE_GRAIL.get(), 0.02f, 1, 1));
@@ -94,9 +131,12 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 GenesisItems.SHARD_OF_THE_MOUNTAIN.get(), 0.05f, 1, 2));
 
 
-        add("buried_treasure_radiant_tablet", new AddChestItemModifier( // 이름 더 명확하게 변경
+        add("buried_treasure_radiant_tablet", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/buried_treasure")).build() },
                 GenesisItems.TABLET_OF_THE_RADIANT_MOUNTAIN.get(), 0.0001f, 1, 1));
+        add("faded_buried_treasure", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/buried_treasure")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.1f, 1, 6));
 
         // 고대 도시
         add("ancient_city_template", new AddChestItemModifier(
@@ -107,10 +147,38 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
                 GenesisItems.PEWRIESE_ORE_PIECE.get(), 0.42f, 1, 3));
 
+        add("faded_ancient_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.3f, 1, 5));
+
+        add("forgotten_ancient_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
+                GenesisItems.FORGOTTEN_MEMORY.get(), 0.21f, 1, 4));
+
+        add("unrelated_ancient_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
+                GenesisItems.UNRELATED_MEMORY.get(), 0.07f, 1, 3));
+
+        add("oblivion_ancient_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/ancient_city")).build() },
+                GenesisItems.OBLIVION_SPHERE.get(), 0.0013f, 1, 1));
+
         // 엔드 시티 & 유적 (Stronghold)
         add("end_city_powder", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/end_city_treasure")).build() },
                 GenesisItems.DREAM_POWDER.get(), 0.3f, 2, 5));
+
+        add("faded_end_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/end_city_treasure")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.3f, 2, 5));
+
+        add("forgotten_end_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/end_city_treasure")).build() },
+                GenesisItems.FORGOTTEN_MEMORY.get(), 0.19f, 2, 3));
+
+        add("unrelated_end_city", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/end_city_treasure")).build() },
+                GenesisItems.UNRELATED_MEMORY.get(), 0.08f, 1, 1));
 
         add("stronghold_library_powder", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_library")).build() },
@@ -128,6 +196,14 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_corridor")).build() },
                 GenesisItems.DIVINE_GRAIL.get(), 0.02f, 1, 1));
 
+        add("stronghold_corridor_faded", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_corridor")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.2f, 1, 2));
+
+        add("stronghold_corridor_oblivion", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/stronghold_corridor")).build() },
+                GenesisItems.OBLIVION_SPHERE.get(), 0.002f, 1, 1));
+
         // 정글 사원
         add("jungle_temple_compass", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build() },
@@ -140,6 +216,14 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
         add("jungle_temple_grail", new AddChestItemModifier(
                 new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build() },
                 GenesisItems.DIVINE_GRAIL.get(), 0.006f, 1, 1));
+
+        add("faded_jungle_temple", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build() },
+                GenesisItems.FADED_MEMORY.get(), 0.6f, 1, 3));
+
+        add("forgotten_jungle_temple", new AddChestItemModifier(
+                new LootItemCondition[] { new LootTableIdCondition.Builder(new ResourceLocation("minecraft", "chests/jungle_temple")).build() },
+                GenesisItems.FORGOTTEN_MEMORY.get(), 0.2f, 1, 2));
 
         // 고양이 선물
         add("cat_gift_powder", new AddChestItemModifier(

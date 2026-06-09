@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.world.item.armor.*;
 import com.gamunhagol.genesismod.world.item.custom.*;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.tool.GenericScrollItem;
+import com.gamunhagol.genesismod.world.item.tool.LandEyeBlockItem;
 import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
@@ -117,7 +118,7 @@ public class GenesisItems {
             () -> new BlockItem(GenesisBlocks.RED_PEARL_OF_THE_DESERT.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<BlockItem> EYE_OF_THE_EARTH = ITEMS.register("eye_of_the_earth",
-            () -> new BlockItem(GenesisBlocks.EYE_OF_THE_EARTH.get(), new Item.Properties().rarity(Rarity.RARE)));
+            () -> new LandEyeBlockItem(GenesisBlocks.EYE_OF_THE_EARTH.get(), new Item.Properties().rarity(Rarity.RARE)));
 
 
 
@@ -171,9 +172,9 @@ public class GenesisItems {
             () -> new Item(new Item.Properties().stacksTo(16).rarity(Rarity.RARE)));
 
 
-    public static final RegistryObject<Item> MANA_IMBUED_AMETHYST_SHARD = ITEMS.register("mana_imbued_amethyst_shard", () -> new ManaCrystalItem(new Item.Properties()));
-    public static final RegistryObject<Item> STAR_FRAGMENT = ITEMS.register("star_fragment", () -> new ManaCrystalItem(new Item.Properties().rarity(Rarity.RARE)));
-    public static final RegistryObject<Item> AMETHYST_MAGIC_CORE = ITEMS.register("amethyst_magic_core", () -> new ManaCrystalItem(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> MANA_IMBUED_AMETHYST_SHARD = ITEMS.register("mana_imbued_amethyst_shard", () -> new ManaCrystalItem(new Item.Properties(), 5.0f));
+    public static final RegistryObject<Item> STAR_FRAGMENT = ITEMS.register("star_fragment", () -> new ManaCrystalItem(new Item.Properties().rarity(Rarity.RARE), 200.0f));
+    public static final RegistryObject<Item> AMETHYST_MAGIC_CORE = ITEMS.register("amethyst_magic_core", () -> new ManaCrystalItem(new Item.Properties().rarity(Rarity.UNCOMMON),10.0f));
 
 
     public static final RegistryObject<Item> BLUE_CRYSTAL_SHARD = ITEMS.register("blue_crystal_shard", () -> new Item(new Item.Properties()));
@@ -239,9 +240,7 @@ public class GenesisItems {
             .food(new FoodProperties.Builder().nutrition(7).saturationMod(0.9f)
                     .effect(() -> new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1200, 0), 1.0f).build())));
 
-    public static final RegistryObject<Item> ENCHANTED_GLOWING_HEART = ITEMS.register("enchanted_glowing_heart", () -> new Item(new Item.Properties().rarity(Rarity.EPIC)
-            .food(new FoodProperties.Builder().nutrition(10).saturationMod(0.9f).alwaysEat()
-                    .effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1), 1.0f).build())));
+    public static final RegistryObject<Item> ENCHANTED_GLOWING_HEART = ITEMS.register("enchanted_glowing_heart", () -> new EGHItem(new Item.Properties()));
 
     public static final RegistryObject<Item> AMETHYST_APPLE_SLICES = ITEMS.register("amethyst_apple_slices", () -> new Item(new Item.Properties().rarity(Rarity.COMMON)
             .food(new FoodProperties.Builder().nutrition(4).saturationMod(0.4f).effect(() -> new MobEffectInstance(MobEffects.ABSORPTION, 400, 1), 1.0f).build())));
@@ -257,10 +256,10 @@ public class GenesisItems {
             ));
 
     //
-    public static final RegistryObject<Item> FADED_MEMORY = ITEMS.register("faded_memory", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> FORGOTTEN_MEMORY = ITEMS.register("forgotten_memory", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> UNRELATED_MEMORY = ITEMS.register("unrelated_memory", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
-    public static final RegistryObject<Item> OBLIVION_SPHERE = ITEMS.register("oblivion_sphere", () -> new Item(new Item.Properties().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> FADED_MEMORY = ITEMS.register("faded_memory", () -> new MemoryItem(new Item.Properties(), 5));
+    public static final RegistryObject<Item> FORGOTTEN_MEMORY = ITEMS.register("forgotten_memory", () -> new MemoryItem(new Item.Properties(), 10));
+    public static final RegistryObject<Item> UNRELATED_MEMORY = ITEMS.register("unrelated_memory", () -> new MemoryItem(new Item.Properties().rarity(Rarity.UNCOMMON),30));
+    public static final RegistryObject<Item> OBLIVION_SPHERE = ITEMS.register("oblivion_sphere", () -> new MemoryItem(new Item.Properties().rarity(Rarity.RARE),90));
 
 
 
@@ -528,7 +527,7 @@ public class GenesisItems {
 
     //misc
 
-    public static final RegistryObject<Item> AMETHYST_HUMAN_STATUE = ITEMS.register("amethyst_human_statue", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_HUMAN_STATUE = ITEMS.register("amethyst_human_statue", () -> new Item(new Item.Properties().stacksTo(1)));
 
 
     public static final RegistryObject<Item> LAGER_DESERT_SCORPION_TAIL = ITEMS.register("large_desert_scorpion_tail", () -> new Item(new Item.Properties()));

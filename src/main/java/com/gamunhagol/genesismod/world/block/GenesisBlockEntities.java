@@ -13,6 +13,11 @@ public class GenesisBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, GenesisMod.MODID);
 
+    public static final RegistryObject<BlockEntityType<UndeadShardBlockEntity>> UNDEAD_SHARD_BE =
+            BLOCK_ENTITIES.register("undead_shard_be", () ->
+                    BlockEntityType.Builder.of(UndeadShardBlockEntity::new,
+                            GenesisBlocks.UNDEAD_SHARD.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<FadedChestBlockEntity>> FADED_CHEST_BE =
             BLOCK_ENTITIES.register("faded_chest_be", () ->
                     BlockEntityType.Builder.of(FadedChestBlockEntity::new,

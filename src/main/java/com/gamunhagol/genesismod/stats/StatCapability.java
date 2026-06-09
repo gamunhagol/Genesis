@@ -94,7 +94,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     public void setLevelUpUnlocked(boolean v) {
         if(this.isLevelUpUnlocked != v) {
             this.isLevelUpUnlocked = v;
-            this.setDirty(true); // 데이터 변경 알림 [cite: 2026-02-15]
+            this.setDirty(true);
         }
     }
 

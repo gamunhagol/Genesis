@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.network;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraftforge.network.NetworkDirection;
 import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
@@ -37,6 +38,14 @@ public class GenesisNetwork {
                 .decoder(PacketSyncSpellSlot::decode).encoder(PacketSyncSpellSlot::encode)
                 .consumerMainThread(PacketSyncSpellSlot::handle).add();
 
+        INSTANCE.messageBuilder(PacketActivateCustomTotem.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketActivateCustomTotem::new).encoder(PacketActivateCustomTotem::toBytes)
+                .consumerMainThread(PacketActivateCustomTotem::handle).add();
+
+        INSTANCE.messageBuilder(PacketSpawnEyeBeam.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSpawnEyeBeam::new).encoder(PacketSpawnEyeBeam::toBytes)
+                .consumerMainThread(PacketSpawnEyeBeam::handle).add();
+
         // [C -> S] Client to Server Packets (요청, 조작 등)
         INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketConfirmLevelUp::new).encoder(PacketConfirmLevelUp::toBytes)
@@ -68,6 +77,12 @@ public class GenesisNetwork {
     public static void sendToServer(Object message) {
         if (INSTANCE != null) {
             INSTANCE.sendToServer(message);
+        }
+    }
+
+    public static void sendToTrackingAndSelf(Object message, Entity entity) {
+        if (INSTANCE != null && !entity.level().isClientSide) {
+            INSTANCE.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> entity), message);
         }
     }
 }

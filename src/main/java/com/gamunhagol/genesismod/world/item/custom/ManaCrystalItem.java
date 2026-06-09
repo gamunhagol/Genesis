@@ -17,8 +17,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
 public class ManaCrystalItem extends Item {
-    public ManaCrystalItem(Properties properties) {
+    private final float recoveryAmount;
+
+    public ManaCrystalItem(Properties properties, float recoveryAmount) {
         super(properties);
+        this.recoveryAmount = recoveryAmount;
     }
 
     @Override
@@ -27,19 +30,21 @@ public class ManaCrystalItem extends Item {
 
         if (!level.isClientSide) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                float recoveryAmount = 5.0f;
-                stats.setMental(Math.min(stats.getMaxMental(), stats.getMental() + recoveryAmount));
+                stats.setMental(Math.min(stats.getMaxMental(), stats.getMental() + this.recoveryAmount));
                 if (player instanceof ServerPlayer serverPlayer) {
                     GenesisNetwork.sendToPlayer(new PacketSyncMentalPower(stats.getMental()), serverPlayer);
                 }
             });
+
             level.playSound(null, player.getX(), player.getY(), player.getZ(),
                     SoundEvents.AMETHYST_CLUSTER_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+
             float angle = player.yBodyRot * ((float)Math.PI / 180F);
             double sideOffset = (hand == InteractionHand.MAIN_HAND ? 1.0 : -1.0) * 0.4D;
             double spawnX = player.getX() - (double)(Math.cos(angle) * sideOffset);
             double spawnY = player.getY() + 1.2D;
             double spawnZ = player.getZ() - (double)(Math.sin(angle) * sideOffset);
+
             if (level instanceof ServerLevel serverLevel) {
                 serverLevel.sendParticles(new ItemParticleOption(ParticleTypes.ITEM, itemstack),
                         spawnX, spawnY, spawnZ,

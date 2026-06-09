@@ -39,6 +39,7 @@ public class ClientTooltipHandler {
         register(GenesisItems.BEAST_REMAINS.get(), "tooltip.genesis.beast_remains.info");
         register(GenesisItems.DIVINE_GRAIL.get(), "tooltip.genesis.divine_grail.info");
 
+        register(GenesisItems.ENCHANTED_GLOWING_HEART.get(), "tooltip.genesis.enchanted_glowing_heart.info");
         register(GenesisItems.OPAQUE_JELLY.get(), "tooltip.genesis.opaque_jelly.info");
 
         register(GenesisItems.GREAT_BOW.get(), "tooltip.genesis.great_bow.info");

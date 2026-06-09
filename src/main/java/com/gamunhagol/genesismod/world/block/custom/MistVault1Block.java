@@ -90,22 +90,4 @@ public class MistVault1Block extends BaseEntityBlock {
             level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, x, y, z, 0.0D, -0.05D, 0.0D);
         }
     }
-
-    @Override
-    public void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean isMoving) {
-        super.onPlace(state, level, pos, oldState, isMoving);
-        if (!level.isClientSide) {
-            com.gamunhagol.genesismod.world.structure.MistVaultTracker.register(level, pos);
-        }
-    }
-
-    @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            if (!level.isClientSide) {
-                com.gamunhagol.genesismod.world.structure.MistVaultTracker.unregister(level, pos);
-            }
-            super.onRemove(state, level, pos, newState, isMoving);
-        }
-    }
 }

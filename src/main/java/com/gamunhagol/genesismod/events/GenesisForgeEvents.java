@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.events;
 import com.gamunhagol.genesismod.events.common.GenesisCombatEvents;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.PacketActivateCustomTotem;
 import com.gamunhagol.genesismod.network.PacketSyncSpellSlot;
 import com.gamunhagol.genesismod.network.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
@@ -112,7 +113,37 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
-        if (event.getEntity() instanceof Player player) {
+        LivingEntity entity = event.getEntity();
+
+        ItemStack mainHandItem = entity.getItemInHand(InteractionHand.MAIN_HAND);
+        ItemStack offHandItem = entity.getItemInHand(InteractionHand.OFF_HAND);
+        ItemStack activeTotem = ItemStack.EMPTY;
+
+        if (mainHandItem.is(GenesisItems.AMETHYST_HUMAN_STATUE.get())) {
+            activeTotem = mainHandItem;
+        } else if (offHandItem.is(GenesisItems.AMETHYST_HUMAN_STATUE.get())) {
+            activeTotem = offHandItem;
+        }
+
+        if (!activeTotem.isEmpty()) {
+            event.setCanceled(true);
+
+            entity.setHealth(1.0F);
+
+            entity.removeAllEffects();
+
+            entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
+            entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
+            entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
+
+            GenesisNetwork.sendToTrackingAndSelf(new PacketActivateCustomTotem(entity.getId(), activeTotem.copy()), entity);
+
+            activeTotem.shrink(1);
+
+            return;
+        }
+
+        if (entity instanceof Player player) {
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
 
@@ -120,7 +151,6 @@ public class GenesisForgeEvents {
                     grail.refill(stack);
                 }
             }
-
         }
     }
 

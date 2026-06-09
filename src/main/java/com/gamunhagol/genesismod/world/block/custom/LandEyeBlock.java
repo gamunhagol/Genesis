@@ -16,7 +16,6 @@ import javax.annotation.Nullable;
 
 public class LandEyeBlock extends Block {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
-
     protected static final VoxelShape SHAPE = Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D);
 
     public LandEyeBlock(Properties pProperties) {
