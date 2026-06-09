@@ -1,0 +1,11 @@
+{
+  "type": "genesis:add_chest_item",
+  "chance": 0.0013,
+  "conditions": [
+    {
+      "condition": "forge:loot_table_id",
+      "loot_table_id": "minecraft:chests/ancient_city"
+    }
+  ],
+  "item": "genesis:oblivion_sphere"
+}
