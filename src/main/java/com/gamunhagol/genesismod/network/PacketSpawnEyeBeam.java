@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.network;
 
-import com.gamunhagol.genesismod.events.GenesisClientRenderEvents;
+import com.gamunhagol.genesismod.events.client.GenesisClientRenderEvents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkEvent;

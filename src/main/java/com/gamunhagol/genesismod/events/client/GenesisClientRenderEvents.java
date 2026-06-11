@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.events;
+package com.gamunhagol.genesismod.events.client;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.mojang.blaze3d.vertex.PoseStack;

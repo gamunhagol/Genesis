@@ -160,14 +160,14 @@ public class GenesisBlocks {
 
     //Get mob
     public static final RegistryObject<Block> HARDENED_RED_GLASS = register("hardened_red_glass",
-            () -> new GlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(6.0F, 12.0F)
+            () -> new GlassBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(5.0F, 12.0F)
                     .sound(SoundType.GLASS).noOcclusion()));
     public static final RegistryObject<Block> RED_PEARL_OF_THE_DESERT = register("red_pearl_of_the_desert",
-            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(8.0F, 20.0F)
+            () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_RED).requiresCorrectToolForDrops().strength(6.0F, 20.0F)
                     .sound(SoundType.STONE)));
 
     public static final RegistryObject<Block> EYE_OF_THE_EARTH = register("eye_of_the_earth",
-            () -> new LandEyeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).requiresCorrectToolForDrops().strength(10.0F, 1000.0F)
+            () -> new LandEyeBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_ORANGE).requiresCorrectToolForDrops().strength(3.0F, 1000.0F)
                     .sound(SoundType.AMETHYST).noCollission()));
 
     //misc
