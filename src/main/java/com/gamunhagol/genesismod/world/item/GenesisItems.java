@@ -315,8 +315,6 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> BLOODY_FLAG = ITEMS.register("bloody_flag", () -> new SpearItem(new Item.Properties()
-            , Tiers.IRON));
 
     public static final RegistryObject<Item> HARDENED_GLASS_SWORD = ITEMS.register("hardened_glass_sword", () -> new SwordItem(GenesisItemTier.HARDENED_GLASS, 3, -2.4f,
             new Item.Properties()));
@@ -415,8 +413,8 @@ public class GenesisItems {
             , GenesisItemTier.PEWRIESE));
 
 
-    public static final RegistryObject<Item> HOLY_KNIGHT_SWORD = ITEMS.register("holy_knight_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
-            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> HOLY_KNIGHT_SWORD = ITEMS.register("holy_knight_sword", () -> new SwordItem(GenesisItemTier.HOLY_KNIGHT, 3, -2.4f,
+            new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> HOLY_KNIGHT_GREATSWORD = ITEMS.register("holy_knight_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
             .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));

@@ -57,7 +57,6 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
 
-                output.accept(GenesisItems.BLOODY_FLAG.get());
 
                 output.accept(GenesisItems.HARDENED_GLASS_SWORD.get());
                 output.accept(GenesisItems.HARDENED_GLASS_GREATSWORD.get());
