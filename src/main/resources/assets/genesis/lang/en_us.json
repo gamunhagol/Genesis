@@ -429,6 +429,9 @@
 
   "attribute.name.genesis.magic_defense": "Magic Defense",
   "attribute.name.genesis.holy_defense": "Holy Defense",
+  "attribute.name.genesis.fire_defense": "Fire Defense",
+  "attribute.name.genesis.frost_defense": "Frost Defense",
+  "attribute.name.genesis.lightning_defense": "Lightning Defense",
 
 
 

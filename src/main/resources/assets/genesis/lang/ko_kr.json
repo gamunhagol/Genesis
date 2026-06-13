@@ -425,8 +425,12 @@
   "item.genesis.spirit_compass.not_found":"탐색: 근처에서 발견되지 않음",
 
 
-  "attribute.name.genesis.magic_defense": "마법 방어력",
-  "attribute.name.genesis.holy_defense": "신성 방어력",
+  "attribute.name.genesis.magic_defense": "마법 방어",
+  "attribute.name.genesis.holy_defense": "신성 방어",
+  "attribute.name.genesis.fire_defense": "화염 방어",
+  "attribute.name.genesis.frost_defense": "냉기 방어",
+  "attribute.name.genesis.lightning_defense": "전격 방어",
+
 
 
 

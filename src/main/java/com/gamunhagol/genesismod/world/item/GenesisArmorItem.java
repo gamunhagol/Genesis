@@ -27,24 +27,24 @@ public class GenesisArmorItem extends ArmorItem {
     };
 
     protected static final UUID[] FIRE_DEFENSE_UUIDS = new UUID[]{
-            UUID.fromString("G1E5150-8000-0000-0000-00000004000"),
-            UUID.fromString("G1E5150-8000-0000-0000-00000003000"),
-            UUID.fromString("G1E5150-8000-0000-0000-00000002000"),
-            UUID.fromString("G1E5150-8000-0000-0000-00000001000")
+            UUID.fromString("AE1E515-8000-0000-0000-00000004000"),
+            UUID.fromString("AE1E515-8000-0000-0000-00000003000"),
+            UUID.fromString("AE1E515-8000-0000-0000-00000002000"),
+            UUID.fromString("AE1E515-8000-0000-0000-00000001000")
     };
 
     protected static final UUID[] FROST_DEFENSE_UUIDS = new UUID[]{
-            UUID.fromString("H1E5150-9000-0000-0000-00000004000"),
-            UUID.fromString("H1E5150-9000-0000-0000-00000003000"),
-            UUID.fromString("H1E5150-9000-0000-0000-00000002000"),
-            UUID.fromString("H1E5150-9000-0000-0000-00000001000")
+            UUID.fromString("BE1E515-9000-0000-0000-00000004000"),
+            UUID.fromString("BE1E515-9000-0000-0000-00000003000"),
+            UUID.fromString("BE1E515-9000-0000-0000-00000002000"),
+            UUID.fromString("BE1E515-9000-0000-0000-00000001000")
     };
 
     protected static final UUID[] LIGHTNING_DEFENSE_UUIDS = new UUID[]{
-            UUID.fromString("I1E5150-A000-0000-0000-00000004000"),
-            UUID.fromString("I1E5150-A000-0000-0000-00000003000"),
-            UUID.fromString("I1E5150-A000-0000-0000-00000002000"),
-            UUID.fromString("I1E5150-A000-0000-0000-00000001000")
+            UUID.fromString("CE1E515-0100-0000-0000-00000004000"),
+            UUID.fromString("CE1E515-0100-0000-0000-00000003000"),
+            UUID.fromString("CE1E515-0100-0000-0000-00000002000"),
+            UUID.fromString("CE1E515-0100-0000-0000-00000001000")
     };
 
     public GenesisArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
