@@ -20,10 +20,31 @@ public class GenesisArmorItem extends ArmorItem {
     };
 
     protected static final UUID[] HOLY_DEFENSE_UUIDS = new UUID[]{
-            UUID.fromString("FE1E515-7000-0000-0000-00000004000"), // FEET
-            UUID.fromString("FE1E515-7000-0000-0000-00000003000"), // LEGS
-            UUID.fromString("FE1E515-7000-0000-0000-00000002000"), // CHEST
-            UUID.fromString("FE1E515-7000-0000-0000-00000001000")  // HEAD
+            UUID.fromString("FE1E515-7000-0000-0000-00000004000"),
+            UUID.fromString("FE1E515-7000-0000-0000-00000003000"),
+            UUID.fromString("FE1E515-7000-0000-0000-00000002000"),
+            UUID.fromString("FE1E515-7000-0000-0000-00000001000")
+    };
+
+    protected static final UUID[] FIRE_DEFENSE_UUIDS = new UUID[]{
+            UUID.fromString("G1E5150-8000-0000-0000-00000004000"),
+            UUID.fromString("G1E5150-8000-0000-0000-00000003000"),
+            UUID.fromString("G1E5150-8000-0000-0000-00000002000"),
+            UUID.fromString("G1E5150-8000-0000-0000-00000001000")
+    };
+
+    protected static final UUID[] FROST_DEFENSE_UUIDS = new UUID[]{
+            UUID.fromString("H1E5150-9000-0000-0000-00000004000"),
+            UUID.fromString("H1E5150-9000-0000-0000-00000003000"),
+            UUID.fromString("H1E5150-9000-0000-0000-00000002000"),
+            UUID.fromString("H1E5150-9000-0000-0000-00000001000")
+    };
+
+    protected static final UUID[] LIGHTNING_DEFENSE_UUIDS = new UUID[]{
+            UUID.fromString("I1E5150-A000-0000-0000-00000004000"),
+            UUID.fromString("I1E5150-A000-0000-0000-00000003000"),
+            UUID.fromString("I1E5150-A000-0000-0000-00000002000"),
+            UUID.fromString("I1E5150-A000-0000-0000-00000001000")
     };
 
     public GenesisArmorItem(ArmorMaterial pMaterial, Type pType, Properties pProperties) {
@@ -47,6 +68,24 @@ public class GenesisArmorItem extends ArmorItem {
                 if (holyDef != 0) {
                     builder.put(GenesisAttributes.HOLY_DEFENSE.get(),
                             new AttributeModifier(HOLY_DEFENSE_UUIDS[slot.getIndex()], "Holy defense", holyDef, AttributeModifier.Operation.ADDITION));
+                }
+
+                float fireDef = genesisMaterial.getFireDefense();
+                if (fireDef != 0) {
+                    builder.put(GenesisAttributes.FIRE_DEFENSE.get(),
+                            new AttributeModifier(FIRE_DEFENSE_UUIDS[slot.getIndex()], "Fire defense", fireDef, AttributeModifier.Operation.ADDITION));
+                }
+
+                float frostDef = genesisMaterial.getFrostDefense();
+                if (frostDef != 0) {
+                    builder.put(GenesisAttributes.FROST_DEFENSE.get(),
+                            new AttributeModifier(FROST_DEFENSE_UUIDS[slot.getIndex()], "Frost defense", frostDef, AttributeModifier.Operation.ADDITION));
+                }
+
+                float lightningDef = genesisMaterial.getLightningDefense();
+                if (lightningDef != 0) {
+                    builder.put(GenesisAttributes.LIGHTNING_DEFENSE.get(),
+                            new AttributeModifier(LIGHTNING_DEFENSE_UUIDS[slot.getIndex()], "Lightning defense", lightningDef, AttributeModifier.Operation.ADDITION));
                 }
             }
         }

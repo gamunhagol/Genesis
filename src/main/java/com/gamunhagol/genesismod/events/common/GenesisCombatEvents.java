@@ -27,6 +27,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -92,6 +93,20 @@ public class GenesisCombatEvents {
         }
     }
 
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
+    public static void onLivingHurtArmor(LivingHurtEvent event) {
+        LivingEntity target = event.getEntity();
+        double totalArmor = target.getAttributeValue(Attributes.ARMOR);
+
+        if (totalArmor > 20.0) {
+            double alpha = totalArmor - 20.0;
+            float extraReductionMult = (float) (1.0 - (alpha / (alpha + 100.0)));
+            extraReductionMult = Math.max(0.25f, extraReductionMult);
+            event.setAmount(event.getAmount() * extraReductionMult);
+        }
+    }
+
     private static void applyElementalMarkers(LivingEntity target, DamageSnapshot snapshot) {
         if (snapshot.magic() > 0) target.getPersistentData().putFloat("GenesisExtraMagic", snapshot.magic());
         if (snapshot.fire() > 0) target.getPersistentData().putFloat("GenesisExtraFire", snapshot.fire());
@@ -115,7 +130,7 @@ public class GenesisCombatEvents {
 
         if (target.getPersistentData().contains("GenesisExtraFire")) {
             float fireDmg = target.getPersistentData().getFloat("GenesisExtraFire");
-            fireDmg = calculateFireDamage(target, fireDmg); // 저항 계산
+            fireDmg = calculateFireDamage(target, fireDmg);
             finalDamage += fireDmg;
             if (fireDmg > 0) target.setSecondsOnFire(3);
             target.getPersistentData().remove("GenesisExtraFire");
@@ -123,18 +138,18 @@ public class GenesisCombatEvents {
 
         if (target.getPersistentData().contains("GenesisExtraLightning")) {
             float lightDmg = target.getPersistentData().getFloat("GenesisExtraLightning");
-            if (target.isInWaterOrRain()) lightDmg *= 1.5f;
+            lightDmg = calculateLightningDamage(target, lightDmg);
             finalDamage += lightDmg;
             target.getPersistentData().remove("GenesisExtraLightning");
         }
 
         if (target.getPersistentData().contains("GenesisExtraFrost")) {
             float frostDmg = target.getPersistentData().getFloat("GenesisExtraFrost");
-            if (target.getType().is(net.minecraft.tags.EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
-                frostDmg *= 0.5f;
-            }
+            frostDmg = calculateFrostDamage(target, frostDmg);
             finalDamage += frostDmg;
-            target.setTicksFrozen(target.getTicksFrozen() + 150);
+            if (frostDmg > 0) {
+                target.setTicksFrozen(target.getTicksFrozen() + 150);
+            }
             target.getPersistentData().remove("GenesisExtraFrost");
         }
 
@@ -168,7 +183,6 @@ public class GenesisCombatEvents {
     private static float calculateHolyDamage(LivingEntity target, float damage) {
         float result = damage;
 
-
         AttributeInstance holyDef = target.getAttribute(GenesisAttributes.HOLY_DEFENSE.get());
         if (holyDef != null && holyDef.getValue() > 0) {
             float reductionMultiplier = (float) (1.0 - (holyDef.getValue() / (holyDef.getValue() + 30.0)));
@@ -195,13 +209,47 @@ public class GenesisCombatEvents {
 
     private static float calculateFireDamage(LivingEntity target, float damage) {
         if (target.hasEffect(MobEffects.FIRE_RESISTANCE)) return 0;
-
+        float result = damage;
         int prot = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_PROTECTION, target);
         if (prot > 0) {
             float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            return damage * reduction;
+            result *= reduction;
         }
-        return damage;
+
+        AttributeInstance fireDef = target.getAttribute(GenesisAttributes.FIRE_DEFENSE.get());
+        if (fireDef != null && fireDef.getValue() > 0) {
+            float multiplier = (float) (1.0 - (fireDef.getValue() / (fireDef.getValue() + 30.0)));
+            result *= multiplier;
+        }
+        return Math.max(result, (damage > 0 ? 0.5f : 0));
+    }
+
+    private static float calculateFrostDamage(LivingEntity target, float damage) {
+        float result = damage;
+        if (target.getType().is(net.minecraft.tags.EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
+            result *= 0.5f;
+        }
+
+        AttributeInstance frostDef = target.getAttribute(GenesisAttributes.FROST_DEFENSE.get());
+        if (frostDef != null && frostDef.getValue() > 0) {
+            float multiplier = (float) (1.0 - (frostDef.getValue() / (frostDef.getValue() + 30.0)));
+            result *= multiplier;
+        }
+        return Math.max(result, (damage > 0 ? 0.5f : 0));
+    }
+
+    private static float calculateLightningDamage(LivingEntity target, float damage) {
+        float result = damage;
+        if (target.isInWaterOrRain()) {
+            result *= 1.5f;
+        }
+
+        AttributeInstance lightDef = target.getAttribute(GenesisAttributes.LIGHTNING_DEFENSE.get());
+        if (lightDef != null && lightDef.getValue() > 0) {
+            float multiplier = (float) (1.0 - (lightDef.getValue() / (lightDef.getValue() + 30.0)));
+            result *= multiplier;
+        }
+        return Math.max(result, (damage > 0 ? 0.5f : 0));
     }
 
     private static void applyDestructionEffect(LivingEntity entity, float damageAmount) {

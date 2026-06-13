@@ -72,7 +72,6 @@ public class GenesisClientRenderEvents {
         float partialTicks = event.getPartialTick();
         float[] orangeColor = new float[]{1.0F, 0.35F, 0.0F};
 
-        // 7. 빔 렌더링
         BeaconRenderer.renderBeaconBeam(
                 poseStack, bufferSource, BEACON_BEAM_TEX, partialTicks,
                 1.0F, gameTime, 0, (int) height,

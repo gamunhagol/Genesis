@@ -26,6 +26,14 @@ public class GenesisAttributes {
     public static final RegistryObject<Attribute> DESTRUCTION_DAMAGE = ATTRIBUTES.register("destruction_damage",
             () -> new RangedAttribute("attribute.name.genesis.destruction_damage", 0.0D, 0.0D, 1024.0D).setSyncable(true));
 
+    public static final RegistryObject<Attribute> FIRE_DEFENSE = ATTRIBUTES.register("fire_defense",
+            () -> new RangedAttribute("attribute.name.genesis.fire_defense", 0.0D, 0.0D, 1024.0D).setSyncable(true));
+
+    public static final RegistryObject<Attribute> FROST_DEFENSE = ATTRIBUTES.register("frost_defense",
+            () -> new RangedAttribute("attribute.name.genesis.frost_defense", 0.0D, 0.0D, 1024.0D).setSyncable(true));
+
+    public static final RegistryObject<Attribute> LIGHTNING_DEFENSE = ATTRIBUTES.register("lightning_defense",
+            () -> new RangedAttribute("attribute.name.genesis.lightning_defense", 0.0D, 0.0D, 1024.0D).setSyncable(true));
 
     public static final RegistryObject<Attribute> VIGOR = registerStat("vigor", 0.0D, 100.0D);
     public static final RegistryObject<Attribute> MIND = registerStat("mind", 0.0D, 100.0D);

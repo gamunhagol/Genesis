@@ -32,6 +32,9 @@ public class GenesisEventBusEvents {
         for (EntityType<? extends LivingEntity> type : event.getTypes()) {
             event.add(type, GenesisAttributes.MAGIC_DEFENSE.get());
             event.add(type, GenesisAttributes.HOLY_DEFENSE.get());
+            event.add(type, GenesisAttributes.FIRE_DEFENSE.get());
+            event.add(type, GenesisAttributes.FROST_DEFENSE.get());
+            event.add(type, GenesisAttributes.LIGHTNING_DEFENSE.get());
         }
 
         event.add(EntityType.PLAYER, GenesisAttributes.VIGOR.get());

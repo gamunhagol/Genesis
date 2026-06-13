@@ -48,7 +48,6 @@ public class GenesisProjectileEvents {
                 try {
                     weaponStack = (ItemStack) GET_PICKUP_ITEM.invoke(trident);
                 } catch (Exception e) {
-                    // 리플렉션 실패 시 손에 든 무기로 폴백
                     if (player.getMainHandItem().getItem() instanceof TridentItem) weaponStack = player.getMainHandItem();
                     else if (player.getOffhandItem().getItem() instanceof TridentItem) weaponStack = player.getOffhandItem();
                 }

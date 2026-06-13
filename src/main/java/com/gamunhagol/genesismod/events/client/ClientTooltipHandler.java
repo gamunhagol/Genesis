@@ -97,7 +97,7 @@ public class ClientTooltipHandler {
             tooltip.add(Component.translatable(translationKey)
                     .withStyle(ChatFormatting.YELLOW, ChatFormatting.ITALIC));
         } else {
-            tooltip.add(Component.translatable("tooltip.genesis.hold_alt") // 키 이름도 변경
+            tooltip.add(Component.translatable("tooltip.genesis.hold_alt")
                     .withStyle(style -> style.withColor(ChatFormatting.DARK_GRAY)));
         }
     }
