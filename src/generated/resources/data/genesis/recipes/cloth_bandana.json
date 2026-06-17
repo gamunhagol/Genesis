@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "a": {
+      "item": "genesis:cloth"
+    }
+  },
+  "pattern": [
+    "aaa",
+    "a a"
+  ],
+  "result": {
+    "item": "genesis:cloth_bandana"
+  },
+  "show_notification": true
+}

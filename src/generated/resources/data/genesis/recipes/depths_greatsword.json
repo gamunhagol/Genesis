@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "genesis:pewriese_crystal_block"
+    },
+    "a": {
+      "item": "genesis:blade_of_destruction_fragment"
+    }
+  },
+  "pattern": [
+    " aa",
+    "aaa",
+    "#a "
+  ],
+  "result": {
+    "item": "genesis:depths_greatsword"
+  },
+  "show_notification": true
+}

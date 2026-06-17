@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:blade_of_destruction_fragment"
+  },
+  "base": {
+    "item": "genesis:pewriese_sword"
+  },
+  "result": {
+    "item": "genesis:purtruction_sword"
+  },
+  "template": {
+    "item": "genesis:pewriese_upgrade_smithing_template"
+  }
+}

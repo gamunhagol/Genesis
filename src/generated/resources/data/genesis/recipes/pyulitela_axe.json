@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "genesis:pyulitela"
+    }
+  },
+  "pattern": [
+    "aa",
+    "a#",
+    " #"
+  ],
+  "result": {
+    "item": "genesis:pyulitela_axe"
+  },
+  "show_notification": true
+}

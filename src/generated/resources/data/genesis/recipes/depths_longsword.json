@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "genesis:hardened_glass_sword"
+    },
+    "a": {
+      "item": "genesis:blade_of_destruction_fragment"
+    }
+  },
+  "pattern": [
+    "  a",
+    " a ",
+    "#  "
+  ],
+  "result": {
+    "item": "genesis:depths_longsword"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "genesis:carbonized_ingot"
+    }
+  },
+  "pattern": [
+    "aaa",
+    " # ",
+    " # "
+  ],
+  "result": {
+    "item": "genesis:carbonized_pickaxe"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:amethyst_shield_shard"
+  },
+  "base": {
+    "item": "minecraft:diamond_helmet"
+  },
+  "result": {
+    "item": "genesis:amethyst_helmet"
+  },
+  "template": {
+    "item": "genesis:amethyst_magic_core"
+  }
+}

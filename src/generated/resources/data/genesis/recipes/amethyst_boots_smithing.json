@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "genesis:amethyst_shield_shard"
+  },
+  "base": {
+    "item": "minecraft:diamond_boots"
+  },
+  "result": {
+    "item": "genesis:amethyst_boots"
+  },
+  "template": {
+    "item": "genesis:amethyst_magic_core"
+  }
+}

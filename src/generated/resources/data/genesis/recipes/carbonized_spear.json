@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "genesis:carbonized_sword"
+    },
+    "a": {
+      "item": "genesis:carbonized_ingot"
+    }
+  },
+  "pattern": [
+    "  #",
+    " a ",
+    "a  "
+  ],
+  "result": {
+    "item": "genesis:carbonized_spear"
+  },
+  "show_notification": true
+}

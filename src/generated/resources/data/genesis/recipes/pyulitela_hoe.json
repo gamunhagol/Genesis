@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "genesis:pyulitela"
+    }
+  },
+  "pattern": [
+    "aa",
+    " #",
+    " #"
+  ],
+  "result": {
+    "item": "genesis:pyulitela_hoe"
+  },
+  "show_notification": true
+}

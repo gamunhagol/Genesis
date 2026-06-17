@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "tag": "minecraft:planks"
+    },
+    "a": {
+      "item": "genesis:pyulitela"
+    }
+  },
+  "pattern": [
+    " aa",
+    "aaa",
+    "#a "
+  ],
+  "result": {
+    "item": "genesis:pyulitela_greatsword"
+  },
+  "show_notification": true
+}

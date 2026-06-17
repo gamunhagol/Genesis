@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "genesis:pyulitela_sword"
+    },
+    "a": {
+      "item": "genesis:pyulitela"
+    }
+  },
+  "pattern": [
+    "  #",
+    " a ",
+    "a  "
+  ],
+  "result": {
+    "item": "genesis:pyulitela_spear"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    },
+    "a": {
+      "item": "minecraft:bow"
+    },
+    "l": {
+      "item": "minecraft:string"
+    },
+    "r": {
+      "item": "minecraft:mangrove_roots"
+    },
+    "w": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    "r#l",
+    "wal",
+    "r#l"
+  ],
+  "result": {
+    "item": "genesis:root_woven_bow"
+  },
+  "show_notification": true
+}

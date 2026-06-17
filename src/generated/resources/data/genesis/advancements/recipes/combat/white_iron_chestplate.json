@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "genesis:white_iron_chestplate"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_white_iron_ingot": {
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "genesis:white_iron_ingot"
+            ]
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_white_iron_ingot",
+      "has_the_recipe"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "genesis:white_iron_chestplate"
+    ]
+  },
+  "sends_telemetry_event": false
+}
