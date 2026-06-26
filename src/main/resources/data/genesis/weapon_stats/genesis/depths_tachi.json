@@ -1,0 +1,36 @@
+{
+  "item": "genesis:depths_tachi",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 10.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 1.0
+  },
+  "requirements": {
+    "strength": 16,
+    "dexterity": 22
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "4": {
+      "strength": "E",
+      "dexterity": "D"
+    },
+    "7": {
+      "strength": "D",
+      "dexterity": "C"
+    },
+    "10": {
+      "strength": "D",
+      "dexterity": "B"
+    }
+  }
+}

@@ -25,8 +25,8 @@ import java.util.function.Consumer;
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
     private static final List<ItemLike> HARDENED_RED_SMELTING = List.of(GenesisItems.HARDENED_RED_MASS.get());
     private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
-    private static final List<ItemLike> ANCIENT_ELVENIA_SMELTING = List.of(GenesisItems.SMALL_BELL_OF_OBLIVION.get());
-
+    private static final List<ItemLike> ANCIENT_ELVENIA_SMELTING = List.of(GenesisItems.SMALL_BELL_OF_OBLIVION.get()
+    );
 
     private static final Map<Item, Item> HARDENED_RED_GLASS_SMITHING_MAP = Map.ofEntries(
             Map.entry(GenesisItems.HARDENED_GLASS_SWORD.get(), GenesisItems.HARDENED_RED_GLASS_SWORD.get()),
@@ -34,8 +34,8 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.HARDENED_GLASS_SPEAR.get(), GenesisItems.HARDENED_RED_GLASS_SPEAR.get()),
             Map.entry(GenesisItems.HARDENED_GLASS_TACHI.get(), GenesisItems.HARDENED_RED_GLASS_TACHI.get()),
             Map.entry(GenesisItems.HARDENED_GLASS_LONGSWORD.get(), GenesisItems.HARDENED_RED_GLASS_LONGSWORD.get()),
-            Map.entry(GenesisItems.HARDENED_GLASS_DAGGER.get(), GenesisItems.HARDENED_RED_GLASS_DAGGER.get()));
-
+            Map.entry(GenesisItems.HARDENED_GLASS_DAGGER.get(), GenesisItems.HARDENED_RED_GLASS_DAGGER.get())
+    );
     private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.GOLDEN_SWORD, GenesisItems.ELVENIA_SWORD.get()),
             Map.entry(Items.GOLDEN_SHOVEL, GenesisItems.ELVENIA_SHOVEL.get()),
@@ -50,8 +50,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(Items.GOLDEN_HELMET, GenesisItems.ELVENIA_HELMET.get()),
             Map.entry(Items.GOLDEN_CHESTPLATE, GenesisItems.ELVENIA_CHESTPLATE.get()),
             Map.entry(Items.GOLDEN_LEGGINGS, GenesisItems.ELVENIA_LEGGINGS.get()),
-            Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()));
-
+            Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()),
+            Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.ELVENIA_GREAT_BOW.get())
+    );
     private static final Map<Item, Item> ANCIENT_ELVENIA_SMITHING_MAP = Map.ofEntries(
             Map.entry(GenesisItems.ELVENIA_SWORD.get(), GenesisItems.ANCIENT_ELVENIA_SWORD.get()),
             Map.entry(GenesisItems.ELVENIA_SHOVEL.get(), GenesisItems.ANCIENT_ELVENIA_SHOVEL.get()),
@@ -66,8 +67,9 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.ELVENIA_HELMET.get(), GenesisItems.ANCIENT_ELVENIA_HELMET.get()),
             Map.entry(GenesisItems.ELVENIA_CHESTPLATE.get(), GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get()),
             Map.entry(GenesisItems.ELVENIA_LEGGINGS.get(), GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get()),
-            Map.entry(GenesisItems.ELVENIA_BOOTS.get(), GenesisItems.ANCIENT_ELVENIA_BOOTS.get()));
-
+            Map.entry(GenesisItems.ELVENIA_BOOTS.get(), GenesisItems.ANCIENT_ELVENIA_BOOTS.get()),
+            Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.ANCIENT_ELVENIA_GREAT_BOW.get())
+    );
 
     private static final Map<Item, Item> PEWRIESE_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.IRON_SWORD, GenesisItems.PEWRIESE_SWORD.get()),
@@ -84,22 +86,21 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(EpicFightItems.IRON_LONGSWORD.get(), GenesisItems.PEWRIESE_LONGSWORD.get()),
             Map.entry(EpicFightItems.IRON_SPEAR.get(), GenesisItems.PEWRIESE_SPEAR.get()),
             Map.entry(EpicFightItems.IRON_TACHI.get(), GenesisItems.PEWRIESE_TACHI.get()),
-            Map.entry(EpicFightItems.GLOVE.get(), GenesisItems.PEWRIESE_GAUNTLET.get()));
-
+            Map.entry(EpicFightItems.GLOVE.get(), GenesisItems.PEWRIESE_GAUNTLET.get()),
+            Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.PEWRIESE_GREAT_BOW.get())
+    );
     private static final Map<Item, Item> PEWRIESE_ARMOR_T1_MAP = Map.ofEntries(
             Map.entry(GenesisItems.PEWRIESE_HELMET.get(), GenesisItems.PEWRIESE_PLATE_HELMET.get()),
             Map.entry(GenesisItems.PEWRIESE_CHESTPLATE.get(), GenesisItems.PEWRIESE_PLATE_CHESTPLATE.get()),
             Map.entry(GenesisItems.PEWRIESE_LEGGINGS.get(), GenesisItems.PEWRIESE_PLATE_LEGGINGS.get()),
             Map.entry(GenesisItems.PEWRIESE_BOOTS.get(), GenesisItems.PEWRIESE_PLATE_BOOTS.get())
     );
-
     private static final Map<Item, Item> PEWRIESE_ARMOR_T2_MAP = Map.ofEntries(
             Map.entry(GenesisItems.PEWRIESE_HELMET.get(), GenesisItems.HOLY_KNIGHT_HELMET.get()),
             Map.entry(GenesisItems.PEWRIESE_CHESTPLATE.get(), GenesisItems.HOLY_KNIGHT_CHESTPLATE.get()),
             Map.entry(GenesisItems.PEWRIESE_LEGGINGS.get(), GenesisItems.HOLY_KNIGHT_LEGGINGS.get()),
             Map.entry(GenesisItems.PEWRIESE_BOOTS.get(), GenesisItems.HOLY_KNIGHT_BOOTS.get())
     );
-
     private static final Map<Item, Item> PEWRIESE_TOOL_UPGRADE_MAP = Map.ofEntries(
             Map.entry(GenesisItems.PEWRIESE_SWORD.get(), GenesisItems.HOLY_KNIGHT_SWORD.get()),
             Map.entry(GenesisItems.PEWRIESE_DAGGER.get(), GenesisItems.HOLY_KNIGHT_DAGGER.get()),
@@ -108,7 +109,25 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.PEWRIESE_SPEAR.get(), GenesisItems.HOLY_KNIGHT_SPEAR.get()),
             Map.entry(GenesisItems.PEWRIESE_TACHI.get(), GenesisItems.HOLY_KNIGHT_TACHI.get())
     );
+    private static final Map<Item, Item> PEWRIESE_PURTRUCTION_UPGRADE_MAP = Map.ofEntries(
+            Map.entry(GenesisItems.PEWRIESE_SWORD.get(), GenesisItems.PURTRUCTION_SWORD.get()),
+            Map.entry(GenesisItems.PEWRIESE_SHOVEL.get(), GenesisItems.PURTRUCTION_SHOVEL.get()),
+            Map.entry(GenesisItems.PEWRIESE_PICKAXE.get(), GenesisItems.PURTRUCTION_PICKAXE.get()),
+            Map.entry(GenesisItems.PEWRIESE_AXE.get(), GenesisItems.PURTRUCTION_AXE.get()),
+            Map.entry(GenesisItems.PEWRIESE_HOE.get(), GenesisItems.PURTRUCTION_HOE.get()),
+            Map.entry(GenesisItems.PEWRIESE_DAGGER.get(), GenesisItems.PURTRUCTION_DAGGER.get()),
+            Map.entry(GenesisItems.PEWRIESE_GREATSWORD.get(), GenesisItems.PURTRUCTION_GREATSWORD.get()),
+            Map.entry(GenesisItems.PEWRIESE_LONGSWORD.get(), GenesisItems.PURTRUCTION_LONGSWORD.get()),
+            Map.entry(GenesisItems.PEWRIESE_SPEAR.get(), GenesisItems.PURTRUCTION_SPEAR.get()),
+            Map.entry(GenesisItems.PEWRIESE_TACHI.get(), GenesisItems.PURTRUCTION_TACHI.get())
+    );
 
+    private static final Map<Item, Item> AMETHYST_SMITHING_MAP = Map.ofEntries(
+            Map.entry(Items.DIAMOND_HELMET, GenesisItems.AMETHYST_HELMET.get()),
+            Map.entry(Items.DIAMOND_CHESTPLATE, GenesisItems.AMETHYST_CHESTPLATE.get()),
+            Map.entry(Items.DIAMOND_LEGGINGS, GenesisItems.AMETHYST_LEGGINGS.get()),
+            Map.entry(Items.DIAMOND_BOOTS, GenesisItems.AMETHYST_BOOTS.get())
+    );
     private static final Map<Item, Item> AMETHYST_HEART_SMITHING_MAP = Map.ofEntries(
             Map.entry(GenesisItems.AMETHYST_HEART_PIECE.get(), GenesisItems.INTACT_AMETHYST_HEART.get()),
             Map.entry(EpicFightItems.DIAMOND_LONGSWORD.get(), GenesisItems.CRYSTAL_GROWN_LONGSWORD.get())
@@ -325,6 +344,17 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('l', Items.STRING)
                 .unlockedBy(getHasName(Items.BOW), has(Items.BOW))
                 .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.ROOT_WOVEN_BOW.get())
+                .pattern("r#l")
+                .pattern("wal")
+                .pattern("r#l")
+                .define('a', Items.BOW)
+                .define('#', Items.STICK)
+                .define('w', ItemTags.LOGS)
+                .define('l', Items.STRING)
+                .define('r', Items.MANGROVE_ROOTS)
+                .unlockedBy(getHasName(Items.BOW), has(Items.BOW))
+                .save(pWriter);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, GenesisItems.LARGE_ARROW.get())
                 .pattern(" aw")
@@ -418,6 +448,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
                 .save(pWriter);
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.CARBONIZED_INGOT.get())
+                .requires(Items.GOLD_INGOT)
+                .requires(Items.COPPER_INGOT)
+                .requires(Items.IRON_INGOT)
+                .requires(GenesisItems.FUSION_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.FUSION_STONE.get()), has(GenesisItems.FUSION_STONE.get()))
+                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.ELVENIA_BLOCK.get())
                 .requires(GenesisItems.ELVENIA_INGOT.get())
                 .requires(GenesisItems.GIANT_STONE.get())
@@ -461,6 +499,172 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('b',Items.CHAINMAIL_BOOTS)
                 .unlockedBy("has_chainmail", has(Items.CHAINMAIL_BOOTS))
                 .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.SCORPION_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.SCORPION_CARAPACE.get())
+                .unlockedBy(getHasName(GenesisItems.SCORPION_CARAPACE.get()), has(GenesisItems.SCORPION_CARAPACE.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.SCORPION_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.SCORPION_CARAPACE.get())
+                .unlockedBy(getHasName(GenesisItems.SCORPION_CARAPACE.get()), has(GenesisItems.SCORPION_CARAPACE.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.SCORPION_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.SCORPION_CARAPACE.get())
+                .unlockedBy(getHasName(GenesisItems.SCORPION_CARAPACE.get()), has(GenesisItems.SCORPION_CARAPACE.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.SCORPION_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.SCORPION_CARAPACE.get())
+                .unlockedBy(getHasName(GenesisItems.SCORPION_CARAPACE.get()), has(GenesisItems.SCORPION_CARAPACE.get()))
+                .save(pWriter);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CLOTH_BANDANA.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CLOTH_ROBE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CLOTH_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CLOTH_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.CLOTH.get()), has(GenesisItems.CLOTH.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PILGRIM_BANDANA.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.BLESSED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.BLESSED_CLOTH.get()), has(GenesisItems.BLESSED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PILGRIM_ROBE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.BLESSED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.BLESSED_CLOTH.get()), has(GenesisItems.BLESSED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PILGRIM_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.BLESSED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.BLESSED_CLOTH.get()), has(GenesisItems.BLESSED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PILGRIM_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.BLESSED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.BLESSED_CLOTH.get()), has(GenesisItems.BLESSED_CLOTH.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.ASTROLOGER_BANDANA.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.ENCHANTED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.ENCHANTED_CLOTH.get()), has(GenesisItems.ENCHANTED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.ASTROLOGER_ROBE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.ENCHANTED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.ENCHANTED_CLOTH.get()), has(GenesisItems.ENCHANTED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.ASTROLOGER_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.ENCHANTED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.ENCHANTED_CLOTH.get()), has(GenesisItems.ENCHANTED_CLOTH.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.ASTROLOGER_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.ENCHANTED_CLOTH.get())
+                .unlockedBy(getHasName(GenesisItems.ENCHANTED_CLOTH.get()), has(GenesisItems.ENCHANTED_CLOTH.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_HELMET.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_CHESTPLATE.get())
+                .pattern("a a")
+                .pattern("aaa")
+                .pattern("aaa")
+                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_LEGGINGS.get())
+                .pattern("aaa")
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_BOOTS.get())
+                .pattern("a a")
+                .pattern("a a")
+                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
+                .save(pWriter);
+
+
 
 
 
@@ -566,6 +770,189 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("#")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.CARBONIZED_SHOVEL.get())
+                .pattern("a")
+                .pattern("#")
+                .pattern("#")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.CARBONIZED_PICKAXE.get())
+                .pattern("aaa")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.CARBONIZED_AXE.get())
+                .pattern("aa")
+                .pattern("a#")
+                .pattern(" #")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.CARBONIZED_HOE.get())
+                .pattern("aa")
+                .pattern(" #")
+                .pattern(" #")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_DAGGER.get())
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_GREATSWORD.get())
+                .pattern(" aa")
+                .pattern("aaa")
+                .pattern("#a ")
+                .define('#', ItemTags.PLANKS)
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_LONGSWORD.get())
+                .pattern("  a")
+                .pattern(" a ")
+                .pattern("#  ")
+                .define('#', GenesisItems.CARBONIZED_SWORD.get())
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_SPEAR.get())
+                .pattern("  #")
+                .pattern(" a ")
+                .pattern("a  ")
+                .define('#', GenesisItems.CARBONIZED_SWORD.get())
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.CARBONIZED_TACHI.get())
+                .pattern(" a")
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', GenesisItems.CARBONIZED_SWORD.get())
+                .define('a', GenesisItems.CARBONIZED_INGOT.get())
+                .unlockedBy(getHasName(GenesisItems.CARBONIZED_INGOT.get()), has(GenesisItems.CARBONIZED_INGOT.get()))
+                .save(pWriter);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_SWORD.get())
+                .pattern("a")
+                .pattern("a")
+                .pattern("#")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.PYULITELA_SHOVEL.get())
+                .pattern("a")
+                .pattern("#")
+                .pattern("#")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.PYULITELA_PICKAXE.get())
+                .pattern("aaa")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.PYULITELA_AXE.get())
+                .pattern("aa")
+                .pattern("a#")
+                .pattern(" #")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, GenesisItems.PYULITELA_HOE.get())
+                .pattern("aa")
+                .pattern(" #")
+                .pattern(" #")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_DAGGER.get())
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', Items.STICK)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_GREATSWORD.get())
+                .pattern(" aa")
+                .pattern("aaa")
+                .pattern("#a ")
+                .define('#', ItemTags.PLANKS)
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_LONGSWORD.get())
+                .pattern("  a")
+                .pattern(" a ")
+                .pattern("#  ")
+                .define('#', GenesisItems.PYULITELA_SWORD.get())
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_SPEAR.get())
+                .pattern("  #")
+                .pattern(" a ")
+                .pattern("a  ")
+                .define('#', GenesisItems.PYULITELA_SWORD.get())
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.PYULITELA_TACHI.get())
+                .pattern(" a")
+                .pattern(" a")
+                .pattern("# ")
+                .define('#', GenesisItems.PYULITELA_SWORD.get())
+                .define('a', GenesisItems.PYULITELA.get())
+                .unlockedBy(getHasName(GenesisItems.PYULITELA.get()), has(GenesisItems.PYULITELA.get()))
+                .save(pWriter);
+
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.GIANT_STONE_GREATSWORD.get())
+                .pattern(" ab")
+                .pattern("aba")
+                .pattern("#a ")
+                .define('#', Items.STICK)
+                .define('a', ItemTags.STONE_TOOL_MATERIALS)
+                .define('b', GenesisItems.GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get()), has(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.ACTIVATED_GIANT_STONE_GREATSWORD.get())
+                .pattern(" ab")
+                .pattern("aba")
+                .pattern("#a ")
+                .define('#', Items.BLAZE_ROD)
+                .define('a', ItemTags.STONE_TOOL_MATERIALS)
+                .define('b', GenesisItems.ACTIVATED_GIANT_STONE.get())
+                .unlockedBy(getHasName(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get()), has(GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get()))
+                .save(pWriter);
+
 
 
         //smithing template
@@ -602,7 +989,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     getItemName(entry.getValue()) + "_smithing");
         }
 
-        // 일반 엘브니아 (금 갑옷 -> 엘브니아)
         for (var entry : ELVENIA_SMITHING_MAP.entrySet()) {
             smithingUpgrade(pWriter,
                     GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
@@ -612,7 +998,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     getItemName(entry.getValue()) + "_smithing");
         }
 
-        //  고대 엘브니아 (엘브니아 -> 고대 엘브니아)
         for (var entry : ANCIENT_ELVENIA_SMITHING_MAP.entrySet()) {
             smithingUpgrade(pWriter,
                     GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
@@ -621,6 +1006,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     entry.getValue(),
                     getItemName(entry.getValue()) + "_smithing");
         }
+
 
         for (var entry : PEWRIESE_SMITHING_MAP.entrySet()) {
             pewrieseSmithing(pWriter,
@@ -652,6 +1038,24 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     getItemName(entry.getValue()));
         }
 
+        for (var entry : PEWRIESE_PURTRUCTION_UPGRADE_MAP.entrySet()) {
+            pewrieseAdvancedSmithing(pWriter,
+                    entry.getKey(),
+                    GenesisItems.BLADE_OF_DESTRUCTION_FRAGMENT.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()));
+        }
+
+
+        for (var entry : AMETHYST_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.AMETHYST_MAGIC_CORE.get(),
+                    entry.getKey(),
+                    GenesisItems.AMETHYST_SHIELD_SHARD.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
+        }
+
         for (var entry : AMETHYST_HEART_SMITHING_MAP.entrySet()) {
             smithingUpgrade(pWriter,
                     GenesisItems.AMETHYST_MAGIC_CORE.get(),
@@ -665,7 +1069,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     // --- Helper Methods ---
 
-    // 동전 압축 레시피 헬퍼
     protected static void coinDeconstruct(Consumer<FinishedRecipe> pWriter, ItemLike pHigh, ItemLike pLow, int count) {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, pLow, count)
                 .requires(pHigh)
@@ -673,7 +1076,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pLow) + "_from_" + getItemName(pHigh)));
     }
 
-    // 2x2 압축 레시피 헬퍼
     protected static void compress2x2(Consumer<FinishedRecipe> consumer, ItemLike small, ItemLike big) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, big)
                 .pattern("aa")
@@ -683,7 +1085,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .save(consumer);
     }
 
-    // 패딩 갑옷 레시피 헬퍼
     protected static void paddedArmorRecipe(Consumer<FinishedRecipe> consumer, ItemLike chainmail, ItemLike result, String line1, String line2) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, result)
                 .pattern(line1)
@@ -695,13 +1096,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     }
 
     protected static void nineBlockStorageRecipes(Consumer<FinishedRecipe> pWriter, RecipeCategory pUnpackedCategory, ItemLike pUnpacked, RecipeCategory pPackedCategory, ItemLike pPacked) {
-        // Packed -> Unpacked (1 -> 9)
         ShapelessRecipeBuilder.shapeless(pUnpackedCategory, pUnpacked, 9)
                 .requires(pPacked)
                 .unlockedBy(getHasName(pPacked), has(pPacked))
                 .save(pWriter, new ResourceLocation(GenesisMod.MODID, getItemName(pUnpacked) + "_from_" + getItemName(pPacked)));
 
-        // Unpacked -> Packed (9 -> 1)
         ShapedRecipeBuilder.shaped(pPackedCategory, pPacked)
                 .pattern("aaa")
                 .pattern("aaa")

@@ -12,14 +12,23 @@ import net.minecraft.world.item.crafting.Ingredient;
 import java.util.function.Supplier;
 
 public enum GenesisArmorMaterials implements ArmorMaterial {
-    PADDED_CHAIN("padded_chain", 17, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_IRON,
+    PADDED_CHAIN("padded_chain", 17, new int[]{1, 4, 5, 2}, 12, SoundEvents.ARMOR_EQUIP_CHAIN,
             1.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, () -> {return Ingredient.of(Items.CHAIN);
+    }),
+    SCORPION("scorpion", 29, new int[]{2, 5, 6, 2}, 11, SoundEvents.ARMOR_EQUIP_LEATHER,
+            1.0F, 0.0F, 0.7f, 0.0f, 0.0f, 0.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.SCORPION_CARAPACE.get());
     }),
     ELVENIA("elvenia", 30, new int[]{2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_IRON,
             1.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, () -> {return Ingredient.of(GenesisItems.ELVENIA_INGOT.get());
     }),
     ANCIENT_ELVENIA("ancient_elvenia", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_IRON,
-            3.0F, 0.0F, 1.0f, 0.0f, 0.0f, 1.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+            3.0F, 0.0F, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
+    }),
+    AMETHYST("amethyst", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_DIAMOND,
+            2.0F, 0.0F, 0.0f, 0.0f, 1.0f, 3.0f, 0.0f, () -> {return Ingredient.of(Items.AMETHYST_SHARD);
+    }),
+    CARBONIZED("carbonized", 181, new int[]{7, 9, 11, 6}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
+            3.0F, 0.5F, 0.4f, 0.0f, 0.0f, 0.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.CARBONIZED_INGOT.get());
     }),
     PEWRIESE("pewriese", 62, new int[]{4, 7, 9, 4}, 12, SoundEvents.ARMOR_EQUIP_IRON,
             3.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get());
@@ -29,6 +38,25 @@ public enum GenesisArmorMaterials implements ArmorMaterial {
     }),
     HOLY_KNIGHT("holy_knight", 132, new int[]{6, 8, 10, 5}, 24, SoundEvents.ARMOR_EQUIP_IRON,
             6.0F, 0.2F, 0.0f, 0.0f, 0.0f, 0.0f, 0.5f, () -> {return Ingredient.of(GenesisItems.PYULITELA.get());
+    }),
+    BAILIFF("bailiff", 163, new int[]{6, 8, 10, 5}, 24, SoundEvents.ARMOR_EQUIP_IRON,
+            6.5F, 0.3F, 0.0f, 0.0f, 0.0f, 0.0f, 2.0f, () -> {return Ingredient.of(GenesisItems.PYULITELA.get());
+    }),
+
+    CLOTH("cloth", 10, new int[]{0, 0, 0, 0}, 10, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.5f, 0.5f, () -> {return Ingredient.of(GenesisItems.CLOTH.get());
+    }),
+    PILGRIM("pilgrim", 16, new int[]{0, 0, 0, 0}, 16, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.0f, 1.8f, () -> {return Ingredient.of(GenesisItems.BLESSED_CLOTH.get());
+    }),
+    ASTROLOGER("astrologer", 16, new int[]{0, 0, 0, 0}, 18, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 1.8f, 0.0f, () -> {return Ingredient.of(GenesisItems.ENCHANTED_CLOTH.get());
+    }),
+    EMBROIDERED("embroidered", 14, new int[]{0, 0, 0, 0}, 30, SoundEvents.ARMOR_EQUIP_LEATHER,
+            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.0f, 3.0f, () -> {return Ingredient.of(GenesisItems.BLESSED_CLOTH.get());
+    }),
+    WHITE_IRON("white_iron", 10, new int[]{2, 5, 6, 2}, 24, SoundEvents.ARMOR_EQUIP_IRON,
+            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 1.8f, 0.0f, () -> {return Ingredient.of(GenesisItems.WHITE_IRON_INGOT.get());
     });
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

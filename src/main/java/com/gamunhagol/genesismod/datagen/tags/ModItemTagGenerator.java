@@ -54,7 +54,15 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.PADDED_CHAIN_HELMET.get(),
                 GenesisItems.PADDED_CHAIN_CHESTPLATE.get(),
                 GenesisItems.PADDED_CHAIN_LEGGINGS.get(),
-                GenesisItems.PADDED_CHAIN_BOOTS.get()
+                GenesisItems.PADDED_CHAIN_BOOTS.get(),
+                GenesisItems.SCORPION_HELMET.get(),
+                GenesisItems.SCORPION_CHESTPLATE.get(),
+                GenesisItems.SCORPION_LEGGINGS.get(),
+                GenesisItems.SCORPION_BOOTS.get(),
+                GenesisItems.AMETHYST_HELMET.get(),
+                GenesisItems.AMETHYST_CHESTPLATE.get(),
+                GenesisItems.AMETHYST_LEGGINGS.get(),
+                GenesisItems.AMETHYST_BOOTS.get()
         );
 
         tag(GenesisTags.Items.MAGIC_SPELLS)

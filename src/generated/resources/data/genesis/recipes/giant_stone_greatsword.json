@@ -6,10 +6,10 @@
       "item": "minecraft:stick"
     },
     "a": {
-      "item": "genesis:giant_stone"
+      "tag": "minecraft:stone_tool_materials"
     },
     "b": {
-      "tag": "minecraft:stone_tool_materials"
+      "item": "genesis:giant_stone"
     }
   },
   "pattern": [

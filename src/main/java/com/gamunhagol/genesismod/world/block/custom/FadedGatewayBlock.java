@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.world.block.custom;
 
 import com.gamunhagol.genesismod.events.world.GenesisDungeonEvent;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -36,7 +37,7 @@ public class FadedGatewayBlock extends Block {
     @Override
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemstack = player.getItemInHand(hand);
-        if (itemstack.is(Items.ENDER_EYE) && state.getValue(LIGHT_LEVEL) == 5) {
+        if (itemstack.is(GenesisItems.EYE_OF_THE_EARTH.get()) && state.getValue(LIGHT_LEVEL) == 5) {
             if (!level.isClientSide) {
                 level.setBlock(pos, state.setValue(LIGHT_LEVEL, 15), 3);
 
@@ -64,7 +65,7 @@ public class FadedGatewayBlock extends Block {
                 level.destroyBlock(targetPos, false);
             }
         });
-        Block.popResource(level, centerPos, new ItemStack(Items.ENDER_EYE));
+        Block.popResource(level, centerPos, new ItemStack(GenesisItems.EYE_OF_THE_EARTH.get()));
         net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(new GenesisDungeonEvent.Activate(level, centerPos));
         level.removeBlock(centerPos, false);
         level.playSound(null, centerPos, SoundEvents.POWDER_SNOW_PLACE, SoundSource.BLOCKS, 1.0F, 0.5F);

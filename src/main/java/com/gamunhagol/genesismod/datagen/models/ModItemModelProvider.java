@@ -94,7 +94,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.BEAST_REMAINS);
         simpleItem(GenesisItems.FLASK_SHARD);
 
-        simpleItem(GenesisItems.FUSION_ORE);
+        simpleItem(GenesisItems.CARBONIZED_INGOT);
         simpleItem(GenesisItems.GIANT_STONE_FRAGMENT);
         simpleItem(GenesisItems.FUSION_STONE);
 
@@ -142,11 +142,17 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.ELVENIA_HOE);
         handheldItem(GenesisItems.ELVENIA_SHOVEL);
 
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
+        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_AXE);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_PICKAXE);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_HOE);
         handheldItem(GenesisItems.ANCIENT_ELVENIA_SHOVEL);
+
+        handheldItem(GenesisItems.CARBONIZED_SWORD);
+        handheldItem(GenesisItems.CARBONIZED_AXE);
+        handheldItem(GenesisItems.CARBONIZED_PICKAXE);
+        handheldItem(GenesisItems.CARBONIZED_HOE);
+        handheldItem(GenesisItems.CARBONIZED_SHOVEL);
 
         handheldItem(GenesisItems.PEWRIESE_SWORD);
         handheldItem(GenesisItems.PEWRIESE_AXE);
@@ -154,7 +160,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.PEWRIESE_HOE);
         handheldItem(GenesisItems.PEWRIESE_SHOVEL);
 
+        handheldItem(GenesisItems.PURTRUCTION_SWORD);
+        handheldItem(GenesisItems.PURTRUCTION_AXE);
+        handheldItem(GenesisItems.PURTRUCTION_PICKAXE);
+        handheldItem(GenesisItems.PURTRUCTION_HOE);
+        handheldItem(GenesisItems.PURTRUCTION_SHOVEL);
+
         handheldItem(GenesisItems.HOLY_KNIGHT_SWORD);
+
+        handheldItem(GenesisItems.PYULITELA_SWORD);
+        handheldItem(GenesisItems.PYULITELA_AXE);
+        handheldItem(GenesisItems.PYULITELA_PICKAXE);
+        handheldItem(GenesisItems.PYULITELA_HOE);
+        handheldItem(GenesisItems.PYULITELA_SHOVEL);
+
+
+        handheldItem(GenesisItems.DEPTHS_SWORD);
 
         handheldItem(GenesisItems.OATH_IN_DEEP_DARK);
 
@@ -237,6 +258,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.FABRICATED_STAR);
         simpleItem(GenesisItems.CELESTIAL_STAR);
         simpleItem(GenesisItems.EPONYMOUS_STAR);
+
+
 
         basicItem(GenesisItems.LITTLE_STAR_OF_CLARITY.get());
 
@@ -321,6 +344,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_LEGGINGS);
         trimmedArmorItem(GenesisItems.PADDED_CHAIN_BOOTS);
 
+        trimmedArmorItem(GenesisItems.SCORPION_HELMET);
+        trimmedArmorItem(GenesisItems.SCORPION_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.SCORPION_LEGGINGS);
+        trimmedArmorItem(GenesisItems.SCORPION_BOOTS);
+
         simpleItem(GenesisItems.ELVENIA_HELMET);
         simpleItem(GenesisItems.ELVENIA_CHESTPLATE);
         simpleItem(GenesisItems.ELVENIA_LEGGINGS);
@@ -330,6 +358,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.ANCIENT_ELVENIA_CHESTPLATE);
         simpleItem(GenesisItems.ANCIENT_ELVENIA_LEGGINGS);
         simpleItem(GenesisItems.ANCIENT_ELVENIA_BOOTS);
+
+        simpleItem(GenesisItems.CARBONIZED_HELMET);
+        simpleItem(GenesisItems.CARBONIZED_CHESTPLATE);
+        simpleItem(GenesisItems.CARBONIZED_LEGGINGS);
+        simpleItem(GenesisItems.CARBONIZED_BOOTS);
+
+        trimmedArmorItem(GenesisItems.AMETHYST_HELMET);
+        trimmedArmorItem(GenesisItems.AMETHYST_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.AMETHYST_LEGGINGS);
+        trimmedArmorItem(GenesisItems.AMETHYST_BOOTS);
 
         simpleItem(GenesisItems.PEWRIESE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
@@ -345,6 +383,35 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.HOLY_KNIGHT_CHESTPLATE);
         simpleItem(GenesisItems.HOLY_KNIGHT_LEGGINGS);
         simpleItem(GenesisItems.HOLY_KNIGHT_BOOTS);
+
+        simpleItem(GenesisItems.BAILIFF_HELMET);
+        simpleItem(GenesisItems.BAILIFF_CHESTPLATE);
+        simpleItem(GenesisItems.BAILIFF_LEGGINGS);
+        simpleItem(GenesisItems.BAILIFF_BOOTS);
+
+
+        simpleItem(GenesisItems.CLOTH_BANDANA);
+        simpleItem(GenesisItems.CLOTH_ROBE);
+        simpleItem(GenesisItems.CLOTH_LEGGINGS);
+        simpleItem(GenesisItems.CLOTH_BOOTS);
+
+        simpleItem(GenesisItems.PILGRIM_BANDANA);
+        simpleItem(GenesisItems.PILGRIM_ROBE);
+        simpleItem(GenesisItems.PILGRIM_LEGGINGS);
+        simpleItem(GenesisItems.PILGRIM_BOOTS);
+
+        simpleItem(GenesisItems.ASTROLOGER_BANDANA);
+        simpleItem(GenesisItems.ASTROLOGER_ROBE);
+        simpleItem(GenesisItems.ASTROLOGER_LEGGINGS);
+        simpleItem(GenesisItems.ASTROLOGER_BOOTS);
+
+        simpleItem(GenesisItems.EMBROIDERED_VEIL);
+
+
+        simpleItem(GenesisItems.WHITE_IRON_HELMET);
+        simpleItem(GenesisItems.WHITE_IRON_CHESTPLATE);
+        simpleItem(GenesisItems.WHITE_IRON_LEGGINGS);
+        simpleItem(GenesisItems.WHITE_IRON_BOOTS);
 
         simpleItem(GenesisItems.INTACT_AMETHYST_HEART);
         simpleItem(GenesisItems.STAR_OF_DOMINATION);

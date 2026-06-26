@@ -3,6 +3,18 @@
     "genesis:padded_chain_helmet",
     "genesis:padded_chain_chestplate",
     "genesis:padded_chain_leggings",
-    "genesis:padded_chain_boots"
+    "genesis:padded_chain_boots",
+    "genesis:scorpion_helmet",
+    "genesis:scorpion_chestplate",
+    "genesis:scorpion_leggings",
+    "genesis:scorpion_boots",
+    "genesis:amethyst_helmet",
+    "genesis:amethyst_chestplate",
+    "genesis:amethyst_leggings",
+    "genesis:amethyst_boots",
+    "genesis:white_iron_helmet",
+    "genesis:white_iron_chestplate",
+    "genesis:white_iron_leggings",
+    "genesis:white_iron_boots"
   ]
 }

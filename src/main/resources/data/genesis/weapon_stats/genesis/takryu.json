@@ -1,0 +1,41 @@
+{
+  "item": "genesis:takryu",
+  "is_special": true,
+  "damage_growth": 0.05,
+  "base_stats": {
+    "physical": 7.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 13,
+    "dexterity": 17,
+    "arcane": 15
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "D",
+    "arcane": "E"
+  },
+  "scaling_overrides": {
+    "4": {
+      "strength": "E",
+      "dexterity": "C",
+      "arcane": "E"
+    },
+    "7": {
+      "strength": "D",
+      "dexterity": "C",
+      "arcane": "D"
+    },
+    "10": {
+      "strength": "D",
+      "dexterity": "A",
+      "arcane": "C"
+    }
+  }
+}

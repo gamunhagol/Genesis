@@ -15,8 +15,10 @@ import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -27,6 +29,7 @@ import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 import java.util.AbstractMap;
@@ -79,16 +82,24 @@ public class GenesisMod {
         event.enqueueWork(() -> {
             GenesisSkills.SKILLS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-            if (GenesisItems.GREAT_BOW.isPresent()) {
-                InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
-                        new AbstractMap.SimpleEntry<>(
-                                GenesisItems.GREAT_BOW.get(),
-                                GenesisMod.prefix("great_bow_preset")
-                        )
-                );
+            for (RegistryObject<Item> itemObj : GenesisItems.ITEMS.getEntries()) {
+                Item item = itemObj.get();
+
+                if (item instanceof GreatBowItem greatBow) {
+                    String presetName = greatBow.getTier().getEpicFightPreset();
+
+                    InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
+                            new java.util.AbstractMap.SimpleEntry<>(
+                                    item,
+                                    GenesisMod.prefix(presetName)
+                            )
+                    );
+                }
             }
         });
     }
+
+
 
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {

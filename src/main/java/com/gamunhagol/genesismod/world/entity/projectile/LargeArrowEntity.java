@@ -16,6 +16,8 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,6 +43,7 @@ import static net.minecraft.core.BlockPos.betweenClosed;
 
 public class LargeArrowEntity extends AbstractArrow {
     private static final EntityDataAccessor<Boolean> EMPOWERED = SynchedEntityData.defineId(LargeArrowEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Boolean> POISONOUS = SynchedEntityData.defineId(LargeArrowEntity.class, EntityDataSerializers.BOOLEAN);
 
     public LargeArrowEntity(EntityType<? extends AbstractArrow> type, Level level) {
         super(type, level);
@@ -71,16 +74,26 @@ public class LargeArrowEntity extends AbstractArrow {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
 
-        /* 추후 에픽 파이트 로직 예시:
-        if (!this.level().isClientSide && result.getEntity() instanceof LivingEntity target) {
-            // 여기서 Impact 수치를 포함한 대미지를 입히는 코드를 작성합니다.
+        if (!this.level().isClientSide && this.isPoisonous() && result.getEntity() instanceof LivingEntity target) {
+            if (this.level().random.nextFloat() < 0.6F) {
+                target.addEffect(new MobEffectInstance(MobEffects.POISON, 120, 2));
+            }
         }
-        */
     }
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(EMPOWERED, false);
+        this.entityData.define(POISONOUS, false);
+    }
+
+    public void setPoisonous(boolean value) {
+        this.entityData.set(POISONOUS, value);
+    }
+
+    public boolean isPoisonous() {
+        return this.entityData.get(POISONOUS);
     }
 
     public void setEmpowered(boolean value) {
@@ -127,7 +140,7 @@ public class LargeArrowEntity extends AbstractArrow {
                     if (target != owner) {
                         target.hurt(shockwaveSource, finalDamage);
 
-                        //  화염 인챈트 상태라면 주변 적들에게 불을 붙임
+                        // 화염 인챈트 상태라면 주변 적들에게 불을 붙임
                         if (isFlashing) {
                             target.setSecondsOnFire(5);
                         }

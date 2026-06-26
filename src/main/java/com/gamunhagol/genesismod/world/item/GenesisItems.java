@@ -12,9 +12,7 @@ import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.tool.GenericScrollItem;
 import com.gamunhagol.genesismod.world.item.tool.LandEyeBlockItem;
 import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
-import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
-import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
-import com.gamunhagol.genesismod.world.item.weapon.LargeArrowItem;
+import com.gamunhagol.genesismod.world.item.weapon.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -206,7 +204,7 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> BEAST_REMAINS = ITEMS.register("beast_remains", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> FUSION_ORE = ITEMS.register("fusion_ore", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CARBONIZED_INGOT = ITEMS.register("carbonized_ingot", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> GIANT_STONE_FRAGMENT = ITEMS.register("giant_stone_fragment", () -> new Item(new Item.Properties()));
 
@@ -386,6 +384,27 @@ public class GenesisItems {
     public static final RegistryObject<Item> ANCIENT_ELVENIA_DAGGER = ITEMS.register("ancient_elvenia_dagger", () -> new DaggerItem(new Item.Properties()
             , GenesisItemTier.ANCIENT_ELVENIA));
 
+    public static final RegistryObject<Item> CARBONIZED_SWORD = ITEMS.register("carbonized_sword", () -> new SwordItem(GenesisItemTier.CARBONIZED, 3, -2.6f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CARBONIZED_SHOVEL = ITEMS.register("carbonized_shovel", () -> new ShovelItem(GenesisItemTier.CARBONIZED, 1.5f, -3.2f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CARBONIZED_PICKAXE = ITEMS.register("carbonized_pickaxe", () -> new PickaxeItem(GenesisItemTier.CARBONIZED, 1, -3.0f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CARBONIZED_AXE = ITEMS.register("carbonized_axe", () -> new AxeItem(GenesisItemTier.CARBONIZED, 5, -3.2f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> CARBONIZED_HOE = ITEMS.register("carbonized_hoe", () -> new HoeItem(GenesisItemTier.CARBONIZED, -4, 0.0f,
+            new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> CARBONIZED_GREATSWORD = ITEMS.register("carbonized_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.CARBONIZED));
+    public static final RegistryObject<Item> CARBONIZED_SPEAR = ITEMS.register("carbonized_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.CARBONIZED));
+    public static final RegistryObject<Item> CARBONIZED_TACHI = ITEMS.register("carbonized_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.CARBONIZED));
+    public static final RegistryObject<Item> CARBONIZED_LONGSWORD = ITEMS.register("carbonized_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.CARBONIZED));
+    public static final RegistryObject<Item> CARBONIZED_DAGGER = ITEMS.register("carbonized_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.CARBONIZED));
 
     public static final RegistryObject<Item> PEWRIESE_SWORD = ITEMS.register("pewriese_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
             new Item.Properties().fireResistant()));
@@ -413,6 +432,29 @@ public class GenesisItems {
             , GenesisItemTier.PEWRIESE));
 
 
+    public static final RegistryObject<Item> PURTRUCTION_SWORD = ITEMS.register("purtruction_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PURTRUCTION_SHOVEL = ITEMS.register("purtruction_shovel", () -> new ShovelItem(GenesisItemTier.PEWRIESE, 1.5f, -3.0f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PURTRUCTION_PICKAXE = ITEMS.register("purtruction_pickaxe", () -> new PickaxeItem(GenesisItemTier.PEWRIESE, 1, -2.8f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PURTRUCTION_AXE = ITEMS.register("purtruction_axe", () -> new AxeItem(GenesisItemTier.PEWRIESE, 5, -3.0f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PURTRUCTION_HOE = ITEMS.register("purtruction_hoe", () -> new HoeItem(GenesisItemTier.PEWRIESE, -4, 0.0f,
+            new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> PURTRUCTION_GREATSWORD = ITEMS.register("purtruction_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> PURTRUCTION_SPEAR = ITEMS.register("purtruction_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> PURTRUCTION_TACHI = ITEMS.register("purtruction_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> PURTRUCTION_LONGSWORD = ITEMS.register("purtruction_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> PURTRUCTION_DAGGER = ITEMS.register("purtruction_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PEWRIESE));
+
+
     public static final RegistryObject<Item> HOLY_KNIGHT_SWORD = ITEMS.register("holy_knight_sword", () -> new SwordItem(GenesisItemTier.HOLY_KNIGHT, 3, -2.4f,
             new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
@@ -427,16 +469,78 @@ public class GenesisItems {
     public static final RegistryObject<Item> HOLY_KNIGHT_DAGGER = ITEMS.register("holy_knight_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
             .rarity(Rarity.UNCOMMON), GenesisItemTier.HOLY_KNIGHT));
 
+    public static final RegistryObject<Item> PYULITELA_SWORD = ITEMS.register("pyulitela_sword", () -> new SwordItem(GenesisItemTier.PYULITELA, 3, -2.4f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PYULITELA_SHOVEL = ITEMS.register("pyulitela_shovel", () -> new ShovelItem(GenesisItemTier.PYULITELA, 1.5f, -3.0f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PYULITELA_PICKAXE = ITEMS.register("pyulitela_pickaxe", () -> new PickaxeItem(GenesisItemTier.PYULITELA, 1, -2.8f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PYULITELA_AXE = ITEMS.register("pyulitela_axe", () -> new AxeItem(GenesisItemTier.PYULITELA, 5, -3.0f,
+            new Item.Properties().fireResistant()));
+    public static final RegistryObject<Item> PYULITELA_HOE = ITEMS.register("pyulitela_hoe", () -> new HoeItem(GenesisItemTier.PYULITELA, -4, 0.0f,
+            new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<Item> PYULITELA_GREATSWORD = ITEMS.register("pyulitela_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PYULITELA));
+    public static final RegistryObject<Item> PYULITELA_SPEAR = ITEMS.register("pyulitela_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PYULITELA));
+    public static final RegistryObject<Item> PYULITELA_TACHI = ITEMS.register("pyulitela_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PYULITELA));
+    public static final RegistryObject<Item> PYULITELA_LONGSWORD = ITEMS.register("pyulitela_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PYULITELA));
+    public static final RegistryObject<Item> PYULITELA_DAGGER = ITEMS.register("pyulitela_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            , GenesisItemTier.PYULITELA));
+
+
+
+    public static final RegistryObject<Item> DEPTHS_SWORD = ITEMS.register("depths_sword", () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f,
+            new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> DEPTHS_GREATSWORD = ITEMS.register("depths_greatsword", () -> new GreatswordItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.RARE), GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> DEPTHS_SPEAR = ITEMS.register("depths_spear", () -> new SpearItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.RARE), GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> DEPTHS_TACHI = ITEMS.register("depths_tachi", () -> new TachiItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.RARE), GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> DEPTHS_LONGSWORD = ITEMS.register("depths_longsword", () -> new LongswordItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.RARE), GenesisItemTier.PEWRIESE));
+    public static final RegistryObject<Item> DEPTHS_DAGGER = ITEMS.register("depths_dagger", () -> new DaggerItem(new Item.Properties().fireResistant()
+            .rarity(Rarity.RARE), GenesisItemTier.PEWRIESE));
+
+    public static final RegistryObject<Item> GIANT_STONE_GREATSWORD = ITEMS.register("giant_stone_greatsword", () -> new GreatswordItem(new Item.Properties()
+            .rarity(Rarity.RARE), GenesisItemTier.GIANT_STONE));
+    public static final RegistryObject<Item> ACTIVATED_GIANT_STONE_GREATSWORD = ITEMS.register("activated_giant_stone_greatsword", () -> new GreatswordItem(new Item.Properties()
+            .rarity(Rarity.RARE), GenesisItemTier.GIANT_STONE));
+
     public static final RegistryObject<Item> CRYSTAL_GROWN_LONGSWORD = ITEMS.register("crystal_grown_longsword", () -> new LongswordItem(new Item.Properties()
             .rarity(Rarity.RARE), Tiers.DIAMOND));
 
     public static final RegistryObject<Item> OATH_IN_DEEP_DARK = ITEMS.register("oath_in_deep_dark",
             () -> new SwordItem(GenesisItemTier.PEWRIESE, 3, -2.4f, new Item.Properties().fireResistant().rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> BAILIFF_LONGSWORD = ITEMS.register("bailiff_longsword", () -> new LongswordItem(new Item.Properties()
+            .rarity(Rarity.RARE), GenesisItemTier.HOLY_KNIGHT));
+
+    public static final RegistryObject<Item> TAKRYU = ITEMS.register("takryu", () -> new UchigatanaItem(new Item.Properties()
+            .rarity(Rarity.RARE)));
+
+
 
 
     public static final RegistryObject<Item> GREAT_BOW = ITEMS.register("great_bow", () -> new GreatBowItem(new Item.Properties()
-            .durability(484)));
+            , GreatBowTier.NORMAL));
+
+    public static final RegistryObject<Item> ROOT_WOVEN_BOW = ITEMS.register("root_woven_bow", () -> new PoisonGreatBowItem(new Item.Properties()
+            , GreatBowTier.ROOT_WOVEN));
+
+    public static final RegistryObject<Item> ELVENIA_GREAT_BOW = ITEMS.register("elvenia_great_bow", () -> new GreatBowItem(new Item.Properties()
+            , GreatBowTier.ELVENIA));
+
+    public static final RegistryObject<Item> ANCIENT_ELVENIA_GREAT_BOW = ITEMS.register("ancient_elvenia_great_bow", () -> new GreatBowItem(new Item.Properties()
+            , GreatBowTier.ANCIENT_ELVENIA));
+
+    public static final RegistryObject<Item> PEWRIESE_GREAT_BOW = ITEMS.register("pewriese_great_bow", () -> new GreatBowItem(new Item.Properties()
+            , GreatBowTier.PEWRIESE));
 
     public static final RegistryObject<Item> LARGE_ARROW = ITEMS.register("large_arrow", () -> new LargeArrowItem(new Item.Properties()));
 
@@ -470,6 +574,15 @@ public class GenesisItems {
     public static final RegistryObject<Item> PADDED_CHAIN_BOOTS = ITEMS.register("padded_chain_boots", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
+    public static final RegistryObject<Item> SCORPION_HELMET = ITEMS.register("scorpion_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.SCORPION,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> SCORPION_CHESTPLATE = ITEMS.register("scorpion_chestplate", () -> new GenesisArmorItem(GenesisArmorMaterials.SCORPION,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> SCORPION_LEGGINGS = ITEMS.register("scorpion_leggings", () -> new GenesisArmorItem(GenesisArmorMaterials.SCORPION,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> SCORPION_BOOTS = ITEMS.register("scorpion_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.SCORPION,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
     public static final RegistryObject<Item> ELVENIA_HELMET = ITEMS.register("elvenia_helmet", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
             ArmorItem.Type.HELMET,new Item.Properties()));
     public static final RegistryObject<Item> ELVENIA_CHESTPLATE = ITEMS.register("elvenia_chestplate", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
@@ -486,6 +599,24 @@ public class GenesisItems {
     public static final RegistryObject<Item> ANCIENT_ELVENIA_LEGGINGS = ITEMS.register("ancient_elvenia_leggings", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
             ArmorItem.Type.LEGGINGS,new Item.Properties()));
     public static final RegistryObject<Item> ANCIENT_ELVENIA_BOOTS = ITEMS.register("ancient_elvenia_boots", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> CARBONIZED_HELMET = ITEMS.register("carbonized_helmet", () -> new CarbonizedArmor(GenesisArmorMaterials.CARBONIZED,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> CARBONIZED_CHESTPLATE = ITEMS.register("carbonized_chestplate", () -> new CarbonizedArmor(GenesisArmorMaterials.CARBONIZED,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> CARBONIZED_LEGGINGS = ITEMS.register("carbonized_leggings", () -> new CarbonizedArmor(GenesisArmorMaterials.CARBONIZED,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> CARBONIZED_BOOTS = ITEMS.register("carbonized_boots", () -> new CarbonizedArmor(GenesisArmorMaterials.CARBONIZED,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> AMETHYST_HELMET = ITEMS.register("amethyst_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.AMETHYST,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_CHESTPLATE = ITEMS.register("amethyst_chestplate", () -> new GenesisArmorItem(GenesisArmorMaterials.AMETHYST,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_LEGGINGS = ITEMS.register("amethyst_leggings", () -> new GenesisArmorItem(GenesisArmorMaterials.AMETHYST,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> AMETHYST_BOOTS = ITEMS.register("amethyst_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.AMETHYST,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
     public static final RegistryObject<Item> PEWRIESE_HELMET = ITEMS.register("pewriese_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.PEWRIESE,
@@ -515,6 +646,56 @@ public class GenesisItems {
     public static final RegistryObject<Item> HOLY_KNIGHT_BOOTS = ITEMS.register("holy_knight_boots", () -> new HolyKnightArmor(GenesisArmorMaterials.HOLY_KNIGHT,
             ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().rarity(Rarity.UNCOMMON)));
 
+    public static final RegistryObject<Item> BAILIFF_HELMET = ITEMS.register("bailiff_helmet", () -> new BailiffArmor(GenesisArmorMaterials.BAILIFF,
+            ArmorItem.Type.HELMET,new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BAILIFF_CHESTPLATE = ITEMS.register("bailiff_chestplate", () -> new BailiffArmor(GenesisArmorMaterials.BAILIFF,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BAILIFF_LEGGINGS = ITEMS.register("bailiff_leggings", () -> new BailiffArmor(GenesisArmorMaterials.BAILIFF,
+            ArmorItem.Type.LEGGINGS,new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BAILIFF_BOOTS = ITEMS.register("bailiff_boots", () -> new BailiffArmor(GenesisArmorMaterials.BAILIFF,
+            ArmorItem.Type.BOOTS,new Item.Properties().fireResistant().rarity(Rarity.RARE)));
+
+
+
+    public static final RegistryObject<Item> CLOTH_BANDANA = ITEMS.register("cloth_bandana", () -> new ClothArmor(GenesisArmorMaterials.CLOTH,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> CLOTH_ROBE = ITEMS.register("cloth_robe", () -> new ClothArmor(GenesisArmorMaterials.CLOTH,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> CLOTH_LEGGINGS = ITEMS.register("cloth_leggings", () -> new ClothArmor(GenesisArmorMaterials.CLOTH,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> CLOTH_BOOTS = ITEMS.register("cloth_boots", () -> new ClothArmor(GenesisArmorMaterials.CLOTH,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> PILGRIM_BANDANA = ITEMS.register("pilgrim_bandana", () -> new PilgrimArmor(GenesisArmorMaterials.PILGRIM,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> PILGRIM_ROBE = ITEMS.register("pilgrim_robe", () -> new PilgrimArmor(GenesisArmorMaterials.PILGRIM,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> PILGRIM_LEGGINGS = ITEMS.register("pilgrim_leggings", () -> new PilgrimArmor(GenesisArmorMaterials.PILGRIM,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> PILGRIM_BOOTS = ITEMS.register("pilgrim_boots", () -> new PilgrimArmor(GenesisArmorMaterials.PILGRIM,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> ASTROLOGER_BANDANA = ITEMS.register("astrologer_bandana", () -> new AstrologerArmor(GenesisArmorMaterials.ASTROLOGER,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> ASTROLOGER_ROBE = ITEMS.register("astrologer_robe", () -> new AstrologerArmor(GenesisArmorMaterials.ASTROLOGER,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> ASTROLOGER_LEGGINGS = ITEMS.register("astrologer_leggings", () -> new AstrologerArmor(GenesisArmorMaterials.ASTROLOGER,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> ASTROLOGER_BOOTS = ITEMS.register("astrologer_boots", () -> new AstrologerArmor(GenesisArmorMaterials.ASTROLOGER,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
+    public static final RegistryObject<Item> EMBROIDERED_VEIL = ITEMS.register("embroidered_veil", () -> new EmbroideredArmor(GenesisArmorMaterials.EMBROIDERED,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+
+
+    public static final RegistryObject<Item> WHITE_IRON_HELMET = ITEMS.register("white_iron_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_IRON_CHESTPLATE = ITEMS.register("white_iron_chestplate", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_IRON_LEGGINGS = ITEMS.register("white_iron_leggings", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> WHITE_IRON_BOOTS = ITEMS.register("white_iron_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
 
 
     //accessories
@@ -616,7 +797,7 @@ public class GenesisItems {
 
 
 
-
+    public static final RegistryObject<Item> TAKRYU_SHEATH = ITEMS.register("takryu_sheath", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> QUICKSAND_BUCKET =
             ITEMS.register("quicksand_bucket",

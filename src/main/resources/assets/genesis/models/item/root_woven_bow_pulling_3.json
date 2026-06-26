@@ -1,0 +1,6 @@
+{
+  "parent": "genesis:item/great_bow",
+  "textures": {
+    "layer0": "genesis:item/root_woven_bow_pulling_3"
+  }
+}

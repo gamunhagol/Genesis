@@ -10,10 +10,12 @@ import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketChangeSelectedSlot;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ComputeFovModifierEvent;
 import net.minecraftforge.client.event.RegisterGuiOverlaysEvent;
@@ -24,6 +26,7 @@ import net.minecraftforge.event.TickEvent; // [추가]
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class GenesisClientEvents {
@@ -43,20 +46,27 @@ public class GenesisClientEvents {
     }
 
     private static void registerBowProperties() {
-        ItemProperties.register(
-                GenesisItems.GREAT_BOW.get(),
-                new ResourceLocation("pulling"),
-                (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
-        );
+        for (RegistryObject<Item> itemObj : GenesisItems.ITEMS.getEntries()) {
+            Item item = itemObj.get();
 
-        ItemProperties.register(
-                GenesisItems.GREAT_BOW.get(),
-                new ResourceLocation("pull"),
-                (stack, level, entity, seed) -> {
-                    if (entity == null || entity.getUseItem() != stack) return 0.0F;
-                    return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / 28.0F;
-                }
-        );
+            if (item instanceof GreatBowItem) {
+
+                ItemProperties.register(
+                        item,
+                        new ResourceLocation("pulling"),
+                        (stack, level, entity, seed) -> entity != null && entity.isUsingItem() && entity.getUseItem() == stack ? 1.0F : 0.0F
+                );
+
+                ItemProperties.register(
+                        item,
+                        new ResourceLocation("pull"),
+                        (stack, level, entity, seed) -> {
+                            if (entity == null || entity.getUseItem() != stack) return 0.0F;
+                            return (float)(stack.getUseDuration() - entity.getUseItemRemainingTicks()) / GreatBowItem.MAX_CHARGE_TIME;
+                        }
+                );
+            }
+        }
     }
 
     @SubscribeEvent
@@ -76,9 +86,11 @@ public class GenesisClientEvents {
 
         @SubscribeEvent
         public static void onComputeFovModifier(ComputeFovModifierEvent event) {
-            if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().is(GenesisItems.GREAT_BOW.get())) {
+            if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().getItem() instanceof GreatBowItem) {
                 int i = event.getPlayer().getTicksUsingItem();
-                float f = (float)i / 38.0F;
+
+                float f = (float)i / GreatBowItem.MAX_CHARGE_TIME;
+
                 if (f > 1.0F) {
                     f = 1.0F;
                 } else {

@@ -36,6 +36,11 @@ public class RegisterModels {
     public static AncientElveniaLeggingsModel<?> ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
     public static AncientElveniaBootsModel<?> ANCIENT_ELVENIA_BOOTS_MODEL = null;
 
+    public static CarbonizedHelmetModel<?> CARBONIZED_HELMET_MODEL = null;
+    public static CarbonizedChestplateModel<?> CARBONIZED_CHESTPLATE_MODEL = null;
+    public static CarbonizedLeggingsModel<?> CARBONIZED_LEGGINGS_MODEL = null;
+    public static CarbonizedBootsModel<?> CARBONIZED_BOOTS_MODEL = null;
+
     public static PewriesePlateHelmetModel<?> PEWRIESE_PLATE_HELMET_MODEL = null;
     public static PewriesePlateChestplateModel<?> PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
     public static PewriesePlateLeggingsModel<?> PEWRIESE_PLATE_LEGGINGS_MODEL = null;
@@ -45,6 +50,20 @@ public class RegisterModels {
     public static HolyKnightChestplateModel<?> HOLY_KNIGHT_CHESTPLATE_MODEL = null;
     public static HolyKnightLeggingsModel<?> HOLY_KNIGHT_LEGGINGS_MODEL = null;
     public static HolyKnightBootsModel<?> HOLY_KNIGHT_BOOTS_MODEL = null;
+
+    public static BailiffHelmetModel<?> BAILIFF_HELMET_MODEL = null;
+    public static BailiffChestplateModel<?> BAILIFF_CHESTPLATE_MODEL = null;
+    public static BailiffLeggingsModel<?> BAILIFF_LEGGINGS_MODEL = null;
+    public static BailiffBootsModel<?> BAILIFF_BOOTS_MODEL = null;
+
+
+
+    public static ClothHelmetModel<?> CLOTH_HELMET_MODEL = null;
+    public static ClothChestplateModel<?> CLOTH_CHESTPLATE_MODEL = null;
+    public static ClothLeggingsModel<?> CLOTH_LEGGINGS_MODEL = null;
+    public static ClothBootsModel<?> CLOTH_BOOTS_MODEL = null;
+
+    public static EmbroideredVeilModel<?> EMBROIDERED_VEIL_MODEL = null;
 
     @SubscribeEvent
     public static void registerReloadListener(RegisterClientReloadListenersEvent event) {
@@ -60,6 +79,11 @@ public class RegisterModels {
             RegisterModels.ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
             RegisterModels.ANCIENT_ELVENIA_BOOTS_MODEL = null;
 
+            RegisterModels.CARBONIZED_HELMET_MODEL = null;
+            RegisterModels.CARBONIZED_CHESTPLATE_MODEL = null;
+            RegisterModels.CARBONIZED_LEGGINGS_MODEL = null;
+            RegisterModels.CARBONIZED_BOOTS_MODEL = null;
+
             RegisterModels.PEWRIESE_PLATE_HELMET_MODEL = null;
             RegisterModels.PEWRIESE_PLATE_CHESTPLATE_MODEL = null;
             RegisterModels.PEWRIESE_PLATE_LEGGINGS_MODEL = null;
@@ -69,6 +93,20 @@ public class RegisterModels {
             RegisterModels.HOLY_KNIGHT_CHESTPLATE_MODEL = null;
             RegisterModels.HOLY_KNIGHT_LEGGINGS_MODEL = null;
             RegisterModels.HOLY_KNIGHT_BOOTS_MODEL = null;
+
+            RegisterModels.BAILIFF_HELMET_MODEL = null;
+            RegisterModels.BAILIFF_CHESTPLATE_MODEL = null;
+            RegisterModels.BAILIFF_LEGGINGS_MODEL = null;
+            RegisterModels.BAILIFF_BOOTS_MODEL = null;
+
+
+
+            RegisterModels.CLOTH_HELMET_MODEL = null;
+            RegisterModels.CLOTH_CHESTPLATE_MODEL = null;
+            RegisterModels.CLOTH_LEGGINGS_MODEL = null;
+            RegisterModels.CLOTH_BOOTS_MODEL = null;
+
+            RegisterModels.EMBROIDERED_VEIL_MODEL = null;
         });
     }
 
@@ -88,6 +126,11 @@ public class RegisterModels {
         ANCIENT_ELVENIA_LEGGINGS_MODEL = new AncientElveniaLeggingsModel<>(mcModels.bakeLayer(AncientElveniaLeggingsModel.LAYER_LOCATION));
         ANCIENT_ELVENIA_BOOTS_MODEL = new AncientElveniaBootsModel<>(mcModels.bakeLayer(AncientElveniaBootsModel.LAYER_LOCATION));
 
+        CARBONIZED_HELMET_MODEL = new CarbonizedHelmetModel<>(mcModels.bakeLayer(CarbonizedHelmetModel.LAYER_LOCATION));
+        CARBONIZED_CHESTPLATE_MODEL = new CarbonizedChestplateModel<>(mcModels.bakeLayer(CarbonizedChestplateModel.LAYER_LOCATION));
+        CARBONIZED_LEGGINGS_MODEL = new CarbonizedLeggingsModel<>(mcModels.bakeLayer(CarbonizedLeggingsModel.LAYER_LOCATION));
+        CARBONIZED_BOOTS_MODEL = new CarbonizedBootsModel<>(mcModels.bakeLayer(CarbonizedBootsModel.LAYER_LOCATION));
+
         PEWRIESE_PLATE_HELMET_MODEL = new PewriesePlateHelmetModel<>(mcModels.bakeLayer(PewriesePlateHelmetModel.LAYER_LOCATION));
         PEWRIESE_PLATE_CHESTPLATE_MODEL = new PewriesePlateChestplateModel<>(mcModels.bakeLayer(PewriesePlateChestplateModel.LAYER_LOCATION));
         PEWRIESE_PLATE_LEGGINGS_MODEL = new PewriesePlateLeggingsModel<>(mcModels.bakeLayer(PewriesePlateLeggingsModel.LAYER_LOCATION));
@@ -97,6 +140,20 @@ public class RegisterModels {
         HOLY_KNIGHT_CHESTPLATE_MODEL = new HolyKnightChestplateModel<>(mcModels.bakeLayer(HolyKnightChestplateModel.LAYER_LOCATION));
         HOLY_KNIGHT_LEGGINGS_MODEL = new HolyKnightLeggingsModel<>(mcModels.bakeLayer(HolyKnightLeggingsModel.LAYER_LOCATION));
         HOLY_KNIGHT_BOOTS_MODEL = new HolyKnightBootsModel<>(mcModels.bakeLayer(HolyKnightBootsModel.LAYER_LOCATION));
+
+        BAILIFF_HELMET_MODEL = new BailiffHelmetModel<>(mcModels.bakeLayer(BailiffHelmetModel.LAYER_LOCATION));
+        BAILIFF_CHESTPLATE_MODEL = new BailiffChestplateModel<>(mcModels.bakeLayer(BailiffChestplateModel.LAYER_LOCATION));
+        BAILIFF_LEGGINGS_MODEL = new BailiffLeggingsModel<>(mcModels.bakeLayer(BailiffLeggingsModel.LAYER_LOCATION));
+        BAILIFF_BOOTS_MODEL = new BailiffBootsModel<>(mcModels.bakeLayer(BailiffBootsModel.LAYER_LOCATION));
+
+
+
+        CLOTH_HELMET_MODEL = new ClothHelmetModel<>(mcModels.bakeLayer(ClothHelmetModel.LAYER_LOCATION));
+        CLOTH_CHESTPLATE_MODEL = new ClothChestplateModel<>(mcModels.bakeLayer(ClothChestplateModel.LAYER_LOCATION));
+        CLOTH_LEGGINGS_MODEL = new ClothLeggingsModel<>(mcModels.bakeLayer(ClothLeggingsModel.LAYER_LOCATION));
+        CLOTH_BOOTS_MODEL = new ClothBootsModel<>(mcModels.bakeLayer(ClothBootsModel.LAYER_LOCATION));
+
+        EMBROIDERED_VEIL_MODEL = new EmbroideredVeilModel<>(mcModels.bakeLayer(EmbroideredVeilModel.LAYER_LOCATION));
 
 
     }
@@ -115,6 +172,11 @@ public class RegisterModels {
         event.registerLayerDefinition(AncientElveniaLeggingsModel.LAYER_LOCATION, AncientElveniaLeggingsModel::createArmorLayer);
         event.registerLayerDefinition(AncientElveniaBootsModel.LAYER_LOCATION, AncientElveniaBootsModel::createArmorLayer);
 
+        event.registerLayerDefinition(CarbonizedHelmetModel.LAYER_LOCATION, CarbonizedHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(CarbonizedChestplateModel.LAYER_LOCATION, CarbonizedChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(CarbonizedLeggingsModel.LAYER_LOCATION, CarbonizedLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(CarbonizedBootsModel.LAYER_LOCATION, CarbonizedBootsModel::createArmorLayer);
+
         event.registerLayerDefinition(PewriesePlateHelmetModel.LAYER_LOCATION, PewriesePlateHelmetModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateChestplateModel.LAYER_LOCATION, PewriesePlateChestplateModel::createArmorLayer);
         event.registerLayerDefinition(PewriesePlateLeggingsModel.LAYER_LOCATION, PewriesePlateLeggingsModel::createArmorLayer);
@@ -124,6 +186,20 @@ public class RegisterModels {
         event.registerLayerDefinition(HolyKnightChestplateModel.LAYER_LOCATION, HolyKnightChestplateModel::createArmorLayer);
         event.registerLayerDefinition(HolyKnightLeggingsModel.LAYER_LOCATION, HolyKnightLeggingsModel::createArmorLayer);
         event.registerLayerDefinition(HolyKnightBootsModel.LAYER_LOCATION, HolyKnightBootsModel::createArmorLayer);
+
+        event.registerLayerDefinition(BailiffHelmetModel.LAYER_LOCATION, BailiffHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(BailiffChestplateModel.LAYER_LOCATION, BailiffChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(BailiffLeggingsModel.LAYER_LOCATION, BailiffLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(BailiffBootsModel.LAYER_LOCATION, BailiffBootsModel::createArmorLayer);
+
+
+
+        event.registerLayerDefinition(ClothHelmetModel.LAYER_LOCATION, ClothHelmetModel::createArmorLayer);
+        event.registerLayerDefinition(ClothChestplateModel.LAYER_LOCATION, ClothChestplateModel::createArmorLayer);
+        event.registerLayerDefinition(ClothLeggingsModel.LAYER_LOCATION, ClothLeggingsModel::createArmorLayer);
+        event.registerLayerDefinition(ClothBootsModel.LAYER_LOCATION, ClothBootsModel::createArmorLayer);
+
+        event.registerLayerDefinition(EmbroideredVeilModel.LAYER_LOCATION, EmbroideredVeilModel::createArmorLayer);
 
         //blockentity
         event.registerLayerDefinition(ModModelLayers.SENTINEL_LAYER, SentinelStatueModel::createBodyLayer);

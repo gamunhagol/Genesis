@@ -40,11 +40,11 @@
 
   "item.genesis.beast_remains": "Beast Remains",
 
-  "item.genesis.fusion_ore": "Fusion Ore",
   "item.genesis.giant_stone_fragment": "Giant Stone Fragment",
 
   "item.genesis.fusion_stone": "Fusion Stone",
 
+  "item.genesis.carbonized_ingot": "Carbonized Ingot",
   "item.genesis.white_iron_ingot": "White Iron Ingot",
   "item.genesis.based_sculpture": "Based Sculpture",
 
@@ -126,6 +126,18 @@
   "item.genesis.ancient_elvenia_longsword": "Ancient Elvenia Longsword",
   "item.genesis.ancient_elvenia_dagger": "Ancient Elvenia Dagger",
 
+  "item.genesis.carbonized_sword": "Carbonized Sword",
+  "item.genesis.carbonized_shovel": "Carbonized Shovel",
+  "item.genesis.carbonized_pickaxe": "Carbonized Pickaxe",
+  "item.genesis.carbonized_axe": "Carbonized Axe",
+  "item.genesis.carbonized_hoe": "Carbonized Hoe",
+
+  "item.genesis.carbonized_greatsword": "Carbonized Greatsword",
+  "item.genesis.carbonized_spear": "Carbonized Spear",
+  "item.genesis.carbonized_tachi": "Carbonized Tachi",
+  "item.genesis.carbonized_longsword": "Carbonized Longsword",
+  "item.genesis.carbonized_dagger": "Carbonized Dagger",
+
   "item.genesis.pewriese_sword": "Pewriese Sword",
   "item.genesis.pewriese_shovel": "Pewriese Shovel",
   "item.genesis.pewriese_pickaxe": "Pewriese Pickaxe",
@@ -140,6 +152,18 @@
 
   "item.genesis.pewriese_gauntlet": "Pewriese Gauntlet",
 
+  "item.genesis.purtruction_sword": "Purtruction Sword",
+  "item.genesis.purtruction_shovel": "Purtruction Shovel",
+  "item.genesis.purtruction_pickaxe": "Purtruction Pickaxe",
+  "item.genesis.purtruction_axe": "Purtruction Axe",
+  "item.genesis.purtruction_hoe": "Purtruction Hoe",
+
+  "item.genesis.purtruction_greatsword": "Purtruction Greatsword",
+  "item.genesis.purtruction_spear": "Purtruction Spear",
+  "item.genesis.purtruction_tachi": "Purtruction Tachi",
+  "item.genesis.purtruction_longsword": "Purtruction Longsword",
+  "item.genesis.purtruction_dagger": "Purtruction Dagger",
+
   "item.genesis.holy_knight_sword": "Holy Knight Sword",
 
   "item.genesis.holy_knight_greatsword": "Holy Knight Greatsword",
@@ -148,9 +172,37 @@
   "item.genesis.holy_knight_longsword": "Holy Knight Longsword",
   "item.genesis.holy_knight_dagger": "Holy Knight Dagger",
 
+  "item.genesis.pyulitela_sword": "Pyulitela Sword",
+  "item.genesis.pyulitela_shovel": "Pyulitela Shovel",
+  "item.genesis.pyulitela_pickaxe": "Pyulitela Pickaxe",
+  "item.genesis.pyulitela_axe": "Pyulitela Axe",
+  "item.genesis.pyulitela_hoe": "Pyulitela Hoe",
+
+  "item.genesis.pyulitela_greatsword": "Pyulitela Greatsword",
+  "item.genesis.pyulitela_spear": "Pyulitela Spear",
+  "item.genesis.pyulitela_tachi": "Pyulitela Tachi",
+  "item.genesis.pyulitela_longsword": "Pyulitela Longsword",
+  "item.genesis.pyulitela_dagger": "Pyulitela Dagger",
+
+
+  "item.genesis.depths_sword": "Depths Sword",
+
+  "item.genesis.depths_greatsword": "Depths Greatsword",
+  "item.genesis.depths_spear": "Depths Spear",
+  "item.genesis.depths_tachi": "Depths Tachi",
+  "item.genesis.depths_longsword": "Depths Longsword",
+  "item.genesis.depths_dagger": "Depths Dagger",
+
+  "item.genesis.giant_stone_greatsword": "Giant Stone Greatsword",
+  "item.genesis.activated_giant_stone_greatsword": "Activated Giant Stone Greatsword",
+
   "item.genesis.crystal_grown_longsword": "Crystal Grown Longsword",
 
   "item.genesis.oath_in_deep_dark": "Oath in Deep Dark",
+
+  "item.genesis.bailiff_longsword": "Bailiff Longsword",
+
+  "item.genesis.takryu": "Takryu",
 
 
 
@@ -158,6 +210,11 @@
   "item.genesis.padded_chain_chestplate": "Padded Chain Chestplate",
   "item.genesis.padded_chain_leggings": "Padded Chain Leggings",
   "item.genesis.padded_chain_boots": "Padded Chain boots",
+
+  "item.genesis.scorpion_helmet": "Scorpion Helmet",
+  "item.genesis.scorpion_chestplate": "Scorpion Chestplate",
+  "item.genesis.scorpion_leggings": "Scorpion Leggings",
+  "item.genesis.scorpion_boots": "Scorpion boots",
 
   "item.genesis.elvenia_helmet": "Elvenia Helmet",
   "item.genesis.elvenia_chestplate": "Elvenia Chestplate",
@@ -168,6 +225,16 @@
   "item.genesis.ancient_elvenia_chestplate": "Ancient Elvenia Chestplate",
   "item.genesis.ancient_elvenia_leggings": "Ancient Elvenia Leggings",
   "item.genesis.ancient_elvenia_boots": "Ancient Elvenia boots",
+
+  "item.genesis.carbonized_helmet": "Carbonized Helmet",
+  "item.genesis.carbonized_chestplate": "Carbonized Chestplate",
+  "item.genesis.carbonized_leggings": "Carbonized Leggings",
+  "item.genesis.carbonized_boots": "Carbonized boots",
+
+  "item.genesis.amethyst_helmet": "Amethyst Helmet",
+  "item.genesis.amethyst_chestplate": "Amethyst Chestplate",
+  "item.genesis.amethyst_leggings": "Amethyst Leggings",
+  "item.genesis.amethyst_boots": "Amethyst boots",
 
   "item.genesis.pewriese_helmet": "Pewriese Helmet",
   "item.genesis.pewriese_chestplate": "Pewriese Chestplate",
@@ -184,8 +251,40 @@
   "item.genesis.holy_knight_leggings": "Holy Knight Leggings",
   "item.genesis.holy_knight_boots": "Holy Knight boots",
 
+  "item.genesis.bailiff_helmet": "Bailiff Helmet",
+  "item.genesis.bailiff_chestplate": "Bailiff Chestplate",
+  "item.genesis.bailiff_leggings": "Bailiff Leggings",
+  "item.genesis.bailiff_boots": "Bailiff boots",
+
+
+  "item.genesis.cloth_bandana": "Cloth Bandana",
+  "item.genesis.cloth_robe": "Cloth Robe",
+  "item.genesis.cloth_leggings": "Cloth Leggings",
+  "item.genesis.cloth_boots": "Cloth boots",
+
+  "item.genesis.pilgrim_bandana": "Pilgrim Bandana",
+  "item.genesis.pilgrim_robe": "Pilgrim Robe",
+  "item.genesis.pilgrim_leggings": "Pilgrim Leggings",
+  "item.genesis.pilgrim_boots": "Pilgrim boots",
+
+  "item.genesis.astrologer_bandana": "Astrologer Bandana",
+  "item.genesis.astrologer_robe": "Astrologer Robe",
+  "item.genesis.astrologer_leggings": "Astrologer Leggings",
+  "item.genesis.astrologer_boots": "Astrologer boots",
+
+  "item.genesis.embroidered_veil": "Embroidered Veil",
+
+  "item.genesis.white_iron_helmet": "White Iron Helmet",
+  "item.genesis.white_iron_chestplate": "White Iron Chestplate",
+  "item.genesis.white_iron_leggings": "White Iron Leggings",
+  "item.genesis.white_iron_boots": "White Iron boots",
 
   "item.genesis.great_bow": "Great Bow",
+  "item.genesis.root_woven_bow": "Root Woven Bow",
+  "item.genesis.elvenia_great_bow": "Elvenia Great Bow",
+  "item.genesis.ancient_elvenia_great_bow": "Ancient Elvenia Great Bow",
+  "item.genesis.pewriese_great_bow": "Pewriese Great Bow",
+
   "item.genesis.large_arrow": "Large Arrow",
 
   "item.genesis.amethyst_wand": "Amethyst Wand",

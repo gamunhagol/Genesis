@@ -1,0 +1,36 @@
+{
+  "item": "genesis:carbonized_tachi",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 11.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 16,
+    "dexterity": 21
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "E",
+      "dexterity": "D"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "D"
+    },
+    "25": {
+      "strength": "D",
+      "dexterity": "B"
+    }
+  }
+}

@@ -23,15 +23,13 @@ public class ArmorTooltipHandler {
 
         List<Component> tooltip = event.getToolTip();
 
-        int insertIndex = findArmorIndex(tooltip);
-        if (insertIndex == tooltip.size()) return;
-
         Component fireLine = removeAndGetLine(tooltip, "fire_defense");
         Component frostLine = removeAndGetLine(tooltip, "frost_defense");
         Component lightningLine = removeAndGetLine(tooltip, "lightning_defense");
         Component magicLine = removeAndGetLine(tooltip, "magic_defense");
         Component holyLine = removeAndGetLine(tooltip, "holy_defense");
 
+        int insertIndex = findArmorIndex(tooltip);
         int currentIndex = insertIndex;
 
         if (fireLine != null) {

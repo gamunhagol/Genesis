@@ -1,0 +1,36 @@
+{
+  "item": "genesis:purtruction_spear",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 9.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.03
+  },
+  "requirements": {
+    "strength": 12,
+    "dexterity": 17
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "E",
+      "dexterity": "D"
+    },
+    "16": {
+      "strength": "D",
+      "dexterity": "C"
+    },
+    "25": {
+      "strength": "D",
+      "dexterity": "B"
+    }
+  }
+}

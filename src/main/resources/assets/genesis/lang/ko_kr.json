@@ -39,11 +39,11 @@
 
   "item.genesis.beast_remains": "야수의 유해",
 
-  "item.genesis.fusion_ore": "융화된 광석",
   "item.genesis.giant_stone_fragment": "거인석 파편",
 
   "item.genesis.fusion_stone": "융합석",
 
+  "item.genesis.carbonized_ingot": "탄화강괴 주괴",
   "item.genesis.white_iron_ingot": "백철 주괴",
   "item.genesis.based_sculpture": "기반조각",
 
@@ -127,6 +127,18 @@
   "item.genesis.ancient_elvenia_longsword": "고대 엘브니아 장검",
   "item.genesis.ancient_elvenia_dagger": "고대 엘브니아 단검",
 
+  "item.genesis.carbonized_sword": "탄화강괴 검",
+  "item.genesis.carbonized_shovel": "탄화강괴 삽",
+  "item.genesis.carbonized_pickaxe": "탄화강괴 곡괭이",
+  "item.genesis.carbonized_axe": "탄화강괴 도끼",
+  "item.genesis.carbonized_hoe": "탄화강괴 괭이",
+
+  "item.genesis.carbonized_greatsword": "탄화강괴 대검",
+  "item.genesis.carbonized_spear": "탄화강괴 창",
+  "item.genesis.carbonized_tachi": "탄화강괴 태도",
+  "item.genesis.carbonized_longsword": "탄화강괴 장검",
+  "item.genesis.carbonized_dagger": "탄화강괴 단검",
+
   "item.genesis.pewriese_sword": "퓨리즌 검",
   "item.genesis.pewriese_shovel": "퓨리즌 삽",
   "item.genesis.pewriese_pickaxe": "퓨리즌 곡괭이",
@@ -141,6 +153,18 @@
 
   "item.genesis.pewriese_gauntlet": "퓨리즌 건틀릿",
 
+  "item.genesis.purtruction_sword": "정화의 검",
+  "item.genesis.purtruction_shovel": "정화의 삽",
+  "item.genesis.purtruction_pickaxe": "정화의 곡괭이",
+  "item.genesis.purtruction_axe": "정화의 도끼",
+  "item.genesis.purtruction_hoe": "정화의 괭이",
+
+  "item.genesis.purtruction_greatsword": "정화의 대검",
+  "item.genesis.purtruction_spear": "정화의 창",
+  "item.genesis.purtruction_tachi": "정화의 태도",
+  "item.genesis.purtruction_longsword": "정화의 장검",
+  "item.genesis.purtruction_dagger": "정화의 단검",
+
   "item.genesis.holy_knight_sword": "신성기사 검",
 
   "item.genesis.holy_knight_greatsword": "신성기사 대검",
@@ -149,9 +173,37 @@
   "item.genesis.holy_knight_longsword": "신성기사 장검",
   "item.genesis.holy_knight_dagger": "신성기사 단검",
 
+  "item.genesis.pyulitela_sword": "땅의 순수 검",
+  "item.genesis.pyulitela_shovel": "땅의 순수 삽",
+  "item.genesis.pyulitela_pickaxe": "땅의 순수 곡괭이",
+  "item.genesis.pyulitela_axe": "땅의 순수 도끼",
+  "item.genesis.pyulitela_hoe": "땅의 순수 괭이",
+
+  "item.genesis.pyulitela_greatsword": "땅의 순수 대검",
+  "item.genesis.pyulitela_spear": "땅의 순수 창",
+  "item.genesis.pyulitela_tachi": "땅의 순수 태초",
+  "item.genesis.pyulitela_longsword": "땅의 순수 장검",
+  "item.genesis.pyulitela_dagger": "땅의 순수 단검",
+
+
+  "item.genesis.depths_sword": "깊은곳의 검",
+
+  "item.genesis.depths_greatsword": "깊은곳의 대검",
+  "item.genesis.depths_spear": "깊은곳의 창",
+  "item.genesis.depths_tachi": "깊은곳의 태도",
+  "item.genesis.depths_longsword": "깊은곳의 장검",
+  "item.genesis.depths_dagger": "깊은곳의 단검",
+
+  "item.genesis.giant_stone_greatsword": "거인석 대검",
+  "item.genesis.activated_giant_stone_greatsword": "활성화 거인석 대검",
+
   "item.genesis.crystal_grown_longsword": "수정이 자라난 장검",
 
   "item.genesis.oath_in_deep_dark": "깊은 어둠속의 맹세",
+
+  "item.genesis.bailiff_longsword": "집행관의 장검",
+
+  "item.genesis.takryu": "탁류",
 
 
 
@@ -159,6 +211,11 @@
   "item.genesis.padded_chain_chestplate": "가죽 덧댄 사슬 흉갑",
   "item.genesis.padded_chain_leggings": "가죽 덧댄 사슬 레깅스",
   "item.genesis.padded_chain_boots": "가죽 덧댄 사슬 부츠",
+
+  "item.genesis.scorpion_helmet": "전갈 투구",
+  "item.genesis.scorpion_chestplate": "전갈 흉갑",
+  "item.genesis.scorpion_leggings": "전갈 레깅스",
+  "item.genesis.scorpion_boots": "전갈 부츠",
 
   "item.genesis.elvenia_helmet": "엘브니아 투구",
   "item.genesis.elvenia_chestplate": "엘브니아 흉갑",
@@ -170,6 +227,15 @@
   "item.genesis.ancient_elvenia_leggings": "고대 엘브니아 레깅스",
   "item.genesis.ancient_elvenia_boots": "고대 엘브니아 부츠",
 
+  "item.genesis.carbonized_helmet": "탄화강괴 투구",
+  "item.genesis.carbonized_chestplate": "탄화강괴 흉갑",
+  "item.genesis.carbonized_leggings": "탄화강괴 레깅스",
+  "item.genesis.carbonized_boots": "탄화강괴 부츠",
+
+  "item.genesis.amethyst_helmet": "자수정 투구",
+  "item.genesis.amethyst_chestplate": "자수정 흉갑",
+  "item.genesis.amethyst_leggings": "자수정 레깅스",
+  "item.genesis.amethyst_boots": "자수정 부츠",
 
   "item.genesis.pewriese_helmet": "퓨리즌 투구",
   "item.genesis.pewriese_chestplate": "퓨리즌 흉갑",
@@ -186,8 +252,41 @@
   "item.genesis.holy_knight_leggings": "신성기사 레깅스",
   "item.genesis.holy_knight_boots": "신성기사 부츠",
 
+  "item.genesis.bailiff_helmet": "집행관 투구",
+  "item.genesis.bailiff_chestplate": "집행관 흉갑",
+  "item.genesis.bailiff_leggings": "집행관 레깅스",
+  "item.genesis.bailiff_boots": "집행관 부츠",
+
+
+  "item.genesis.cloth_bandana": "천 두건",
+  "item.genesis.cloth_robe": "천 로브",
+  "item.genesis.cloth_leggings": "천 레깅스",
+  "item.genesis.cloth_boots": "천 부츠",
+
+  "item.genesis.pilgrim_bandana": "순례자 두건",
+  "item.genesis.pilgrim_robe": "순례자 로브",
+  "item.genesis.pilgrim_leggings": "순례자 레깅스",
+  "item.genesis.pilgrim_boots": "순례자 부츠",
+
+  "item.genesis.astrologer_bandana": "점성술사 두건",
+  "item.genesis.astrologer_robe": "점성술사 로브",
+  "item.genesis.astrologer_leggings": "점성술사 레깅스",
+  "item.genesis.astrologer_boots": "점성술사 부츠",
+
+  "item.genesis.embroidered_veil": "순례자의 베일",
+
+  "item.genesis.white_iron_helmet": "백철 투구",
+  "item.genesis.white_iron_chestplate": "백철 흉갑",
+  "item.genesis.white_iron_leggings": "백철 레깅스",
+  "item.genesis.white_iron_boots": "백철 부츠",
+
 
   "item.genesis.great_bow": "대궁",
+  "item.genesis.root_woven_bow": "뿌리엮은 대궁",
+  "item.genesis.elvenia_great_bow": "엘브니아 대궁",
+  "item.genesis.ancient_elvenia_great_bow": "고대 엘브니아 대궁",
+  "item.genesis.pewriese_great_bow": "퓨리즌 대궁",
+
   "item.genesis.large_arrow": "대형 화살",
 
   "item.genesis.amethyst_wand": "자수정 지팡이",

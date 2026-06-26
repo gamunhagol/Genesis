@@ -1,0 +1,39 @@
+{
+  "item": "genesis:carbonized_sword",
+  "is_special": false,
+  "damage_growth": 0.01,
+  "base_stats": {
+    "physical": 10.0,
+    "magic": 0.0,
+    "fire": 0.0,
+    "lightning": 0.0,
+    "frost": 0.0,
+    "holy": 0.0,
+    "destruction": 0.0
+  },
+  "requirements": {
+    "strength": 17,
+    "dexterity": 14,
+    "intelligence": 0,
+    "faith": 0,
+    "arcane": 0
+  },
+  "scaling": {
+    "strength": "E",
+    "dexterity": "E"
+  },
+  "scaling_overrides": {
+    "8": {
+      "strength": "D",
+      "dexterity": "E"
+    },
+    "16": {
+      "strength": "C",
+      "dexterity": "D"
+    },
+    "25": {
+      "strength": "B",
+      "dexterity": "C"
+    }
+  }
+}

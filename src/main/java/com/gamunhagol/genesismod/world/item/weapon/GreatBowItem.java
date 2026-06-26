@@ -29,9 +29,13 @@ import java.util.function.Predicate;
 public class GreatBowItem extends BowItem {
     public static final int MAX_CHARGE_TIME = 38;
 
-    public GreatBowItem(Properties pProperties) {
-        super(pProperties);
+    private final GreatBowTier tier;
+
+    public GreatBowItem(Properties pProperties, GreatBowTier tier) {
+        super(pProperties.durability(tier.getDurability()));
+        this.tier = tier;
     }
+
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pHand) {
@@ -172,6 +176,10 @@ public class GreatBowItem extends BowItem {
                 }
             }
         }
+    }
+
+    public GreatBowTier getTier() {
+        return this.tier;
     }
 
     @Override

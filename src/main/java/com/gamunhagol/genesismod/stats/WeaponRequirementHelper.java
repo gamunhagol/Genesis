@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class WeaponRequirementHelper {
@@ -108,11 +109,19 @@ public class WeaponRequirementHelper {
     }
 
     public static Map<StatType, Float> getCurrentScaling(WeaponStatData data, int level) {
-        Map<StatType, Float> result = new java.util.HashMap<>(data.scaling());
-        data.scalingOverrides().entrySet().stream()
-                .filter(entry -> entry.getKey() <= level)
-                .sorted(Map.Entry.comparingByKey())
-                .forEach(entry -> result.putAll(entry.getValue()));
+        if (level <= 0 || data.scalingOverrides().isEmpty()) {
+            return data.scaling();
+        }
+
+        Map<StatType, Float> result = new HashMap<>(data.scaling());
+
+        for (int i = 1; i <= level; i++) {
+            Map<StatType, Float> override = data.scalingOverrides().get(i);
+            if (override != null) {
+                result.putAll(override);
+            }
+        }
+
         return result;
     }
 

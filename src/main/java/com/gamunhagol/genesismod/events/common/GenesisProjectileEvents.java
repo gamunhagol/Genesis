@@ -27,7 +27,7 @@ import java.lang.reflect.Method;
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisProjectileEvents {
 
-    private static final Method GET_PICKUP_ITEM = ObfuscationReflectionHelper.findMethod(ThrownTrident.class, "m_7941_"); // getPickupItem의 SRG 이름
+    private static final Method GET_PICKUP_ITEM = ObfuscationReflectionHelper.findMethod(ThrownTrident.class, "m_7941_");
 
     @SubscribeEvent
     public static void attachProjectileCaps(AttachCapabilitiesEvent<Entity> event) {
