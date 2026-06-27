@@ -20,10 +20,10 @@ public class UndeadShardBlockEntity extends BlockEntity {
     private static final List<EntityType<?>> UNDEAD_CACHE = new ArrayList<>();
     private static boolean cacheInitialized = false;
 
-    private static final int MAX_NEARBY_ENTITIES = 15; // 범위내 최대 스폰 한도 (10~20 사이 권장)
+    private static final int MAX_NEARBY_ENTITIES = 15;
     private static final double DETECTION_RADIUS = 6.0;
 
-    private int spawnCooldown = 600;
+    private int spawnCooldown = 800;
 
     public UndeadShardBlockEntity(BlockPos pos, BlockState state) {
         super(GenesisBlockEntities.UNDEAD_SHARD_BE.get(), pos, state);

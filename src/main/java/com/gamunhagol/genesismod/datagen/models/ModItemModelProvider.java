@@ -271,6 +271,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.COLLECTOR_SPAWN_EGG);
         simpleItem(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG);
 
+        simpleItem(GenesisItems.AMETHYST_STATUE);
+
         simpleItem(GenesisItems.AMETHYST_HEART);
 
         simpleItem(GenesisItems.STATUE_OF_SENTINEL_OF_OBLIVION);

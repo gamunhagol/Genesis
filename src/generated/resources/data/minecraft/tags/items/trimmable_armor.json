@@ -11,10 +11,6 @@
     "genesis:amethyst_helmet",
     "genesis:amethyst_chestplate",
     "genesis:amethyst_leggings",
-    "genesis:amethyst_boots",
-    "genesis:white_iron_helmet",
-    "genesis:white_iron_chestplate",
-    "genesis:white_iron_leggings",
-    "genesis:white_iron_boots"
+    "genesis:amethyst_boots"
   ]
 }

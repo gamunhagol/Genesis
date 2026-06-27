@@ -108,6 +108,11 @@ public class ModBlockStateProvider extends BlockStateProvider {
                             .build();
                 });
 
+        simpleBlock(GenesisBlocks.AMETHYST_STATUE.get(),
+                models().getBuilder("amethyst_statue")
+                        .parent(new ModelFile.UncheckedModelFile(mcLoc("builtin/entity")))
+                        .texture("particle", modLoc("block/amethyst_statue")));
+
         simpleBlock(GenesisBlocks.AMETHYST_HEART.get(),
                 models().getBuilder("amethyst_heart")
                         .parent(new ModelFile.UncheckedModelFile(mcLoc("builtin/entity")))

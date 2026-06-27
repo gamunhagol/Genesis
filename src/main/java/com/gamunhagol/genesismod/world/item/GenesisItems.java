@@ -277,6 +277,9 @@ public class GenesisItems {
     public static final RegistryObject<Item> PLATINUM_COIN_PILE = ITEMS.register("platinum_coin_pile",
             () -> new BlockItem(GenesisBlocks.PLATINUM_COIN_PILE.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> AMETHYST_STATUE = ITEMS.register("amethyst_statue",
+            () -> new BlockItem(GenesisBlocks.AMETHYST_STATUE.get(), new Item.Properties()));
+
     public static final RegistryObject<Item> AMETHYST_HEART = ITEMS.register("amethyst_heart",
             () -> new BlockItem(GenesisBlocks.AMETHYST_HEART.get(), new Item.Properties().rarity(Rarity.UNCOMMON)));
 

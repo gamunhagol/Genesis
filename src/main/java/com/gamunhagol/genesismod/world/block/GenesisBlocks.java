@@ -107,6 +107,10 @@ public class GenesisBlocks {
             () -> new AmethystClusterBlock(7, 3, BlockBehaviour.Properties.copy(Blocks.AMETHYST_CLUSTER).sound(SoundType.AMETHYST_CLUSTER).forceSolidOn().noOcclusion()
                     .lightLevel(state -> 5).pushReaction(PushReaction.DESTROY)));
 
+    public static final RegistryObject<Block> AMETHYST_STATUE = register("amethyst_statue",
+            () -> new AmethystStatueBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).requiresCorrectToolForDrops()
+                    .strength(4.0F, 8.0F).noOcclusion().lightLevel(state -> 3)));
+
     public static final RegistryObject<Block> AMETHYST_HEART = register("amethyst_heart",
             () -> new AmethystHeartBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).requiresCorrectToolForDrops()
                     .strength(4.0F, 800.0F).noOcclusion().lightLevel(state -> 8)));

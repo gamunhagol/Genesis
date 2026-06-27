@@ -42,6 +42,12 @@ public class GenesisBlockEntities {
                     BlockEntityType.Builder.of(AEKStatueBlockEntity::new,
                             GenesisBlocks.AEK_STATUE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<AmethystStatueBlockEntity>> AM_STATUE_BE =
+            BLOCK_ENTITIES.register("am_statue_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new AmethystStatueBlockEntity(GenesisBlockEntities.AM_STATUE_BE.get(), pos, state),
+                            GenesisBlocks.AMETHYST_STATUE.get()).build(null));
+
     public static final RegistryObject<BlockEntityType<AmHeartBlockEntity>> AM_HEART_BE =
             BLOCK_ENTITIES.register("am_heart_be", () ->
                     BlockEntityType.Builder.of((pos, state) ->

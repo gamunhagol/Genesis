@@ -18,6 +18,7 @@ import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
 import net.minecraft.world.level.storage.loot.functions.ApplyExplosionDecay;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import net.minecraft.world.level.storage.loot.providers.number.UniformGenerator;
 import net.minecraftforge.registries.RegistryObject;
@@ -87,7 +88,20 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         );
 
 
-
+        this.add(GenesisBlocks.AMETHYST_STATUE.get(), block ->
+                LootTable.lootTable()
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(LootItemRandomChanceCondition.randomChance(0.6F))
+                                .add(LootItem.lootTableItem(GenesisItems.AMETHYST_MAGIC_CORE.get())
+                                        .apply(ApplyExplosionDecay.explosionDecay()))
+                        )
+                        .withPool(LootPool.lootPool()
+                                .setRolls(ConstantValue.exactly(1.0F))
+                                .when(LootItemRandomChanceCondition.randomChance(0.3F))
+                                .add(LootItem.lootTableItem(GenesisItems.AMETHYST_HUMAN_STATUE.get()))
+                                        .apply(ApplyExplosionDecay.explosionDecay()))
+        );
 
         this.add(GenesisBlocks.AMETHYST_HEART.get(), block ->
                 LootTable.lootTable().withPool(LootPool.lootPool()

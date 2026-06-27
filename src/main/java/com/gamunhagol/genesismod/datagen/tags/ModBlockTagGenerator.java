@@ -63,6 +63,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                     ,GenesisBlocks.PLATINUM_COIN_PILE.get()
                     ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
                     ,GenesisBlocks.EYE_OF_THE_EARTH.get()
+                    ,GenesisBlocks.AMETHYST_STATUE.get()
                     ,GenesisBlocks.AMETHYST_HEART.get()
                     ,GenesisBlocks.HARDENED_RED_GLASS.get());
 
@@ -83,6 +84,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_IRON_TOOL)
                 .add(GenesisBlocks.ELVENIA_BLOCK.get()
                 ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
+                ,GenesisBlocks.AMETHYST_STATUE.get()
                 ,GenesisBlocks.AMETHYST_HEART.get()
                 ,GenesisBlocks.WHITE_IRON_BLOCK.get()
                 ,GenesisBlocks.HARDENED_RED_GLASS.get());
