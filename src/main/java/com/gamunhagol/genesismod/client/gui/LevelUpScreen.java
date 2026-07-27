@@ -20,6 +20,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
+import java.util.Objects;
+
 public class LevelUpScreen extends Screen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/level_edit.png");
     private final Screen lastScreen;
@@ -72,17 +74,24 @@ public class LevelUpScreen extends Screen {
             int rowY = y + (int)(yCoords[i] * scale);
 
             this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.increase"), b -> {
-                if (canAffordNextPendingLevel()) {
-                    pendingIncreases[index]++;
-                    totalPendingLevels++;
-                    playClickSound();
-                } else {
-                    playErrorSound();
-                    if (this.minecraft.player != null) {
-                        this.minecraft.player.displayClientMessage(
-                                Component.translatable("message.genesis.level_up.not_enough_xp"), true
-                        );
-                    }
+                if (Objects.requireNonNull(this.minecraft).player != null) {
+                    this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                        int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
+                        int currentBaseStat = baseValues[index];
+
+                        if (currentBaseStat + pendingIncreases[index] >= 99) {
+                            playErrorSound();
+                        } else if (canAffordNextPendingLevel()) {
+                            pendingIncreases[index]++;
+                            totalPendingLevels++;
+                            playClickSound();
+                        } else {
+                            playErrorSound();
+                            this.minecraft.player.displayClientMessage(
+                                    Component.translatable("message.genesis.level_up.not_enough_xp"), true
+                            );
+                        }
+                    });
                 }
             }).bounds(x + (int)(117 * scale), rowY, (int)(21 * scale), (int)(21 * scale)).build());
 

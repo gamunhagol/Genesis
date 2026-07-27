@@ -19,9 +19,17 @@ public class PacketConfirmLevelUp {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
             ServerPlayer player = context.getSender();
-            if (player == null) return;
+            if (player == null || increases == null || increases.length != 8) return;
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                int[] currentStats = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
+
+                for (int i = 0; i < 8; i++) {
+                    if (increases[i] < 0 || currentStats[i] + increases[i] > 99) {
+                        return;
+                    }
+                }
+
                 int baseLevel = LevelCalcHelper.getCharacterLevel(stats);
                 int totalCost = 0;
                 int totalInc = 0;

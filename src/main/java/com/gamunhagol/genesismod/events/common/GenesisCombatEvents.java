@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
@@ -38,12 +39,9 @@ import java.util.UUID;
 public class GenesisCombatEvents {
     private static final UUID DESTRUCTION_HP_MOD_UUID = UUID.fromString("AD1E5150-9000-0000-0000-000000090010");
 
-    @SubscribeEvent
-    public static void onLivingHurt(LivingHurtEvent event) {
-        LivingEntity target = event.getEntity();
-        Entity sourceEntity = event.getSource().getDirectEntity();
-        Entity attackerEntity = event.getSource().getEntity();
+    private record SnapshotResult(DamageSnapshot snapshot, int arcaneLevel) {}
 
+    private static SnapshotResult getSnapshotResult(Entity attackerEntity, Entity sourceEntity, LivingEntity target) {
         DamageSnapshot snapshot = null;
         int arcaneLevel = 0;
 
@@ -59,13 +57,11 @@ public class GenesisCombatEvents {
             if (cap != null && !cap.getSnapshot().isEmpty()) {
                 snapshot = cap.getSnapshot();
             }
-        }
-
-        else if (attackerEntity instanceof Player player) {
+        } else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
                 if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
-                    return;
+                    return new SnapshotResult(null, arcaneLevel);
                 }
 
                 float enchantBonus = EnchantmentHelper.getDamageBonus(weapon, target.getMobType());
@@ -91,14 +87,28 @@ public class GenesisCombatEvents {
             }
         }
 
+        return new SnapshotResult(snapshot, arcaneLevel);
+    }
+
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event) {
+        LivingEntity target = event.getEntity();
+        Entity sourceEntity = event.getSource().getDirectEntity();
+        Entity attackerEntity = event.getSource().getEntity();
+
+        SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
+        DamageSnapshot snapshot = result.snapshot();
+
         if (snapshot != null && !snapshot.isEmpty()) {
             if (snapshot.physical() > 0) {
                 event.setAmount(snapshot.physical());
             }
-            applyElementalMarkers(target, snapshot, arcaneLevel);
         }
-        else if (attackerEntity instanceof Player player && snapshot == null) {
+        else if (attackerEntity instanceof Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                float strengthScale = StatApplier.calculateScaling(stats.getStrength());
+                event.setAmount(event.getAmount() * (1.0f + strengthScale));
             });
         }
     }
@@ -117,95 +127,60 @@ public class GenesisCombatEvents {
         }
     }
 
-    private static void applyElementalMarkers(LivingEntity target, DamageSnapshot snapshot, int arcaneLevel) {
-        float procChance = 0.10f + (arcaneLevel * 0.005f);
-
-        if (snapshot.magic() > 0) target.getPersistentData().putFloat("GenesisExtraMagic", snapshot.magic());
-
-        if (snapshot.fire() > 0) {
-            target.getPersistentData().putFloat("GenesisExtraFire", snapshot.fire());
-            if (target.level().random.nextFloat() < procChance) {
-                target.getPersistentData().putBoolean("GenesisFireProc", true);
-            }
-        }
-
-        if (snapshot.lightning() > 0) {
-            target.getPersistentData().putFloat("GenesisExtraLightning", snapshot.lightning());
-            if (target.level().random.nextFloat() < procChance) {
-                target.getPersistentData().putBoolean("GenesisLightningProc", true);
-            }
-        }
-
-        if (snapshot.frost() > 0) {
-            target.getPersistentData().putFloat("GenesisExtraFrost", snapshot.frost());
-            if (target.level().random.nextFloat() < procChance) {
-                target.getPersistentData().putBoolean("GenesisFrostProc", true);
-            }
-        }
-
-        if (snapshot.holy() > 0) target.getPersistentData().putFloat("GenesisExtraHoly", snapshot.holy());
-        if (snapshot.destruction() > 0) target.getPersistentData().putFloat("GenesisExtraDestruction", snapshot.destruction());
-    }
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
         if (event.getAmount() <= 0) return;
         LivingEntity target = event.getEntity();
+        Entity sourceEntity = event.getSource().getDirectEntity();
+        Entity attackerEntity = event.getSource().getEntity();
+
         float finalDamage = event.getAmount();
 
-        if (target.getPersistentData().contains("GenesisExtraMagic")) {
-            float magicDmg = target.getPersistentData().getFloat("GenesisExtraMagic");
-            finalDamage += calculateMagicDamage(target, magicDmg);
-            target.getPersistentData().remove("GenesisExtraMagic");
-        }
+        SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
+        DamageSnapshot snapshot = result.snapshot();
+        int arcaneLevel = result.arcaneLevel();
 
-        if (target.getPersistentData().contains("GenesisExtraFire")) {
-            float fireDmg = target.getPersistentData().getFloat("GenesisExtraFire");
-            fireDmg = calculateFireDamage(target, fireDmg);
-            finalDamage += fireDmg;
+        if (snapshot != null && !snapshot.isEmpty()) {
+            float procChance = 0.10f + (arcaneLevel * 0.005f);
 
-            if (fireDmg > 0 && target.getPersistentData().contains("GenesisFireProc")) {
-                target.setSecondsOnFire(3);
-                target.getPersistentData().remove("GenesisFireProc");
+            if (snapshot.magic() > 0) {
+                finalDamage += calculateMagicDamage(target, snapshot.magic());
             }
-            target.getPersistentData().remove("GenesisExtraFire");
-        }
 
-        if (target.getPersistentData().contains("GenesisExtraLightning")) {
-            float lightDmg = target.getPersistentData().getFloat("GenesisExtraLightning");
-            lightDmg = calculateLightningDamage(target, lightDmg);
-            finalDamage += lightDmg;
-
-            if (target.getPersistentData().contains("GenesisLightningProc")) {
-                target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
-                target.getPersistentData().remove("GenesisLightningProc");
+            if (snapshot.fire() > 0) {
+                float fireDmg = calculateFireDamage(target, snapshot.fire());
+                finalDamage += fireDmg;
+                if (fireDmg > 0 && target.level().random.nextFloat() < procChance) {
+                    target.setSecondsOnFire(3);
+                }
             }
-            target.getPersistentData().remove("GenesisExtraLightning");
-        }
 
-        if (target.getPersistentData().contains("GenesisExtraFrost")) {
-            float frostDmg = target.getPersistentData().getFloat("GenesisExtraFrost");
-            frostDmg = calculateFrostDamage(target, frostDmg);
-            finalDamage += frostDmg;
-
-            if (frostDmg > 0 && target.getPersistentData().contains("GenesisFrostProc")) {
-                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
-                target.getPersistentData().remove("GenesisFrostProc");
+            if (snapshot.lightning() > 0) {
+                float lightDmg = calculateLightningDamage(target, snapshot.lightning());
+                finalDamage += lightDmg;
+                if (target.level().random.nextFloat() < procChance) {
+                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
+                }
             }
-            target.getPersistentData().remove("GenesisExtraFrost");
-        }
 
-        if (target.getPersistentData().contains("GenesisExtraHoly")) {
-            float holyDmg = target.getPersistentData().getFloat("GenesisExtraHoly");
-            finalDamage += calculateHolyDamage(target, holyDmg);
-            target.getPersistentData().remove("GenesisExtraHoly");
-        }
+            if (snapshot.frost() > 0) {
+                float frostDmg = calculateFrostDamage(target, snapshot.frost());
+                finalDamage += frostDmg;
+                if (frostDmg > 0 && target.level().random.nextFloat() < procChance) {
+                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
+                }
+            }
 
-        if (target.getPersistentData().contains("GenesisExtraDestruction")) {
-            float destDmg = target.getPersistentData().getFloat("GenesisExtraDestruction");
-            applyDestructionEffect(target, destDmg);
-            finalDamage += destDmg;
-            target.getPersistentData().remove("GenesisExtraDestruction");
+            if (snapshot.holy() > 0) {
+                finalDamage += calculateHolyDamage(target, snapshot.holy());
+            }
+
+            if (snapshot.destruction() > 0) {
+                float destDmg = snapshot.destruction();
+                applyDestructionEffect(target, destDmg);
+                finalDamage += destDmg;
+            }
         }
 
         if (event.getSource().is(GenesisDamageTypes.DESTRUCTION)) {

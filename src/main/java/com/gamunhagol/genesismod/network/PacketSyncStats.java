@@ -16,7 +16,7 @@ public class PacketSyncStats {
     private final float mental, maxMental;
     private final boolean isLevelUpUnlocked;
     private final Set<String> learnedSpells;
-    private final Set<String> unlockedNodes; // 추가됨
+    private final Set<String> unlockedNodes;
 
     public PacketSyncStats(int vigor, int mind, int endurance, int strength, int dexterity, int intelligence, int faith, int arcane, float mental, float maxMental, boolean isLevelUpUnlocked, Set<String> learnedSpells, Set<String> unlockedNodes) {
         this.vigor = vigor; this.mind = mind; this.endurance = endurance;
@@ -69,7 +69,7 @@ public class PacketSyncStats {
                     stats.getLearnedSpells().addAll(this.learnedSpells);
 
                     stats.getUnlockedNodes().clear();
-                    stats.getUnlockedNodes().addAll(this.unlockedNodes); // 추가됨
+                    stats.getUnlockedNodes().addAll(this.unlockedNodes);
                 });
             }
         });
