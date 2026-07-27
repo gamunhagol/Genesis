@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,6 +45,14 @@ public class GenesisCombatEvents {
         Entity attackerEntity = event.getSource().getEntity();
 
         DamageSnapshot snapshot = null;
+        int arcaneLevel = 0;
+
+        if (attackerEntity instanceof Player player) {
+            var statCap = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
+            if (statCap != null) {
+                arcaneLevel = statCap.getArcane();
+            }
+        }
 
         if (sourceEntity != null && sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).isPresent()) {
             var cap = sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).orElse(null);
@@ -51,6 +60,7 @@ public class GenesisCombatEvents {
                 snapshot = cap.getSnapshot();
             }
         }
+
         else if (attackerEntity instanceof Player player) {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
@@ -85,7 +95,7 @@ public class GenesisCombatEvents {
             if (snapshot.physical() > 0) {
                 event.setAmount(snapshot.physical());
             }
-            applyElementalMarkers(target, snapshot);
+            applyElementalMarkers(target, snapshot, arcaneLevel);
         }
         else if (attackerEntity instanceof Player player && snapshot == null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
@@ -107,11 +117,32 @@ public class GenesisCombatEvents {
         }
     }
 
-    private static void applyElementalMarkers(LivingEntity target, DamageSnapshot snapshot) {
+    private static void applyElementalMarkers(LivingEntity target, DamageSnapshot snapshot, int arcaneLevel) {
+        float procChance = 0.10f + (arcaneLevel * 0.005f);
+
         if (snapshot.magic() > 0) target.getPersistentData().putFloat("GenesisExtraMagic", snapshot.magic());
-        if (snapshot.fire() > 0) target.getPersistentData().putFloat("GenesisExtraFire", snapshot.fire());
-        if (snapshot.lightning() > 0) target.getPersistentData().putFloat("GenesisExtraLightning", snapshot.lightning());
-        if (snapshot.frost() > 0) target.getPersistentData().putFloat("GenesisExtraFrost", snapshot.frost());
+
+        if (snapshot.fire() > 0) {
+            target.getPersistentData().putFloat("GenesisExtraFire", snapshot.fire());
+            if (target.level().random.nextFloat() < procChance) {
+                target.getPersistentData().putBoolean("GenesisFireProc", true);
+            }
+        }
+
+        if (snapshot.lightning() > 0) {
+            target.getPersistentData().putFloat("GenesisExtraLightning", snapshot.lightning());
+            if (target.level().random.nextFloat() < procChance) {
+                target.getPersistentData().putBoolean("GenesisLightningProc", true);
+            }
+        }
+
+        if (snapshot.frost() > 0) {
+            target.getPersistentData().putFloat("GenesisExtraFrost", snapshot.frost());
+            if (target.level().random.nextFloat() < procChance) {
+                target.getPersistentData().putBoolean("GenesisFrostProc", true);
+            }
+        }
+
         if (snapshot.holy() > 0) target.getPersistentData().putFloat("GenesisExtraHoly", snapshot.holy());
         if (snapshot.destruction() > 0) target.getPersistentData().putFloat("GenesisExtraDestruction", snapshot.destruction());
     }
@@ -132,7 +163,11 @@ public class GenesisCombatEvents {
             float fireDmg = target.getPersistentData().getFloat("GenesisExtraFire");
             fireDmg = calculateFireDamage(target, fireDmg);
             finalDamage += fireDmg;
-            if (fireDmg > 0) target.setSecondsOnFire(3);
+
+            if (fireDmg > 0 && target.getPersistentData().contains("GenesisFireProc")) {
+                target.setSecondsOnFire(3);
+                target.getPersistentData().remove("GenesisFireProc");
+            }
             target.getPersistentData().remove("GenesisExtraFire");
         }
 
@@ -140,6 +175,11 @@ public class GenesisCombatEvents {
             float lightDmg = target.getPersistentData().getFloat("GenesisExtraLightning");
             lightDmg = calculateLightningDamage(target, lightDmg);
             finalDamage += lightDmg;
+
+            if (target.getPersistentData().contains("GenesisLightningProc")) {
+                target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
+                target.getPersistentData().remove("GenesisLightningProc");
+            }
             target.getPersistentData().remove("GenesisExtraLightning");
         }
 
@@ -147,8 +187,10 @@ public class GenesisCombatEvents {
             float frostDmg = target.getPersistentData().getFloat("GenesisExtraFrost");
             frostDmg = calculateFrostDamage(target, frostDmg);
             finalDamage += frostDmg;
-            if (frostDmg > 0) {
-                target.setTicksFrozen(target.getTicksFrozen() + 150);
+
+            if (frostDmg > 0 && target.getPersistentData().contains("GenesisFrostProc")) {
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
+                target.getPersistentData().remove("GenesisFrostProc");
             }
             target.getPersistentData().remove("GenesisExtraFrost");
         }

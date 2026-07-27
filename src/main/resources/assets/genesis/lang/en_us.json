@@ -516,7 +516,6 @@
 
 
 
-
   "container.genesis.faded_chest": "Faded Chest",
 
 
@@ -616,6 +615,8 @@
   "tooltip.genesis.clump_of_the_mountain.info": "A mass from the mountain broken in the distant past. It elevates weapons to a higher plane, much like its lofty history.\n(Material for Levels 7–8)",
   "tooltip.genesis.tablet_shard.info": "A shard of the mountain removed while carving the path to the summit. A mere crumb of a dream for eternity that never came to be.\n(Material for Levels 9)",
   "tooltip.genesis.tablet_of_the_radiant_mountain.info": "A tablet recording eternal praise, carved when the path through the Radiant Mountain was made. Though the fleeting dream went unfulfilled, the forged weapon shall reach a state of glory.\n(Material for Levels 10)",
+
+  "Ex animo me execror.": "",
 
   "tooltip.genesis.key_of_oblivion.info": "A key forged in oblivion, once guarded by the Warden.",
 

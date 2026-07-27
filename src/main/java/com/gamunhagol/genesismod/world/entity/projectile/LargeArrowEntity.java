@@ -75,7 +75,17 @@ public class LargeArrowEntity extends AbstractArrow {
         super.onHitEntity(result);
 
         if (!this.level().isClientSide && this.isPoisonous() && result.getEntity() instanceof LivingEntity target) {
-            if (this.level().random.nextFloat() < 0.6F) {
+            float procChance = 0.60F;
+
+            Entity owner = this.getOwner();
+            if (owner instanceof net.minecraft.world.entity.player.Player player) {
+                var statCap = player.getCapability(com.gamunhagol.genesismod.stats.StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
+                if (statCap != null) {
+                    procChance += (statCap.getArcane() * 0.005F);
+                }
+            }
+
+            if (this.level().random.nextFloat() < procChance) {
                 target.addEffect(new MobEffectInstance(MobEffects.POISON, 120, 2));
             }
         }

@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.item.weapon;
 
+import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.core.particles.ParticleOptions;
@@ -30,7 +31,16 @@ public class PoisonGreatBowItem extends GreatBowItem {
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
         if (!pTarget.level().isClientSide) {
-            if (pTarget.level().random.nextFloat() < 0.3F) {
+            float procChance = 0.2F;
+
+            if (pAttacker instanceof Player player) {
+                var statCap = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
+                if (statCap != null) {
+                    procChance += (statCap.getArcane() * 0.005F);
+                }
+            }
+
+            if (pTarget.level().random.nextFloat() < procChance) {
                 pTarget.addEffect(new MobEffectInstance(MobEffects.POISON, 60, 2));
             }
         }
