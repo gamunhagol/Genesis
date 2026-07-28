@@ -104,17 +104,16 @@ public class StatApplier {
     }
 
     public static float calculateScaling(int level) {
-        if (level <= 20) {
-            return level * 0.0175f;
-        }
-        else if (level <= 60) {
-            return 0.35f + (level - 20) * 0.01f;
-        }
-        else if (level <= 80) {
-            return 0.75f + (level - 60) * 0.0075f;
-        }
-        else {
-            return 0.90f + (Math.min(level, 99) - 80) * 0.005f;
+        int cappedLevel = Math.min(level, 99);
+
+        if (cappedLevel <= 20) {
+            return cappedLevel * 0.0175f;
+        } else if (cappedLevel <= 60) {
+            return 0.35f + (cappedLevel - 20) * 0.01f;
+        } else if (cappedLevel <= 80) {
+            return 0.75f + (cappedLevel - 60) * 0.0075f;
+        } else {
+            return 0.90f + (cappedLevel - 80) * 0.005f;
         }
     }
 }

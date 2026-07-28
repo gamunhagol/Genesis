@@ -20,6 +20,8 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class LevelUpScreen extends Screen {
@@ -33,6 +35,8 @@ public class LevelUpScreen extends Screen {
     private int displaySize;
     private float scale;
 
+    private final List<HoldableButton> holdableButtons = new ArrayList<>();
+
     public LevelUpScreen(Screen lastScreen) {
         super(Component.translatable("gui.genesis.level_up.title"));
         this.lastScreen = lastScreen;
@@ -41,6 +45,8 @@ public class LevelUpScreen extends Screen {
     @Override
     protected void init() {
         super.init();
+
+        this.holdableButtons.clear();
 
         this.displaySize = Math.min((int)(this.height * 0.85), 512);
         this.scale = (float) displaySize / textureSize;
@@ -73,35 +79,61 @@ public class LevelUpScreen extends Screen {
             final int index = i;
             int rowY = y + (int)(yCoords[i] * scale);
 
-            this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.increase"), b -> {
-                if (Objects.requireNonNull(this.minecraft).player != null) {
-                    this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                        int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
-                        int currentBaseStat = baseValues[index];
+            HoldableButton increaseBtn = new HoldableButton(
+                    x + (int)(117 * scale), rowY, (int)(21 * scale), (int)(21 * scale),
+                    Component.translatable("gui.genesis.button.increase"),
+                    b -> {
+                        HoldableButton hb = (HoldableButton) b;
+                        if (Objects.requireNonNull(this.minecraft).player != null) {
+                            this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                                int[] baseValues = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
+                                int currentBaseStat = baseValues[index];
 
-                        if (currentBaseStat + pendingIncreases[index] >= 99) {
-                            playErrorSound();
-                        } else if (canAffordNextPendingLevel()) {
-                            pendingIncreases[index]++;
-                            totalPendingLevels++;
+                                if (currentBaseStat + pendingIncreases[index] >= 99) {
+                                    playErrorSound();
+                                    hb.stopHolding();
+                                } else if (canAffordNextPendingLevel()) {
+                                    pendingIncreases[index]++;
+                                    totalPendingLevels++;
+                                    playClickSound();
+                                } else {
+                                    playErrorSound();
+                                    hb.stopHolding();
+                                    this.minecraft.player.displayClientMessage(
+                                            Component.translatable("message.genesis.level_up.not_enough_xp"), true
+                                    );
+                                }
+                            });
+                        }
+                    }
+            );
+            this.addRenderableWidget(increaseBtn);
+            this.holdableButtons.add(increaseBtn);
+
+            HoldableButton decreaseBtn = new HoldableButton(
+                    x + (int)(85 * scale), rowY, (int)(21 * scale), (int)(21 * scale),
+                    Component.translatable("gui.genesis.button.decrease"),
+                    b -> {
+                        HoldableButton hb = (HoldableButton) b;
+                        if (pendingIncreases[index] > 0) {
+                            pendingIncreases[index]--;
+                            totalPendingLevels--;
                             playClickSound();
                         } else {
-                            playErrorSound();
-                            this.minecraft.player.displayClientMessage(
-                                    Component.translatable("message.genesis.level_up.not_enough_xp"), true
-                            );
+                            hb.stopHolding();
                         }
-                    });
-                }
-            }).bounds(x + (int)(117 * scale), rowY, (int)(21 * scale), (int)(21 * scale)).build());
+                    }
+            );
+            this.addRenderableWidget(decreaseBtn);
+            this.holdableButtons.add(decreaseBtn);
+        }
+    }
 
-            this.addRenderableWidget(Button.builder(Component.translatable("gui.genesis.button.decrease"), b -> {
-                if (pendingIncreases[index] > 0) {
-                    pendingIncreases[index]--;
-                    totalPendingLevels--;
-                    playClickSound();
-                }
-            }).bounds(x + (int)(85 * scale), rowY, (int)(21 * scale), (int)(21 * scale)).build());
+    @Override
+    public void tick() {
+        super.tick();
+        for (HoldableButton btn : this.holdableButtons) {
+            btn.tick();
         }
     }
 
@@ -176,7 +208,6 @@ public class LevelUpScreen extends Screen {
 
                 int currentTotalWithArmor = getTotalStatValue(i, stats);
 
-                // 최종 표시 수치 = (현재 최종값) + (GUI에서 찍으려는 포인트)
                 int displayStat = currentTotalWithArmor + pendingIncreases[i];
                 int color = (pendingIncreases[i] > 0) ? 0xFFFF00 : 0xFFFFFF;
 
@@ -200,7 +231,10 @@ public class LevelUpScreen extends Screen {
 
             int totalStr = getTotalStatValue(3, stats) + pendingIncreases[3];
             int totalDex = getTotalStatValue(4, stats) + pendingIncreases[4];
-            float physScaling = StatApplier.calculateScaling(totalStr + totalDex);
+
+            float strScaling = StatApplier.calculateScaling(totalStr);
+            float dexScaling = StatApplier.calculateScaling(totalDex);
+            float physScaling = strScaling + dexScaling;
 
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.phys_scaling", (int)(physScaling * 100)), infoX, infoY, textColor, false);
 
@@ -252,5 +286,59 @@ public class LevelUpScreen extends Screen {
         }
 
         return baseLevel + armorBonus;
+    }
+
+    public class HoldableButton extends Button {
+        private boolean isHolding = false;
+        private int holdTicks = 0;
+        private final OnPress continuousAction;
+
+        public HoldableButton(int x, int y, int width, int height, Component message, OnPress onPress) {
+            super(x, y, width, height, message, onPress, Button.DEFAULT_NARRATION);
+            this.continuousAction = onPress;
+        }
+
+        @Override
+        public boolean mouseClicked(double mouseX, double mouseY, int button) {
+            if (this.active && this.visible && button == 0 && this.clicked(mouseX, mouseY)) {
+                this.playDownSound(Minecraft.getInstance().getSoundManager());
+                this.onClick(mouseX, mouseY);
+                return true;
+            }
+            return false;
+        }
+
+        @Override
+        public void onClick(double mouseX, double mouseY) {
+            this.continuousAction.onPress(this);
+            this.isHolding = true;
+            this.holdTicks = 0;
+        }
+
+        @Override
+        public boolean mouseReleased(double mouseX, double mouseY, int button) {
+            if (button == 0) {
+                stopHolding();
+            }
+            return super.mouseReleased(mouseX, mouseY, button);
+        }
+
+        public void tick() {
+            if (this.isHolding) {
+                if (!this.isHovered) {   // mouseHandler 체크 제거
+                    this.stopHolding();
+                    return;
+                }
+                this.holdTicks++;
+                if (this.holdTicks > 30 && this.holdTicks % 2 == 0) {
+                    this.continuousAction.onPress(this);
+                }
+            }
+        }
+
+        public void stopHolding() {
+            this.isHolding = false;
+            this.holdTicks = 0;
+        }
     }
 }
