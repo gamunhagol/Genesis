@@ -597,25 +597,25 @@
   "tooltip.genesis.divine_grail.info":"신화 시대의 유물, 사용자를 채운다.",
 
   "tooltip.genesis.enchanted_glowing_heart.info": "위대한 야수의 흔적, 생명을, 신성을 품고있다.",
-  "tooltip.genesis.opaque_jelly.info": "흔해 빠진 맛없는 젤리. 기본적으로 아무런 능력도 없지만, 불사자의 몸을 원래대로 돌려놓는다.",
+  "tooltip.genesis.opaque_jelly.info": "흔해 빠진 맛없는 젤리. 기본적으로 아무런 능력도 없지만, 순수성을 되찾는다.",
 
   "tooltip.genesis.fragment_of_memory.info": "저편으로부터의 기억, 따스하며 향수를 불러오며 흐릿한 기억을 되살린다.",
 
-  "tooltip.genesis.scale_fossil_shard.info": "헤아릴 수 없는 과거, 원시 야수들이 걸어 다녔다.\n(1~5강 재료)",
-  "tooltip.genesis.scale_fossil.info": "야수들의 비늘은 재해를 튕겨냈고, 집어삼켰다.\n(6~10강 재료)",
-  "tooltip.genesis.scale_fossil_clump.info": "그들은 흐려진 용의 피를 일깨운 자손들이었다.\n(11~15강 재료)",
-  "tooltip.genesis.weathered_ancient_dragon_rock.info": "과거, 고룡들은 세상의 정점에 서 있었다.\n(16~20강 재료)",
-  "tooltip.genesis.ancient_dragon_rock.info": "그들의 산이자 보호자의 방패였다.\n(21~22강 재료)",
-  "tooltip.genesis.ancient_dragon_scale.info": "옛 맹약은 그들을 성벽으로 만들었고.\n(23~24강 재료)",
-  "tooltip.genesis.dragon_king_scale.info": "그들의 첫 번째 왕을 태초 전쟁 속에 사라지게 하였다.그리고 다시는 돌아오지 못하게 하였다.\n(25강 재료)",
+  "tooltip.genesis.scale_fossil_shard.info": "과거, 원시 야수들이 있었다.\n(1~5강 재료)",
+  "tooltip.genesis.scale_fossil.info": "그들의 비늘은 재액을 막고 삼켰다.\n(6~10강 재료)",
+  "tooltip.genesis.scale_fossil_clump.info": "흐르는 피의 본능에 따라 살았다..\n(11~15강 재료)",
+  "tooltip.genesis.weathered_ancient_dragon_rock.info": "그들의 정점에 고룡이 있었다.\n(16~20강 재료)",
+  "tooltip.genesis.ancient_dragon_rock.info": "그들은 재액이자, 재액을 벌하는 존재였다.\n(21~22강 재료)",
+  "tooltip.genesis.ancient_dragon_scale.info": "허나 세상에 그들만이 있지 않았고.\n(23~24강 재료)",
+  "tooltip.genesis.dragon_king_scale.info": "왕좌는 영원히 공석이 되었다.\n(25강 재료)",
 
-  "tooltip.genesis.shard_of_the_mountain.info": "세상의 중심에 서 있던 가장 높았던 산의 조각. 무엇으로도 파괴할 수 없었으나, 이제는 무구를 벼리는 재료가 되었다.\n(1~3강 재료)",
-  "tooltip.genesis.fragment_of_the_mountain.info": "신역의 중심에 서 있던 가장 높았던 산의 파편. 산산이 부서졌지만 무구를 벼리는 데 도움이 된다.\n(4~6강 재료)",
-  "tooltip.genesis.clump_of_the_mountain.info": "먼 과거에 부서진 산의 덩어리. 무기를 더 높은 단계로 끌어올린다. 그 높았던 과거처럼.\n(7~8강 재료)",
-  "tooltip.genesis.tablet_shard.info": "산을 오르는 길을 만들 때 떼어낸 산의 조각. 그 부스러기는 영원을 꿈꿨으나 이루어지지 못하였다.\n(9강 재료)",
-  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "빛의 산에 길을 낼 때 떼어내 영원의 찬양을 기록한 석판. 그 덧없는 꿈은 이루어지지 못하였으나, 벼려진 무구는 영광의 경지에 이를 것이다.\n(10강 재료)",
+  "tooltip.genesis.shard_of_the_mountain.info": "세상의 중심에는 빛나는 산이 있었다.\n(1~3강 재료)",
+  "tooltip.genesis.fragment_of_the_mountain.info": "영원을 상징하던 산이 있었다.\n(4~6강 재료)",
+  "tooltip.genesis.clump_of_the_mountain.info": "우뚝선 모습은 숭배를 불러왔고.\n(7~8강 재료)",
+  "tooltip.genesis.tablet_shard.info": "영원의 반석으로 여겨졌다.\n(9강 재료)",
+  "tooltip.genesis.tablet_of_the_radiant_mountain.info": "산의 정상으로 향하는 길을 만들때 때어낸 반석처럼, 산은 흩어져 세상의 기반이 되었다.\n(10강 재료)",
 
-  "tooltip.genesis.key_of_oblivion.info": "파수꾼이 지키던, 망각으로 단련된 열쇠.",
+  "tooltip.genesis.key_of_oblivion.info": "파수꾼이 지키던, 망각으로 벼려낸 열쇠.",
 
   "tooltip.genesis.mist_core_1.info": "세상이 망각한.",
 
