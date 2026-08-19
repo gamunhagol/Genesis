@@ -8,6 +8,7 @@ import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
+import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.server.level.ServerPlayer;
@@ -15,6 +16,7 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -180,6 +182,13 @@ public class GenesisCombatEvents {
                 float destDmg = snapshot.destruction();
                 applyDestructionEffect(target, destDmg);
                 finalDamage += destDmg;
+            }
+        }
+
+        if (attackerEntity instanceof Mob mob && mob instanceof ISummonable) {
+            if (mob.getPersistentData().contains("GenesisSummonDamageMultiplier")) {
+                double multiplier = mob.getPersistentData().getDouble("GenesisSummonDamageMultiplier");
+                finalDamage *= (1.0f + (float)multiplier);
             }
         }
 

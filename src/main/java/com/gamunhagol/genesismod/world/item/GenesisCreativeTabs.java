@@ -445,6 +445,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.FIREBALL.get());
 
                 output.accept(GenesisItems.LITTLE_HEAL.get());
+
+                output.accept(GenesisItems.SUMMON_ZOMBIE.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

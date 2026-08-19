@@ -25,6 +25,7 @@ public class GenesisEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put((EntityType)GenesisEntities.COLLECTOR.get(), Collector.createAttributes().build());
         event.put((EntityType)GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuard.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_ZOMBIE.get(), net.minecraft.world.entity.monster.Zombie.createAttributes().build());
     }
 
     @SubscribeEvent

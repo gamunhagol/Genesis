@@ -28,6 +28,8 @@ public class ModEntityLootTables extends EntityLootSubProvider {
 
         this.add(GenesisEntities.COLLECTOR_GUARD.get(), LootTable.lootTable());
 
+        this.add(GenesisEntities.SUMMONED_ZOMBIE.get(), LootTable.lootTable());
+
     }
 
     @Override

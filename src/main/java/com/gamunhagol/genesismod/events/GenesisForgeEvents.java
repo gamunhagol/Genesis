@@ -11,6 +11,7 @@ import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
+import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
@@ -27,6 +28,7 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
@@ -72,6 +74,13 @@ public class GenesisForgeEvents {
             monster.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(
                     monster, LivingEntity.class, 10, true, false,
                     (target) -> target.getType().is(GenesisTags.EntityTypes.FACTION_MOBS)
+            ));
+        }
+        if (event.getEntity() instanceof net.minecraft.world.entity.npc.Villager villager) {
+
+            villager.goalSelector.addGoal(1, new AvoidEntityGoal<>(
+                    villager,
+                    SummonedZombieEntity.class, 8.0F, 0.5D, 0.5D
             ));
         }
     }

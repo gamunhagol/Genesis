@@ -6,8 +6,11 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;
 
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 public class StatCapability implements INBTSerializable<CompoundTag> {
     private int vigor = 10;
@@ -30,9 +33,20 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     private final Set<String> learnedSpells = new LinkedHashSet<>();
     private final Set<String> unlockedNodes = new LinkedHashSet<>();
 
+    private final Map<UUID, Float> activeSummons = new HashMap<>();
+
     public void tick() {
-        if (this.mental < this.maxMental) {
-            this.mental = Math.min(this.maxMental, this.mental + this.regenRate);
+        float totalUpkeep = getTotalUpkeep();
+
+        if (this.mental < this.maxMental || totalUpkeep > 0) {
+            this.mental += (this.regenRate - totalUpkeep);
+
+            if (this.mental > this.maxMental) {
+                this.mental = this.maxMental;
+            }
+            if (this.mental <= 0.0f) {
+                this.mental = 0.0f;
+            }
             this.isDirty = true;
         }
     }
@@ -65,6 +79,29 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     public Set<String> getLearnedSpells() {
         return learnedSpells;
+    }
+
+    public void addSummon(UUID id, float cost) {
+        this.activeSummons.put(id, cost);
+        this.setDirty(true);
+    }
+
+    public void removeSummon(UUID id) {
+        if (this.activeSummons.remove(id) != null) {
+            this.setDirty(true);
+        }
+    }
+
+    public Map<UUID, Float> getActiveSummons() {
+        return this.activeSummons;
+    }
+
+    public float getTotalUpkeep() {
+        float total = 0.0f;
+        for (float cost : this.activeSummons.values()) {
+            total += cost;
+        }
+        return total;
     }
 
     // Getter & Setter
@@ -111,6 +148,8 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.learnedSpells.addAll(source.learnedSpells);
         this.unlockedNodes.clear();
         this.unlockedNodes.addAll(source.unlockedNodes);
+        this.activeSummons.clear();
+        this.activeSummons.putAll(source.activeSummons);
 
         this.isDirty = true;
     }
@@ -141,6 +180,15 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
             nodesTag.add(StringTag.valueOf(key));
         }
         nbt.put("unlockedNodes", nodesTag);
+
+        ListTag summonsTag = new ListTag();
+        for (Map.Entry<UUID, Float> entry : activeSummons.entrySet()) {
+            CompoundTag summonNbt = new CompoundTag();
+            summonNbt.putUUID("id", entry.getKey());
+            summonNbt.putFloat("cost", entry.getValue());
+            summonsTag.add(summonNbt);
+        }
+        nbt.put("activeSummons", summonsTag);
 
         return nbt;
     }
@@ -173,7 +221,17 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
                 unlockedNodes.add(nodesTag.getString(i));
             }
         }
+
+        activeSummons.clear();
+        if (nbt.contains("activeSummons", Tag.TAG_LIST)) {
+            ListTag summonsTag = nbt.getList("activeSummons", Tag.TAG_COMPOUND);
+            for (int i = 0; i < summonsTag.size(); i++) {
+                CompoundTag summonNbt = summonsTag.getCompound(i);
+                activeSummons.put(summonNbt.getUUID("id"), summonNbt.getFloat("cost"));
+            }
+        }
     }
+
     public Set<String> getUnlockedNodes() {
         return unlockedNodes;
     }

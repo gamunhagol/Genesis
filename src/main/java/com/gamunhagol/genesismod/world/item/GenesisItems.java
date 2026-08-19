@@ -566,6 +566,10 @@ public class GenesisItems {
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
 
 
+    public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
+            () -> new SpellBookItem("summon_zombie", new Item.Properties().stacksTo(1)));
+
+
     //armor
 
     public static final RegistryObject<Item> PADDED_CHAIN_HELMET = ITEMS.register("padded_chain_helmet", () -> new LightArmorItem(GenesisArmorMaterials.PADDED_CHAIN,

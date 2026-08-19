@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.world.entity.mob;
 
 import com.gamunhagol.genesismod.world.entity.ai.DefendCollectorGoal;
 import com.gamunhagol.genesismod.world.entity.ai.FollowCollectorGoal;
+import com.gamunhagol.genesismod.world.entity.base.AbstractWanderer;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.RandomSource;

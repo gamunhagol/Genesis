@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.base;
 
 import com.gamunhagol.genesismod.world.entity.ai.WandererCrossbowAttackGoal;
 import net.minecraft.nbt.CompoundTag;
