@@ -21,10 +21,6 @@ public abstract class AbstractSummonSpell extends MagicSpell {
         super(id);
     }
 
-    @Override
-    public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.ARCANE, getRequiredStatLevel());
-    }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalystSnapshot) {

@@ -17,11 +17,8 @@ public abstract class AbstractSpell {
     public String getId() { return id; }
     public abstract int getCastTime();
 
-    public abstract int getRequiredStatLevel();
 
-    public Map<StatType, Integer> getRequiredStats() {
-        return Map.of();
-    }
+    public abstract Map<StatType, Integer> getRequiredStats();
 
     public abstract float getMentalCost();
     public abstract boolean canCast(LivingEntity caster);

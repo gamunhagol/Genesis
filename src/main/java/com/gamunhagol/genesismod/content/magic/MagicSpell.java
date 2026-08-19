@@ -10,9 +10,6 @@ import java.util.Map;
 public abstract class MagicSpell extends AbstractSpell {
     public MagicSpell(String id) { super(id); }
 
-    public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.INTELLIGENCE, getRequiredStatLevel());
-    }
 
     @Override
     public boolean canCast(LivingEntity caster) {

@@ -1,9 +1,12 @@
 package com.gamunhagol.genesismod.content.magic.miracles;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
+import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+
+import java.util.Map;
 
 public class HealMiracle extends MiracleSpell {
     public HealMiracle() { super("little_heal"); }
@@ -11,7 +14,9 @@ public class HealMiracle extends MiracleSpell {
     @Override
     public int getCastTime() { return 45; }
     @Override
-    public int getRequiredStatLevel() { return 10; }
+    public Map<StatType, Integer> getRequiredStats() {
+        return Map.of(StatType.FAITH, 10);
+    }
     @Override
     public float getMentalCost() { return 3.0f; }
     @Override

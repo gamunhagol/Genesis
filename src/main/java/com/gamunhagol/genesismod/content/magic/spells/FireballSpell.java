@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.content.magic.spells;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
+import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import net.minecraft.world.entity.LivingEntity;
@@ -8,13 +9,17 @@ import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import java.util.Map;
+
 public class FireballSpell extends MagicSpell {
     public FireballSpell() { super("fireball"); }
 
     @Override
     public int getCastTime() { return 20; }
     @Override
-    public int getRequiredStatLevel() { return 10; }
+    public Map<StatType, Integer> getRequiredStats() {
+        return Map.of(StatType.INTELLIGENCE, 10);
+    }
     @Override
     public float getMentalCost() { return 2.0f; }
     @Override

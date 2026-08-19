@@ -1,11 +1,14 @@
 package com.gamunhagol.genesismod.content.magic.spells;
 
+import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.player.Player;
+
+import java.util.Map;
 
 public class SummonZombieSpell extends AbstractSummonSpell {
 
@@ -19,8 +22,9 @@ public class SummonZombieSpell extends AbstractSummonSpell {
     }
 
     @Override
-    public int getRequiredStatLevel() {
-        return 12;
+    public Map<StatType, Integer> getRequiredStats() {
+        return Map.of(StatType.ARCANE, 12,
+                StatType.INTELLIGENCE, 15);
     }
 
     @Override

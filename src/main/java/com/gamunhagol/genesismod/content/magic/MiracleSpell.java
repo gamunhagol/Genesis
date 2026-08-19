@@ -10,10 +10,6 @@ import java.util.Map;
 public abstract class MiracleSpell extends AbstractSpell {
     public MiracleSpell(String id) { super(id); }
 
-    public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.FAITH, getRequiredStatLevel());
-    }
-
     @Override
     public boolean canCast(LivingEntity caster) {
         for (Map.Entry<StatType, Integer> entry : getRequiredStats().entrySet()) {
