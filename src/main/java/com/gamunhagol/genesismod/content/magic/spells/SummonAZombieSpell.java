@@ -35,7 +35,7 @@ public class SummonAZombieSpell extends AbstractSummonSpell {
 
     @Override
     public float getMentalCost() {
-        return 10.0f;
+        return 13.5f;
     }
 
     @Override
