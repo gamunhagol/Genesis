@@ -34,8 +34,10 @@ public class SummonHelper {
         return InteractionResult.PASS;
     }
 
-    public static void applyArcaneScaling(Mob mob, int arcaneLevel) {
-        double percentageIncrease = arcaneLevel * 0.015D;
+    public static void applyArcaneScaling(Mob mob, int arcaneLevel, double damageScaleRatio) {
+        double hpIncrease = arcaneLevel * 0.015D;
+
+        double damageIncrease = hpIncrease * damageScaleRatio;
 
         AttributeInstance maxHealth = mob.getAttribute(Attributes.MAX_HEALTH);
         if (maxHealth != null) {
@@ -43,7 +45,7 @@ public class SummonHelper {
             maxHealth.addPermanentModifier(new AttributeModifier(
                     ARCANE_HEALTH_MOD_UUID,
                     "Arcane Health Bonus",
-                    percentageIncrease,
+                    hpIncrease,
                     AttributeModifier.Operation.MULTIPLY_BASE
             ));
             mob.setHealth(mob.getMaxHealth());
@@ -55,13 +57,11 @@ public class SummonHelper {
             attackDamage.addPermanentModifier(new AttributeModifier(
                     ARCANE_DAMAGE_MOD_UUID,
                     "Arcane Damage Bonus",
-                    percentageIncrease,
+                    damageIncrease,
                     AttributeModifier.Operation.MULTIPLY_BASE
             ));
         }
 
-        // 몹에게 '신비 스케일링 비율'을 NBT 등으로 저장해두면,
-        // 나중에 GenesisCombatEvents에서 소환수가 마법/화염 피해를 입힐 때 이 비율을 읽어와서 데미지를 증폭시킬 수 있습니다.
-        mob.getPersistentData().putDouble("GenesisSummonDamageMultiplier", percentageIncrease);
+        mob.getPersistentData().putDouble("GenesisSummonDamageMultiplier", damageIncrease);
     }
 }

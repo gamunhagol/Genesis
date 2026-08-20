@@ -188,7 +188,10 @@ public class GenesisCombatEvents {
         if (attackerEntity instanceof Mob mob && mob instanceof ISummonable) {
             if (mob.getPersistentData().contains("GenesisSummonDamageMultiplier")) {
                 double multiplier = mob.getPersistentData().getDouble("GenesisSummonDamageMultiplier");
-                finalDamage *= (1.0f + (float)multiplier);
+
+                if (snapshot != null && !snapshot.isEmpty()) {
+                    finalDamage *= (1.0f + (float)multiplier);
+                }
             }
         }
 

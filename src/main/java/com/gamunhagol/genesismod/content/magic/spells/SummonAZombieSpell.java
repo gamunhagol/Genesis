@@ -44,6 +44,11 @@ public class SummonAZombieSpell extends AbstractSummonSpell {
     }
 
     @Override
+    protected double getDamageScaleRatio() {
+        return 0.5D;
+    }
+
+    @Override
     protected Mob createSummonEntity(ServerLevel level, Player caster) {
         SummonedZombieEntity zombie = new SummonedZombieEntity(GenesisEntities.SUMMONED_ZOMBIE.get(), level);
 

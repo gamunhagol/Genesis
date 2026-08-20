@@ -27,6 +27,10 @@ public abstract class AbstractSummonSpell extends MagicSpell {
         return DamageSnapshot.EMPTY;
     }
 
+    protected double getDamageScaleRatio() {
+        return 1.0D;
+    }
+
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         if (!(level instanceof ServerLevel serverLevel) || !(caster instanceof Player player)) return;
@@ -45,7 +49,7 @@ public abstract class AbstractSummonSpell extends MagicSpell {
             summonable.setOwnerUUID(player.getUUID());
 
             int arcaneLevel = WeaponRequirementHelper.getEntityStat(player, StatType.ARCANE);
-            SummonHelper.applyArcaneScaling(summonEntity, arcaneLevel);
+            SummonHelper.applyArcaneScaling(summonEntity, arcaneLevel, getDamageScaleRatio());
 
             serverLevel.addFreshEntity(summonEntity);
 
