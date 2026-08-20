@@ -568,6 +568,8 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
             () -> new SpellBookItem("summon_zombie", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_ARMORED_ZOMBIE = ITEMS.register("summon_armored_zombie",
+            () -> new SpellBookItem("summon_armored_zombie", new Item.Properties().stacksTo(1)));
 
 
     //armor

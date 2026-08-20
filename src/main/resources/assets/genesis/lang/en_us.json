@@ -297,6 +297,7 @@
   "item.genesis.fireball": "Fireball",
   "item.genesis.little_heal": "Little Heal",
   "item.genesis.summon_zombie": "Summon Zombie",
+  "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
   "item.genesis.star_of_domination": "Star of Domination",
@@ -644,7 +645,9 @@
   "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
 
   "spell.genesis.summon_zombie": "Summon Zombie",
-  "spell.genesis.summon_zombie.desc": "Reanimates a corpse to serve you.",
+  "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",
+  "spell.genesis.summon_armored_zombie": "Summon Armored Zombie",
+  "spell.genesis.summon_armored_zombie.desc": "Reanimates an armed corpse to fight for you.",
 
 
 

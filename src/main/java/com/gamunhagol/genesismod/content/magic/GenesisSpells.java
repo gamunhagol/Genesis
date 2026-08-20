@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.content.magic.miracles.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.spells.FireballSpell;
+import com.gamunhagol.genesismod.content.magic.spells.SummonAZombieSpell;
 import com.gamunhagol.genesismod.content.magic.spells.SummonZombieSpell;
 
 import java.util.HashMap;
@@ -14,6 +15,7 @@ public class GenesisSpells {
     public static final AbstractSpell FIREBALL = register(new FireballSpell());
     public static final AbstractSpell HEAL = register(new HealMiracle());
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
+    public static final AbstractSpell SUMMON_ARMORED_ZOMBIE = register(new SummonAZombieSpell());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);
