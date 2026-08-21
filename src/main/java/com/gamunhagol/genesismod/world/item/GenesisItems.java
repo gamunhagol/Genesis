@@ -578,6 +578,11 @@ public class GenesisItems {
             () -> new SpellBookItem("summon_great_bow_skeleton", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_SKELETON = ITEMS.register("summon_armored_skeleton",
             () -> new SpellBookItem("summon_armored_skeleton", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_WARDEN = ITEMS.register("summon_warden",
+            () -> new SpellBookItem("summon_warden", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> SUMMON_BLAZE = ITEMS.register("summon_blaze",
+            () -> new SpellBookItem("summon_blaze", new Item.Properties().stacksTo(1)));
 
 
 

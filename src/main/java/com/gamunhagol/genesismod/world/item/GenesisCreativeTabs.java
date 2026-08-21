@@ -444,14 +444,18 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 output.accept(GenesisItems.FIREBALL.get());
 
-                output.accept(GenesisItems.LITTLE_HEAL.get());
-
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_SKELETON_SLAVE.get());
                 output.accept(GenesisItems.SUMMON_SKELETON.get());
                 output.accept(GenesisItems.SUMMON_GREAT_BOW_SKELETON.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_SKELETON.get());
+                output.accept(GenesisItems.SUMMON_WARDEN.get());
+
+                output.accept(GenesisItems.SUMMON_BLAZE.get());
+
+
+                output.accept(GenesisItems.LITTLE_HEAL.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

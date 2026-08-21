@@ -11,8 +11,10 @@ import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.Blaze;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.EntityAttributeModificationEvent;
@@ -29,6 +31,8 @@ public class GenesisEventBusEvents {
         event.put((EntityType)GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuard.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_ZOMBIE.get(), Zombie.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_SKELETON.get(), Skeleton.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_BLAZE.get(), Blaze.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_WARDEN.get(), Warden.createAttributes().build());
     }
 
     @SubscribeEvent

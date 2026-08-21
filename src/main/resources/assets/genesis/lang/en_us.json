@@ -295,13 +295,19 @@
 
 
   "item.genesis.fireball": "Fireball",
-  "item.genesis.little_heal": "Little Heal",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
   "item.genesis.summon_skeleton_slave": "Summon Skeleton Slave",
   "item.genesis.summon_skeleton": "Summon Skeleton",
   "item.genesis.summon_great_bow_skeleton": "Summon Greatbow Skeleton",
   "item.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
+  "item.genesis.summon_warden": "Summon Warden",
+
+  "item.genesis.summon_blaze": "Summon Blaze",
+
+
+  "item.genesis.little_heal": "Little Heal",
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
   "item.genesis.star_of_domination": "Star of Domination",
@@ -645,9 +651,6 @@
   "spell.genesis.fireball": "Fireball",
   "spell.genesis.fireball.desc": "Summons a small fireball.",
 
-  "spell.genesis.little_heal": "Minor Heal",
-  "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
-
   "spell.genesis.summon_zombie": "Summon Zombie",
   "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",
   "spell.genesis.summon_armored_zombie": "Summon Armored Zombie",
@@ -661,7 +664,16 @@
   "spell.genesis.summon_great_bow_skeleton.desc": "Reanimates skeletal remains armed with a greatbow to fight for you.",
   "spell.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
   "spell.genesis.summon_armored_skeleton.desc": "Reanimates armored skeletal remains to fight for you.",
+  "spell.genesis.summon_warden": "Summon Warden",
+  "spell.genesis.summon_warden.desc": "Summons the scourge of the Deep Dark.",
 
+  "spell.genesis.summon_blaze": "Summon Blaze",
+  "spell.genesis.summon_blaze.desc": "Summons a blaze.",
+
+
+
+  "spell.genesis.little_heal": "Minor Heal",
+  "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
 
 
   "biome.genesis.dust_in_the_crevices": "Dust in the Crevices",

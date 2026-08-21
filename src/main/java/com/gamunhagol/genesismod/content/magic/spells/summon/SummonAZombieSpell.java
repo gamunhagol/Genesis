@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.content.magic.spells;
+package com.gamunhagol.genesismod.content.magic.spells.summon;
 
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
