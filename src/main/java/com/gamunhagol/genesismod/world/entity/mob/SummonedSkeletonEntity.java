@@ -1,21 +1,25 @@
 package com.gamunhagol.genesismod.world.entity.mob;
 
+import com.gamunhagol.genesismod.world.entity.ai.GreatBowAttackGoal;
 import com.gamunhagol.genesismod.world.entity.ai.SummonedAIGoals;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.entity.base.SummonHelper;
+import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.goal.FloatGoal;
-import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class SummonedSkeletonEntity extends Skeleton implements ISummonable {
@@ -37,6 +41,31 @@ public class SummonedSkeletonEntity extends Skeleton implements ISummonable {
         this.targetSelector.addGoal(2, new SummonedAIGoals.OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,
                 (target) -> !(target instanceof ISummonable)));
+    }
+
+    @Override
+    public void reassessWeaponGoal() {
+        super.reassessWeaponGoal();
+
+        if (this.level() != null && !this.level().isClientSide) {
+            ItemStack mainHandItem = this.getMainHandItem();
+
+            if (mainHandItem.getItem() instanceof GreatBowItem) {
+                List<Goal> toRemove = new ArrayList<>();
+                this.goalSelector.getAvailableGoals().forEach(wrappedGoal -> {
+                    Goal goal = wrappedGoal.getGoal();
+                    if (goal instanceof MeleeAttackGoal || goal instanceof RangedBowAttackGoal) {
+                        toRemove.add(goal);
+                    }
+                });
+
+                for (Goal goal : toRemove) {
+                    this.goalSelector.removeGoal(goal);
+                }
+
+                this.goalSelector.addGoal(4, new GreatBowAttackGoal<SummonedSkeletonEntity>(this, 1.0D, 25.0F));
+            }
+        }
     }
 
     @Override
