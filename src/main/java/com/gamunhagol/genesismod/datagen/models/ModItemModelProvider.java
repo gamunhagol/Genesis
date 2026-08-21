@@ -134,6 +134,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.LITTLE_HEAL);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_ARMORED_ZOMBIE);
+        simpleItem(GenesisItems.SUMMON_SKELETON_SLAVE);
+        simpleItem(GenesisItems.SUMMON_SKELETON);
+        simpleItem(GenesisItems.SUMMON_GREAT_BOW_SKELETON);
+        simpleItem(GenesisItems.SUMMON_ARMORED_SKELETON);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

@@ -298,7 +298,11 @@
   "item.genesis.fireball": "화염구",
   "item.genesis.little_heal": "작은 치유",
   "item.genesis.summon_zombie": "좀비 소환",
-  "item.genesis.summon_armored_zombie": "갑옷입은 좀비 소환",
+  "item.genesis.summon_armored_zombie": "무장한 좀비 소환",
+  "item.genesis.summon_skeleton_slave": "스켈레톤 노예 소환",
+  "item.genesis.summon_skeleton": "스켈레톤 소환",
+  "item.genesis.summon_great_bow_skeleton": "대궁 스켈레톤 소환",
+  "item.genesis.summon_armored_skeleton": "무장한 스켈레톤 소환",
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
   "item.genesis.star_of_domination": "지배의 별",
@@ -644,8 +648,17 @@
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다",
-  "spell.genesis.summon_armored_zombie": "갑옷입은 좀비 소환",
+  "spell.genesis.summon_armored_zombie": "무장한 좀비 소환",
   "spell.genesis.summon_armored_zombie.desc": "무장한 시체를 강령한다.",
+
+  "spell.genesis.summon_skeleton_slave": "스켈레톤 노예 소환",
+  "spell.genesis.summon_skeleton_slave.desc": "허약한 백골에 강령한다.",
+  "spell.genesis.summon_skeleton": "스켈레톤 소환",
+  "spell.genesis.summon_skeleton.desc": "백골에 강령한다.",
+  "spell.genesis.summon_great_bow_skeleton": "대궁 스켈레톤 소환",
+  "spell.genesis.summon_great_bow_skeleton.desc": "대궁을 든 백골에 강령한다",
+  "spell.genesis.summon_armored_skeleton": "무장한 스켈레톤 소환",
+  "spell.genesis.summon_armored_skeleton.desc": "무장한 백골에 강령한다.",
 
 
 

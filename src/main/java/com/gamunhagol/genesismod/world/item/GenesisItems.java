@@ -570,6 +570,15 @@ public class GenesisItems {
             () -> new SpellBookItem("summon_zombie", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_ZOMBIE = ITEMS.register("summon_armored_zombie",
             () -> new SpellBookItem("summon_armored_zombie", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_SKELETON_SLAVE = ITEMS.register("summon_skeleton_slave",
+            () -> new SpellBookItem("summon_skeleton_slave", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_SKELETON = ITEMS.register("summon_skeleton",
+            () -> new SpellBookItem("summon_skeleton", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_GREAT_BOW_SKELETON = ITEMS.register("summon_great_bow_skeleton",
+            () -> new SpellBookItem("summon_great_bow_skeleton", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_ARMORED_SKELETON = ITEMS.register("summon_armored_skeleton",
+            () -> new SpellBookItem("summon_armored_skeleton", new Item.Properties().stacksTo(1)));
+
 
 
     //armor

@@ -448,6 +448,10 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());
+                output.accept(GenesisItems.SUMMON_SKELETON_SLAVE.get());
+                output.accept(GenesisItems.SUMMON_SKELETON.get());
+                output.accept(GenesisItems.SUMMON_GREAT_BOW_SKELETON.get());
+                output.accept(GenesisItems.SUMMON_ARMORED_SKELETON.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

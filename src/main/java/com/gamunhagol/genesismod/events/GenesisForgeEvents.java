@@ -31,6 +31,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -76,7 +77,7 @@ public class GenesisForgeEvents {
                     (target) -> target.getType().is(GenesisTags.EntityTypes.FACTION_MOBS)
             ));
         }
-        if (event.getEntity() instanceof net.minecraft.world.entity.npc.Villager villager) {
+        if (event.getEntity() instanceof Villager villager) {
 
             villager.goalSelector.addGoal(1, new AvoidEntityGoal<>(
                     villager,

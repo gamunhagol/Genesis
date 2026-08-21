@@ -14,7 +14,9 @@ import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.SkeletonModel;
 import net.minecraft.client.model.geom.EntityModelSet;
+import net.minecraft.client.renderer.entity.SkeletonRenderer;
 import net.minecraft.client.renderer.entity.ZombieRenderer;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
@@ -236,6 +238,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.SUMMONED_ZOMBIE.get(), ZombieRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_SKELETON.get(), SkeletonRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 

@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.world.entity;
 
 import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
+import com.gamunhagol.genesismod.world.entity.mob.SummonedSkeletonEntity;
 import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import net.minecraft.world.entity.EntityType;
@@ -16,6 +17,7 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<Collector>> COLLECTOR;
     public static final RegistryObject<EntityType<CollectorGuard>> COLLECTOR_GUARD;
     public static final RegistryObject<EntityType<SummonedZombieEntity>> SUMMONED_ZOMBIE;
+    public static final RegistryObject<EntityType<SummonedSkeletonEntity>> SUMMONED_SKELETON;
     public static final RegistryObject<EntityType<LargeArrowEntity>> LARGE_ARROW;
 
 
@@ -30,6 +32,9 @@ public class GenesisEntities {
         SUMMONED_ZOMBIE = ENTITY_TYPES.register("summoned_zombie",
                 () -> EntityType.Builder.of(SummonedZombieEntity::new, MobCategory.CREATURE)
                         .sized(0.6f, 1.95f).build("summoned_zombie"));
+        SUMMONED_SKELETON = ENTITY_TYPES.register("summoned_skeleton",
+                () -> EntityType.Builder.of(SummonedSkeletonEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.95f).build("summoned_skeleton"));
 
 
         LARGE_ARROW = ENTITY_TYPES.register("large_arrow", () ->

@@ -298,6 +298,10 @@
   "item.genesis.little_heal": "Little Heal",
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
+  "item.genesis.summon_skeleton_slave": "Summon Skeleton Slave",
+  "item.genesis.summon_skeleton": "Summon Skeleton",
+  "item.genesis.summon_great_bow_skeleton": "Summon Greatbow Skeleton",
+  "item.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
   "item.genesis.star_of_domination": "Star of Domination",
@@ -648,6 +652,15 @@
   "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",
   "spell.genesis.summon_armored_zombie": "Summon Armored Zombie",
   "spell.genesis.summon_armored_zombie.desc": "Reanimates an armed corpse to fight for you.",
+
+  "spell.genesis.summon_skeleton_slave": "Summon Skeleton Slave",
+  "spell.genesis.summon_skeleton_slave.desc": "Reanimates frail bones to fight for you.",
+  "spell.genesis.summon_skeleton": "Summon Skeleton",
+  "spell.genesis.summon_skeleton.desc": "Reanimates skeletal remains to fight for you.",
+  "spell.genesis.summon_great_bow_skeleton": "Summon Greatbow Skeleton",
+  "spell.genesis.summon_great_bow_skeleton.desc": "Reanimates skeletal remains armed with a greatbow to fight for you.",
+  "spell.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
+  "spell.genesis.summon_armored_skeleton.desc": "Reanimates armored skeletal remains to fight for you.",
 
 
 
