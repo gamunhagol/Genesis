@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.SummonedSkeletonEntity;
+import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;
@@ -49,12 +50,14 @@ public class SummonASkeletonSpell extends AbstractSummonSpell {
         skeleton.setItemSlot(EquipmentSlot.LEGS, new ItemStack(Items.IRON_LEGGINGS));
         skeleton.setItemSlot(EquipmentSlot.FEET, new ItemStack(Items.IRON_BOOTS));
 
-        int weaponChoice = level.random.nextInt(3);
+        int weaponChoice = level.random.nextInt(5);
         ItemStack weaponToEquip;
         switch (weaponChoice) {
             case 0: weaponToEquip = new ItemStack(Items.IRON_SWORD); break;
             case 1: weaponToEquip = new ItemStack(EpicFightItems.IRON_GREATSWORD.get()); break;
-            case 2: default: weaponToEquip = new ItemStack(EpicFightItems.IRON_SPEAR.get()); break;
+            case 2: weaponToEquip = new ItemStack(EpicFightItems.IRON_SPEAR.get()); break;
+            case 3: weaponToEquip = new ItemStack(Items.BOW); break;
+            case 4: default: weaponToEquip = new ItemStack(GenesisItems.GREAT_BOW.get()); break;
         }
         skeleton.setItemSlot(EquipmentSlot.MAINHAND, weaponToEquip);
 

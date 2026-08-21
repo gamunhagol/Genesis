@@ -9,6 +9,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
@@ -29,6 +30,7 @@ public class SummonedSkeletonEntity extends Skeleton implements ISummonable {
 
     public SummonedSkeletonEntity(EntityType<? extends Skeleton> type, Level level) {
         super(type, level);
+        this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
 
     @Override

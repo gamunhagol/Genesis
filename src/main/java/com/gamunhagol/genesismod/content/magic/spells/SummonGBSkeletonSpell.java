@@ -25,16 +25,16 @@ public class SummonGBSkeletonSpell extends AbstractSummonSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(
-                StatType.ARCANE, 21,
+                StatType.ARCANE, 14,
                 StatType.INTELLIGENCE, 17
         );
     }
 
     @Override
-    public float getMentalCost() { return 9.7f; }
+    public float getMentalCost() { return 8.9f; }
 
     @Override
-    public int getMemoryCost() { return 3; }
+    public int getMemoryCost() { return 2; }
 
     @Override
     protected double getDamageScaleRatio() {
