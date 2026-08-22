@@ -254,6 +254,8 @@ public class GenesisItems {
             ));
 
     //
+    public static final RegistryObject<Item> EXPERIENCE_POUCH = ITEMS.register("experience_pouch", () -> new ExperienceItem(new Item.Properties(), 124));
+
     public static final RegistryObject<Item> FADED_MEMORY = ITEMS.register("faded_memory", () -> new MemoryItem(new Item.Properties(), 5));
     public static final RegistryObject<Item> FORGOTTEN_MEMORY = ITEMS.register("forgotten_memory", () -> new MemoryItem(new Item.Properties(), 10));
     public static final RegistryObject<Item> UNRELATED_MEMORY = ITEMS.register("unrelated_memory", () -> new MemoryItem(new Item.Properties().rarity(Rarity.UNCOMMON),30));

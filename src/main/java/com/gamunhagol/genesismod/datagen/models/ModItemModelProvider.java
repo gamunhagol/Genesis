@@ -123,6 +123,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.OPAQUE_JELLY);
 
+        simpleItem(GenesisItems.EXPERIENCE_POUCH);
+
         simpleItem(GenesisItems.FADED_MEMORY);
         simpleItem(GenesisItems.FORGOTTEN_MEMORY);
         simpleItem(GenesisItems.UNRELATED_MEMORY);

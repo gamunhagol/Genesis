@@ -45,6 +45,8 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.BLOOD_BOTTLE.get());
 
+                output.accept(GenesisItems.EXPERIENCE_POUCH.get());
+
                 output.accept(GenesisItems.FADED_MEMORY.get());
                 output.accept(GenesisItems.FORGOTTEN_MEMORY.get());
                 output.accept(GenesisItems.UNRELATED_MEMORY.get());

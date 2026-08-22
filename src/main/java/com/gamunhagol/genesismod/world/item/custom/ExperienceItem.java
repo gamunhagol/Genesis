@@ -9,13 +9,13 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
-public class MemoryItem extends Item {
+public class ExperienceItem extends Item {
 
-    private final int levelsToGive;
+    private final int pointsToGive;
 
-    public MemoryItem(Properties properties, int levelsToGive) {
+    public ExperienceItem(Properties properties, int pointsToGive) {
         super(properties);
-        this.levelsToGive = levelsToGive;
+        this.pointsToGive = pointsToGive;
     }
 
     @Override
@@ -23,13 +23,13 @@ public class MemoryItem extends Item {
         ItemStack itemStack = player.getItemInHand(hand);
 
         if (!level.isClientSide) {
-            player.giveExperienceLevels(this.levelsToGive);
+            player.giveExperiencePoints(this.pointsToGive);
 
             if (!player.getAbilities().instabuild) {
                 itemStack.shrink(1);
             }
 
-            level.playSound(null, player.blockPosition(), SoundEvents.PLAYER_LEVELUP, SoundSource.PLAYERS, 0.5F, 1.0F);
+            level.playSound(null, player.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.5F, 1.0F);
         }
 
         return InteractionResultHolder.sidedSuccess(itemStack, level.isClientSide());
