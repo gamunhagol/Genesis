@@ -25,10 +25,8 @@ public class SummonBlazeSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(
-                StatType.ARCANE, 16,
-                StatType.INTELLIGENCE, 14
-        );
+        return Map.of(StatType.ARCANE, 14,
+                StatType.INTELLIGENCE, 13);
     }
 
     @Override

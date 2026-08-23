@@ -23,8 +23,7 @@ public class SummonSkeletonSlaveSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.ARCANE, 9,
-                StatType.INTELLIGENCE, 14);
+        return Map.of(StatType.INTELLIGENCE, 10);
     }
 
     @Override

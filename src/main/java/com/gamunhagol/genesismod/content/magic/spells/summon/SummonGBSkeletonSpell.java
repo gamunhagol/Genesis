@@ -24,10 +24,7 @@ public class SummonGBSkeletonSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(
-                StatType.ARCANE, 14,
-                StatType.INTELLIGENCE, 17
-        );
+        return Map.of(StatType.INTELLIGENCE, 15);
     }
 
     @Override

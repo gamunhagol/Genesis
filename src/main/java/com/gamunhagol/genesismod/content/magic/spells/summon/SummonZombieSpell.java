@@ -23,8 +23,7 @@ public class SummonZombieSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.ARCANE, 12,
-                StatType.INTELLIGENCE, 15);
+        return Map.of(StatType.INTELLIGENCE, 12);
     }
 
     @Override

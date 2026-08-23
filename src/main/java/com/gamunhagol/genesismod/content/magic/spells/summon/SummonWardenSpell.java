@@ -29,10 +29,7 @@ public class SummonWardenSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(
-                StatType.ARCANE, 25,
-                StatType.INTELLIGENCE, 20
-        );
+        return Map.of(StatType.INTELLIGENCE, 24);
     }
 
     @Override
