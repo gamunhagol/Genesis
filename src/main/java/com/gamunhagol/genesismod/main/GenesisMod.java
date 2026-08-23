@@ -11,6 +11,7 @@ import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
+import com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
@@ -66,6 +67,7 @@ public class GenesisMod {
         GenesisSkillDataKeys.DATA_KEYS.register(modEventBus);
         GenesisEffects.MOB_EFFECTS.register(modEventBus);
         GenesisPotions.POTIONS.register(modEventBus);
+        GenesisEnchantments.ENCHANTMENTS.register(modEventBus);
 
         GenesisNetwork.register();
 

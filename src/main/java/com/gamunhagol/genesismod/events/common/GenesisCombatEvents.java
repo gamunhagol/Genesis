@@ -213,6 +213,12 @@ public class GenesisCombatEvents {
     private static float calculateHolyDamage(LivingEntity target, float damage) {
         float result = damage;
 
+        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.HOLY_PROTECTION.get(), target);
+        if (prot > 0) {
+            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
+            result *= reduction;
+        }
+
         AttributeInstance holyDef = target.getAttribute(GenesisAttributes.HOLY_DEFENSE.get());
         if (holyDef != null && holyDef.getValue() > 0) {
             float reductionMultiplier = (float) (1.0 - (holyDef.getValue() / (holyDef.getValue() + 30.0)));
@@ -229,6 +235,12 @@ public class GenesisCombatEvents {
             result *= 0.15f;
         }
 
+        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.MAGIC_PROTECTION.get(), target);
+        if (prot > 0) {
+            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
+            result *= reduction;
+        }
+
         AttributeInstance magicDef = target.getAttribute(GenesisAttributes.MAGIC_DEFENSE.get());
         if (magicDef != null && magicDef.getValue() > 0) {
             float multiplier = (float) (1.0 - (magicDef.getValue() / (magicDef.getValue() + 30.0)));
@@ -236,7 +248,6 @@ public class GenesisCombatEvents {
         }
         return Math.max(result, (damage > 0 ? 0.5f : 0));
     }
-
     private static float calculateFireDamage(LivingEntity target, float damage) {
         if (target.hasEffect(MobEffects.FIRE_RESISTANCE)) return 0;
         float result = damage;
@@ -260,6 +271,12 @@ public class GenesisCombatEvents {
             result *= 0.5f;
         }
 
+        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.FROSTBITE_PROTECTION.get(), target);
+        if (prot > 0) {
+            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
+            result *= reduction;
+        }
+
         AttributeInstance frostDef = target.getAttribute(GenesisAttributes.FROST_DEFENSE.get());
         if (frostDef != null && frostDef.getValue() > 0) {
             float multiplier = (float) (1.0 - (frostDef.getValue() / (frostDef.getValue() + 30.0)));
@@ -274,6 +291,12 @@ public class GenesisCombatEvents {
             result *= 1.5f;
         }
 
+        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.ELECTRIC_PROTECTION.get(), target);
+        if (prot > 0) {
+            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
+            result *= reduction;
+        }
+
         AttributeInstance lightDef = target.getAttribute(GenesisAttributes.LIGHTNING_DEFENSE.get());
         if (lightDef != null && lightDef.getValue() > 0) {
             float multiplier = (float) (1.0 - (lightDef.getValue() / (lightDef.getValue() + 30.0)));
@@ -281,7 +304,6 @@ public class GenesisCombatEvents {
         }
         return Math.max(result, (damage > 0 ? 0.5f : 0));
     }
-
     private static void applyDestructionEffect(LivingEntity entity, float damageAmount) {
         AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
         if (maxHealthAttr == null) return;

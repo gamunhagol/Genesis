@@ -440,6 +440,17 @@
 
 
 
+  "enchantment.genesis.electric_protection": "전류로부터 보호",
+  "enchantment.genesis.frostbite_protection": "동상으로부터 보호",
+  "enchantment.genesis.magic_protection": "마법으로부터 보호",
+  "enchantment.genesis.holy_protection": "신성으로부터 보호",
+
+  "enchantment.genesis.electric_protection.desc": "낙뢰로 인한 피해를 줄여줍니다.",
+  "enchantment.genesis.frostbite_protection.desc": "동상에 의한 피해를 줄여줍니다.",
+  "enchantment.genesis.magic_protection.desc": "마법 공격 및 효과로 인한 피해를 감소시킵니다.",
+  "enchantment.genesis.holy_protection.desc": "신성 공격으로 인한 피해를 감소시킵니다.",
+
+
 
 
 

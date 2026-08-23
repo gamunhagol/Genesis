@@ -443,6 +443,18 @@
 
 
 
+  "enchantment.genesis.electric_protection": "Lightning Protection",
+  "enchantment.genesis.frostbite_protection": "Frostbite Protection",
+  "enchantment.genesis.magic_protection": "Magic Protection",
+  "enchantment.genesis.holy_protection": "Holy Protection",
+
+  "enchantment.genesis.electric_protection.desc": "Reduces damage from lightning strikes.",
+  "enchantment.genesis.frostbite_protection.desc": "Reduces damage from freezing and powdered snow.",
+  "enchantment.genesis.magic_protection.desc": "Reduces damage from magical attacks and effects.",
+  "enchantment.genesis.holy_protection.desc": "Reduces damage from holy attacks.",
+
+
+
 
 
 
