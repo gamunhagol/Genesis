@@ -407,6 +407,38 @@
   "item.genesis.collector_spawn_egg": "징수원 생성 알",
   "item.genesis.collector_guard_spawn_egg": "징수원 호위 생성 알",
 
+  "item.minecraft.potion.effect.frostbite": "동상 포션",
+  "item.minecraft.splash_potion.effect.frostbite": "투척용 동상 포션",
+  "item.minecraft.lingering_potion.effect.frostbite": "잔류형 동상 포션",
+  "item.minecraft.tipped_arrow.effect.frostbite": "동상 화살",
+  "item.minecraft.potion.effect.long_frostbite": "동상 포션",
+  "item.minecraft.splash_potion.effect.long_frostbite": "투척용 동상 포션",
+  "item.minecraft.lingering_potion.effect.long_frostbite": "잔류형 동상 포션",
+  "item.minecraft.tipped_arrow.effect.long_frostbite": "동상 화살",
+  "item.minecraft.potion.effect.strong_frostbite": "동상 포션",
+  "item.minecraft.splash_potion.effect.strong_frostbite": "투척용 동상 포션",
+  "item.minecraft.lingering_potion.effect.strong_frostbite": "잔류형 동상 포션",
+  "item.minecraft.tipped_arrow.effect.strong_frostbite": "동상 화살",
+
+  "item.minecraft.potion.effect.electric_shock": "감전 포션",
+  "item.minecraft.splash_potion.effect.electric_shock": "투척용 감전 화살",
+  "item.minecraft.lingering_potion.effect.electric_shock": "잔류형 감전 화살",
+  "item.minecraft.tipped_arrow.effect.electric_shock": "감전 화살",
+  "item.minecraft.potion.effect.long_electric_shock": "감전 포션",
+  "item.minecraft.splash_potion.effect.long_electric_shock": "투척용 감전 화살",
+  "item.minecraft.lingering_potion.effect.long_electric_shock": "잔류형 감전 화살",
+  "item.minecraft.tipped_arrow.effect.long_electric_shock": "감전 화살",
+  "item.minecraft.potion.effect.strong_electric_shock": "감전 포션",
+  "item.minecraft.splash_potion.effect.strong_electric_shock": "투척용 감전 화살",
+  "item.minecraft.lingering_potion.effect.strong_electric_shock": "잔류형 감전 화살",
+  "item.minecraft.tipped_arrow.effect.strong_electric_shock": "감전 화살",
+
+  "item.minecraft.potion.effect.soul_scream": "영혼 비명 포션",
+  "item.minecraft.splash_potion.effect.soul_scream": "투척용 영혼 비명 포션",
+  "item.minecraft.lingering_potion.effect.soul_scream": "잔류형 영혼 비명 포션",
+  "item.minecraft.tipped_arrow.effect.soul_scream": "영혼 비명 화살",
+
+
 
 
 
@@ -519,6 +551,16 @@
   "block.genesis.god_statue_f": "식물 신상",
   "block.genesis.god_statue_g": "얼음 신상",
   "block.genesis.god_statue_h": "냉기 신상",
+
+
+
+  "effect.genesis.frostbite": "동상",
+  "effect.genesis.electric_shock": "감전",
+  "effect.genesis.lightning_rod": "피뢰침",
+  "effect.genesis.soul_scream": "영혼비명",
+
+
+
 
 
   "entity.genesis.collector": "징수원",

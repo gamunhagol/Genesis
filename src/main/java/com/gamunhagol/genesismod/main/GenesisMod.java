@@ -10,11 +10,14 @@ import com.gamunhagol.genesismod.skill.GenesisSkillDataKeys;
 import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
+import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
+import com.gamunhagol.genesismod.world.item.GenesisBrewingRecipes;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import com.gamunhagol.genesismod.world.item.GenesisPotions;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -61,6 +64,8 @@ public class GenesisMod {
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
         GenesisFeatures.FEATURES.register(modEventBus);
         GenesisSkillDataKeys.DATA_KEYS.register(modEventBus);
+        GenesisEffects.MOB_EFFECTS.register(modEventBus);
+        GenesisPotions.POTIONS.register(modEventBus);
 
         GenesisNetwork.register();
 
@@ -96,6 +101,7 @@ public class GenesisMod {
                     );
                 }
             }
+            GenesisBrewingRecipes.registerBrewingRecipes();
         });
     }
 

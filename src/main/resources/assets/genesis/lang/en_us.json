@@ -410,6 +410,38 @@
   "item.genesis.collector_spawn_egg": "Collector Spawn Egg",
   "item.genesis.collector_guard_spawn_egg": "Collector Guard Spawn Egg",
 
+  "item.minecraft.potion.effect.frostbite": "Potion of Frostbite",
+  "item.minecraft.splash_potion.effect.frostbite": "Splash Potion of Frostbite",
+  "item.minecraft.lingering_potion.effect.frostbite": "Lingering Potion of Frostbite",
+  "item.minecraft.tipped_arrow.effect.frostbite": "Arrow of Frostbite",
+  "item.minecraft.potion.effect.long_frostbite": "Potion of Frostbite",
+  "item.minecraft.splash_potion.effect.long_frostbite": "Splash Potion of Frostbite",
+  "item.minecraft.lingering_potion.effect.long_frostbite": "Lingering Potion of Frostbite",
+  "item.minecraft.tipped_arrow.effect.long_frostbite": "Arrow of Frostbite",
+  "item.minecraft.potion.effect.strong_frostbite": "Potion of Frostbite",
+  "item.minecraft.splash_potion.effect.strong_frostbite": "Splash Potion of Frostbite",
+  "item.minecraft.lingering_potion.effect.strong_frostbite": "Lingering Potion of Frostbite",
+  "item.minecraft.tipped_arrow.effect.strong_frostbite": "Arrow of Frostbite",
+
+  "item.minecraft.potion.effect.electric_shock": "Potion of Electric Shock",
+  "item.minecraft.splash_potion.effect.electric_shock": "Splash Potion of Electric Shock",
+  "item.minecraft.lingering_potion.effect.electric_shock": "Lingering Potion of Electric Shock",
+  "item.minecraft.tipped_arrow.effect.electric_shock": "Arrow of Electric Shock",
+  "item.minecraft.potion.effect.long_electric_shock": "Potion of Electric Shock",
+  "item.minecraft.splash_potion.effect.long_electric_shock": "Splash Potion of Electric Shock",
+  "item.minecraft.lingering_potion.effect.long_electric_shock": "Lingering Potion of Electric Shock",
+  "item.minecraft.tipped_arrow.effect.long_electric_shock": "Arrow of Electric Shock",
+  "item.minecraft.potion.effect.strong_electric_shock": "Potion of Electric Shock",
+  "item.minecraft.splash_potion.effect.strong_electric_shock": "Splash Potion of Electric Shock",
+  "item.minecraft.lingering_potion.effect.strong_electric_shock": "Lingering Potion of Electric Shock",
+  "item.minecraft.tipped_arrow.effect.strong_electric_shock": "Arrow of Electric Shock",
+
+  "item.minecraft.potion.effect.soul_scream": "Potion of Soul Scream",
+  "item.minecraft.splash_potion.effect.soul_scream": "Splash Potion of Soul Scream",
+  "item.minecraft.lingering_potion.effect.soul_scream": "Lingering Potion of Soul Scream",
+  "item.minecraft.tipped_arrow.effect.soul_scream": "Arrow of Soul Scream",
+
+
 
 
 
@@ -522,6 +554,15 @@
   "block.genesis.god_statue_f": "Plant God Statue",
   "block.genesis.god_statue_g": "Ice God Statue",
   "block.genesis.god_statue_h": "Frost God Statue",
+
+
+
+  "effect.genesis.frostbite": "Frostbite",
+  "effect.genesis.electric_shock": "Electric Shock",
+  "effect.genesis.lightning_rod": "Lightning Rod",
+  "effect.genesis.soul_scream": "Soul Scream",
+
+
 
 
   "entity.genesis.collector": "Collector",

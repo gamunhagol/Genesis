@@ -8,6 +8,7 @@ import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
+import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
@@ -162,7 +163,7 @@ public class GenesisCombatEvents {
                 float lightDmg = calculateLightningDamage(target, snapshot.lightning());
                 finalDamage += lightDmg;
                 if (target.level().random.nextFloat() < procChance) {
-                    target.addEffect(new MobEffectInstance(MobEffects.WEAKNESS, 100, 0));
+                    target.addEffect(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 360, 0));
                 }
             }
 
