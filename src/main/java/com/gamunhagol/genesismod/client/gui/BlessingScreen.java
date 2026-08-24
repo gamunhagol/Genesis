@@ -5,14 +5,24 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketStatueUnlockNode;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import com.mojang.blaze3d.vertex.BufferBuilder;
+import com.mojang.blaze3d.vertex.DefaultVertexFormat;
+import com.mojang.blaze3d.vertex.Tesselator;
+import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.math.Axis;
 import net.minecraft.ChatFormatting;
+import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import org.joml.Matrix4f;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,10 +35,12 @@ public class BlessingScreen extends Screen {
 
     private static final ResourceLocation NODE_LOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/blank_constellation.png");
     private static final ResourceLocation NODE_UNLOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/constellation.png");
-    private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/starry_path.png");
 
-    private static final int BG_WIDTH = 1280;
-    private static final int BG_HEIGHT = 720;
+    private static final ResourceLocation END_SKY_LOCATION = new ResourceLocation("textures/environment/end_sky.png");
+    private static final ResourceLocation END_PORTAL_LOCATION = new ResourceLocation("textures/entity/end_portal.png");
+
+    private static final int BG_WIDTH = 2000;
+    private static final int BG_HEIGHT = 2000;
 
     private float panX = 0;
     private float panY = 0;
@@ -41,7 +53,6 @@ public class BlessingScreen extends Screen {
         this.lastScreen = lastScreen;
         this.statueId = statueId;
 
-        // 동적 경로 생성 로직 제거 후 노드 정보만 로드
         this.nodes.addAll(StatueRewardManager.getNodesForStatue(statueId));
     }
 
@@ -63,16 +74,91 @@ public class BlessingScreen extends Screen {
         this.panY = Mth.clamp(this.panY, -maxPanY, maxPanY);
     }
 
+    private void renderEndPortalBackground(GuiGraphics graphics) {
+        float time = Util.getMillis() / 80000.0F;
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder bufferbuilder = tesselator.getBuilder();
+
+        Matrix4f matrix4f = graphics.pose().last().pose();
+
+        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        RenderSystem.setShaderTexture(0, END_SKY_LOCATION);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.depthMask(false);
+        RenderSystem.setShaderColor(0.1F, 0.1F, 0.1F, 1.0F); // 배경을 아주 어둡게
+
+        bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+
+        float skyU = time;
+        float skyV = time;
+        float skyScale = 1.0f;
+
+        bufferbuilder.vertex(matrix4f, 0, this.height, 0).uv(skyU, skyV + this.height / 256.0F * skyScale).color(255, 255, 255, 255).endVertex();
+        bufferbuilder.vertex(matrix4f, this.width, this.height, 0).uv(skyU + this.width / 256.0F * skyScale, skyV + this.height / 256.0F * skyScale).color(255, 255, 255, 255).endVertex();
+        bufferbuilder.vertex(matrix4f, this.width, 0, 0).uv(skyU + this.width / 256.0F * skyScale, skyV).color(255, 255, 255, 255).endVertex();
+        bufferbuilder.vertex(matrix4f, 0, 0, 0).uv(skyU, skyV).color(255, 255, 255, 255).endVertex();
+        tesselator.end();
+
+        RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+        RenderSystem.setShaderTexture(0, END_PORTAL_LOCATION);
+
+        RenderSystem.blendFuncSeparate(
+                GlStateManager.SourceFactor.SRC_ALPHA,
+                GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA,
+                GlStateManager.SourceFactor.ONE,
+                GlStateManager.DestFactor.ZERO
+        );
+
+        int passes = 15;
+        for (int i = 1; i < passes; ++i) {
+            graphics.pose().pushPose();
+
+            float scale = 2.0F / (18 - i);
+
+            float panOffsetX = (this.panX * scale) / 200.0F;
+            float panOffsetY = (this.panY * scale) / 200.0F;
+
+            float offsetU = (float)(-(time * i * 0.2F)) + panOffsetX;
+            float offsetV = (float)(time * i * 0.2F) + panOffsetY;
+
+            graphics.pose().translate(this.width / 2.0F, this.height / 2.0F, 0);
+            graphics.pose().mulPose(Axis.ZP.rotationDegrees((i * i * 4321 + i * 9) * 2.0F));
+            graphics.pose().translate(-this.width / 2.0F, -this.height / 2.0F, 0);
+
+            Matrix4f portalMatrix = graphics.pose().last().pose();
+
+            float r = (float)(Math.random() * 0.5D + 0.1D);
+            float g = (float)(Math.random() * 0.5D + 0.4D);
+            float b = (float)(Math.random() * 0.5D + 0.5D);
+            float alpha = 1.0F / (passes - i);
+
+            bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+
+            bufferbuilder.vertex(portalMatrix, -this.width, this.height * 2, 0).uv(offsetU, offsetV + (this.height * 2) / 256.0F * scale).color(r, g, b, alpha).endVertex();
+            bufferbuilder.vertex(portalMatrix, this.width * 2, this.height * 2, 0).uv(offsetU + (this.width * 2) / 256.0F * scale, offsetV + (this.height * 2) / 256.0F * scale).color(r, g, b, alpha).endVertex();
+            bufferbuilder.vertex(portalMatrix, this.width * 2, -this.height, 0).uv(offsetU + (this.width * 2) / 256.0F * scale, offsetV).color(r, g, b, alpha).endVertex();
+            bufferbuilder.vertex(portalMatrix, -this.width, -this.height, 0).uv(offsetU, offsetV).color(r, g, b, alpha).endVertex();
+
+            tesselator.end();
+            graphics.pose().popPose();
+        }
+
+        RenderSystem.depthMask(true);
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.disableBlend();
+        RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+    }
+
+
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(graphics);
+        this.renderEndPortalBackground(graphics);
+
         graphics.pose().pushPose();
 
         graphics.pose().translate(this.width / 2.0F + panX, this.height / 2.0F + panY, 0);
         graphics.pose().scale(zoom, zoom, 1.0f);
-
-        // 상수로 정의된 BACKGROUND_TEXTURE 사용
-        graphics.blit(BACKGROUND_TEXTURE, -BG_WIDTH / 2, -BG_HEIGHT / 2, 0, 0, BG_WIDTH, BG_HEIGHT, BG_WIDTH, BG_HEIGHT);
 
         int nodeSize = 16;
         int halfSize = 8;
@@ -86,6 +172,7 @@ public class BlessingScreen extends Screen {
         var player = Minecraft.getInstance().player;
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
+
                 for (StatueRewardManager.NodeInfo node : nodes) {
                     boolean isUnlocked = cap.isNodeUnlocked(this.statueId, node.id);
                     ResourceLocation icon = isUnlocked ? NODE_UNLOCKED : NODE_LOCKED;
@@ -105,13 +192,13 @@ public class BlessingScreen extends Screen {
         }
 
         graphics.pose().popPose();
+
         super.render(graphics, mouseX, mouseY, partialTick);
 
         if (hoveredNode.get() != null) {
             drawNodeTooltip(graphics, mouseX, mouseY, hoveredNode.get(), isHoveredUnlocked.get());
         }
     }
-
     private void drawNodeTooltip(GuiGraphics graphics, int mouseX, int mouseY, StatueRewardManager.NodeInfo node, boolean isUnlocked) {
         List<Component> tooltipLines = new ArrayList<>();
         Component rewardName = node.rewardItem.getDescription();

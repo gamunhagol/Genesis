@@ -73,6 +73,55 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         return unlockedNodes.contains(statueId + "_" + nodeId);
     }
 
+    public void resetNode(String statueId, int nodeId) {
+        String key = statueId + "_" + nodeId;
+        if (unlockedNodes.remove(key)) {
+            this.setDirty(true);
+        }
+    }
+
+    public void resetStatueAllNodes(String statueId) {
+        boolean removedAny = unlockedNodes.removeIf(key -> key.startsWith(statueId + "_"));
+        if (removedAny) {
+            this.setDirty(true);
+        }
+    }
+
+    public void resetAllNodes() {
+        if (!unlockedNodes.isEmpty()) {
+            unlockedNodes.clear();
+            this.setDirty(true);
+        }
+    }
+
+    public String getDedicatedStatue() {
+        if (unlockedNodes.isEmpty()) {
+            return null;
+        }
+
+        String dedicated = null;
+        for (String key : unlockedNodes) {
+            String currentStatue = key.substring(0, key.lastIndexOf('_'));
+
+            if (dedicated == null) {
+                dedicated = currentStatue;
+            } else if (!dedicated.equals(currentStatue)) {
+                return null;
+            }
+        }
+        return dedicated;
+    }
+
+    public int getUnlockedNodeCount(String statueId) {
+        int count = 0;
+        for (String key : unlockedNodes) {
+            if (key.startsWith(statueId + "_")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     public boolean hasSpell(String spellId) {
         return learnedSpells.contains(spellId);
     }

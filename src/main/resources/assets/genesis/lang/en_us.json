@@ -755,6 +755,9 @@
 
   "commands.genesis.stats.set.success": "§a[Genesis] §6%2$s§f stat of §e%1$s§f has been set to §b%3$d§f.",
   "commands.genesis.mental.set.success": "§b[Genesis] §fMental power set to %s.",
+  "commands.genesis.blessing.reset_statue.success": "Reset all '%1$s' statue nodes for %2$s.",
+  "commands.genesis.blessing.reset_node.success": "Reset node #%1$s of the '%2$s' statue for %3$s.",
+  "commands.genesis.blessing.reset_all.success": "Completely reset all blessing nodes for %s.",
 
 
 

@@ -1,11 +1,14 @@
 package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.arguments.IntegerArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.logging.LogUtils;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -51,6 +54,37 @@ public class GenesisCommands {
                                 )
                         )
                 )
+
+                .then(Commands.literal("blessing")
+                        .then(Commands.literal("reset")
+                                .then(Commands.argument("target", EntityArgument.player())
+
+                                        .then(Commands.argument("statueId", StringArgumentType.string())
+                                                .executes(context -> resetStatueNodes(
+                                                        context.getSource(),
+                                                        EntityArgument.getPlayer(context, "target"),
+                                                        StringArgumentType.getString(context, "statueId")))
+
+
+                                                .then(Commands.argument("nodeId", IntegerArgumentType.integer())
+                                                        .executes(context -> resetSingleNode(
+                                                                context.getSource(),
+                                                                EntityArgument.getPlayer(context, "target"),
+                                                                StringArgumentType.getString(context, "statueId"),
+                                                                IntegerArgumentType.getInteger(context, "nodeId")))
+                                                )
+                                        )
+                                )
+                        )
+
+                        .then(Commands.literal("reset_all")
+                                .then(Commands.argument("target", EntityArgument.player())
+                                        .executes(context -> resetAllNodes(
+                                                context.getSource(),
+                                                EntityArgument.getPlayer(context, "target")))
+                                )
+                        )
+                )
         );
     }
 
@@ -91,6 +125,34 @@ public class GenesisCommands {
         LOGGER.info("[GenesisMod] Mental Update: {} set {}'s mental to {}",
                 source.getTextName(), target.getScoreboardName(), value);
 
+        return 1;
+    }
+
+
+    private static int resetStatueNodes(CommandSourceStack source, ServerPlayer target, String statueId) {
+        target.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+            stats.resetStatueAllNodes(statueId);
+            GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), target);
+            source.sendSuccess(() -> Component.translatable("commands.genesis.blessing.reset_statue.success", statueId, target.getScoreboardName()), true);
+        });
+        return 1;
+    }
+
+    private static int resetSingleNode(CommandSourceStack source, ServerPlayer target, String statueId, int nodeId) {
+        target.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+            stats.resetNode(statueId, nodeId);
+            GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), target);
+            source.sendSuccess(() -> Component.translatable("commands.genesis.blessing.reset_node.success", nodeId, statueId, target.getScoreboardName()), true);
+        });
+        return 1;
+    }
+
+    private static int resetAllNodes(CommandSourceStack source, ServerPlayer target) {
+        target.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+            stats.resetAllNodes();
+            GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), target);
+            source.sendSuccess(() -> Component.translatable("commands.genesis.blessing.reset_all.success", target.getScoreboardName()), true);
+        });
         return 1;
     }
 }

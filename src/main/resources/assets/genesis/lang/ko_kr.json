@@ -753,6 +753,9 @@
 
   "commands.genesis.stats.set.success": "§a[Genesis] §e%s§f의 §6%s§f 스탯이 §b%d§f(으)로 설정되었습니다.",
   "commands.genesis.mental.set.success": "§b[Genesis] §f정신력이 %s(으)로 설정되었습니다.",
+  "commands.genesis.blessing.reset_statue.success": "%2$s의 '%1$s' 신상 노드를 모두 초기화했습니다.",
+  "commands.genesis.blessing.reset_node.success": "%3$s의 '%2$s' 신상에서 '%1$s'번 노드를 초기화했습니다.",
+  "commands.genesis.blessing.reset_all.success": "%s의 모든 축복 노드를 완전히 초기화했습니다.",
 
 
 

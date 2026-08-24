@@ -51,6 +51,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -107,6 +108,49 @@ public class GenesisForgeEvents {
                 if (stats.isDirty()) {
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), (ServerPlayer) player);
                     stats.setDirty(false);
+                }
+
+                // === 단일 신앙 보너스 (가중치) 시스템 적용 ===
+                // 1초(20틱)마다 한 번씩만 체크하여 지속시간 3초(60틱)짜리 버프를 갱신해줍니다. (화면 깜빡임 방지)
+                if (player.tickCount % 20 == 0) {
+                    String dedicatedStatue = stats.getDedicatedStatue();
+
+                    if (dedicatedStatue != null) {
+                        int nodeCount = stats.getUnlockedNodeCount(dedicatedStatue);
+                        int amplifier = Math.max(0, nodeCount - 1); // 1개=0(1레벨), 2개=1(2레벨)...
+                        int duration = 60;
+
+                        switch (dedicatedStatue) {
+                            case "god_a": // 힘, 3개 이상 시 저항 1 추가
+                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier, false, false, true));
+                                if (nodeCount >= 3) {
+                                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, 0, false, false, true));
+                                }
+                                break;
+                            case "god_b": // 화염 저항
+                                player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration, amplifier, false, false, true));
+                                break;
+                            case "god_c": // 수중 호흡
+                                player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, duration, amplifier, false, false, true));
+                                break;
+                            case "god_d": // 신속
+                                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration, amplifier, false, false, true));
+                                break;
+                            case "god_e": // 투명 (투명은 레벨이 올라도 차이가 없으므로 고정값 사용)
+                                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, duration, 0, false, false, true));
+                                break;
+                            case "god_f": // 재생
+                                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, duration, amplifier, false, false, true));
+                                break;
+                            case "god_g": // 거북 도사 (구속 IV + 저항 III 수준으로 흉내)
+                                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, duration, amplifier + 3, false, false, true));
+                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier + 2, false, false, true));
+                                break;
+                            case "god_h": // 점프 강화
+                                player.addEffect(new MobEffectInstance(MobEffects.JUMP, duration, amplifier, false, false, true));
+                                break;
+                        }
+                    }
                 }
             });
 
@@ -279,5 +323,31 @@ public class GenesisForgeEvents {
                 
             }
         }
+    }
+    @SubscribeEvent
+    public static void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
+        Player player = event.getEntity();
+        if (player.level().isClientSide) return; // 서버 측에서만 처리
+
+        player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+            String dedicatedStatue = stats.getDedicatedStatue();
+
+            if (dedicatedStatue != null) {
+                int nodeCount = stats.getUnlockedNodeCount(dedicatedStatue);
+
+                if (nodeCount >= 3) {
+
+                    int originalXp = event.getOrb().value;
+
+                    int bonusXp = (int)(originalXp * 0.15f);
+
+                    if (bonusXp == 0 && originalXp > 0) {
+                        bonusXp = 1;
+                    }
+
+                    event.getOrb().value = originalXp + bonusXp;
+                }
+            }
+        });
     }
 }
