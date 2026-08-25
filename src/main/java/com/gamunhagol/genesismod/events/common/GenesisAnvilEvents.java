@@ -22,8 +22,6 @@ public class GenesisAnvilEvents {
         ItemStack right = event.getRight();
         Player player = event.getPlayer();
 
-        // [바닐라 모루 수리 비용 감소 등 추가적인 확장이 필요하다면 이 윗부분에서 처리해야 합니다.]
-
         if (left.isEmpty() || !WeaponDataManager.hasData(left.getItem())) return;
 
         int currentLevel = 0;
@@ -52,7 +50,6 @@ public class GenesisAnvilEvents {
 
             int finalCost = nextLevel;
 
-            // [불 - god_b] 축복 해금 시 비용 35% 감소 (최소 1)
             if (player != null) {
                 var statCap = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
                 if (statCap != null && statCap.isNodeUnlocked("god_b", 1)) {

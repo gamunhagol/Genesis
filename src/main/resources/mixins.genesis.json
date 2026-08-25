@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.gamunhagol.genesismod.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "mixins.genesis.refmap.json",
+  "mixins": [
+    "MixinAnvilMenu"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
