@@ -66,6 +66,10 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketStatueUnlockNode.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketStatueUnlockNode::new).encoder(PacketStatueUnlockNode::toBytes)
                 .consumerMainThread(PacketStatueUnlockNode::handle).add();
+
+        INSTANCE.messageBuilder(PacketActivateWindBlessing.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketActivateWindBlessing::new).encoder(PacketActivateWindBlessing::toBytes)
+                .consumerMainThread(PacketActivateWindBlessing::handle).add();
     }
 
     public static void sendToPlayer(Object message, ServerPlayer player) {
