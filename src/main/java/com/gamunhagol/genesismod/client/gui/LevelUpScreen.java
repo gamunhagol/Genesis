@@ -247,9 +247,14 @@ public class LevelUpScreen extends Screen {
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.holy_scaling", (int)(holyScaling * 100)), infoX, infoY + lineGap * 2, textColor, false);
 
             int totalArcane = getTotalStatValue(7, stats) + pendingIncreases[7];
-            float discovery = totalArcane * 0.05f;
-            graphics.drawString(this.font, Component.translatable("gui.genesis.info.discovery", String.format("%.2f", discovery)), infoX, infoY + lineGap * 4, textColor, false);
 
+            float discovery = totalArcane * 0.05f;
+
+            if (stats.isNodeUnlocked("god_c", 1)) {
+                discovery += 1.0f;
+            }
+
+            graphics.drawString(this.font, Component.translatable("gui.genesis.info.discovery", String.format("%.2f", discovery)), infoX, infoY + lineGap * 4, textColor, false);
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 
@@ -325,7 +330,7 @@ public class LevelUpScreen extends Screen {
 
         public void tick() {
             if (this.isHolding) {
-                if (!this.isHovered) {   // mouseHandler 체크 제거
+                if (!this.isHovered) {
                     this.stopHolding();
                     return;
                 }

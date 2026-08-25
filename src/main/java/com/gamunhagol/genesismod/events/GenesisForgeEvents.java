@@ -110,43 +110,41 @@ public class GenesisForgeEvents {
                     stats.setDirty(false);
                 }
 
-                // === 단일 신앙 보너스 (가중치) 시스템 적용 ===
-                // 1초(20틱)마다 한 번씩만 체크하여 지속시간 3초(60틱)짜리 버프를 갱신해줍니다. (화면 깜빡임 방지)
                 if (player.tickCount % 20 == 0) {
                     String dedicatedStatue = stats.getDedicatedStatue();
 
                     if (dedicatedStatue != null) {
                         int nodeCount = stats.getUnlockedNodeCount(dedicatedStatue);
-                        int amplifier = Math.max(0, nodeCount - 1); // 1개=0(1레벨), 2개=1(2레벨)...
+                        int amplifier = Math.max(0, nodeCount - 1);
                         int duration = 60;
 
                         switch (dedicatedStatue) {
-                            case "god_a": // 힘, 3개 이상 시 저항 1 추가
+                            case "god_a":
                                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier, false, false, true));
                                 if (nodeCount >= 3) {
                                     player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, 0, false, false, true));
                                 }
                                 break;
-                            case "god_b": // 화염 저항
+                            case "god_b":
                                 player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration, amplifier, false, false, true));
                                 break;
-                            case "god_c": // 수중 호흡
+                            case "god_c":
                                 player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, duration, amplifier, false, false, true));
                                 break;
-                            case "god_d": // 신속
+                            case "god_d":
                                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration, amplifier, false, false, true));
                                 break;
-                            case "god_e": // 투명 (투명은 레벨이 올라도 차이가 없으므로 고정값 사용)
+                            case "god_e":
                                 player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, duration, 0, false, false, true));
                                 break;
-                            case "god_f": // 재생
+                            case "god_f":
                                 player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, duration, amplifier, false, false, true));
                                 break;
-                            case "god_g": // 거북 도사 (구속 IV + 저항 III 수준으로 흉내)
+                            case "god_g":
                                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, duration, amplifier + 3, false, false, true));
                                 player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier + 2, false, false, true));
                                 break;
-                            case "god_h": // 점프 강화
+                            case "god_h":
                                 player.addEffect(new MobEffectInstance(MobEffects.JUMP, duration, amplifier, false, false, true));
                                 break;
                         }

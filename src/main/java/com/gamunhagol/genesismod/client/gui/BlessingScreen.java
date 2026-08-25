@@ -201,7 +201,14 @@ public class BlessingScreen extends Screen {
     }
     private void drawNodeTooltip(GuiGraphics graphics, int mouseX, int mouseY, StatueRewardManager.NodeInfo node, boolean isUnlocked) {
         List<Component> tooltipLines = new ArrayList<>();
-        Component rewardName = node.rewardItem.getDescription();
+
+        Component rewardName;
+        if (node.isPassive()) {
+            rewardName = Component.translatable("blessing.genesis." + this.statueId + "." + node.id);
+        } else {
+            rewardName = node.rewardItem.getHoverName();
+        }
+
         Component costName = node.costItem.getDescription();
 
         tooltipLines.add(Component.translatable("gui.genesis.blessing.reward", rewardName).withStyle(ChatFormatting.GRAY));

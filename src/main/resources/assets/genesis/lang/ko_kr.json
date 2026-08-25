@@ -648,6 +648,14 @@
   "gui.genesis.blessing.reward": "보상:%s",
   "gui.genesis.blessing.cost" : "필요:%s",
 
+  "blessing.genesis.god_a.1": "낙하 충격 완화",
+  "blessing.genesis.god_b.1": "모루 비용 인하",
+  "blessing.genesis.god_c.1": "심해의 행운",
+  "blessing.genesis.god_d.1": "바람의 질주(좌Shift 두번으로 발동)",
+  "blessing.genesis.god_e.1": "몹 인지 저하",
+  "blessing.genesis.god_f.1": "걸어다니는 비료(좌Shift 10초 지속으로 발동)",
+  "blessing.genesis.god_g.1": "얼음땡(10초간 멈출시 발동)",
+
 
 
 

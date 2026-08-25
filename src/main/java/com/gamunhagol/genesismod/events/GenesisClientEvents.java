@@ -8,9 +8,12 @@ import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketChangeSelectedSlot;
+import com.gamunhagol.genesismod.network.PacketActivateWindBlessing;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
+import net.minecraft.Util;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -19,7 +22,7 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
-import net.minecraftforge.event.TickEvent; // [추가]
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -81,6 +84,9 @@ public class GenesisClientEvents {
     @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
     public static class ForgeBusEvents {
 
+        private static boolean wasSneaking = false;
+        private static long lastSneakTime = 0;
+
         @SubscribeEvent
         public static void onComputeFovModifier(ComputeFovModifierEvent event) {
             if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().getItem() instanceof GreatBowItem) {
@@ -100,11 +106,28 @@ public class GenesisClientEvents {
         @SubscribeEvent
         public static void onClientTick(TickEvent.ClientTickEvent event) {
             if (event.phase != TickEvent.Phase.END) return;
+
+            Minecraft mc = Minecraft.getInstance();
+
             while (ModKeyBindings.SPELL_PREV_KEY.consumeClick()) {
                 GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(-1));
             }
             while (ModKeyBindings.SPELL_NEXT_KEY.consumeClick()) {
                 GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(1));
+            }
+
+            if (mc.player != null) {
+                boolean isSneaking = mc.options.keyShift.isDown();
+                if (isSneaking && !wasSneaking) {
+                    long currentTime = Util.getMillis();
+                    if (currentTime - lastSneakTime < 300) {
+                        GenesisNetwork.sendToServer(new PacketActivateWindBlessing());
+                        lastSneakTime = 0;
+                    } else {
+                        lastSneakTime = currentTime;
+                    }
+                }
+                wasSneaking = isSneaking;
             }
         }
     }

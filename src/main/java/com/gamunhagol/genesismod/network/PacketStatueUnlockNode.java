@@ -65,10 +65,13 @@ public class PacketStatueUnlockNode {
                             if (toRemove <= 0) break;
                         }
                     }
+
                     cap.unlockNode(this.statueId, this.nodeId);
-                    ItemStack reward = new ItemStack(nodeInfo.rewardItem, nodeInfo.rewardCount);
-                    if (!player.getInventory().add(reward)) {
-                        player.drop(reward, false);
+                    if (!nodeInfo.isPassive()) {
+                        ItemStack reward = nodeInfo.rewardItem.copy();
+                        if (!player.getInventory().add(reward)) {
+                            player.drop(reward, false);
+                        }
                     }
 
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(cap), player);

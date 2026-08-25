@@ -650,6 +650,14 @@
   "gui.genesis.blessing.reward": "Reward: %s",
   "gui.genesis.blessing.cost" : "Cost: %s",
 
+  "blessing.genesis.god_a.1": "Fall Damage Reduction",
+  "blessing.genesis.god_b.1": "Anvil Cost Reduction",
+  "blessing.genesis.god_c.1": "Deep Sea Fortune",
+  "blessing.genesis.god_d.1": "Wind Sprint (Double-tap Left Shift to activate)",
+  "blessing.genesis.god_e.1": "Mob Detection Reduction",
+  "blessing.genesis.god_f.1": "Walking Fertilizer (Hold Left Shift for 10s to activate)",
+  "blessing.genesis.god_g.1": "Freeze Tag (Stand still for 10s to activate)",
+
 
 
 

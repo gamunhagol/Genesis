@@ -8,7 +8,6 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
-
 import java.util.UUID;
 
 public class StatApplier {
@@ -21,7 +20,10 @@ public class StatApplier {
     public static void applyAll(Player player, StatCapability stats) {
         applyVigor(player, stats.getVigor());
         applyEndurance(player, stats.getEndurance());
-        applyArcane(player, stats.getArcane());
+
+        // Arcane 갱신 시 StatCapability를 함께 넘겨 축복 해금 여부를 파악합니다.
+        applyArcane(player, stats.getArcane(), stats);
+
         stats.updateMaxMental();
 
         sync(player, GenesisAttributes.VIGOR.get(), stats.getVigor());
@@ -65,6 +67,7 @@ public class StatApplier {
             }
         }
     }
+
     public static void applyEndurance(Player player, int level) {
         AttributeInstance maxStam = player.getAttribute(EpicFightAttributes.MAX_STAMINA.get());
         if (maxStam != null) {
@@ -95,11 +98,18 @@ public class StatApplier {
     }
 
 
-    public static void applyArcane(Player player, int level) {
+    public static void applyArcane(Player player, int level, StatCapability stats) {
         AttributeInstance attr = player.getAttribute(Attributes.LUCK);
         if (attr != null) {
             attr.removeModifier(LUCK_MOD_UUID);
-            attr.addPermanentModifier(new AttributeModifier(LUCK_MOD_UUID, "Genesis Arcane", level * 0.05f, AttributeModifier.Operation.ADDITION));
+
+            float discovery = level * 0.05f;
+
+            if (stats.isNodeUnlocked("god_c", 1)) {
+                discovery += 1.0f;
+            }
+
+            attr.addPermanentModifier(new AttributeModifier(LUCK_MOD_UUID, "Genesis Arcane", discovery, AttributeModifier.Operation.ADDITION));
         }
     }
 

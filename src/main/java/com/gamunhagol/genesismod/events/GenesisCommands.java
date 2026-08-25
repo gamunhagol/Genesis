@@ -109,7 +109,7 @@ public class GenesisCommands {
                 case "dexterity" -> stats.setDexterity(value);
                 case "intelligence" -> { stats.setIntelligence(value); stats.updateMaxMental(); }
                 case "faith" -> stats.setFaith(value);
-                case "arcane" -> { stats.setArcane(value); StatApplier.applyArcane(target, value); }
+                case "arcane" -> { stats.setArcane(value); StatApplier.applyArcane(target, value, stats); }
             }
         });
 

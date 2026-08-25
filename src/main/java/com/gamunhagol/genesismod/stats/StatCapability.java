@@ -30,6 +30,13 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     private boolean isDirty = false;
 
+
+    // Blessing 패시브 상태 추적 변수
+    private int windDashCooldown = 0;
+    private int iceIdleTicks = 0;
+    private int forestSneakTicks = 0;
+    //
+
     private final Set<String> learnedSpells = new LinkedHashSet<>();
     private final Set<String> unlockedNodes = new LinkedHashSet<>();
 
@@ -47,6 +54,11 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
             if (this.mental <= 0.0f) {
                 this.mental = 0.0f;
             }
+            this.isDirty = true;
+        }
+
+        if (this.windDashCooldown > 0) {
+            this.windDashCooldown--;
             this.isDirty = true;
         }
     }
@@ -187,6 +199,19 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     public boolean isDirty() { return isDirty; }
     public void setDirty(boolean d) { this.isDirty = d; }
 
+    // 축복 상태 Getter & Setter
+    public int getWindDashCooldown() { return windDashCooldown; }
+    public void setWindDashCooldown(int ticks) {
+        this.windDashCooldown = ticks;
+        this.isDirty = true;
+    }
+
+    public int getIceIdleTicks() { return iceIdleTicks; }
+    public void setIceIdleTicks(int ticks) { this.iceIdleTicks = ticks; }
+
+    public int getForestSneakTicks() { return forestSneakTicks; }
+    public void setForestSneakTicks(int ticks) { this.forestSneakTicks = ticks; }
+
     public void copyFrom(StatCapability source) {
         this.vigor = source.vigor; this.mind = source.mind; this.endurance = source.endurance;
         this.strength = source.strength; this.dexterity = source.dexterity;
@@ -199,6 +224,10 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.unlockedNodes.addAll(source.unlockedNodes);
         this.activeSummons.clear();
         this.activeSummons.putAll(source.activeSummons);
+
+        this.windDashCooldown = source.windDashCooldown;
+        this.iceIdleTicks = source.iceIdleTicks;
+        this.forestSneakTicks = source.forestSneakTicks;
 
         this.isDirty = true;
     }
@@ -217,6 +246,8 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         nbt.putFloat("mental", mental);
         nbt.putFloat("maxMental", maxMental);
         nbt.putBoolean("isLevelUpUnlocked", isLevelUpUnlocked);
+
+        nbt.putInt("windDashCooldown", windDashCooldown);
 
         ListTag spellsTag = new ListTag();
         for (String id : learnedSpells) {
@@ -255,6 +286,10 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         mental = nbt.getFloat("mental");
         maxMental = nbt.getFloat("maxMental");
         isLevelUpUnlocked = nbt.getBoolean("isLevelUpUnlocked");
+
+        if (nbt.contains("windDashCooldown")) {
+            windDashCooldown = nbt.getInt("windDashCooldown");
+        }
 
         learnedSpells.clear();
         if (nbt.contains("learnedSpells", Tag.TAG_LIST)) {
