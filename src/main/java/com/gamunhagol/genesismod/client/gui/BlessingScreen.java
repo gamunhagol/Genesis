@@ -42,6 +42,8 @@ public class BlessingScreen extends Screen {
     private static final int BG_WIDTH = 2000;
     private static final int BG_HEIGHT = 2000;
 
+    private static final int MAX_LINE_DISTANCE = 190;
+
     private float panX = 0;
     private float panY = 0;
     private float zoom = 1.0f;
@@ -86,10 +88,9 @@ public class BlessingScreen extends Screen {
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.depthMask(false);
-        RenderSystem.setShaderColor(0.1F, 0.1F, 0.1F, 1.0F); // 배경을 아주 어둡게
+        RenderSystem.setShaderColor(0.1F, 0.1F, 0.1F, 1.0F);
 
         bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-
         float skyU = time;
         float skyV = time;
         float skyScale = 1.0f;
@@ -115,10 +116,8 @@ public class BlessingScreen extends Screen {
             graphics.pose().pushPose();
 
             float scale = 2.0F / (18 - i);
-
             float panOffsetX = (this.panX * scale) / 200.0F;
             float panOffsetY = (this.panY * scale) / 200.0F;
-
             float offsetU = (float)(-(time * i * 0.2F)) + panOffsetX;
             float offsetV = (float)(time * i * 0.2F) + panOffsetY;
 
@@ -134,7 +133,6 @@ public class BlessingScreen extends Screen {
             float alpha = 1.0F / (passes - i);
 
             bufferbuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-
             bufferbuilder.vertex(portalMatrix, -this.width, this.height * 2, 0).uv(offsetU, offsetV + (this.height * 2) / 256.0F * scale).color(r, g, b, alpha).endVertex();
             bufferbuilder.vertex(portalMatrix, this.width * 2, this.height * 2, 0).uv(offsetU + (this.width * 2) / 256.0F * scale, offsetV + (this.height * 2) / 256.0F * scale).color(r, g, b, alpha).endVertex();
             bufferbuilder.vertex(portalMatrix, this.width * 2, -this.height, 0).uv(offsetU + (this.width * 2) / 256.0F * scale, offsetV).color(r, g, b, alpha).endVertex();
@@ -150,18 +148,82 @@ public class BlessingScreen extends Screen {
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
     }
 
+    private void renderAstralLine(GuiGraphics graphics, float x1, float y1, float x2, float y2, boolean isUnlocked) {
+        float dx = x2 - x1;
+        float dy = y2 - y1;
+        float len = (float) Math.sqrt(dx * dx + dy * dy);
+        if (len == 0.0F) return;
+
+        float nx = -dy / len;
+        float ny = dx / len;
+
+        graphics.flush();
+
+        Tesselator tesselator = Tesselator.getInstance();
+        BufferBuilder buffer = tesselator.getBuilder();
+        Matrix4f matrix = graphics.pose().last().pose();
+
+        RenderSystem.enableBlend();
+        RenderSystem.disableDepthTest();
+        RenderSystem.disableCull();
+        RenderSystem.setShader(GameRenderer::getPositionColorShader);
+
+        RenderSystem.blendFuncSeparate(
+                GlStateManager.SourceFactor.SRC_ALPHA,
+                GlStateManager.DestFactor.ONE,
+                GlStateManager.SourceFactor.ONE,
+                GlStateManager.DestFactor.ZERO
+        );
+
+        float outerWidth = isUnlocked ? 5.0f : 2.5f;
+        float rOuter = isUnlocked ? 0.75f : 0.3f;
+        float gOuter = isUnlocked ? 0.75f : 0.3f;
+        float bOuter = isUnlocked ? 0.75f : 0.3f;
+        float aOuter = isUnlocked ? 0.5f : 0.4f;
+
+        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        drawQuadStrip(buffer, matrix, x1, y1, x2, y2, nx, ny, outerWidth, rOuter, gOuter, bOuter, aOuter);
+        tesselator.end();
+
+        float innerWidth = isUnlocked ? 2.0f : 1.0f;
+        float rInner = isUnlocked ? 0.9f : 0.45f;
+        float gInner = isUnlocked ? 0.9f : 0.45f;
+        float bInner = isUnlocked ? 0.9f : 0.45f;
+        float aInner = isUnlocked ? 0.85f : 0.6f;
+
+        buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
+        drawQuadStrip(buffer, matrix, x1, y1, x2, y2, nx, ny, innerWidth, rInner, gInner, bInner, aInner);
+        tesselator.end();
+
+        RenderSystem.enableCull();
+        RenderSystem.enableDepthTest();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.disableBlend();
+    }
+
+    private void drawQuadStrip(BufferBuilder buffer, Matrix4f matrix, float x1, float y1, float x2, float y2, float nx, float ny, float width, float r, float g, float b, float a) {
+        float offX = nx * (width / 2.0f);
+        float offY = ny * (width / 2.0f);
+
+        buffer.vertex(matrix, x1 - offX, y1 - offY, 0).color(r, g, b, a).endVertex();
+        buffer.vertex(matrix, x2 - offX, y2 - offY, 0).color(r, g, b, a).endVertex();
+        buffer.vertex(matrix, x2 + offX, y2 + offY, 0).color(r, g, b, a).endVertex();
+        buffer.vertex(matrix, x1 + offX, y1 + offY, 0).color(r, g, b, a).endVertex();
+    }
 
     @Override
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         this.renderEndPortalBackground(graphics);
 
-        graphics.pose().pushPose();
+        graphics.flush();
 
-        graphics.pose().translate(this.width / 2.0F + panX, this.height / 2.0F + panY, 0);
+        graphics.pose().pushPose();
+        graphics.pose().translate(this.width / 2.0F + panX, this.height / 2.0F + panY, 50.0F);
         graphics.pose().scale(zoom, zoom, 1.0f);
 
         int nodeSize = 16;
         int halfSize = 8;
+        int maxDistSq = MAX_LINE_DISTANCE * MAX_LINE_DISTANCE;
 
         AtomicReference<StatueRewardManager.NodeInfo> hoveredNode = new AtomicReference<>();
         AtomicBoolean isHoveredUnlocked = new AtomicBoolean(false);
@@ -172,6 +234,29 @@ public class BlessingScreen extends Screen {
         var player = Minecraft.getInstance().player;
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
+
+                for (int i = 0; i < nodes.size(); i++) {
+                    for (int j = i + 1; j < nodes.size(); j++) {
+                        StatueRewardManager.NodeInfo n1 = nodes.get(i);
+                        StatueRewardManager.NodeInfo n2 = nodes.get(j);
+
+                        int dx = n1.x - n2.x;
+                        int dy = n1.y - n2.y;
+
+                        if (dx * dx + dy * dy <= maxDistSq) {
+                            boolean isLineActive = cap.isNodeUnlocked(this.statueId, n1.id) && cap.isNodeUnlocked(this.statueId, n2.id);
+
+                            int x1 = (-BG_WIDTH / 2) + n1.x;
+                            int y1 = (-BG_HEIGHT / 2) + n1.y;
+                            int x2 = (-BG_WIDTH / 2) + n2.x;
+                            int y2 = (-BG_HEIGHT / 2) + n2.y;
+
+                            renderAstralLine(graphics, x1, y1, x2, y2, isLineActive);
+                        }
+                    }
+                }
+
+                graphics.flush();
 
                 for (StatueRewardManager.NodeInfo node : nodes) {
                     boolean isUnlocked = cap.isNodeUnlocked(this.statueId, node.id);
@@ -196,9 +281,13 @@ public class BlessingScreen extends Screen {
         super.render(graphics, mouseX, mouseY, partialTick);
 
         if (hoveredNode.get() != null) {
+            graphics.pose().pushPose();
+            graphics.pose().translate(0, 0, 300);
             drawNodeTooltip(graphics, mouseX, mouseY, hoveredNode.get(), isHoveredUnlocked.get());
+            graphics.pose().popPose();
         }
     }
+
     private void drawNodeTooltip(GuiGraphics graphics, int mouseX, int mouseY, StatueRewardManager.NodeInfo node, boolean isUnlocked) {
         List<Component> tooltipLines = new ArrayList<>();
 
@@ -210,7 +299,6 @@ public class BlessingScreen extends Screen {
         }
 
         Component costName = node.costItem.getDescription();
-
         tooltipLines.add(Component.translatable("gui.genesis.blessing.reward", rewardName).withStyle(ChatFormatting.GRAY));
 
         if (!isUnlocked) {
