@@ -39,7 +39,9 @@ public class StatueRewardManager {
 
         if ("god_a".equals(statueId)) {
             nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
-            nodes.add(new NodeInfo(2, 860, 1100, cost, 1, new ItemStack(Items.DIAMOND, 1)));
+            nodes.add(new NodeInfo(2, 900, 1100, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
+            nodes.add(new NodeInfo(3, 1100, 1100, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
+            nodes.add(new NodeInfo(3, 1000, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
 
         }
         else if ("god_b".equals(statueId)) {

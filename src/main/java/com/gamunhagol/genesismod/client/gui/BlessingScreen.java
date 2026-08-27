@@ -42,8 +42,6 @@ public class BlessingScreen extends Screen {
     private static final int BG_WIDTH = 2000;
     private static final int BG_HEIGHT = 2000;
 
-    private static final int MAX_LINE_DISTANCE = 190;
-
     private float panX = 0;
     private float panY = 0;
     private float zoom = 1.0f;
@@ -223,7 +221,6 @@ public class BlessingScreen extends Screen {
 
         int nodeSize = 16;
         int halfSize = 8;
-        int maxDistSq = MAX_LINE_DISTANCE * MAX_LINE_DISTANCE;
 
         AtomicReference<StatueRewardManager.NodeInfo> hoveredNode = new AtomicReference<>();
         AtomicBoolean isHoveredUnlocked = new AtomicBoolean(false);
@@ -235,21 +232,23 @@ public class BlessingScreen extends Screen {
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
 
-                for (int i = 0; i < nodes.size(); i++) {
-                    for (int j = i + 1; j < nodes.size(); j++) {
-                        StatueRewardManager.NodeInfo n1 = nodes.get(i);
-                        StatueRewardManager.NodeInfo n2 = nodes.get(j);
+                for (StatueRewardManager.NodeInfo node : nodes) {
+                    for (int requiredId : node.requiredNodes) {
+                        StatueRewardManager.NodeInfo parentNode = null;
+                        for (StatueRewardManager.NodeInfo n : nodes) {
+                            if (n.id == requiredId) {
+                                parentNode = n;
+                                break;
+                            }
+                        }
 
-                        int dx = n1.x - n2.x;
-                        int dy = n1.y - n2.y;
+                        if (parentNode != null) {
+                            boolean isLineActive = cap.isNodeUnlocked(this.statueId, node.id) && cap.isNodeUnlocked(this.statueId, parentNode.id);
 
-                        if (dx * dx + dy * dy <= maxDistSq) {
-                            boolean isLineActive = cap.isNodeUnlocked(this.statueId, n1.id) && cap.isNodeUnlocked(this.statueId, n2.id);
-
-                            int x1 = (-BG_WIDTH / 2) + n1.x;
-                            int y1 = (-BG_HEIGHT / 2) + n1.y;
-                            int x2 = (-BG_WIDTH / 2) + n2.x;
-                            int y2 = (-BG_HEIGHT / 2) + n2.y;
+                            int x1 = (-BG_WIDTH / 2) + node.x;
+                            int y1 = (-BG_HEIGHT / 2) + node.y;
+                            int x2 = (-BG_WIDTH / 2) + parentNode.x;
+                            int y2 = (-BG_HEIGHT / 2) + parentNode.y;
 
                             renderAstralLine(graphics, x1, y1, x2, y2, isLineActive);
                         }
