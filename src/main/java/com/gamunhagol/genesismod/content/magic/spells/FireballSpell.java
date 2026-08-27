@@ -26,9 +26,8 @@ public class FireballSpell extends MagicSpell {
     public int getMemoryCost() {return 1;}
 
     @Override
-    protected DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalyst) {
+    protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
         float basePower = 2.0f;
-
         float magicEfficiency = 0.4f;
         float fireEfficiency = 0.2f;
 
@@ -36,6 +35,7 @@ public class FireballSpell extends MagicSpell {
 
         return new DamageSnapshot(0, 0, finalFire, 0, 0, 0, 0);
     }
+
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         Vec3 look = caster.getLookAngle();

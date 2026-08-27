@@ -17,7 +17,6 @@ public abstract class AbstractSpell {
     public String getId() { return id; }
     public abstract int getCastTime();
 
-
     public abstract Map<StatType, Integer> getRequiredStats();
 
     public abstract float getMentalCost();
@@ -27,15 +26,13 @@ public abstract class AbstractSpell {
 
     public void executeCast(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot) {
         if (!level.isClientSide) {
-            DamageSnapshot spellSnapshot = calculateSpellSnapshot(catalystSnapshot);
-
+            DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
             onExecute(level, caster, spellSnapshot);
-
             consumeMental(caster);
         }
     }
 
-    protected abstract DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalystSnapshot);
+    protected abstract DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalystSnapshot);
 
     protected abstract void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot);
 

@@ -13,17 +13,14 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
-import java.util.Map;
-
 public abstract class AbstractSummonSpell extends MagicSpell {
 
     public AbstractSummonSpell(String id) {
         super(id);
     }
 
-
     @Override
-    protected DamageSnapshot calculateSpellSnapshot(DamageSnapshot catalystSnapshot) {
+    protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalystSnapshot) {
         return DamageSnapshot.EMPTY;
     }
 
@@ -37,7 +34,6 @@ public abstract class AbstractSummonSpell extends MagicSpell {
 
         Mob summonEntity = createSummonEntity(serverLevel, player);
         if (summonEntity instanceof ISummonable summonable) {
-
             Vec3 look = player.getLookAngle();
             double distance = 1.5;
             double spawnX = player.getX() + (look.x * distance);
@@ -45,7 +41,6 @@ public abstract class AbstractSummonSpell extends MagicSpell {
             double spawnZ = player.getZ() + (look.z * distance);
 
             summonEntity.setPos(spawnX, spawnY, spawnZ);
-
             summonable.setOwnerUUID(player.getUUID());
 
             int arcaneLevel = WeaponRequirementHelper.getEntityStat(player, StatType.ARCANE);

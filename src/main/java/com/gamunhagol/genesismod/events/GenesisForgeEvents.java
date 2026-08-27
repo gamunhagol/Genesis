@@ -55,6 +55,7 @@ import net.minecraftforge.event.entity.player.PlayerXpEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.util.Set;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisForgeEvents {
@@ -108,47 +109,6 @@ public class GenesisForgeEvents {
                 if (stats.isDirty()) {
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), (ServerPlayer) player);
                     stats.setDirty(false);
-                }
-
-                if (player.tickCount % 20 == 0) {
-                    String dedicatedStatue = stats.getDedicatedStatue();
-
-                    if (dedicatedStatue != null) {
-                        int nodeCount = stats.getUnlockedNodeCount(dedicatedStatue);
-                        int amplifier = Math.max(0, nodeCount - 1);
-                        int duration = 60;
-
-                        switch (dedicatedStatue) {
-                            case "god_a":
-                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, duration, amplifier, false, false, true));
-                                if (nodeCount >= 3) {
-                                    player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, 0, false, false, true));
-                                }
-                                break;
-                            case "god_b":
-                                player.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, duration, amplifier, false, false, true));
-                                break;
-                            case "god_c":
-                                player.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, duration, amplifier, false, false, true));
-                                break;
-                            case "god_d":
-                                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, duration, amplifier, false, false, true));
-                                break;
-                            case "god_e":
-                                player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, duration, 0, false, false, true));
-                                break;
-                            case "god_f":
-                                player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, duration, amplifier, false, false, true));
-                                break;
-                            case "god_g":
-                                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, duration, amplifier + 3, false, false, true));
-                                player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, amplifier + 2, false, false, true));
-                                break;
-                            case "god_h":
-                                player.addEffect(new MobEffectInstance(MobEffects.JUMP, duration, amplifier, false, false, true));
-                                break;
-                        }
-                    }
                 }
             });
 
@@ -318,33 +278,35 @@ public class GenesisForgeEvents {
                     event.setCancellationResult(InteractionResult.SUCCESS);
                     event.setCanceled(true);
                 }
-                
+
             }
         }
     }
     @SubscribeEvent
     public static void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
         Player player = event.getEntity();
-        if (player.level().isClientSide) return; // 서버 측에서만 처리
+        if (player.level().isClientSide) return;
 
         player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-            String dedicatedStatue = stats.getDedicatedStatue();
+            Set<String> dedications = stats.getValidDedications();
+            boolean applyBonus = false;
 
-            if (dedicatedStatue != null) {
-                int nodeCount = stats.getUnlockedNodeCount(dedicatedStatue);
-
-                if (nodeCount >= 3) {
-
-                    int originalXp = event.getOrb().value;
-
-                    int bonusXp = (int)(originalXp * 0.15f);
-
-                    if (bonusXp == 0 && originalXp > 0) {
-                        bonusXp = 1;
-                    }
-
-                    event.getOrb().value = originalXp + bonusXp;
+            for (String statueId : dedications) {
+                if (stats.getUnlockedNodeCount(statueId) >= 3) {
+                    applyBonus = true;
+                    break;
                 }
+            }
+
+            if (applyBonus) {
+                int originalXp = event.getOrb().value;
+                int bonusXp = (int)(originalXp * 0.15f);
+
+                if (bonusXp == 0 && originalXp > 0) {
+                    bonusXp = 1;
+                }
+
+                event.getOrb().value = originalXp + bonusXp;
             }
         });
     }

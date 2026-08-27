@@ -6,6 +6,7 @@ import net.minecraft.nbt.StringTag;
 import net.minecraft.nbt.Tag;
 import net.minecraftforge.common.util.INBTSerializable;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
@@ -29,7 +30,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     private float regenRate = 0.005f;
 
     private boolean isDirty = false;
-
 
     // Blessing 패시브 상태 추적 변수
     private int windDashCooldown = 0;
@@ -106,22 +106,26 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         }
     }
 
-    public String getDedicatedStatue() {
-        if (unlockedNodes.isEmpty()) {
-            return null;
-        }
+    public Set<String> getValidDedications() {
+        Set<String> activeGods = new LinkedHashSet<>();
 
-        String dedicated = null;
         for (String key : unlockedNodes) {
-            String currentStatue = key.substring(0, key.lastIndexOf('_'));
-
-            if (dedicated == null) {
-                dedicated = currentStatue;
-            } else if (!dedicated.equals(currentStatue)) {
-                return null;
-            }
+            activeGods.add(key.substring(0, key.lastIndexOf('_')));
         }
-        return dedicated;
+
+        if (activeGods.isEmpty()) {
+            return Collections.emptySet();
+        }
+
+        if (activeGods.size() == 1) {
+            return activeGods;
+        }
+
+        if (activeGods.size() == 2 && activeGods.contains("god_g") && activeGods.contains("god_h")) {
+            return activeGods;
+        }
+
+        return Collections.emptySet();
     }
 
     public int getUnlockedNodeCount(String statueId) {
