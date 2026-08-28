@@ -1,0 +1,4 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "genesis:blocks/quicksand_block"
+}
