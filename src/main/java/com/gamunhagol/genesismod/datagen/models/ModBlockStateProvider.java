@@ -78,7 +78,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 models().cubeAll("mist_vault_1", modLoc("block/mist_vault_1"))
                         .renderType("translucent")
         );
-
+        simpleBlock(GenesisBlocks.QUICKSAND_BLOCK.get(), cubeAll(GenesisBlocks.QUICKSAND_BLOCK.get()));
 
         getVariantBuilder(GenesisBlocks.FADED_GATEWAY.get())
                 .forAllStates(state -> {

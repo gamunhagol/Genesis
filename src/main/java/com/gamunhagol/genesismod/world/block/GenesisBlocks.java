@@ -6,7 +6,6 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.*;
 import com.gamunhagol.genesismod.world.block.custom.statue.GodStatueGenericBlock;
 import com.gamunhagol.genesismod.world.block.fluid.BloodFluidBlock;
-import com.gamunhagol.genesismod.world.block.fluid.QuicksandFluidBlock;
 import com.gamunhagol.genesismod.world.block.nature.*;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
 
@@ -129,11 +128,10 @@ public class GenesisBlocks {
                     .sound(SoundType.AMETHYST_CLUSTER).lightLevel(state -> 5).noOcclusion().pushReaction(PushReaction.DESTROY)));
 
     //liquid
-    public static final RegistryObject<LiquidBlock> QUICKSAND_BLOCK =
+    public static final RegistryObject<Block> QUICKSAND_BLOCK =
             BLOCKS.register("quicksand_block",
-                    () -> new QuicksandFluidBlock(GenesisFluids.QUICKSAND,
-                            BlockBehaviour.Properties.copy(Blocks.WATER)
-                                    .noLootTable().noCollission().liquid()));
+                    () -> new QuicksandBlock(BlockBehaviour.Properties.copy(Blocks.SAND)
+                            .noOcclusion()));
 
     public static final RegistryObject<LiquidBlock> BLOOD_BLOCK =
             BLOCKS.register("blood_block",

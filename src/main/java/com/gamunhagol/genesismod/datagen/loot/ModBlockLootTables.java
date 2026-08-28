@@ -145,6 +145,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(GenesisBlocks.OBLIVION_CANDLE.get(), (block) -> createCandleDrops(block));
 
+        this.add(GenesisBlocks.QUICKSAND_BLOCK.get(), noDrop());
 
         this.add(GenesisBlocks.AEK_STATUE.get(),
                 block -> LootTable.lootTable().withPool(LootPool.lootPool()

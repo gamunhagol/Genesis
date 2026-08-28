@@ -13,20 +13,6 @@ public class GenesisFluidTypes {
     public static final DeferredRegister<FluidType> FLUID_TYPES =
             DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, GenesisMod.MODID);
 
-
-    public static final RegistryObject<FluidType> QUICKSAND_TYPE =
-            FLUID_TYPES.register("quicksand", () ->
-                    new QuicksandFluidType(FluidType.Properties.create()
-                            .density(3000)
-                            .viscosity(6000)
-                            .motionScale(0.007F)
-                            .canPushEntity(true)
-                            .supportsBoating(false)
-                            .fallDistanceModifier(0.0F)
-                            .canDrown(true)
-                            .lightLevel(0)
-                    ));
-
     public static final RegistryObject<FluidType> BLOOD_TYPE =
             FLUID_TYPES.register("blood", () ->
                     new BloodFluidType(FluidType.Properties.create()

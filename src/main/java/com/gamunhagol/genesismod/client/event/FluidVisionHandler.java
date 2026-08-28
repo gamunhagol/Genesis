@@ -15,24 +15,20 @@ import net.minecraftforge.client.event.ViewportEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class FluidVisionHandler {
-
-    private static FluidState getEyeFluid(Camera camera) {
-        Minecraft mc = Minecraft.getInstance();
-        if (mc.level == null) return null;
-        BlockPos eyePos = BlockPos.containing(camera.getPosition());
-        return mc.level.getFluidState(eyePos);
-    }
 
     @SubscribeEvent
     public static void onRenderFog(ViewportEvent.RenderFog event) {
         Camera camera = event.getCamera();
-        FluidState fluid = getEyeFluid(camera);
-        if (fluid == null) return;
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null) return;
 
-        if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
+        BlockPos eyePos = BlockPos.containing(camera.getPosition());
+        BlockState blockState = mc.level.getBlockState(eyePos);
+        FluidState fluidState = mc.level.getFluidState(eyePos);
+
+        if (blockState.is(GenesisBlocks.QUICKSAND_BLOCK.get())) {
             event.setFogShape(FogShape.CYLINDER);
 
             float near = 0.0F;
@@ -45,8 +41,10 @@ public class FluidVisionHandler {
             RenderSystem.setShaderFogEnd(far);
 
             event.setCanceled(true);
+            return;
         }
-        if (fluid.is(GenesisFluids.BLOOD.get()) || fluid.is(GenesisFluids.BLOOD_FLOWING.get())) {
+
+        if (fluidState.is(GenesisFluids.BLOOD.get()) || fluidState.is(GenesisFluids.BLOOD_FLOWING.get())) {
             float near = 0.0F;
             float far = 4.0F;
 
@@ -56,21 +54,28 @@ public class FluidVisionHandler {
             RenderSystem.setShaderFogStart(near);
             RenderSystem.setShaderFogEnd(far);
             RenderSystem.setShaderFogColor(0.4F, 0.05F, 0.05F);
+            event.setCanceled(true);
         }
     }
 
     @SubscribeEvent
     public static void onFogColor(ViewportEvent.ComputeFogColor event) {
         Camera camera = event.getCamera();
-        FluidState fluid = getEyeFluid(camera);
-        if (fluid == null) return;
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.level == null) return;
 
-        if (fluid.is(GenesisFluids.QUICKSAND.get()) || fluid.is(GenesisFluids.QUICKSAND_FLOWING.get())) {
+        BlockPos eyePos = BlockPos.containing(camera.getPosition());
+        BlockState blockState = mc.level.getBlockState(eyePos);
+        FluidState fluidState = mc.level.getFluidState(eyePos);
+
+        if (blockState.is(GenesisBlocks.QUICKSAND_BLOCK.get())) {
             event.setRed(0.85F);
             event.setGreen(0.81F);
             event.setBlue(0.63F);
+            return;
         }
-        if (fluid.is(GenesisFluids.BLOOD.get()) || fluid.is(GenesisFluids.BLOOD_FLOWING.get())) {
+
+        if (fluidState.is(GenesisFluids.BLOOD.get()) || fluidState.is(GenesisFluids.BLOOD_FLOWING.get())) {
             event.setRed(0.4F);
             event.setGreen(0.05F);
             event.setBlue(0.05F);

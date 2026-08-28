@@ -13,6 +13,7 @@ import com.gamunhagol.genesismod.world.item.tool.GenericScrollItem;
 import com.gamunhagol.genesismod.world.item.tool.LandEyeBlockItem;
 import com.gamunhagol.genesismod.world.item.tool.SpiritCompassItem;
 import com.gamunhagol.genesismod.world.item.weapon.*;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -824,9 +825,12 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> TAKRYU_SHEATH = ITEMS.register("takryu_sheath", () -> new Item(new Item.Properties()));
 
+
     public static final RegistryObject<Item> QUICKSAND_BUCKET =
             ITEMS.register("quicksand_bucket",
-                    () -> new BucketItem(GenesisFluids.QUICKSAND, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
+                    () -> new SolidBucketItem(GenesisBlocks.QUICKSAND_BLOCK.get(),
+                            SoundEvents.SAND_BREAK,
+                            new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
     public static final RegistryObject<Item> BLOOD_BUCKET =
             ITEMS.register("blood_bucket",
