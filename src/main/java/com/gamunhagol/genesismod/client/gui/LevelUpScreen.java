@@ -23,6 +23,7 @@ import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 public class LevelUpScreen extends Screen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/level_edit.png");
@@ -255,6 +256,20 @@ public class LevelUpScreen extends Screen {
             }
 
             graphics.drawString(this.font, Component.translatable("gui.genesis.info.discovery", String.format("%.2f", discovery)), infoX, infoY + lineGap * 4, textColor, false);
+
+            Set<String> dedications = stats.getValidDedications();
+            if (!dedications.isEmpty()) {
+                StringBuilder blessingStr = new StringBuilder();
+                int count = 0;
+                for (String godId : dedications) {
+                    if (count > 0) blessingStr.append(", ");
+                    blessingStr.append(Component.translatable("gui.genesis.blessing." + godId).getString());
+                    count++;
+                }
+
+                graphics.drawString(this.font, blessingStr.toString(), infoX, infoY + lineGap * 5, textColor, false);
+            }
+
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 
