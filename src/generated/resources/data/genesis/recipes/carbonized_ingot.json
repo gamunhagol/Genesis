@@ -12,6 +12,9 @@
       "item": "minecraft:iron_ingot"
     },
     {
+      "item": "minecraft:obsidian"
+    },
+    {
       "item": "genesis:fusion_stone"
     }
   ],

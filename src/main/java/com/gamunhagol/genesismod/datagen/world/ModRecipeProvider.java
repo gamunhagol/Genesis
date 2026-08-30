@@ -452,6 +452,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Items.GOLD_INGOT)
                 .requires(Items.COPPER_INGOT)
                 .requires(Items.IRON_INGOT)
+                .requires(Items.OBSIDIAN)
                 .requires(GenesisItems.FUSION_STONE.get())
                 .unlockedBy(getHasName(GenesisItems.FUSION_STONE.get()), has(GenesisItems.FUSION_STONE.get()))
                 .save(pWriter);
