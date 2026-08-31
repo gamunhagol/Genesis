@@ -17,7 +17,9 @@ import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -80,7 +82,6 @@ public class GenesisForgeEvents {
             ));
         }
         if (event.getEntity() instanceof Villager villager) {
-
             villager.goalSelector.addGoal(1, new AvoidEntityGoal<>(
                     villager,
                     SummonedZombieEntity.class, 8.0F, 0.5D, 0.5D
@@ -122,7 +123,6 @@ public class GenesisForgeEvents {
             }
         }
     }
-
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();
@@ -141,7 +141,6 @@ public class GenesisForgeEvents {
             event.setCanceled(true);
 
             entity.setHealth(1.0F);
-
             entity.removeAllEffects();
 
             entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
@@ -151,14 +150,40 @@ public class GenesisForgeEvents {
             GenesisNetwork.sendToTrackingAndSelf(new PacketActivateCustomTotem(entity.getId(), activeTotem.copy()), entity);
 
             activeTotem.shrink(1);
-
             return;
         }
 
         if (entity instanceof Player player) {
+            boolean evaded = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).map(stats -> {
+                if (stats.getMaxNodeCount() >= 18 && stats.getDeathEvasionCooldown() <= 0) {
+                    event.setCanceled(true);
+
+                    player.setHealth(Math.min(player.getMaxHealth(), 100.0F));
+                    player.removeAllEffects();
+                    player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 2));
+                    stats.setMental(Math.min(stats.getMaxMental(), stats.getMental() + 100.0F));
+                    stats.setDeathEvasionCooldown(24000);
+
+                    player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                            SoundEvents.TOTEM_USE, SoundSource.PLAYERS, 1.0F, 1.0F);
+
+                    if (player.level() instanceof ServerLevel serverLevel) {
+                        serverLevel.sendParticles(ParticleTypes.TOTEM_OF_UNDYING,
+                                player.getX(), player.getY() + 1.0, player.getZ(),
+                                100, 0.5, 0.5, 0.5, 0.5);
+                    }
+
+                    return true;
+                }
+                return false;
+            }).orElse(false);
+
+            if (evaded) {
+                return;
+            }
+
             for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                 ItemStack stack = player.getInventory().getItem(i);
-
                 if (!stack.isEmpty() && stack.getItem() instanceof DivineGrailItem grail) {
                     grail.refill(stack);
                 }
@@ -189,14 +214,16 @@ public class GenesisForgeEvents {
                     newStore.copyFrom(oldStore);
 
                     if (newPlayer instanceof ServerPlayer serverPlayer) {
-                        GenesisNetwork.sendToPlayer(
-                                new com.gamunhagol.genesismod.network.PacketSyncSpellSlot(
-                                        newStore.getMemoryCapacity(),
-                                        newStore.getSelectedSlot(),
-                                        newStore.getEquippedSpells()
-                                ),
-                                serverPlayer
-                        );
+                        newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
+                            GenesisNetwork.sendToPlayer(
+                                    new PacketSyncSpellSlot(
+                                            newStore.getMemoryCapacity() + newStats.getSpellCapacityBonus(), // 보너스 적용
+                                            newStore.getSelectedSlot(),
+                                            newStore.getEquippedSpells()
+                                    ),
+                                    serverPlayer
+                            );
+                        });
                     }
                     if (newPlayer.getPersistentData().contains("GenesisStatueHealReadyTick")) {
                         newPlayer.getPersistentData().remove("GenesisStatueHealReadyTick");
@@ -237,10 +264,16 @@ public class GenesisForgeEvents {
                 GenesisNetwork.sendToPlayer(new PacketSyncStats(stats), player);
             });
             player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
-                GenesisNetwork.sendToPlayer(
-                        new PacketSyncSpellSlot(cap.getMemoryCapacity(), cap.getSelectedSlot(), cap.getEquippedSpells()),
-                        player
-                );
+                player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                    GenesisNetwork.sendToPlayer(
+                            new PacketSyncSpellSlot(
+                                    cap.getMemoryCapacity() + stats.getSpellCapacityBonus(), // 보너스 적용
+                                    cap.getSelectedSlot(),
+                                    cap.getEquippedSpells()
+                            ),
+                            player
+                    );
+                });
             });
         }
     }
@@ -252,7 +285,6 @@ public class GenesisForgeEvents {
         ItemStack itemStack = event.getItemStack();
         InteractionHand hand = event.getHand();
         if (itemStack.is(Items.GLASS_BOTTLE)) {
-
             double reach = player.getAttributeValue(ForgeMod.BLOCK_REACH.get());
             Vec3 startVec = player.getEyePosition();
             Vec3 lookVec = player.getViewVector(1.0F);
@@ -278,10 +310,10 @@ public class GenesisForgeEvents {
                     event.setCancellationResult(InteractionResult.SUCCESS);
                     event.setCanceled(true);
                 }
-
             }
         }
     }
+
     @SubscribeEvent
     public static void onPlayerPickupXp(PlayerXpEvent.PickupXp event) {
         Player player = event.getEntity();

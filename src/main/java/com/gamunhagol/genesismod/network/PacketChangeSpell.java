@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.network;
 
 import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
+import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
@@ -37,6 +38,12 @@ public class PacketChangeSpell {
             if (player != null) {
                 player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
 
+                    int baseCapacity = cap.getMemoryCapacity();
+                    int bonusCapacity = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
+                            .map(stats -> stats.getSpellCapacityBonus())
+                            .orElse(0);
+                    int totalCapacity = baseCapacity + bonusCapacity;
+
                     if (msg.spellId == null || msg.spellId.isEmpty()) {
                         cap.setSelectedSlot(msg.slotIndex);
                         cap.equipSpell("");
@@ -60,7 +67,7 @@ public class PacketChangeSpell {
                                 }
                             }
 
-                            if (currentTotalCost + newSpellCost <= cap.getMemoryCapacity()) {
+                            if (currentTotalCost + newSpellCost <= totalCapacity) {
                                 cap.setSelectedSlot(msg.slotIndex);
                                 cap.equipSpell(msg.spellId);
                             } else {
@@ -72,7 +79,7 @@ public class PacketChangeSpell {
                     }
 
                     GenesisNetwork.sendToPlayer(
-                            new PacketSyncSpellSlot(cap.getMemoryCapacity(), cap.getSelectedSlot(), cap.getEquippedSpells()),
+                            new PacketSyncSpellSlot(totalCapacity, cap.getSelectedSlot(), cap.getEquippedSpells()),
                             player
                     );
                 });

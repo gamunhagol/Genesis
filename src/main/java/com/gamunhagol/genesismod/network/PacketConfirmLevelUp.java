@@ -6,6 +6,7 @@ import com.gamunhagol.genesismod.util.LevelCalcHelper;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraftforge.network.NetworkEvent;
+
 import java.util.function.Supplier;
 
 public class PacketConfirmLevelUp {
@@ -22,7 +23,12 @@ public class PacketConfirmLevelUp {
             if (player == null || increases == null || increases.length != 8) return;
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                int[] currentStats = {stats.getVigor(), stats.getMind(), stats.getEndurance(), stats.getStrength(), stats.getDexterity(), stats.getIntelligence(), stats.getFaith(), stats.getArcane()};
+
+                int[] currentStats = {
+                        stats.getRawVigor(), stats.getRawMind(), stats.getRawEndurance(),
+                        stats.getRawStrength(), stats.getRawDexterity(), stats.getRawIntelligence(),
+                        stats.getRawFaith(), stats.getRawArcane()
+                };
 
                 for (int i = 0; i < 8; i++) {
                     if (increases[i] < 0 || currentStats[i] + increases[i] > 99) {
@@ -43,14 +49,15 @@ public class PacketConfirmLevelUp {
 
                 if (playerTotalXp >= totalCost) {
                     player.giveExperiencePoints(-totalCost);
-                    stats.setVigor(stats.getVigor() + increases[0]);
-                    stats.setMind(stats.getMind() + increases[1]);
-                    stats.setEndurance(stats.getEndurance() + increases[2]);
-                    stats.setStrength(stats.getStrength() + increases[3]);
-                    stats.setDexterity(stats.getDexterity() + increases[4]);
-                    stats.setIntelligence(stats.getIntelligence() + increases[5]);
-                    stats.setFaith(stats.getFaith() + increases[6]);
-                    stats.setArcane(stats.getArcane() + increases[7]);
+
+                    stats.setVigor(stats.getRawVigor() + increases[0]);
+                    stats.setMind(stats.getRawMind() + increases[1]);
+                    stats.setEndurance(stats.getRawEndurance() + increases[2]);
+                    stats.setStrength(stats.getRawStrength() + increases[3]);
+                    stats.setDexterity(stats.getRawDexterity() + increases[4]);
+                    stats.setIntelligence(stats.getRawIntelligence() + increases[5]);
+                    stats.setFaith(stats.getRawFaith() + increases[6]);
+                    stats.setArcane(stats.getRawArcane() + increases[7]);
 
                     StatApplier.applyAll(player, stats);
 
@@ -58,6 +65,7 @@ public class PacketConfirmLevelUp {
                 }
             });
         });
+        context.setPacketHandled(true);
         return true;
     }
 }

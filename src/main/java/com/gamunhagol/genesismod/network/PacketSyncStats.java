@@ -29,7 +29,7 @@ public class PacketSyncStats {
     }
 
     public PacketSyncStats(StatCapability cap) {
-        this(cap.getVigor(), cap.getMind(), cap.getEndurance(), cap.getStrength(), cap.getDexterity(), cap.getIntelligence(), cap.getFaith(), cap.getArcane(),
+        this(cap.getRawVigor(), cap.getRawMind(), cap.getRawEndurance(), cap.getRawStrength(), cap.getRawDexterity(), cap.getRawIntelligence(), cap.getRawFaith(), cap.getRawArcane(),
                 cap.getMental(), cap.getMaxMental(), cap.isLevelUpUnlocked(), cap.getLearnedSpells(), cap.getUnlockedNodes());
     }
 
@@ -40,7 +40,7 @@ public class PacketSyncStats {
         this.mental = buf.readFloat(); this.maxMental = buf.readFloat();
         this.isLevelUpUnlocked = buf.readBoolean();
         this.learnedSpells = buf.readCollection(HashSet::new, FriendlyByteBuf::readUtf);
-        this.unlockedNodes = buf.readCollection(HashSet::new, FriendlyByteBuf::readUtf); // 추가됨
+        this.unlockedNodes = buf.readCollection(HashSet::new, FriendlyByteBuf::readUtf);
     }
 
     public void toBytes(FriendlyByteBuf buf) {
@@ -50,7 +50,7 @@ public class PacketSyncStats {
         buf.writeFloat(mental); buf.writeFloat(maxMental);
         buf.writeBoolean(isLevelUpUnlocked);
         buf.writeCollection(this.learnedSpells, FriendlyByteBuf::writeUtf);
-        buf.writeCollection(this.unlockedNodes, FriendlyByteBuf::writeUtf); // 추가됨
+        buf.writeCollection(this.unlockedNodes, FriendlyByteBuf::writeUtf);
     }
 
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {

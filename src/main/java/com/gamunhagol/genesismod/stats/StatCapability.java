@@ -35,7 +35,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     private int windDashCooldown = 0;
     private int iceIdleTicks = 0;
     private int forestSneakTicks = 0;
-    //
+    private int deathEvasionCooldown = 0; // 사망 회피 쿨타임 (18해금 보상)
 
     private final Set<String> learnedSpells = new LinkedHashSet<>();
     private final Set<String> unlockedNodes = new LinkedHashSet<>();
@@ -61,10 +61,15 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
             this.windDashCooldown--;
             this.isDirty = true;
         }
+
+        if (this.deathEvasionCooldown > 0) {
+            this.deathEvasionCooldown--;
+            this.isDirty = true;
+        }
     }
 
     public void updateMaxMental() {
-        this.maxMental = 2.0f + (this.mind - 1) * 2.02f;
+        this.maxMental = 2.0f + (this.getMind() - 1) * 2.02f;
         this.isDirty = true;
     }
 
@@ -138,6 +143,28 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         return count;
     }
 
+    public int getMaxNodeCount() {
+        Set<String> validGods = getValidDedications();
+
+        if (validGods.isEmpty()) {
+            return 0;
+        }
+
+        int max = 0;
+        for (String god : validGods) {
+            max = Math.max(max, getUnlockedNodeCount(god));
+        }
+        return max;
+    }
+
+    public int getBonusStat() {
+        return getMaxNodeCount() >= 11 ? 3 : 0;
+    }
+
+    public int getSpellCapacityBonus() {
+        return getMaxNodeCount() >= 6 ? 5 : 0;
+    }
+
     public boolean hasSpell(String spellId) {
         return learnedSpells.contains(spellId);
     }
@@ -170,21 +197,36 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     }
 
     // Getter & Setter
-    public int getVigor() { return vigor; }
+    public int getVigor() { return vigor + getBonusStat(); }
+    public int getRawVigor() { return vigor; }
     public void setVigor(int v) { if(vigor != v) { vigor = v; isDirty = true; } }
-    public int getMind() { return mind; }
+
+    public int getMind() { return mind + getBonusStat(); }
+    public int getRawMind() { return mind; }
     public void setMind(int v) { if(mind != v) { mind = v; isDirty = true; updateMaxMental(); } }
-    public int getEndurance() { return endurance; }
+
+    public int getEndurance() { return endurance + getBonusStat(); }
+    public int getRawEndurance() { return endurance; }
     public void setEndurance(int v) { if(endurance != v) { endurance = v; isDirty = true; } }
-    public int getStrength() { return strength; }
+
+    public int getStrength() { return strength + getBonusStat(); }
+    public int getRawStrength() { return strength; }
     public void setStrength(int v) { if(strength != v) { strength = v; isDirty = true; } }
-    public int getDexterity() { return dexterity; }
+
+    public int getDexterity() { return dexterity + getBonusStat(); }
+    public int getRawDexterity() { return dexterity; }
     public void setDexterity(int v) { if(dexterity != v) { dexterity = v; isDirty = true; } }
-    public int getIntelligence() { return intelligence; }
+
+    public int getIntelligence() { return intelligence + getBonusStat(); }
+    public int getRawIntelligence() { return intelligence; }
     public void setIntelligence(int v) { if(intelligence != v) { intelligence = v; isDirty = true; } }
-    public int getFaith() { return faith; }
+
+    public int getFaith() { return faith + getBonusStat(); }
+    public int getRawFaith() { return faith; }
     public void setFaith(int v) { if(faith != v) { faith = v; isDirty = true; } }
-    public int getArcane() { return arcane; }
+
+    public int getArcane() { return arcane + getBonusStat(); }
+    public int getRawArcane() { return arcane; }
     public void setArcane(int v) { if(arcane != v) { arcane = v; isDirty = true; } }
 
     public float getMental() { return mental; }
@@ -216,6 +258,12 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     public int getForestSneakTicks() { return forestSneakTicks; }
     public void setForestSneakTicks(int ticks) { this.forestSneakTicks = ticks; }
 
+    public int getDeathEvasionCooldown() { return deathEvasionCooldown; }
+    public void setDeathEvasionCooldown(int ticks) {
+        this.deathEvasionCooldown = ticks;
+        this.isDirty = true;
+    }
+
     public void copyFrom(StatCapability source) {
         this.vigor = source.vigor; this.mind = source.mind; this.endurance = source.endurance;
         this.strength = source.strength; this.dexterity = source.dexterity;
@@ -232,6 +280,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.windDashCooldown = source.windDashCooldown;
         this.iceIdleTicks = source.iceIdleTicks;
         this.forestSneakTicks = source.forestSneakTicks;
+        this.deathEvasionCooldown = source.deathEvasionCooldown;
 
         this.isDirty = true;
     }
@@ -252,6 +301,7 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         nbt.putBoolean("isLevelUpUnlocked", isLevelUpUnlocked);
 
         nbt.putInt("windDashCooldown", windDashCooldown);
+        nbt.putInt("deathEvasionCooldown", deathEvasionCooldown);
 
         ListTag spellsTag = new ListTag();
         for (String id : learnedSpells) {
@@ -293,6 +343,10 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
         if (nbt.contains("windDashCooldown")) {
             windDashCooldown = nbt.getInt("windDashCooldown");
+        }
+
+        if (nbt.contains("deathEvasionCooldown")) {
+            deathEvasionCooldown = nbt.getInt("deathEvasionCooldown");
         }
 
         learnedSpells.clear();

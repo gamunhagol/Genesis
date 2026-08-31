@@ -21,7 +21,6 @@ public class StatApplier {
         applyVigor(player, stats.getVigor());
         applyEndurance(player, stats.getEndurance());
 
-        // Arcane 갱신 시 StatCapability를 함께 넘겨 축복 해금 여부를 파악합니다.
         applyArcane(player, stats.getArcane(), stats);
 
         stats.updateMaxMental();
@@ -53,10 +52,8 @@ public class StatApplier {
                 totalHealthGoal = 2.0f + (level - 1) * 2.0f;
             } else if (level <= 50) {
                 totalHealthGoal = 20.0f + (level - 10) * 2.0f;
-            } else if (level < 99) {
-                totalHealthGoal = 100.0f + (level - 50) * 1.0f;
             } else {
-                totalHealthGoal = 150.0f;
+                totalHealthGoal = 100.0f + (level - 50) * 1.0f;
             }
 
             float modifierValue = totalHealthGoal - 20.0f;
@@ -78,25 +75,24 @@ public class StatApplier {
                 staminaGoal = 2.0f + (level - 1) * 1.444f;
             } else if (level <= 20) {
                 staminaGoal = 15.0f + (level - 10) * 1.5f;
-            } else if (level < 99) {
-                staminaGoal = 30.0f + (level - 20) * 1.0f;
             } else {
-                staminaGoal = 110.0f;
+                staminaGoal = 30.0f + (level - 20) * 1.0f;
             }
             maxStam.addPermanentModifier(new AttributeModifier(ENDURANCE_MAX_UUID, "Genesis Endurance Max", staminaGoal - 15.0f, AttributeModifier.Operation.ADDITION));
         }
+
         AttributeInstance regenStam = player.getAttribute(EpicFightAttributes.STAMINA_REGEN.get());
         if (regenStam != null) {
             regenStam.removeModifier(ENDURANCE_REGEN_UUID);
             regenStam.addPermanentModifier(new AttributeModifier(ENDURANCE_REGEN_UUID, "Genesis Endurance Regen", level * 0.01f, AttributeModifier.Operation.ADDITION));
         }
+
         AttributeInstance weight = player.getAttribute(EpicFightAttributes.WEIGHT.get());
         if (weight != null) {
             weight.removeModifier(ENDURANCE_WEIGHT_UUID);
             weight.addPermanentModifier(new AttributeModifier(ENDURANCE_WEIGHT_UUID, "Genesis Endurance Weight Mitigation", level * -0.5f, AttributeModifier.Operation.ADDITION));
         }
     }
-
 
     public static void applyArcane(Player player, int level, StatCapability stats) {
         AttributeInstance attr = player.getAttribute(Attributes.LUCK);
@@ -114,16 +110,14 @@ public class StatApplier {
     }
 
     public static float calculateScaling(int level) {
-        int cappedLevel = Math.min(level, 99);
-
-        if (cappedLevel <= 20) {
-            return cappedLevel * 0.0175f;
-        } else if (cappedLevel <= 60) {
-            return 0.35f + (cappedLevel - 20) * 0.01f;
-        } else if (cappedLevel <= 80) {
-            return 0.75f + (cappedLevel - 60) * 0.0075f;
+        if (level <= 20) {
+            return level * 0.0175f;
+        } else if (level <= 60) {
+            return 0.35f + (level - 20) * 0.01f;
+        } else if (level <= 80) {
+            return 0.75f + (level - 60) * 0.0075f;
         } else {
-            return 0.90f + (cappedLevel - 80) * 0.005f;
+            return 0.90f + (level - 80) * 0.005f;
         }
     }
 }

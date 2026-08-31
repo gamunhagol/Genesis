@@ -5,9 +5,9 @@ import net.minecraft.world.entity.player.Player;
 
 public class LevelCalcHelper {
     public static int getCharacterLevel(StatCapability stats) {
-        int totalStats = stats.getVigor() + stats.getMind() + stats.getEndurance()
-                + stats.getStrength() + stats.getDexterity()
-                + stats.getIntelligence() + stats.getFaith() + stats.getArcane();
+        int totalStats = stats.getRawVigor() + stats.getRawMind() + stats.getRawEndurance()
+                + stats.getRawStrength() + stats.getRawDexterity()
+                + stats.getRawIntelligence() + stats.getRawFaith() + stats.getRawArcane();
         return (totalStats - 79) + 1;
     }
 

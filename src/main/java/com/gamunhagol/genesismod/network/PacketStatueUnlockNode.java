@@ -1,7 +1,9 @@
 package com.gamunhagol.genesismod.network;
 
 import com.gamunhagol.genesismod.content.StatueRewardManager;
+import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
@@ -74,7 +76,20 @@ public class PacketStatueUnlockNode {
                         }
                     }
 
+                    StatApplier.applyAll(player, cap);
+
                     GenesisNetwork.sendToPlayer(new PacketSyncStats(cap), player);
+
+                    player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(spellCap -> {
+                        GenesisNetwork.sendToPlayer(
+                                new PacketSyncSpellSlot(
+                                        spellCap.getMemoryCapacity() + cap.getSpellCapacityBonus(),
+                                        spellCap.getSelectedSlot(),
+                                        spellCap.getEquippedSpells()
+                                ),
+                                player
+                        );
+                    });
                 }
             });
         });
