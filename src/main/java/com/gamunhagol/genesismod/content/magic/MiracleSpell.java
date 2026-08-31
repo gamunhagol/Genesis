@@ -46,16 +46,16 @@ public abstract class MiracleSpell extends AbstractSpell {
 
             float bonus = 0.0f;
 
-            if (activeGods.contains("god_a") && stats.getUnlockedNodeCount("god_a") >= 1 && element == MiracleElement.EARTH) bonus += 0.25f;
-            if (activeGods.contains("god_b") && stats.getUnlockedNodeCount("god_b") >= 1 && element == MiracleElement.FIRE) bonus += 0.25f;
-            if (activeGods.contains("god_c") && stats.getUnlockedNodeCount("god_c") >= 1 && element == MiracleElement.WATER) bonus += 0.25f;
-            if (activeGods.contains("god_d") && stats.getUnlockedNodeCount("god_d") >= 1 && element == MiracleElement.WIND) bonus += 0.25f;
-            if (activeGods.contains("god_e") && stats.getUnlockedNodeCount("god_e") >= 1 && element == MiracleElement.LIGHTNING) bonus += 0.25f;
-            if (activeGods.contains("god_f") && stats.getUnlockedNodeCount("god_f") >= 1 && element == MiracleElement.FOREST) bonus += 0.25f;
+            if (activeGods.contains("god_a") && stats.getUnlockedNodeCount("god_a") >= 1 && element == MiracleElement.EARTH) bonus += 0.1f;
+            if (activeGods.contains("god_b") && stats.getUnlockedNodeCount("god_b") >= 1 && element == MiracleElement.FIRE) bonus += 0.1f;
+            if (activeGods.contains("god_c") && stats.getUnlockedNodeCount("god_c") >= 1 && element == MiracleElement.WATER) bonus += 0.1f;
+            if (activeGods.contains("god_d") && stats.getUnlockedNodeCount("god_d") >= 1 && element == MiracleElement.WIND) bonus += 0.1f;
+            if (activeGods.contains("god_e") && stats.getUnlockedNodeCount("god_e") >= 1 && element == MiracleElement.LIGHTNING) bonus += 0.1f;
+            if (activeGods.contains("god_f") && stats.getUnlockedNodeCount("god_f") >= 1 && element == MiracleElement.FOREST) bonus += 0.1f;
 
             if (element == MiracleElement.COLD) {
-                if (activeGods.contains("god_g") && stats.getUnlockedNodeCount("god_g") >= 1) bonus += 0.15f;
-                if (activeGods.contains("god_h") && stats.getUnlockedNodeCount("god_h") >= 1) bonus += 0.15f;
+                if (activeGods.contains("god_g") && stats.getUnlockedNodeCount("god_g") >= 1) bonus += 0.075f;
+                if (activeGods.contains("god_h") && stats.getUnlockedNodeCount("god_h") >= 1) bonus += 0.075f;
             }
 
             return 1.0f + bonus;
