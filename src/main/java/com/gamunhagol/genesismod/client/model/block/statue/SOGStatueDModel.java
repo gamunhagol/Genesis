@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 public class SOGStatueDModel extends Model {
     private final ModelPart root;
 
-    // D 모델에 존재하는 파트들
     private final ModelPart wing;
     private final ModelPart bb_main;
 

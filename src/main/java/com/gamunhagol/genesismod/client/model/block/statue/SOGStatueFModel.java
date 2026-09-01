@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 public class SOGStatueFModel extends Model {
     private final ModelPart root;
 
-    // F 모델에 존재하는 파트들
     private final ModelPart horn;
     private final ModelPart bb_main;
 

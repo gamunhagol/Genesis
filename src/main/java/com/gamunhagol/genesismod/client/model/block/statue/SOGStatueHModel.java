@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 public class SOGStatueHModel extends Model {
     private final ModelPart root;
 
-    // H 모델에 존재하는 파트
     private final ModelPart bb_main;
 
     public SOGStatueHModel(ModelPart root) {

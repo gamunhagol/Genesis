@@ -6,7 +6,10 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class StatueRewardManager {
 
@@ -32,8 +35,13 @@ public class StatueRewardManager {
             return this.rewardItem.isEmpty();
         }
     }
+    private static final Map<String, List<NodeInfo>> CACHE = new ConcurrentHashMap<>();
 
     public static List<NodeInfo> getNodesForStatue(String statueId) {
+        return CACHE.computeIfAbsent(statueId, StatueRewardManager::buildNodes);
+    }
+
+    private static List<NodeInfo> buildNodes(String statueId) {
         List<NodeInfo> nodes = new ArrayList<>();
         Item cost = GenesisItems.FABRICATED_STAR.get();
 

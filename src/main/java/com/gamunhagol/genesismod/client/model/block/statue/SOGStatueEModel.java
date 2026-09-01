@@ -11,7 +11,6 @@ import net.minecraft.client.renderer.RenderType;
 public class SOGStatueEModel extends Model {
     private final ModelPart root;
 
-    // E 모델에 존재하는 파트들
     private final ModelPart crown;
     private final ModelPart front;
     private final ModelPart back;
@@ -23,7 +22,6 @@ public class SOGStatueEModel extends Model {
 
         this.root = root;
         this.crown = root.getChild("crown");
-        // front, back, side는 crown의 하위 파트이므로 crown.getChild로 가져옵니다.
         this.front = this.crown.getChild("front");
         this.back = this.crown.getChild("back");
         this.side = this.crown.getChild("side");

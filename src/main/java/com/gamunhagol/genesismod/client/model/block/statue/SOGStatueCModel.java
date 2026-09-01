@@ -11,13 +11,11 @@ import net.minecraft.client.renderer.RenderType;
 public class SOGStatueCModel extends Model {
     private final ModelPart root;
 
-    // C 모델에 존재하는 파트들로 변경
     private final ModelPart horn;
     private final ModelPart head;
     private final ModelPart bb_main;
 
     public SOGStatueCModel(ModelPart root) {
-        // B 모델과 동일하게 투명도 처리 렌더 타입 적용
         super(RenderType::entityCutoutNoCull);
 
         this.root = root;
@@ -68,7 +66,6 @@ public class SOGStatueCModel extends Model {
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        // 개별 파트를 렌더링하는 대신 root 하나만 렌더링하여 하위 파트가 전부 출력되도록 합니다.
         this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

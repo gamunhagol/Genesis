@@ -66,7 +66,6 @@ public class SOGStatueAModel extends Model {
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        // 개별 파트를 렌더링하는 대신 root 하나만 렌더링하여 하위 파트가 전부 출력되도록 합니다.
         this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }
