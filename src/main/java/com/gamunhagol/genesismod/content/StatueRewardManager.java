@@ -44,6 +44,8 @@ public class StatueRewardManager {
     private static List<NodeInfo> buildNodes(String statueId) {
         List<NodeInfo> nodes = new ArrayList<>();
         Item cost = GenesisItems.FABRICATED_STAR.get();
+        Item sky_cost = GenesisItems.CELESTIAL_STAR.get();
+        Item first_cost = GenesisItems.EPONYMOUS_STAR.get();
 
         if ("god_a".equals(statueId)) {
             nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
@@ -237,34 +239,34 @@ public class StatueRewardManager {
         }
 
         if ("god_q".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_r".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_s".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_t".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_u".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_v".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, sky_cost, 1, ItemStack.EMPTY));
         }
         if ("god_w".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, first_cost, 1, ItemStack.EMPTY));
         }
         if ("god_x".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, first_cost, 1, ItemStack.EMPTY));
         }
         if ("god_y".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, first_cost, 1, ItemStack.EMPTY));
         }
         if ("god_z".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
+            nodes.add(new NodeInfo(1, 1000, 1100, first_cost, 1, ItemStack.EMPTY));
         }
 
         return nodes;

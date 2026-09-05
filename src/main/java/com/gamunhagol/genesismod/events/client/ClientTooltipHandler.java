@@ -43,6 +43,10 @@ public class ClientTooltipHandler {
         register(GenesisItems.OPAQUE_JELLY.get(), "tooltip.genesis.opaque_jelly.info");
 
         register(GenesisItems.GREAT_BOW.get(), "tooltip.genesis.great_bow.info");
+        register(GenesisItems.ROOT_WOVEN_BOW.get(), "tooltip.genesis.root_woven_bow.info");
+        register(GenesisItems.ELVENIA_GREAT_BOW.get(), "tooltip.genesis.elvenia_great_bow.info");
+        register(GenesisItems.ANCIENT_ELVENIA_GREAT_BOW.get(), "tooltip.genesis.ancient_elvenia_great_bow.info");
+        register(GenesisItems.PEWRIESE_GREAT_BOW.get(), "tooltip.genesis.pewriese_great_bow.info");
 
 
         register(GenesisItems.SCALE_FOSSIL_SHARD.get(), "tooltip.genesis.scale_fossil_shard.info");

@@ -673,6 +673,16 @@
   "blessing.genesis.god_g.1": "Freeze Tag (Stand still for 10s to activate).",
 
 
+  "blessing.genesis.god_q.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_r.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_s.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_t.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_u.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_v.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_w.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_x.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_y.1": "Work in Progress (WIP)",
+  "blessing.genesis.god_z.1": "Work in Progress (WIP)",
 
 
 
@@ -718,6 +728,11 @@
 
 
   "tooltip.genesis.great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+  "tooltip.genesis.root_woven_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+  "tooltip.genesis.elvenia_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+  "tooltip.genesis.ancient_elvenia_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+  "tooltip.genesis.pewriese_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
+
 
 
 

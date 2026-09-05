@@ -671,6 +671,18 @@
   "blessing.genesis.god_g.1": "얼음땡(10초간 멈출시 발동).",
 
 
+  "blessing.genesis.god_q.1": "업데이트 예정",
+  "blessing.genesis.god_r.1": "업데이트 예정",
+  "blessing.genesis.god_s.1": "업데이트 예정",
+  "blessing.genesis.god_t.1": "업데이트 예정",
+  "blessing.genesis.god_u.1": "업데이트 예정",
+  "blessing.genesis.god_v.1": "업데이트 예정",
+  "blessing.genesis.god_w.1": "업데이트 예정",
+  "blessing.genesis.god_x.1": "업데이트 예정",
+  "blessing.genesis.god_y.1": "업데이트 예정",
+  "blessing.genesis.god_z.1": "업데이트 예정",
+
+
 
 
 
@@ -715,6 +727,11 @@
 
 
   "tooltip.genesis.great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+  "tooltip.genesis.root_woven_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+  "tooltip.genesis.elvenia_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+  "tooltip.genesis.ancient_elvenia_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+  "tooltip.genesis.pewriese_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
+
 
 
 
