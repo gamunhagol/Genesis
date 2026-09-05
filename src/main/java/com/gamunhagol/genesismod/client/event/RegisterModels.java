@@ -226,6 +226,13 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_G_LAYER, SOGStatueGModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.STATUE_GOD_H_LAYER, SOGStatueHModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_Q_LAYER, SOGStatueQModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_WN_LAYER, SOGStatueWNModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_T_LAYER, SOGStatueTModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_U_LAYER, SOGStatueUModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_V_LAYER, SOGStatueVModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STATUE_GOD_FIRST_LAYER, SOGStatueFirstModel::createBodyLayer);
+
         //entity
         event.registerLayerDefinition(ModModelLayers.COLLECTOR_LAYER, CollectorModel::createLayer);
 
@@ -267,6 +274,17 @@ public class RegisterModels {
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_F_BE.get(), SOGStatueFRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_G_BE.get(), SOGStatueGRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_H_BE.get(), SOGStatueHRenderer::new);
+
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_Q_BE.get(), SOGStatueQRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_R_BE.get(), SOGStatueWNRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_S_BE.get(), SOGStatueWNRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_T_BE.get(), SOGStatueTRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_U_BE.get(), SOGStatueURenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_V_BE.get(), SOGStatueVRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_W_BE.get(), SOGStatueFirstRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_X_BE.get(), SOGStatueFirstRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_Y_BE.get(), SOGStatueFirstRenderer::new);
+        event.registerBlockEntityRenderer(GenesisBlockEntities.GOD_STATUE_Z_BE.get(), SOGStatueFirstRenderer::new);
     }
     
 }

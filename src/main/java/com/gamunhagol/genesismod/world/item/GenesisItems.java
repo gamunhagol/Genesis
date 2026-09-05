@@ -314,6 +314,27 @@ public class GenesisItems {
     public static final RegistryObject<Item> GOD_STATUE_H = ITEMS.register("god_statue_h",
             () -> new BlockItem(GenesisBlocks.GOD_STATUE_H.get(), new Item.Properties().fireResistant()));
 
+    public static final RegistryObject<Item> GOD_STATUE_Q = ITEMS.register("god_statue_q",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_Q.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_R = ITEMS.register("god_statue_r",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_R.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_S = ITEMS.register("god_statue_s",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_S.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_T = ITEMS.register("god_statue_t",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_T.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_U = ITEMS.register("god_statue_u",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_U.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_V = ITEMS.register("god_statue_v",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_V.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_W = ITEMS.register("god_statue_w",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_W.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_X = ITEMS.register("god_statue_x",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_X.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_Y = ITEMS.register("god_statue_y",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_Y.get(), new Item.Properties()));
+    public static final RegistryObject<Item> GOD_STATUE_Z = ITEMS.register("god_statue_z",
+            () -> new BlockItem(GenesisBlocks.GOD_STATUE_Z.get(), new Item.Properties()));
+
     //tool,weapon
     public static final RegistryObject<Item> DIVINE_GRAIL = ITEMS.register("divine_grail", () -> new DivineGrailItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.RARE)));
 

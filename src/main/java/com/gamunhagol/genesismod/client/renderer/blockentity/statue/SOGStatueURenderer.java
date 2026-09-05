@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.client.renderer.blockentity.statue;
 
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel;
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueUModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.statue.StatueBaseBlock;
 import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
@@ -14,21 +14,17 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
-    private final SOGStatueAModel model;
+public class SOGStatueURenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
+    private final SOGStatueUModel model;
+    private static final ResourceLocation TEXTURE = new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_u.png");
 
-    private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_a.png");
-
-    public SOGStatueARenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_A_LAYER));
+    public SOGStatueURenderer(BlockEntityRendererProvider.Context context) {
+        this.model = new SOGStatueUModel(context.bakeLayer(ModModelLayers.STATUE_GOD_U_LAYER));
     }
 
     @Override
-    public void render(GodStatueGenericBlockEntity entity, float partialTick, PoseStack poseStack,
-                       MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(GodStatueGenericBlockEntity entity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-
         Direction direction = entity.getBlockState().getValue(StatueBaseBlock.FACING);
 
         poseStack.translate(0.5D, 1.5D, 0.5D);

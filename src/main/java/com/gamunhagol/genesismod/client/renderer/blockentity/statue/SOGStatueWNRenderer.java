@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.client.renderer.blockentity.statue;
 
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel;
+
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueWNModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.statue.StatueBaseBlock;
 import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
@@ -14,21 +15,19 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
-    private final SOGStatueAModel model;
+public class SOGStatueWNRenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
+    private final SOGStatueWNModel model;
 
-    private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_a.png");
+    private static final ResourceLocation TEXTURE_S = new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_s.png");
+    private static final ResourceLocation TEXTURE_R = new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_r.png");
 
-    public SOGStatueARenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_A_LAYER));
+    public SOGStatueWNRenderer(BlockEntityRendererProvider.Context context) {
+        this.model = new SOGStatueWNModel(context.bakeLayer(ModModelLayers.STATUE_GOD_WN_LAYER));
     }
 
     @Override
-    public void render(GodStatueGenericBlockEntity entity, float partialTick, PoseStack poseStack,
-                       MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
+    public void render(GodStatueGenericBlockEntity entity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
         poseStack.pushPose();
-
         Direction direction = entity.getBlockState().getValue(StatueBaseBlock.FACING);
 
         poseStack.translate(0.5D, 1.5D, 0.5D);
@@ -43,7 +42,13 @@ public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericB
         };
         poseStack.mulPose(Axis.YP.rotationDegrees(rotation));
 
-        VertexConsumer vertexConsumer = bufferSource.getBuffer(this.model.renderType(TEXTURE));
+        ResourceLocation texture = switch (entity.getStatueId()) {
+            case "god_s" -> TEXTURE_S;
+            case "god_r" -> TEXTURE_R;
+            default -> TEXTURE_S;
+        };
+
+        VertexConsumer vertexConsumer = bufferSource.getBuffer(this.model.renderType(texture));
         this.model.renderToBuffer(poseStack, vertexConsumer, packedLight, packedOverlay, 1.0F, 1.0F, 1.0F, 1.0F);
 
         poseStack.popPose();

@@ -102,6 +102,17 @@ public class StatueMainScreen extends Screen {
             case "god_f":
             case "god_g":
             case "god_h":
+
+            case "god_q":
+            case "god_r":
+            case "god_s":
+            case "god_t":
+            case "god_u":
+            case "god_v":
+            case "god_w":
+            case "god_x":
+            case "god_y":
+            case "god_z":
             default:
                 Minecraft.getInstance().setScreen(new BlessingScreen(this, this.statueId));
                 break;

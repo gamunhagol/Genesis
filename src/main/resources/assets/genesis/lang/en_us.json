@@ -567,6 +567,17 @@
   "block.genesis.god_statue_g": "Ice God Statue",
   "block.genesis.god_statue_h": "Frost God Statue",
 
+  "block.genesis.god_statue_q": "Truth God Statue",
+  "block.genesis.god_statue_r": "Darkness God Statue",
+  "block.genesis.god_statue_s": "Light God Statue",
+  "block.genesis.god_statue_t": "Moon God Statue",
+  "block.genesis.god_statue_u": "Sun God Statue",
+  "block.genesis.god_statue_v": "Life God Statue",
+  "block.genesis.god_statue_w": "Dream God Statue",
+  "block.genesis.god_statue_x": "Star God Statue",
+  "block.genesis.god_statue_y": "Creation God Statue",
+  "block.genesis.god_statue_z": "Destruction God Statue",
+
 
   "fluid_type.genesis.blood": "Blood",
 

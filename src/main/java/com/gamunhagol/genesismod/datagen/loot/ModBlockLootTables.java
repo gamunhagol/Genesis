@@ -164,7 +164,18 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 GenesisBlocks.GOD_STATUE_E,
                 GenesisBlocks.GOD_STATUE_F,
                 GenesisBlocks.GOD_STATUE_G,
-                GenesisBlocks.GOD_STATUE_H
+                GenesisBlocks.GOD_STATUE_H,
+
+                GenesisBlocks.GOD_STATUE_Q,
+                GenesisBlocks.GOD_STATUE_R,
+                GenesisBlocks.GOD_STATUE_S,
+                GenesisBlocks.GOD_STATUE_T,
+                GenesisBlocks.GOD_STATUE_U,
+                GenesisBlocks.GOD_STATUE_V,
+                GenesisBlocks.GOD_STATUE_W,
+                GenesisBlocks.GOD_STATUE_X,
+                GenesisBlocks.GOD_STATUE_Y,
+                GenesisBlocks.GOD_STATUE_Z
         ).forEach(statue ->
                 this.add(statue.get(), block -> LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))

@@ -254,6 +254,38 @@ public class GenesisBlocks {
             () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
                     GenesisBlockEntities.GOD_STATUE_H_BE));
 
+    public static final RegistryObject<Block> GOD_STATUE_Q = register("god_statue_q",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_Q_BE));
+    public static final RegistryObject<Block> GOD_STATUE_R = register("god_statue_r",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_R_BE));
+    public static final RegistryObject<Block> GOD_STATUE_S = register("god_statue_s",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_S_BE));
+    public static final RegistryObject<Block> GOD_STATUE_T = register("god_statue_t",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_T_BE));
+    public static final RegistryObject<Block> GOD_STATUE_U = register("god_statue_u",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_U_BE));
+    public static final RegistryObject<Block> GOD_STATUE_V = register("god_statue_v",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_V_BE));
+    public static final RegistryObject<Block> GOD_STATUE_W = register("god_statue_w",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_W_BE));
+    public static final RegistryObject<Block> GOD_STATUE_X = register("god_statue_x",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_X_BE));
+    public static final RegistryObject<Block> GOD_STATUE_Y = register("god_statue_y",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_Y_BE));
+    public static final RegistryObject<Block> GOD_STATUE_Z = register("god_statue_z",
+            () -> new GodStatueGenericBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).strength(3.0F, 6.0F).sound(SoundType.STONE).noOcclusion(),
+                    GenesisBlockEntities.GOD_STATUE_Z_BE));
+
+
 
     private static <T extends Block> RegistryObject<T> register(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

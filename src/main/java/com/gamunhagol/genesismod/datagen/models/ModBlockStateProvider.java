@@ -137,6 +137,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
         statueBlock(GenesisBlocks.GOD_STATUE_G, "god_statue_g", "statue_of_god_g");
         statueBlock(GenesisBlocks.GOD_STATUE_H, "god_statue_h", "statue_of_god_h");
 
+        statueBlock(GenesisBlocks.GOD_STATUE_Q, "god_statue_q", "statue_of_god_q");
+        statueBlock(GenesisBlocks.GOD_STATUE_R, "god_statue_r", "statue_of_god_r");
+        statueBlock(GenesisBlocks.GOD_STATUE_S, "god_statue_s", "statue_of_god_s");
+        statueBlock(GenesisBlocks.GOD_STATUE_T, "god_statue_t", "statue_of_god_t");
+        statueBlock(GenesisBlocks.GOD_STATUE_U, "god_statue_u", "statue_of_god_u");
+        statueBlock(GenesisBlocks.GOD_STATUE_V, "god_statue_v", "statue_of_god_v");
+        statueBlock(GenesisBlocks.GOD_STATUE_W, "god_statue_w", "statue_of_god_w");
+        statueBlock(GenesisBlocks.GOD_STATUE_X, "god_statue_x", "statue_of_god_x");
+        statueBlock(GenesisBlocks.GOD_STATUE_Y, "god_statue_y", "statue_of_god_y");
+        statueBlock(GenesisBlocks.GOD_STATUE_Z, "god_statue_z", "statue_of_god_z");
+
         getVariantBuilder(GenesisBlocks.AMETHYST_APPLE_BLOCK.get())
                 .partialState().with(AmethystAppleBlock.HANGING, false)
                 .modelForState().modelFile(models().getExistingFile(modLoc("block/amethyst_apple_ground"))).addModel()

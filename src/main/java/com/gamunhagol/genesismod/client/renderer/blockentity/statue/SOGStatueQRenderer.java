@@ -1,6 +1,6 @@
 package com.gamunhagol.genesismod.client.renderer.blockentity.statue;
 
-import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueAModel;
+import com.gamunhagol.genesismod.client.model.block.statue.SOGStatueQModel;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.block.custom.statue.StatueBaseBlock;
 import com.gamunhagol.genesismod.world.block.entity.statue.GodStatueGenericBlockEntity;
@@ -14,14 +14,14 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 
-public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
-    private final SOGStatueAModel model;
+public class SOGStatueQRenderer implements BlockEntityRenderer<GodStatueGenericBlockEntity> {
+    private final SOGStatueQModel model;
 
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_a.png");
+            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_god_q.png");
 
-    public SOGStatueARenderer(BlockEntityRendererProvider.Context context) {
-        this.model = new SOGStatueAModel(context.bakeLayer(ModModelLayers.STATUE_GOD_A_LAYER));
+    public SOGStatueQRenderer(BlockEntityRendererProvider.Context context) {
+        this.model = new SOGStatueQModel(context.bakeLayer(ModModelLayers.STATUE_GOD_Q_LAYER));
     }
 
     @Override
@@ -35,10 +35,10 @@ public class SOGStatueARenderer implements BlockEntityRenderer<GodStatueGenericB
         poseStack.mulPose(Axis.ZP.rotationDegrees(180.0F));
 
         float rotation = switch (direction) {
-            case NORTH -> 180f;
-            case SOUTH -> 0f;
-            case WEST  -> 90f;
-            case EAST  -> 270f;
+            case NORTH -> 0f;
+            case SOUTH -> 180f;
+            case WEST  -> 270f;
+            case EAST  -> 90f;
             default    -> 0f;
         };
         poseStack.mulPose(Axis.YP.rotationDegrees(rotation));

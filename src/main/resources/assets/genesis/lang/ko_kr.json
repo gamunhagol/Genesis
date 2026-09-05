@@ -563,6 +563,17 @@
   "block.genesis.god_statue_g": "얼음 신상",
   "block.genesis.god_statue_h": "냉기 신상",
 
+  "block.genesis.god_statue_q": "진실 신상",
+  "block.genesis.god_statue_r": "어둠 신상",
+  "block.genesis.god_statue_s": "빛 신상",
+  "block.genesis.god_statue_t": "달 신상",
+  "block.genesis.god_statue_u": "태앙 신상",
+  "block.genesis.god_statue_v": "생명 신상",
+  "block.genesis.god_statue_w": "꿈 신상",
+  "block.genesis.god_statue_x": "별 신상",
+  "block.genesis.god_statue_y": "창조 신상",
+  "block.genesis.god_statue_z": "파괴 신상",
+
 
   "fluid_type.genesis.blood": "피",
 

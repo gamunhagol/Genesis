@@ -100,6 +100,57 @@ public class GenesisBlockEntities {
                                     new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_H_BE.get(), pos, state, "god_h"),
                             GenesisBlocks.GOD_STATUE_H.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_Q_BE =
+            BLOCK_ENTITIES.register("god_statue_q_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_Q_BE.get(), pos, state, "god_q"),
+                            GenesisBlocks.GOD_STATUE_Q.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_R_BE =
+            BLOCK_ENTITIES.register("god_statue_r_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_R_BE.get(), pos, state, "god_r"),
+                            GenesisBlocks.GOD_STATUE_R.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_S_BE =
+            BLOCK_ENTITIES.register("god_statue_s_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_S_BE.get(), pos, state, "god_s"),
+                            GenesisBlocks.GOD_STATUE_S.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_T_BE =
+            BLOCK_ENTITIES.register("god_statue_t_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_T_BE.get(), pos, state, "god_t"),
+                            GenesisBlocks.GOD_STATUE_T.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_U_BE =
+            BLOCK_ENTITIES.register("god_statue_u_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_U_BE.get(), pos, state, "god_u"),
+                            GenesisBlocks.GOD_STATUE_U.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_V_BE =
+            BLOCK_ENTITIES.register("god_statue_v_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_V_BE.get(), pos, state, "god_v"),
+                            GenesisBlocks.GOD_STATUE_V.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_W_BE =
+            BLOCK_ENTITIES.register("god_statue_w_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_W_BE.get(), pos, state, "god_w"),
+                            GenesisBlocks.GOD_STATUE_W.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_X_BE =
+            BLOCK_ENTITIES.register("god_statue_x_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_X_BE.get(), pos, state, "god_x"),
+                            GenesisBlocks.GOD_STATUE_X.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_Y_BE =
+            BLOCK_ENTITIES.register("god_statue_y_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_Y_BE.get(), pos, state, "god_y"),
+                            GenesisBlocks.GOD_STATUE_Y.get()).build(null));
+    public static final RegistryObject<BlockEntityType<GodStatueGenericBlockEntity>> GOD_STATUE_Z_BE =
+            BLOCK_ENTITIES.register("god_statue_z_be", () ->
+                    BlockEntityType.Builder.of((pos, state) ->
+                                    new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_Z_BE.get(), pos, state, "god_z"),
+                            GenesisBlocks.GOD_STATUE_Z.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }
