@@ -248,6 +248,7 @@ public class GenesisCombatEvents {
         }
         return Math.max(result, (damage > 0 ? 0.5f : 0));
     }
+
     private static float calculateFireDamage(LivingEntity target, float damage) {
         if (target.hasEffect(MobEffects.FIRE_RESISTANCE)) return 0;
         float result = damage;
@@ -266,6 +267,8 @@ public class GenesisCombatEvents {
     }
 
     private static float calculateFrostDamage(LivingEntity target, float damage) {
+        if (target.hasEffect(GenesisEffects.COLD_RESISTANCE.get())) return 0;
+
         float result = damage;
         if (target.getType().is(net.minecraft.tags.EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
             result *= 0.5f;
@@ -286,6 +289,8 @@ public class GenesisCombatEvents {
     }
 
     private static float calculateLightningDamage(LivingEntity target, float damage) {
+        if (target.hasEffect(GenesisEffects.LIGHTNING_RESISTANCE.get())) return 0;
+
         float result = damage;
         if (target.isInWaterOrRain()) {
             result *= 1.5f;
@@ -304,6 +309,7 @@ public class GenesisCombatEvents {
         }
         return Math.max(result, (damage > 0 ? 0.5f : 0));
     }
+
     private static void applyDestructionEffect(LivingEntity entity, float damageAmount) {
         AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
         if (maxHealthAttr == null) return;

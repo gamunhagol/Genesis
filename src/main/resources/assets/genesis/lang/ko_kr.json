@@ -433,6 +433,30 @@
   "item.minecraft.lingering_potion.effect.strong_electric_shock": "잔류형 감전 화살",
   "item.minecraft.tipped_arrow.effect.strong_electric_shock": "감전 화살",
 
+  "item.minecraft.potion.effect.paralysis": "마비 포션",
+  "item.minecraft.splash_potion.effect.paralysis": "투척용 마비 포션",
+  "item.minecraft.lingering_potion.effect.paralysis": "잔류형 마비 포션",
+  "item.minecraft.tipped_arrow.effect.paralysis": "마비 화살",
+
+  "item.minecraft.potion.effect.lightning_resistance": "번개 저항 포션",
+  "item.minecraft.splash_potion.effect.lightning_resistance": "투척용 번개 저항 포션",
+  "item.minecraft.lingering_potion.effect.lightning_resistance": "잔류형 번개 저항 포션",
+  "item.minecraft.tipped_arrow.effect.lightning_resistance": "번개 저항 화살",
+  "item.minecraft.potion.effect.long_lightning_resistance": "번개 저항 포션",
+  "item.minecraft.splash_potion.effect.long_lightning_resistance": "투척용 번개 저항 포션",
+  "item.minecraft.lingering_potion.effect.long_lightning_resistance": "잔류형 번개 저항 포션",
+  "item.minecraft.tipped_arrow.effect.long_lightning_resistance": "번개 저항 화살",
+
+  "item.minecraft.potion.effect.cold_resistance": "냉기 저항 포션",
+  "item.minecraft.splash_potion.effect.cold_resistance": "투척용 냉기 저항 포션",
+  "item.minecraft.lingering_potion.effect.cold_resistance": "잔류형 냉기 저항 포션",
+  "item.minecraft.tipped_arrow.effect.cold_resistance": "냉기 저항 화살",
+  "item.minecraft.potion.effect.long_cold_resistance": "냉기 저항 포션",
+  "item.minecraft.splash_potion.effect.long_cold_resistance": "투척용 냉기 저항 포션",
+  "item.minecraft.lingering_potion.effect.long_cold_resistance": "잔류형 냉기 저항 포션",
+  "item.minecraft.tipped_arrow.effect.long_cold_resistance": "냉기 저항 화살",
+
+
   "item.minecraft.potion.effect.soul_scream": "영혼 비명 포션",
   "item.minecraft.splash_potion.effect.soul_scream": "투척용 영혼 비명 포션",
   "item.minecraft.lingering_potion.effect.soul_scream": "잔류형 영혼 비명 포션",
@@ -582,6 +606,16 @@
   "effect.genesis.frostbite": "동상",
   "effect.genesis.electric_shock": "감전",
   "effect.genesis.lightning_rod": "피뢰침",
+  "effect.genesis.paralysis": "마비",
+  "effect.genesis.deep_freeze": "얼어붙음",
+
+  "effect.genesis.sea_curse": "바다의 저주",
+
+  "effect.genesis.fire_reflection": "화염 반사",
+
+  "effect.genesis.lightning_resistance": "번개 저항",
+  "effect.genesis.cold_resistance": "냉기 저항",
+
   "effect.genesis.soul_scream": "영혼비명",
 
 

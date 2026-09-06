@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.item;
+package com.gamunhagol.genesismod.world.item.custom;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
@@ -25,6 +25,19 @@ public class GenesisPotions {
             () -> new Potion(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 9600, 0)));
     public static final RegistryObject<Potion> STRONG_ELECTRIC_SHOCK = POTIONS.register("strong_electric_shock",
             () -> new Potion(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 1800, 1)));
+
+    public static final RegistryObject<Potion> PARALYSIS = POTIONS.register("paralysis",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.PARALYSIS.get(), 120, 0)));
+
+    public static final RegistryObject<Potion> LIGHTNING_RESISTANCE = POTIONS.register("lightning_resistance",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.LIGHTNING_RESISTANCE.get(), 3600, 0)));
+    public static final RegistryObject<Potion> LONG_LIGHTNING_RESISTANCE = POTIONS.register("long_lightning_resistance",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.LIGHTNING_RESISTANCE.get(), 9600, 0)));
+
+    public static final RegistryObject<Potion> COLD_RESISTANCE = POTIONS.register("cold_resistance",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.COLD_RESISTANCE.get(), 3600, 0)));
+    public static final RegistryObject<Potion> LONG_COLD_RESISTANCE = POTIONS.register("long_cold_resistance",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.COLD_RESISTANCE.get(), 9600, 0)));
 
     public static final RegistryObject<Potion> SOUL_SCREAM = POTIONS.register("soul_scream",
             () -> new Potion(new MobEffectInstance(GenesisEffects.SOUL_SCREAM.get(), 9600, 0)));

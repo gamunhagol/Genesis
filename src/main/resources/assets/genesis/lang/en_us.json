@@ -436,6 +436,30 @@
   "item.minecraft.lingering_potion.effect.strong_electric_shock": "Lingering Potion of Electric Shock",
   "item.minecraft.tipped_arrow.effect.strong_electric_shock": "Arrow of Electric Shock",
 
+  "item.minecraft.potion.effect.paralysis": "Potion of Paralysis",
+  "item.minecraft.splash_potion.effect.paralysis": "Splash Potion of Paralysis",
+  "item.minecraft.lingering_potion.effect.paralysis": "Lingering Potion of Paralysis",
+  "item.minecraft.tipped_arrow.effect.paralysis": "Arrow of Paralysis",
+
+  "item.minecraft.potion.effect.lightning_resistance": "Potion of Lightning Resistance",
+  "item.minecraft.splash_potion.effect.lightning_resistance": "Splash Potion of Lightning Resistance",
+  "item.minecraft.lingering_potion.effect.lightning_resistance": "Lingering Potion of Lightning Resistance",
+  "item.minecraft.tipped_arrow.effect.lightning_resistance": "Arrow of Lightning Resistance",
+  "item.minecraft.potion.effect.long_lightning_resistance": "Potion of Lightning Resistance",
+  "item.minecraft.splash_potion.effect.long_lightning_resistance": "Splash Potion of Lightning Resistance",
+  "item.minecraft.lingering_potion.effect.long_lightning_resistance": "Lingering Potion of Lightning Resistance",
+  "item.minecraft.tipped_arrow.effect.long_lightning_resistance": "Arrow of Lightning Resistance",
+
+  "item.minecraft.potion.effect.cold_resistance": "Potion of Cold Resistance",
+  "item.minecraft.splash_potion.effect.cold_resistance": "Splash Potion of Cold Resistance",
+  "item.minecraft.lingering_potion.effect.cold_resistance": "Lingering Potion of Cold Resistance",
+  "item.minecraft.tipped_arrow.effect.cold_resistance": "Arrow of Cold Resistance",
+  "item.minecraft.potion.effect.long_cold_resistance": "Potion of Cold Resistance",
+  "item.minecraft.splash_potion.effect.long_cold_resistance": "Splash Potion of Cold Resistance",
+  "item.minecraft.lingering_potion.effect.long_cold_resistance": "Lingering Potion of Cold Resistance",
+  "item.minecraft.tipped_arrow.effect.long_cold_resistance": "Arrow of Cold Resistance",
+
+
   "item.minecraft.potion.effect.soul_scream": "Potion of Soul Scream",
   "item.minecraft.splash_potion.effect.soul_scream": "Splash Potion of Soul Scream",
   "item.minecraft.lingering_potion.effect.soul_scream": "Lingering Potion of Soul Scream",
@@ -586,6 +610,16 @@
   "effect.genesis.frostbite": "Frostbite",
   "effect.genesis.electric_shock": "Electric Shock",
   "effect.genesis.lightning_rod": "Lightning Rod",
+  "effect.genesis.paralysis": "Paralysis",
+  "effect.genesis.deep_freeze": "Deep Freeze",
+
+  "effect.genesis.sea_curse": "Sea Curse",
+
+  "effect.genesis.fire_reflection": "Fire Reflection",
+
+  "effect.genesis.lightning_resistance": "Lightning Resistance",
+  "effect.genesis.cold_resistance": "Cold Resistance",
+
   "effect.genesis.soul_scream": "Soul Scream",
 
 

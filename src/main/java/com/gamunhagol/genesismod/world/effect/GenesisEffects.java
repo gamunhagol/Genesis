@@ -16,6 +16,24 @@ public class GenesisEffects {
             ElectricShockEffect::new);
     public static final RegistryObject<MobEffect> LIGHTNING_ROD = MOB_EFFECTS.register("lightning_rod",
             LightningRodEffect::new);
+
+    public static final RegistryObject<MobEffect> PARALYSIS = MOB_EFFECTS.register("paralysis",
+            ParalysisEffect::new);
+    public static final RegistryObject<MobEffect> DEEP_FREEZE = MOB_EFFECTS.register("deep_freeze",
+            DeepFreezeEffect::new);
+
+    public static final RegistryObject<MobEffect> SEA_CURSE = MOB_EFFECTS.register("sea_curse",
+            SeaCurseEffect::new);
+
+    public static final RegistryObject<MobEffect> FIRE_REFLECTION = MOB_EFFECTS.register("fire_reflection",
+            FireReflectionEffect::new);
+
+    public static final RegistryObject<MobEffect> LIGHTNING_RESISTANCE = MOB_EFFECTS.register("lightning_resistance",
+            LightningResistanceEffect::new);
+    public static final RegistryObject<MobEffect> COLD_RESISTANCE = MOB_EFFECTS.register("cold_resistance",
+            ColdResistanceEffect::new);
+
+
     public static final RegistryObject<MobEffect> SOUL_SCREAM = MOB_EFFECTS.register("soul_scream",
             SoulScreamEffect::new);
 }

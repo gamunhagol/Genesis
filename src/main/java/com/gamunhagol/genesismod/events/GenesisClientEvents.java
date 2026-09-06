@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.PacketChangeSelectedSlot;
 import com.gamunhagol.genesismod.network.PacketActivateWindBlessing;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.Util;
@@ -128,6 +129,22 @@ public class GenesisClientEvents {
                     }
                 }
                 wasSneaking = isSneaking;
+            }
+        }
+
+        @SubscribeEvent
+        public static void onMovementInput(MovementInputUpdateEvent event) {
+            if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
+                    event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+                net.minecraft.client.player.Input input = event.getInput();
+                input.forwardImpulse = 0;
+                input.leftImpulse = 0;
+                input.up = false;
+                input.down = false;
+                input.left = false;
+                input.right = false;
+                input.jumping = false;
+                input.shiftKeyDown = false;
             }
         }
     }

@@ -11,6 +11,7 @@ import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
+import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
@@ -23,6 +24,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -51,6 +53,9 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
+import net.minecraftforge.event.entity.player.AttackEntityEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerXpEvent;
@@ -93,9 +98,89 @@ public class GenesisForgeEvents {
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         LivingEntity entity = event.getEntity();
 
+        if (entity.hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+            entity.setTicksFrozen(entity.getTicksRequiredToFreeze() + 3);
+            if (entity.level().isClientSide && entity.tickCount % 5 == 0) {
+                entity.level().addParticle(
+                        ParticleTypes.SNOWFLAKE,
+                        entity.getRandomX(1.2D),
+                        entity.getRandomY(),
+                        entity.getRandomZ(1.2D),
+                        0.0D, 0.0D, 0.0D
+                );
+            }
+        }
+
+        if (entity.hasEffect(GenesisEffects.COLD_RESISTANCE.get())) {
+            if (entity.getTicksFrozen() > 0) {
+                entity.setTicksFrozen(0);
+            }
+        }
+
         if (!entity.level().isClientSide && entity.tickCount % 20 == 0) {
             if (hasFullPaddedChainSet(entity)) {
                 entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false, true));
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerInteract(PlayerInteractEvent event) {
+        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
+                event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+            if (event.isCancelable()) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEntityAttack(AttackEntityEvent event) {
+        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
+                event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+            if (event.isCancelable()) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onLivingHurt(LivingHurtEvent event) {
+        LivingEntity target = event.getEntity();
+        Entity attacker = event.getSource().getEntity();
+
+        if (attacker instanceof LivingEntity livingAttacker && target.hasEffect(GenesisEffects.FIRE_REFLECTION.get())) {
+            int amplifier = target.getEffect(GenesisEffects.FIRE_REFLECTION.get()).getAmplifier();
+            float reflectDamage = 1.0F + amplifier;
+            livingAttacker.hurt(target.damageSources().onFire(), reflectDamage);
+            livingAttacker.setSecondsOnFire(4);
+        }
+
+        if (target.hasEffect(GenesisEffects.LIGHTNING_RESISTANCE.get())) {
+            if (event.getSource().is(DamageTypeTags.IS_LIGHTNING)) {
+                event.setCanceled(true);
+            }
+        }
+
+        if (target.hasEffect(GenesisEffects.COLD_RESISTANCE.get())) {
+            if (event.getSource().is(DamageTypeTags.IS_FREEZING)) {
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onEffectApplicable(MobEffectEvent.Applicable event) {
+        if (event.getEffectInstance().getEffect() == GenesisEffects.ELECTRIC_SHOCK.get()) {
+            if (event.getEntity().hasEffect(GenesisEffects.LIGHTNING_RESISTANCE.get())) {
+                event.setResult(net.minecraftforge.eventbus.api.Event.Result.DENY);
+            }
+        }
+
+        if (event.getEffectInstance().getEffect() == GenesisEffects.FROSTBITE.get() ||
+                event.getEffectInstance().getEffect() == GenesisEffects.DEEP_FREEZE.get()) {
+            if (event.getEntity().hasEffect(GenesisEffects.COLD_RESISTANCE.get())) {
+                event.setResult(net.minecraftforge.eventbus.api.Event.Result.DENY);
             }
         }
     }
@@ -123,6 +208,7 @@ public class GenesisForgeEvents {
             }
         }
     }
+
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
         LivingEntity entity = event.getEntity();

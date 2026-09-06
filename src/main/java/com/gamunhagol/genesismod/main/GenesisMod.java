@@ -15,10 +15,10 @@ import com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluidTypes;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
-import com.gamunhagol.genesismod.world.item.GenesisBrewingRecipes;
+import com.gamunhagol.genesismod.world.item.custom.GenesisBrewingRecipes;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.GenesisPotions;
+import com.gamunhagol.genesismod.world.item.custom.GenesisPotions;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -35,8 +35,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-
-import java.util.AbstractMap;
 
 
 @Mod(GenesisMod.MODID)
