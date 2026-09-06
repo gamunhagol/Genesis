@@ -17,7 +17,6 @@ public class SpellHudOverlay {
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
 
-        // 플레이어가 없거나, F1(GUI 숨김) 상태이거나, 디버그(F3) 화면이면 그리지 않음
         if (player == null || mc.options.hideGui || mc.options.renderDebug) return;
 
         ItemStack mainHand = player.getMainHandItem();
@@ -30,12 +29,10 @@ public class SpellHudOverlay {
         player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(cap -> {
             int selectedSlotIndex = cap.getSelectedSlot();
             List<String> equipped = cap.getEquippedSpells();
-            // HUD 위치 설정
             int iconSize = 24;
             int x = screenWidth - iconSize - 10;
             int y = screenHeight - iconSize - 45;
 
-            // 장착된 마법 확인
             if (selectedSlotIndex >= 0 && selectedSlotIndex < equipped.size()) {
                 String spellId = equipped.get(selectedSlotIndex);
 
