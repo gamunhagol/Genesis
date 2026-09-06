@@ -28,6 +28,8 @@ public class GenesisPotions {
 
     public static final RegistryObject<Potion> PARALYSIS = POTIONS.register("paralysis",
             () -> new Potion(new MobEffectInstance(GenesisEffects.PARALYSIS.get(), 120, 0)));
+    public static final RegistryObject<Potion> DEEP_FREEZE = POTIONS.register("deep_freeze",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.DEEP_FREEZE.get(), 120, 0)));
 
     public static final RegistryObject<Potion> LIGHTNING_RESISTANCE = POTIONS.register("lightning_resistance",
             () -> new Potion(new MobEffectInstance(GenesisEffects.LIGHTNING_RESISTANCE.get(), 3600, 0)));

@@ -441,6 +441,11 @@
   "item.minecraft.lingering_potion.effect.paralysis": "Lingering Potion of Paralysis",
   "item.minecraft.tipped_arrow.effect.paralysis": "Arrow of Paralysis",
 
+  "item.minecraft.potion.effect.deep_freeze": "Potion of Deep Freeze",
+  "item.minecraft.splash_potion.effect.deep_freeze": "Splash Potion of Deep Freeze",
+  "item.minecraft.lingering_potion.effect.deep_freeze": "Lingering Potion of Deep Freeze",
+  "item.minecraft.tipped_arrow.effect.deep_freeze": "Arrow of Deep Freeze",
+
   "item.minecraft.potion.effect.lightning_resistance": "Potion of Lightning Resistance",
   "item.minecraft.splash_potion.effect.lightning_resistance": "Splash Potion of Lightning Resistance",
   "item.minecraft.lingering_potion.effect.lightning_resistance": "Lingering Potion of Lightning Resistance",

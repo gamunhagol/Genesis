@@ -438,6 +438,11 @@
   "item.minecraft.lingering_potion.effect.paralysis": "잔류형 마비 포션",
   "item.minecraft.tipped_arrow.effect.paralysis": "마비 화살",
 
+  "item.minecraft.potion.effect.deep_freeze": "얼어붙음 포션",
+  "item.minecraft.splash_potion.effect.deep_freeze": "투척용 얼어붙음 포션",
+  "item.minecraft.lingering_potion.effect.deep_freeze": "잔류형 얼어붙음 포션",
+  "item.minecraft.tipped_arrow.effect.deep_freeze": "얼어붙음 화살",
+
   "item.minecraft.potion.effect.lightning_resistance": "번개 저항 포션",
   "item.minecraft.splash_potion.effect.lightning_resistance": "투척용 번개 저항 포션",
   "item.minecraft.lingering_potion.effect.lightning_resistance": "잔류형 번개 저항 포션",

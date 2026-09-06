@@ -33,6 +33,11 @@ public class GenesisBrewingRecipes {
                 Ingredient.of(Items.SPIDER_EYE),//임시
                 PotionUtils.setPotion(new ItemStack(Items.POTION), GenesisPotions.PARALYSIS.get())
         ));
+        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
+                Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
+                Ingredient.of(Items.PACKED_ICE),
+                PotionUtils.setPotion(new ItemStack(Items.POTION), GenesisPotions.DEEP_FREEZE.get())
+        ));
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
                 Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),

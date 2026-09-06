@@ -147,5 +147,20 @@ public class GenesisClientEvents {
                 input.shiftKeyDown = false;
             }
         }
+        @SubscribeEvent
+        public static void onMouseClick(InputEvent.MouseButton.Pre event) {
+            Minecraft mc = Minecraft.getInstance();
+            if (mc.player == null) return;
+
+            if (mc.player.hasEffect(GenesisEffects.PARALYSIS.get()) ||
+                    mc.player.hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+
+                if (event.getButton() == 0 || event.getButton() == 1) {
+                    if (event.getAction() == 1) {
+                        event.setCanceled(true);
+                    }
+                }
+            }
+        }
     }
 }
