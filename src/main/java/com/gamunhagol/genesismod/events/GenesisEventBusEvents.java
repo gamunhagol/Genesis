@@ -33,6 +33,8 @@ public class GenesisEventBusEvents {
         event.put((EntityType)GenesisEntities.SUMMONED_SKELETON.get(), Skeleton.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_BLAZE.get(), Blaze.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_WARDEN.get(), Warden.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SPELL_GUARDIAN.get(), Warden.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SPELL_ELDER_GUARDIAN.get(), Warden.createAttributes().build());
     }
 
     @SubscribeEvent

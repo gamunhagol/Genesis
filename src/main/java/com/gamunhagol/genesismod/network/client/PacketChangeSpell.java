@@ -1,7 +1,9 @@
-package com.gamunhagol.genesismod.network;
+package com.gamunhagol.genesismod.network.client;
 
 import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
+import com.gamunhagol.genesismod.network.GenesisNetwork;
+import com.gamunhagol.genesismod.network.server.PacketSyncSpellSlot;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.network.FriendlyByteBuf;

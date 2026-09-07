@@ -1,6 +1,8 @@
 package com.gamunhagol.genesismod.network;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
+import com.gamunhagol.genesismod.network.client.*;
+import com.gamunhagol.genesismod.network.server.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
@@ -45,6 +47,7 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketSpawnEyeBeam.class, id(), NetworkDirection.PLAY_TO_CLIENT)
                 .decoder(PacketSpawnEyeBeam::new).encoder(PacketSpawnEyeBeam::toBytes)
                 .consumerMainThread(PacketSpawnEyeBeam::handle).add();
+
 
         // [C -> S] Client to Server Packets (요청, 조작 등)
         INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)

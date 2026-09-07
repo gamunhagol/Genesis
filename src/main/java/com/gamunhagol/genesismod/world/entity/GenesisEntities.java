@@ -19,6 +19,9 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<SummonedBlazeEntity>> SUMMONED_BLAZE;
 
+    public static final RegistryObject<EntityType<SpellGuardianEntity>> SPELL_GUARDIAN;
+    public static final RegistryObject<EntityType<SpellElderGuardianEntity>> SPELL_ELDER_GUARDIAN;
+
     public static final RegistryObject<EntityType<LargeArrowEntity>> LARGE_ARROW;
 
     static {
@@ -43,6 +46,15 @@ public class GenesisEntities {
                 () -> EntityType.Builder.of(SummonedBlazeEntity::new, MobCategory.CREATURE)
                         .sized(0.6f, 1.8f).clientTrackingRange(8)
                         .build("summon_blaze"));
+
+        SPELL_GUARDIAN = ENTITY_TYPES.register("spell_guardian",
+                () -> EntityType.Builder.of(SpellGuardianEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.8f).clientTrackingRange(8)
+                        .build("spell_guardian"));
+        SPELL_ELDER_GUARDIAN = ENTITY_TYPES.register("spell_elder_guardian",
+                () -> EntityType.Builder.of(SpellElderGuardianEntity::new, MobCategory.CREATURE)
+                        .sized(1.9975f, 1.9975f).clientTrackingRange(8)
+                        .build("spell_elder_guardian"));
 
         SUMMONED_WARDEN = ENTITY_TYPES.register("summon_warden",
                 () -> EntityType.Builder.of(SummonedWardenEntity::new, MobCategory.CREATURE)

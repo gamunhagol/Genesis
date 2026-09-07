@@ -297,6 +297,10 @@
 
 
   "item.genesis.fireball": "Fireball",
+  "item.genesis.large_fireball": "Large Fireball",
+  "item.genesis.shulker_bullet": "Shulker Bullet",
+  "item.genesis.guardian_beam": "Guardian Beam",
+  "item.genesis.heavy_guardian_beam": "Heavy Guardian Beam",
 
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
@@ -781,6 +785,14 @@
 
   "spell.genesis.fireball": "Fireball",
   "spell.genesis.fireball.desc": "Summons a small fireball.",
+  "spell.genesis.large_fireball": "Large Fireball",
+  "spell.genesis.large_fireball.desc": "Launches an explosive fireball.",
+  "spell.genesis.shulker_bullet": "Shulker Bullet",
+  "spell.genesis.shulker_bullet.desc": "Conjures a shulker bullet.",
+  "spell.genesis.guardian_beam": "Guardian Beam",
+  "spell.genesis.guardian_beam.desc": "Channels a Guardian's beam attack.",
+  "spell.genesis.heavy_guardian_beam": "Heavy Guardian Beam",
+  "spell.genesis.heavy_guardian_beam.desc": "Channels a Guardian's beam attack.",
 
   "spell.genesis.summon_zombie": "Summon Zombie",
   "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",

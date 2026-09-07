@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.network;
+package com.gamunhagol.genesismod.network.server;
 
 import com.gamunhagol.genesismod.stats.StatCapability;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;

@@ -60,7 +60,7 @@ public class CatalystItem extends Item {
         }
 
         // 플레이어가 아닌 몹이 사용할 때를 위한 예외 처리용 기본 마법
-        return GenesisSpells.HEAL;
+        return GenesisSpells.LITTLE_HEAL;
     }
 
     @Override

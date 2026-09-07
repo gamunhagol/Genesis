@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.item.tool;
 
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.PacketSyncMentalPower;
+import com.gamunhagol.genesismod.network.server.PacketSyncMentalPower;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;

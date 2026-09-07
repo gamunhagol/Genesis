@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.network;
+package com.gamunhagol.genesismod.network.server;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;

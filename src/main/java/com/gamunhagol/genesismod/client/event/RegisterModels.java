@@ -252,6 +252,9 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.SUMMONED_BLAZE.get(), BlazeRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.SPELL_GUARDIAN.get(), net.minecraft.client.renderer.entity.GuardianRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SPELL_ELDER_GUARDIAN.get(), net.minecraft.client.renderer.entity.ElderGuardianRenderer::new);
+
         event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 
 

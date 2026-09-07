@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.client.gui;
 import com.gamunhagol.genesismod.content.StatueRewardManager;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.PacketStatueUnlockNode;
+import com.gamunhagol.genesismod.network.client.PacketStatueUnlockNode;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;

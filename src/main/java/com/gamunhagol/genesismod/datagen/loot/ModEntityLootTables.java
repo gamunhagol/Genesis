@@ -34,6 +34,9 @@ public class ModEntityLootTables extends EntityLootSubProvider {
 
         this.add(GenesisEntities.SUMMONED_BLAZE.get(), LootTable.lootTable());
 
+        this.add(GenesisEntities.SPELL_GUARDIAN.get(), LootTable.lootTable());
+        this.add(GenesisEntities.SPELL_ELDER_GUARDIAN.get(), LootTable.lootTable());
+
     }
 
     @Override

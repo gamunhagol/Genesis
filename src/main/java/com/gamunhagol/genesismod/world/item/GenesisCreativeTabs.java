@@ -445,6 +445,10 @@ public class GenesisCreativeTabs {
             .withTabsBefore(GENESIS_BLOCK_TAB.getKey())
             .displayItems((params, output) -> {
                 output.accept(GenesisItems.FIREBALL.get());
+                output.accept(GenesisItems.LARGE_FIREBALL.get());
+                output.accept(GenesisItems.SHULKER_BULLET.get());
+                output.accept(GenesisItems.GUARDIAN_BEAM.get());
+                output.accept(GenesisItems.HEAVY_GUARDIAN_BEAM.get());
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());

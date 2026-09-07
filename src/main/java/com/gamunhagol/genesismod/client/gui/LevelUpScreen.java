@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.PacketConfirmLevelUp;
+import com.gamunhagol.genesismod.network.client.PacketConfirmLevelUp;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.LevelCalcHelper;

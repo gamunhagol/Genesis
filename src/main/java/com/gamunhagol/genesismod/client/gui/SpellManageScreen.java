@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.PacketChangeSpell;
+import com.gamunhagol.genesismod.network.client.PacketChangeSpell;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.ChatFormatting;

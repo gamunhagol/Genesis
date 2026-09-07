@@ -585,6 +585,14 @@ public class GenesisItems {
     //spell
     public static final RegistryObject<Item> FIREBALL = ITEMS.register("fireball",
             () -> new SpellBookItem("fireball", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> LARGE_FIREBALL = ITEMS.register("large_fireball",
+            () -> new SpellBookItem("large_fireball", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SHULKER_BULLET = ITEMS.register("shulker_bullet",
+            () -> new SpellBookItem("shulker_bullet", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GUARDIAN_BEAM = ITEMS.register("guardian_beam",
+            () -> new SpellBookItem("guardian_beam", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HEAVY_GUARDIAN_BEAM = ITEMS.register("heavy_guardian_beam",
+            () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));

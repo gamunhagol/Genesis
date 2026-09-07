@@ -298,6 +298,11 @@
 
 
   "item.genesis.fireball": "화염구",
+  "item.genesis.large_fireball": "큰 화염구",
+  "item.genesis.shulker_bullet": "셜커 탄환",
+  "item.genesis.guardian_beam": "가디언 광선",
+  "item.genesis.heavy_guardian_beam": "굵은 가디언 광선",
+
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_armored_zombie": "무장한 좀비 소환",
   "item.genesis.summon_skeleton_slave": "스켈레톤 노예 소환",
@@ -780,6 +785,14 @@
 
   "spell.genesis.fireball": "화염구",
   "spell.genesis.fireball.desc": "작은 불덩어리를 불러온다",
+  "spell.genesis.large_fireball": "큰 화염구",
+  "spell.genesis.large_fireball.desc": "폭팔하는 불덩이를 발사한다",
+  "spell.genesis.shulker_bullet": "셜커 탄환",
+  "spell.genesis.shulker_bullet.desc": "셜커 탄환을 생성한다",
+  "spell.genesis.guardian_beam": "가디언 광선",
+  "spell.genesis.guardian_beam.desc": "가디언의 공격을 불러온다",
+  "spell.genesis.heavy_guardian_beam": "강력한 가디언 광선",
+  "spell.genesis.heavy_guardian_beam.desc": "가디언의 공격을 불러온다",
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다",
