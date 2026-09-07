@@ -13,6 +13,7 @@ import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -96,6 +97,9 @@ public class GenesisCombatEvents {
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
+        if (event.getSource().is(DamageTypes.SONIC_BOOM)) {
+            return;
+        }
         LivingEntity target = event.getEntity();
         Entity sourceEntity = event.getSource().getDirectEntity();
         Entity attackerEntity = event.getSource().getEntity();
@@ -133,6 +137,10 @@ public class GenesisCombatEvents {
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
+        if (event.getSource().is(DamageTypes.SONIC_BOOM)) {
+            return;
+        }
+
         if (event.getAmount() <= 0) return;
         LivingEntity target = event.getEntity();
         Entity sourceEntity = event.getSource().getDirectEntity();

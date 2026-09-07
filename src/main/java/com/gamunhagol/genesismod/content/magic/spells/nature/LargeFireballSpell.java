@@ -30,7 +30,7 @@ public class LargeFireballSpell extends MagicSpell {
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        float baseFire = 5.0f;
+        float baseFire = 8.0f;
         float magicEfficiency = 0.45f;
         float fireEfficiency = 0.2f;
 
