@@ -587,12 +587,24 @@ public class GenesisItems {
             () -> new SpellBookItem("fireball", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> LARGE_FIREBALL = ITEMS.register("large_fireball",
             () -> new SpellBookItem("large_fireball", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> EVOKER_FANGS_LINE = ITEMS.register("evoker_fangs_line",
+            () -> new SpellBookItem("evoker_fangs_line", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> EVOKER_FANGS_CIRCLE = ITEMS.register("evoker_fangs_circle",
+            () -> new SpellBookItem("evoker_fangs_circle", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SHULKER_BULLET = ITEMS.register("shulker_bullet",
             () -> new SpellBookItem("shulker_bullet", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> GUARDIAN_BEAM = ITEMS.register("guardian_beam",
             () -> new SpellBookItem("guardian_beam", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> DRAGON_BREATH = ITEMS.register("dragon_breath",
+            () -> new SpellBookItem("dragon_breath", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> WHITHER_SKULL = ITEMS.register("wither_skull",
+            () -> new SpellBookItem("wither_skull", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> WARDEN_SONIC_BOOM = ITEMS.register("warden_sonic_boom",
+            () -> new SpellBookItem("warden_sonic_boom", new Item.Properties().stacksTo(1)));
+
     public static final RegistryObject<Item> HEAVY_GUARDIAN_BEAM = ITEMS.register("heavy_guardian_beam",
             () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1)));
+
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));

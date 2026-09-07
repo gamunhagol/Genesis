@@ -446,9 +446,14 @@ public class GenesisCreativeTabs {
             .displayItems((params, output) -> {
                 output.accept(GenesisItems.FIREBALL.get());
                 output.accept(GenesisItems.LARGE_FIREBALL.get());
+                output.accept(GenesisItems.EVOKER_FANGS_LINE.get());
+                output.accept(GenesisItems.EVOKER_FANGS_CIRCLE.get());
                 output.accept(GenesisItems.SHULKER_BULLET.get());
                 output.accept(GenesisItems.GUARDIAN_BEAM.get());
                 output.accept(GenesisItems.HEAVY_GUARDIAN_BEAM.get());
+                output.accept(GenesisItems.DRAGON_BREATH.get());
+                output.accept(GenesisItems.WHITHER_SKULL.get());
+                output.accept(GenesisItems.WARDEN_SONIC_BOOM.get());
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());

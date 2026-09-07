@@ -9,6 +9,7 @@ import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.EvokerFangs;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.entity.projectile.ThrownTrident;
 import net.minecraft.world.item.BowItem;
@@ -31,7 +32,7 @@ public class GenesisProjectileEvents {
 
     @SubscribeEvent
     public static void attachProjectileCaps(AttachCapabilitiesEvent<Entity> event) {
-        if (event.getObject() instanceof Projectile) {
+        if (event.getObject() instanceof Projectile || event.getObject() instanceof EvokerFangs) {
             event.addCapability(new ResourceLocation(GenesisMod.MODID, "projectile_stats"), new ProjectileStatsProvider());
         }
     }
@@ -41,6 +42,15 @@ public class GenesisProjectileEvents {
         if (event.getLevel().isClientSide) return;
 
         if (event.getEntity() instanceof Projectile projectile && projectile.getOwner() instanceof Player player) {
+
+            boolean hasExistingSnapshot = projectile.getCapability(ProjectileStatsProvider.CAPABILITY)
+                    .map(cap -> cap.getSnapshot() != null && !cap.getSnapshot().isEmpty())
+                    .orElse(false);
+
+            if (hasExistingSnapshot) {
+                return;
+            }
+
             ItemStack weaponStack = ItemStack.EMPTY;
             float enchantBonus = 0.0f;
 
@@ -66,6 +76,7 @@ public class GenesisProjectileEvents {
             else if (isBowOrCrossbow(player.getOffhandItem())) {
                 weaponStack = player.getOffhandItem();
             }
+
             if (!weaponStack.isEmpty() && WeaponDataManager.hasData(weaponStack.getItem())) {
 
                 if (weaponStack.getItem() instanceof BowItem) {

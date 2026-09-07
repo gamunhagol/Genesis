@@ -14,8 +14,13 @@ public class GenesisSpells {
     public static final AbstractSpell FIREBALL = register(new FireballSpell());
     public static final AbstractSpell LARGE_FIREBALL = register(new LargeFireballSpell());
     public static final AbstractSpell SHULKER_BULLET = register(new ShulkerBulletSpell());
+    public static final AbstractSpell EVOKER_FANGS_LINE = register(new EvokerFangsLineSpell());
+    public static final AbstractSpell EVOKER_FANGS_CIRCLE = register(new EvokerFangsCircleSpell());
     public static final AbstractSpell GUARDIAN_BEAM = register(new GuardianBeamSpell());
     public static final AbstractSpell HEAVY_GUARDIAN_BEAM = register(new HeavyGuardianBeamSpell());
+    public static final AbstractSpell DRAGON_BREATH = register(new DragonBreathSpell());
+    public static final AbstractSpell WHITHER_SKULL = register(new WitherSkullSpell());
+    public static final AbstractSpell WARDEN_SONIC_BOOM = register(new WardenSonicBoomSpell());
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_ARMORED_ZOMBIE = register(new SummonAZombieSpell());
