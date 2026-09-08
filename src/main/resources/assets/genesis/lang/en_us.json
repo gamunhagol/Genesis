@@ -307,6 +307,11 @@
   "item.genesis.wither_skull": "Wither Skull",
   "item.genesis.warden_sonic_boom": "Sonic Boom",
 
+  "item.genesis.mining": "Mining",
+  "item.genesis.explosion": "Explosion",
+  "item.genesis.throw_bomb": "Throw Bomb",
+  "item.genesis.push_block": "Push Block",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
   "item.genesis.summon_skeleton_slave": "Summon Skeleton Slave",
@@ -808,6 +813,16 @@
   "spell.genesis.wither_skull.desc": "Calls upon withered traces.",
   "spell.genesis.warden_sonic_boom": "Sonic Boom",
   "spell.genesis.warden_sonic_boom.desc": "Emits body-rending noise.",
+
+  "spell.genesis.mining": "Mining",
+  "spell.genesis.mining.desc": "Mines one-third of the block.",
+  "spell.genesis.explosion": "Explosion",
+  "spell.genesis.explosion.desc": "Causes an explosion where you look.",
+  "spell.genesis.throw_bomb": "Throw Bomb",
+  "spell.genesis.throw_bomb.desc": "Forms an explosive, then throws it.",
+  "spell.genesis.push_block": "Push Block",
+  "spell.genesis.push_block.desc": "Lifts the target block, and throws it.",
+
 
   "spell.genesis.summon_zombie": "Summon Zombie",
   "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",
