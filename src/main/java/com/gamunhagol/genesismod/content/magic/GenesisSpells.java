@@ -3,6 +3,10 @@ package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.content.magic.miracles.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
+import com.gamunhagol.genesismod.content.magic.spells.operation.ExplosionSpell;
+import com.gamunhagol.genesismod.content.magic.spells.operation.MiningSpell;
+import com.gamunhagol.genesismod.content.magic.spells.operation.PushBlockSpell;
+import com.gamunhagol.genesismod.content.magic.spells.operation.ThrowBombSpell;
 import com.gamunhagol.genesismod.content.magic.spells.summon.*;
 
 import java.util.HashMap;
@@ -21,6 +25,11 @@ public class GenesisSpells {
     public static final AbstractSpell DRAGON_BREATH = register(new DragonBreathSpell());
     public static final AbstractSpell WHITHER_SKULL = register(new WitherSkullSpell());
     public static final AbstractSpell WARDEN_SONIC_BOOM = register(new WardenSonicBoomSpell());
+
+    public static final AbstractSpell MINING = register(new MiningSpell());
+    public static final AbstractSpell EXPLOSION = register(new ExplosionSpell());
+    public static final AbstractSpell THROW_BOMB = register(new ThrowBombSpell());
+    public static final AbstractSpell PUSH_BLOCK = register(new PushBlockSpell());
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_ARMORED_ZOMBIE = register(new SummonAZombieSpell());

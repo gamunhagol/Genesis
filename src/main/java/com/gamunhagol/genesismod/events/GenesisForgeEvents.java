@@ -206,7 +206,33 @@ public class GenesisForgeEvents {
                     }
                 }
             }
+            if (player.getPersistentData().hasUUID("GenesisGrabbedEntity")) {
+                java.util.UUID uuid = player.getPersistentData().getUUID("GenesisGrabbedEntity");
+                if (player.level() instanceof ServerLevel serverLevel) {
+                    Entity grabbed = serverLevel.getEntity(uuid);
+
+                    if (grabbed != null && grabbed.isAlive()) {
+                        Vec3 look = player.getLookAngle();
+                        Vec3 targetPos = player.getEyePosition().add(look.scale(2.0D));
+                        Vec3 currentPos = grabbed.position();
+
+                        Vec3 diff = targetPos.subtract(currentPos);
+                        grabbed.setDeltaMovement(diff.scale(0.5D));
+
+                        grabbed.hasImpulse = true;
+
+                        grabbed.fallDistance = 0.0F;
+
+                        if (grabbed instanceof net.minecraft.world.entity.item.FallingBlockEntity fb) {
+                            fb.time = 1;
+                        }
+                    } else {
+                        player.getPersistentData().remove("GenesisGrabbedEntity");
+                    }
+                }
+            }
         }
+
     }
 
     @SubscribeEvent

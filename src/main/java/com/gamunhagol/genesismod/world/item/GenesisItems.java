@@ -595,6 +595,8 @@ public class GenesisItems {
             () -> new SpellBookItem("shulker_bullet", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> GUARDIAN_BEAM = ITEMS.register("guardian_beam",
             () -> new SpellBookItem("guardian_beam", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HEAVY_GUARDIAN_BEAM = ITEMS.register("heavy_guardian_beam",
+            () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> DRAGON_BREATH = ITEMS.register("dragon_breath",
             () -> new SpellBookItem("dragon_breath", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WHITHER_SKULL = ITEMS.register("wither_skull",
@@ -602,8 +604,14 @@ public class GenesisItems {
     public static final RegistryObject<Item> WARDEN_SONIC_BOOM = ITEMS.register("warden_sonic_boom",
             () -> new SpellBookItem("warden_sonic_boom", new Item.Properties().stacksTo(1)));
 
-    public static final RegistryObject<Item> HEAVY_GUARDIAN_BEAM = ITEMS.register("heavy_guardian_beam",
-            () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MINING = ITEMS.register("mining",
+            () -> new SpellBookItem("mining", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> EXPLOSION = ITEMS.register("explosion",
+            () -> new SpellBookItem("explosion", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> THROW_BOMB = ITEMS.register("throw_bomb",
+            () -> new SpellBookItem("throw_bomb", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> PUSH_BLOCK = ITEMS.register("push_block",
+            () -> new SpellBookItem("push_block", new Item.Properties().stacksTo(1)));
 
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",

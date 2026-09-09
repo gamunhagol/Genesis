@@ -455,6 +455,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.WHITHER_SKULL.get());
                 output.accept(GenesisItems.WARDEN_SONIC_BOOM.get());
 
+                output.accept(GenesisItems.MINING.get());
+                output.accept(GenesisItems.EXPLOSION.get());
+                output.accept(GenesisItems.THROW_BOMB.get());
+                output.accept(GenesisItems.PUSH_BLOCK.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_SKELETON_SLAVE.get());

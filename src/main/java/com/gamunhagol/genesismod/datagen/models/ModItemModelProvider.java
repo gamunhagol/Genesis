@@ -142,6 +142,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.DRAGON_BREATH);
         simpleItem(GenesisItems.WHITHER_SKULL);
         simpleItem(GenesisItems.WARDEN_SONIC_BOOM);
+        simpleItem(GenesisItems.MINING);
+        simpleItem(GenesisItems.EXPLOSION);
+        simpleItem(GenesisItems.THROW_BOMB);
+        simpleItem(GenesisItems.PUSH_BLOCK);
         simpleItem(GenesisItems.LITTLE_HEAL);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_ARMORED_ZOMBIE);
