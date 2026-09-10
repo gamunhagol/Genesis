@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.item.custom;
 
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSyncSpellSlot;
+import com.gamunhagol.genesismod.network.client.PacketSyncSpellSlot;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;

@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.client.gui;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.client.PacketStatueHeal;
+import com.gamunhagol.genesismod.network.server.PacketStatueHeal;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;

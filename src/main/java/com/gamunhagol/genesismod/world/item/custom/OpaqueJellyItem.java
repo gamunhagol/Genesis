@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.item.custom;
 
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSyncStats;
+import com.gamunhagol.genesismod.network.client.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.LevelCalcHelper;

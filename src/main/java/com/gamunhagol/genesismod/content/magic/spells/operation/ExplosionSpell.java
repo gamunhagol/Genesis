@@ -14,9 +14,6 @@ public class ExplosionSpell extends MagicSpell {
     public ExplosionSpell() { super("explosion"); }
 
     @Override
-    public int getCastTime() { return 30; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 15);
     }

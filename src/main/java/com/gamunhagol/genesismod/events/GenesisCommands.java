@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSyncStats;
+import com.gamunhagol.genesismod.network.client.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.mojang.brigadier.CommandDispatcher;

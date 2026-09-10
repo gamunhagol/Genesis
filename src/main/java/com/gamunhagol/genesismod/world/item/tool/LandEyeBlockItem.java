@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.item.tool;
 
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSpawnEyeBeam;
+import com.gamunhagol.genesismod.network.client.PacketSpawnEyeBeam;
 import com.gamunhagol.genesismod.world.structure.MistVaultTracker;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;

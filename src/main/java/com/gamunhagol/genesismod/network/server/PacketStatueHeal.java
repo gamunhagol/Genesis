@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.network.client;
+package com.gamunhagol.genesismod.network.server;
 
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import net.minecraft.network.FriendlyByteBuf;

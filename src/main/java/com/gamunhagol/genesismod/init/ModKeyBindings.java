@@ -31,4 +31,11 @@ public class ModKeyBindings {
             GLFW.GLFW_KEY_DOWN,
             KEY_CATEGORY_GENESIS
     );
+    public static final KeyMapping SPELL_CAST_KEY = new KeyMapping(
+            "key." + GenesisMod.MODID + ".spell_cast",
+            KeyConflictContext.IN_GAME,
+            InputConstants.Type.MOUSE,
+            GLFW.GLFW_MOUSE_BUTTON_RIGHT,
+            KEY_CATEGORY_GENESIS
+    );
 }

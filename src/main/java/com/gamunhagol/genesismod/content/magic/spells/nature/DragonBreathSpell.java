@@ -15,9 +15,6 @@ public class DragonBreathSpell extends MagicSpell {
     public DragonBreathSpell() { super("dragon_breath"); }
 
     @Override
-    public int getCastTime() { return 20; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 18);
     }

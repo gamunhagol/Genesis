@@ -12,9 +12,6 @@ public class HealMiracle extends MiracleSpell {
     public HealMiracle() { super("little_heal"); }
 
     @Override
-    public int getCastTime() { return 45; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.FAITH, 10);
     }

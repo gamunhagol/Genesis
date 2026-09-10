@@ -1,6 +1,11 @@
 {
   "preset": "genesis:great_bow",
   "items": [
-    "genesis:great_bow"
+    "genesis:great_bow",
+    "genesis:root_woven_bow",
+    "genesis:elvenia_great_bow",
+    "genesis:ancient_elvenia_great_bow",
+    "genesis:pewriese_great_bow"
+
   ]
 }

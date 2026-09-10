@@ -18,9 +18,6 @@ public class EvokerFangsCircleSpell extends MagicSpell {
     public EvokerFangsCircleSpell() { super("evoker_fangs_circle"); }
 
     @Override
-    public int getCastTime() { return 20; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 14);
     }

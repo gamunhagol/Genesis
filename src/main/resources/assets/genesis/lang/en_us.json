@@ -844,6 +844,8 @@
   "spell.genesis.summon_blaze.desc": "Summons a blaze.",
 
 
+  "skill.genesis.magic_charge": "Charge",
+
 
   "spell.genesis.little_heal": "Minor Heal",
   "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
@@ -944,6 +946,7 @@
   "key.categories.genesis": "Genesis Mod",
   "key.genesis.level_up": "Open Stat Menu",
   "key.genesis.spell_next": "Next Skill",
-  "key.genesis.spell_prev": "Previous Skill"
+  "key.genesis.spell_prev": "Previous Skill",
+  "key.genesis.spell_cast": "Cast Spell"
 
 }

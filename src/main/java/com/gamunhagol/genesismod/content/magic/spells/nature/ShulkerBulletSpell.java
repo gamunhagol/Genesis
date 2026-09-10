@@ -19,9 +19,6 @@ public class ShulkerBulletSpell extends MagicSpell {
     public ShulkerBulletSpell() { super("shulker_bullet"); }
 
     @Override
-    public int getCastTime() { return 30; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 13);
     }

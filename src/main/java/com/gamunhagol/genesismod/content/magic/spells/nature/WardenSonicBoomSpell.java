@@ -21,9 +21,6 @@ public class WardenSonicBoomSpell extends MagicSpell {
     public WardenSonicBoomSpell() { super("warden_sonic_boom"); }
 
     @Override
-    public int getCastTime() { return 30; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 20);
     }

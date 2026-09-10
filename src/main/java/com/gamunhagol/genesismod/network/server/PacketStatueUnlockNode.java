@@ -1,9 +1,9 @@
-package com.gamunhagol.genesismod.network.client;
+package com.gamunhagol.genesismod.network.server;
 
 import com.gamunhagol.genesismod.content.StatueRewardManager;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSyncSpellSlot;
-import com.gamunhagol.genesismod.network.server.PacketSyncStats;
+import com.gamunhagol.genesismod.network.client.PacketSyncSpellSlot;
+import com.gamunhagol.genesismod.network.client.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;

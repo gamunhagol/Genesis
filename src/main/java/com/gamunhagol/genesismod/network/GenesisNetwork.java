@@ -48,6 +48,12 @@ public class GenesisNetwork {
                 .decoder(PacketSpawnEyeBeam::new).encoder(PacketSpawnEyeBeam::toBytes)
                 .consumerMainThread(PacketSpawnEyeBeam::handle).add();
 
+        INSTANCE.messageBuilder(PacketSyncGrabState.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncGrabState::new)
+                .encoder(PacketSyncGrabState::toBytes)
+                .consumerMainThread(PacketSyncGrabState::handle)
+                .add();
+
 
         // [C -> S] Client to Server Packets (요청, 조작 등)
         INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)
@@ -73,6 +79,10 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketActivateWindBlessing.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketActivateWindBlessing::new).encoder(PacketActivateWindBlessing::toBytes)
                 .consumerMainThread(PacketActivateWindBlessing::handle).add();
+
+        INSTANCE.messageBuilder(PacketCastChargedSpell.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketCastChargedSpell::new).encoder(PacketCastChargedSpell::toBytes)
+                .consumerMainThread(PacketCastChargedSpell::handle).add();
     }
 
     public static void sendToPlayer(Object message, ServerPlayer player) {

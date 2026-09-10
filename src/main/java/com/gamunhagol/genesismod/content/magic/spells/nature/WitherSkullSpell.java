@@ -14,9 +14,6 @@ public class WitherSkullSpell extends MagicSpell {
     public WitherSkullSpell() { super("wither_skull"); }
 
     @Override
-    public int getCastTime() { return 20; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 16);
     }

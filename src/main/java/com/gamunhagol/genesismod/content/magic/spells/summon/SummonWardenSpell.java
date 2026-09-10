@@ -21,12 +21,6 @@ public class SummonWardenSpell extends AbstractSummonSpell {
     public SummonWardenSpell() {
         super("summon_warden");
     }
-
-    @Override
-    public int getCastTime() {
-        return 80;
-    }
-
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 24);

@@ -2,16 +2,19 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.gui.hud.SpellHudOverlay;
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
+import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.client.PacketChangeSelectedSlot;
-import com.gamunhagol.genesismod.network.client.PacketActivateWindBlessing;
+import com.gamunhagol.genesismod.network.server.PacketChangeSelectedSlot;
+import com.gamunhagol.genesismod.network.server.PacketActivateWindBlessing;
+import com.gamunhagol.genesismod.skill.MagicChargeSkill;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -19,7 +22,9 @@ import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -28,6 +33,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
+import yesman.epicfight.client.ClientEngine;
+import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
+import yesman.epicfight.skill.SkillContainer;
+import yesman.epicfight.skill.SkillSlots;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class GenesisClientEvents {
@@ -51,7 +60,6 @@ public class GenesisClientEvents {
             Item item = itemObj.get();
 
             if (item instanceof GreatBowItem) {
-
                 ItemProperties.register(
                         item,
                         new ResourceLocation("pulling"),
@@ -75,6 +83,7 @@ public class GenesisClientEvents {
         event.register(ModKeyBindings.LEVEL_UP_KEY);
         event.register(ModKeyBindings.SPELL_PREV_KEY);
         event.register(ModKeyBindings.SPELL_NEXT_KEY);
+        event.register(ModKeyBindings.SPELL_CAST_KEY);
     }
 
     @SubscribeEvent
@@ -129,6 +138,25 @@ public class GenesisClientEvents {
                     }
                 }
                 wasSneaking = isSneaking;
+
+                if (ModKeyBindings.SPELL_CAST_KEY.isDown() && mc.screen == null) {
+                    Player player = mc.player;
+                    ItemStack mainHand = player.getMainHandItem();
+
+                    if (mainHand.getItem() instanceof CatalystItem catalyst) {
+                        AbstractSpell currentSpell = catalyst.getSelectedSpell(player);
+
+                        if (currentSpell != null && currentSpell.isChargePhase(player)) {
+                            LocalPlayerPatch playerPatch = ClientEngine.getInstance().getPlayerPatch();
+                            if (playerPatch != null && !playerPatch.isHoldingAny()) {
+                                SkillContainer container = playerPatch.getSkill(SkillSlots.WEAPON_INNATE);
+                                if (container != null && container.getSkill() instanceof MagicChargeSkill magicCharge) {
+                                    magicCharge.startHolding(container);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
 
@@ -147,6 +175,7 @@ public class GenesisClientEvents {
                 input.shiftKeyDown = false;
             }
         }
+
         @SubscribeEvent
         public static void onMouseClick(InputEvent.MouseButton.Pre event) {
             Minecraft mc = Minecraft.getInstance();
@@ -154,7 +183,6 @@ public class GenesisClientEvents {
 
             if (mc.player.hasEffect(GenesisEffects.PARALYSIS.get()) ||
                     mc.player.hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
-
                 if (event.getButton() == 0 || event.getButton() == 1) {
                     if (event.getAction() == 1) {
                         event.setCanceled(true);

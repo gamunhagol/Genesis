@@ -15,13 +15,13 @@ public class FireballSpell extends MagicSpell {
     public FireballSpell() { super("fireball"); }
 
     @Override
-    public int getCastTime() { return 20; }
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 10);
     }
+
     @Override
     public float getMentalCost() { return 2.0f; }
+
     @Override
     public int getMemoryCost() {return 1;}
 

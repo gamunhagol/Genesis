@@ -1,7 +1,7 @@
 package com.gamunhagol.genesismod.world.item.custom;
 
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketSyncMentalPower;
+import com.gamunhagol.genesismod.network.client.PacketSyncMentalPower;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;

@@ -15,9 +15,6 @@ public class LargeFireballSpell extends MagicSpell {
     public LargeFireballSpell() { super("large_fireball"); }
 
     @Override
-    public int getCastTime() { return 25; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 15);
     }

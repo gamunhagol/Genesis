@@ -15,9 +15,6 @@ public class HeavyGuardianBeamSpell extends MagicSpell {
     public HeavyGuardianBeamSpell() { super("heavy_guardian_beam"); }
 
     @Override
-    public int getCastTime() { return 50; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 19);
     }

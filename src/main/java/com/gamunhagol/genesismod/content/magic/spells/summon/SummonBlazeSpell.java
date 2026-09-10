@@ -19,11 +19,6 @@ public class SummonBlazeSpell extends AbstractSummonSpell {
     }
 
     @Override
-    public int getCastTime() {
-        return 40;
-    }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.ARCANE, 14,
                 StatType.INTELLIGENCE, 13);

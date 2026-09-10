@@ -19,9 +19,6 @@ public class SummonSkeletonSlaveSpell extends AbstractSummonSpell {
     }
 
     @Override
-    public int getCastTime() { return 40; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 10);
     }

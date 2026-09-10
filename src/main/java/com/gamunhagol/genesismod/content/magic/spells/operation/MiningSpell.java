@@ -18,9 +18,6 @@ public class MiningSpell extends MagicSpell {
     public MiningSpell() { super("mining"); }
 
     @Override
-    public int getCastTime() { return 20; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 10);
     }

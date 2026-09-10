@@ -18,9 +18,6 @@ public class EvokerFangsLineSpell extends MagicSpell {
     public EvokerFangsLineSpell() { super("evoker_fangs_line"); }
 
     @Override
-    public int getCastTime() { return 20; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 14);
     }

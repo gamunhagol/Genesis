@@ -19,7 +19,9 @@ import com.gamunhagol.genesismod.world.item.custom.GenesisBrewingRecipes;
 import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.custom.GenesisPotions;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
+import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import com.mojang.logging.LogUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -36,11 +38,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
+import java.util.AbstractMap;
 
 @Mod(GenesisMod.MODID)
 public class GenesisMod {
     public static final String MODID = "genesis";
-
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public GenesisMod(FMLJavaModLoadingContext context) {
@@ -62,22 +64,19 @@ public class GenesisMod {
         GenesisFluids.FLUIDS.register(modEventBus);
         GenesisRecipeSerializers.SERIALIZERS.register(modEventBus);
         GenesisFeatures.FEATURES.register(modEventBus);
+
+        GenesisSkills.SKILLS.register(modEventBus);
         GenesisSkillDataKeys.DATA_KEYS.register(modEventBus);
+
         GenesisEffects.MOB_EFFECTS.register(modEventBus);
         GenesisPotions.POTIONS.register(modEventBus);
         GenesisEnchantments.ENCHANTMENTS.register(modEventBus);
 
         GenesisNetwork.register();
 
-
-
         MinecraftForge.EVENT_BUS.addListener(this::onAddReloadListeners);
-
-
         MinecraftForge.EVENT_BUS.register(this);
-
     }
-
 
     public static ResourceLocation prefix(String path) {
         return new ResourceLocation(MODID, path);
@@ -85,7 +84,6 @@ public class GenesisMod {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
-            GenesisSkills.SKILLS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
             for (RegistryObject<Item> itemObj : GenesisItems.ITEMS.getEntries()) {
                 Item item = itemObj.get();
@@ -94,7 +92,7 @@ public class GenesisMod {
                     String presetName = greatBow.getTier().getEpicFightPreset();
 
                     InterModComms.sendTo("epicfight", "register_weapon_capability", () ->
-                            new java.util.AbstractMap.SimpleEntry<>(
+                            new AbstractMap.SimpleEntry<>(
                                     item,
                                     GenesisMod.prefix(presetName)
                             )
@@ -105,20 +103,14 @@ public class GenesisMod {
         });
     }
 
-
-
-
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
     }
 
-
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-
     }
 
     private void onAddReloadListeners(AddReloadListenerEvent event) {
-        event.addListener(new com.gamunhagol.genesismod.world.weapon.WeaponDataManager());
+        event.addListener(new WeaponDataManager());
     }
-
 }

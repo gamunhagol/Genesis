@@ -14,9 +14,6 @@ public class GuardianBeamSpell extends MagicSpell {
     public GuardianBeamSpell() { super("guardian_beam"); }
 
     @Override
-    public int getCastTime() { return 10; }
-
-    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 13);
     }
