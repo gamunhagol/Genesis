@@ -73,7 +73,6 @@ public class PushBlockSpell extends MagicSpell {
         return super.canCast(caster);
     }
 
-    // 1타 시전 (블록 집기)
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         if (!(level instanceof ServerLevel)) return;
@@ -111,7 +110,6 @@ public class PushBlockSpell extends MagicSpell {
         }
     }
 
-    // 2타 시전 (차징 발사)
     @Override
     protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
         if (!(level instanceof ServerLevel serverLevel)) return;

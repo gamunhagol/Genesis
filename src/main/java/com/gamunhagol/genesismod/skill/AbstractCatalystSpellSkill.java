@@ -16,6 +16,8 @@ import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.modules.ChargeableSkill;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
 import java.util.List;
 
@@ -101,12 +103,18 @@ public abstract class AbstractCatalystSpellSkill extends WeaponInnateSkill imple
         int chargeTicks = 0;
         if (args != null && args.isReadable()) {
             chargeTicks = args.readInt();
-        } else {
+        } else if (container.getServerExecutor() != null) {
             chargeTicks = container.getServerExecutor().getAccumulatedChargeAmount();
         }
 
-        onExecuteSpellOnServer(container, player, spell, chargeTicks);
-        container.getServerExecutor().resetHolding();
+        try {
+            onExecuteSpellOnServer(container, player, spell, chargeTicks);
+        } finally {
+            if (container.getServerExecutor() != null) {
+                container.getServerExecutor().resetHolding();
+            }
+            EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(PlayerPatch::resetHolding);
+        }
     }
 
     @Override

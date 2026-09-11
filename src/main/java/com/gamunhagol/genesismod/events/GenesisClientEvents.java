@@ -139,24 +139,7 @@ public class GenesisClientEvents {
                 }
                 wasSneaking = isSneaking;
 
-                if (ModKeyBindings.SPELL_CAST_KEY.isDown() && mc.screen == null) {
-                    Player player = mc.player;
-                    ItemStack mainHand = player.getMainHandItem();
 
-                    if (mainHand.getItem() instanceof CatalystItem catalyst) {
-                        AbstractSpell currentSpell = catalyst.getSelectedSpell(player);
-
-                        if (currentSpell != null && currentSpell.isChargePhase(player)) {
-                            LocalPlayerPatch playerPatch = ClientEngine.getInstance().getPlayerPatch();
-                            if (playerPatch != null && !playerPatch.isHoldingAny()) {
-                                SkillContainer container = playerPatch.getSkill(SkillSlots.WEAPON_INNATE);
-                                if (container != null && container.getSkill() instanceof MagicChargeSkill magicCharge) {
-                                    magicCharge.startHolding(container);
-                                }
-                            }
-                        }
-                    }
-                }
             }
         }
 

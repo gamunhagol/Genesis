@@ -6,6 +6,7 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.capability.spell.SpellBookItem;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.fluid.GenesisFluids;
+import com.gamunhagol.genesismod.world.item.accessories.ChargeStoneItem;
 import com.gamunhagol.genesismod.world.item.armor.*;
 import com.gamunhagol.genesismod.world.item.custom.*;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
@@ -904,5 +905,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> COLLECTOR_GUARD_SPAWN_EGG = ITEMS.register("collector_guard_spawn_egg", () -> new ForgeSpawnEggItem(GenesisEntities.COLLECTOR_GUARD, 0xFFFFFF, 0xFFFFFF,
             new Item.Properties()));
 
+    //temporary
+    public static final RegistryObject<Item> CHARGE_STONE = ITEMS.register("charge_stone",
+            () -> new ChargeStoneItem(new Item.Properties()));
 
 }

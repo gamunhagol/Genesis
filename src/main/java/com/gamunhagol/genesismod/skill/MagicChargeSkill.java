@@ -49,6 +49,8 @@ public class MagicChargeSkill extends AbstractCatalystSpellSkill {
     @Override
     public void startHolding(SkillContainer container) {
         super.startHolding(container);
+        if (container.getClientExecutor() != null) {
+        }
     }
 
     @Override

@@ -77,7 +77,6 @@ public class CatalystItem extends Item {
             return InteractionResultHolder.fail(catalyst);
         }
 
-        // [핵심] 1. 이미 2타 차징 단계인지 먼저 확인!
         boolean isCharge = currentSpell.isChargePhase(player);
 
         if (isCharge) {
@@ -85,11 +84,20 @@ public class CatalystItem extends Item {
 
             if (level.isClientSide) {
                 LocalPlayerPatch playerPatch = ClientEngine.getInstance().getPlayerPatch();
+
                 if (playerPatch != null) {
-                    SkillContainer skillContainer = playerPatch.getSkill(SkillSlots.WEAPON_INNATE);
+                    SkillContainer skillContainer =
+                            playerPatch.getSkill(SkillSlots.WEAPON_INNATE);
+
                     if (skillContainer != null) {
-                        if (skillContainer.getSkill() == null) {
-                            skillContainer.setSkill(GenesisSkills.MAGIC_CHARGE.get(), true);
+
+                        // 현재 무기의 Weapon Innate Skill을
+                        // 무조건 Genesis MagicChargeSkill로 맞춘다.
+                        if (!(skillContainer.getSkill() instanceof MagicChargeSkill)) {
+                            skillContainer.setSkill(
+                                    GenesisSkills.MAGIC_CHARGE.get(),
+                                    true
+                            );
                         }
 
                         if (skillContainer.getSkill() instanceof MagicChargeSkill magicCharge) {
@@ -100,23 +108,15 @@ public class CatalystItem extends Item {
                         }
                     }
                 }
-            } else {
-                EpicFightCapabilities.getPlayerPatchAsOptional(player).ifPresent(patch -> {
-                    SkillContainer serverContainer = patch.getSkill(SkillSlots.WEAPON_INNATE);
-                    if (serverContainer != null && serverContainer.getSkill() == null) {
-                        serverContainer.setSkill(GenesisSkills.MAGIC_CHARGE.get(), true);
-                    }
-                });
             }
+
             return InteractionResultHolder.consume(catalyst);
         }
 
-        // 2. 1타 시전일 때만 canCast 사전 검사를 수행
         if (!currentSpell.canCast(player)) {
             return InteractionResultHolder.fail(catalyst);
         }
 
-        // 3. 1타 즉발 시전
         boolean success = castUniversalSpell(level, player, catalyst, currentSpell);
         if (success) {
             return InteractionResultHolder.sidedSuccess(catalyst, level.isClientSide());

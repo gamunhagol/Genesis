@@ -418,6 +418,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.COLLECTOR_SPAWN_EGG.get());
                 output.accept(GenesisItems.COLLECTOR_GUARD_SPAWN_EGG.get());
 
+                output.accept(GenesisItems.CHARGE_STONE.get());
+
             })
             .title(Component.translatable("itemGroup.genesis.items"))
             .build()
