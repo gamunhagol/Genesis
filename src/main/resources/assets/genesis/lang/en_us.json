@@ -311,6 +311,8 @@
   "item.genesis.explosion": "Explosion",
   "item.genesis.throw_bomb": "Throw Bomb",
   "item.genesis.push_block": "Push Block",
+  "item.genesis.arrow_rain": "Arrow Rain",
+  "item.genesis.arrow_bombardment": "Arrow Bombardment",
 
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
@@ -822,6 +824,10 @@
   "spell.genesis.throw_bomb.desc": "Forms an explosive, then throws it.",
   "spell.genesis.push_block": "Push Block",
   "spell.genesis.push_block.desc": "Lifts the target block, and throws it.",
+  "spell.genesis.arrow_rain": "Arrow Rain",
+  "spell.genesis.arrow_rain.desc": "Creates an arrow zone above the impact point.",
+  "spell.genesis.arrow_bombardment": "Arrow Bombardment",
+  "spell.genesis.arrow_bombardment.desc": "Pours arrows in the direction of your view.",
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",

@@ -3,10 +3,7 @@ package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.content.magic.miracles.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
-import com.gamunhagol.genesismod.content.magic.spells.operation.ExplosionSpell;
-import com.gamunhagol.genesismod.content.magic.spells.operation.MiningSpell;
-import com.gamunhagol.genesismod.content.magic.spells.operation.PushBlockSpell;
-import com.gamunhagol.genesismod.content.magic.spells.operation.ThrowBombSpell;
+import com.gamunhagol.genesismod.content.magic.spells.operation.*;
 import com.gamunhagol.genesismod.content.magic.spells.summon.*;
 
 import java.util.HashMap;
@@ -30,6 +27,9 @@ public class GenesisSpells {
     public static final AbstractSpell EXPLOSION = register(new ExplosionSpell());
     public static final AbstractSpell THROW_BOMB = register(new ThrowBombSpell());
     public static final AbstractSpell PUSH_BLOCK = register(new PushBlockSpell());
+    public static final AbstractSpell ARROW_RAIN = register(new ArrowRainSpell());
+    public static final AbstractSpell ARROW_BOMBARDMENT = register(new ArrowBombardmentSpell());
+
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_ARMORED_ZOMBIE = register(new SummonAZombieSpell());

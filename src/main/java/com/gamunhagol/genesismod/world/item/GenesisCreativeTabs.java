@@ -461,6 +461,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.EXPLOSION.get());
                 output.accept(GenesisItems.THROW_BOMB.get());
                 output.accept(GenesisItems.PUSH_BLOCK.get());
+                output.accept(GenesisItems.ARROW_RAIN.get());
+                output.accept(GenesisItems.ARROW_BOMBARDMENT.get());
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());

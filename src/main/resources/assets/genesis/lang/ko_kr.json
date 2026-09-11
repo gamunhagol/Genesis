@@ -312,6 +312,8 @@
   "item.genesis.explosion": "폭발",
   "item.genesis.throw_bomb": "폭발물 투척",
   "item.genesis.push_block": "블럭 밀기",
+  "item.genesis.arrow_rain": "화살 비",
+  "item.genesis.arrow_bombardment": "화살 폭격",
 
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_armored_zombie": "무장한 좀비 소환",
@@ -822,6 +824,10 @@
   "spell.genesis.throw_bomb.desc": "폭발물을 형성한 뒤, 투척한다.",
   "spell.genesis.push_block": "블럭 밀기",
   "spell.genesis.push_block.desc": "시점의 블록을 들어 올려, 던진다.",
+  "spell.genesis.arrow_rain": "화살 비",
+  "spell.genesis.arrow_rain.desc": "타격 지점 위에 화살지대를 생성한다.",
+  "spell.genesis.arrow_bombardment": "화살 폭격",
+  "spell.genesis.arrow_bombardment.desc": "시야 방향으로 화살을 쏟아낸다.",
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다.",

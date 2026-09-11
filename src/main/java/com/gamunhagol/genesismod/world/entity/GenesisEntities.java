@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.world.entity;
 
+import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import net.minecraft.world.entity.EntityType;
@@ -21,6 +22,8 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<SpellGuardianEntity>> SPELL_GUARDIAN;
     public static final RegistryObject<EntityType<SpellElderGuardianEntity>> SPELL_ELDER_GUARDIAN;
+
+    public static final RegistryObject<EntityType<ArrowBarrageSpawnerEntity>> ARROW_BARRAGE_SPAWNER;
 
     public static final RegistryObject<EntityType<LargeArrowEntity>> LARGE_ARROW;
 
@@ -59,6 +62,13 @@ public class GenesisEntities {
         SUMMONED_WARDEN = ENTITY_TYPES.register("summon_warden",
                 () -> EntityType.Builder.of(SummonedWardenEntity::new, MobCategory.CREATURE)
                         .sized(0.9f, 2.9f).build("summon_warden"));
+
+
+        ARROW_BARRAGE_SPAWNER = ENTITY_TYPES.register("arrow_barrage_spawner", () ->
+                EntityType.Builder.<ArrowBarrageSpawnerEntity>of(ArrowBarrageSpawnerEntity::new, MobCategory.MISC)
+                        .sized(0.1f, 0.1f).clientTrackingRange(4).updateInterval(20)
+                        .build("arrow_barrage_spawner"));
+
 
         LARGE_ARROW = ENTITY_TYPES.register("large_arrow", () ->
                 EntityType.Builder.<LargeArrowEntity>of(LargeArrowEntity::new, MobCategory.MISC)

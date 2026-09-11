@@ -613,6 +613,10 @@ public class GenesisItems {
             () -> new SpellBookItem("throw_bomb", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> PUSH_BLOCK = ITEMS.register("push_block",
             () -> new SpellBookItem("push_block", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ARROW_RAIN = ITEMS.register("arrow_rain",
+            () -> new SpellBookItem("arrow_rain", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ARROW_BOMBARDMENT = ITEMS.register("arrow_bombardment",
+            () -> new SpellBookItem("arrow_bombardment", new Item.Properties().stacksTo(1)));
 
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
