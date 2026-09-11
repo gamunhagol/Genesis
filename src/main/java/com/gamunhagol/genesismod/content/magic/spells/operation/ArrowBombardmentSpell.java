@@ -22,17 +22,17 @@ public class ArrowBombardmentSpell extends MagicSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.INTELLIGENCE, 18);
+        return Map.of(StatType.INTELLIGENCE, 24);
     }
 
     @Override
     public float getMentalCost() {
-        return 9.0f;
+        return 10.0f;
     }
 
     @Override
     public int getMemoryCost() {
-        return 2;
+        return 3;
     }
 
     @Override

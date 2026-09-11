@@ -62,8 +62,8 @@ public class ArrowBarrageSpawnerEntity extends Entity {
         Vec3 spawnPos;
         Vec3 fireDir;
 
-        double u = (this.random.nextDouble() - 0.5D) * 14.0D;
-        double v = (this.random.nextDouble() - 0.5D) * 14.0D;
+        double u = (this.random.nextDouble() - 0.5D) * 10.0D;
+        double v = (this.random.nextDouble() - 0.5D) * 10.0D;
 
         if (this.mode == Mode.RAIN) {
             spawnPos = this.position().add(u, 0, v);
