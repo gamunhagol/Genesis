@@ -316,6 +316,13 @@
   "item.genesis.arrow_bombardment": "Arrow Bombardment",
   "item.genesis.spatial_rupture": "Spatial Severance",
 
+  "item.genesis.magic_glint": "Magic Trace",
+  "item.genesis.magic_mist": "Magic Mist",
+  "item.genesis.magic_pebble": "Magic Pebble",
+  "item.genesis.great_magic_pebble": "Great Magic Pebble",
+  "item.genesis.magic_comet": "Magic Comet",
+  "item.genesis.shooting_star": "Shooting Star",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
   "item.genesis.summon_drowned": "Summon Drowned",
@@ -841,6 +848,20 @@
   "spell.genesis.arrow_bombardment.desc": "Pours arrows in the direction of your view.",
   "spell.genesis.spatial_rupture": "Spatial Severance",
   "spell.genesis.spatial_rupture.desc": "Creates a refuge from the providence of the world, protecting and erasing from what touches it.   It was supposed to.",
+
+  "spell.genesis.magic_glint": "Magic Trace",
+  "spell.genesis.magic_glint.desc": "Fires a trace of magic to attack. It is the most trivial yet basic magic.",
+  "spell.genesis.magic_mist": "Magic Mist",
+  "spell.genesis.magic_mist.desc": "Scatters magic to obstruct the path. Rarely used.",
+  "spell.genesis.magic_pebble": "Magic Pebble",
+  "spell.genesis.magic_pebble.desc": "Gathers magic and fires it to attack. The introductory step following the path of the stars.",
+  "spell.genesis.great_magic_pebble": "Great Magic Pebble",
+  "spell.genesis.great_magic_pebble.desc": "Gathers magic to the fullest to attack. Hoping to reach higher places.",
+  "spell.genesis.magic_comet": "Magic Comet",
+  "spell.genesis.magic_comet.desc": "Magic modeled after the stars. Yet, it could not become one.",
+  "spell.genesis.shooting_star": "Shooting Star",
+  "spell.genesis.shooting_star.desc": "The fallen star harbors its origin. Hence, it is powerful.",
+
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",

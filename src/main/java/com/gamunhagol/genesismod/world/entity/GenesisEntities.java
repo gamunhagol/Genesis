@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.world.entity;
 import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -32,6 +33,13 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<ArrowBarrageSpawnerEntity>> ARROW_BARRAGE_SPAWNER;
 
     public static final RegistryObject<EntityType<LargeArrowEntity>> LARGE_ARROW;
+
+    public static final RegistryObject<EntityType<MagicGlint>> MAGIC_GLINT;
+    public static final RegistryObject<EntityType<MagicMist>> MAGIC_MIST;
+    public static final RegistryObject<EntityType<MagicPebble>> MAGIC_PEBBLE;
+    public static final RegistryObject<EntityType<GreatMagicPebble>> GREAT_MAGIC_PEBBLE;
+    public static final RegistryObject<EntityType<MagicComet>> MAGIC_COMET;
+    public static final RegistryObject<EntityType<ShootingStar>> SHOOTING_STAR;
 
     static {
         ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "genesis");
@@ -108,5 +116,36 @@ public class GenesisEntities {
                 EntityType.Builder.<LargeArrowEntity>of(LargeArrowEntity::new, MobCategory.MISC)
                         .sized(0.7f, 0.7f).clientTrackingRange(4).updateInterval(20)
                         .build("large_arrow"));
+
+
+        MAGIC_GLINT = ENTITY_TYPES.register("magic_glint", () ->
+                EntityType.Builder.<MagicGlint>of(MagicGlint::new, MobCategory.MISC)
+                        .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
+                        .build("magic_glint"));
+
+        MAGIC_MIST = ENTITY_TYPES.register("magic_mist", () ->
+                EntityType.Builder.<MagicMist>of(MagicMist::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10)
+                        .build("magic_mist"));
+
+        MAGIC_PEBBLE = ENTITY_TYPES.register("magic_pebble", () ->
+                EntityType.Builder.<MagicPebble>of(MagicPebble::new, MobCategory.MISC)
+                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(10)
+                        .build("magic_pebble"));
+
+        GREAT_MAGIC_PEBBLE = ENTITY_TYPES.register("great_magic_pebble", () ->
+                EntityType.Builder.<GreatMagicPebble>of(GreatMagicPebble::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10)
+                        .build("great_magic_pebble"));
+
+        MAGIC_COMET = ENTITY_TYPES.register("magic_comet", () ->
+                EntityType.Builder.<MagicComet>of(MagicComet::new, MobCategory.MISC)
+                        .sized(0.7F, 0.7F).clientTrackingRange(6).updateInterval(10)
+                        .build("magic_comet"));
+
+        SHOOTING_STAR = ENTITY_TYPES.register("shooting_star", () ->
+                EntityType.Builder.<ShootingStar>of(ShootingStar::new, MobCategory.MISC)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
+                        .build("shooting_star"));
     }
 }

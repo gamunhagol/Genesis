@@ -317,6 +317,13 @@
   "item.genesis.arrow_bombardment": "화살 폭격",
   "item.genesis.spatial_rupture": "공간 단절",
 
+  "item.genesis.magic_glint": "마력 흔적",
+  "item.genesis.magic_mist": "마력 안개",
+  "item.genesis.magic_pebble": "마력 돌팔매",
+  "item.genesis.great_magic_pebble": "마력 큰 돌팔매",
+  "item.genesis.magic_comet": "마력 혜성",
+  "item.genesis.shooting_star": "별똥별",
+
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
   "item.genesis.summon_drowned": "드라운드 소환",
@@ -841,6 +848,19 @@
   "spell.genesis.arrow_bombardment.desc": "시야 방향으로 화살을 쏟아낸다.",
   "spell.genesis.spatial_rupture": "공간 단절",
   "spell.genesis.spatial_rupture.desc": "세상의 섭리로부터의 피신처를 만들어, 닿는 것으로부터 보호하고 지운다.   그래야 했었다.",
+
+  "spell.genesis.magic_glint": "마력 흔적",
+  "spell.genesis.magic_glint.desc": "마력의 흔적을 날려 공격한다. 가장 보잘것없으면서 기본적인 마법이다.",
+  "spell.genesis.magic_mist": "마력 안개",
+  "spell.genesis.magic_mist.desc": "마력을 흩뿌려 진로를 방해한다. 잘 쓰이지 않는다.",
+  "spell.genesis.magic_pebble": "마력 돌팔매",
+  "spell.genesis.magic_pebble.desc": "마력을 모아 날려 공격한다. 별의 길을 따라가는 입문의 길이다.",
+  "spell.genesis.great_magic_pebble": "마력 큰 돌팔매",
+  "spell.genesis.great_magic_pebble.desc": "마력을 양껏 모아 공격한다. 더 높은 곳에 다다르기 바라며.",
+  "spell.genesis.magic_comet": "마력 혜성",
+  "spell.genesis.magic_comet.desc": "별을 본뜬 마법. 허나 별이 되지 못한 것이다.",
+  "spell.genesis.shooting_star": "별똥별",
+  "spell.genesis.shooting_star.desc": "추락한 별은 그 근원을 품고 있다. 그렇기에 강력하다.",
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다.",

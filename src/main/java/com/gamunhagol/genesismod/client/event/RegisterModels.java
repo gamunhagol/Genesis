@@ -262,6 +262,13 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.MAGIC_GLINT.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_MIST.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_COMET.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SHOOTING_STAR.get(), ThrownItemRenderer::new);
+
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);

@@ -466,6 +466,13 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ARROW_BOMBARDMENT.get());
                 output.accept(GenesisItems.SPATIAL_RUPTURE.get());
 
+                output.accept(GenesisItems.MAGIC_GLINT.get());
+                output.accept(GenesisItems.MAGIC_MIST.get());
+                output.accept(GenesisItems.MAGIC_PEBBLE.get());
+                output.accept(GenesisItems.GREAT_MAGIC_PEBBLE.get());
+                output.accept(GenesisItems.MAGIC_COMET.get());
+                output.accept(GenesisItems.SHOOTING_STAR.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());
                 output.accept(GenesisItems.SUMMON_DROWNED.get());

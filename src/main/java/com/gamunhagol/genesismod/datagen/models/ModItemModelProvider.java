@@ -150,6 +150,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.ARROW_RAIN);
         simpleItem(GenesisItems.ARROW_BOMBARDMENT);
         simpleItem(GenesisItems.SPATIAL_RUPTURE);
+        simpleItem(GenesisItems.MAGIC_GLINT);
+        simpleItem(GenesisItems.MAGIC_MIST);
+        simpleItem(GenesisItems.MAGIC_PEBBLE);
+        simpleItem(GenesisItems.GREAT_MAGIC_PEBBLE);
+        simpleItem(GenesisItems.MAGIC_COMET);
+        simpleItem(GenesisItems.SHOOTING_STAR);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_HUSK);
         simpleItem(GenesisItems.SUMMON_DROWNED);

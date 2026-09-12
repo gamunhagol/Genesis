@@ -4,6 +4,7 @@ package com.gamunhagol.genesismod.content.magic;
 import com.gamunhagol.genesismod.content.magic.miracles.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
 import com.gamunhagol.genesismod.content.magic.spells.operation.*;
+import com.gamunhagol.genesismod.content.magic.spells.sorcery.*;
 import com.gamunhagol.genesismod.content.magic.spells.summon.*;
 
 import java.util.HashMap;
@@ -31,6 +32,14 @@ public class GenesisSpells {
     public static final AbstractSpell ARROW_RAIN = register(new ArrowRainSpell());
     public static final AbstractSpell ARROW_BOMBARDMENT = register(new ArrowBombardmentSpell());
     public static final AbstractSpell SPATIAL_RUPTURE = register(new SpatialRuptureSpell());
+
+
+    public static final AbstractSpell MAGIC_GLINT = register(new MagicGlintSpell());
+    public static final AbstractSpell MAGIC_MIST = register(new MagicMistSpell());
+    public static final AbstractSpell MAGIC_PEBBLE = register(new MagicPebbleSpell());
+    public static final AbstractSpell GREAT_MAGIC_PEBBLE = register(new GreatMagicPebbleSpell());
+    public static final AbstractSpell MAGIC_COMET = register(new MagicCometSpell());
+    public static final AbstractSpell SHOOTING_STAR = register(new ShootingStarSpell());
 
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());

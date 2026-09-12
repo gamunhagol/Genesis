@@ -597,13 +597,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> GUARDIAN_BEAM = ITEMS.register("guardian_beam",
             () -> new SpellBookItem("guardian_beam", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> HEAVY_GUARDIAN_BEAM = ITEMS.register("heavy_guardian_beam",
-            () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("heavy_guardian_beam", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> DRAGON_BREATH = ITEMS.register("dragon_breath",
             () -> new SpellBookItem("dragon_breath", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WHITHER_SKULL = ITEMS.register("wither_skull",
             () -> new SpellBookItem("wither_skull", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> WARDEN_SONIC_BOOM = ITEMS.register("warden_sonic_boom",
-            () -> new SpellBookItem("warden_sonic_boom", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("warden_sonic_boom", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> BLINK = ITEMS.register("blink",
             () -> new SpellBookItem("blink", new Item.Properties().stacksTo(1)));
@@ -616,15 +616,25 @@ public class GenesisItems {
     public static final RegistryObject<Item> PUSH_BLOCK = ITEMS.register("push_block",
             () -> new SpellBookItem("push_block", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ARROW_RAIN = ITEMS.register("arrow_rain",
-            () -> new SpellBookItem("arrow_rain", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("arrow_rain", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> ARROW_BOMBARDMENT = ITEMS.register("arrow_bombardment",
-            () -> new SpellBookItem("arrow_bombardment", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("arrow_bombardment", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SPATIAL_RUPTURE = ITEMS.register("spatial_rupture",
-            () -> new SpellBookItem("spatial_rupture", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("spatial_rupture", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> MAGIC_GLINT = ITEMS.register("magic_glint",
+            () -> new SpellBookItem("magic_glint", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MAGIC_MIST = ITEMS.register("magic_mist",
+            () -> new SpellBookItem("magic_mist", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MAGIC_PEBBLE = ITEMS.register("magic_pebble",
+            () -> new SpellBookItem("magic_pebble", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GREAT_MAGIC_PEBBLE = ITEMS.register("great_magic_pebble",
+            () -> new SpellBookItem("great_magic_pebble", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> MAGIC_COMET = ITEMS.register("magic_comet",
+            () -> new SpellBookItem("magic_comet", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SHOOTING_STAR = ITEMS.register("shooting_star",
+            () -> new SpellBookItem("shooting_star", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
-    public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
-            () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
 
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
@@ -634,7 +644,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> SUMMON_DROWNED = ITEMS.register("summon_drowned",
             () -> new SpellBookItem("summon_drowned", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_ZOMBIE = ITEMS.register("summon_armored_zombie",
-            () -> new SpellBookItem("summon_armored_zombie", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("summon_armored_zombie", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SUMMON_SKELETON_SLAVE = ITEMS.register("summon_skeleton_slave",
             () -> new SpellBookItem("summon_skeleton_slave", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_SKELETON = ITEMS.register("summon_skeleton",
@@ -646,7 +656,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> SUMMON_GREAT_BOW_SKELETON = ITEMS.register("summon_great_bow_skeleton",
             () -> new SpellBookItem("summon_great_bow_skeleton", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_SKELETON = ITEMS.register("summon_armored_skeleton",
-            () -> new SpellBookItem("summon_armored_skeleton", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("summon_armored_skeleton", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> SUMMON_WARDEN = ITEMS.register("summon_warden",
             () -> new SpellBookItem("summon_warden", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
@@ -656,8 +666,11 @@ public class GenesisItems {
     public static final RegistryObject<Item> SUMMON_VEX = ITEMS.register("summon_vex",
             () -> new SpellBookItem("summon_vex", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_MASS_VEX = ITEMS.register("summon_mass_vex",
-            () -> new SpellBookItem("summon_mass_vex", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("summon_mass_vex", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
+
+    public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
+            () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
 
 
     //armor
