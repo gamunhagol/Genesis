@@ -315,14 +315,21 @@
   "item.genesis.arrow_bombardment": "Arrow Bombardment",
 
   "item.genesis.summon_zombie": "Summon Zombie",
+  "item.genesis.summon_husk": "Summon Husk",
+  "item.genesis.summon_drowned": "Summon Drowned",
   "item.genesis.summon_armored_zombie": "Summon Armored Zombie",
   "item.genesis.summon_skeleton_slave": "Summon Skeleton Slave",
   "item.genesis.summon_skeleton": "Summon Skeleton",
+  "item.genesis.summon_wither_skeleton": "Summon Wither Skeleton",
+  "item.genesis.summon_stray": "Summon Stray",
   "item.genesis.summon_great_bow_skeleton": "Summon Greatbow Skeleton",
   "item.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
   "item.genesis.summon_warden": "Summon Warden",
 
   "item.genesis.summon_blaze": "Summon Blaze",
+
+  "item.genesis.summon_vex": "Summon Vex",
+  "item.genesis.summon_mass_vex": "Summon Vex Swarm",
 
 
   "item.genesis.little_heal": "Little Heal",
@@ -832,6 +839,10 @@
 
   "spell.genesis.summon_zombie": "Summon Zombie",
   "spell.genesis.summon_zombie.desc": "Reanimates a corpse to fight for you.",
+  "spell.genesis.summon_husk": "Summon Husk",
+  "spell.genesis.summon_husk.desc": "Reanimates a desiccated corpse to fight for you.",
+  "spell.genesis.summon_drowned": "Summon Drowned",
+  "spell.genesis.summon_drowned.desc": "Reanimates a drowned corpse to fight for you.",
   "spell.genesis.summon_armored_zombie": "Summon Armored Zombie",
   "spell.genesis.summon_armored_zombie.desc": "Reanimates an armed corpse to fight for you.",
 
@@ -839,6 +850,10 @@
   "spell.genesis.summon_skeleton_slave.desc": "Reanimates frail bones to fight for you.",
   "spell.genesis.summon_skeleton": "Summon Skeleton",
   "spell.genesis.summon_skeleton.desc": "Reanimates skeletal remains to fight for you.",
+  "spell.genesis.summon_wither_skeleton": "Summon Wither Skeleton",
+  "spell.genesis.summon_wither_skeleton.desc": "Reanimates the withered one",
+  "spell.genesis.summon_stray": "Summon Stray",
+  "spell.genesis.summon_stray.desc": "Reanimates frozen bones",
   "spell.genesis.summon_great_bow_skeleton": "Summon Greatbow Skeleton",
   "spell.genesis.summon_great_bow_skeleton.desc": "Reanimates skeletal remains armed with a greatbow to fight for you.",
   "spell.genesis.summon_armored_skeleton": "Summon Armored Skeleton",
@@ -849,6 +864,10 @@
   "spell.genesis.summon_blaze": "Summon Blaze",
   "spell.genesis.summon_blaze.desc": "Summons a blaze.",
 
+  "spell.genesis.summon_vex": "Summon Vex",
+  "spell.genesis.summon_vex.desc": "Summons corrupted fairies",
+  "spell.genesis.summon_mass_vex": "Summon Vex Swarm",
+  "spell.genesis.summon_mass_vex.desc": "Summons a swarm of vexes.",
 
   "skill.genesis.magic_charge": "Charge",
 

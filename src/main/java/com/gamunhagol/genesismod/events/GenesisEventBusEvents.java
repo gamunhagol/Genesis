@@ -11,9 +11,7 @@ import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.Blaze;
-import net.minecraft.world.entity.monster.Skeleton;
-import net.minecraft.world.entity.monster.Zombie;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -30,11 +28,16 @@ public class GenesisEventBusEvents {
         event.put((EntityType)GenesisEntities.COLLECTOR.get(), Collector.createAttributes().build());
         event.put((EntityType)GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuard.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_ZOMBIE.get(), Zombie.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_HUSK.get(), Husk.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_DROWNED.get(), Drowned.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_SKELETON.get(), Skeleton.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_WITHER_SKELETON.get(), WitherSkeleton.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_STRAY.get(), Stray.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_BLAZE.get(), Blaze.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SUMMONED_VEX.get(), Vex.createAttributes().build());
         event.put((EntityType)GenesisEntities.SUMMONED_WARDEN.get(), Warden.createAttributes().build());
-        event.put((EntityType)GenesisEntities.SPELL_GUARDIAN.get(), Warden.createAttributes().build());
-        event.put((EntityType)GenesisEntities.SPELL_ELDER_GUARDIAN.get(), Warden.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SPELL_GUARDIAN.get(), Guardian.createAttributes().build());
+        event.put((EntityType)GenesisEntities.SPELL_ELDER_GUARDIAN.get(), ElderGuardian.createAttributes().build());
     }
 
     @SubscribeEvent

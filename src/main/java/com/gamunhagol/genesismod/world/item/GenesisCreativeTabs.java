@@ -465,14 +465,21 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ARROW_BOMBARDMENT.get());
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
+                output.accept(GenesisItems.SUMMON_HUSK.get());
+                output.accept(GenesisItems.SUMMON_DROWNED.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_SKELETON_SLAVE.get());
                 output.accept(GenesisItems.SUMMON_SKELETON.get());
+                output.accept(GenesisItems.SUMMON_WITHER_SKELETON.get());
+                output.accept(GenesisItems.SUMMON_STRAY.get());
                 output.accept(GenesisItems.SUMMON_GREAT_BOW_SKELETON.get());
                 output.accept(GenesisItems.SUMMON_ARMORED_SKELETON.get());
                 output.accept(GenesisItems.SUMMON_WARDEN.get());
 
                 output.accept(GenesisItems.SUMMON_BLAZE.get());
+
+                output.accept(GenesisItems.SUMMON_VEX.get());
+                output.accept(GenesisItems.SUMMON_MASS_VEX.get());
 
 
                 output.accept(GenesisItems.LITTLE_HEAL.get());

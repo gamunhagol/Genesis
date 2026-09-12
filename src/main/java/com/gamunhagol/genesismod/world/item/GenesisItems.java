@@ -625,12 +625,20 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
             () -> new SpellBookItem("summon_zombie", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_HUSK = ITEMS.register("summon_husk",
+            () -> new SpellBookItem("summon_husk", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_DROWNED = ITEMS.register("summon_drowned",
+            () -> new SpellBookItem("summon_drowned", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_ZOMBIE = ITEMS.register("summon_armored_zombie",
             () -> new SpellBookItem("summon_armored_zombie", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_SKELETON_SLAVE = ITEMS.register("summon_skeleton_slave",
             () -> new SpellBookItem("summon_skeleton_slave", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_SKELETON = ITEMS.register("summon_skeleton",
             () -> new SpellBookItem("summon_skeleton", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_WITHER_SKELETON = ITEMS.register("summon_wither_skeleton",
+            () -> new SpellBookItem("summon_wither_skeleton", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_STRAY = ITEMS.register("summon_stray",
+            () -> new SpellBookItem("summon_stray", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_GREAT_BOW_SKELETON = ITEMS.register("summon_great_bow_skeleton",
             () -> new SpellBookItem("summon_great_bow_skeleton", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SUMMON_ARMORED_SKELETON = ITEMS.register("summon_armored_skeleton",
@@ -640,6 +648,11 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> SUMMON_BLAZE = ITEMS.register("summon_blaze",
             () -> new SpellBookItem("summon_blaze", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> SUMMON_VEX = ITEMS.register("summon_vex",
+            () -> new SpellBookItem("summon_vex", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_MASS_VEX = ITEMS.register("summon_mass_vex",
+            () -> new SpellBookItem("summon_mass_vex", new Item.Properties().stacksTo(1)));
 
 
 

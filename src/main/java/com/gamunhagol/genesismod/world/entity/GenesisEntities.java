@@ -15,8 +15,14 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<CollectorGuard>> COLLECTOR_GUARD;
     public static final RegistryObject<EntityType<SummonedZombieEntity>> SUMMONED_ZOMBIE;
+    public static final RegistryObject<EntityType<SummonedHuskEntity>> SUMMONED_HUSK;
+    public static final RegistryObject<EntityType<SummonedDrownedEntity>> SUMMONED_DROWNED;
     public static final RegistryObject<EntityType<SummonedSkeletonEntity>> SUMMONED_SKELETON;
+    public static final RegistryObject<EntityType<SummonedWitherSkeletonEntity>> SUMMONED_WITHER_SKELETON;
+    public static final RegistryObject<EntityType<SummonedStrayEntity>> SUMMONED_STRAY;
     public static final RegistryObject<EntityType<SummonedWardenEntity>> SUMMONED_WARDEN;
+
+    public static final RegistryObject<EntityType<SummonedVexEntity>> SUMMONED_VEX;
 
     public static final RegistryObject<EntityType<SummonedBlazeEntity>> SUMMONED_BLAZE;
 
@@ -40,15 +46,31 @@ public class GenesisEntities {
                 () -> EntityType.Builder.of(SummonedZombieEntity::new, MobCategory.CREATURE)
                         .sized(0.6f, 1.95f).build("summoned_zombie"));
 
+        SUMMONED_HUSK = ENTITY_TYPES.register("summoned_husk",
+                () -> EntityType.Builder.of(SummonedHuskEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.95f).build("summoned_husk"));
+
+        SUMMONED_DROWNED = ENTITY_TYPES.register("summoned_drowned",
+                () -> EntityType.Builder.of(SummonedDrownedEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.95f).build("summoned_drowned"));
+
         SUMMONED_SKELETON = ENTITY_TYPES.register("summoned_skeleton",
                 () -> EntityType.Builder.of(SummonedSkeletonEntity::new, MobCategory.CREATURE)
                         .sized(0.6f, 1.95f).build("summoned_skeleton"));
 
+        SUMMONED_WITHER_SKELETON = ENTITY_TYPES.register("summoned_wither_skeleton",
+                () -> EntityType.Builder.of(SummonedWitherSkeletonEntity::new, MobCategory.CREATURE)
+                        .fireImmune()
+                        .sized(0.7f, 2.4f).build("summoned_wither_skeleton"));
 
-        SUMMONED_BLAZE = ENTITY_TYPES.register("summon_blaze",
-                () -> EntityType.Builder.of(SummonedBlazeEntity::new, MobCategory.CREATURE)
-                        .sized(0.6f, 1.8f).clientTrackingRange(8)
-                        .build("summon_blaze"));
+        SUMMONED_STRAY = ENTITY_TYPES.register("summoned_stray",
+                () -> EntityType.Builder.of(SummonedStrayEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.99f).build("summoned_stray"));
+
+        SUMMONED_WARDEN = ENTITY_TYPES.register("summon_warden",
+                () -> EntityType.Builder.of(SummonedWardenEntity::new, MobCategory.CREATURE)
+                        .sized(0.9f, 2.9f).build("summon_warden"));
+
 
         SPELL_GUARDIAN = ENTITY_TYPES.register("spell_guardian",
                 () -> EntityType.Builder.of(SpellGuardianEntity::new, MobCategory.CREATURE)
@@ -59,9 +81,21 @@ public class GenesisEntities {
                         .sized(1.9975f, 1.9975f).clientTrackingRange(8)
                         .build("spell_elder_guardian"));
 
-        SUMMONED_WARDEN = ENTITY_TYPES.register("summon_warden",
-                () -> EntityType.Builder.of(SummonedWardenEntity::new, MobCategory.CREATURE)
-                        .sized(0.9f, 2.9f).build("summon_warden"));
+
+
+
+        SUMMONED_BLAZE = ENTITY_TYPES.register("summon_blaze",
+                () -> EntityType.Builder.of(SummonedBlazeEntity::new, MobCategory.CREATURE)
+                        .sized(0.6f, 1.8f).clientTrackingRange(8)
+                        .fireImmune()
+                        .build("summon_blaze"));
+
+
+
+        SUMMONED_VEX = ENTITY_TYPES.register("summoned_vex",
+                () -> EntityType.Builder.of(SummonedVexEntity::new, MobCategory.CREATURE)
+                        .sized(0.4f, 0.8f).clientTrackingRange(8)
+                        .build("summoned_vex"));
 
 
         ARROW_BARRAGE_SPAWNER = ENTITY_TYPES.register("arrow_barrage_spawner", () ->

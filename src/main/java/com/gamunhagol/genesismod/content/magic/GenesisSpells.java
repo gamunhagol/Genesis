@@ -32,14 +32,21 @@ public class GenesisSpells {
 
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
+    public static final AbstractSpell SUMMON_HUSK = register(new SummonHuskSpell());
+    public static final AbstractSpell SUMMON_DROWNED = register(new SummonDrownedSpell());
     public static final AbstractSpell SUMMON_ARMORED_ZOMBIE = register(new SummonAZombieSpell());
     public static final AbstractSpell SUMMON_SKELETON_SLAVE = register(new SummonSkeletonSlaveSpell());
     public static final AbstractSpell SUMMON_SKELETON = register(new SummonSkeletonSpell());
+    public static final AbstractSpell SUMMON_WITHER_SKELETON = register(new SummonWitherSkeletonSpell());
+    public static final AbstractSpell SUMMON_STRAY = register(new SummonStraySpell());
     public static final AbstractSpell SUMMON_GREAT_BOW_SKELETON = register(new SummonGBSkeletonSpell());
     public static final AbstractSpell SUMMON_ARMORED_SKELETON = register(new SummonASkeletonSpell());
     public static final AbstractSpell SUMMON_WARDEN = register(new SummonWardenSpell());
 
     public static final AbstractSpell SUMMON_BLAZE = register(new SummonBlazeSpell());
+
+    public static final AbstractSpell SUMMON_VEX = register(new SummonVexSpell());
+    public static final AbstractSpell SUMMON_MASS_VEX = register(new SummonMassVexSpell());
 
     public static final AbstractSpell LITTLE_HEAL = register(new HealMiracle());
 

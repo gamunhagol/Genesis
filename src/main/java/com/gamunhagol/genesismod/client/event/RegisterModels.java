@@ -16,10 +16,7 @@ import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SkeletonModel;
 import net.minecraft.client.model.geom.EntityModelSet;
-import net.minecraft.client.renderer.entity.BlazeRenderer;
-import net.minecraft.client.renderer.entity.SkeletonRenderer;
-import net.minecraft.client.renderer.entity.WardenRenderer;
-import net.minecraft.client.renderer.entity.ZombieRenderer;
+import net.minecraft.client.renderer.entity.*;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -247,15 +244,21 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.COLLECTOR_GUARD.get(), CollectorGuardRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.SUMMONED_ZOMBIE.get(), ZombieRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_HUSK.get(), HuskRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_DROWNED.get(), DrownedRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SUMMONED_SKELETON.get(), SkeletonRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_WITHER_SKELETON.get(), WitherSkeletonRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_STRAY.get(), StrayRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SUMMONED_WARDEN.get(), WardenRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.SUMMONED_BLAZE.get(), BlazeRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.SPELL_GUARDIAN.get(), net.minecraft.client.renderer.entity.GuardianRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.SPELL_ELDER_GUARDIAN.get(), net.minecraft.client.renderer.entity.ElderGuardianRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUMMONED_VEX.get(), VexRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.ARROW_BARRAGE_SPAWNER.get(), net.minecraft.client.renderer.entity.NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SPELL_GUARDIAN.get(), GuardianRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SPELL_ELDER_GUARDIAN.get(), ElderGuardianRenderer::new);
+
+        event.registerEntityRenderer(GenesisEntities.ARROW_BARRAGE_SPAWNER.get(), NoopRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 

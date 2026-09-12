@@ -316,14 +316,21 @@
   "item.genesis.arrow_bombardment": "화살 폭격",
 
   "item.genesis.summon_zombie": "좀비 소환",
+  "item.genesis.summon_husk": "허스크 소환",
+  "item.genesis.summon_drowned": "드라운드 소환",
   "item.genesis.summon_armored_zombie": "무장한 좀비 소환",
   "item.genesis.summon_skeleton_slave": "스켈레톤 노예 소환",
   "item.genesis.summon_skeleton": "스켈레톤 소환",
+  "item.genesis.summon_wither_skeleton": "위더 스켈레톤 소환",
+  "item.genesis.summon_stray": "스트레이 소환",
   "item.genesis.summon_great_bow_skeleton": "대궁 스켈레톤 소환",
   "item.genesis.summon_armored_skeleton": "무장한 스켈레톤 소환",
   "item.genesis.summon_warden": "워든 소환",
 
   "item.genesis.summon_blaze": "블레이즈 소환",
+
+  "item.genesis.summon_vex": "벡스 소환",
+  "item.genesis.summon_mass_vex": "벡스 떼 소환",
 
 
   "item.genesis.little_heal": "작은 치유",
@@ -831,6 +838,10 @@
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다.",
+  "spell.genesis.summon_husk": "허스크 소환",
+  "spell.genesis.summon_husk.desc": "건조한 시체를 강령한다.",
+  "spell.genesis.summon_drowned": "드라운드 소환",
+  "spell.genesis.summon_drowned.desc": "익사체를 강령한다.",
   "spell.genesis.summon_armored_zombie": "무장한 좀비 소환",
   "spell.genesis.summon_armored_zombie.desc": "무장한 시체를 강령한다.",
 
@@ -838,15 +849,24 @@
   "spell.genesis.summon_skeleton_slave.desc": "허약한 백골에 강령한다.",
   "spell.genesis.summon_skeleton": "스켈레톤 소환",
   "spell.genesis.summon_skeleton.desc": "백골에 강령한다.",
+  "spell.genesis.summon_wither_skeleton": "위더 스켈레톤 소환",
+  "spell.genesis.summon_wither_skeleton.desc": "시들어버린 자를 강령한다.",
+  "spell.genesis.summon_stray": "스트레이 소환",
+  "spell.genesis.summon_stray.desc": "얼어붙은 뼈를 강령한다.",
   "spell.genesis.summon_great_bow_skeleton": "대궁 스켈레톤 소환",
   "spell.genesis.summon_great_bow_skeleton.desc": "대궁을 든 백골에 강령한다.",
   "spell.genesis.summon_armored_skeleton": "무장한 스켈레톤 소환",
   "spell.genesis.summon_armored_skeleton.desc": "무장한 백골에 강령한다.",
   "spell.genesis.summon_warden": "워든 소환",
-  "spell.genesis.summon_warden.desc": "깊은곳의 재앙을 소환한다.",
+  "spell.genesis.summon_warden.desc": "깊은 곳의 재앙을 소환한다.",
 
   "spell.genesis.summon_blaze": "블레이즈 소환",
   "spell.genesis.summon_blaze.desc": "블레이즈를 소환한다.",
+
+  "spell.genesis.summon_vex": "벡스 소환",
+  "spell.genesis.summon_vex.desc": "변질된 요정들을 소환한다.",
+  "spell.genesis.summon_mass_vex": "벡스 떼 소환",
+  "spell.genesis.summon_mass_vex.desc": "벡스 무리를 소환한다.",
 
 
 

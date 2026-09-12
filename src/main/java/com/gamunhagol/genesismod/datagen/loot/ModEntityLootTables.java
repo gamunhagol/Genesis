@@ -23,16 +23,22 @@ public class ModEntityLootTables extends EntityLootSubProvider {
         this.add(GenesisEntities.COLLECTOR.get(),
                 LootTable.lootTable()
                         .withPool(LootPool.lootPool()
-                                .when(LootItemRandomChanceCondition.randomChance(0.0001f))// 0.0001 = 0.01% 확률
+                                .when(LootItemRandomChanceCondition.randomChance(0.0001f))
                                 .add(LootItem.lootTableItem(GenesisItems.MEDALLION_OF_DOMINION.get()))));
 
         this.add(GenesisEntities.COLLECTOR_GUARD.get(), LootTable.lootTable());
 
         this.add(GenesisEntities.SUMMONED_ZOMBIE.get(), LootTable.lootTable());
+        this.add(GenesisEntities.SUMMONED_HUSK.get(), LootTable.lootTable());
+        this.add(GenesisEntities.SUMMONED_DROWNED.get(), LootTable.lootTable());
         this.add(GenesisEntities.SUMMONED_SKELETON.get(), LootTable.lootTable());
+        this.add(GenesisEntities.SUMMONED_WITHER_SKELETON.get(), LootTable.lootTable());
+        this.add(GenesisEntities.SUMMONED_STRAY.get(), LootTable.lootTable());
         this.add(GenesisEntities.SUMMONED_WARDEN.get(), LootTable.lootTable());
 
         this.add(GenesisEntities.SUMMONED_BLAZE.get(), LootTable.lootTable());
+
+        this.add(GenesisEntities.SUMMONED_VEX.get(), LootTable.lootTable());
 
         this.add(GenesisEntities.SPELL_GUARDIAN.get(), LootTable.lootTable());
         this.add(GenesisEntities.SPELL_ELDER_GUARDIAN.get(), LootTable.lootTable());
