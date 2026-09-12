@@ -29,6 +29,10 @@ public class SpellBookItem extends Item {
         this.spellId = spellId;
     }
 
+    public String getSpellId() {
+        return this.spellId;
+    }
+
     @Override
     public boolean isFoil(ItemStack stack) {
         return true;

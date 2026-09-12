@@ -25,7 +25,8 @@ public class SummonVexSpell extends AbstractSummonSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(StatType.INTELLIGENCE, 14);
+        return Map.of(StatType.INTELLIGENCE, 14,
+                StatType.ARCANE,12);
     }
 
     @Override

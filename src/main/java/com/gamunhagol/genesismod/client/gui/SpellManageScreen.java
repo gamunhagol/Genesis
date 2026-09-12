@@ -6,7 +6,9 @@ import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.server.PacketChangeSpell;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.world.capability.spell.SpellBookItem;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
+import com.gamunhagol.genesismod.world.item.GenesisCreativeTabs;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -14,9 +16,13 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 public class SpellManageScreen extends Screen {
     private static final ResourceLocation BACKGROUND = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/spell_menu.png");
@@ -100,7 +106,6 @@ public class SpellManageScreen extends Screen {
 
         List<String> learnedSpells = getPlayerLearnedSpells();
 
-        // 툴팁 대상 마법 ID를 캡처하기 위한 배열
         String[] hoveredSpellId = new String[]{null};
 
         this.minecraft.player.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(spellSlot -> {
@@ -180,6 +185,7 @@ public class SpellManageScreen extends Screen {
             drawSpellTooltip(graphics, mouseX, mouseY, hoveredSpellId[0]);
         }
     }
+
     private void drawSpellTooltip(GuiGraphics graphics, int mouseX, int mouseY, String spellId) {
         AbstractSpell spell = GenesisSpells.get(spellId);
         if (spell == null) return;
@@ -191,7 +197,7 @@ public class SpellManageScreen extends Screen {
         java.util.Map<com.gamunhagol.genesismod.api.StatType, Integer> requiredStats = spell.getRequiredStats();
         if (!requiredStats.isEmpty()) {
             for (java.util.Map.Entry<com.gamunhagol.genesismod.api.StatType, Integer> entry : requiredStats.entrySet()) {
-                String statNameKey = "stat.genesis." + entry.getKey().getName(); // 예: stat.genesis.intelligence
+                String statNameKey = "stat.genesis." + entry.getKey().getName();
                 int requiredLevel = entry.getValue();
 
                 tooltipLines.add(Component.translatable("tooltip.genesis.spell.req_stat",
@@ -249,13 +255,33 @@ public class SpellManageScreen extends Screen {
     }
 
     private List<String> getPlayerLearnedSpells() {
-        List<String> learned = new ArrayList<>();
-        if (this.minecraft.player != null) {
-            this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                learned.addAll(stats.getLearnedSpells());
-            });
-        }
-        return learned;
+        List<String> sortedLearned = new ArrayList<>();
+        if (this.minecraft.player == null) return sortedLearned;
+
+        this.minecraft.player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+            Set<String> learnedSet = stats.getLearnedSpells();
+            if (learnedSet.isEmpty()) return;
+
+            CreativeModeTab tab = GenesisCreativeTabs.GENESIS_SPELL_TAB.get();
+            Collection<ItemStack> tabItems = tab.getDisplayItems();
+
+            for (ItemStack stack : tabItems) {
+                if (stack.getItem() instanceof SpellBookItem bookItem) {
+                    String spellId = bookItem.getSpellId();
+                    if (learnedSet.contains(spellId)) {
+                        sortedLearned.add(spellId);
+                    }
+                }
+            }
+
+            for (String id : learnedSet) {
+                if (!sortedLearned.contains(id)) {
+                    sortedLearned.add(id);
+                }
+            }
+        });
+
+        return sortedLearned;
     }
 
     @Override
