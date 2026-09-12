@@ -308,12 +308,14 @@
   "item.genesis.wither_skull": "위더 해골",
   "item.genesis.warden_sonic_boom": "소닉붐",
 
+  "item.genesis.blink": "단거리 순간이동",
   "item.genesis.mining": "채굴",
   "item.genesis.explosion": "폭발",
   "item.genesis.throw_bomb": "폭발물 투척",
   "item.genesis.push_block": "블럭 밀기",
   "item.genesis.arrow_rain": "화살 비",
   "item.genesis.arrow_bombardment": "화살 폭격",
+  "item.genesis.spatial_rupture": "공간 단절",
 
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
@@ -823,6 +825,8 @@
   "spell.genesis.warden_sonic_boom": "소닉붐",
   "spell.genesis.warden_sonic_boom.desc": "몸을 찢어발기는 소음을 발산한다.",
 
+  "spell.genesis.blink": "단거리 순간이동",
+  "spell.genesis.blink.desc": "짧은 거리를 순간이동한다(정밀 조준 실패로 인한 과실은 스스로에게 있습니다 -마법사 일동)",
   "spell.genesis.mining": "채굴",
   "spell.genesis.mining.desc": "블럭을 3분의 1 채굴한다.",
   "spell.genesis.explosion": "폭발",
@@ -835,6 +839,8 @@
   "spell.genesis.arrow_rain.desc": "타격 지점 위에 화살지대를 생성한다.",
   "spell.genesis.arrow_bombardment": "화살 폭격",
   "spell.genesis.arrow_bombardment.desc": "시야 방향으로 화살을 쏟아낸다.",
+  "spell.genesis.spatial_rupture": "공간 단절",
+  "spell.genesis.spatial_rupture.desc": "세상의 섭리로부터의 피신처를 만들어, 닿는 것으로부터 보호하고 지운다.   그래야 했었다.",
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다.",

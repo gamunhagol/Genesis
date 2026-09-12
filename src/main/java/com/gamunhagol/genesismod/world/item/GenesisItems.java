@@ -605,6 +605,8 @@ public class GenesisItems {
     public static final RegistryObject<Item> WARDEN_SONIC_BOOM = ITEMS.register("warden_sonic_boom",
             () -> new SpellBookItem("warden_sonic_boom", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> BLINK = ITEMS.register("blink",
+            () -> new SpellBookItem("blink", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MINING = ITEMS.register("mining",
             () -> new SpellBookItem("mining", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> EXPLOSION = ITEMS.register("explosion",
@@ -617,6 +619,8 @@ public class GenesisItems {
             () -> new SpellBookItem("arrow_rain", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> ARROW_BOMBARDMENT = ITEMS.register("arrow_bombardment",
             () -> new SpellBookItem("arrow_bombardment", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SPATIAL_RUPTURE = ITEMS.register("spatial_rupture",
+            () -> new SpellBookItem("spatial_rupture", new Item.Properties().stacksTo(1)));
 
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",

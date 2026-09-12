@@ -6,7 +6,9 @@
   "refmap": "mixins.genesis.refmap.json",
   "mixins": [
     "MixinAnvilMenu",
-    "GuardianInvoker"
+    "GuardianInvoker",
+    "EntityCollisionMixin",
+    "ProjectileMixin"
   ],
   "client": [
   ],

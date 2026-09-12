@@ -12,6 +12,7 @@ import com.gamunhagol.genesismod.network.server.PacketChangeSelectedSlot;
 import com.gamunhagol.genesismod.network.server.PacketActivateWindBlessing;
 import com.gamunhagol.genesismod.skill.MagicChargeSkill;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
@@ -119,6 +120,10 @@ public class GenesisClientEvents {
 
             Minecraft mc = Minecraft.getInstance();
 
+            if (mc.level != null) {
+                SpatialRuptureManager.clientTick(mc.level);
+            }
+
             while (ModKeyBindings.SPELL_PREV_KEY.consumeClick()) {
                 GenesisNetwork.sendToServer(new PacketChangeSelectedSlot(-1));
             }
@@ -138,8 +143,6 @@ public class GenesisClientEvents {
                     }
                 }
                 wasSneaking = isSneaking;
-
-
             }
         }
 

@@ -142,13 +142,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.DRAGON_BREATH);
         simpleItem(GenesisItems.WHITHER_SKULL);
         simpleItem(GenesisItems.WARDEN_SONIC_BOOM);
+        simpleItem(GenesisItems.BLINK);
         simpleItem(GenesisItems.MINING);
         simpleItem(GenesisItems.EXPLOSION);
         simpleItem(GenesisItems.THROW_BOMB);
         simpleItem(GenesisItems.PUSH_BLOCK);
         simpleItem(GenesisItems.ARROW_RAIN);
         simpleItem(GenesisItems.ARROW_BOMBARDMENT);
-        simpleItem(GenesisItems.LITTLE_HEAL);
+        simpleItem(GenesisItems.SPATIAL_RUPTURE);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_HUSK);
         simpleItem(GenesisItems.SUMMON_DROWNED);
@@ -163,6 +164,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SUMMON_VEX);
         simpleItem(GenesisItems.SUMMON_MASS_VEX);
         simpleItem(GenesisItems.SUMMON_WARDEN);
+        simpleItem(GenesisItems.LITTLE_HEAL);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

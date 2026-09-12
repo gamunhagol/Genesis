@@ -307,12 +307,14 @@
   "item.genesis.wither_skull": "Wither Skull",
   "item.genesis.warden_sonic_boom": "Sonic Boom",
 
+  "item.genesis.blink": "Blink",
   "item.genesis.mining": "Mining",
   "item.genesis.explosion": "Explosion",
   "item.genesis.throw_bomb": "Throw Bomb",
   "item.genesis.push_block": "Push Block",
   "item.genesis.arrow_rain": "Arrow Rain",
   "item.genesis.arrow_bombardment": "Arrow Bombardment",
+  "item.genesis.spatial_rupture": "Spatial Severance",
 
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
@@ -823,6 +825,8 @@
   "spell.genesis.warden_sonic_boom": "Sonic Boom",
   "spell.genesis.warden_sonic_boom.desc": "Emits body-rending noise.",
 
+  "spell.genesis.blink": "Blink",
+  "spell.genesis.blink.desc": "Teleports a short distance (any accidents caused by failure of precise aiming are solely your responsibility -All Mages)",
   "spell.genesis.mining": "Mining",
   "spell.genesis.mining.desc": "Mines one-third of the block.",
   "spell.genesis.explosion": "Explosion",
@@ -835,6 +839,8 @@
   "spell.genesis.arrow_rain.desc": "Creates an arrow zone above the impact point.",
   "spell.genesis.arrow_bombardment": "Arrow Bombardment",
   "spell.genesis.arrow_bombardment.desc": "Pours arrows in the direction of your view.",
+  "spell.genesis.spatial_rupture": "Spatial Severance",
+  "spell.genesis.spatial_rupture.desc": "Creates a refuge from the providence of the world, protecting and erasing from what touches it.   It was supposed to.",
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",

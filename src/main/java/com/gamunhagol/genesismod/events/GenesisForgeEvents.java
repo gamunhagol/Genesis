@@ -4,12 +4,14 @@ import com.gamunhagol.genesismod.events.common.GenesisCombatEvents;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketActivateCustomTotem;
+import com.gamunhagol.genesismod.network.client.PacketSyncSpatialRupture;
 import com.gamunhagol.genesismod.network.client.PacketSyncSpellSlot;
 import com.gamunhagol.genesismod.network.client.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
+import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
@@ -232,7 +234,6 @@ public class GenesisForgeEvents {
                 }
             }
         }
-
     }
 
     @SubscribeEvent
@@ -329,7 +330,7 @@ public class GenesisForgeEvents {
                         newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
                             GenesisNetwork.sendToPlayer(
                                     new PacketSyncSpellSlot(
-                                            newStore.getMemoryCapacity() + newStats.getSpellCapacityBonus(), // 보너스 적용
+                                            newStore.getMemoryCapacity() + newStats.getSpellCapacityBonus(),
                                             newStore.getSelectedSlot(),
                                             newStore.getEquippedSpells()
                                     ),
@@ -379,7 +380,7 @@ public class GenesisForgeEvents {
                 player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                     GenesisNetwork.sendToPlayer(
                             new PacketSyncSpellSlot(
-                                    cap.getMemoryCapacity() + stats.getSpellCapacityBonus(), // 보너스 적용
+                                    cap.getMemoryCapacity() + stats.getSpellCapacityBonus(),
                                     cap.getSelectedSlot(),
                                     cap.getEquippedSpells()
                             ),
@@ -387,6 +388,30 @@ public class GenesisForgeEvents {
                     );
                 });
             });
+
+            syncRupturesToPlayer(player);
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerChangeDimensionOrJoin(PlayerEvent.PlayerChangedDimensionEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player) {
+            syncRupturesToPlayer(player);
+        }
+    }
+
+    private static void syncRupturesToPlayer(ServerPlayer player) {
+        ResourceLocation currentDim = player.level().dimension().location();
+        for (SpatialRuptureManager.RuptureZone zone : SpatialRuptureManager.ACTIVE_ZONES) {
+            if (zone.dimension.equals(currentDim)) {
+                GenesisNetwork.sendToPlayer(new PacketSyncSpatialRupture(
+                        zone.dimension,
+                        zone.minX + (zone.maxX - zone.minX) / 2.0D,
+                        zone.minZ + (zone.maxZ - zone.minZ) / 2.0D,
+                        (zone.maxX - zone.minX) / 2.0D,
+                        zone.expireGameTime
+                ), player);
+            }
         }
     }
 
@@ -453,5 +478,12 @@ public class GenesisForgeEvents {
                 event.getOrb().value = originalXp + bonusXp;
             }
         });
+    }
+
+    @SubscribeEvent
+    public static void onServerTickRupture(TickEvent.ServerTickEvent event) {
+        if (event.phase == TickEvent.Phase.END) {
+            SpatialRuptureManager.serverTick(event.getServer());
+        }
     }
 }

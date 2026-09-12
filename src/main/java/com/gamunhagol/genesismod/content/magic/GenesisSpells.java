@@ -24,11 +24,13 @@ public class GenesisSpells {
     public static final AbstractSpell WARDEN_SONIC_BOOM = register(new WardenSonicBoomSpell());
 
     public static final AbstractSpell MINING = register(new MiningSpell());
+    public static final AbstractSpell BLINK = register(new BlinkSpell());
     public static final AbstractSpell EXPLOSION = register(new ExplosionSpell());
     public static final AbstractSpell THROW_BOMB = register(new ThrowBombSpell());
     public static final AbstractSpell PUSH_BLOCK = register(new PushBlockSpell());
     public static final AbstractSpell ARROW_RAIN = register(new ArrowRainSpell());
     public static final AbstractSpell ARROW_BOMBARDMENT = register(new ArrowBombardmentSpell());
+    public static final AbstractSpell SPATIAL_RUPTURE = register(new SpatialRuptureSpell());
 
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
