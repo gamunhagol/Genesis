@@ -67,7 +67,7 @@ public class GreatMagicPebbleSpell extends MagicSpell {
         GreatMagicPebble pebble = new GreatMagicPebble(level, caster, snapshot);
         Vec3 look = caster.getLookAngle();
         pebble.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        pebble.setDeltaMovement(look.scale(1.65D));
+        pebble.setDeltaMovement(look.scale(0.85D));
 
         pebble.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
         level.addFreshEntity(pebble);

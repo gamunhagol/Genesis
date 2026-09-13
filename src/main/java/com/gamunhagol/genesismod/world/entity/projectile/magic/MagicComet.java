@@ -11,14 +11,14 @@ import net.minecraft.world.level.Level;
 public class MagicComet extends MagicBullet {
     public MagicComet(EntityType<? extends MagicComet> type, Level level) {
         super(type, level);
-        this.homingStrength = 0.1f;
-        this.homingRadius = 16.0D;
+        this.homingStrength = 0.025f;
+        this.homingRadius = 40.0D;
     }
 
     public MagicComet(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.MAGIC_COMET.get(), level, owner, snapshot);
-        this.homingStrength = 0.1f;
-        this.homingRadius = 16.0D;
+        this.homingStrength = 0.025f;
+        this.homingRadius = 40.0D;
     }
 
     @Override

@@ -37,7 +37,7 @@ public class MagicGlintSpell extends MagicSpell {
         MagicGlint glint = new MagicGlint(level, caster, spellSnapshot);
         Vec3 look = caster.getLookAngle();
         glint.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        glint.setDeltaMovement(look.scale(0.85D));
+        glint.setDeltaMovement(look.scale(0.27D));
 
         glint.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
         level.addFreshEntity(glint);

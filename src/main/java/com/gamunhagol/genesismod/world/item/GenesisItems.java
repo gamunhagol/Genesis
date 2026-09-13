@@ -635,6 +635,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> SHOOTING_STAR = ITEMS.register("shooting_star",
             () -> new SpellBookItem("shooting_star", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> MAGIC_METEOR = ITEMS.register("magic_meteor",
+            () -> new SpellBookItem("magic_meteor", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> CLUSTER_METEOR = ITEMS.register("cluster_meteor",
+            () -> new SpellBookItem("cluster_meteor", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> METEOR_BARRAGE = ITEMS.register("meteor_barrage",
+            () -> new SpellBookItem("meteor_barrage", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
 
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",

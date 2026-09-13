@@ -323,6 +323,10 @@
   "item.genesis.magic_comet": "Magic Comet",
   "item.genesis.shooting_star": "Shooting Star",
 
+  "item.genesis.magic_meteor": "Magic Meteor",
+  "item.genesis.cluster_meteor": "Multiplying Meteor",
+  "item.genesis.meteor_barrage": "Magic Meteor Shower",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
   "item.genesis.summon_drowned": "Summon Drowned",
@@ -861,6 +865,13 @@
   "spell.genesis.magic_comet.desc": "Magic modeled after the stars. Yet, it could not become one.",
   "spell.genesis.shooting_star": "Shooting Star",
   "spell.genesis.shooting_star.desc": "The fallen star harbors its origin. Hence, it is powerful.",
+
+  "spell.genesis.magic_meteor": "Magic Meteor",
+  "spell.genesis.magic_meteor.desc": "Borrowing the will of the stars, fires a tracking meteor.",
+  "spell.genesis.cluster_meteor": "Multiplying Meteor",
+  "spell.genesis.cluster_meteor.desc": "Stars fall to the earth and shatter into pieces, modeled after that.",
+  "spell.genesis.meteor_barrage": "Magic Meteor Shower",
+  "spell.genesis.meteor_barrage.desc": "Magic that fires even more meteors, resembling a meteor shower in the night sky.",
 
 
 

@@ -21,9 +21,8 @@ import java.util.List;
 
 public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
     protected float homingStrength = 0.08f;
-    protected double homingRadius = 12.0D;
+    protected double homingRadius = 40.0D;
     protected double weakGravity = 0.006D;
-    protected double baseSpeed = -1.0D;
 
     protected LivingEntity lockedTarget = null;
 
@@ -46,18 +45,10 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
         Vec3 motion = this.getDeltaMovement();
 
-        if (this.baseSpeed < 0) {
-            this.baseSpeed = motion.length();
-            if (this.baseSpeed < 0.1D) this.baseSpeed = 1.0D;
-        }
-
         motion = new Vec3(motion.x, motion.y - this.weakGravity, motion.z);
 
-        if (!this.level().isClientSide) {
-            motion = applyHoming(motion);
-        }
+        motion = applyHoming(motion);
 
-        motion = motion.normalize().scale(this.baseSpeed);
         this.setDeltaMovement(motion);
 
         HitResult hitresult = net.minecraft.world.entity.projectile.ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
@@ -90,26 +81,38 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
             Vec3 toTarget = this.lockedTarget.getBoundingBox().getCenter().subtract(this.position());
             double distance = toTarget.length();
 
-            // 1. 근접 관성 진입 거리 확대 (3.5블록 이내에서는 조향 컷)
             if (distance < 3.5D) {
                 return currentMotion;
             }
 
             Vec3 motionDir = currentMotion.normalize();
             Vec3 targetDir = toTarget.normalize();
+            double currentSpeed = currentMotion.length();
 
             double dot = motionDir.dot(targetDir);
 
-            // 2. 정면 각도를 약 53도(dot > 0.6) 이내로 엄격하게 제한
-            if (dot > 0.6D) {
-                return currentMotion.normalize().lerp(targetDir, this.homingStrength);
+            if (dot > 0.0D) {
+                Vec3 newDir = motionDir.lerp(targetDir, this.homingStrength).normalize();
+                return newDir.scale(currentSpeed);
             } else {
-                // 3. 시야각을 한 번 벗어난 타겟은 락온을 즉시 풀어 급회전 방지
                 this.lockedTarget = null;
             }
         }
 
         return currentMotion;
+    }
+
+    protected Vec3 rotateTowards(Vec3 from, Vec3 to, double maxAngleRadians) {
+        double dot = from.dot(to);
+        dot = Math.max(-1.0D, Math.min(1.0D, dot)); // 오차 방지 clamp
+        double angle = Math.acos(dot);
+
+        if (angle <= maxAngleRadians) {
+            return to;
+        }
+
+        double t = maxAngleRadians / angle;
+        return from.lerp(to, t).normalize();
     }
 
     protected void spawnFlightParticles() {

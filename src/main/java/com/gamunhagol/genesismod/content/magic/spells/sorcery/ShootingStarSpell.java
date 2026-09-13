@@ -67,7 +67,7 @@ public class ShootingStarSpell extends MagicSpell {
         ShootingStar star = new ShootingStar(level, caster, snapshot);
         Vec3 look = caster.getLookAngle();
         star.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        star.setDeltaMovement(look.scale(2.9D));
+        star.setDeltaMovement(look.scale(1.65D));
 
         star.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
         level.addFreshEntity(star);

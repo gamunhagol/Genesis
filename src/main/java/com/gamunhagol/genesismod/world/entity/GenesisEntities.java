@@ -41,6 +41,10 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<MagicComet>> MAGIC_COMET;
     public static final RegistryObject<EntityType<ShootingStar>> SHOOTING_STAR;
 
+    public static final RegistryObject<EntityType<MagicMeteor>> MAGIC_METEOR;
+    public static final RegistryObject<EntityType<SmallMagicMeteor>> SMALL_MAGIC_METEOR;
+
+
     static {
         ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "genesis");
 
@@ -147,5 +151,16 @@ public class GenesisEntities {
                 EntityType.Builder.<ShootingStar>of(ShootingStar::new, MobCategory.MISC)
                         .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("shooting_star"));
+
+
+        MAGIC_METEOR = ENTITY_TYPES.register("magic_meteor", () ->
+                EntityType.Builder.<MagicMeteor>of(MagicMeteor::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .build("magic_meteor"));
+
+        SMALL_MAGIC_METEOR = ENTITY_TYPES.register("small_magic_meteor", () ->
+                EntityType.Builder.<SmallMagicMeteor>of(SmallMagicMeteor::new, MobCategory.MISC)
+                        .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
+                        .build("small_magic_meteor"));
     }
 }

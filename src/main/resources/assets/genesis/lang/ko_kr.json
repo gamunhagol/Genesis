@@ -324,6 +324,10 @@
   "item.genesis.magic_comet": "마력 혜성",
   "item.genesis.shooting_star": "별똥별",
 
+  "item.genesis.magic_meteor": "마력 유성",
+  "item.genesis.cluster_meteor": "증식하는 유성",
+  "item.genesis.meteor_barrage": "마력 유성군",
+
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
   "item.genesis.summon_drowned": "드라운드 소환",
@@ -861,6 +865,13 @@
   "spell.genesis.magic_comet.desc": "별을 본뜬 마법. 허나 별이 되지 못한 것이다.",
   "spell.genesis.shooting_star": "별똥별",
   "spell.genesis.shooting_star.desc": "추락한 별은 그 근원을 품고 있다. 그렇기에 강력하다.",
+
+  "spell.genesis.magic_meteor": "마력 유성",
+  "spell.genesis.magic_meteor.desc": "별의 의지를 빌어 추적하는 유성을 날린다.",
+  "spell.genesis.cluster_meteor": "증식하는 유성",
+  "spell.genesis.cluster_meteor.desc": "별은 지상에 내려 산산이 부서진다, 그것을 본떴다.",
+  "spell.genesis.meteor_barrage": "마력 유성 군",
+  "spell.genesis.meteor_barrage.desc": "더욱 많은 유성을 날리는 마법, 흡사 밤하늘의 유성 군 같다.",
 
   "spell.genesis.summon_zombie": "좀비 소환",
   "spell.genesis.summon_zombie.desc": "시체를 강령한다.",

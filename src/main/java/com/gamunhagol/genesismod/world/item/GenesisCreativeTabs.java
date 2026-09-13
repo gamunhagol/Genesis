@@ -473,6 +473,10 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.MAGIC_COMET.get());
                 output.accept(GenesisItems.SHOOTING_STAR.get());
 
+                output.accept(GenesisItems.MAGIC_METEOR.get());
+                output.accept(GenesisItems.CLUSTER_METEOR.get());
+                output.accept(GenesisItems.METEOR_BARRAGE.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());
                 output.accept(GenesisItems.SUMMON_DROWNED.get());

@@ -67,7 +67,7 @@ public class MagicCometSpell extends MagicSpell {
         MagicComet comet = new MagicComet(level, caster, snapshot);
         Vec3 look = caster.getLookAngle();
         comet.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        comet.setDeltaMovement(look.scale(2.55D));
+        comet.setDeltaMovement(look.scale(1.25D));
 
         comet.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
         level.addFreshEntity(comet);

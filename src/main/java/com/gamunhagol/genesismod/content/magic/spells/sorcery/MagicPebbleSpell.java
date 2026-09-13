@@ -37,7 +37,7 @@ public class MagicPebbleSpell extends MagicSpell {
         MagicPebble pebble = new MagicPebble(level, caster, spellSnapshot);
         Vec3 look = caster.getLookAngle();
         pebble.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        pebble.setDeltaMovement(look.scale(1.25D));
+        pebble.setDeltaMovement(look.scale(0.45D));
 
         pebble.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
         level.addFreshEntity(pebble);
