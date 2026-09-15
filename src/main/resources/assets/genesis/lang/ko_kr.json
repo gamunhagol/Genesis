@@ -332,6 +332,13 @@
   "item.genesis.failed_star": "되지 못한 별",
   "item.genesis.dimensional_star": "차원의 별",
 
+  "item.genesis.summon_magic_sword": "마력검 소환",
+  "item.genesis.summon_linked_magic_swords": "마력 연검 소환",
+  "item.genesis.summon_magic_sword_phalanx": "마력검 원진 소환",
+
+  "item.genesis.magic_domain": "마력의 영역",
+  "item.genesis.sea_of_stars": "별의 바다",
+
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
   "item.genesis.summon_drowned": "드라운드 소환",
@@ -883,6 +890,18 @@
   "spell.genesis.failed_star.desc": "많은 마법사들은 별을 만드는 것을 꿈꿨다, 대부분은 이런 식으로 실패한다.",
   "spell.genesis.dimensional_star": "차원의 별",
   "spell.genesis.dimensional_star.desc": "별을 만들려던 시도는 차원을 깨뜨렸고, 모든 것을 삼켜, 곧 대격변을 시작시켰다. -   -(※주의: 막대한 지형을 파괴합니다.)",
+
+  "spell.genesis.summon_magic_sword": "마력검 소환",
+  "spell.genesis.summon_magic_sword.desc": "추적하는 마력검을 소환한다.",
+  "spell.genesis.summon_linked_magic_swords": "마력 연검 소환",
+  "spell.genesis.summon_linked_magic_swords.desc": "추적하는 마력검 3개를 소환한다.",
+  "spell.genesis.summon_magic_sword_phalanx": "마력검 원진 소환",
+  "spell.genesis.summon_magic_sword_phalanx.desc": "추적하는 마력검 7개를 소환한다.",
+
+  "spell.genesis.magic_domain": "마력의 영역",
+  "spell.genesis.magic_domain.desc": "마력의 영역을 만들어 마법 피해를 강화한다.",
+  "spell.genesis.sea_of_stars": "별의 바다",
+  "spell.genesis.sea_of_stars.desc": "별의 원류로부터 힘을 빌려, 마법 피해를 강화한다.",
 
 
   "spell.genesis.summon_zombie": "좀비 소환",

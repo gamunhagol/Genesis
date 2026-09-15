@@ -481,6 +481,13 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.FAILED_STAR.get());
                 output.accept(GenesisItems.DIMENSIONAL_STAR.get());
 
+                output.accept(GenesisItems.SUMMON_MAGIC_SWORD.get());
+                output.accept(GenesisItems.SUMMON_LINKED_MAGIC_SWORD.get());
+                output.accept(GenesisItems.SUMMON_MAGIC_SWORD_PHALANX.get());
+
+                output.accept(GenesisItems.MAGIC_DOMAIN.get());
+                output.accept(GenesisItems.SEA_OF_STARS.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());
                 output.accept(GenesisItems.SUMMON_DROWNED.get());

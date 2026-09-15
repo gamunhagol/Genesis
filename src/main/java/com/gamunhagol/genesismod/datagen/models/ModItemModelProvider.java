@@ -162,6 +162,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.FAINT_STAR);
         simpleItem(GenesisItems.FAILED_STAR);
         simpleItem(GenesisItems.DIMENSIONAL_STAR);
+        simpleItem(GenesisItems.SUMMON_MAGIC_SWORD);
+        simpleItem(GenesisItems.SUMMON_LINKED_MAGIC_SWORD);
+        simpleItem(GenesisItems.SUMMON_MAGIC_SWORD_PHALANX);
+        simpleItem(GenesisItems.MAGIC_DOMAIN);
+        simpleItem(GenesisItems.SEA_OF_STARS);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_HUSK);
         simpleItem(GenesisItems.SUMMON_DROWNED);

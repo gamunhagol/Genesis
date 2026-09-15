@@ -1,9 +1,9 @@
-package com.gamunhagol.genesismod.world.entity.projectile.magic;
+package com.gamunhagol.genesismod.world.entity.projectile.magic.child;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import com.gamunhagol.genesismod.world.entity.projectile.AbstractStarAnomaly;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.AbstractStarAnomaly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;

@@ -10,9 +10,11 @@ import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProv
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.AbstractMagicDomainEntity;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -94,15 +96,14 @@ public class GenesisCombatEvents {
         return new SnapshotResult(snapshot, arcaneLevel);
     }
 
-
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         if (event.getSource().is(DamageTypes.SONIC_BOOM)) {
             return;
         }
         LivingEntity target = event.getEntity();
-        Entity sourceEntity = event.getSource().getDirectEntity();
         Entity attackerEntity = event.getSource().getEntity();
+        Entity sourceEntity = event.getSource().getDirectEntity();
 
         SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
         DamageSnapshot snapshot = result.snapshot();
@@ -120,7 +121,6 @@ public class GenesisCombatEvents {
         }
     }
 
-
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onLivingHurtArmor(LivingHurtEvent event) {
         LivingEntity target = event.getEntity();
@@ -133,7 +133,6 @@ public class GenesisCombatEvents {
             event.setAmount(event.getAmount() * extraReductionMult);
         }
     }
-
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
@@ -148,6 +147,12 @@ public class GenesisCombatEvents {
 
         float finalDamage = event.getAmount();
 
+        float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(attackerEntity);
+
+        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && magicMultiplier > 1.0F) {
+            finalDamage *= magicMultiplier;
+        }
+
         SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
         DamageSnapshot snapshot = result.snapshot();
         int arcaneLevel = result.arcaneLevel();
@@ -156,7 +161,8 @@ public class GenesisCombatEvents {
             float procChance = 0.10f + (arcaneLevel * 0.005f);
 
             if (snapshot.magic() > 0) {
-                finalDamage += calculateMagicDamage(target, snapshot.magic());
+                float baseMagicDmg = snapshot.magic() * magicMultiplier;
+                finalDamage += calculateMagicDamage(target, baseMagicDmg);
             }
 
             if (snapshot.fire() > 0) {

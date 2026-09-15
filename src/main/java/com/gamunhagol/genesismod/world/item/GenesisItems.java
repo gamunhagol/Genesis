@@ -649,6 +649,18 @@ public class GenesisItems {
     public static final RegistryObject<Item> DIMENSIONAL_STAR = ITEMS.register("dimensional_star",
             () -> new SpellBookItem("dimensional_star", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
+    public static final RegistryObject<Item> SUMMON_MAGIC_SWORD = ITEMS.register("summon_magic_sword",
+            () -> new SpellBookItem("summon_magic_sword", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_LINKED_MAGIC_SWORD = ITEMS.register("summon_linked_magic_swords",
+            () -> new SpellBookItem("summon_linked_magic_swords", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SUMMON_MAGIC_SWORD_PHALANX = ITEMS.register("summon_magic_sword_phalanx",
+            () -> new SpellBookItem("summon_magic_sword_phalanx", new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+
+    public static final RegistryObject<Item> MAGIC_DOMAIN = ITEMS.register("magic_domain",
+            () -> new SpellBookItem("magic_domain", new Item.Properties().stacksTo(1).rarity(Rarity.COMMON)));
+    public static final RegistryObject<Item> SEA_OF_STARS = ITEMS.register("sea_of_stars",
+            () -> new SpellBookItem("sea_of_stars", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",

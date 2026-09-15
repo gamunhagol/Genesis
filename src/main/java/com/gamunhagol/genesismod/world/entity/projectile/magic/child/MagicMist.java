@@ -1,8 +1,8 @@
-package com.gamunhagol.genesismod.world.entity.projectile.magic;
+package com.gamunhagol.genesismod.world.entity.projectile.magic.child;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import com.gamunhagol.genesismod.world.entity.projectile.MagicTrap;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicTrap;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ItemSupplier;

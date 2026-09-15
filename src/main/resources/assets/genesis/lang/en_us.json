@@ -331,6 +331,13 @@
   "item.genesis.failed_star": "Failed Star",
   "item.genesis.dimensional_star": "Dimensional Star",
 
+  "item.genesis.summon_magic_sword": "Summon Magic Sword",
+  "item.genesis.summon_linked_magic_swords": "Summon Linked Magic Swords",
+  "item.genesis.summon_magic_sword_phalanx": "Summon Magic Sword Phalanx",
+
+  "item.genesis.magic_domain": "Domain of Magic",
+  "item.genesis.sea_of_stars": "Sea of Stars",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
   "item.genesis.summon_drowned": "Summon Drowned",
@@ -884,6 +891,17 @@
   "spell.genesis.dimensional_star": "Dimensional Star",
   "spell.genesis.dimensional_star.desc": "The attempt to create a star shattered dimensions, devoured everything, and soon triggered the cataclysm. -   -(※ Warning: Causes massive terrain destruction.)",
 
+  "spell.genesis.summon_magic_sword": "Summon Magic Sword",
+  "spell.genesis.summon_magic_sword.desc": "Summons a tracking magic sword.",
+  "spell.genesis.summon_linked_magic_swords": "Summon Linked Magic Swords",
+  "spell.genesis.summon_linked_magic_swords.desc": "Summons 3 tracking magic swords.",
+  "spell.genesis.summon_magic_sword_phalanx": "Summon Magic Sword Phalanx",
+  "spell.genesis.summon_magic_sword_phalanx.desc": "Summons 7 tracking magic swords.",
+
+  "spell.genesis.magic_domain": "Domain of Magic",
+  "spell.genesis.magic_domain.desc": "Creates a domain of magic to boost magic damage.",
+  "spell.genesis.sea_of_stars": "Sea of Stars",
+  "spell.genesis.sea_of_stars.desc": "Borrowing power from the origin of stars, boosts magic damage.",
 
 
 

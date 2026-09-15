@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.DimensionalStarEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.child.DimensionalStarEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;

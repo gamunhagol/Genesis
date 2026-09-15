@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.projectile;
+package com.gamunhagol.genesismod.world.entity.projectile.magic;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
 import net.minecraft.world.entity.projectile.ItemSupplier;
+import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
@@ -45,15 +46,20 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
         Vec3 motion = this.getDeltaMovement();
 
-        motion = new Vec3(motion.x, motion.y - this.weakGravity, motion.z);
+        if (!this.isNoGravity()) {
+            motion = new Vec3(motion.x, motion.y - this.weakGravity, motion.z);
+        }
 
         motion = applyHoming(motion);
-
         this.setDeltaMovement(motion);
 
-        HitResult hitresult = net.minecraft.world.entity.projectile.ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
+        HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
             this.onHit(hitresult);
+        }
+
+        if (this.isRemoved()) {
+            return;
         }
 
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
@@ -104,7 +110,7 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
     protected Vec3 rotateTowards(Vec3 from, Vec3 to, double maxAngleRadians) {
         double dot = from.dot(to);
-        dot = Math.max(-1.0D, Math.min(1.0D, dot)); // 오차 방지 clamp
+        dot = Math.max(-1.0D, Math.min(1.0D, dot));
         double angle = Math.acos(dot);
 
         if (angle <= maxAngleRadians) {

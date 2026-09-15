@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.projectile;
+package com.gamunhagol.genesismod.world.entity.projectile.magic;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;

@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicMeteor;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicMeteor;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -24,7 +24,7 @@ public class MeteorBarrageSpell extends MagicSpell {
     }
 
     @Override public float getMentalCost() { return 7.0f; }
-    @Override public int getMemoryCost() { return 2; }
+    @Override public int getMemoryCost() { return 3; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

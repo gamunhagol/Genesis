@@ -1,9 +1,9 @@
-package com.gamunhagol.genesismod.world.entity.projectile.magic;
+package com.gamunhagol.genesismod.world.entity.projectile.magic.child;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
-import com.gamunhagol.genesismod.world.entity.projectile.HomingMeteorBullet;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.HomingMeteorBullet;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;

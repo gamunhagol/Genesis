@@ -49,6 +49,13 @@ public class GenesisSpells {
     public static final AbstractSpell FAILED_STAR = register(new FailedStarSpell());
     public static final AbstractSpell DIMENSIONAL_STAR = register(new DimensionalStarSpell());
 
+    public static final AbstractSpell SUMMON_MAGIC_SWORD = register(new SMSSwordsSpell());
+    public static final AbstractSpell SUMMON_LINKED_MAGIC_SWORD = register(new SLMSSwordsSpell());
+    public static final AbstractSpell SUMMON_MAGIC_SWORD_PHALANX = register(new SMSPSwordsSpell());
+
+    public static final AbstractSpell MAGIC_DOMAIN = register(new MagicDomainSpell());
+    public static final AbstractSpell SEA_OF_STARS = register(new SeaOfStarsSpell());
+
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_HUSK = register(new SummonHuskSpell());

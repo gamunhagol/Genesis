@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.world.entity;
 import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.*;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -47,6 +47,11 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<FaintStarEntity>> FAINT_STAR;
     public static final RegistryObject<EntityType<FailedStarEntity>> FAILED_STAR;
     public static final RegistryObject<EntityType<DimensionalStarEntity>> DIMENSIONAL_STAR;
+
+    public static final RegistryObject<EntityType<MagicSwordEntity>> MAGIC_SWORD;
+
+    public static final RegistryObject<EntityType<MagicDomainEntity>> MAGIC_DOMAIN;
+    public static final RegistryObject<EntityType<SeaOfStarsEntity>> SEA_OF_STARS;
 
 
     static {
@@ -182,5 +187,22 @@ public class GenesisEntities {
                 EntityType.Builder.<DimensionalStarEntity>of(DimensionalStarEntity::new, MobCategory.MISC)
                         .sized(1.5F, 1.5F).clientTrackingRange(10).updateInterval(10)
                         .build("dimensional_star"));
+
+
+        MAGIC_SWORD = ENTITY_TYPES.register("magic_sword", () ->
+                EntityType.Builder.<MagicSwordEntity>of(MagicSwordEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(1)
+                        .build("magic_sword"));
+
+
+        MAGIC_DOMAIN = ENTITY_TYPES.register("magic_domain", () ->
+                EntityType.Builder.<MagicDomainEntity>of(MagicDomainEntity::new, MobCategory.MISC)
+                        .sized(3.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
+                        .build("magic_domain"));
+
+        SEA_OF_STARS = ENTITY_TYPES.register("sea_of_stars", () ->
+                EntityType.Builder.<SeaOfStarsEntity>of(SeaOfStarsEntity::new, MobCategory.MISC)
+                        .sized(3.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
+                        .build("sea_of_stars"));
     }
 }
