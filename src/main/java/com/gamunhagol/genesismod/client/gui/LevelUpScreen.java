@@ -188,7 +188,6 @@ public class LevelUpScreen extends Screen {
             int baseLevel = LevelCalcHelper.getCharacterLevel(stats);
             int currentTotalXp = LevelCalcHelper.getPlayerTotalXp(this.minecraft.player);
 
-            // 1. 필요 XP 계산: 대기 레벨이 0이면 '다음 1레벨 비용'을 기본 표시
             int displayCost;
             if (totalPendingLevels == 0) {
                 displayCost = LevelCalcHelper.getXpCostForNextLevel(baseLevel);
@@ -225,16 +224,13 @@ public class LevelUpScreen extends Screen {
                 graphics.drawString(this.font, String.valueOf(displayStat), x + (int)(155 * scale), rowY, color, false);
             }
 
-            // 2. 상태 수치 (현재량 / 최대량 통일)
             int statusX = x + (int)(255 * scale);
             int statusY = y + (int)(25 * scale);
 
-            // HP: (현재 HP / 최대 HP)
             int curHp = (int) this.minecraft.player.getHealth();
             int maxHp = (int) this.minecraft.player.getMaxHealth();
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.hp", curHp, maxHp), statusX, statusY, textColor, false);
 
-            // 스태미나: (현재 스태미나 / 최대 스태미나)
             int maxStamina = (int) this.minecraft.player.getAttributeValue(EpicFightAttributes.MAX_STAMINA.get());
             int curStamina = maxStamina;
             var playerPatch = yesman.epicfight.world.capabilities.EpicFightCapabilities.getEntityPatch(this.minecraft.player, yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch.class);
@@ -243,7 +239,6 @@ public class LevelUpScreen extends Screen {
             }
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.stamina", curStamina, maxStamina), statusX, statusY + 15, textColor, false);
 
-            // 정신력 (마나)
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.mana", (int)stats.getMental(), (int)stats.getMaxMental()), statusX, statusY + 30, textColor, false);
 
             int infoX = statusX;
@@ -290,7 +285,6 @@ public class LevelUpScreen extends Screen {
                 graphics.drawString(this.font, blessingStr.toString(), infoX, infoY + lineGap * 5, textColor, false);
             }
 
-            // 3. 소지 XP (-소모량) 및 필요 XP 렌더링
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 
