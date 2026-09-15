@@ -159,6 +159,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.MAGIC_METEOR);
         simpleItem(GenesisItems.CLUSTER_METEOR);
         simpleItem(GenesisItems.METEOR_BARRAGE);
+        simpleItem(GenesisItems.FAINT_STAR);
+        simpleItem(GenesisItems.FAILED_STAR);
+        simpleItem(GenesisItems.DIMENSIONAL_STAR);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_HUSK);
         simpleItem(GenesisItems.SUMMON_DROWNED);

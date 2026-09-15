@@ -477,6 +477,10 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.CLUSTER_METEOR.get());
                 output.accept(GenesisItems.METEOR_BARRAGE.get());
 
+                output.accept(GenesisItems.FAINT_STAR.get());
+                output.accept(GenesisItems.FAILED_STAR.get());
+                output.accept(GenesisItems.DIMENSIONAL_STAR.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());
                 output.accept(GenesisItems.SUMMON_DROWNED.get());

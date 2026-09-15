@@ -44,6 +44,10 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<MagicMeteor>> MAGIC_METEOR;
     public static final RegistryObject<EntityType<SmallMagicMeteor>> SMALL_MAGIC_METEOR;
 
+    public static final RegistryObject<EntityType<FaintStarEntity>> FAINT_STAR;
+    public static final RegistryObject<EntityType<FailedStarEntity>> FAILED_STAR;
+    public static final RegistryObject<EntityType<DimensionalStarEntity>> DIMENSIONAL_STAR;
+
 
     static {
         ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "genesis");
@@ -162,5 +166,21 @@ public class GenesisEntities {
                 EntityType.Builder.<SmallMagicMeteor>of(SmallMagicMeteor::new, MobCategory.MISC)
                         .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
                         .build("small_magic_meteor"));
+
+
+        FAINT_STAR = ENTITY_TYPES.register("faint_star", () ->
+                EntityType.Builder.<FaintStarEntity>of(FaintStarEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .build("faint_star"));
+
+        FAILED_STAR = ENTITY_TYPES.register("failed_star", () ->
+                EntityType.Builder.<FailedStarEntity>of(FailedStarEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(6).updateInterval(10)
+                        .build("failed_star"));
+
+        DIMENSIONAL_STAR = ENTITY_TYPES.register("dimensional_star", () ->
+                EntityType.Builder.<DimensionalStarEntity>of(DimensionalStarEntity::new, MobCategory.MISC)
+                        .sized(1.5F, 1.5F).clientTrackingRange(10).updateInterval(10)
+                        .build("dimensional_star"));
     }
 }

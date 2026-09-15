@@ -327,6 +327,10 @@
   "item.genesis.cluster_meteor": "Multiplying Meteor",
   "item.genesis.meteor_barrage": "Magic Meteor Shower",
 
+  "item.genesis.faint_star": "Faint Star",
+  "item.genesis.failed_star": "Failed Star",
+  "item.genesis.dimensional_star": "Dimensional Star",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
   "item.genesis.summon_drowned": "Summon Drowned",
@@ -873,6 +877,14 @@
   "spell.genesis.meteor_barrage": "Magic Meteor Shower",
   "spell.genesis.meteor_barrage.desc": "Magic that fires even more meteors, resembling a meteor shower in the night sky.",
 
+  "spell.genesis.faint_star": "Faint Star",
+  "spell.genesis.faint_star.desc": "An unstably and faintly crafted star, hence its lifespan is short and it soon fades away.",
+  "spell.genesis.failed_star": "Failed Star",
+  "spell.genesis.failed_star.desc": "Many mages dreamed of creating a star, most fail in this manner.",
+  "spell.genesis.dimensional_star": "Dimensional Star",
+  "spell.genesis.dimensional_star.desc": "The attempt to create a star shattered dimensions, devoured everything, and soon triggered the cataclysm. -   -(※ Warning: Causes massive terrain destruction.)",
+
+
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",
@@ -974,8 +986,8 @@
   "gui.genesis.level_up.recovered_levels": "Accumulated Levels: +%s",
   "gui.genesis.level_up.current_xp": "Current XP: %s",
   "gui.genesis.level_up.required_xp": "Required XP: %s",
-  "gui.genesis.level_up.hp": "HP: %s",
-  "gui.genesis.level_up.stamina": "SP: %s",
+  "gui.genesis.level_up.hp": "HP: %s / %s",
+  "gui.genesis.level_up.stamina": "SP: %s / %s",
   "gui.genesis.level_up.mana": "FP: %s / %s",
   "gui.genesis.info.phys_scaling": "Physical Scaling: %d%%",
   "gui.genesis.info.magic_scaling": "Magic Scaling: %d%%",

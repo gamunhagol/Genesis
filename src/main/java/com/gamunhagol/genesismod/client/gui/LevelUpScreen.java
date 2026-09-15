@@ -188,9 +188,16 @@ public class LevelUpScreen extends Screen {
             int baseLevel = LevelCalcHelper.getCharacterLevel(stats);
             int currentTotalXp = LevelCalcHelper.getPlayerTotalXp(this.minecraft.player);
 
-            int totalCost = 0;
-            for(int i = 0; i < totalPendingLevels; i++) {
-                totalCost += LevelCalcHelper.getXpCostForNextLevel(baseLevel + i);
+            // 1. 필요 XP 계산: 대기 레벨이 0이면 '다음 1레벨 비용'을 기본 표시
+            int displayCost;
+            if (totalPendingLevels == 0) {
+                displayCost = LevelCalcHelper.getXpCostForNextLevel(baseLevel);
+            } else {
+                int totalCost = 0;
+                for (int i = 0; i < totalPendingLevels; i++) {
+                    totalCost += LevelCalcHelper.getXpCostForNextLevel(baseLevel + i);
+                }
+                displayCost = totalCost;
             }
 
             int levelTextY = y + (int)(15 * scale);
@@ -218,12 +225,25 @@ public class LevelUpScreen extends Screen {
                 graphics.drawString(this.font, String.valueOf(displayStat), x + (int)(155 * scale), rowY, color, false);
             }
 
+            // 2. 상태 수치 (현재량 / 최대량 통일)
             int statusX = x + (int)(255 * scale);
             int statusY = y + (int)(25 * scale);
 
-            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.hp", (int)this.minecraft.player.getMaxHealth()), statusX, statusY, textColor, false);
-            double stamina = this.minecraft.player.getAttributeValue(EpicFightAttributes.MAX_STAMINA.get());
-            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.stamina", (int)stamina), statusX, statusY + 15, textColor, false);
+            // HP: (현재 HP / 최대 HP)
+            int curHp = (int) this.minecraft.player.getHealth();
+            int maxHp = (int) this.minecraft.player.getMaxHealth();
+            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.hp", curHp, maxHp), statusX, statusY, textColor, false);
+
+            // 스태미나: (현재 스태미나 / 최대 스태미나)
+            int maxStamina = (int) this.minecraft.player.getAttributeValue(EpicFightAttributes.MAX_STAMINA.get());
+            int curStamina = maxStamina;
+            var playerPatch = yesman.epicfight.world.capabilities.EpicFightCapabilities.getEntityPatch(this.minecraft.player, yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch.class);
+            if (playerPatch != null) {
+                curStamina = (int) playerPatch.getStamina();
+            }
+            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.stamina", curStamina, maxStamina), statusX, statusY + 15, textColor, false);
+
+            // 정신력 (마나)
             graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.mana", (int)stats.getMental(), (int)stats.getMaxMental()), statusX, statusY + 30, textColor, false);
 
             int infoX = statusX;
@@ -270,12 +290,18 @@ public class LevelUpScreen extends Screen {
                 graphics.drawString(this.font, blessingStr.toString(), infoX, infoY + lineGap * 5, textColor, false);
             }
 
+            // 3. 소지 XP (-소모량) 및 필요 XP 렌더링
             int xpInfoX = x + (int)(25 * scale);
             int xpInfoY = y + (int)(425 * scale);
 
-            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.current_xp", currentTotalXp), xpInfoX, xpInfoY - 12, textColor, false);
-            int costColor = (currentTotalXp >= totalCost) ? 0xFFFF00 : 0xFF5555;
-            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.required_xp", totalCost), xpInfoX, xpInfoY, costColor, false);
+            String currentXpText = Component.translatable("gui.genesis.level_up.current_xp", currentTotalXp).getString();
+            if (totalPendingLevels > 0) {
+                currentXpText += " (-" + displayCost + ")";
+            }
+            graphics.drawString(this.font, currentXpText, xpInfoX, xpInfoY - 12, textColor, false);
+
+            int costColor = (currentTotalXp >= displayCost) ? 0xFFFF00 : 0xFF5555;
+            graphics.drawString(this.font, Component.translatable("gui.genesis.level_up.required_xp", displayCost), xpInfoX, xpInfoY, costColor, false);
         });
     }
 

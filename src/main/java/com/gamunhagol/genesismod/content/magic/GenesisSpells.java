@@ -45,6 +45,10 @@ public class GenesisSpells {
     public static final AbstractSpell CLUSTER_METEOR = register(new ClusterMeteorSpell());
     public static final AbstractSpell METEOR_BARRAGE = register(new MeteorBarrageSpell());
 
+    public static final AbstractSpell FAINT_STAR = register(new FaintStarSpell());
+    public static final AbstractSpell FAILED_STAR = register(new FailedStarSpell());
+    public static final AbstractSpell DIMENSIONAL_STAR = register(new DimensionalStarSpell());
+
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_HUSK = register(new SummonHuskSpell());

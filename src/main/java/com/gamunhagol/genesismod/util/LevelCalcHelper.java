@@ -13,7 +13,9 @@ public class LevelCalcHelper {
 
     public static int getXpCostForNextLevel(int currentLevel) {
         if (currentLevel >= 713) return 0;
-        return (int) (Math.pow(currentLevel - 1, 2.0) * 12 + 80);
+        int gracePeriod = 8;
+        int diff = Math.max(currentLevel - gracePeriod, 0);
+        return diff * diff * 12 + 80;
     }
 
     public static int getPlayerTotalXp(Player player) {

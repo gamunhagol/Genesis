@@ -642,6 +642,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> METEOR_BARRAGE = ITEMS.register("meteor_barrage",
             () -> new SpellBookItem("meteor_barrage", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
+    public static final RegistryObject<Item> FAINT_STAR = ITEMS.register("faint_star",
+            () -> new SpellBookItem("faint_star", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FAILED_STAR = ITEMS.register("failed_star",
+            () -> new SpellBookItem("failed_star", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DIMENSIONAL_STAR = ITEMS.register("dimensional_star",
+            () -> new SpellBookItem("dimensional_star", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+
 
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
