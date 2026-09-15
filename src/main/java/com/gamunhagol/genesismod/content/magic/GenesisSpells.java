@@ -56,6 +56,8 @@ public class GenesisSpells {
     public static final AbstractSpell MAGIC_DOMAIN = register(new MagicDomainSpell());
     public static final AbstractSpell SEA_OF_STARS = register(new SeaOfStarsSpell());
 
+    public static final AbstractSpell FALLING_STAR_SEA = register(new FallingStarSeaSpell());
+
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
     public static final AbstractSpell SUMMON_HUSK = register(new SummonHuskSpell());

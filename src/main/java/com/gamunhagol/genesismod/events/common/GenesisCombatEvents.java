@@ -149,6 +149,15 @@ public class GenesisCombatEvents {
 
         float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(attackerEntity);
 
+        if (attackerEntity != null && attackerEntity.getPersistentData().contains("GenesisStarSeaBuffEndTick")) {
+            long endTick = attackerEntity.getPersistentData().getLong("GenesisStarSeaBuffEndTick");
+            if (target.level().getGameTime() <= endTick) {
+                magicMultiplier *= 1.5F;
+            } else {
+                attackerEntity.getPersistentData().remove("GenesisStarSeaBuffEndTick");
+            }
+        }
+
         if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && magicMultiplier > 1.0F) {
             finalDamage *= magicMultiplier;
         }

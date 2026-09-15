@@ -277,6 +277,11 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.MAGIC_DOMAIN.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SEA_OF_STARS.get(), ThrownItemRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.STAR_SEA_SPAWNER.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.GRAND_FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
+
+
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);

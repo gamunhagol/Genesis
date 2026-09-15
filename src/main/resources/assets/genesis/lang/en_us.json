@@ -338,6 +338,8 @@
   "item.genesis.magic_domain": "Domain of Magic",
   "item.genesis.sea_of_stars": "Sea of Stars",
 
+  "item.genesis.falling_star_sea": "Sea of Falling Stars",
+
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
   "item.genesis.summon_drowned": "Summon Drowned",
@@ -902,6 +904,9 @@
   "spell.genesis.magic_domain.desc": "Creates a domain of magic to boost magic damage.",
   "spell.genesis.sea_of_stars": "Sea of Stars",
   "spell.genesis.sea_of_stars.desc": "Borrowing power from the origin of stars, boosts magic damage.",
+
+  "spell.genesis.falling_star_sea": "Sea of Falling Stars",
+  "spell.genesis.falling_star_sea.desc": "A dream of the end of an era.",
 
 
 

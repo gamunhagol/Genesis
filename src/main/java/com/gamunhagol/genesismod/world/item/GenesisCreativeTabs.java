@@ -488,6 +488,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.MAGIC_DOMAIN.get());
                 output.accept(GenesisItems.SEA_OF_STARS.get());
 
+                output.accept(GenesisItems.FALLING_STAR_SEA.get());
+
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());
                 output.accept(GenesisItems.SUMMON_DROWNED.get());

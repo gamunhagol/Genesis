@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.world.entity;
 
 import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
+import com.gamunhagol.genesismod.world.entity.etc.StarSeaSpawnerEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
@@ -52,6 +53,10 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<MagicDomainEntity>> MAGIC_DOMAIN;
     public static final RegistryObject<EntityType<SeaOfStarsEntity>> SEA_OF_STARS;
+
+    public static final RegistryObject<EntityType<StarSeaSpawnerEntity>> STAR_SEA_SPAWNER;
+    public static final RegistryObject<EntityType<FallingStarBullet>> FALLING_STAR_BULLET;
+    public static final RegistryObject<EntityType<GrandFallingStarBullet>> GRAND_FALLING_STAR_BULLET;
 
 
     static {
@@ -204,5 +209,20 @@ public class GenesisEntities {
                 EntityType.Builder.<SeaOfStarsEntity>of(SeaOfStarsEntity::new, MobCategory.MISC)
                         .sized(3.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
                         .build("sea_of_stars"));
+
+        STAR_SEA_SPAWNER = ENTITY_TYPES.register("star_sea_spawner", () ->
+                EntityType.Builder.<StarSeaSpawnerEntity>of(StarSeaSpawnerEntity::new, MobCategory.MISC)
+                        .sized(0.1F, 0.1F).clientTrackingRange(4).updateInterval(20)
+                        .build("star_sea_spawner"));
+
+        FALLING_STAR_BULLET = ENTITY_TYPES.register("falling_star_bullet", () ->
+                EntityType.Builder.<FallingStarBullet>of(FallingStarBullet::new, MobCategory.MISC)
+                        .sized(0.35F, 0.35F).clientTrackingRange(6).updateInterval(10)
+                        .build("falling_star_bullet"));
+
+        GRAND_FALLING_STAR_BULLET = ENTITY_TYPES.register("grand_falling_star_bullet", () ->
+                EntityType.Builder.<GrandFallingStarBullet>of(GrandFallingStarBullet::new, MobCategory.MISC)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
+                        .build("grand_falling_star_bullet"));
     }
 }

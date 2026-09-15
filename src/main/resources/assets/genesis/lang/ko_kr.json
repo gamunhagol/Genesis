@@ -339,6 +339,8 @@
   "item.genesis.magic_domain": "마력의 영역",
   "item.genesis.sea_of_stars": "별의 바다",
 
+  "item.genesis.falling_star_sea": "내리는 별의 바다",
+
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
   "item.genesis.summon_drowned": "드라운드 소환",
@@ -902,6 +904,9 @@
   "spell.genesis.magic_domain.desc": "마력의 영역을 만들어 마법 피해를 강화한다.",
   "spell.genesis.sea_of_stars": "별의 바다",
   "spell.genesis.sea_of_stars.desc": "별의 원류로부터 힘을 빌려, 마법 피해를 강화한다.",
+
+  "spell.genesis.falling_star_sea": "내리는 별의 바다",
+  "spell.genesis.falling_star_sea.desc": "한 시대의 종말의 꿈.",
 
 
   "spell.genesis.summon_zombie": "좀비 소환",

@@ -661,6 +661,9 @@ public class GenesisItems {
     public static final RegistryObject<Item> SEA_OF_STARS = ITEMS.register("sea_of_stars",
             () -> new SpellBookItem("sea_of_stars", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> FALLING_STAR_SEA = ITEMS.register("falling_star_sea",
+            () -> new SpellBookItem("falling_star_sea", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+
 
 
     public static final RegistryObject<Item> SUMMON_ZOMBIE = ITEMS.register("summon_zombie",
