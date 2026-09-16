@@ -290,7 +290,8 @@ public class LevelUpScreen extends Screen {
 
             String currentXpText = Component.translatable("gui.genesis.level_up.current_xp", currentTotalXp).getString();
             if (totalPendingLevels > 0) {
-                currentXpText += " (-" + displayCost + ")";
+                int remainingXp = currentTotalXp - displayCost;
+                currentXpText += " (-> " + remainingXp + ")";
             }
             graphics.drawString(this.font, currentXpText, xpInfoX, xpInfoY - 12, textColor, false);
 
