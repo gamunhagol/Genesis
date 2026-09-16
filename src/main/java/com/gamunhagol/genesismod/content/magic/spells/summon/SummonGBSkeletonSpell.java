@@ -28,7 +28,7 @@ public class SummonGBSkeletonSpell extends AbstractSummonSpell {
     public float getMentalCost() { return 8.9f; }
 
     @Override
-    public int getMemoryCost() { return 2; }
+    public int getMemoryCost() { return 1; }
 
     @Override
     protected double getDamageScaleRatio() {

@@ -27,9 +27,7 @@ public class SeaOfStarsSpell extends MagicSpell {
     }
 
     @Override
-    public int getMemoryCost() {
-        return 4;
-    }
+    public int getMemoryCost() {return 1;}
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

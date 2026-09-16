@@ -24,7 +24,7 @@ public class ClusterMeteorSpell extends MagicSpell {
     }
 
     @Override public float getMentalCost() { return 4.4f; }
-    @Override public int getMemoryCost() { return 2; }
+    @Override public int getMemoryCost() { return 1; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

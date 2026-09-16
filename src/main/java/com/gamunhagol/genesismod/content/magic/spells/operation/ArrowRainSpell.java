@@ -35,7 +35,7 @@ public class ArrowRainSpell extends MagicSpell {
 
     @Override
     public int getMemoryCost() {
-        return 3;
+        return 2;
     }
 
     @Override

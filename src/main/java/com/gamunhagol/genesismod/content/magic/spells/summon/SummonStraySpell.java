@@ -31,7 +31,7 @@ public class SummonStraySpell extends AbstractSummonSpell {
 
     @Override
     public int getMemoryCost() {
-        return 2;
+        return 1;
     }
 
     @Override

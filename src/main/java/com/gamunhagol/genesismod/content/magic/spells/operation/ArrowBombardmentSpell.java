@@ -32,7 +32,7 @@ public class ArrowBombardmentSpell extends MagicSpell {
 
     @Override
     public int getMemoryCost() {
-        return 3;
+        return 2;
     }
 
     @Override

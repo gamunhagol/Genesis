@@ -21,7 +21,7 @@ public class FaintStarSpell extends MagicSpell {
     }
 
     @Override public float getMentalCost() { return 6.0f; }
-    @Override public int getMemoryCost() { return 2; }
+    @Override public int getMemoryCost() { return 1; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

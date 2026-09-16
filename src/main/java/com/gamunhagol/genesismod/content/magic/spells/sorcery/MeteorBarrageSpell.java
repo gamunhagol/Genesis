@@ -24,7 +24,7 @@ public class MeteorBarrageSpell extends MagicSpell {
     }
 
     @Override public float getMentalCost() { return 7.0f; }
-    @Override public int getMemoryCost() { return 3; }
+    @Override public int getMemoryCost() { return 2; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

@@ -33,7 +33,7 @@ public class SummonWardenSpell extends AbstractSummonSpell {
 
     @Override
     public int getMemoryCost() {
-        return 4;
+        return 3;
     }
 
     @Override

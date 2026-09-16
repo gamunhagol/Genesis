@@ -23,7 +23,7 @@ public class LargeFireballSpell extends MagicSpell {
     public float getMentalCost() { return 4.2f; }
 
     @Override
-    public int getMemoryCost() { return 2; }
+    public int getMemoryCost() { return 1; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

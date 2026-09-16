@@ -36,7 +36,7 @@ public class SummonVexSpell extends AbstractSummonSpell {
 
     @Override
     public int getMemoryCost() {
-        return 2;
+        return 1;
     }
 
     @Override

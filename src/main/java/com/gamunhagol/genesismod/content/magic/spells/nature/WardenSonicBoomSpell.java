@@ -29,7 +29,7 @@ public class WardenSonicBoomSpell extends MagicSpell {
     public float getMentalCost() { return 8.5f; }
 
     @Override
-    public int getMemoryCost() { return 3; }
+    public int getMemoryCost() { return 2; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

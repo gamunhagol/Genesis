@@ -30,7 +30,7 @@ public class SummonASkeletonSpell extends AbstractSummonSpell {
     public float getMentalCost() { return 13.5f; }
 
     @Override
-    public int getMemoryCost() { return 3; }
+    public int getMemoryCost() { return 2; }
 
     @Override
     protected double getDamageScaleRatio() {

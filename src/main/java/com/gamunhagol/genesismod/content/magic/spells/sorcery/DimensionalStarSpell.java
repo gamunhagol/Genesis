@@ -21,7 +21,7 @@ public class DimensionalStarSpell extends MagicSpell {
     }
 
     @Override public float getMentalCost() { return 44.4f; }
-    @Override public int getMemoryCost() { return 6; }
+    @Override public int getMemoryCost() { return 4; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {

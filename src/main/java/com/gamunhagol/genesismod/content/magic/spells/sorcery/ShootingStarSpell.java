@@ -32,7 +32,7 @@ public class ShootingStarSpell extends MagicSpell {
     public float getMentalCost() { return 14.0f; }
 
     @Override
-    public int getMemoryCost() { return 3; }
+    public int getMemoryCost() { return 2; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
