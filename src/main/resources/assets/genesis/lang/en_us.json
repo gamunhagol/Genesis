@@ -339,6 +339,7 @@
   "item.genesis.sea_of_stars": "Sea of Stars",
 
   "item.genesis.falling_star_sea": "Sea of Falling Stars",
+  "item.genesis.divided": "Divided",
 
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
@@ -907,7 +908,8 @@
 
   "spell.genesis.falling_star_sea": "Sea of Falling Stars",
   "spell.genesis.falling_star_sea.desc": "A dream of the end of an era.",
-
+  "spell.genesis.divided": "Divided",
+  "spell.genesis.divided.desc": "Split and separated, the form.",
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",

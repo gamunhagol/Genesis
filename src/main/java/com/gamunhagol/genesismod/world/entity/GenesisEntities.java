@@ -58,6 +58,8 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<FallingStarBullet>> FALLING_STAR_BULLET;
     public static final RegistryObject<EntityType<GrandFallingStarBullet>> GRAND_FALLING_STAR_BULLET;
 
+    public static final RegistryObject<EntityType<DividedEntity>> DIVIDED;
+
 
     static {
         ENTITY_TYPES = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, "genesis");
@@ -224,5 +226,10 @@ public class GenesisEntities {
                 EntityType.Builder.<GrandFallingStarBullet>of(GrandFallingStarBullet::new, MobCategory.MISC)
                         .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
                         .build("grand_falling_star_bullet"));
+
+        DIVIDED = ENTITY_TYPES.register("divided", () ->
+                EntityType.Builder.<DividedEntity>of(DividedEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .build("divided"));
     }
 }

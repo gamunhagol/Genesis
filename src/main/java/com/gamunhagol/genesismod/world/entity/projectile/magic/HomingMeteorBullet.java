@@ -17,6 +17,8 @@ public abstract class HomingMeteorBullet extends MagicBullet {
     protected int homingDelayTicks = 12;
     protected double maxSpeed = 1.15D;
 
+    protected double accelerationRate = 1.0D;
+
     public HomingMeteorBullet(EntityType<? extends HomingMeteorBullet> entityType, Level level) {
         super(entityType, level);
         this.homingStrength = 0.18f;
@@ -33,11 +35,13 @@ public abstract class HomingMeteorBullet extends MagicBullet {
 
     @Override
     public void tick() {
-        Vec3 motion = this.getDeltaMovement();
-        double currentSpeed = motion.length();
+        if (this.accelerationRate > 1.0D) {
+            Vec3 motion = this.getDeltaMovement();
+            double currentSpeed = motion.length();
 
-        if (currentSpeed < this.maxSpeed) {
-            this.setDeltaMovement(motion.scale(1.03D));
+            if (currentSpeed < this.maxSpeed) {
+                this.setDeltaMovement(motion.scale(this.accelerationRate));
+            }
         }
 
         super.tick();

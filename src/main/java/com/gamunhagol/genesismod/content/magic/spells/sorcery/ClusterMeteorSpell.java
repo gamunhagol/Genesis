@@ -14,10 +14,6 @@ import java.util.Map;
 public class ClusterMeteorSpell extends MagicSpell {
     public ClusterMeteorSpell() { super("cluster_meteor"); }
 
-    @Override public int getMaxChargeTicks() { return 0; }
-    @Override public boolean isChargeable(LivingEntity caster) { return false; }
-    @Override public boolean isChargePhase(LivingEntity caster) { return false; }
-
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 19);

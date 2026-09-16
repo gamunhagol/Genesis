@@ -15,6 +15,7 @@ public class SmallMagicMeteor extends HomingMeteorBullet {
         this.dotLimit = -0.1D;
         this.closeCutoffDistance = 0.2D;
         this.weakGravity = 0.0D;
+        this.maxSpeed = 0.33D;
     }
 
     public SmallMagicMeteor(Level level, LivingEntity owner, DamageSnapshot snapshot) {
@@ -23,6 +24,7 @@ public class SmallMagicMeteor extends HomingMeteorBullet {
         this.dotLimit = -0.1D;
         this.closeCutoffDistance = 0.2D;
         this.weakGravity = 0.0D;
+        this.maxSpeed = 0.33D;
     }
 
     @Override

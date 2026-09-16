@@ -663,6 +663,8 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> FALLING_STAR_SEA = ITEMS.register("falling_star_sea",
             () -> new SpellBookItem("falling_star_sea", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> DIVIDED = ITEMS.register("divided",
+            () -> new SpellBookItem("divided", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
 
 

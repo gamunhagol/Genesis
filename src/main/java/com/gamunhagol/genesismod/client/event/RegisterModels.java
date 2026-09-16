@@ -280,6 +280,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.STAR_SEA_SPAWNER.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.GRAND_FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.DIVIDED.get(), ThrownItemRenderer::new);
 
 
 

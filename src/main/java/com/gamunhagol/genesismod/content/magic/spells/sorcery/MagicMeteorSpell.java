@@ -14,9 +14,6 @@ import java.util.Map;
 public class MagicMeteorSpell extends MagicSpell {
     public MagicMeteorSpell() { super("magic_meteor"); }
 
-    @Override public int getMaxChargeTicks() { return 0; }
-    @Override public boolean isChargeable(LivingEntity caster) { return false; }
-    @Override public boolean isChargePhase(LivingEntity caster) { return false; }
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {

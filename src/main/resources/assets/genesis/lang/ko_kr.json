@@ -340,6 +340,7 @@
   "item.genesis.sea_of_stars": "별의 바다",
 
   "item.genesis.falling_star_sea": "내리는 별의 바다",
+  "item.genesis.divided": "나뉘어짐",
 
   "item.genesis.summon_zombie": "좀비 소환",
   "item.genesis.summon_husk": "허스크 소환",
@@ -907,6 +908,8 @@
 
   "spell.genesis.falling_star_sea": "내리는 별의 바다",
   "spell.genesis.falling_star_sea.desc": "한 시대의 종말의 꿈.",
+  "spell.genesis.divided": "나뉘어짐",
+  "spell.genesis.divided.desc": "나뉘어 분리된, 모습.",
 
 
   "spell.genesis.summon_zombie": "좀비 소환",
