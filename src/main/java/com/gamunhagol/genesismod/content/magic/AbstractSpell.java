@@ -50,6 +50,41 @@ public abstract class AbstractSpell {
         return isChargeable(caster);
     }
 
+    public boolean isContinuous(LivingEntity caster) {
+        return false;
+    }
+
+    public int getContinuousTickInterval() {
+        return 1;
+    }
+
+    public float getContinuousMentalCost() {
+        return 0.0f;
+    }
+
+    public void executeContinuousTick(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot, int ticksUsing) {
+        if (!level.isClientSide) {
+            if (ticksUsing % getContinuousTickInterval() == 0) {
+                DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
+                onExecuteContinuous(level, caster, spellSnapshot, ticksUsing);
+                consumeContinuousMental(caster);
+            }
+        }
+    }
+
+    protected void onExecuteContinuous(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int ticksUsing) {
+    }
+
+    public void consumeContinuousMental(LivingEntity caster) {
+        if (getContinuousMentalCost() <= 0) return;
+
+        if (caster instanceof net.minecraft.world.entity.player.Player player) {
+            player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
+                stats.setMental(Math.max(0, stats.getMental() - getContinuousMentalCost()));
+            });
+        }
+    }
+
     public void executeCast(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot) {
         if (!level.isClientSide) {
             DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
@@ -77,7 +112,7 @@ public abstract class AbstractSpell {
     public void consumeMental(LivingEntity caster) {
         if (caster instanceof net.minecraft.world.entity.player.Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                stats.setMental(stats.getMental() - getMentalCost());
+                stats.setMental(Math.max(0, stats.getMental() - getMentalCost()));
             });
         }
     }

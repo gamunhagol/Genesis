@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.server.PacketCastChargedSpell;
 import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.skill.MagicChargeSkill;
+import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.capability.spell.ISpellSlot;
@@ -78,11 +79,12 @@ public class CatalystItem extends Item {
         }
 
         boolean isCharge = currentSpell.isChargePhase(player);
+        boolean isContinuous = currentSpell.isContinuous(player);
 
-        if (isCharge) {
+        if (isCharge || isContinuous) {
             player.startUsingItem(hand);
 
-            if (level.isClientSide) {
+            if (level.isClientSide && isCharge) {
                 LocalPlayerPatch playerPatch = ClientEngine.getInstance().getPlayerPatch();
 
                 if (playerPatch != null) {
@@ -91,8 +93,6 @@ public class CatalystItem extends Item {
 
                     if (skillContainer != null) {
 
-                        // 현재 무기의 Weapon Innate Skill을
-                        // 무조건 Genesis MagicChargeSkill로 맞춘다.
                         if (!(skillContainer.getSkill() instanceof MagicChargeSkill)) {
                             skillContainer.setSkill(
                                     GenesisSkills.MAGIC_CHARGE.get(),
@@ -110,6 +110,16 @@ public class CatalystItem extends Item {
                 }
             }
 
+            if (isContinuous && !level.isClientSide) {
+                if (!currentSpell.canCast(player)) {
+                    player.releaseUsingItem();
+                    return InteractionResultHolder.fail(catalyst);
+                }
+
+                currentSpell.consumeMental(player);
+                catalyst.hurtAndBreak(1, player, (p) -> p.broadcastBreakEvent(hand));
+            }
+
             return InteractionResultHolder.consume(catalyst);
         }
 
@@ -123,6 +133,32 @@ public class CatalystItem extends Item {
         } else {
             return InteractionResultHolder.fail(catalyst);
         }
+    }
+
+    @Override
+    public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int timeLeft) {
+        if (entity instanceof Player player) {
+            AbstractSpell currentSpell = getSelectedSpell(player);
+
+            if (currentSpell != null && currentSpell.isContinuous(player)) {
+                int ticksUsing = this.getUseDuration(stack) - timeLeft;
+
+                boolean canMaintain = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
+                        .map(stats -> stats.getMental() >= currentSpell.getContinuousMentalCost())
+                        .orElse(false);
+
+                if (!canMaintain) {
+                    player.releaseUsingItem();
+                    return;
+                }
+
+                if (!level.isClientSide) {
+                    DamageSnapshot catalystPower = WeaponRequirementHelper.calculateTotalDamage(player, stack, 0f);
+                    currentSpell.executeContinuousTick(level, player, catalystPower, ticksUsing);
+                }
+            }
+        }
+        super.onUseTick(level, entity, stack, timeLeft);
     }
 
     @Override
