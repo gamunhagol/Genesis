@@ -1,29 +1,23 @@
 package com.gamunhagol.genesismod.events.common;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
-import com.gamunhagol.genesismod.init.attributes.GenesisAttributes;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
-import com.gamunhagol.genesismod.world.effect.GenesisEffects;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.AbstractMagicDomainEntity;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.weapon.WeaponDataManager;
-import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.tags.DamageTypeTags;
 import net.minecraft.world.damagesource.DamageTypes;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.MobType;
-import net.minecraft.world.entity.ai.attributes.AttributeInstance;
-import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BowItem;
@@ -39,24 +33,13 @@ import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-import java.util.UUID;
-
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GenesisCombatEvents {
-    private static final UUID DESTRUCTION_HP_MOD_UUID = UUID.fromString("AD1E5150-9000-0000-0000-000000090010");
 
-    private record SnapshotResult(DamageSnapshot snapshot, int arcaneLevel) {}
+    private static DamageSnapshot getSnapshot(Entity attackerEntity, Entity sourceEntity, LivingEntity target) {
+        if (target.getPersistentData().contains("GenesisSkipSnapshot")) return null;
 
-    private static SnapshotResult getSnapshotResult(Entity attackerEntity, Entity sourceEntity, LivingEntity target) {
         DamageSnapshot snapshot = null;
-        int arcaneLevel = 0;
-
-        if (attackerEntity instanceof Player player) {
-            var statCap = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
-            if (statCap != null) {
-                arcaneLevel = statCap.getArcane();
-            }
-        }
 
         if (sourceEntity != null && sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).isPresent()) {
             var cap = sourceEntity.getCapability(ProjectileStatsProvider.CAPABILITY).orElse(null);
@@ -67,7 +50,7 @@ public class GenesisCombatEvents {
             ItemStack weapon = player.getMainHandItem();
             if (WeaponDataManager.hasData(weapon.getItem())) {
                 if (weapon.getItem() instanceof BowItem || weapon.getItem() instanceof CrossbowItem) {
-                    return new SnapshotResult(null, arcaneLevel);
+                    return null;
                 }
 
                 float enchantBonus = EnchantmentHelper.getDamageBonus(weapon, target.getMobType());
@@ -82,38 +65,32 @@ public class GenesisCombatEvents {
                 DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
 
                 if (weapon.getItem() instanceof CatalystItem) {
-                    snapshot = new DamageSnapshot(
-                            rawSnapshot.physical(),
-                            0, 0, 0, 0, 0,
-                            rawSnapshot.destruction()
-                    );
+                    snapshot = new DamageSnapshot(rawSnapshot.physical(), 0, 0, 0, 0, 0, rawSnapshot.destruction());
                 } else {
                     snapshot = rawSnapshot;
                 }
             }
         }
 
-        return new SnapshotResult(snapshot, arcaneLevel);
+        return snapshot;
     }
 
     @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
-        if (event.getSource().is(DamageTypes.SONIC_BOOM)) {
-            return;
-        }
+        if (event.getSource().is(DamageTypes.SONIC_BOOM)) return;
+
         LivingEntity target = event.getEntity();
         Entity attackerEntity = event.getSource().getEntity();
         Entity sourceEntity = event.getSource().getDirectEntity();
 
-        SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
-        DamageSnapshot snapshot = result.snapshot();
+        DamageSnapshot snapshot = getSnapshot(attackerEntity, sourceEntity, target);
 
         if (snapshot != null && !snapshot.isEmpty()) {
             if (snapshot.physical() > 0) {
                 event.setAmount(snapshot.physical());
             }
         }
-        else if (attackerEntity instanceof Player player) {
+        else if (attackerEntity instanceof Player player && !event.getSource().isIndirect()) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 float strengthScale = StatApplier.calculateScaling(stats.getStrength());
                 event.setAmount(event.getAmount() * (1.0f + strengthScale));
@@ -136,91 +113,47 @@ public class GenesisCombatEvents {
 
     @SubscribeEvent
     public static void onLivingDamage(LivingDamageEvent event) {
-        if (event.getSource().is(DamageTypes.SONIC_BOOM)) {
-            return;
-        }
-
+        if (event.getSource().is(DamageTypes.SONIC_BOOM)) return;
         if (event.getAmount() <= 0) return;
+
         LivingEntity target = event.getEntity();
         Entity sourceEntity = event.getSource().getDirectEntity();
         Entity attackerEntity = event.getSource().getEntity();
 
         float finalDamage = event.getAmount();
 
-        float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(attackerEntity);
+        DamageSnapshot snapshot = getSnapshot(attackerEntity, sourceEntity, target);
 
-        if (attackerEntity != null && attackerEntity.getPersistentData().contains("GenesisStarSeaBuffEndTick")) {
-            long endTick = attackerEntity.getPersistentData().getLong("GenesisStarSeaBuffEndTick");
-            if (target.level().getGameTime() <= endTick) {
-                magicMultiplier *= 1.5F;
-            } else {
-                attackerEntity.getPersistentData().remove("GenesisStarSeaBuffEndTick");
-            }
-        }
+        if (snapshot != null && !snapshot.isEmpty() && attackerEntity instanceof LivingEntity caster) {
 
-        if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && magicMultiplier > 1.0F) {
-            finalDamage *= magicMultiplier;
-        }
-
-        SnapshotResult result = getSnapshotResult(attackerEntity, sourceEntity, target);
-        DamageSnapshot snapshot = result.snapshot();
-        int arcaneLevel = result.arcaneLevel();
-
-        if (snapshot != null && !snapshot.isEmpty()) {
-            float procChance = 0.10f + (arcaneLevel * 0.005f);
-
-            if (snapshot.magic() > 0) {
-                float baseMagicDmg = snapshot.magic() * magicMultiplier;
-                finalDamage += calculateMagicDamage(target, baseMagicDmg);
-            }
-
-            if (snapshot.fire() > 0) {
-                float fireDmg = calculateFireDamage(target, snapshot.fire());
-                finalDamage += fireDmg;
-                if (fireDmg > 0 && target.level().random.nextFloat() < procChance) {
-                    target.setSecondsOnFire(3);
+            float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(caster);
+            if (caster.getPersistentData().contains("GenesisStarSeaBuffEndTick")) {
+                long endTick = caster.getPersistentData().getLong("GenesisStarSeaBuffEndTick");
+                if (target.level().getGameTime() <= endTick) {
+                    magicMultiplier *= 1.5F;
+                } else {
+                    caster.getPersistentData().remove("GenesisStarSeaBuffEndTick");
                 }
             }
 
-            if (snapshot.lightning() > 0) {
-                float lightDmg = calculateLightningDamage(target, snapshot.lightning());
-                finalDamage += lightDmg;
-                if (target.level().random.nextFloat() < procChance) {
-                    target.addEffect(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 360, 0));
+            if (event.getSource().is(DamageTypeTags.WITCH_RESISTANT_TO) && magicMultiplier > 1.0F) {
+                finalDamage *= magicMultiplier;
+            }
+
+            float summonMultiplier = 1.0f;
+            if (caster instanceof Mob mob && mob instanceof ISummonable) {
+                if (mob.getPersistentData().contains("GenesisSummonDamageMultiplier")) {
+                    summonMultiplier += (float) mob.getPersistentData().getDouble("GenesisSummonDamageMultiplier");
                 }
             }
 
-            if (snapshot.frost() > 0) {
-                float frostDmg = calculateFrostDamage(target, snapshot.frost());
-                finalDamage += frostDmg;
-                if (frostDmg > 0 && target.level().random.nextFloat() < procChance) {
-                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
-                }
+            float elementalDmg = GenesisDamageCalculator.calculateElementalDamageAndApplyEffects(target, caster, snapshot, magicMultiplier, summonMultiplier);
+            finalDamage += elementalDmg;
+
+        } else {
+            if (event.getSource().is(GenesisDamageTypes.DESTRUCTION)) {
+                GenesisDamageCalculator.applyDestructionEffect(target, event.getAmount());
             }
-
-            if (snapshot.holy() > 0) {
-                finalDamage += calculateHolyDamage(target, snapshot.holy());
-            }
-
-            if (snapshot.destruction() > 0) {
-                float destDmg = snapshot.destruction();
-                applyDestructionEffect(target, destDmg);
-                finalDamage += destDmg;
-            }
-        }
-
-        if (attackerEntity instanceof Mob mob && mob instanceof ISummonable) {
-            if (mob.getPersistentData().contains("GenesisSummonDamageMultiplier")) {
-                double multiplier = mob.getPersistentData().getDouble("GenesisSummonDamageMultiplier");
-
-                if (snapshot != null && !snapshot.isEmpty()) {
-                    finalDamage *= (1.0f + (float)multiplier);
-                }
-            }
-        }
-
-        if (event.getSource().is(GenesisDamageTypes.DESTRUCTION)) {
-            applyDestructionEffect(target, event.getAmount());
         }
 
         event.setAmount(finalDamage);
@@ -228,133 +161,6 @@ public class GenesisCombatEvents {
 
     @SubscribeEvent
     public static void onTargetDeath(LivingDeathEvent event) {
-        removeDestructionEffect(event.getEntity());
-    }
-
-    //Helper Methods
-
-    private static float calculateHolyDamage(LivingEntity target, float damage) {
-        float result = damage;
-
-        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.HOLY_PROTECTION.get(), target);
-        if (prot > 0) {
-            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            result *= reduction;
-        }
-
-        AttributeInstance holyDef = target.getAttribute(GenesisAttributes.HOLY_DEFENSE.get());
-        if (holyDef != null && holyDef.getValue() > 0) {
-            float reductionMultiplier = (float) (1.0 - (holyDef.getValue() / (holyDef.getValue() + 30.0)));
-            result *= reductionMultiplier;
-        }
-        return (result < 0.5f && damage > 0) ? 0.5f : result;
-    }
-
-    private static float calculateMagicDamage(LivingEntity target, float damage) {
-        float result = damage;
-        if (target.isInvertedHealAndHarm()) return 0;
-
-        if (target.getType() == net.minecraft.world.entity.EntityType.WITCH) {
-            result *= 0.15f;
-        }
-
-        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.MAGIC_PROTECTION.get(), target);
-        if (prot > 0) {
-            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            result *= reduction;
-        }
-
-        AttributeInstance magicDef = target.getAttribute(GenesisAttributes.MAGIC_DEFENSE.get());
-        if (magicDef != null && magicDef.getValue() > 0) {
-            float multiplier = (float) (1.0 - (magicDef.getValue() / (magicDef.getValue() + 30.0)));
-            result *= multiplier;
-        }
-        return Math.max(result, (damage > 0 ? 0.5f : 0));
-    }
-
-    private static float calculateFireDamage(LivingEntity target, float damage) {
-        if (target.hasEffect(MobEffects.FIRE_RESISTANCE)) return 0;
-        float result = damage;
-        int prot = EnchantmentHelper.getEnchantmentLevel(Enchantments.FIRE_PROTECTION, target);
-        if (prot > 0) {
-            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            result *= reduction;
-        }
-
-        AttributeInstance fireDef = target.getAttribute(GenesisAttributes.FIRE_DEFENSE.get());
-        if (fireDef != null && fireDef.getValue() > 0) {
-            float multiplier = (float) (1.0 - (fireDef.getValue() / (fireDef.getValue() + 30.0)));
-            result *= multiplier;
-        }
-        return Math.max(result, (damage > 0 ? 0.5f : 0));
-    }
-
-    private static float calculateFrostDamage(LivingEntity target, float damage) {
-        if (target.hasEffect(GenesisEffects.COLD_RESISTANCE.get())) return 0;
-
-        float result = damage;
-        if (target.getType().is(net.minecraft.tags.EntityTypeTags.FREEZE_IMMUNE_ENTITY_TYPES)) {
-            result *= 0.5f;
-        }
-
-        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.FROSTBITE_PROTECTION.get(), target);
-        if (prot > 0) {
-            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            result *= reduction;
-        }
-
-        AttributeInstance frostDef = target.getAttribute(GenesisAttributes.FROST_DEFENSE.get());
-        if (frostDef != null && frostDef.getValue() > 0) {
-            float multiplier = (float) (1.0 - (frostDef.getValue() / (frostDef.getValue() + 30.0)));
-            result *= multiplier;
-        }
-        return Math.max(result, (damage > 0 ? 0.5f : 0));
-    }
-
-    private static float calculateLightningDamage(LivingEntity target, float damage) {
-        if (target.hasEffect(GenesisEffects.LIGHTNING_RESISTANCE.get())) return 0;
-
-        float result = damage;
-        if (target.isInWaterOrRain()) {
-            result *= 1.5f;
-        }
-
-        int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.ELECTRIC_PROTECTION.get(), target);
-        if (prot > 0) {
-            float reduction = 1.0f - (Math.min(prot, 10) * 0.08f);
-            result *= reduction;
-        }
-
-        AttributeInstance lightDef = target.getAttribute(GenesisAttributes.LIGHTNING_DEFENSE.get());
-        if (lightDef != null && lightDef.getValue() > 0) {
-            float multiplier = (float) (1.0 - (lightDef.getValue() / (lightDef.getValue() + 30.0)));
-            result *= multiplier;
-        }
-        return Math.max(result, (damage > 0 ? 0.5f : 0));
-    }
-
-    private static void applyDestructionEffect(LivingEntity entity, float damageAmount) {
-        AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
-        if (maxHealthAttr == null) return;
-
-        double currentModifierValue = 0;
-        AttributeModifier existingMod = maxHealthAttr.getModifier(DESTRUCTION_HP_MOD_UUID);
-        if (existingMod != null) {
-            currentModifierValue = existingMod.getAmount();
-            maxHealthAttr.removeModifier(DESTRUCTION_HP_MOD_UUID);
-        }
-
-        double newReductionValue = currentModifierValue - damageAmount;
-        if (maxHealthAttr.getBaseValue() + newReductionValue < 1.0D) newReductionValue = -maxHealthAttr.getBaseValue() + 1.0D;
-
-        maxHealthAttr.addPermanentModifier(new AttributeModifier(DESTRUCTION_HP_MOD_UUID, "Destruction Max HP Reduction", newReductionValue, AttributeModifier.Operation.ADDITION));
-        if (entity instanceof ServerPlayer sp) sp.getHealth();
-        entity.getPersistentData().putLong("GenesisDestructionEndTick", entity.level().getGameTime() + 144000L);
-    }
-
-    public static void removeDestructionEffect(LivingEntity entity) {
-        AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
-        if (maxHealthAttr != null) maxHealthAttr.removeModifier(DESTRUCTION_HP_MOD_UUID);
-        entity.getPersistentData().remove("GenesisDestructionEndTick");
+        GenesisDamageCalculator.removeDestructionEffect(event.getEntity());
     }
 }

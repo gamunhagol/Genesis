@@ -17,18 +17,65 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+
 import java.util.UUID;
 
-public class SpellDamageCalculator {
+public class GenesisDamageCalculator {
     public static final UUID DESTRUCTION_HP_MOD_UUID = UUID.fromString("AD1E5150-9000-0000-0000-000000090010");
 
-    public static void applyDamage(LivingEntity target, LivingEntity caster, DamageSnapshot snapshot) {
-        if (target == null || caster == null || snapshot == null || snapshot.isEmpty()) return;
+    public static float calculateElementalDamageAndApplyEffects(LivingEntity target, LivingEntity caster, DamageSnapshot snapshot, float magicMultiplier, float summonMultiplier) {
+        float totalElemental = 0.0f;
 
         int arcaneLevel = WeaponRequirementHelper.getEntityStat(caster, StatType.ARCANE);
         float procChance = 0.10f + (arcaneLevel * 0.005f);
 
+        if (snapshot.magic() > 0) {
+            totalElemental += calculateMagicDamage(target, snapshot.magic() * magicMultiplier * summonMultiplier);
+        }
+        if (snapshot.fire() > 0) {
+            float fireDmg = calculateFireDamage(target, snapshot.fire() * summonMultiplier);
+            totalElemental += fireDmg;
+            if (fireDmg > 0 && target.level().random.nextFloat() < procChance) {
+                target.setSecondsOnFire(3);
+            }
+        }
+        if (snapshot.lightning() > 0) {
+            float lightDmg = calculateLightningDamage(target, snapshot.lightning() * summonMultiplier);
+            totalElemental += lightDmg;
+            if (lightDmg > 0 && target.level().random.nextFloat() < procChance) {
+                target.addEffect(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 360, 0));
+            }
+        }
+        if (snapshot.frost() > 0) {
+            float frostDmg = calculateFrostDamage(target, snapshot.frost() * summonMultiplier);
+            totalElemental += frostDmg;
+            if (frostDmg > 0 && target.level().random.nextFloat() < procChance) {
+                target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
+            }
+        }
+        if (snapshot.holy() > 0) {
+            totalElemental += calculateHolyDamage(target, snapshot.holy() * summonMultiplier);
+        }
+        if (snapshot.destruction() > 0) {
+            float destDmg = snapshot.destruction() * summonMultiplier;
+            applyDestructionEffect(target, destDmg);
+            totalElemental += destDmg;
+        }
+
+        return totalElemental;
+    }
+
+    public static void applySnapshotDamage(LivingEntity target, LivingEntity caster, DamageSnapshot snapshot) {
+        if (target == null || caster == null || snapshot == null || snapshot.isEmpty()) return;
+
+        target.getPersistentData().putBoolean("GenesisSkipSnapshot", true);
+
         float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(caster);
+        if (caster.getPersistentData().contains("GenesisStarSeaBuffEndTick")) {
+            if (target.level().getGameTime() <= caster.getPersistentData().getLong("GenesisStarSeaBuffEndTick")) {
+                magicMultiplier *= 1.5F;
+            }
+        }
 
         float summonMultiplier = 1.0f;
         if (caster instanceof Mob mob && mob instanceof ISummonable) {
@@ -37,57 +84,16 @@ public class SpellDamageCalculator {
             }
         }
 
-        if (snapshot.magic() > 0) {
-            float magicDmg = calculateMagicDamage(target, snapshot.magic() * magicMultiplier * summonMultiplier);
-            if (magicDmg > 0) target.hurt(caster.damageSources().indirectMagic(caster, caster), magicDmg);
+        float elementalTotal = calculateElementalDamageAndApplyEffects(target, caster, snapshot, magicMultiplier, summonMultiplier);
+        float physicalTotal = snapshot.physical() * summonMultiplier;
+        float grandTotal = physicalTotal + elementalTotal;
+
+        if (grandTotal > 0) {
+            target.hurt(caster.damageSources().indirectMagic(caster, caster), grandTotal);
         }
 
-        if (snapshot.fire() > 0) {
-            float fireDmg = calculateFireDamage(target, snapshot.fire() * summonMultiplier);
-            if (fireDmg > 0) {
-                target.hurt(caster.damageSources().inFire(), fireDmg);
-                if (target.level().random.nextFloat() < procChance) {
-                    target.setSecondsOnFire(3);
-                }
-            }
-        }
-
-        if (snapshot.lightning() > 0) {
-            float lightDmg = calculateLightningDamage(target, snapshot.lightning() * summonMultiplier);
-            if (lightDmg > 0) {
-                target.hurt(caster.damageSources().lightningBolt(), lightDmg);
-                if (target.level().random.nextFloat() < procChance) {
-                    target.addEffect(new MobEffectInstance(GenesisEffects.ELECTRIC_SHOCK.get(), 360, 0));
-                }
-            }
-        }
-
-        if (snapshot.frost() > 0) {
-            float frostDmg = calculateFrostDamage(target, snapshot.frost() * summonMultiplier);
-            if (frostDmg > 0) {
-                target.hurt(caster.damageSources().freeze(), frostDmg);
-                if (target.level().random.nextFloat() < procChance) {
-                    target.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 0));
-                }
-            }
-        }
-
-        if (snapshot.holy() > 0) {
-            float holyDmg = calculateHolyDamage(target, snapshot.holy() * summonMultiplier);
-            if (holyDmg > 0) target.hurt(GenesisDamageTypes.getSource(target.level(), GenesisDamageTypes.HOLY, caster), holyDmg);
-        }
-
-        if (snapshot.physical() > 0) {
-            target.hurt(caster.damageSources().mobAttack(caster), snapshot.physical() * summonMultiplier);
-        }
-
-        if (snapshot.destruction() > 0) {
-            float destDmg = snapshot.destruction() * summonMultiplier;
-            applyDestructionEffect(target, destDmg);
-            target.hurt(GenesisDamageTypes.getSource(target.level(), GenesisDamageTypes.DESTRUCTION, caster), destDmg);
-        }
+        target.getPersistentData().remove("GenesisSkipSnapshot");
     }
-
 
     private static float calculateMagicDamage(LivingEntity target, float damage) {
         float result = damage;
@@ -159,7 +165,7 @@ public class SpellDamageCalculator {
         return (result < 0.5f && damage > 0) ? 0.5f : result;
     }
 
-    private static void applyDestructionEffect(LivingEntity entity, float damageAmount) {
+    public static void applyDestructionEffect(LivingEntity entity, float damageAmount) {
         AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
         if (maxHealthAttr == null) return;
 
@@ -176,5 +182,11 @@ public class SpellDamageCalculator {
         maxHealthAttr.addPermanentModifier(new AttributeModifier(DESTRUCTION_HP_MOD_UUID, "Destruction Max HP Reduction", newReductionValue, AttributeModifier.Operation.ADDITION));
         if (entity instanceof ServerPlayer sp) sp.getHealth();
         entity.getPersistentData().putLong("GenesisDestructionEndTick", entity.level().getGameTime() + 144000L);
+    }
+
+    public static void removeDestructionEffect(LivingEntity entity) {
+        AttributeInstance maxHealthAttr = entity.getAttribute(Attributes.MAX_HEALTH);
+        if (maxHealthAttr != null) maxHealthAttr.removeModifier(DESTRUCTION_HP_MOD_UUID);
+        entity.getPersistentData().remove("GenesisDestructionEndTick");
     }
 }

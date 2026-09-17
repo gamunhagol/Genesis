@@ -1,6 +1,5 @@
 package com.gamunhagol.genesismod.events;
 
-import com.gamunhagol.genesismod.events.common.GenesisCombatEvents;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketActivateCustomTotem;
@@ -13,6 +12,8 @@ import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
+
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
@@ -204,7 +205,8 @@ public class GenesisForgeEvents {
                 if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
                     long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
                     if (player.level().getGameTime() >= endTick) {
-                        GenesisCombatEvents.removeDestructionEffect(player);
+
+                        GenesisDamageCalculator.removeDestructionEffect(player);
                     }
                 }
             }
