@@ -5,7 +5,7 @@ import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import com.gamunhagol.genesismod.world.entity.mob.SpellElderGuardianEntity;
+import com.gamunhagol.genesismod.world.entity.mob.summon.SpellElderGuardianEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 

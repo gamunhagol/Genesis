@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities; // 엔티티 레지스트리 경로에 맞게 수정
-import com.gamunhagol.genesismod.world.entity.mob.SpellGuardianEntity;
+import com.gamunhagol.genesismod.world.entity.mob.summon.SpellGuardianEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 

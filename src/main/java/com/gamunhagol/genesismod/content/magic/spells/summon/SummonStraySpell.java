@@ -3,7 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.summon;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import com.gamunhagol.genesismod.world.entity.mob.SummonedStrayEntity;
+import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedStrayEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.Mob;

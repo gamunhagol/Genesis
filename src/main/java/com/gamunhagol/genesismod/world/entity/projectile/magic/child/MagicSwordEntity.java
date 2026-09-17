@@ -106,11 +106,9 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         float currentYaw = owner.getYRot();
         float yawRad = currentYaw * Mth.DEG_TO_RAD;
 
-        // 시전자 시선의 좌우 직교 벡터 계산
         double rightX = -Math.cos(yawRad);
         double rightZ = -Math.sin(yawRad);
 
-        // 시전자 기준 상대 좌표 갱신 (좌우 분산 + 포물선 높이)
         double targetX = owner.getX() + (rightX * this.sideOffset);
         double targetY = owner.getY() + owner.getBbHeight() + this.heightOffset;
         double targetZ = owner.getZ() + (rightZ * this.sideOffset);
@@ -120,14 +118,12 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         this.yo = targetY;
         this.zo = targetZ;
 
-        // 대기 중 시전자와 동일한 시선(각도) 유지
         this.setYRot(currentYaw);
         this.setXRot(owner.getXRot());
         this.yRotO = this.getYRot();
         this.xRotO = this.getXRot();
         this.setDeltaMovement(Vec3.ZERO);
 
-        // 타겟 탐색
         if (this.lockedTarget == null || !this.lockedTarget.isAlive() || this.lockedTarget.isRemoved()) {
             List<LivingEntity> targets = this.level().getEntitiesOfClass(
                     LivingEntity.class,
@@ -140,7 +136,6 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
                     .orElse(null);
         }
 
-        // 타겟 포착 시 엇박자 발사
         if (this.lockedTarget != null) {
             if (this.launchDelayTicks > 0) {
                 this.launchDelayTicks--;

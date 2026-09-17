@@ -29,6 +29,6 @@ public class SeaOfStarsEntity extends AbstractMagicDomainEntity {
 
     @Override
     public float getMagicDamageMultiplier() {
-        return 1.30F; // 30% 증폭
+        return 1.30F;
     }
 }

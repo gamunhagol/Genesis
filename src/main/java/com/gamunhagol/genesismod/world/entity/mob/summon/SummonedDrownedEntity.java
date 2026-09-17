@@ -1,21 +1,18 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.mob.summon;
 
-import com.gamunhagol.genesismod.world.entity.ai.GreatBowAttackGoal;
 import com.gamunhagol.genesismod.world.entity.ai.SummonedAIGoals;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
 import com.gamunhagol.genesismod.world.entity.base.SummonHelper;
-import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.*;
+import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,51 +20,32 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SummonedSkeletonEntity extends Skeleton implements ISummonable {
+public class SummonedDrownedEntity extends Drowned implements ISummonable {
 
     private UUID ownerUUID;
     private final float upkeepCost = 0.0f;
 
-    public SummonedSkeletonEntity(EntityType<? extends Skeleton> type, Level level) {
+    public SummonedDrownedEntity(EntityType<? extends Drowned> type, Level level) {
         super(type, level);
         this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(0, new FloatGoal(this));
-        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
+        super.registerGoals();
+
+        List<Goal> targetsToRemove = new ArrayList<>();
+        this.targetSelector.getAvailableGoals().forEach(wrappedGoal -> targetsToRemove.add(wrappedGoal.getGoal()));
+        for (Goal goal : targetsToRemove) {
+            this.targetSelector.removeGoal(goal);
+        }
+
         this.goalSelector.addGoal(6, new SummonedAIGoals.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
 
         this.targetSelector.addGoal(1, new SummonedAIGoals.OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new SummonedAIGoals.OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,
                 (target) -> !(target instanceof ISummonable)));
-    }
-
-    @Override
-    public void reassessWeaponGoal() {
-        super.reassessWeaponGoal();
-
-        if (this.level() != null && !this.level().isClientSide) {
-            ItemStack mainHandItem = this.getMainHandItem();
-
-            if (mainHandItem.getItem() instanceof GreatBowItem) {
-                List<Goal> toRemove = new ArrayList<>();
-                this.goalSelector.getAvailableGoals().forEach(wrappedGoal -> {
-                    Goal goal = wrappedGoal.getGoal();
-                    if (goal instanceof MeleeAttackGoal || goal instanceof RangedBowAttackGoal) {
-                        toRemove.add(goal);
-                    }
-                });
-
-                for (Goal goal : toRemove) {
-                    this.goalSelector.removeGoal(goal);
-                }
-
-                this.goalSelector.addGoal(4, new GreatBowAttackGoal<SummonedSkeletonEntity>(this, 1.0D, 25.0F));
-            }
-        }
     }
 
     @Override
@@ -81,13 +59,19 @@ public class SummonedSkeletonEntity extends Skeleton implements ISummonable {
 
     @Nullable
     @Override
-    public UUID getOwnerUUID() { return this.ownerUUID; }
+    public UUID getOwnerUUID() {
+        return this.ownerUUID;
+    }
 
     @Override
-    public void setOwnerUUID(@Nullable UUID uuid) { this.ownerUUID = uuid; }
+    public void setOwnerUUID(@Nullable UUID uuid) {
+        this.ownerUUID = uuid;
+    }
 
     @Override
-    public float getUpkeepCost() { return this.upkeepCost; }
+    public float getUpkeepCost() {
+        return this.upkeepCost;
+    }
 
     @Override
     public void addAdditionalSaveData(CompoundTag compound) {

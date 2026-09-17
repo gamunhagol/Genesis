@@ -21,9 +21,9 @@ import net.minecraft.world.phys.Vec3;
 import java.util.List;
 
 public class SupernovaEntity extends MagicEntity implements ItemSupplier {
-    protected int flightTicks = 140;      // 7초
-    protected int decelerateTicks = 200;   // 10초 (3초간 감속)
-    protected int maxLifespanTicks = 300;  // 15초 (5초 정지 후 만료)
+    protected int flightTicks = 140;
+    protected int decelerateTicks = 200;
+    protected int maxLifespanTicks = 300;
 
     protected float contactExplosionPower = 3.0F;
     protected float apexExplosionPower = 10.0F;
@@ -40,7 +40,6 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
         super(GenesisEntities.SUPERNOVA.get(), level, owner, snapshot);
         this.setNoGravity(true);
         this.setMaxLifeTicks(this.maxLifespanTicks + 10);
-        // 서버에서 초기 방향과 속도를 모션 벡터로 설정 (스폰 패킷을 통해 클라이언트에 전달됨)
         this.setDeltaMovement(direction.normalize().scale(this.baseSpeed));
         this.hasImpulse = true;
     }
@@ -54,10 +53,8 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
     public void tick() {
         super.tick();
 
-        // 1. 위상별 속도 조절 (클라/서버 모두 현재 deltaMovement를 바탕으로 연산)
         handleMovementPhases();
 
-        // 2. 서버 전용 판정
         if (!this.level().isClientSide) {
             HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
             if (hitresult.getType() != HitResult.Type.MISS) {
@@ -74,8 +71,6 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
                 return;
             }
         }
-
-        // 3. 실제 좌표 이동 (클라/서버 동기화)
         Vec3 motion = this.getDeltaMovement();
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
         this.checkInsideBlocks();
@@ -85,12 +80,10 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
         Vec3 currentMotion = this.getDeltaMovement();
 
         if (this.tickCount <= this.flightTicks) {
-            // 0 ~ 7초: 등속 유지 (모션 길이가 baseSpeed보다 작아지지 않도록 방향 유지)
             if (currentMotion.lengthSqr() > 1.0E-6D) {
                 this.setDeltaMovement(currentMotion.normalize().scale(this.baseSpeed));
             }
         } else if (this.tickCount <= this.decelerateTicks) {
-            // 7 ~ 10초: 3초간 선형 감속
             float progress = (float) (this.tickCount - this.flightTicks) / (this.decelerateTicks - this.flightTicks);
             double currentSpeed = this.baseSpeed * Math.max(0.0D, 1.0D - progress);
 
@@ -100,7 +93,6 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
                 this.setDeltaMovement(Vec3.ZERO);
             }
         } else {
-            // 10 ~ 15초: 완전 정지
             this.setDeltaMovement(Vec3.ZERO);
         }
     }

@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.mob.summon;
 
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;

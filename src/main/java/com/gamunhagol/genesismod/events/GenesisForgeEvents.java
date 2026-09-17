@@ -14,7 +14,7 @@ import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
-import com.gamunhagol.genesismod.world.entity.mob.SummonedZombieEntity;
+import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;

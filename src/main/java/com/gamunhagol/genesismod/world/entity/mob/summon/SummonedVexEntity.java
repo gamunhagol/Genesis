@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.mob.summon;
 
 import com.gamunhagol.genesismod.world.entity.ai.SummonedAIGoals;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
@@ -10,8 +10,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Husk;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Vex;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SummonedHuskEntity extends Husk implements ISummonable {
+public class SummonedVexEntity extends Vex implements ISummonable {
 
     private UUID ownerUUID;
-    private final float upkeepCost = 0.0f;
+    private final float upkeepCost = 0.0001f;
 
-    public SummonedHuskEntity(EntityType<? extends Husk> type, Level level) {
+    public SummonedVexEntity(EntityType<? extends Vex> type, Level level) {
         super(type, level);
         this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
@@ -39,8 +39,6 @@ public class SummonedHuskEntity extends Husk implements ISummonable {
         for (Goal goal : targetsToRemove) {
             this.targetSelector.removeGoal(goal);
         }
-
-        this.goalSelector.addGoal(6, new SummonedAIGoals.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
 
         this.targetSelector.addGoal(1, new SummonedAIGoals.OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new SummonedAIGoals.OwnerHurtTargetGoal(this));

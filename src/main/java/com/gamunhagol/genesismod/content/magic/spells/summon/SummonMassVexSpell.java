@@ -4,7 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import com.gamunhagol.genesismod.world.entity.mob.SummonedVexEntity;
+import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedVexEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;

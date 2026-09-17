@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.mob.summon;
 
 import com.gamunhagol.genesismod.world.entity.ai.SummonedAIGoals;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
@@ -7,41 +7,33 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.Goal;
+import net.minecraft.world.entity.ai.goal.FloatGoal;
+import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
-import net.minecraft.world.entity.monster.Stray;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
-public class SummonedStrayEntity extends Stray implements ISummonable {
+public class SummonedZombieEntity extends Zombie implements ISummonable {
 
     private UUID ownerUUID;
     private final float upkeepCost = 0.0f;
 
-    public SummonedStrayEntity(EntityType<? extends Stray> type, Level level) {
+    public SummonedZombieEntity(EntityType<? extends Zombie> type, Level level) {
         super(type, level);
-        this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
 
     @Override
     protected void registerGoals() {
-        super.registerGoals();
-
-        List<Goal> targetsToRemove = new ArrayList<>();
-        this.targetSelector.getAvailableGoals().forEach(wrappedGoal -> targetsToRemove.add(wrappedGoal.getGoal()));
-        for (Goal goal : targetsToRemove) {
-            this.targetSelector.removeGoal(goal);
-        }
-
+        this.goalSelector.addGoal(0, new FloatGoal(this));
+        this.goalSelector.addGoal(2, new MeleeAttackGoal(this, 1.0D, false));
+        this.goalSelector.addGoal(5, new WaterAvoidingRandomStrollGoal(this, 1.0D));
         this.goalSelector.addGoal(6, new SummonedAIGoals.FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
-
         this.targetSelector.addGoal(1, new SummonedAIGoals.OwnerHurtByTargetGoal(this));
         this.targetSelector.addGoal(2, new SummonedAIGoals.OwnerHurtTargetGoal(this));
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,

@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.world.entity.mob;
+package com.gamunhagol.genesismod.world.entity.mob.summon;
 
 import com.gamunhagol.genesismod.world.entity.ai.SummonedAIGoals;
 import com.gamunhagol.genesismod.world.entity.base.ISummonable;
@@ -10,8 +10,8 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.monster.Drowned;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Stray;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
@@ -20,12 +20,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class SummonedDrownedEntity extends Drowned implements ISummonable {
+public class SummonedStrayEntity extends Stray implements ISummonable {
 
     private UUID ownerUUID;
     private final float upkeepCost = 0.0f;
 
-    public SummonedDrownedEntity(EntityType<? extends Drowned> type, Level level) {
+    public SummonedStrayEntity(EntityType<? extends Stray> type, Level level) {
         super(type, level);
         this.getAttribute(Attributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
