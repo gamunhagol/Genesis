@@ -128,23 +128,15 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
 
     private void handleCollision(Entity hitEntity) {
         if (hitEntity instanceof LivingEntity target && hitEntity != this.getOwner()) {
-            applyDirectElementalDamage(target);
+            Entity owner = this.getOwner();
+            this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
+                cap.setSnapshot(this.damageSnapshot);
+            });
+            target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
         }
 
         detonate(this.contactExplosionPower, 10.0F);
         this.discard();
-    }
-
-    private void applyDirectElementalDamage(LivingEntity target) {
-        Entity owner = this.getOwner();
-
-        if (this.damageSnapshot.physical() > 0) target.hurt(this.damageSources().indirectMagic(this, owner), this.damageSnapshot.physical());
-        if (this.damageSnapshot.magic() > 0) target.hurt(this.damageSources().indirectMagic(this, owner), this.damageSnapshot.magic());
-        if (this.damageSnapshot.fire() > 0) target.hurt(this.damageSources().inFire(), this.damageSnapshot.fire());
-        if (this.damageSnapshot.lightning() > 0) target.hurt(this.damageSources().lightningBolt(), this.damageSnapshot.lightning());
-        if (this.damageSnapshot.frost() > 0) target.hurt(this.damageSources().freeze(), this.damageSnapshot.frost());
-        if (this.damageSnapshot.holy() > 0) target.hurt(this.damageSources().indirectMagic(this, owner), this.damageSnapshot.holy());
-        if (this.damageSnapshot.destruction() > 0) target.hurt(this.damageSources().indirectMagic(this, owner), this.damageSnapshot.destruction());
     }
 
     protected void detonate(float explosionPower, float baseVoidDamage) {

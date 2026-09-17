@@ -120,9 +120,15 @@ public class StarGaspEntity extends MagicEntity implements ItemSupplier {
                 e -> e.isAlive() && e != owner
         );
 
-        for (LivingEntity target : targets) {
-            target.hurt(this.damageSources().indirectMagic(this, owner), this.damageSnapshot.magic());
-            target.hurt(this.damageSources().fellOutOfWorld(), 1.5F);
+        if (!targets.isEmpty()) {
+            this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
+                cap.setSnapshot(this.damageSnapshot);
+            });
+
+            for (LivingEntity target : targets) {
+                target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
+                target.hurt(this.damageSources().fellOutOfWorld(), 1.5F);
+            }
         }
     }
 
