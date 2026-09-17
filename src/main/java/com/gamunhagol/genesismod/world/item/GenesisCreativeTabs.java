@@ -490,6 +490,8 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.FALLING_STAR_SEA.get());
                 output.accept(GenesisItems.DIVIDED.get());
+                output.accept(GenesisItems.STAR_GASP.get());
+                output.accept(GenesisItems.SUPERNOVA.get());
 
                 output.accept(GenesisItems.SUMMON_ZOMBIE.get());
                 output.accept(GenesisItems.SUMMON_HUSK.get());

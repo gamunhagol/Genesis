@@ -665,6 +665,10 @@ public class GenesisItems {
             () -> new SpellBookItem("falling_star_sea", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
     public static final RegistryObject<Item> DIVIDED = ITEMS.register("divided",
             () -> new SpellBookItem("divided", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
+    public static final RegistryObject<Item> STAR_GASP = ITEMS.register("star_gasp",
+            () -> new SpellBookItem("star_gasp", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> SUPERNOVA = ITEMS.register("supernova",
+            () -> new SpellBookItem("supernova", new Item.Properties().stacksTo(1).rarity(Rarity.EPIC)));
 
 
 

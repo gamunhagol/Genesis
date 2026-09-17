@@ -169,6 +169,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SEA_OF_STARS);
         simpleItem(GenesisItems.FALLING_STAR_SEA);
         simpleItem(GenesisItems.DIVIDED);
+        simpleItem(GenesisItems.STAR_GASP);
+        simpleItem(GenesisItems.SUPERNOVA);
         simpleItem(GenesisItems.SUMMON_ZOMBIE);
         simpleItem(GenesisItems.SUMMON_HUSK);
         simpleItem(GenesisItems.SUMMON_DROWNED);

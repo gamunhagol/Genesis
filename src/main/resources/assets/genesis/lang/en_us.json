@@ -340,6 +340,8 @@
 
   "item.genesis.falling_star_sea": "Sea of Falling Stars",
   "item.genesis.divided": "Divided",
+  "item.genesis.star_gasp": "Star's Gasp",
+  "item.genesis.supernova": "Supernova",
 
   "item.genesis.summon_zombie": "Summon Zombie",
   "item.genesis.summon_husk": "Summon Husk",
@@ -910,6 +912,10 @@
   "spell.genesis.falling_star_sea.desc": "A dream of the end of an era.",
   "spell.genesis.divided": "Divided",
   "spell.genesis.divided.desc": "Split and separated, the form.",
+  "spell.genesis.star_gasp": "Star's Gasp",
+  "spell.genesis.star_gasp.desc": "Creates a small black hole.",
+  "spell.genesis.supernova": "Supernova",
+  "spell.genesis.supernova.desc": "Beginning and end, life and death, all begin from a single point.",
 
 
   "spell.genesis.summon_zombie": "Summon Zombie",

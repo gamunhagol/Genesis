@@ -59,6 +59,8 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<GrandFallingStarBullet>> GRAND_FALLING_STAR_BULLET;
 
     public static final RegistryObject<EntityType<DividedEntity>> DIVIDED;
+    public static final RegistryObject<EntityType<StarGaspEntity>> STAR_GASP;
+    public static final RegistryObject<EntityType<SupernovaEntity>> SUPERNOVA;
 
 
     static {
@@ -231,5 +233,15 @@ public class GenesisEntities {
                 EntityType.Builder.<DividedEntity>of(DividedEntity::new, MobCategory.MISC)
                         .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
                         .build("divided"));
+
+        STAR_GASP = ENTITY_TYPES.register("star_gasp", () ->
+                EntityType.Builder.<StarGaspEntity>of(StarGaspEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .build("star_gasp"));
+
+        SUPERNOVA = ENTITY_TYPES.register("supernova", () ->
+                EntityType.Builder.<SupernovaEntity>of(SupernovaEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .build("supernova"));
     }
 }

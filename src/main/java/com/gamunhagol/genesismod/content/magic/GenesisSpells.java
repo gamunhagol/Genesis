@@ -58,6 +58,8 @@ public class GenesisSpells {
 
     public static final AbstractSpell FALLING_STAR_SEA = register(new FallingStarSeaSpell());
     public static final AbstractSpell DIVIDED = register(new DividedSpell());
+    public static final AbstractSpell STAR_GASP = register(new StarGaspSpell());
+    public static final AbstractSpell SUPERNOVA = register(new SupernovaSpell());
 
 
     public static final AbstractSpell SUMMON_ZOMBIE = register(new SummonZombieSpell());
