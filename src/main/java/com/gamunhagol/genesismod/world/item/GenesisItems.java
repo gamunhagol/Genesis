@@ -714,6 +714,11 @@ public class GenesisItems {
     public static final RegistryObject<Item> ROCK_SPHERE = ITEMS.register("rock_sphere",
             () -> new SpellBookItem("rock_sphere", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> THROW_STONE = ITEMS.register("throw_stone",
+            () -> new SpellBookItem("throw_stone", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> PULL_ROCK = ITEMS.register("pull_rock",
+            () -> new SpellBookItem("pull_rock", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

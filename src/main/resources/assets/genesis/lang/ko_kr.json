@@ -368,6 +368,10 @@
   "item.genesis.conjure_stone_wall": "돌벽 생성",
   "item.genesis.rock_sphere": "암석구",
 
+  "item.genesis.throw_stone": "돌 투척",
+  "item.genesis.pull_rock": "암석 뽑기",
+
+
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
   "item.genesis.star_of_domination": "지배의 별",
@@ -959,14 +963,19 @@
 
 
   "spell.genesis.little_heal": "소회복",
-  "spell.genesis.little_heal.desc": "신앙으로 말미암아 치유를 기원하는 원초적인 기적",
+  "spell.genesis.little_heal.desc": "신앙으로 말미암아 치유를 기원하는 원초적인 기적.",
 
   "spell.genesis.conjure_stone": "돌 생성",
-  "spell.genesis.conjure_stone.desc": "바라보는 곳에 돌을 생성하는 간단한 기적",
+  "spell.genesis.conjure_stone.desc": "바라보는 곳에 돌을 생성하는 간단한 기적.",
   "spell.genesis.conjure_stone_wall": "돌벽 생성",
-  "spell.genesis.conjure_stone_wall.desc": "바라보는 곳에 벽을 생성하는 간단한 기적",
+  "spell.genesis.conjure_stone_wall.desc": "바라보는 곳에 벽을 생성하는 간단한 기적.",
   "spell.genesis.rock_sphere": "암석구",
-  "spell.genesis.rock_sphere.desc": "암석의 구를 생성하는 기적",
+  "spell.genesis.rock_sphere.desc": "암석의 구를 생성하는 기적.",
+
+  "spell.genesis.throw_stone": "돌 투척",
+  "spell.genesis.throw_stone.desc": "어린 수인이 돌을 던져 괴물을 잡고 왕이 되었다는 전승에서 내려온 기적.",
+  "spell.genesis.pull_rock": "암석 뽑기",
+  "spell.genesis.pull_rock.desc": "사내는 돌을 뽑아 성문을 막았고, 모두가 피신할 때까지 버텼다.",
 
 
 

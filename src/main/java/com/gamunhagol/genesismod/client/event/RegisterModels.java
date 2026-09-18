@@ -285,6 +285,10 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.SUPERNOVA.get(), ThrownItemRenderer::new);
 
 
+        event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.ROCK.get(), ThrownItemRenderer::new);
+
+
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);
         event.registerBlockEntityRenderer(GenesisBlockEntities.HERALD_STATUE_BE.get(), HeraldStatueRenderer::new);

@@ -516,6 +516,9 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.CONJURE_STONE.get());
                 output.accept(GenesisItems.CONJURE_STONE_WALL.get());
                 output.accept(GenesisItems.ROCK_SPHERE.get());
+
+                output.accept(GenesisItems.THROW_STONE.get());
+                output.accept(GenesisItems.PULL_ROCK.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

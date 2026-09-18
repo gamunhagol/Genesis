@@ -6,6 +6,8 @@ import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.PebbleEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -62,6 +64,10 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<DividedEntity>> DIVIDED;
     public static final RegistryObject<EntityType<StarGaspEntity>> STAR_GASP;
     public static final RegistryObject<EntityType<SupernovaEntity>> SUPERNOVA;
+
+
+    public static final RegistryObject<EntityType<PebbleEntity>> PEBBLE;
+    public static final RegistryObject<EntityType<RockEntity>> ROCK;
 
 
     static {
@@ -244,5 +250,16 @@ public class GenesisEntities {
                 EntityType.Builder.<SupernovaEntity>of(SupernovaEntity::new, MobCategory.MISC)
                         .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
                         .build("supernova"));
+
+
+        PEBBLE = ENTITY_TYPES.register("pebble", () ->
+                EntityType.Builder.<PebbleEntity>of(PebbleEntity::new, MobCategory.MISC)
+                        .sized(0.3F, 0.3F).clientTrackingRange(8).updateInterval(10)
+                        .build("pebble"));
+
+        ROCK = ENTITY_TYPES.register("rock", () ->
+                EntityType.Builder.<RockEntity>of(RockEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .build("rock"));
     }
 }
