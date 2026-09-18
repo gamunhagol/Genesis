@@ -1,4 +1,4 @@
-package com.gamunhagol.genesismod.content.magic.miracles;
+package com.gamunhagol.genesismod.content.magic.miracles.cure;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;

@@ -23,8 +23,8 @@ public abstract class AbstractMagicDomainEntity extends MagicEntity implements I
     public AbstractMagicDomainEntity(EntityType<? extends AbstractMagicDomainEntity> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.noPhysics = true; // 블록에 끼거나 밀리지 않음
-        this.maxLifeTicks = 1800; // 1분 30초 = 90초 * 20틱
+        this.noPhysics = true;
+        this.maxLifeTicks = 1800;
     }
 
     public AbstractMagicDomainEntity(EntityType<? extends AbstractMagicDomainEntity> entityType, Level level, LivingEntity owner, DamageSnapshot snapshot) {
@@ -61,7 +61,7 @@ public abstract class AbstractMagicDomainEntity extends MagicEntity implements I
     @Override
     public void tick() {
         super.tick();
-        this.setDeltaMovement(Vec3.ZERO); // 위치 제자리 고정
+        this.setDeltaMovement(Vec3.ZERO);
 
         if (this.level().isClientSide) {
             spawnFloorParticles();
@@ -110,7 +110,6 @@ public abstract class AbstractMagicDomainEntity extends MagicEntity implements I
     public static float getMultiplierAt(Entity entity) {
         if (entity == null || entity.level().isClientSide) return 1.0F;
 
-        // 시전자 발밑 3x3 범위 및 높이 판정
         AABB checkArea = new AABB(
                 entity.getX() - 1.5D, entity.getY() - 1.0D, entity.getZ() - 1.5D,
                 entity.getX() + 1.5D, entity.getY() + 5.0D, entity.getZ() + 1.5D

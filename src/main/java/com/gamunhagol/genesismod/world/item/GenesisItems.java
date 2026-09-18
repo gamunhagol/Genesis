@@ -707,6 +707,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> CONJURE_STONE = ITEMS.register("conjure_stone",
+            () -> new SpellBookItem("conjure_stone", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> CONJURE_STONE_WALL = ITEMS.register("conjure_stone_wall",
+            () -> new SpellBookItem("conjure_stone_wall", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ROCK_SPHERE = ITEMS.register("rock_sphere",
+            () -> new SpellBookItem("rock_sphere", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

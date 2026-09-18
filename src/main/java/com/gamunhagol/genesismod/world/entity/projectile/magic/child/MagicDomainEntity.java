@@ -29,6 +29,6 @@ public class MagicDomainEntity extends AbstractMagicDomainEntity {
 
     @Override
     public float getMagicDamageMultiplier() {
-        return 1.15F; // 15% 증폭
+        return 1.15F;
     }
 }

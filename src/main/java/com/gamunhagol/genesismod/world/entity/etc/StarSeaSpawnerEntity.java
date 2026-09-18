@@ -65,7 +65,6 @@ public class StarSeaSpawnerEntity extends Entity {
     }
 
     private void spawnSmallStar(ServerLevel level, LivingEntity owner) {
-        // 원래 크기인 12x12 범위로 복구
         double offsetX = (this.random.nextDouble() - 0.5D) * 12.0D;
         double offsetZ = (this.random.nextDouble() - 0.5D) * 12.0D;
         Vec3 spawnPos = this.position().add(offsetX, 0, offsetZ);

@@ -363,6 +363,12 @@
 
   "item.genesis.little_heal": "Little Heal",
 
+  "item.genesis.conjure_stone": "Create Stone",
+  "item.genesis.conjure_stone_wall": "Create Stone Wall",
+  "item.genesis.rock_sphere": "Stone Sphere",
+
+
+
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
   "item.genesis.star_of_domination": "Star of Domination",
 
@@ -950,11 +956,24 @@
   "spell.genesis.summon_mass_vex": "Summon Vex Swarm",
   "spell.genesis.summon_mass_vex.desc": "Summons a swarm of vexes.",
 
-  "skill.genesis.magic_charge": "Charge",
+
 
 
   "spell.genesis.little_heal": "Minor Heal",
   "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
+
+  "spell.genesis.conjure_stone": "Conjure Stone",
+  "spell.genesis.conjure_stone.desc": "A simple miracle that creates stone where you look.",
+  "spell.genesis.conjure_stone_wall": "Conjure Stone Wall",
+  "spell.genesis.conjure_stone_wall.desc": "A simple miracle that creates a wall where you look.",
+  "spell.genesis.rock_sphere": "Rock Sphere",
+  "spell.genesis.rock_sphere.desc": "A miracle that creates a sphere of rock.",
+
+
+
+
+  "skill.genesis.magic_charge": "Charge",
+
 
 
   "biome.genesis.dust_in_the_crevices": "Dust in the Crevices",

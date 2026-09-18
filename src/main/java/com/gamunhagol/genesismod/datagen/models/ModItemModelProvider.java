@@ -186,6 +186,9 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SUMMON_MASS_VEX);
         simpleItem(GenesisItems.SUMMON_WARDEN);
         simpleItem(GenesisItems.LITTLE_HEAL);
+        simpleItem(GenesisItems.CONJURE_STONE);
+        simpleItem(GenesisItems.CONJURE_STONE_WALL);
+        simpleItem(GenesisItems.ROCK_SPHERE);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

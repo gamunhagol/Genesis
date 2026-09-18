@@ -1,7 +1,10 @@
 package com.gamunhagol.genesismod.content.magic;
 
 
-import com.gamunhagol.genesismod.content.magic.miracles.HealMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.earth.ConjureStoneMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.earth.ConjureStoneWallMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.earth.RockSphereMiracle;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
 import com.gamunhagol.genesismod.content.magic.spells.operation.*;
 import com.gamunhagol.genesismod.content.magic.spells.sorcery.*;
@@ -80,6 +83,10 @@ public class GenesisSpells {
     public static final AbstractSpell SUMMON_MASS_VEX = register(new SummonMassVexSpell());
 
     public static final AbstractSpell LITTLE_HEAL = register(new HealMiracle());
+
+    public static final AbstractSpell CONJURE_STONE = register(new ConjureStoneMiracle());
+    public static final AbstractSpell CONJURE_STONE_WALL = register(new ConjureStoneWallMiracle());
+    public static final AbstractSpell ROCK_SPHERE = register(new RockSphereMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

@@ -51,7 +51,7 @@ public class ArrowBarrageSpawnerEntity extends Entity {
                 return;
             }
 
-            int spawnCount = this.random.nextInt(4); // 0, 1, 2, 3발 중 하나
+            int spawnCount = this.random.nextInt(4);
             for (int i = 0; i < spawnCount; i++) {
                 spawnSingleArrow(serverLevel);
             }

@@ -364,6 +364,11 @@
 
   "item.genesis.little_heal": "작은 치유",
 
+  "item.genesis.conjure_stone": "돌 생성",
+  "item.genesis.conjure_stone_wall": "돌벽 생성",
+  "item.genesis.rock_sphere": "암석구",
+
+
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
   "item.genesis.star_of_domination": "지배의 별",
 
@@ -952,8 +957,17 @@
 
 
 
+
   "spell.genesis.little_heal": "소회복",
   "spell.genesis.little_heal.desc": "신앙으로 말미암아 치유를 기원하는 원초적인 기적",
+
+  "spell.genesis.conjure_stone": "돌 생성",
+  "spell.genesis.conjure_stone.desc": "바라보는 곳에 돌을 생성하는 간단한 기적",
+  "spell.genesis.conjure_stone_wall": "돌벽 생성",
+  "spell.genesis.conjure_stone_wall.desc": "바라보는 곳에 벽을 생성하는 간단한 기적",
+  "spell.genesis.rock_sphere": "암석구",
+  "spell.genesis.rock_sphere.desc": "암석의 구를 생성하는 기적",
+
 
 
   "skill.genesis.magic_charge": "집중",

@@ -512,6 +512,10 @@ public class GenesisCreativeTabs {
 
 
                 output.accept(GenesisItems.LITTLE_HEAL.get());
+
+                output.accept(GenesisItems.CONJURE_STONE.get());
+                output.accept(GenesisItems.CONJURE_STONE_WALL.get());
+                output.accept(GenesisItems.ROCK_SPHERE.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))
