@@ -64,7 +64,7 @@ public abstract class StoneProjectile extends MagicEntity implements ItemSupplie
                 cap.setSnapshot(this.damageSnapshot);
             });
 
-            target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
+            target.hurt(this.damageSources().thrown(this, owner), 1.0F);
             this.discard();
         }
     }
