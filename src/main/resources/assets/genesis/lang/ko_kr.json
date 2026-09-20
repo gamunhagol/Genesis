@@ -370,6 +370,8 @@
 
   "item.genesis.throw_stone": "돌 투척",
   "item.genesis.pull_rock": "암석 뽑기",
+  "item.genesis.earth_extract": "지면 뽑기",
+  "item.genesis.burial": "침잠",
 
 
 
@@ -975,7 +977,9 @@
   "spell.genesis.throw_stone": "돌 투척",
   "spell.genesis.throw_stone.desc": "어린 수인이 돌을 던져 괴물을 잡고 왕이 되었다는 전승에서 내려온 기적.",
   "spell.genesis.pull_rock": "암석 뽑기",
-  "spell.genesis.pull_rock.desc": "사내는 돌을 뽑아 성문을 막았고, 모두가 피신할 때까지 버텼다.",
+  "spell.genesis.pull_rock.desc": "신관은 기도를 올렸고, 흉계의 무리 앞에서 돌을 뽑아 올려 모두 도망치게 하였다.",
+  "spell.genesis.burial": "침잠",
+  "spell.genesis.burial.desc": "신을 모욕하고 약탈과 방화를 일삼던 자들이, 어느 순간 모두 모래 아래에서 발견된 것에서 비롯된 기적.",
 
 
 

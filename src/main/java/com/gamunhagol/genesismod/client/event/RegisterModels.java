@@ -287,6 +287,7 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.ROCK.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.LARGE_ROCK.get(), ThrownItemRenderer::new);
 
 
 

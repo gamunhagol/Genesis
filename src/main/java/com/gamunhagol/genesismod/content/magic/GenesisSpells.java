@@ -88,6 +88,8 @@ public class GenesisSpells {
 
     public static final AbstractSpell THROW_STONE = register(new ThrowStoneMiracle());
     public static final AbstractSpell PULL_ROCK = register(new PullRockMiracle());
+    public static final AbstractSpell EARTH_EXTRACT = register(new EarthExtractMiracle());
+    public static final AbstractSpell BURIAL = register(new BurialMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

@@ -60,6 +60,12 @@ public class GenesisNetwork {
                 .consumerMainThread(PacketSyncSpatialRupture::handle)
                 .add();
 
+        INSTANCE.messageBuilder(PacketSyncPulledRockState.class, id(), NetworkDirection.PLAY_TO_CLIENT)
+                .decoder(PacketSyncPulledRockState::new)
+                .encoder(PacketSyncPulledRockState::toBytes)
+                .consumerMainThread(PacketSyncPulledRockState::handle)
+                .add();
+
 
         // [C -> S] Client to Server Packets (요청, 조작 등)
         INSTANCE.messageBuilder(PacketConfirmLevelUp.class, id(), NetworkDirection.PLAY_TO_SERVER)

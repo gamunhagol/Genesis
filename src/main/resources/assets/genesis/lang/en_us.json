@@ -369,6 +369,8 @@
 
   "item.genesis.throw_stone": "Stone Throw",
   "item.genesis.pull_rock": "Rock Pull",
+  "item.genesis.earth_extract": "Earth Extract",
+  "item.genesis.burial": "Burial",
 
 
 
@@ -975,7 +977,11 @@
   "spell.genesis.throw_stone": "Throw Stone",
   "spell.genesis.throw_stone.desc": "A miracle handed down from the lore of a young beastman who threw a stone to fell a monster and become king.",
   "spell.genesis.pull_rock": "Pull Rock",
-  "spell.genesis.pull_rock.desc": "The man pulled up a stone to block the gate, holding out until everyone had fled.",
+  "spell.genesis.pull_rock.desc": "The priest offered a prayer, pulling up a stone before the scheming horde and putting them all to flight.",
+  "spell.genesis.earth_extract": "Extract Earth",
+  "spell.genesis.earth_extract.desc": "A miracle that tears up the earth. Long ago, a giant tore away a mountain and hurled it; thereafter, he was worshipped as a god.",
+  "spell.genesis.burial": "Burial",
+  "spell.genesis.burial.desc": "A miracle originating from when those who blasphemed God and engaged in looting and arson were suddenly all found buried beneath the sand.",
 
 
 

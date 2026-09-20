@@ -6,6 +6,7 @@ import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LargeRockEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.PebbleEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
 import net.minecraft.world.entity.EntityType;
@@ -68,6 +69,7 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<PebbleEntity>> PEBBLE;
     public static final RegistryObject<EntityType<RockEntity>> ROCK;
+    public static final RegistryObject<EntityType<LargeRockEntity>> LARGE_ROCK;
 
 
     static {
@@ -261,5 +263,10 @@ public class GenesisEntities {
                 EntityType.Builder.<RockEntity>of(RockEntity::new, MobCategory.MISC)
                         .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
                         .build("rock"));
+
+        LARGE_ROCK = ENTITY_TYPES.register("large_rock", () ->
+                EntityType.Builder.<LargeRockEntity>of(LargeRockEntity::new, MobCategory.MISC)
+                        .sized(1.2F, 1.2F).clientTrackingRange(6).updateInterval(10)
+                        .build("large_rock"));
     }
 }

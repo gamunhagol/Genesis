@@ -718,6 +718,10 @@ public class GenesisItems {
             () -> new SpellBookItem("throw_stone", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> PULL_ROCK = ITEMS.register("pull_rock",
             () -> new SpellBookItem("pull_rock", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> EARTH_EXTRACT = ITEMS.register("earth_extract",
+            () -> new SpellBookItem("earth_extract", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BURIAL = ITEMS.register("burial",
+            () -> new SpellBookItem("burial", new Item.Properties().stacksTo(1)));
 
 
     //armor

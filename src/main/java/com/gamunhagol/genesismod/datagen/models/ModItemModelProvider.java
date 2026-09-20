@@ -191,6 +191,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.ROCK_SPHERE);
         simpleItem(GenesisItems.THROW_STONE);
         simpleItem(GenesisItems.PULL_ROCK);
+        simpleItem(GenesisItems.EARTH_EXTRACT);
+        simpleItem(GenesisItems.BURIAL);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);
