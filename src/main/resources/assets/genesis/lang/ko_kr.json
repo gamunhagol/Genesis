@@ -373,6 +373,9 @@
   "item.genesis.earth_extract": "지면 뽑기",
   "item.genesis.burial": "침잠",
 
+  "item.genesis.patamu_wrath": "파타무의 진노",
+  "item.genesis.patamu_roar": "파타무의 포효",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -978,8 +981,15 @@
   "spell.genesis.throw_stone.desc": "어린 수인이 돌을 던져 괴물을 잡고 왕이 되었다는 전승에서 내려온 기적.",
   "spell.genesis.pull_rock": "암석 뽑기",
   "spell.genesis.pull_rock.desc": "신관은 기도를 올렸고, 흉계의 무리 앞에서 돌을 뽑아 올려 모두 도망치게 하였다.",
+  "spell.genesis.earth_extract": "지면 뽑기",
+  "spell.genesis.earth_extract.desc": "대지를 뜯어 올리는 기적, 오래 전, 거인은 산을 찢어 던졌고, 이후 신으로 숭배받았다.",
   "spell.genesis.burial": "침잠",
   "spell.genesis.burial.desc": "신을 모욕하고 약탈과 방화를 일삼던 자들이, 어느 순간 모두 모래 아래에서 발견된 것에서 비롯된 기적.",
+
+  "spell.genesis.patamu_wrath": "파타무의 진노",
+  "spell.genesis.patamu_wrath.desc": "산을 찢고 성을 평탄화하던 존재의 손을 현신시키는 기적.",
+  "spell.genesis.patamu_roar": "파타무의 포효",
+  "spell.genesis.patamu_roar.desc": "신의 입을 빌려 분노를 토해내는 기적.",
 
 
 

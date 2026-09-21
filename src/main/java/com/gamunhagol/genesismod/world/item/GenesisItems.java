@@ -719,9 +719,14 @@ public class GenesisItems {
     public static final RegistryObject<Item> PULL_ROCK = ITEMS.register("pull_rock",
             () -> new SpellBookItem("pull_rock", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> EARTH_EXTRACT = ITEMS.register("earth_extract",
-            () -> new SpellBookItem("earth_extract", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("earth_extract", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
     public static final RegistryObject<Item> BURIAL = ITEMS.register("burial",
             () -> new SpellBookItem("burial", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> PATAMU_WRATH = ITEMS.register("patamu_wrath",
+            () -> new SpellBookItem("patamu_wrath", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> PATAMU_ROAR = ITEMS.register("patamu_roar",
+            () -> new SpellBookItem("patamu_roar", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
 
     //armor

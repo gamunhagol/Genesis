@@ -53,6 +53,10 @@ public class GenesisCombatEvents {
                     return null;
                 }
 
+                if (weapon.getItem() instanceof CatalystItem && attackerEntity == sourceEntity) {
+                    return null;
+                }
+
                 float enchantBonus = EnchantmentHelper.getDamageBonus(weapon, target.getMobType());
 
                 if (weapon.getItem() instanceof TridentItem) {
@@ -62,13 +66,7 @@ public class GenesisCombatEvents {
                     }
                 }
 
-                DamageSnapshot rawSnapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
-
-                if (weapon.getItem() instanceof CatalystItem) {
-                    snapshot = new DamageSnapshot(rawSnapshot.physical(), 0, 0, 0, 0, 0, rawSnapshot.destruction());
-                } else {
-                    snapshot = rawSnapshot;
-                }
+                snapshot = WeaponRequirementHelper.calculateTotalDamage(player, weapon, enchantBonus);
             }
         }
 

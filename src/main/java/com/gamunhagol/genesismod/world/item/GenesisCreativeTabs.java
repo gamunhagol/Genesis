@@ -521,6 +521,9 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.PULL_ROCK.get());
                 output.accept(GenesisItems.EARTH_EXTRACT.get());
                 output.accept(GenesisItems.BURIAL.get());
+
+                output.accept(GenesisItems.PATAMU_WRATH.get());
+                output.accept(GenesisItems.PATAMU_ROAR.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

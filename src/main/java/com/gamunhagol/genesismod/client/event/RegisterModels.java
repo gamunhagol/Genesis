@@ -289,6 +289,9 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.ROCK.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.LARGE_ROCK.get(), ThrownItemRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.PATAMU_WRATH.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.PATAMU_ROAR.get(), ThrownItemRenderer::new);
+
 
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);

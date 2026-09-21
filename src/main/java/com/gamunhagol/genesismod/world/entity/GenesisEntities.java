@@ -1,6 +1,8 @@
 package com.gamunhagol.genesismod.world.entity;
 
 import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
+import com.gamunhagol.genesismod.world.entity.etc.PatamuRoarEntity;
+import com.gamunhagol.genesismod.world.entity.etc.PatamuWrathEntity;
 import com.gamunhagol.genesismod.world.entity.etc.StarSeaSpawnerEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
@@ -70,6 +72,9 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<PebbleEntity>> PEBBLE;
     public static final RegistryObject<EntityType<RockEntity>> ROCK;
     public static final RegistryObject<EntityType<LargeRockEntity>> LARGE_ROCK;
+
+    public static final RegistryObject<EntityType<PatamuWrathEntity>> PATAMU_WRATH;
+    public static final RegistryObject<EntityType<PatamuRoarEntity>> PATAMU_ROAR;
 
 
     static {
@@ -268,5 +273,15 @@ public class GenesisEntities {
                 EntityType.Builder.<LargeRockEntity>of(LargeRockEntity::new, MobCategory.MISC)
                         .sized(1.2F, 1.2F).clientTrackingRange(6).updateInterval(10)
                         .build("large_rock"));
+
+        PATAMU_WRATH = ENTITY_TYPES.register("patamu_wrath", () ->
+                EntityType.Builder.<PatamuWrathEntity>of(PatamuWrathEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .build("patamu_wrath"));
+
+        PATAMU_ROAR = ENTITY_TYPES.register("patamu_roar", () ->
+                EntityType.Builder.<PatamuRoarEntity>of(PatamuRoarEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .build("patamu_roar"));
     }
 }

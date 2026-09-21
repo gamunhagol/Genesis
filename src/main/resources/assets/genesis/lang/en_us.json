@@ -372,6 +372,9 @@
   "item.genesis.earth_extract": "Earth Extract",
   "item.genesis.burial": "Burial",
 
+  "item.genesis.patamu_wrath": "Patamu's Wrath",
+  "item.genesis.patamu_roar": "Patamu's Roar",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -983,6 +986,10 @@
   "spell.genesis.burial": "Burial",
   "spell.genesis.burial.desc": "A miracle originating from when those who blasphemed God and engaged in looting and arson were suddenly all found buried beneath the sand.",
 
+  "spell.genesis.patamu_wrath": "Patamu's Wrath",
+  "spell.genesis.patamu_wrath.desc": "A miracle that manifests the hand of a being that tore mountains asunder and leveled castles.",
+  "spell.genesis.patamu_roar": "Patamu's Roar",
+  "spell.genesis.patamu_roar.desc": "A miracle that borrows the mouth of God to unleash wrath.",
 
 
 

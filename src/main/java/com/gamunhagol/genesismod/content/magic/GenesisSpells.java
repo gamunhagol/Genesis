@@ -91,6 +91,9 @@ public class GenesisSpells {
     public static final AbstractSpell EARTH_EXTRACT = register(new EarthExtractMiracle());
     public static final AbstractSpell BURIAL = register(new BurialMiracle());
 
+    public static final AbstractSpell PATAMU_WRATH = register(new PatamuWrathSpell());
+    public static final AbstractSpell PATAMU_ROAR = register(new PatamuRoarSpell());
+
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);
         return spell;
