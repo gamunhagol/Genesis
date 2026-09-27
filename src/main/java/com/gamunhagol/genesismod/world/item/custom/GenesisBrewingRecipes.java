@@ -30,13 +30,8 @@ public class GenesisBrewingRecipes {
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
                 Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
-                Ingredient.of(Items.SPIDER_EYE),//임시
+                Ingredient.of(Items.NETHER_WART),
                 PotionUtils.setPotion(new ItemStack(Items.POTION), GenesisPotions.PARALYSIS.get())
-        ));
-        BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
-                Ingredient.of(PotionUtils.setPotion(new ItemStack(Items.POTION), Potions.AWKWARD)),
-                Ingredient.of(Items.PACKED_ICE),
-                PotionUtils.setPotion(new ItemStack(Items.POTION), GenesisPotions.DEEP_FREEZE.get())
         ));
 
         BrewingRecipeRegistry.addRecipe(new BrewingRecipe(
