@@ -101,19 +101,6 @@ public class GenesisForgeEvents {
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         LivingEntity entity = event.getEntity();
 
-        if (entity.hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
-            entity.setTicksFrozen(entity.getTicksRequiredToFreeze() + 3);
-            if (entity.level().isClientSide && entity.tickCount % 5 == 0) {
-                entity.level().addParticle(
-                        ParticleTypes.SNOWFLAKE,
-                        entity.getRandomX(1.2D),
-                        entity.getRandomY(),
-                        entity.getRandomZ(1.2D),
-                        0.0D, 0.0D, 0.0D
-                );
-            }
-        }
-
         if (entity.hasEffect(GenesisEffects.COLD_RESISTANCE.get())) {
             if (entity.getTicksFrozen() > 0) {
                 entity.setTicksFrozen(0);
@@ -129,8 +116,7 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onPlayerInteract(PlayerInteractEvent event) {
-        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
-                event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get())) {
             if (event.isCancelable()) {
                 event.setCanceled(true);
             }
@@ -139,8 +125,7 @@ public class GenesisForgeEvents {
 
     @SubscribeEvent
     public static void onEntityAttack(AttackEntityEvent event) {
-        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
-                event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+        if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get())) {
             if (event.isCancelable()) {
                 event.setCanceled(true);
             }
@@ -180,8 +165,7 @@ public class GenesisForgeEvents {
             }
         }
 
-        if (event.getEffectInstance().getEffect() == GenesisEffects.FROSTBITE.get() ||
-                event.getEffectInstance().getEffect() == GenesisEffects.DEEP_FREEZE.get()) {
+        if (event.getEffectInstance().getEffect() == GenesisEffects.FROSTBITE.get()) {
             if (event.getEntity().hasEffect(GenesisEffects.COLD_RESISTANCE.get())) {
                 event.setResult(net.minecraftforge.eventbus.api.Event.Result.DENY);
             }

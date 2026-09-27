@@ -19,8 +19,6 @@ public class GenesisEffects {
 
     public static final RegistryObject<MobEffect> PARALYSIS = MOB_EFFECTS.register("paralysis",
             ParalysisEffect::new);
-    public static final RegistryObject<MobEffect> DEEP_FREEZE = MOB_EFFECTS.register("deep_freeze",
-            DeepFreezeEffect::new);
 
     public static final RegistryObject<MobEffect> SEA_CURSE = MOB_EFFECTS.register("sea_curse",
             SeaCurseEffect::new);

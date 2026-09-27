@@ -148,8 +148,7 @@ public class GenesisClientEvents {
 
         @SubscribeEvent
         public static void onMovementInput(MovementInputUpdateEvent event) {
-            if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get()) ||
-                    event.getEntity().hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+            if (event.getEntity().hasEffect(GenesisEffects.PARALYSIS.get())) {
                 net.minecraft.client.player.Input input = event.getInput();
                 input.forwardImpulse = 0;
                 input.leftImpulse = 0;
@@ -167,8 +166,7 @@ public class GenesisClientEvents {
             Minecraft mc = Minecraft.getInstance();
             if (mc.player == null) return;
 
-            if (mc.player.hasEffect(GenesisEffects.PARALYSIS.get()) ||
-                    mc.player.hasEffect(GenesisEffects.DEEP_FREEZE.get())) {
+            if (mc.player.hasEffect(GenesisEffects.PARALYSIS.get())) {
                 if (event.getButton() == 0 || event.getButton() == 1) {
                     if (event.getAction() == 1) {
                         event.setCanceled(true);
