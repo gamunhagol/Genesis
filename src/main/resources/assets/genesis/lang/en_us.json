@@ -28,8 +28,6 @@
   "item.genesis.elvenia_piece": "Elvenia Piece",
   "item.genesis.elvenia_ingot": "Elvenia Ingot",
 
-  "item.genesis.ancient_elvenia_piece": "Ancient Elvenia Piece",
-  "item.genesis.ancient_elvenia_ingot": "Ancient Elvenia Ingot",
 
   "item.genesis.pewriese_piece": "pewriese Piece",
   "item.genesis.pewriese_crystal": "pewriese Crystal",
@@ -45,7 +43,6 @@
   "item.genesis.fusion_stone": "Fusion Stone",
 
   "item.genesis.carbonized_ingot": "Carbonized Ingot",
-  "item.genesis.white_iron_ingot": "White Iron Ingot",
   "item.genesis.based_sculpture": "Based Sculpture",
 
   "item.genesis.copper_coin": "Copper coin",
@@ -115,18 +112,6 @@
   "item.genesis.elvenia_tachi": "Elvenia Tachi",
   "item.genesis.elvenia_longsword": "Elvenia Longsword",
   "item.genesis.elvenia_dagger": "Elvenia Dagger",
-
-  "item.genesis.ancient_elvenia_sword": "Ancient Elvenia Sword",
-  "item.genesis.ancient_elvenia_shovel": "Ancient Elvenia Shovel",
-  "item.genesis.ancient_elvenia_pickaxe": "Ancient Elvenia Pickaxe",
-  "item.genesis.ancient_elvenia_axe": "Ancient Elvenia Axe",
-  "item.genesis.ancient_elvenia_hoe": "Ancient Elvenia Hoe",
-
-  "item.genesis.ancient_elvenia_greatsword": "Ancient Elvenia Greatsword",
-  "item.genesis.ancient_elvenia_spear": "Ancient Elvenia Spear",
-  "item.genesis.ancient_elvenia_tachi": "Ancient Elvenia Tachi",
-  "item.genesis.ancient_elvenia_longsword": "Ancient Elvenia Longsword",
-  "item.genesis.ancient_elvenia_dagger": "Ancient Elvenia Dagger",
 
   "item.genesis.carbonized_sword": "Carbonized Sword",
   "item.genesis.carbonized_shovel": "Carbonized Shovel",
@@ -223,10 +208,6 @@
   "item.genesis.elvenia_leggings": "Elvenia Leggings",
   "item.genesis.elvenia_boots": "Elvenia boots",
 
-  "item.genesis.ancient_elvenia_helmet": "Ancient Elvenia Helmet",
-  "item.genesis.ancient_elvenia_chestplate": "Ancient Elvenia Chestplate",
-  "item.genesis.ancient_elvenia_leggings": "Ancient Elvenia Leggings",
-  "item.genesis.ancient_elvenia_boots": "Ancient Elvenia boots",
 
   "item.genesis.carbonized_helmet": "Carbonized Helmet",
   "item.genesis.carbonized_chestplate": "Carbonized Chestplate",
@@ -276,15 +257,10 @@
 
   "item.genesis.embroidered_veil": "Embroidered Veil",
 
-  "item.genesis.white_iron_helmet": "White Iron Helmet",
-  "item.genesis.white_iron_chestplate": "White Iron Chestplate",
-  "item.genesis.white_iron_leggings": "White Iron Leggings",
-  "item.genesis.white_iron_boots": "White Iron boots",
 
   "item.genesis.great_bow": "Great Bow",
   "item.genesis.root_woven_bow": "Root Woven Bow",
   "item.genesis.elvenia_great_bow": "Elvenia Great Bow",
-  "item.genesis.ancient_elvenia_great_bow": "Ancient Elvenia Great Bow",
   "item.genesis.pewriese_great_bow": "Pewriese Great Bow",
 
   "item.genesis.large_arrow": "Large Arrow",
@@ -561,12 +537,10 @@
 
 
   "block.genesis.elvenia_block": "Elvenia Block",
-  "block.genesis.ancient_elvenia_block": "Ancient Elvenia Block",
 
   "block.genesis.pewriese_crystal_block": "Block of Pewriese Crystal",
 
   "block.genesis.pyulitela_block": "Pyulitela Block",
-  "block.genesis.white_iron_block": "White iron Block",
 
   "block.genesis.fusion_stone_block": "Fusion Stone Block",
 
@@ -834,7 +808,6 @@
   "tooltip.genesis.great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
   "tooltip.genesis.root_woven_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
   "tooltip.genesis.elvenia_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
-  "tooltip.genesis.ancient_elvenia_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
   "tooltip.genesis.pewriese_great_bow.info": "Charge your shot by holding the string to unleash a powerful AoE attack. Standard firing mode remains active.",
 
 

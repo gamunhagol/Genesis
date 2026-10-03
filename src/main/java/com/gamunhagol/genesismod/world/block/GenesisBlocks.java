@@ -32,8 +32,7 @@ public class GenesisBlocks {
 
     public static final RegistryObject<Block> ELVENIA_BLOCK = register("elvenia_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(4.5F, 8.0F).sound(SoundType.METAL)));
-    public static final RegistryObject<Block> ANCIENT_ELVENIA_BLOCK = register("ancient_elvenia_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.GOLD).requiresCorrectToolForDrops().strength(6.0F, 8.0F).sound(SoundType.METAL)));
+
 
     public static final RegistryObject<Block> PEWRIESE_ORE = register("pewriese_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLACK).strength(60.0F, 1200.0F).requiresCorrectToolForDrops(), UniformInt.of(3, 7)));
@@ -45,8 +44,6 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> PYULITELA_BLOCK = register("pyulitela_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.QUARTZ).strength(360.0F, 2400.0F).requiresCorrectToolForDrops().sound(SoundType.AMETHYST)));
 
-    public static final RegistryObject<Block> WHITE_IRON_BLOCK = register("white_iron_block",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.METAL).strength(10.0F, 400.0F).requiresCorrectToolForDrops().sound(SoundType.METAL)));
 
     public static final RegistryObject<Block> FUSION_STONE_BLOCK = register("fusion_stone_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 1500.0F)

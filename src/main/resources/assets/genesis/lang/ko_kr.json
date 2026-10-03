@@ -27,8 +27,7 @@
   "item.genesis.elvenia_piece": "엘브니아 조각",
   "item.genesis.elvenia_ingot": "엘브니아 주괴",
 
-  "item.genesis.ancient_elvenia_piece": "고대 엘브니아 조각",
-  "item.genesis.ancient_elvenia_ingot": "고대 엘브니아 주괴",
+
 
   "item.genesis.pewriese_piece": "퓨리즌 파편",
   "item.genesis.pewriese_crystal": "퓨리즌 결정",
@@ -44,7 +43,6 @@
   "item.genesis.fusion_stone": "융합석",
 
   "item.genesis.carbonized_ingot": "탄화강괴 주괴",
-  "item.genesis.white_iron_ingot": "백철 주괴",
   "item.genesis.based_sculpture": "기반조각",
 
 
@@ -117,17 +115,6 @@
   "item.genesis.elvenia_longsword": "엘브니아 장검",
   "item.genesis.elvenia_dagger": "엘브니아 단검",
 
-  "item.genesis.ancient_elvenia_sword": "고대 엘브니아 검",
-  "item.genesis.ancient_elvenia_shovel": "고대 엘브니아 삽",
-  "item.genesis.ancient_elvenia_pickaxe": "고대 엘브니아 곡괭이",
-  "item.genesis.ancient_elvenia_axe": "고대 엘브니아 도끼",
-  "item.genesis.ancient_elvenia_hoe": "고대 엘브니아 괭이",
-
-  "item.genesis.ancient_elvenia_greatsword": "고대 엘브니아 대검",
-  "item.genesis.ancient_elvenia_spear": "고대 엘브니아 창",
-  "item.genesis.ancient_elvenia_tachi": "고대 엘브니아 태도",
-  "item.genesis.ancient_elvenia_longsword": "고대 엘브니아 장검",
-  "item.genesis.ancient_elvenia_dagger": "고대 엘브니아 단검",
 
   "item.genesis.carbonized_sword": "탄화강괴 검",
   "item.genesis.carbonized_shovel": "탄화강괴 삽",
@@ -224,10 +211,6 @@
   "item.genesis.elvenia_leggings": "엘브니아 레깅스",
   "item.genesis.elvenia_boots": "엘브니아 부츠",
 
-  "item.genesis.ancient_elvenia_helmet": "고대 엘브니아 투구",
-  "item.genesis.ancient_elvenia_chestplate": "고대 엘브니아 흉갑",
-  "item.genesis.ancient_elvenia_leggings": "고대 엘브니아 레깅스",
-  "item.genesis.ancient_elvenia_boots": "고대 엘브니아 부츠",
 
   "item.genesis.carbonized_helmet": "탄화강괴 투구",
   "item.genesis.carbonized_chestplate": "탄화강괴 흉갑",
@@ -277,16 +260,11 @@
 
   "item.genesis.embroidered_veil": "순례자의 베일",
 
-  "item.genesis.white_iron_helmet": "백철 투구",
-  "item.genesis.white_iron_chestplate": "백철 흉갑",
-  "item.genesis.white_iron_leggings": "백철 레깅스",
-  "item.genesis.white_iron_boots": "백철 부츠",
 
 
   "item.genesis.great_bow": "대궁",
   "item.genesis.root_woven_bow": "뿌리엮은 대궁",
   "item.genesis.elvenia_great_bow": "엘브니아 대궁",
-  "item.genesis.ancient_elvenia_great_bow": "고대 엘브니아 대궁",
   "item.genesis.pewriese_great_bow": "퓨리즌 대궁",
 
   "item.genesis.large_arrow": "대형 화살",
@@ -558,12 +536,10 @@
 
 
   "block.genesis.elvenia_block": "엘브니아 블록",
-  "block.genesis.ancient_elvenia_block": "고대 엘브니아 블럭",
 
   "block.genesis.pewriese_crystal_block": "퓨리즌 결정 블럭",
 
   "block.genesis.pyulitela_block": "땅의 순수 블럭",
-  "block.genesis.white_iron_block": "백철 블럭",
 
   "block.genesis.fusion_stone_block": "융합석 블럭",
 
@@ -834,7 +810,6 @@
   "tooltip.genesis.great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
   "tooltip.genesis.root_woven_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
   "tooltip.genesis.elvenia_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
-  "tooltip.genesis.ancient_elvenia_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
   "tooltip.genesis.pewriese_great_bow.info": "활시위를 더 오래 잡아, 더 강한 힘으로 발사하여 착탄 지점에 광역 피해를 줄수 있다.(기본적인 사용도 가능하다.)",
 
 

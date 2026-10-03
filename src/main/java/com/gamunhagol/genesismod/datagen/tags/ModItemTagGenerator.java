@@ -43,12 +43,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
                 GenesisItems.ICE_FLOWER_SHARD.get()
         );
 
-        tag(MAGIC_DEFENSE_ARMOR).add(
-                GenesisItems.ANCIENT_ELVENIA_HELMET.get(),
-                GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get(),
-                GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get(),
-                GenesisItems.ANCIENT_ELVENIA_BOOTS.get()
-        );
+
 
         tag(net.minecraft.tags.ItemTags.TRIMMABLE_ARMOR).add(
                 GenesisItems.PADDED_CHAIN_HELMET.get(),

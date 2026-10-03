@@ -33,10 +33,6 @@ public class RegisterModels {
     public static ElveniaLeggingsModel<?> ELVENIA_LEGGINGS_MODEL = null;
     public static ElveniaBootsModel<?> ELVENIA_BOOTS_MODEL = null;
 
-    public static AncientElveniaHelmetModel<?> ANCIENT_ELVENIA_HELMET_MODEL = null;
-    public static AncientElveniaChestplateModel<?> ANCIENT_ELVENIA_CHESTPLATE_MODEL = null;
-    public static AncientElveniaLeggingsModel<?> ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
-    public static AncientElveniaBootsModel<?> ANCIENT_ELVENIA_BOOTS_MODEL = null;
 
     public static CarbonizedHelmetModel<?> CARBONIZED_HELMET_MODEL = null;
     public static CarbonizedChestplateModel<?> CARBONIZED_CHESTPLATE_MODEL = null;
@@ -76,10 +72,6 @@ public class RegisterModels {
             RegisterModels.ELVENIA_LEGGINGS_MODEL = null;
             RegisterModels.ELVENIA_BOOTS_MODEL = null;
 
-            RegisterModels.ANCIENT_ELVENIA_HELMET_MODEL = null;
-            RegisterModels.ANCIENT_ELVENIA_CHESTPLATE_MODEL = null;
-            RegisterModels.ANCIENT_ELVENIA_LEGGINGS_MODEL = null;
-            RegisterModels.ANCIENT_ELVENIA_BOOTS_MODEL = null;
 
             RegisterModels.CARBONIZED_HELMET_MODEL = null;
             RegisterModels.CARBONIZED_CHESTPLATE_MODEL = null;
@@ -123,10 +115,6 @@ public class RegisterModels {
         ELVENIA_LEGGINGS_MODEL = new ElveniaLeggingsModel<>(mcModels.bakeLayer(ElveniaLeggingsModel.LAYER_LOCATION));
         ELVENIA_BOOTS_MODEL = new ElveniaBootsModel<>(mcModels.bakeLayer(ElveniaBootsModel.LAYER_LOCATION));
 
-        ANCIENT_ELVENIA_HELMET_MODEL = new AncientElveniaHelmetModel<>(mcModels.bakeLayer(AncientElveniaHelmetModel.LAYER_LOCATION));
-        ANCIENT_ELVENIA_CHESTPLATE_MODEL = new AncientElveniaChestplateModel<>(mcModels.bakeLayer(AncientElveniaChestplateModel.LAYER_LOCATION));
-        ANCIENT_ELVENIA_LEGGINGS_MODEL = new AncientElveniaLeggingsModel<>(mcModels.bakeLayer(AncientElveniaLeggingsModel.LAYER_LOCATION));
-        ANCIENT_ELVENIA_BOOTS_MODEL = new AncientElveniaBootsModel<>(mcModels.bakeLayer(AncientElveniaBootsModel.LAYER_LOCATION));
 
         CARBONIZED_HELMET_MODEL = new CarbonizedHelmetModel<>(mcModels.bakeLayer(CarbonizedHelmetModel.LAYER_LOCATION));
         CARBONIZED_CHESTPLATE_MODEL = new CarbonizedChestplateModel<>(mcModels.bakeLayer(CarbonizedChestplateModel.LAYER_LOCATION));
@@ -169,10 +157,6 @@ public class RegisterModels {
         event.registerLayerDefinition(ElveniaLeggingsModel.LAYER_LOCATION, ElveniaLeggingsModel::createArmorLayer);
         event.registerLayerDefinition(ElveniaBootsModel.LAYER_LOCATION, ElveniaBootsModel::createArmorLayer);
 
-        event.registerLayerDefinition(AncientElveniaHelmetModel.LAYER_LOCATION, AncientElveniaHelmetModel::createArmorLayer);
-        event.registerLayerDefinition(AncientElveniaChestplateModel.LAYER_LOCATION, AncientElveniaChestplateModel::createArmorLayer);
-        event.registerLayerDefinition(AncientElveniaLeggingsModel.LAYER_LOCATION, AncientElveniaLeggingsModel::createArmorLayer);
-        event.registerLayerDefinition(AncientElveniaBootsModel.LAYER_LOCATION, AncientElveniaBootsModel::createArmorLayer);
 
         event.registerLayerDefinition(CarbonizedHelmetModel.LAYER_LOCATION, CarbonizedHelmetModel::createArmorLayer);
         event.registerLayerDefinition(CarbonizedChestplateModel.LAYER_LOCATION, CarbonizedChestplateModel::createArmorLayer);

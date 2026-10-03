@@ -21,9 +21,6 @@ public enum GenesisArmorMaterials implements ArmorMaterial {
     ELVENIA("elvenia", 30, new int[]{2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_IRON,
             1.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, () -> {return Ingredient.of(GenesisItems.ELVENIA_INGOT.get());
     }),
-    ANCIENT_ELVENIA("ancient_elvenia", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_IRON,
-            3.0F, 0.0F, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
-    }),
     AMETHYST("amethyst", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_DIAMOND,
             2.0F, 0.0F, 0.0f, 0.0f, 1.0f, 3.0f, 0.0f, () -> {return Ingredient.of(Items.AMETHYST_SHARD);
     }),
@@ -54,9 +51,6 @@ public enum GenesisArmorMaterials implements ArmorMaterial {
     }),
     EMBROIDERED("embroidered", 14, new int[]{0, 0, 0, 0}, 30, SoundEvents.ARMOR_EQUIP_LEATHER,
             0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.0f, 3.0f, () -> {return Ingredient.of(GenesisItems.BLESSED_CLOTH.get());
-    }),
-    WHITE_IRON("white_iron", 10, new int[]{2, 5, 6, 2}, 24, SoundEvents.ARMOR_EQUIP_IRON,
-            0.0F, 0.0F, 0.0f, 0.0f, 0.0f, 1.8f, 0.0f, () -> {return Ingredient.of(GenesisItems.WHITE_IRON_INGOT.get());
     });
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

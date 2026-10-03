@@ -34,11 +34,6 @@ public class GenesisItemTier {
                     () -> Ingredient.of(GenesisItems.ELVENIA_INGOT.get())),
             GenesisMod.prefix("elvenia"), List.of(Tiers.IRON), List.of());
 
-    public static final Tier ANCIENT_ELVENIA = TierSortingRegistry.registerTier(
-            new ForgeTier(3, 3121, 8f, 3F, 28, BlockTags.create(GenesisMod.prefix("need_ancient_elvenia_tool")),
-                    () -> Ingredient.of(GenesisItems.ANCIENT_ELVENIA_INGOT.get())),
-            GenesisMod.prefix("ancient_elvenia"), List.of(Tiers.DIAMOND), List.of());
-
     public static final Tier CARBONIZED = TierSortingRegistry.registerTier(
             new ForgeTier(4, 5871, 10f, 6F, 10, BlockTags.create(GenesisMod.prefix("need_carbonized_tool")),
                     () -> Ingredient.of(GenesisItems.CARBONIZED_INGOT.get())),

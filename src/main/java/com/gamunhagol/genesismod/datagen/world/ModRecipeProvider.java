@@ -53,23 +53,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()),
             Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.ELVENIA_GREAT_BOW.get())
     );
-    private static final Map<Item, Item> ANCIENT_ELVENIA_SMITHING_MAP = Map.ofEntries(
-            Map.entry(GenesisItems.ELVENIA_SWORD.get(), GenesisItems.ANCIENT_ELVENIA_SWORD.get()),
-            Map.entry(GenesisItems.ELVENIA_SHOVEL.get(), GenesisItems.ANCIENT_ELVENIA_SHOVEL.get()),
-            Map.entry(GenesisItems.ELVENIA_PICKAXE.get(), GenesisItems.ANCIENT_ELVENIA_PICKAXE.get()),
-            Map.entry(GenesisItems.ELVENIA_AXE.get(), GenesisItems.ANCIENT_ELVENIA_AXE.get()),
-            Map.entry(GenesisItems.ELVENIA_HOE.get(), GenesisItems.ANCIENT_ELVENIA_HOE.get()),
-            Map.entry(GenesisItems.ELVENIA_GREATSWORD.get(), GenesisItems.ANCIENT_ELVENIA_GREATSWORD.get()),
-            Map.entry(GenesisItems.ELVENIA_SPEAR.get(), GenesisItems.ANCIENT_ELVENIA_SPEAR.get()),
-            Map.entry(GenesisItems.ELVENIA_TACHI.get(), GenesisItems.ANCIENT_ELVENIA_TACHI.get()),
-            Map.entry(GenesisItems.ELVENIA_LONGSWORD.get(), GenesisItems.ANCIENT_ELVENIA_LONGSWORD.get()),
-            Map.entry(GenesisItems.ELVENIA_DAGGER.get(), GenesisItems.ANCIENT_ELVENIA_DAGGER.get()),
-            Map.entry(GenesisItems.ELVENIA_HELMET.get(), GenesisItems.ANCIENT_ELVENIA_HELMET.get()),
-            Map.entry(GenesisItems.ELVENIA_CHESTPLATE.get(), GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get()),
-            Map.entry(GenesisItems.ELVENIA_LEGGINGS.get(), GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get()),
-            Map.entry(GenesisItems.ELVENIA_BOOTS.get(), GenesisItems.ANCIENT_ELVENIA_BOOTS.get()),
-            Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.ANCIENT_ELVENIA_GREAT_BOW.get())
-    );
+
 
     private static final Map<Item, Item> PEWRIESE_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.IRON_SWORD, GenesisItems.PEWRIESE_SWORD.get()),
@@ -165,8 +149,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
         oreSmelting(pWriter, HARDENED_RED_SMELTING, RecipeCategory.MISC, GenesisItems.HARDENED_RED_GLASS.get(), 0.2f, 250, "hardened_red_glass");
 
-        oreSmelting(pWriter, ANCIENT_ELVENIA_SMELTING, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), 0.8f, 300, "ancient_elvenia");
-        oreBlasting(pWriter, ANCIENT_ELVENIA_SMELTING, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), 0.8f, 150, "ancient_elvenia");
 
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
         oreBlasting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 10000, "pewriese");
@@ -272,13 +254,11 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_PIECE.get(), RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ELVENIA_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.ELVENIA_BLOCK.get());
 
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_PIECE.get(), RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get());
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
+
 
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL.get(), RecipeCategory.MISC, GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.PYULITELA.get(), RecipeCategory.MISC, GenesisBlocks.PYULITELA_BLOCK.get());
-        nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.WHITE_IRON_INGOT.get(), RecipeCategory.MISC, GenesisBlocks.WHITE_IRON_BLOCK.get());
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.DREAM_POWDER.get(), RecipeCategory.MISC, GenesisItems.DREAM_DANGO.get());
 
         nineBlockStorageRecipes(pWriter, RecipeCategory.MISC, GenesisItems.COPPER_COIN.get(), RecipeCategory.MISC, GenesisItems.COPPER_COIN_PILE.get());
@@ -391,11 +371,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_CHESTPLATE, GenesisItems.PADDED_CHAIN_CHESTPLATE.get(), "aaa", "aba");
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_LEGGINGS, GenesisItems.PADDED_CHAIN_LEGGINGS.get(), "aba", "a a");
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.WHITE_IRON_INGOT.get())
-                .requires(Items.IRON_INGOT)
-                .requires(GenesisItems.PEWRIESE_PIECE.get())
-                .unlockedBy(getHasName(GenesisItems.PEWRIESE_PIECE.get()), has(GenesisItems.PEWRIESE_PIECE.get()))
-                .save(pWriter);
+
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STONE)
                 .requires(Items.COBBLESTONE)
@@ -462,11 +438,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(GenesisItems.GIANT_STONE.get())
                 .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
                 .save(pWriter);
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.ANCIENT_ELVENIA_BLOCK.get())
-                .requires(GenesisItems.ANCIENT_ELVENIA_INGOT.get())
-                .requires(GenesisItems.GIANT_STONE.get())
-                .unlockedBy(getHasName(GenesisItems.GIANT_STONE.get()), has(GenesisItems.GIANT_STONE.get()))
-                .save(pWriter);
+
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.PEWRIESE_CRYSTAL_BLOCK.get())
                 .requires(GenesisItems.PEWRIESE_CRYSTAL.get())
                 .requires(GenesisItems.ACTIVATED_GIANT_STONE.get())
@@ -638,32 +610,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(GenesisItems.ENCHANTED_CLOTH.get()), has(GenesisItems.ENCHANTED_CLOTH.get()))
                 .save(pWriter);
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_HELMET.get())
-                .pattern("aaa")
-                .pattern("a a")
-                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_CHESTPLATE.get())
-                .pattern("a a")
-                .pattern("aaa")
-                .pattern("aaa")
-                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_LEGGINGS.get())
-                .pattern("aaa")
-                .pattern("a a")
-                .pattern("a a")
-                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, GenesisItems.WHITE_IRON_BOOTS.get())
-                .pattern("a a")
-                .pattern("a a")
-                .define('a',GenesisItems.WHITE_IRON_INGOT.get())
-                .unlockedBy(getHasName(GenesisItems.WHITE_IRON_INGOT.get()), has(GenesisItems.WHITE_IRON_INGOT.get()))
-                .save(pWriter);
+
 
 
 
@@ -999,14 +946,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     getItemName(entry.getValue()) + "_smithing");
         }
 
-        for (var entry : ANCIENT_ELVENIA_SMITHING_MAP.entrySet()) {
-            smithingUpgrade(pWriter,
-                    GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
-                    entry.getKey(),
-                    GenesisItems.ANCIENT_ELVENIA_INGOT.get(),
-                    entry.getValue(),
-                    getItemName(entry.getValue()) + "_smithing");
-        }
 
 
         for (var entry : PEWRIESE_SMITHING_MAP.entrySet()) {

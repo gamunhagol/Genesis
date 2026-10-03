@@ -52,7 +52,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.PYULITELA_BLOCK.get());
-        this.dropSelf(GenesisBlocks.WHITE_IRON_BLOCK.get());
         this.dropSelf(GenesisBlocks.FUSION_STONE_BLOCK.get());
         this.dropSelf(GenesisBlocks.BLUE_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.CITRINE_BLOCK.get());
@@ -62,7 +61,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.LIGHTING_CRYSTAL_BLOCK.get());
         this.dropSelf(GenesisBlocks.WIND_STONE_BLOCK.get());
         this.dropSelf(GenesisBlocks.ELVENIA_BLOCK.get());
-        this.dropSelf(GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get());
         this.dropSelf(GenesisBlocks.WEATHERED_ANCIENT_DRAGON_ROCK.get());
         this.dropSelf(GenesisBlocks.ANCIENT_DRAGON_ROCK.get());
         this.dropSelf(GenesisBlocks.AMETHYST_SAPLING.get());
@@ -150,7 +148,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(GenesisBlocks.AEK_STATUE.get(),
                 block -> LootTable.lootTable().withPool(LootPool.lootPool()
                         .setRolls(ConstantValue.exactly(1.0F))
-                        .add(LootItem.lootTableItem(GenesisItems.ANCIENT_ELVENIA_INGOT.get())
+                        .add(LootItem.lootTableItem(GenesisItems.ELVENIA_INGOT.get())
                                 .apply(SetItemCountFunction.setCount(UniformGenerator.between(1.0F, 3.0F)))
                                 .apply(ApplyExplosionDecay.explosionDecay()))
                 )

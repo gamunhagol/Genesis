@@ -81,8 +81,6 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.ELVENIA_PIECE);
         simpleItem(GenesisItems.ELVENIA_INGOT);
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_PIECE);
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_INGOT);
 
 
 
@@ -98,7 +96,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.GIANT_STONE_FRAGMENT);
         simpleItem(GenesisItems.FUSION_STONE);
 
-        simpleItem(GenesisItems.WHITE_IRON_INGOT);
         simpleItem(GenesisItems.BASED_SCULPTURE);
 
         simpleItem(GenesisItems.COPPER_COIN);
@@ -205,11 +202,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(GenesisItems.ELVENIA_HOE);
         handheldItem(GenesisItems.ELVENIA_SHOVEL);
 
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_SWORD);
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_AXE);
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_PICKAXE);
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_HOE);
-        handheldItem(GenesisItems.ANCIENT_ELVENIA_SHOVEL);
 
         handheldItem(GenesisItems.CARBONIZED_SWORD);
         handheldItem(GenesisItems.CARBONIZED_AXE);
@@ -430,10 +422,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.ELVENIA_LEGGINGS);
         simpleItem(GenesisItems.ELVENIA_BOOTS);
 
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_HELMET);
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_CHESTPLATE);
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_LEGGINGS);
-        simpleItem(GenesisItems.ANCIENT_ELVENIA_BOOTS);
 
         simpleItem(GenesisItems.CARBONIZED_HELMET);
         simpleItem(GenesisItems.CARBONIZED_CHESTPLATE);
@@ -484,10 +472,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.EMBROIDERED_VEIL);
 
 
-        simpleItem(GenesisItems.WHITE_IRON_HELMET);
-        simpleItem(GenesisItems.WHITE_IRON_CHESTPLATE);
-        simpleItem(GenesisItems.WHITE_IRON_LEGGINGS);
-        simpleItem(GenesisItems.WHITE_IRON_BOOTS);
+
 
         simpleItem(GenesisItems.INTACT_AMETHYST_HEART);
         simpleItem(GenesisItems.STAR_OF_DOMINATION);

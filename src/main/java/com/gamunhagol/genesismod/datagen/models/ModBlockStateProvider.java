@@ -28,7 +28,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
 
         blockWithItem(GenesisBlocks.ELVENIA_BLOCK);
-        blockWithItem(GenesisBlocks.ANCIENT_ELVENIA_BLOCK);
 
 
         blockWithItem(GenesisBlocks.PEWRIESE_ORE);
@@ -36,7 +35,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(GenesisBlocks.PYULITELA_ORE);
         blockWithItem(GenesisBlocks.PYULITELA_BLOCK);
-        blockWithItem(GenesisBlocks.WHITE_IRON_BLOCK);
         blockWithItem(GenesisBlocks.FUSION_STONE_BLOCK);
 
         blockWithItem(GenesisBlocks.GIANT_STONE);

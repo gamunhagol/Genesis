@@ -1,6 +1,0 @@
-{
-  "parent": "genesis:item/great_bow",
-  "textures": {
-    "layer0": "genesis:item/ancient_elvenia_great_bow_pulling_3"
-  }
-}

@@ -38,16 +38,12 @@ public class GenesisItems {
 
     public static final RegistryObject<BlockItem> ELVENIA_BLOCK = ITEMS.register("elvenia_block",
             () -> new BlockItem(GenesisBlocks.ELVENIA_BLOCK.get(), new Item.Properties()));
-    public static final RegistryObject<BlockItem> ANCIENT_ELVENIA_BLOCK = ITEMS.register("ancient_elvenia_block",
-            () -> new BlockItem(GenesisBlocks.ANCIENT_ELVENIA_BLOCK.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> PEWRIESE_ORE = ITEMS.register("pewriese_ore",
             () -> new BlockItem(GenesisBlocks.PEWRIESE_ORE.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> PEWRIESE_CRYSTAL_BLOCK = ITEMS.register("pewriese_crystal_block",
             () -> new BlockItem(GenesisBlocks.PEWRIESE_CRYSTAL_BLOCK.get(), new Item.Properties().fireResistant()));
 
-    public static final RegistryObject<BlockItem> WHITE_IRON_BLOCK = ITEMS.register("white_iron_block",
-            () -> new BlockItem(GenesisBlocks.WHITE_IRON_BLOCK.get(), new Item.Properties().fireResistant()));
 
 
     public static final RegistryObject<BlockItem> PYULITELA_ORE = ITEMS.register("pyulitela_ore",
@@ -192,8 +188,6 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> ELVENIA_INGOT = ITEMS.register("elvenia_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ELVENIA_PIECE = ITEMS.register("elvenia_piece", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_INGOT = ITEMS.register("ancient_elvenia_ingot", () -> new Item(new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_PIECE = ITEMS.register("ancient_elvenia_piece", () -> new Item(new Item.Properties()));
 
 
 
@@ -212,7 +206,6 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> FUSION_STONE = ITEMS.register("fusion_stone", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> WHITE_IRON_INGOT = ITEMS.register("white_iron_ingot", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> BASED_SCULPTURE = ITEMS.register("based_sculpture", () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
 
@@ -390,27 +383,7 @@ public class GenesisItems {
     public static final RegistryObject<Item> ELVENIA_DAGGER = ITEMS.register("elvenia_dagger", () -> new DaggerItem(new Item.Properties()
             , GenesisItemTier.ELVENIA));
 
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_SWORD = ITEMS.register("ancient_elvenia_sword", () -> new SwordItem(GenesisItemTier.ANCIENT_ELVENIA, 3, -2.4f,
-            new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_SHOVEL = ITEMS.register("ancient_elvenia_shovel", () -> new ShovelItem(GenesisItemTier.ANCIENT_ELVENIA, 1.5f, -3.0f,
-            new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_PICKAXE = ITEMS.register("ancient_elvenia_pickaxe", () -> new PickaxeItem(GenesisItemTier.ANCIENT_ELVENIA, 1, -2.8f,
-            new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_AXE = ITEMS.register("ancient_elvenia_axe", () -> new AxeItem(GenesisItemTier.ANCIENT_ELVENIA, 5, -3.0f,
-            new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_HOE = ITEMS.register("ancient_elvenia_hoe", () -> new HoeItem(GenesisItemTier.ANCIENT_ELVENIA, -3, 0.0f,
-            new Item.Properties()));
 
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_GREATSWORD = ITEMS.register("ancient_elvenia_greatsword", () -> new GreatswordItem(new Item.Properties()
-            , GenesisItemTier.ANCIENT_ELVENIA));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_SPEAR = ITEMS.register("ancient_elvenia_spear", () -> new SpearItem(new Item.Properties()
-            , GenesisItemTier.ANCIENT_ELVENIA));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_TACHI = ITEMS.register("ancient_elvenia_tachi", () -> new TachiItem(new Item.Properties()
-            , GenesisItemTier.ANCIENT_ELVENIA));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_LONGSWORD = ITEMS.register("ancient_elvenia_longsword", () -> new LongswordItem(new Item.Properties()
-            , GenesisItemTier.ANCIENT_ELVENIA));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_DAGGER = ITEMS.register("ancient_elvenia_dagger", () -> new DaggerItem(new Item.Properties()
-            , GenesisItemTier.ANCIENT_ELVENIA));
 
     public static final RegistryObject<Item> CARBONIZED_SWORD = ITEMS.register("carbonized_sword", () -> new SwordItem(GenesisItemTier.CARBONIZED, 3, -2.6f,
             new Item.Properties().fireResistant()));
@@ -563,9 +536,6 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> ELVENIA_GREAT_BOW = ITEMS.register("elvenia_great_bow", () -> new GreatBowItem(new Item.Properties()
             , GreatBowTier.ELVENIA));
-
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_GREAT_BOW = ITEMS.register("ancient_elvenia_great_bow", () -> new GreatBowItem(new Item.Properties()
-            , GreatBowTier.ANCIENT_ELVENIA));
 
     public static final RegistryObject<Item> PEWRIESE_GREAT_BOW = ITEMS.register("pewriese_great_bow", () -> new GreatBowItem(new Item.Properties()
             , GreatBowTier.PEWRIESE));
@@ -758,14 +728,6 @@ public class GenesisItems {
     public static final RegistryObject<Item> ELVENIA_BOOTS = ITEMS.register("elvenia_boots", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_HELMET = ITEMS.register("ancient_elvenia_helmet", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
-            ArmorItem.Type.HELMET,new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_CHESTPLATE = ITEMS.register("ancient_elvenia_chestplate", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
-            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_LEGGINGS = ITEMS.register("ancient_elvenia_leggings", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
-            ArmorItem.Type.LEGGINGS,new Item.Properties()));
-    public static final RegistryObject<Item> ANCIENT_ELVENIA_BOOTS = ITEMS.register("ancient_elvenia_boots", () -> new AncientElveniaArmor(GenesisArmorMaterials.ANCIENT_ELVENIA,
-            ArmorItem.Type.BOOTS,new Item.Properties()));
 
     public static final RegistryObject<Item> CARBONIZED_HELMET = ITEMS.register("carbonized_helmet", () -> new CarbonizedArmor(GenesisArmorMaterials.CARBONIZED,
             ArmorItem.Type.HELMET,new Item.Properties()));
@@ -854,14 +816,7 @@ public class GenesisItems {
             ArmorItem.Type.HELMET,new Item.Properties()));
 
 
-    public static final RegistryObject<Item> WHITE_IRON_HELMET = ITEMS.register("white_iron_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
-            ArmorItem.Type.HELMET,new Item.Properties()));
-    public static final RegistryObject<Item> WHITE_IRON_CHESTPLATE = ITEMS.register("white_iron_chestplate", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
-            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
-    public static final RegistryObject<Item> WHITE_IRON_LEGGINGS = ITEMS.register("white_iron_leggings", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
-            ArmorItem.Type.LEGGINGS,new Item.Properties()));
-    public static final RegistryObject<Item> WHITE_IRON_BOOTS = ITEMS.register("white_iron_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.WHITE_IRON,
-            ArmorItem.Type.BOOTS,new Item.Properties()));
+
 
 
     //accessories

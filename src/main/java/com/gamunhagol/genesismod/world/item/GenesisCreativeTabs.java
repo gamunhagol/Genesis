@@ -86,17 +86,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ELVENIA_LONGSWORD.get());
                 output.accept(GenesisItems.ELVENIA_DAGGER.get());
 
-                output.accept(GenesisItems.ANCIENT_ELVENIA_SWORD.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_SHOVEL.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_PICKAXE.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_AXE.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_HOE.get());
-
-                output.accept(GenesisItems.ANCIENT_ELVENIA_GREATSWORD.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_SPEAR.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_TACHI.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_LONGSWORD.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_DAGGER.get());
 
                 output.accept(GenesisItems.CARBONIZED_SWORD.get());
                 output.accept(GenesisItems.CARBONIZED_SHOVEL.get());
@@ -201,10 +190,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.ELVENIA_LEGGINGS.get());
                 output.accept(GenesisItems.ELVENIA_BOOTS.get());
 
-                output.accept(GenesisItems.ANCIENT_ELVENIA_HELMET.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_CHESTPLATE.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_LEGGINGS.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_BOOTS.get());
 
                 output.accept(GenesisItems.CARBONIZED_HELMET.get());
                 output.accept(GenesisItems.CARBONIZED_CHESTPLATE.get());
@@ -255,10 +240,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.EMBROIDERED_VEIL.get());
 
 
-                output.accept(GenesisItems.WHITE_IRON_HELMET.get());
-                output.accept(GenesisItems.WHITE_IRON_CHESTPLATE.get());
-                output.accept(GenesisItems.WHITE_IRON_LEGGINGS.get());
-                output.accept(GenesisItems.WHITE_IRON_BOOTS.get());
 
 
                 output.accept(GenesisItems.INTACT_AMETHYST_HEART.get());
@@ -269,7 +250,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.GREAT_BOW.get());
                 output.accept(GenesisItems.ROOT_WOVEN_BOW.get());
                 output.accept(GenesisItems.ELVENIA_GREAT_BOW.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_GREAT_BOW.get());
                 output.accept(GenesisItems.PEWRIESE_GREAT_BOW.get());
 
                 output.accept(GenesisItems.LARGE_ARROW.get());
@@ -301,8 +281,6 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.ELVENIA_PIECE.get());
                 output.accept(GenesisItems.ELVENIA_INGOT.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_PIECE.get());
-                output.accept(GenesisItems.ANCIENT_ELVENIA_INGOT.get());
 
 
 
@@ -312,7 +290,6 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.FUSION_STONE.get());
 
                 output.accept(GenesisItems.CARBONIZED_INGOT.get());
-                output.accept(GenesisItems.WHITE_IRON_INGOT.get());
                 output.accept(GenesisItems.BASED_SCULPTURE.get());
 
 
