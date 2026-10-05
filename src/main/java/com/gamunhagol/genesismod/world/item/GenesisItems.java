@@ -698,6 +698,13 @@ public class GenesisItems {
     public static final RegistryObject<Item> PATAMU_ROAR = ITEMS.register("patamu_roar",
             () -> new SpellBookItem("patamu_roar", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> FLOOD = ITEMS.register("flood",
+            () -> new SpellBookItem("flood", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SEA_LUCK = ITEMS.register("sea_luck",
+            () -> new SpellBookItem("sea_luck", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SEA_SERPENT_FIN = ITEMS.register("sea_serpent_fin",
+            () -> new SpellBookItem("sea_serpent_fin", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

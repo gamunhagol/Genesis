@@ -354,6 +354,10 @@
   "item.genesis.patamu_wrath": "파타무의 진노",
   "item.genesis.patamu_roar": "파타무의 포효",
 
+  "item.genesis.flood": "물난리",
+  "item.genesis.sea_luck": "바다의 행운",
+  "item.genesis.sea_serpent_fin": "해룡의 지느러미",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -964,6 +968,13 @@
   "spell.genesis.patamu_wrath.desc": "산을 찢고 성을 평탄화하던 존재의 손을 현신시키는 기적.",
   "spell.genesis.patamu_roar": "파타무의 포효",
   "spell.genesis.patamu_roar.desc": "신의 입을 빌려 분노를 토해내는 기적.",
+
+  "spell.genesis.flood": "물난리",
+  "spell.genesis.flood.desc": "물을 생성하고 흩뿌리는 기적.",
+  "spell.genesis.sea_luck": "바다의 행운",
+  "spell.genesis.sea_luck.desc": "행운을 기원하여 어획량을 늘리는 기적.",
+  "spell.genesis.sea_serpent_fin": "해룡의 지느러미",
+  "spell.genesis.sea_serpent_fin.desc": "물속에서 빠른 수영 속도를 얻는 기적.",
 
 
 

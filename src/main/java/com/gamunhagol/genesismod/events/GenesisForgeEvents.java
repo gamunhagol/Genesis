@@ -1,5 +1,6 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentFinMiracle;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketActivateCustomTotem;
@@ -189,8 +190,18 @@ public class GenesisForgeEvents {
                 if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
                     long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
                     if (player.level().getGameTime() >= endTick) {
-
                         GenesisDamageCalculator.removeDestructionEffect(player);
+                    }
+                }
+
+                if (player.getPersistentData().contains(SeaSerpentFinMiracle.NBT_KEY_END_TICK)) {
+                    long endTick = player.getPersistentData().getLong(SeaSerpentFinMiracle.NBT_KEY_END_TICK);
+                    if (player.level().getGameTime() >= endTick) {
+                        var swimSpeedAttr = player.getAttribute(net.minecraftforge.common.ForgeMod.SWIM_SPEED.get());
+                        if (swimSpeedAttr != null) {
+                            swimSpeedAttr.removeModifier(SeaSerpentFinMiracle.SWIM_SPEED_MOD_UUID);
+                        }
+                        player.getPersistentData().remove(SeaSerpentFinMiracle.NBT_KEY_END_TICK);
                     }
                 }
             }

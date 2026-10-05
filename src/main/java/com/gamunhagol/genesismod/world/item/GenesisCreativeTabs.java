@@ -501,6 +501,10 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.PATAMU_WRATH.get());
                 output.accept(GenesisItems.PATAMU_ROAR.get());
+
+                output.accept(GenesisItems.FLOOD.get());
+                output.accept(GenesisItems.SEA_LUCK.get());
+                output.accept(GenesisItems.SEA_SERPENT_FIN.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

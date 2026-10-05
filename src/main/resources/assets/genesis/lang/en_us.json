@@ -351,6 +351,10 @@
   "item.genesis.patamu_wrath": "Patamu's Wrath",
   "item.genesis.patamu_roar": "Patamu's Roar",
 
+  "item.genesis.flood": "Flood",
+  "item.genesis.sea_luck": "Sea's Luck",
+  "item.genesis.sea_serpent_fin": "Sea Serpent Fin",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -962,6 +966,13 @@
   "spell.genesis.patamu_wrath.desc": "A miracle that manifests the hand of a being that tore mountains asunder and leveled castles.",
   "spell.genesis.patamu_roar": "Patamu's Roar",
   "spell.genesis.patamu_roar.desc": "A miracle that borrows the mouth of God to unleash wrath.",
+
+  "spell.genesis.flood": "Flood",
+  "spell.genesis.flood.desc": "A miracle that creates and scatters water.",
+  "spell.genesis.sea_luck": "Sea's Luck",
+  "spell.genesis.sea_luck.desc": "A miracle that prays for luck to increase fishing yield.",
+  "spell.genesis.sea_serpent_fin": "Sea Serpent Fin",
+  "spell.genesis.sea_serpent_fin.desc": "A miracle that grants fast swimming speed underwater.",
 
 
 
