@@ -50,7 +50,7 @@ public class SeaLuckMiracle extends MiracleSpell {
             float multiplier = getDedicationMultiplier(caster);
             int duration = (int) (1200 * multiplier);
 
-            caster.addEffect(new MobEffectInstance(MobEffects.LUCK, duration, 0));
+            caster.addEffect(new MobEffectInstance(MobEffects.LUCK, duration, 1));
         }
     }
 }
