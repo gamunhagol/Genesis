@@ -366,6 +366,11 @@
   "item.genesis.agflo_jaws": "아그플로의 턱",
   "item.genesis.waterspout": "용오름",
 
+  "item.genesis.bio_smelter": "생체 용광로",
+  "item.genesis.tinder": "불쏘시개",
+  "item.genesis.fire_gaze": "불의 시선",
+  "item.genesis.flame_protection": "불의 가호",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -997,6 +1002,15 @@
   "spell.genesis.agflo_jaws.desc": "해신의 형상을 불러와 공격한다.",
   "spell.genesis.waterspout": "용오름",
   "spell.genesis.waterspout.desc": "용오름을 소환한다.",
+
+  "spell.genesis.bio_smelter": "생체 용광로",
+  "spell.genesis.bio_smelter.desc": "자신을 태워 장비를 수리한다.",
+  "spell.genesis.tinder": "불쏘시개",
+  "spell.genesis.tinder.desc": "불을 피워낸다. 아주 작은, 허나 거대한 기적.",
+  "spell.genesis.fire_gaze": "불의 시선",
+  "spell.genesis.fire_gaze.desc": "타인을 증오하던 이는 보는 것을 불태웠고, 끝내 스스로를 불살랐다.",
+  "spell.genesis.flame_protection": "불의 가호",
+  "spell.genesis.flame_protection.desc": "불의 가호로 불로부터 보호받는다.",
 
 
 

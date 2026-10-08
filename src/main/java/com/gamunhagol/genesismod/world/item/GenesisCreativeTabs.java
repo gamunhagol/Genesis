@@ -513,6 +513,11 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.AGFLO_JAWS.get());
                 output.accept(GenesisItems.WATERSPOUT.get());
+
+                output.accept(GenesisItems.BIO_SMELTER.get());
+                output.accept(GenesisItems.TINDER.get());
+                output.accept(GenesisItems.FIRE_GAZE.get());
+                output.accept(GenesisItems.FLAME_PROTECTION.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

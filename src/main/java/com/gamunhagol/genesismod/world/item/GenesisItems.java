@@ -719,6 +719,15 @@ public class GenesisItems {
     public static final RegistryObject<Item> WATERSPOUT = ITEMS.register("waterspout",
             () -> new SpellBookItem("waterspout", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> BIO_SMELTER = ITEMS.register("bio_smelter",
+            () -> new SpellBookItem("bio_smelter", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> TINDER = ITEMS.register("tinder",
+            () -> new SpellBookItem("tinder", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FIRE_GAZE = ITEMS.register("fire_gaze",
+            () -> new SpellBookItem("fire_gaze", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FLAME_PROTECTION = ITEMS.register("flame_protection",
+            () -> new SpellBookItem("flame_protection", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

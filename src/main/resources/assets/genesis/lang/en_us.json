@@ -363,6 +363,11 @@
   "item.genesis.agflo_jaws": "Agflo's Jaws",
   "item.genesis.waterspout": "Waterspout",
 
+  "item.genesis.bio_smelter": "Bio Smelter",
+  "item.genesis.tinder": "Tinder",
+  "item.genesis.fire_gaze": "Fire Gaze",
+  "item.genesis.flame_protection": "Flame Protection",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -995,6 +1000,15 @@
   "spell.genesis.agflo_jaws.desc": "Summons the visage of the Sea God to attack.",
   "spell.genesis.waterspout": "Waterspout",
   "spell.genesis.waterspout.desc": "Summons a waterspout.",
+
+  "spell.genesis.bio_smelter": "Bio Smelter",
+  "spell.genesis.bio_smelter.desc": "Burns oneself to repair equipment.",
+  "spell.genesis.tinder": "Tinder",
+  "spell.genesis.tinder.desc": "Kindles a fire. A tiny, yet monumental miracle.",
+  "spell.genesis.fire_gaze": "Fire Gaze",
+  "spell.genesis.fire_gaze.desc": "One who hated others burned whatever they looked upon, and in the end, consumed themselves in flame.",
+  "spell.genesis.flame_protection": "Flame Protection",
+  "spell.genesis.flame_protection.desc": "Protected from fire by the grace of flame.",
 
 
 
