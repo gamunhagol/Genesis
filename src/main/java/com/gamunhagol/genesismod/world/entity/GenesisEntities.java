@@ -11,6 +11,7 @@ import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LargeRockEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.PebbleEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.WaterDropEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -75,6 +76,9 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<PatamuWrathEntity>> PATAMU_WRATH;
     public static final RegistryObject<EntityType<PatamuRoarEntity>> PATAMU_ROAR;
+
+    public static final RegistryObject<EntityType<WaterDropEntity>> WATER_DROP;
+
 
 
     static {
@@ -283,5 +287,10 @@ public class GenesisEntities {
                 EntityType.Builder.<PatamuRoarEntity>of(PatamuRoarEntity::new, MobCategory.MISC)
                         .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
                         .build("patamu_roar"));
+
+        WATER_DROP = ENTITY_TYPES.register("water_drop", () ->
+                EntityType.Builder.<WaterDropEntity>of(WaterDropEntity::new, MobCategory.MISC)
+                        .sized(0.25F, 0.25F).clientTrackingRange(6).updateInterval(10)
+                        .build("water_drop"));
     }
 }

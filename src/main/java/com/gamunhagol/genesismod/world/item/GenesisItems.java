@@ -703,7 +703,16 @@ public class GenesisItems {
     public static final RegistryObject<Item> SEA_LUCK = ITEMS.register("sea_luck",
             () -> new SpellBookItem("sea_luck", new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SEA_SERPENT_FIN = ITEMS.register("sea_serpent_fin",
-            () -> new SpellBookItem("sea_serpent_fin", new Item.Properties().stacksTo(1)));
+            () -> new SpellBookItem("sea_serpent_fin", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> WATER_SPRAY = ITEMS.register("water_spray",
+            () -> new SpellBookItem("water_spray", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SEA_SERPENT_BREATH = ITEMS.register("sea_serpent_breath",
+            () -> new SpellBookItem("sea_serpent_breath", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SEA_SERPENT_SCALE = ITEMS.register("sea_serpent_scale",
+            () -> new SpellBookItem("sea_serpent_scale", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> SEA_CURSE = ITEMS.register("sea_curse",
+            () -> new SpellBookItem("sea_curse", new Item.Properties().stacksTo(1)));
 
 
     //armor

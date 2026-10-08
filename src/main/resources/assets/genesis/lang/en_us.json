@@ -355,6 +355,11 @@
   "item.genesis.sea_luck": "Sea's Luck",
   "item.genesis.sea_serpent_fin": "Sea Serpent Fin",
 
+  "item.genesis.water_spray": "Water Spray",
+  "item.genesis.sea_serpent_breath": "Sea Serpent Breath",
+  "item.genesis.sea_serpent_scale": "Sea God's Scale",
+  "item.genesis.sea_curse": "Curse of the Sea",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -973,6 +978,16 @@
   "spell.genesis.sea_luck.desc": "A miracle that prays for luck to increase fishing yield.",
   "spell.genesis.sea_serpent_fin": "Sea Serpent Fin",
   "spell.genesis.sea_serpent_fin.desc": "A miracle that grants fast swimming speed underwater.",
+
+  "spell.genesis.water_spray": "Water Spray",
+  "spell.genesis.water_spray.desc": "Powerfully spews water.",
+  "spell.genesis.sea_serpent_breath": "Sea Serpent Breath",
+  "spell.genesis.sea_serpent_breath.desc": "Spews the pressurized water blast of a sea serpent.",
+  "spell.genesis.sea_serpent_scale": "Sea God's Scale",
+  "spell.genesis.sea_serpent_scale.desc": "Borrows the protection of the Sea God to gain armor.",
+  "spell.genesis.sea_curse": "Curse of the Sea",
+  "spell.genesis.sea_curse.desc": "Inflicts the curse of the sea.",
+
 
 
 

@@ -3,9 +3,7 @@ package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
-import com.gamunhagol.genesismod.content.magic.miracles.water.FloodMiracle;
-import com.gamunhagol.genesismod.content.magic.miracles.water.SeaLuckMiracle;
-import com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentFinMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.water.*;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
 import com.gamunhagol.genesismod.content.magic.spells.operation.*;
 import com.gamunhagol.genesismod.content.magic.spells.sorcery.*;
@@ -100,6 +98,11 @@ public class GenesisSpells {
     public static final AbstractSpell FLOOD = register(new FloodMiracle());
     public static final AbstractSpell SEA_LUCK = register(new SeaLuckMiracle());
     public static final AbstractSpell SEA_SERPENT_FIN = register(new SeaSerpentFinMiracle());
+
+    public static final AbstractSpell WATER_SPRAY = register(new WaterSprayMiracle());
+    public static final AbstractSpell SEA_SERPENT_BREATH = register(new SeaSerpentBreathMiracle());
+    public static final AbstractSpell SEA_SERPENT_SCALE = register(new SeaSerpentScaleMiracle());
+    public static final AbstractSpell SEA_CURSE = register(new SeaCurseMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

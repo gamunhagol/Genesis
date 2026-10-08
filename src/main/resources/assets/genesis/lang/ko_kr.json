@@ -358,6 +358,11 @@
   "item.genesis.sea_luck": "바다의 행운",
   "item.genesis.sea_serpent_fin": "해룡의 지느러미",
 
+  "item.genesis.water_spray": "물 뿜기",
+  "item.genesis.sea_serpent_breath": "해룡의 숨결",
+  "item.genesis.sea_serpent_scale": "해신의 비늘",
+  "item.genesis.sea_curse": "바다의 저주",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -975,6 +980,15 @@
   "spell.genesis.sea_luck.desc": "행운을 기원하여 어획량을 늘리는 기적.",
   "spell.genesis.sea_serpent_fin": "해룡의 지느러미",
   "spell.genesis.sea_serpent_fin.desc": "물속에서 빠른 수영 속도를 얻는 기적.",
+
+  "spell.genesis.water_spray": "물 뿜기",
+  "spell.genesis.water_spray.desc": "물을 강하게 내뿜는다.",
+  "spell.genesis.sea_serpent_breath": "해룡의 숨결",
+  "spell.genesis.sea_serpent_breath.desc": "해룡의 수압포를 내뿜는다.",
+  "spell.genesis.sea_serpent_scale": "해신의 비늘",
+  "spell.genesis.sea_serpent_scale.desc": "해신의 가호를 빌어 방어도를 얻는다.",
+  "spell.genesis.sea_curse": "바다의 저주",
+  "spell.genesis.sea_curse.desc": "바다의 저주를 내린다.",
 
 
 

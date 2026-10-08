@@ -230,6 +230,20 @@ public class GenesisForgeEvents {
                     }
                 }
             }
+            if (player.getPersistentData().contains(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK)) {
+                long endTick = player.getPersistentData().getLong(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
+                if (player.level().getGameTime() >= endTick) {
+                    var armorAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR);
+                    if (armorAttr != null) {
+                        armorAttr.removeModifier(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.ARMOR_MOD_UUID);
+                    }
+                    var toughnessAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS);
+                    if (toughnessAttr != null) {
+                        toughnessAttr.removeModifier(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.TOUGHNESS_MOD_UUID);
+                    }
+                    player.getPersistentData().remove(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
+                }
+            }
         }
     }
 
