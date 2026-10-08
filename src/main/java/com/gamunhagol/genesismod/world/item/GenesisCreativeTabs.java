@@ -510,6 +510,9 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.SEA_SERPENT_BREATH.get());
                 output.accept(GenesisItems.SEA_SERPENT_SCALE.get());
                 output.accept(GenesisItems.SEA_CURSE.get());
+
+                output.accept(GenesisItems.AGFLO_JAWS.get());
+                output.accept(GenesisItems.WATERSPOUT.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

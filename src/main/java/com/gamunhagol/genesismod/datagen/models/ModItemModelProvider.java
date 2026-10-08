@@ -199,6 +199,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.SEA_SERPENT_BREATH);
         simpleItem(GenesisItems.SEA_SERPENT_SCALE);
         simpleItem(GenesisItems.SEA_CURSE);
+        simpleItem(GenesisItems.AGFLO_JAWS);
+        simpleItem(GenesisItems.WATERSPOUT);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

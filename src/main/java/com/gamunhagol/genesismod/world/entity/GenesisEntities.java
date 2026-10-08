@@ -8,10 +8,7 @@ import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
-import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LargeRockEntity;
-import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.PebbleEntity;
-import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
-import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.WaterDropEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -78,6 +75,8 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<PatamuRoarEntity>> PATAMU_ROAR;
 
     public static final RegistryObject<EntityType<WaterDropEntity>> WATER_DROP;
+
+    public static final RegistryObject<EntityType<WaterspoutEntity>> WATERSPOUT;
 
 
 
@@ -292,5 +291,13 @@ public class GenesisEntities {
                 EntityType.Builder.<WaterDropEntity>of(WaterDropEntity::new, MobCategory.MISC)
                         .sized(0.25F, 0.25F).clientTrackingRange(6).updateInterval(10)
                         .build("water_drop"));
+
+        WATERSPOUT = ENTITY_TYPES.register("waterspout", () ->
+                EntityType.Builder.<WaterspoutEntity>of(WaterspoutEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 1.8F)
+                        .fireImmune()
+                        .clientTrackingRange(8)
+                        .updateInterval(10)
+                        .build("waterspout"));
     }
 }

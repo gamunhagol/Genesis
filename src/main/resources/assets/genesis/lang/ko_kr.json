@@ -363,6 +363,9 @@
   "item.genesis.sea_serpent_scale": "해신의 비늘",
   "item.genesis.sea_curse": "바다의 저주",
 
+  "item.genesis.agflo_jaws": "아그플로의 턱",
+  "item.genesis.waterspout": "용오름",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -989,6 +992,11 @@
   "spell.genesis.sea_serpent_scale.desc": "해신의 가호를 빌어 방어도를 얻는다.",
   "spell.genesis.sea_curse": "바다의 저주",
   "spell.genesis.sea_curse.desc": "바다의 저주를 내린다.",
+
+  "spell.genesis.agflo_jaws": "아그플로의 턱",
+  "spell.genesis.agflo_jaws.desc": "해신의 형상을 불러와 공격한다.",
+  "spell.genesis.waterspout": "용오름",
+  "spell.genesis.waterspout.desc": "용오름을 소환한다.",
 
 
 

@@ -360,6 +360,9 @@
   "item.genesis.sea_serpent_scale": "Sea God's Scale",
   "item.genesis.sea_curse": "Curse of the Sea",
 
+  "item.genesis.agflo_jaws": "Agflo's Jaws",
+  "item.genesis.waterspout": "Waterspout",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -987,6 +990,11 @@
   "spell.genesis.sea_serpent_scale.desc": "Borrows the protection of the Sea God to gain armor.",
   "spell.genesis.sea_curse": "Curse of the Sea",
   "spell.genesis.sea_curse.desc": "Inflicts the curse of the sea.",
+
+  "spell.genesis.agflo_jaws": "Agflo's Jaws",
+  "spell.genesis.agflo_jaws.desc": "Summons the visage of the Sea God to attack.",
+  "spell.genesis.waterspout": "Waterspout",
+  "spell.genesis.waterspout.desc": "Summons a waterspout.",
 
 
 

@@ -714,6 +714,11 @@ public class GenesisItems {
     public static final RegistryObject<Item> SEA_CURSE = ITEMS.register("sea_curse",
             () -> new SpellBookItem("sea_curse", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> AGFLO_JAWS = ITEMS.register("agflo_jaws",
+            () -> new SpellBookItem("agflo_jaws", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> WATERSPOUT = ITEMS.register("waterspout",
+            () -> new SpellBookItem("waterspout", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
     //armor
 

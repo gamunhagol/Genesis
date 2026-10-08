@@ -104,6 +104,9 @@ public class GenesisSpells {
     public static final AbstractSpell SEA_SERPENT_SCALE = register(new SeaSerpentScaleMiracle());
     public static final AbstractSpell SEA_CURSE = register(new SeaCurseMiracle());
 
+    public static final AbstractSpell AGFLO_JAWS = register(new AgfloJawsSpell());
+    public static final AbstractSpell WATERSPOUT = register(new WaterspoutSpell());
+
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);
         return spell;
