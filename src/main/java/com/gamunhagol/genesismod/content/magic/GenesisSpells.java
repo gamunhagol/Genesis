@@ -3,10 +3,7 @@ package com.gamunhagol.genesismod.content.magic;
 
 import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
-import com.gamunhagol.genesismod.content.magic.miracles.fire.BioSmelterMiracle;
-import com.gamunhagol.genesismod.content.magic.miracles.fire.FireGazeMiracle;
-import com.gamunhagol.genesismod.content.magic.miracles.fire.FlameProtectionMiracle;
-import com.gamunhagol.genesismod.content.magic.miracles.fire.TinderMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
 import com.gamunhagol.genesismod.content.magic.miracles.water.*;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
 import com.gamunhagol.genesismod.content.magic.spells.operation.*;
@@ -115,6 +112,14 @@ public class GenesisSpells {
     public static final AbstractSpell TINDER = register(new TinderMiracle());
     public static final AbstractSpell FIRE_GAZE = register(new FireGazeMiracle());
     public static final AbstractSpell FLAME_PROTECTION = register(new FlameProtectionMiracle());
+
+    public static final AbstractSpell EMBER = register(new EmberMiracle());
+    public static final AbstractSpell FLAME_GRASP = register(new FlameGraspMiracle());
+    public static final AbstractSpell REALM_OF_FIRE = register(new RealmOfFireMiracle());
+    public static final AbstractSpell FLAME_HAMMER = register(new FlameHammerMiracle());
+
+    public static final AbstractSpell KAELO_CREATION = register(new KaeloCreationMiracle());
+    public static final AbstractSpell FIRE_GOD_BLESSING = register(new FireGodBlessingMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

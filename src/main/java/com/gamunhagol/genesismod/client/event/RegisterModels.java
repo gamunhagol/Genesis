@@ -280,6 +280,15 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WATERSPOUT.get(), ThrownItemRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.EMBER.get(), ThrownItemRenderer::new);
+
+
+
+
+
+
+        event.registerEntityRenderer(GenesisEntities.GRAB_HOLDER.get(), NoopRenderer::new);
+
 
 
         event.registerBlockEntityRenderer(GenesisBlockEntities.SENTINEL_STATUE_BE.get(), SentinelStatueRenderer::new);

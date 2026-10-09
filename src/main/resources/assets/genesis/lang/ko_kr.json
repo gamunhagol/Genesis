@@ -371,6 +371,14 @@
   "item.genesis.fire_gaze": "불의 시선",
   "item.genesis.flame_protection": "불의 가호",
 
+  "item.genesis.ember": "불씨",
+  "item.genesis.flame_grasp": "불의 손아귀",
+  "item.genesis.realm_of_fire": "수라도",
+  "item.genesis.flame_hammer": "불의 망치",
+
+  "item.genesis.kaelo_creation": "카엘로의 창조물",
+  "item.genesis.fire_god_blessing": "화신의 가호",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -1011,6 +1019,20 @@
   "spell.genesis.fire_gaze.desc": "타인을 증오하던 이는 보는 것을 불태웠고, 끝내 스스로를 불살랐다.",
   "spell.genesis.flame_protection": "불의 가호",
   "spell.genesis.flame_protection.desc": "불의 가호로 불로부터 보호받는다.",
+
+  "spell.genesis.ember": "불씨",
+  "spell.genesis.ember.desc": "불씨를 터뜨려 적을 불사른다.",
+  "spell.genesis.flame_grasp": "불의 손아귀",
+  "spell.genesis.flame_grasp.desc": "쥐고, 불태운다.",
+  "spell.genesis.realm_of_fire": "수라도",
+  "spell.genesis.realm_of_fire.desc": "전장의 불씨를 피워, 영역을 불태운다.",
+  "spell.genesis.flame_hammer": "불의 망치",
+  "spell.genesis.flame_hammer.desc": "신의 망치를 불러온다.",
+
+  "spell.genesis.kaelo_creation": "카엘로의 창조물",
+  "spell.genesis.kaelo_creation.desc": "주조된 거인을 소환한다.",
+  "spell.genesis.fire_god_blessing": "화신의 가호",
+  "spell.genesis.fire_god_blessing.desc": "화신의 가호를 빈다.",
 
 
 

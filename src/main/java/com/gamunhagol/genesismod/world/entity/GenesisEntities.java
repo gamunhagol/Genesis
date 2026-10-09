@@ -1,9 +1,6 @@
 package com.gamunhagol.genesismod.world.entity;
 
-import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
-import com.gamunhagol.genesismod.world.entity.etc.PatamuRoarEntity;
-import com.gamunhagol.genesismod.world.entity.etc.PatamuWrathEntity;
-import com.gamunhagol.genesismod.world.entity.etc.StarSeaSpawnerEntity;
+import com.gamunhagol.genesismod.world.entity.etc.*;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
@@ -77,6 +74,14 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<WaterDropEntity>> WATER_DROP;
 
     public static final RegistryObject<EntityType<WaterspoutEntity>> WATERSPOUT;
+
+    public static final RegistryObject<EntityType<EmberEntity>> EMBER;
+
+
+
+    //
+
+    public static final RegistryObject<EntityType<GrabHolderEntity>> GRAB_HOLDER;
 
 
 
@@ -156,6 +161,8 @@ public class GenesisEntities {
                         .sized(0.7f, 0.7f).clientTrackingRange(4).updateInterval(20)
                         .build("large_arrow"));
 
+
+        //
 
         MAGIC_GLINT = ENTITY_TYPES.register("magic_glint", () ->
                 EntityType.Builder.<MagicGlint>of(MagicGlint::new, MobCategory.MISC)
@@ -261,6 +268,8 @@ public class GenesisEntities {
                         .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
                         .build("supernova"));
 
+        //
+
 
         PEBBLE = ENTITY_TYPES.register("pebble", () ->
                 EntityType.Builder.<PebbleEntity>of(PebbleEntity::new, MobCategory.MISC)
@@ -299,5 +308,18 @@ public class GenesisEntities {
                         .clientTrackingRange(8)
                         .updateInterval(10)
                         .build("waterspout"));
+
+        EMBER = ENTITY_TYPES.register("ember", () ->
+                        EntityType.Builder.<EmberEntity>of(EmberEntity::new, MobCategory.MISC)
+                                .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
+                                .build("ember"));
+
+
+        //
+
+        GRAB_HOLDER = ENTITY_TYPES.register("grab_holder", () ->
+                EntityType.Builder.<GrabHolderEntity>of(GrabHolderEntity::new, MobCategory.MISC)
+                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
+                        .build("grab_holder"));
     }
 }

@@ -205,6 +205,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.TINDER);
         simpleItem(GenesisItems.FIRE_GAZE);
         simpleItem(GenesisItems.FLAME_PROTECTION);
+        simpleItem(GenesisItems.EMBER);
+        simpleItem(GenesisItems.FLAME_GRASP);
+        simpleItem(GenesisItems.REALM_OF_FIRE);
+        simpleItem(GenesisItems.FLAME_HAMMER);
+        simpleItem(GenesisItems.KAELO_CREATION);
+        simpleItem(GenesisItems.FIRE_GOD_BLESSING);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

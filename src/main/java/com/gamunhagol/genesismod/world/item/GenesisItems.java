@@ -728,6 +728,20 @@ public class GenesisItems {
     public static final RegistryObject<Item> FLAME_PROTECTION = ITEMS.register("flame_protection",
             () -> new SpellBookItem("flame_protection", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> EMBER = ITEMS.register("ember",
+            () -> new SpellBookItem("ember", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FLAME_GRASP = ITEMS.register("flame_grasp",
+            () -> new SpellBookItem("flame_grasp", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> REALM_OF_FIRE = ITEMS.register("realm_of_fire",
+            () -> new SpellBookItem("realm_of_fire", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FLAME_HAMMER = ITEMS.register("flame_hammer",
+            () -> new SpellBookItem("flame_hammer", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> KAELO_CREATION = ITEMS.register("kaelo_creation",
+            () -> new SpellBookItem("kaelo_creation", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> FIRE_GOD_BLESSING = ITEMS.register("fire_god_blessing",
+            () -> new SpellBookItem("fire_god_blessing", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

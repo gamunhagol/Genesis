@@ -368,6 +368,14 @@
   "item.genesis.fire_gaze": "Fire Gaze",
   "item.genesis.flame_protection": "Flame Protection",
 
+  "item.genesis.ember": "Ember",
+  "item.genesis.flame_grasp": "Flame Grasp",
+  "item.genesis.realm_of_fire": "Asura Realm",
+  "item.genesis.flame_hammer": "Flame Hammer",
+
+  "item.genesis.kaelo_creation": "Kaelo's Creation",
+  "item.genesis.fire_god_blessing": "Fire God's Blessing",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -1009,6 +1017,21 @@
   "spell.genesis.fire_gaze.desc": "One who hated others burned whatever they looked upon, and in the end, consumed themselves in flame.",
   "spell.genesis.flame_protection": "Flame Protection",
   "spell.genesis.flame_protection.desc": "Protected from fire by the grace of flame.",
+
+  "spell.genesis.ember": "Ember",
+  "spell.genesis.ember.desc": "Detonates an ember to incinerate enemies.",
+  "spell.genesis.flame_grasp": "Flame Grasp",
+  "spell.genesis.flame_grasp.desc": "Grasp, and incinerate.",
+  "spell.genesis.realm_of_fire": "Asura Realm",
+  "spell.genesis.realm_of_fire.desc": "Kindles the embers of war to engulf the domain in flame.",
+  "spell.genesis.flame_hammer": "Flame Hammer",
+  "spell.genesis.flame_hammer.desc": "Calls forth the hammer of God.",
+
+  "spell.genesis.kaelo_creation": "Kaelo's Creation",
+  "spell.genesis.kaelo_creation.desc": "Summons a forged colossus.",
+  "spell.genesis.fire_god_blessing": "Fire God's Blessing",
+  "spell.genesis.fire_god_blessing.desc": "Prays for the blessing of the Fire God.",
+
 
 
 

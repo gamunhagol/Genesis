@@ -518,6 +518,14 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.TINDER.get());
                 output.accept(GenesisItems.FIRE_GAZE.get());
                 output.accept(GenesisItems.FLAME_PROTECTION.get());
+
+                output.accept(GenesisItems.EMBER.get());
+                output.accept(GenesisItems.FLAME_GRASP.get());
+                output.accept(GenesisItems.REALM_OF_FIRE.get());
+                output.accept(GenesisItems.FLAME_HAMMER.get());
+
+                output.accept(GenesisItems.KAELO_CREATION.get());
+                output.accept(GenesisItems.FIRE_GOD_BLESSING.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

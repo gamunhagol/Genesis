@@ -16,6 +16,7 @@ import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
 
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
+import com.gamunhagol.genesismod.world.entity.etc.GrabHolderEntity;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedZombieEntity;
 import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
@@ -55,6 +56,8 @@ import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityJoinLevelEvent;
+import net.minecraftforge.event.entity.EntityMountEvent;
+import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -134,9 +137,41 @@ public class GenesisForgeEvents {
     }
 
     @SubscribeEvent
+    public static void onEntityMount(EntityMountEvent event) {
+        if (event.isDismounting() && event.getEntityBeingMounted() instanceof GrabHolderEntity holder) {
+            if (holder.isReleasing() || holder.isRemoved()) {
+                return;
+            }
+
+            if (event.getEntityMounting() instanceof LivingEntity victim) {
+                if (!holder.attemptEscape(victim)) {
+                    event.setCanceled(true);
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onLivingHurt(LivingHurtEvent event) {
         LivingEntity target = event.getEntity();
         Entity attacker = event.getSource().getEntity();
+
+        if (target.getVehicle() instanceof GrabHolderEntity holder) {
+            LivingEntity caster = holder.getCaster();
+            if (attacker != caster) {
+                event.setCanceled(true);
+                return;
+            }
+        }
+
+        if (target.getPersistentData().contains("GenesisActiveGrabHolderId")) {
+            int holderId = target.getPersistentData().getInt("GenesisActiveGrabHolderId");
+            Entity holderEntity = target.level().getEntity(holderId);
+            if (holderEntity instanceof GrabHolderEntity && holderEntity.isAlive()) {
+                event.setCanceled(true);
+                return;
+            }
+        }
 
         if (attacker instanceof LivingEntity livingAttacker && target.hasEffect(GenesisEffects.FIRE_REFLECTION.get())) {
             int amplifier = target.getEffect(GenesisEffects.FIRE_REFLECTION.get()).getAmplifier();
@@ -205,6 +240,7 @@ public class GenesisForgeEvents {
                     }
                 }
             }
+
             if (player.getPersistentData().hasUUID("GenesisGrabbedEntity")) {
                 java.util.UUID uuid = player.getPersistentData().getUUID("GenesisGrabbedEntity");
                 if (player.level() instanceof ServerLevel serverLevel) {
@@ -219,7 +255,6 @@ public class GenesisForgeEvents {
                         grabbed.setDeltaMovement(diff.scale(0.5D));
 
                         grabbed.hasImpulse = true;
-
                         grabbed.fallDistance = 0.0F;
 
                         if (grabbed instanceof net.minecraft.world.entity.item.FallingBlockEntity fb) {
@@ -230,6 +265,7 @@ public class GenesisForgeEvents {
                     }
                 }
             }
+
             if (player.getPersistentData().contains(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK)) {
                 long endTick = player.getPersistentData().getLong(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
                 if (player.level().getGameTime() >= endTick) {
@@ -242,6 +278,21 @@ public class GenesisForgeEvents {
                         toughnessAttr.removeModifier(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.TOUGHNESS_MOD_UUID);
                     }
                     player.getPersistentData().remove(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
+                }
+            }
+
+            if (player.tickCount % 20 == 0) {
+                long currentTime = player.level().getGameTime();
+                for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
+                    ItemStack stack = player.getInventory().getItem(i);
+                    if (!stack.isEmpty() && stack.hasTag() && stack.getTag().getBoolean(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
+                        long expireTick = stack.getTag().getLong(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.NBT_KEY_EXPIRE_TICK);
+                        if (currentTime >= expireTick) {
+                            player.getInventory().setItem(i, ItemStack.EMPTY);
+                            player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
+                                    SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 0.8F, 1.2F);
+                        }
+                    }
                 }
             }
         }
@@ -437,6 +488,7 @@ public class GenesisForgeEvents {
             Vec3 startVec = player.getEyePosition();
             Vec3 lookVec = player.getViewVector(1.0F);
             Vec3 endVec = startVec.add(lookVec.x * reach, lookVec.y * reach, lookVec.z * reach);
+
             BlockHitResult hitResult = level.clip(new ClipContext(
                     startVec, endVec,
                     ClipContext.Block.OUTLINE,
@@ -495,6 +547,14 @@ public class GenesisForgeEvents {
     public static void onServerTickRupture(TickEvent.ServerTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
             SpatialRuptureManager.serverTick(event.getServer());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onItemToss(ItemTossEvent event) {
+        ItemStack thrown = event.getEntity().getItem();
+        if (!thrown.isEmpty() && thrown.hasTag() && thrown.getTag().getBoolean(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
+            event.getEntity().discard();
         }
     }
 }
