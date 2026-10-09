@@ -77,6 +77,8 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<EmberEntity>> EMBER;
 
+    public static final RegistryObject<EntityType<WindWallEntity>> WIND_WALL;
+
 
 
     //
@@ -313,6 +315,11 @@ public class GenesisEntities {
                         EntityType.Builder.<EmberEntity>of(EmberEntity::new, MobCategory.MISC)
                                 .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
                                 .build("ember"));
+
+        WIND_WALL = ENTITY_TYPES.register("wind_wall", () ->
+                EntityType.Builder.<WindWallEntity>of(WindWallEntity::new, MobCategory.MISC)
+                        .sized(6.0F, 4.0F).clientTrackingRange(8).updateInterval(10)
+                        .build("wind_wall"));
 
 
         //

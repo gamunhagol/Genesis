@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
 import com.gamunhagol.genesismod.content.magic.miracles.water.*;
+import com.gamunhagol.genesismod.content.magic.miracles.wind.*;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
 import com.gamunhagol.genesismod.content.magic.spells.operation.*;
 import com.gamunhagol.genesismod.content.magic.spells.sorcery.*;
@@ -120,6 +121,12 @@ public class GenesisSpells {
 
     public static final AbstractSpell KAELO_CREATION = register(new KaeloCreationMiracle());
     public static final AbstractSpell FIRE_GOD_BLESSING = register(new FireGodBlessingMiracle());
+
+    public static final AbstractSpell CLEAR_WEATHER = register(new ClearWeatherMiracle());
+    public static final AbstractSpell HOME_MEAL = register(new HomeMealMiracle());
+    public static final AbstractSpell STORM_PROTECTION = register(new StormProtectionMiracle());
+    public static final AbstractSpell REFRESHING_BREEZE = register(new RefreshingBreezeMiracle());
+    public static final AbstractSpell UPDRAFT = register(new UpdraftMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

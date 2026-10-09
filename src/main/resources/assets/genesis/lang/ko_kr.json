@@ -379,6 +379,12 @@
   "item.genesis.kaelo_creation": "카엘로의 창조물",
   "item.genesis.fire_god_blessing": "화신의 가호",
 
+  "item.genesis.clear_weather": "쾌청",
+  "item.genesis.home_meal": "집밥",
+  "item.genesis.storm_protection": "폭풍의 보호",
+  "item.genesis.refreshing_breeze": "산뜻한 바람",
+  "item.genesis.updraft": "상승 기류",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -1033,6 +1039,17 @@
   "spell.genesis.kaelo_creation.desc": "주조된 거인을 소환한다.",
   "spell.genesis.fire_god_blessing": "화신의 가호",
   "spell.genesis.fire_god_blessing.desc": "화신의 가호를 빈다.",
+
+  "spell.genesis.clear_weather": "쾌청",
+  "spell.genesis.clear_weather.desc": "가호를 빌어 날씨를 맑게 한다.",
+  "spell.genesis.home_meal": "집밥",
+  "spell.genesis.home_meal.desc": "스튜를 받는다.",
+  "spell.genesis.storm_protection": "폭풍의 보호",
+  "spell.genesis.storm_protection.desc": "바람의 벽을 형성해 밀어낸다.",
+  "spell.genesis.refreshing_breeze": "산뜻한 바람",
+  "spell.genesis.refreshing_breeze.desc": "바람에 빌어 몸을 빠르게 한다.",
+  "spell.genesis.updraft": "상승 기류",
+  "spell.genesis.updraft.desc": "소년은 하늘을 날고 싶다고 빌었고, 하늘로 날아오르게 되었습니다.",
 
 
 

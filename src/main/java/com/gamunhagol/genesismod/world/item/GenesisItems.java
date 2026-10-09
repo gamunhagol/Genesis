@@ -742,6 +742,17 @@ public class GenesisItems {
     public static final RegistryObject<Item> FIRE_GOD_BLESSING = ITEMS.register("fire_god_blessing",
             () -> new SpellBookItem("fire_god_blessing", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> CLEAR_WEATHER = ITEMS.register("clear_weather",
+            () -> new SpellBookItem("clear_weather", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HOME_MEAL = ITEMS.register("home_meal",
+            () -> new SpellBookItem("home_meal", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STORM_PROTECTION = ITEMS.register("storm_protection",
+            () -> new SpellBookItem("storm_protection", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> REFRESHING_BREEZE = ITEMS.register("refreshing_breeze",
+            () -> new SpellBookItem("refreshing_breeze", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> UPDRAFT = ITEMS.register("updraft",
+            () -> new SpellBookItem("updraft", new Item.Properties().stacksTo(1)));
+
 
     //armor
 

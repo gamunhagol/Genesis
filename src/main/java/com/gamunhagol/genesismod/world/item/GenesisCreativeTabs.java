@@ -526,6 +526,12 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.KAELO_CREATION.get());
                 output.accept(GenesisItems.FIRE_GOD_BLESSING.get());
+
+                output.accept(GenesisItems.CLEAR_WEATHER.get());
+                output.accept(GenesisItems.HOME_MEAL.get());
+                output.accept(GenesisItems.STORM_PROTECTION.get());
+                output.accept(GenesisItems.REFRESHING_BREEZE.get());
+                output.accept(GenesisItems.UPDRAFT.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

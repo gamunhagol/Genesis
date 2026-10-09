@@ -376,6 +376,12 @@
   "item.genesis.kaelo_creation": "Kaelo's Creation",
   "item.genesis.fire_god_blessing": "Fire God's Blessing",
 
+  "item.genesis.clear_weather": "Clear Skies",
+  "item.genesis.home_meal": "Home Meal",
+  "item.genesis.storm_protection": "Storm Protection",
+  "item.genesis.refreshing_breeze": "Refreshing Breeze",
+  "item.genesis.updraft": "Updraft",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -1031,6 +1037,18 @@
   "spell.genesis.kaelo_creation.desc": "Summons a forged colossus.",
   "spell.genesis.fire_god_blessing": "Fire God's Blessing",
   "spell.genesis.fire_god_blessing.desc": "Prays for the blessing of the Fire God.",
+
+  "spell.genesis.clear_weather": "Clear Skies",
+  "spell.genesis.clear_weather.desc": "Prays for blessing to clear the skies.",
+  "spell.genesis.home_meal": "Home Meal",
+  "spell.genesis.home_meal.desc": "Receives stew.",
+  "spell.genesis.storm_protection": "Storm Protection",
+  "spell.genesis.storm_protection.desc": "Forms a wall of wind to push back foes.",
+  "spell.genesis.refreshing_breeze": "Refreshing Breeze",
+  "spell.genesis.refreshing_breeze.desc": "Prays to the wind to quicken one's step.",
+  "spell.genesis.updraft": "Updraft",
+  "spell.genesis.updraft.desc": "A boy prayed that he might fly, and so he ascended into the sky.",
+
 
 
 

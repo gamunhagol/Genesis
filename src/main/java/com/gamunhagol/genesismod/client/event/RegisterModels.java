@@ -282,6 +282,8 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.EMBER.get(), ThrownItemRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.WIND_WALL.get(), NoopRenderer::new);
+
 
 
 
