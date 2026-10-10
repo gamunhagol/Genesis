@@ -284,6 +284,14 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WIND_WALL.get(), NoopRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.WIND_FEATHER.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.REJECTION_STORM.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_1.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_2.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_3.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), NoopRenderer::new);
+
 
 
 

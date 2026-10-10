@@ -382,6 +382,15 @@
   "item.genesis.refreshing_breeze": "Refreshing Breeze",
   "item.genesis.updraft": "Updraft",
 
+  "item.genesis.wind_feather": "Swift Throw",
+  "item.genesis.rejection_storm": "Wind of Rejection",
+  "item.genesis.storm": "Storm",
+  "item.genesis.blade_storm": "Blade Wind",
+
+  "item.genesis.lien_protection": "Lien's Protection",
+  "item.genesis.gale": "Gale",
+  "item.genesis.wind_animus": "Animus of the Wind",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -1048,6 +1057,22 @@
   "spell.genesis.refreshing_breeze.desc": "Prays to the wind to quicken one's step.",
   "spell.genesis.updraft": "Updraft",
   "spell.genesis.updraft.desc": "A boy prayed that he might fly, and so he ascended into the sky.",
+
+  "spell.genesis.wind_feather": "Swift Throw",
+  "spell.genesis.wind_feather.desc": "A miracle that hurls a feather at high speed.",
+  "spell.genesis.rejection_storm": "Wind of Rejection",
+  "spell.genesis.rejection_storm.desc": "The wind refuses the new lightning.",
+  "spell.genesis.storm": "Storm",
+  "spell.genesis.storm.desc": "A miracle that summons a storm.",
+  "spell.genesis.blade_storm": "Blade Wind",
+  "spell.genesis.blade_storm.desc": "A miracle that looses tracking feathers.",
+
+  "spell.genesis.lien_protection": "Lien's Protection",
+  "spell.genesis.lien_protection.desc": "Prays for divine protection to fall slowly.",
+  "spell.genesis.gale": "Gale",
+  "spell.genesis.gale.desc": "A vehement form of rejection.",
+  "spell.genesis.wind_animus": "Animus of the Wind",
+  "spell.genesis.wind_animus.desc": "The wind flies forth, bearing murderous intent.",
 
 
 

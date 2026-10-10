@@ -128,6 +128,15 @@ public class GenesisSpells {
     public static final AbstractSpell REFRESHING_BREEZE = register(new RefreshingBreezeMiracle());
     public static final AbstractSpell UPDRAFT = register(new UpdraftMiracle());
 
+    public static final AbstractSpell WIND_FEATHER = register(new WindFeatherMiracle());
+    public static final AbstractSpell REJECTION_STORM = register(new RejectionStormMiracle());
+    public static final AbstractSpell STORM = register(new StormMiracle());
+    public static final AbstractSpell BLADE_STORM = register(new BladeStormMiracle());
+
+    public static final AbstractSpell LIEN_PROTECTION = register(new LienProtectionMiracle());
+    public static final AbstractSpell GALE = register(new GaleMiracle());
+    public static final AbstractSpell WIND_ANIMUS = register(new WindAnimusMiracle());
+
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);
         return spell;

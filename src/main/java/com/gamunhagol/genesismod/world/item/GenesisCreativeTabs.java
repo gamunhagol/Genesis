@@ -532,6 +532,15 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.STORM_PROTECTION.get());
                 output.accept(GenesisItems.REFRESHING_BREEZE.get());
                 output.accept(GenesisItems.UPDRAFT.get());
+
+                output.accept(GenesisItems.WIND_FEATHER.get());
+                output.accept(GenesisItems.REJECTION_STORM.get());
+                output.accept(GenesisItems.STORM.get());
+                output.accept(GenesisItems.BLADE_STORM.get());
+
+                output.accept(GenesisItems.LIEN_PROTECTION.get());
+                output.accept(GenesisItems.GALE.get());
+                output.accept(GenesisItems.WIND_ANIMUS.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

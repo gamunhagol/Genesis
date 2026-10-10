@@ -216,6 +216,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.STORM_PROTECTION);
         simpleItem(GenesisItems.REFRESHING_BREEZE);
         simpleItem(GenesisItems.UPDRAFT);
+        simpleItem(GenesisItems.WIND_FEATHER);
+        simpleItem(GenesisItems.REJECTION_STORM);
+        simpleItem(GenesisItems.STORM);
+        simpleItem(GenesisItems.BLADE_STORM);
+        simpleItem(GenesisItems.LIEN_PROTECTION);
+        simpleItem(GenesisItems.GALE);
+        simpleItem(GenesisItems.WIND_ANIMUS);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

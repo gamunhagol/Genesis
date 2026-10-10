@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.*;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.WindFeatherEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.*;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -78,6 +79,14 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<EmberEntity>> EMBER;
 
     public static final RegistryObject<EntityType<WindWallEntity>> WIND_WALL;
+
+    public static final RegistryObject<EntityType<WindFeatherEntity>> WIND_FEATHER;
+    public static final RegistryObject<EntityType<RejectionStormEntity>> REJECTION_STORM;
+    public static final RegistryObject<EntityType<StormSegment1Entity>> STORM_SEGMENT_1;
+    public static final RegistryObject<EntityType<StormSegment2Entity>> STORM_SEGMENT_2;
+    public static final RegistryObject<EntityType<StormSegment3Entity>> STORM_SEGMENT_3;
+    public static final RegistryObject<EntityType<StormSegment4Entity>> STORM_SEGMENT_4;
+    public static final RegistryObject<EntityType<BladeStormEntity>> BLADE_STORM;
 
 
 
@@ -320,6 +329,42 @@ public class GenesisEntities {
                 EntityType.Builder.<WindWallEntity>of(WindWallEntity::new, MobCategory.MISC)
                         .sized(6.0F, 4.0F).clientTrackingRange(8).updateInterval(10)
                         .build("wind_wall"));
+
+        WIND_FEATHER = ENTITY_TYPES.register("wind_feather", () ->
+                EntityType.Builder.<WindFeatherEntity>of(WindFeatherEntity::new, MobCategory.MISC)
+                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(1)
+                        .build("wind_feather"));
+
+        REJECTION_STORM = ENTITY_TYPES.register("rejection_storm", () ->
+                EntityType.Builder.<RejectionStormEntity>of(RejectionStormEntity::new, MobCategory.MISC)
+                        .sized(8.0F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("rejection_storm"));
+
+        STORM_SEGMENT_1 = ENTITY_TYPES.register("storm_segment_1", () ->
+                EntityType.Builder.<StormSegment1Entity>of(StormSegment1Entity::new, MobCategory.MISC)
+                        .sized(0.8F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("storm_segment_1"));
+
+        STORM_SEGMENT_2 = ENTITY_TYPES.register("storm_segment_2", () ->
+                EntityType.Builder.<StormSegment2Entity>of(StormSegment2Entity::new, MobCategory.MISC)
+                        .sized(1.2F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("storm_segment_2"));
+
+        STORM_SEGMENT_3 = ENTITY_TYPES.register("storm_segment_3", () ->
+                EntityType.Builder.<StormSegment3Entity>of(StormSegment3Entity::new, MobCategory.MISC)
+                        .sized(1.6F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("storm_segment_3"));
+
+        STORM_SEGMENT_4 = ENTITY_TYPES.register("storm_segment_4", () ->
+                EntityType.Builder.<StormSegment4Entity>of(StormSegment4Entity::new, MobCategory.MISC)
+                        .sized(2.2F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("storm_segment_4"));
+
+        BLADE_STORM = ENTITY_TYPES.register("blade_storm", () ->
+                EntityType.Builder.<BladeStormEntity>of(BladeStormEntity::new, MobCategory.MISC)
+                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(1)
+                        .build("blade_storm"));
+
 
 
         //

@@ -385,6 +385,15 @@
   "item.genesis.refreshing_breeze": "산뜻한 바람",
   "item.genesis.updraft": "상승 기류",
 
+  "item.genesis.wind_feather": "고속 투척",
+  "item.genesis.rejection_storm": "거절의 바람",
+  "item.genesis.storm": "폭풍",
+  "item.genesis.blade_storm": "칼날 바람",
+
+  "item.genesis.lien_protection": "리엔의 보호",
+  "item.genesis.gale": "강풍",
+  "item.genesis.wind_animus": "바람의 살의",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -1050,6 +1059,23 @@
   "spell.genesis.refreshing_breeze.desc": "바람에 빌어 몸을 빠르게 한다.",
   "spell.genesis.updraft": "상승 기류",
   "spell.genesis.updraft.desc": "소년은 하늘을 날고 싶다고 빌었고, 하늘로 날아오르게 되었습니다.",
+
+  "spell.genesis.wind_feather": "고속 투척",
+  "spell.genesis.wind_feather.desc": "깃털을 고속으로 투척하는 기적.",
+  "spell.genesis.rejection_storm": "거절의 바람",
+  "spell.genesis.rejection_storm.desc": "바람은 새로운 번개를 거절한다.",
+  "spell.genesis.storm": "폭풍",
+  "spell.genesis.storm.desc": "폭풍을 소환하는 기적.",
+  "spell.genesis.blade_storm": "칼날 바람",
+  "spell.genesis.blade_storm.desc": "추적하는 깃털을 날리는 기적.",
+
+  "spell.genesis.lien_protection": "리엔의 보호",
+  "spell.genesis.lien_protection.desc": "신의 가호를 빌어 천천히 낙하한다.",
+  "spell.genesis.gale": "강풍",
+  "spell.genesis.gale.desc": "강한 거절의 방식.",
+  "spell.genesis.wind_animus": "바람의 살의",
+  "spell.genesis.wind_animus.desc": "바람은 살의를 품고 날아간다.",
+
 
 
 

@@ -753,6 +753,22 @@ public class GenesisItems {
     public static final RegistryObject<Item> UPDRAFT = ITEMS.register("updraft",
             () -> new SpellBookItem("updraft", new Item.Properties().stacksTo(1)));
 
+    public static final RegistryObject<Item> WIND_FEATHER = ITEMS.register("wind_feather",
+            () -> new SpellBookItem("wind_feather", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> REJECTION_STORM = ITEMS.register("rejection_storm",
+            () -> new SpellBookItem("rejection_storm", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STORM = ITEMS.register("storm",
+            () -> new SpellBookItem("storm", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> BLADE_STORM = ITEMS.register("blade_storm",
+            () -> new SpellBookItem("blade_storm", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> LIEN_PROTECTION = ITEMS.register("lien_protection",
+            () -> new SpellBookItem("lien_protection", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GALE = ITEMS.register("gale",
+            () -> new SpellBookItem("gale", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> WIND_ANIMUS = ITEMS.register("wind_animus",
+            () -> new SpellBookItem("wind_animus", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
     //armor
 
