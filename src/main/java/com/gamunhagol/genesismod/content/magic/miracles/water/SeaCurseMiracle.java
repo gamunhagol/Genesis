@@ -91,15 +91,6 @@ public class SeaCurseMiracle extends MiracleSpell {
                     0.8F,
                     1.4F
             );
-        } else {
-            level.playSound(
-                    null,
-                    caster.getX(), caster.getY(), caster.getZ(),
-                    SoundEvents.BUBBLE_COLUMN_WHIRLPOOL_INSIDE,
-                    caster.getSoundSource(),
-                    0.6F,
-                    0.8F
-            );
         }
     }
 

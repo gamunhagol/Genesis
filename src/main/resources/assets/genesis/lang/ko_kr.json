@@ -394,6 +394,19 @@
   "item.genesis.gale": "강풍",
   "item.genesis.wind_animus": "바람의 살의",
 
+  "item.genesis.paralysis": "마비",
+  "item.genesis.battle_stimulation": "전투 고양",
+  "item.genesis.lightning_protection": "뇌전의 보호",
+  "item.genesis.call_storm": "폭풍 부름",
+  "item.genesis.hunters_instinct": "사냥꾼의 직감",
+
+  "item.genesis.lightning_arrow": "번개 화살",
+  "item.genesis.lightning_spear": "번개 창",
+  "item.genesis.lightning_stake": "벼락 말뚝",
+  "item.genesis.lightning_strike": "낙뢰",
+
+  "item.genesis.vala_arrow": "발라의 화살",
+
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -1075,6 +1088,32 @@
   "spell.genesis.gale.desc": "강한 거절의 방식.",
   "spell.genesis.wind_animus": "바람의 살의",
   "spell.genesis.wind_animus.desc": "바람은 살의를 품고 날아간다.",
+
+  "spell.genesis.paralysis": "마비",
+  "spell.genesis.paralysis.desc": "대상을 마비시키는 기적.",
+  "spell.genesis.battle_stimulation": "전투 고양",
+  "spell.genesis.battle_stimulation.desc": "자신의 몸을 전류로 자극해 전투를 준비하는 야만의 기적.",
+  "spell.genesis.lightning_protection": "뇌전의 가호",
+  "spell.genesis.lightning_protection.desc": "번개의 가호를 비는 기적.",
+  "spell.genesis.call_storm": "폭풍 부름",
+  "spell.genesis.call_storm.desc": "폭풍을 빌어 뇌운을 불러오는 기적.",
+  "spell.genesis.hunters_instinct": "사냥꾼의 직감",
+  "spell.genesis.hunters_instinct.desc": "사냥꾼은 예리한 감각을 지닌다. 마치 번개처럼.",
+
+  "spell.genesis.lightning_arrow": "번개 화살",
+  "spell.genesis.lightning_arrow.desc": "번개 활을 생성하는 기적. 활은 사냥꾼의 동반자이다.",
+  "spell.genesis.lightning_spear": "번개 창",
+  "spell.genesis.lightning_spear.desc": "번개의 창을 내던지는 기본적인 전투 기적.",
+  "spell.genesis.lightning_stake": "벼락 말뚝",
+  "spell.genesis.lightning_stake.desc": "결투에서 패배한 자는 말뚝에 박혀 생이 고정되는 것이 야만의 규칙이었다.",
+  "spell.genesis.lightning_strike": "낙뢰",
+  "spell.genesis.lightning_strike.desc": "낙뢰를 떨어뜨리는 기적.",
+
+  "spell.genesis.vala_arrow": "발라의 화살",
+  "spell.genesis.vala_arrow.desc": "거대한 뇌창을 시위에 얹어 날리는 기적. 고대에는 창을 시위에 얹어서 날렸다.",
+
+
+
 
 
 

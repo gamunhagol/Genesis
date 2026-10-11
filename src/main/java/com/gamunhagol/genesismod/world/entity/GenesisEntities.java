@@ -88,6 +88,11 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<StormSegment4Entity>> STORM_SEGMENT_4;
     public static final RegistryObject<EntityType<BladeStormEntity>> BLADE_STORM;
 
+    public static final RegistryObject<EntityType<LightningSpearEntity>> LIGHTNING_SPEAR;
+    public static final RegistryObject<EntityType<LightningStakeEntity>> LIGHTNING_STAKE;
+
+    public static final RegistryObject<EntityType<ValaArrowEntity>> VALA_ARROW;
+
 
 
     //
@@ -364,6 +369,21 @@ public class GenesisEntities {
                 EntityType.Builder.<BladeStormEntity>of(BladeStormEntity::new, MobCategory.MISC)
                         .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(1)
                         .build("blade_storm"));
+
+        LIGHTNING_SPEAR = ENTITY_TYPES.register("lightning_spear", () ->
+                EntityType.Builder.<LightningSpearEntity>of(LightningSpearEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("lightning_spear"));
+
+        LIGHTNING_STAKE = ENTITY_TYPES.register("lightning_stake", () ->
+                EntityType.Builder.<LightningStakeEntity>of(LightningStakeEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("lightning_stake"));
+
+        VALA_ARROW = ENTITY_TYPES.register("vala_arrow", () ->
+                EntityType.Builder.<ValaArrowEntity>of(ValaArrowEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .build("vala_arrow"));
 
 
 

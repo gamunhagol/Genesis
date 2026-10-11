@@ -4,6 +4,7 @@ package com.gamunhagol.genesismod.content.magic;
 import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
+import com.gamunhagol.genesismod.content.magic.miracles.lightning.*;
 import com.gamunhagol.genesismod.content.magic.miracles.water.*;
 import com.gamunhagol.genesismod.content.magic.miracles.wind.*;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
@@ -136,6 +137,19 @@ public class GenesisSpells {
     public static final AbstractSpell LIEN_PROTECTION = register(new LienProtectionMiracle());
     public static final AbstractSpell GALE = register(new GaleMiracle());
     public static final AbstractSpell WIND_ANIMUS = register(new WindAnimusMiracle());
+
+    public static final AbstractSpell PARALYSIS = register(new ParalysisMiracle());
+    public static final AbstractSpell BATTLE_STIMULATION = register(new BattleStimulationMiracle());
+    public static final AbstractSpell LIGHTNING_PROTECTION = register(new LightningProtectionMiracle());
+    public static final AbstractSpell CALL_STORM = register(new CallStormMiracle());
+    public static final AbstractSpell HUNTERS_INSTINCT = register(new HuntersInstinctMiracle());
+
+    public static final AbstractSpell LIGHTNING_ARROW = register(new LightningArrowMiracle());
+    public static final AbstractSpell LIGHTNING_SPEAR = register(new LightningSpearMiracle());
+    public static final AbstractSpell LIGHTNING_STAKE = register(new LightningStakeMiracle());
+    public static final AbstractSpell LIGHTNING_STRIKE = register(new LightningStrikeMiracle());
+
+    public static final AbstractSpell VALA_ARROW = register(new ValaArrowMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

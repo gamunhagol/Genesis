@@ -223,6 +223,16 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.LIEN_PROTECTION);
         simpleItem(GenesisItems.GALE);
         simpleItem(GenesisItems.WIND_ANIMUS);
+        simpleItem(GenesisItems.PARALYSIS);
+        simpleItem(GenesisItems.BATTLE_STIMULATION);
+        simpleItem(GenesisItems.LIGHTNING_PROTECTION);
+        simpleItem(GenesisItems.CALL_STORM);
+        simpleItem(GenesisItems.HUNTERS_INSTINCT);
+        simpleItem(GenesisItems.LIGHTNING_ARROW);
+        simpleItem(GenesisItems.LIGHTNING_SPEAR);
+        simpleItem(GenesisItems.LIGHTNING_STAKE);
+        simpleItem(GenesisItems.LIGHTNING_STRIKE);
+        simpleItem(GenesisItems.VALA_ARROW);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

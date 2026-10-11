@@ -391,6 +391,19 @@
   "item.genesis.gale": "Gale",
   "item.genesis.wind_animus": "Animus of the Wind",
 
+  "item.genesis.paralysis": "Paralysis",
+  "item.genesis.battle_stimulation": "Battle Surge",
+  "item.genesis.lightning_protection": "Lightning Protection",
+  "item.genesis.call_storm": "Call of the Storm",
+  "item.genesis.hunters_instinct": "Hunter's Instinct",
+
+  "item.genesis.lightning_arrow": "Lightning Arrow",
+  "item.genesis.lightning_spear": "Lightning Spear",
+  "item.genesis.lightning_stake": "Lightning Stake",
+  "item.genesis.lightning_strike": "Lightning Strike",
+
+  "item.genesis.vala_arrow": "Vala's Arrow",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -1073,6 +1086,31 @@
   "spell.genesis.gale.desc": "A vehement form of rejection.",
   "spell.genesis.wind_animus": "Animus of the Wind",
   "spell.genesis.wind_animus.desc": "The wind flies forth, bearing murderous intent.",
+
+  "spell.genesis.paralysis": "Paralysis",
+  "spell.genesis.paralysis.desc": "A miracle that paralyzes the target.",
+  "spell.genesis.battle_stimulation": "Battle Surge",
+  "spell.genesis.battle_stimulation.desc": "A barbaric miracle that readies for battle by stimulating one's body with electric current.",
+  "spell.genesis.lightning_protection": "Lightning Protection",
+  "spell.genesis.lightning_protection.desc": "A miracle that prays for the blessing of lightning.",
+  "spell.genesis.call_storm": "Call of the Storm",
+  "spell.genesis.call_storm.desc": "A miracle that calls upon the storm to summon thunderclouds.",
+  "spell.genesis.hunters_instinct": "Hunter's Instinct",
+  "spell.genesis.hunters_instinct.desc": "A hunter possesses sharp senses. Just like lightning.",
+
+  "spell.genesis.lightning_arrow": "Lightning Arrow",
+  "spell.genesis.lightning_arrow.desc": "A miracle that conjures a bow of lightning. The bow is a hunter's companion.",
+  "spell.genesis.lightning_spear": "Lightning Spear",
+  "spell.genesis.lightning_spear.desc": "A fundamental combat miracle that hurls a spear of lightning.",
+  "spell.genesis.lightning_stake": "Lightning Stake",
+  "spell.genesis.lightning_stake.desc": "It was the barbaric law that one defeated in a duel be impaled upon a stake, binding their life fast.",
+  "spell.genesis.lightning_strike": "Lightning Strike",
+  "spell.genesis.lightning_strike.desc": "A miracle that calls down a strike of lightning.",
+
+  "spell.genesis.vala_arrow": "Vala's Arrow",
+  "spell.genesis.vala_arrow.desc": "A miracle that notches a colossal lightning spear upon the bowstring and looses it. In ancient times, spears were drawn and fired from the string.",
+
+
 
 
 

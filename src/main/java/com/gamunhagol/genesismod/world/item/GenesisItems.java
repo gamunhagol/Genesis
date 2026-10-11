@@ -769,6 +769,29 @@ public class GenesisItems {
     public static final RegistryObject<Item> WIND_ANIMUS = ITEMS.register("wind_animus",
             () -> new SpellBookItem("wind_animus", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> PARALYSIS = ITEMS.register("paralysis",
+            () -> new SpellBookItem("paralysis", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BATTLE_STIMULATION = ITEMS.register("battle_stimulation",
+            () -> new SpellBookItem("battle_stimulation", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> LIGHTNING_PROTECTION = ITEMS.register("lightning_protection",
+            () -> new SpellBookItem("lightning_protection", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> CALL_STORM = ITEMS.register("call_storm",
+            () -> new SpellBookItem("call_storm", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HUNTERS_INSTINCT = ITEMS.register("hunters_instinct",
+            () -> new SpellBookItem("hunters_instinct", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> LIGHTNING_ARROW = ITEMS.register("lightning_arrow",
+            () -> new SpellBookItem("lightning_arrow", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> LIGHTNING_SPEAR = ITEMS.register("lightning_spear",
+            () -> new SpellBookItem("lightning_spear", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> LIGHTNING_STAKE = ITEMS.register("lightning_stake",
+            () -> new SpellBookItem("lightning_stake", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> LIGHTNING_STRIKE = ITEMS.register("lightning_strike",
+            () -> new SpellBookItem("lightning_strike", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> VALA_ARROW = ITEMS.register("vala_arrow",
+            () -> new SpellBookItem("vala_arrow", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
     //armor
 
