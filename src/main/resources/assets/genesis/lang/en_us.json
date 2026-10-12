@@ -404,6 +404,17 @@
 
   "item.genesis.vala_arrow": "Vala's Arrow",
 
+  "item.genesis.plant_body": "Plant Body",
+  "item.genesis.bitter_medicine": "Bitter Medicine",
+  "item.genesis.poison_is_bitter": "Poison Is Bitter",
+
+  "item.genesis.root_entangle": "Root Entanglement",
+  "item.genesis.poison_root": "Poison Root",
+  "item.genesis.root_spear": "Root Spear",
+
+  "item.genesis.root_strike": "Uproot",
+  "item.genesis.entangling_forest": "Entangling Forest",
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -1109,6 +1120,26 @@
 
   "spell.genesis.vala_arrow": "Vala's Arrow",
   "spell.genesis.vala_arrow.desc": "A miracle that notches a colossal lightning spear upon the bowstring and looses it. In ancient times, spears were drawn and fired from the string.",
+
+  "spell.genesis.plant_body": "Plant Body",
+  "spell.genesis.plant_body.desc": "A miracle that prays for divine blessing to grant regeneration.",
+  "spell.genesis.bitter_medicine": "Bitter Medicine",
+  "spell.genesis.bitter_medicine.desc": "A miracle that cures oneself of poison.",
+  "spell.genesis.poison_is_bitter": "Poison Is Bitter",
+  "spell.genesis.poison_is_bitter.desc": "A miracle that inflicts poison.",
+
+  "spell.genesis.root_entangle": "Root Entanglement",
+  "spell.genesis.root_entangle.desc": "A miracle that summons small roots to hinder movement.",
+  "spell.genesis.poison_root": "Poison Root",
+  "spell.genesis.poison_root.desc": "A miracle that summons small roots to afflict with poison.",
+  "spell.genesis.root_spear": "Root Spear",
+  "spell.genesis.root_spear.desc": "A miracle that summons a great root to impale.",
+
+  "spell.genesis.root_strike": "Uproot",
+  "spell.genesis.root_strike.desc": "A miracle that uproots a colossal root and smites with it. The root is the foundation of the tree; the tree is the limb of god.",
+  "spell.genesis.entangling_forest": "Entangling Forest",
+  "spell.genesis.entangling_forest.desc": "In the distant past, the forest swallowed men whole. A miracle patterned after that memory.",
+
 
 
 

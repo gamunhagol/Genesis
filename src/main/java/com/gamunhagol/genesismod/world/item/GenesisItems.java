@@ -792,6 +792,25 @@ public class GenesisItems {
     public static final RegistryObject<Item> VALA_ARROW = ITEMS.register("vala_arrow",
             () -> new SpellBookItem("vala_arrow", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> PLANT_BODY = ITEMS.register("plant_body",
+            () -> new SpellBookItem("plant_body", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BITTER_MEDICINE = ITEMS.register("bitter_medicine",
+            () -> new SpellBookItem("bitter_medicine", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> POISON_IS_BITTER = ITEMS.register("poison_is_bitter",
+            () -> new SpellBookItem("poison_is_bitter", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> ROOT_ENTANGLE = ITEMS.register("root_entangle",
+            () -> new SpellBookItem("root_entangle", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> POISON_ROOT = ITEMS.register("poison_root",
+            () -> new SpellBookItem("poison_root", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> ROOT_SPEAR = ITEMS.register("root_spear",
+            () -> new SpellBookItem("root_spear", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> ROOT_STRIKE = ITEMS.register("root_strike",
+            () -> new SpellBookItem("root_strike", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> ENTANGLING_FOREST = ITEMS.register("entangling_forest",
+            () -> new SpellBookItem("entangling_forest", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
     //armor
 

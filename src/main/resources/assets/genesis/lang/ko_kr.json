@@ -407,6 +407,16 @@
 
   "item.genesis.vala_arrow": "발라의 화살",
 
+  "item.genesis.plant_body": "식물의 몸",
+  "item.genesis.bitter_medicine": "약은 쓰다",
+  "item.genesis.poison_is_bitter": "독도 쓰다",
+
+  "item.genesis.root_entangle": "뿌리 엮기",
+  "item.genesis.poison_root": "독뿌리",
+  "item.genesis.root_spear": "뿌리 창",
+
+  "item.genesis.root_strike": "뿌리 뽑기",
+  "item.genesis.entangling_forest": "얽혀드는 숲",
 
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
@@ -1111,6 +1121,26 @@
 
   "spell.genesis.vala_arrow": "발라의 화살",
   "spell.genesis.vala_arrow.desc": "거대한 뇌창을 시위에 얹어 날리는 기적. 고대에는 창을 시위에 얹어서 날렸다.",
+
+  "spell.genesis.plant_body": "식물의 몸",
+  "spell.genesis.plant_body.desc": "신의 가호를 빌어 재생을 부여하는 기적.",
+  "spell.genesis.bitter_medicine": "약은 쓰다",
+  "spell.genesis.bitter_medicine.desc": "자신의 독을 치료하는 기적.",
+  "spell.genesis.poison_is_bitter": "독도 쓰다",
+  "spell.genesis.poison_is_bitter.desc": "독을 부여하는 기적.",
+
+  "spell.genesis.root_entangle": "뿌리 엮기",
+  "spell.genesis.root_entangle.desc": "작은 뿌리를 소환해 이동을 방해하는 기적.",
+  "spell.genesis.poison_root": "독뿌리",
+  "spell.genesis.poison_root.desc": "작은 뿌리를 소환해 독에 병들게 하는 기적.",
+  "spell.genesis.root_spear": "뿌리 창",
+  "spell.genesis.root_spear.desc": "큰 뿌리를 소환해 꿰뚫게 하는 기적.",
+
+  "spell.genesis.root_strike": "뿌리 뽑기",
+  "spell.genesis.root_strike.desc": "거대한 뿌리를 뽑아 들고 내리치게 하는 기적. 뿌리는 나무의 기반, 나무는 신의 수족.",
+  "spell.genesis.entangling_forest": "얽혀드는 숲",
+  "spell.genesis.entangling_forest.desc": "먼 과거, 숲은 사람을 삼켰었다. 그것을 본뜬 기적.",
+
 
 
 

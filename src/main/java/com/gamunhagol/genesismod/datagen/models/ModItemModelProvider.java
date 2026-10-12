@@ -233,6 +233,14 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.LIGHTNING_STAKE);
         simpleItem(GenesisItems.LIGHTNING_STRIKE);
         simpleItem(GenesisItems.VALA_ARROW);
+        simpleItem(GenesisItems.PLANT_BODY);
+        simpleItem(GenesisItems.BITTER_MEDICINE);
+        simpleItem(GenesisItems.POISON_IS_BITTER);
+        simpleItem(GenesisItems.ROOT_ENTANGLE);
+        simpleItem(GenesisItems.POISON_ROOT);
+        simpleItem(GenesisItems.ROOT_SPEAR);
+        simpleItem(GenesisItems.ROOT_STRIKE);
+        simpleItem(GenesisItems.ENTANGLING_FOREST);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

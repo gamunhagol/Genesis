@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
 import com.gamunhagol.genesismod.content.magic.miracles.lightning.*;
+import com.gamunhagol.genesismod.content.magic.miracles.plant.*;
 import com.gamunhagol.genesismod.content.magic.miracles.water.*;
 import com.gamunhagol.genesismod.content.magic.miracles.wind.*;
 import com.gamunhagol.genesismod.content.magic.spells.nature.*;
@@ -150,6 +151,17 @@ public class GenesisSpells {
     public static final AbstractSpell LIGHTNING_STRIKE = register(new LightningStrikeMiracle());
 
     public static final AbstractSpell VALA_ARROW = register(new ValaArrowMiracle());
+
+    public static final AbstractSpell PLANT_BODY = register(new PlantBodyMiracle());
+    public static final AbstractSpell BITTER_MEDICINE = register(new BitterMedicineMiracle());
+    public static final AbstractSpell POISON_IS_BITTER = register(new PoisonIsBitterMiracle());
+
+    public static final AbstractSpell ROOT_ENTANGLE = register(new RootEntangleMiracle());
+    public static final AbstractSpell POISON_ROOT = register(new PoisonRootMiracle());
+    public static final AbstractSpell ROOT_SPEAR = register(new RootSpearMiracle());
+
+    public static final AbstractSpell ROOT_STRIKE = register(new RootStrikeMiracle());
+    public static final AbstractSpell ENTANGLING_FOREST = register(new EntanglingForestMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

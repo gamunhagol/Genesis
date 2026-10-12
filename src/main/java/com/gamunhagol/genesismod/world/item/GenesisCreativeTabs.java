@@ -554,6 +554,17 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.LIGHTNING_STRIKE.get());
 
                 output.accept(GenesisItems.VALA_ARROW.get());
+
+                output.accept(GenesisItems.PLANT_BODY.get());
+                output.accept(GenesisItems.BITTER_MEDICINE.get());
+                output.accept(GenesisItems.POISON_IS_BITTER.get());
+
+                output.accept(GenesisItems.ROOT_ENTANGLE.get());
+                output.accept(GenesisItems.POISON_ROOT.get());
+                output.accept(GenesisItems.ROOT_SPEAR.get());
+
+                output.accept(GenesisItems.ROOT_STRIKE.get());
+                output.accept(GenesisItems.ENTANGLING_FOREST.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

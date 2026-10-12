@@ -7,6 +7,9 @@ import com.gamunhagol.genesismod.world.capability.spell.ISpellSlot;
 import com.gamunhagol.genesismod.world.capability.weapon.IGenesisWeaponStats;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
+import com.gamunhagol.genesismod.world.entity.etc.child.PoisonRootEntity;
+import com.gamunhagol.genesismod.world.entity.etc.child.RootEntangleEntity;
+import com.gamunhagol.genesismod.world.entity.etc.child.RootSpearEntity;
 import com.gamunhagol.genesismod.world.entity.mob.Collector;
 import com.gamunhagol.genesismod.world.entity.mob.CollectorGuard;
 import net.minecraft.world.entity.EntityType;
@@ -38,6 +41,10 @@ public class GenesisEventBusEvents {
         event.put((EntityType)GenesisEntities.SUMMONED_WARDEN.get(), Warden.createAttributes().build());
         event.put((EntityType)GenesisEntities.SPELL_GUARDIAN.get(), Guardian.createAttributes().build());
         event.put((EntityType)GenesisEntities.SPELL_ELDER_GUARDIAN.get(), ElderGuardian.createAttributes().build());
+        event.put((EntityType)GenesisEntities.ROOT_ENTANGLE.get(), RootEntangleEntity.createAttributes().build());
+        event.put((EntityType)GenesisEntities.POISON_ROOT.get(), PoisonRootEntity.createAttributes().build());
+        event.put((EntityType)GenesisEntities.ROOT_SPEAR.get(), RootSpearEntity.createAttributes().build());
+
     }
 
     @SubscribeEvent

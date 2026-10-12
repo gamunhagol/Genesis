@@ -1,6 +1,9 @@
 package com.gamunhagol.genesismod.world.entity;
 
 import com.gamunhagol.genesismod.world.entity.etc.*;
+import com.gamunhagol.genesismod.world.entity.etc.child.PoisonRootEntity;
+import com.gamunhagol.genesismod.world.entity.etc.child.RootEntangleEntity;
+import com.gamunhagol.genesismod.world.entity.etc.child.RootSpearEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
@@ -92,6 +95,13 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<LightningStakeEntity>> LIGHTNING_STAKE;
 
     public static final RegistryObject<EntityType<ValaArrowEntity>> VALA_ARROW;
+
+
+    public static final RegistryObject<EntityType<RootEntangleEntity>> ROOT_ENTANGLE;
+    public static final RegistryObject<EntityType<PoisonRootEntity>> POISON_ROOT;
+    public static final RegistryObject<EntityType<RootSpearEntity>> ROOT_SPEAR;
+
+    public static final RegistryObject<EntityType<RootStrikeEntity>> ROOT_STRIKE;
 
 
 
@@ -384,6 +394,27 @@ public class GenesisEntities {
                 EntityType.Builder.<ValaArrowEntity>of(ValaArrowEntity::new, MobCategory.MISC)
                         .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
                         .build("vala_arrow"));
+
+
+        ROOT_ENTANGLE = ENTITY_TYPES.register("root_entangle", () ->
+                EntityType.Builder.<RootEntangleEntity>of(RootEntangleEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.4F).clientTrackingRange(6).updateInterval(10)
+                        .build("root_entangle"));
+
+        POISON_ROOT = ENTITY_TYPES.register("poison_root", () ->
+                EntityType.Builder.<PoisonRootEntity>of(PoisonRootEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.4F).clientTrackingRange(6).updateInterval(10)
+                        .build("poison_root"));
+
+        ROOT_SPEAR = ENTITY_TYPES.register("root_spear", () ->
+                EntityType.Builder.<RootSpearEntity>of(RootSpearEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 1.8F).clientTrackingRange(6).updateInterval(10)
+                        .build("root_spear"));
+
+        ROOT_STRIKE = ENTITY_TYPES.register("root_strike", () ->
+                EntityType.Builder.<RootStrikeEntity>of(RootStrikeEntity::new, MobCategory.MISC)
+                        .sized(1.0F, 2.0F).clientTrackingRange(8).updateInterval(10)
+                        .build("root_strike"));
 
 
 

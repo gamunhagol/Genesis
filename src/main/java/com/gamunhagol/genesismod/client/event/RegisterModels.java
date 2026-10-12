@@ -298,6 +298,13 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.VALA_ARROW.get(), ThrownItemRenderer::new);
 
 
+        event.registerEntityRenderer(GenesisEntities.ROOT_ENTANGLE.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.POISON_ROOT.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.ROOT_SPEAR.get(), NoopRenderer::new);
+
+        event.registerEntityRenderer(GenesisEntities.ROOT_STRIKE.get(), ThrownItemRenderer::new);
+
+
 
 
 

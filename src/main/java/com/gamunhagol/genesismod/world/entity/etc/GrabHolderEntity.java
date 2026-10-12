@@ -73,6 +73,13 @@ public class GrabHolderEntity extends Entity {
         return this.isReleasing;
     }
 
+    @Nullable
+    private Consumer<LivingEntity> onHoldTickListener;
+
+    public void setOnHoldTickListener(Consumer<LivingEntity> listener) {
+        this.onHoldTickListener = listener;
+    }
+
     @Override
     public void tick() {
         super.tick();
@@ -80,7 +87,6 @@ public class GrabHolderEntity extends Entity {
         if (this.level().isClientSide) return;
 
         LivingEntity caster = getCaster();
-
         if (caster == null || !caster.isAlive() || caster.isRemoved()) {
             release();
             return;
@@ -89,10 +95,8 @@ public class GrabHolderEntity extends Entity {
         updatePositionToCaster(caster);
 
         LivingEntity victim = getVictim();
-
         if (victim == null) {
             checkGrabCollision(caster);
-
             this.searchTicks--;
             if (this.searchTicks <= 0 && this.victimUUID == null) {
                 this.discard();
@@ -103,6 +107,10 @@ public class GrabHolderEntity extends Entity {
         if (!victim.isAlive() || victim.isRemoved() || !victim.isPassenger()) {
             release();
             return;
+        }
+
+        if (this.onHoldTickListener != null) {
+            this.onHoldTickListener.accept(victim);
         }
 
         if (this.escapeWindowTicks > 0) {
