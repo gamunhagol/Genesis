@@ -1,9 +1,11 @@
 package com.gamunhagol.genesismod.content.magic;
 
 
+import com.gamunhagol.genesismod.content.magic.miracles.cold.*;
 import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
+import com.gamunhagol.genesismod.content.magic.miracles.ice.*;
 import com.gamunhagol.genesismod.content.magic.miracles.lightning.*;
 import com.gamunhagol.genesismod.content.magic.miracles.plant.*;
 import com.gamunhagol.genesismod.content.magic.miracles.water.*;
@@ -96,8 +98,8 @@ public class GenesisSpells {
     public static final AbstractSpell EARTH_EXTRACT = register(new EarthExtractMiracle());
     public static final AbstractSpell BURIAL = register(new BurialMiracle());
 
-    public static final AbstractSpell PATAMU_WRATH = register(new PatamuWrathSpell());
-    public static final AbstractSpell PATAMU_ROAR = register(new PatamuRoarSpell());
+    public static final AbstractSpell PATAMU_WRATH = register(new PatamuWrathMiracle());
+    public static final AbstractSpell PATAMU_ROAR = register(new PatamuRoarMiracle());
 
     public static final AbstractSpell FLOOD = register(new FloodMiracle());
     public static final AbstractSpell SEA_LUCK = register(new SeaLuckMiracle());
@@ -162,6 +164,28 @@ public class GenesisSpells {
 
     public static final AbstractSpell ROOT_STRIKE = register(new RootStrikeMiracle());
     public static final AbstractSpell ENTANGLING_FOREST = register(new EntanglingForestMiracle());
+
+    public static final AbstractSpell ICE_WALL = register(new IceWallSpell());
+    public static final AbstractSpell FROST_ARMOR = register(new FrostArmorMiracle());
+    public static final AbstractSpell FROST_FIELD = register(new FrostFieldMiracle());
+    public static final AbstractSpell STAND_ON_ICE = register(new StandOnIceMiracle());
+
+    public static final AbstractSpell ICE_BLADE = register(new IceBladeMiracle());
+    public static final AbstractSpell ICE_SHIELD = register(new IceShieldMiracle());
+    public static final AbstractSpell ICE_SPEAR = register(new IceSpearMiracle());
+
+    public static final AbstractSpell FROZEN_STAR = register(new FrozenStarMiracle());
+    public static final AbstractSpell ATONEMENT_FOR_SIN = register(new AtonementForSinMiracle());
+
+    public static final AbstractSpell COLD_HEAL = register(new ColdHealMiracle());
+    public static final AbstractSpell COLD_TOUCH = register(new ColdTouchMiracle());
+    public static final AbstractSpell COLD_PROTECTION = register(new ColdProtectionMiracle());
+    public static final AbstractSpell FREEZING_WALKER = register(new FreezingWalkerMiracle());
+
+    public static final AbstractSpell FROST_DOMAIN = register(new FrostDomainMiracle());
+    public static final AbstractSpell BLIZZARD = register(new BlizzardMiracle());
+
+    public static final AbstractSpell STOP_THE_TEARS = register(new StopTheTearsMiracle());
 
     private static AbstractSpell register(AbstractSpell spell) {
         SPELLS.put(spell.getId(), spell);

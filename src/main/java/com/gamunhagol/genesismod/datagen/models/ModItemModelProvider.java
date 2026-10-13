@@ -241,6 +241,22 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.ROOT_SPEAR);
         simpleItem(GenesisItems.ROOT_STRIKE);
         simpleItem(GenesisItems.ENTANGLING_FOREST);
+        simpleItem(GenesisItems.ICE_WALL);
+        simpleItem(GenesisItems.FROST_ARMOR);
+        simpleItem(GenesisItems.FROST_FIELD);
+        simpleItem(GenesisItems.STAND_ON_ICE);
+        simpleItem(GenesisItems.ICE_BLADE);
+        simpleItem(GenesisItems.ICE_SHIELD);
+        simpleItem(GenesisItems.ICE_SPEAR);
+        simpleItem(GenesisItems.FROZEN_STAR);
+        simpleItem(GenesisItems.ATONEMENT_FOR_SIN);
+        simpleItem(GenesisItems.COLD_HEAL);
+        simpleItem(GenesisItems.COLD_TOUCH);
+        simpleItem(GenesisItems.COLD_PROTECTION);
+        simpleItem(GenesisItems.FREEZING_WALKER);
+        simpleItem(GenesisItems.FROST_DOMAIN);
+        simpleItem(GenesisItems.BLIZZARD);
+        simpleItem(GenesisItems.STOP_THE_TEARS);
 
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);

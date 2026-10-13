@@ -1,6 +1,10 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.content.magic.miracles.cold.FreezingWalkerMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.ice.FrostArmorMiracle;
 import com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentFinMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketActivateCustomTotem;
@@ -13,14 +17,13 @@ import com.gamunhagol.genesismod.util.GenesisTags;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
-
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.entity.etc.GrabHolderEntity;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedZombieEntity;
-import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.item.GenesisArmorMaterials;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
+import com.gamunhagol.genesismod.world.item.tool.DivineGrailItem;
 import com.gamunhagol.genesismod.world.spawner.CollectorSpawner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
@@ -46,6 +49,7 @@ import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.FrostWalkerEnchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -80,8 +84,7 @@ public class GenesisForgeEvents {
     public static void onAttachCapabilitiesPlayer(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof Player) {
             event.addCapability(new ResourceLocation(GenesisMod.MODID, "stats"), new StatCapabilityProvider());
-            event.addCapability(new ResourceLocation(GenesisMod.MODID, "spell_slot_data"),
-                    new SpellSlotProvider());
+            event.addCapability(new ResourceLocation(GenesisMod.MODID, "spell_slot_data"), new SpellSlotProvider());
         }
     }
 
@@ -212,6 +215,8 @@ public class GenesisForgeEvents {
     public static void onPlayerTick(TickEvent.PlayerTickEvent event) {
         if (event.side.isServer() && event.phase == TickEvent.Phase.END) {
             Player player = event.player;
+            ServerLevel serverLevel = (ServerLevel) player.level();
+            long currentTime = serverLevel.getGameTime();
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.tick();
@@ -221,78 +226,112 @@ public class GenesisForgeEvents {
                 }
             });
 
+            if (player.getPersistentData().contains(FrostArmorMiracle.NBT_KEY_END_TICK)) {
+                if (player.tickCount % 3 == 0) {
+                    serverLevel.sendParticles(
+                            ParticleTypes.SNOWFLAKE,
+                            player.getRandomX(0.7D),
+                            player.getY() + 0.2D + (player.getBbHeight() * player.getRandom().nextDouble() * 0.8D),
+                            player.getRandomZ(0.7D),
+                            1, 0.0D, -0.01D, 0.0D, 0.01D
+                    );
+                }
+            }
+
+            if (player.getPersistentData().contains(FreezingWalkerMiracle.NBT_KEY_END_TICK)) {
+                long endTick = player.getPersistentData().getLong(FreezingWalkerMiracle.NBT_KEY_END_TICK);
+                if (currentTime >= endTick) {
+                    player.getPersistentData().remove(FreezingWalkerMiracle.NBT_KEY_END_TICK);
+                } else {
+                    FrostWalkerEnchantment.onEntityMoved(player, serverLevel, player.blockPosition(), 2);
+                    if (player.tickCount % 4 == 0) {
+                        serverLevel.sendParticles(
+                                ParticleTypes.SNOWFLAKE,
+                                player.getX(), player.getY() + 0.05D, player.getZ(),
+                                2, 0.2D, 0.02D, 0.2D, 0.01D
+                        );
+                    }
+                }
+            }
+
             if (player.tickCount % 20 == 0) {
                 if (player.getPersistentData().contains("GenesisDestructionEndTick")) {
                     long endTick = player.getPersistentData().getLong("GenesisDestructionEndTick");
-                    if (player.level().getGameTime() >= endTick) {
+                    if (currentTime >= endTick) {
                         GenesisDamageCalculator.removeDestructionEffect(player);
                     }
                 }
 
                 if (player.getPersistentData().contains(SeaSerpentFinMiracle.NBT_KEY_END_TICK)) {
                     long endTick = player.getPersistentData().getLong(SeaSerpentFinMiracle.NBT_KEY_END_TICK);
-                    if (player.level().getGameTime() >= endTick) {
-                        var swimSpeedAttr = player.getAttribute(net.minecraftforge.common.ForgeMod.SWIM_SPEED.get());
+                    if (currentTime >= endTick) {
+                        var swimSpeedAttr = player.getAttribute(ForgeMod.SWIM_SPEED.get());
                         if (swimSpeedAttr != null) {
                             swimSpeedAttr.removeModifier(SeaSerpentFinMiracle.SWIM_SPEED_MOD_UUID);
                         }
                         player.getPersistentData().remove(SeaSerpentFinMiracle.NBT_KEY_END_TICK);
                     }
                 }
-            }
 
-            if (player.getPersistentData().hasUUID("GenesisGrabbedEntity")) {
-                java.util.UUID uuid = player.getPersistentData().getUUID("GenesisGrabbedEntity");
-                if (player.level() instanceof ServerLevel serverLevel) {
-                    Entity grabbed = serverLevel.getEntity(uuid);
-
-                    if (grabbed != null && grabbed.isAlive()) {
-                        Vec3 look = player.getLookAngle();
-                        Vec3 targetPos = player.getEyePosition().add(look.scale(2.0D));
-                        Vec3 currentPos = grabbed.position();
-
-                        Vec3 diff = targetPos.subtract(currentPos);
-                        grabbed.setDeltaMovement(diff.scale(0.5D));
-
-                        grabbed.hasImpulse = true;
-                        grabbed.fallDistance = 0.0F;
-
-                        if (grabbed instanceof net.minecraft.world.entity.item.FallingBlockEntity fb) {
-                            fb.time = 1;
+                if (player.getPersistentData().contains(SeaSerpentScaleMiracle.NBT_KEY_END_TICK)) {
+                    long endTick = player.getPersistentData().getLong(SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
+                    if (currentTime >= endTick) {
+                        var armorAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR);
+                        if (armorAttr != null) {
+                            armorAttr.removeModifier(SeaSerpentScaleMiracle.ARMOR_MOD_UUID);
                         }
-                    } else {
-                        player.getPersistentData().remove("GenesisGrabbedEntity");
+                        var toughnessAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS);
+                        if (toughnessAttr != null) {
+                            toughnessAttr.removeModifier(SeaSerpentScaleMiracle.TOUGHNESS_MOD_UUID);
+                        }
+                        player.getPersistentData().remove(SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
                     }
                 }
-            }
 
-            if (player.getPersistentData().contains(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK)) {
-                long endTick = player.getPersistentData().getLong(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
-                if (player.level().getGameTime() >= endTick) {
-                    var armorAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR);
-                    if (armorAttr != null) {
-                        armorAttr.removeModifier(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.ARMOR_MOD_UUID);
+                if (player.getPersistentData().contains(FrostArmorMiracle.NBT_KEY_END_TICK)) {
+                    long endTick = player.getPersistentData().getLong(FrostArmorMiracle.NBT_KEY_END_TICK);
+                    if (currentTime >= endTick) {
+                        var armorAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR);
+                        if (armorAttr != null) {
+                            armorAttr.removeModifier(FrostArmorMiracle.FROST_ARMOR_MOD_UUID);
+                        }
+                        player.getPersistentData().remove(FrostArmorMiracle.NBT_KEY_END_TICK);
                     }
-                    var toughnessAttr = player.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.ARMOR_TOUGHNESS);
-                    if (toughnessAttr != null) {
-                        toughnessAttr.removeModifier(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.TOUGHNESS_MOD_UUID);
-                    }
-                    player.getPersistentData().remove(com.gamunhagol.genesismod.content.magic.miracles.water.SeaSerpentScaleMiracle.NBT_KEY_END_TICK);
                 }
-            }
 
-            if (player.tickCount % 20 == 0) {
-                long currentTime = player.level().getGameTime();
                 for (int i = 0; i < player.getInventory().getContainerSize(); i++) {
                     ItemStack stack = player.getInventory().getItem(i);
-                    if (!stack.isEmpty() && stack.hasTag() && stack.getTag().getBoolean(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
-                        long expireTick = stack.getTag().getLong(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.NBT_KEY_EXPIRE_TICK);
+                    if (!stack.isEmpty() && stack.hasTag() && stack.getTag().getBoolean(FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
+                        long expireTick = stack.getTag().getLong(FlameHammerMiracle.NBT_KEY_EXPIRE_TICK);
                         if (currentTime >= expireTick) {
                             player.getInventory().setItem(i, ItemStack.EMPTY);
                             player.level().playSound(null, player.getX(), player.getY(), player.getZ(),
                                     SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 0.8F, 1.2F);
                         }
                     }
+                }
+            }
+
+            if (player.getPersistentData().hasUUID("GenesisGrabbedEntity")) {
+                java.util.UUID uuid = player.getPersistentData().getUUID("GenesisGrabbedEntity");
+                Entity grabbed = serverLevel.getEntity(uuid);
+
+                if (grabbed != null && grabbed.isAlive()) {
+                    Vec3 look = player.getLookAngle();
+                    Vec3 targetPos = player.getEyePosition().add(look.scale(2.0D));
+                    Vec3 currentPos = grabbed.position();
+
+                    Vec3 diff = targetPos.subtract(currentPos);
+                    grabbed.setDeltaMovement(diff.scale(0.5D));
+
+                    grabbed.hasImpulse = true;
+                    grabbed.fallDistance = 0.0F;
+
+                    if (grabbed instanceof net.minecraft.world.entity.item.FallingBlockEntity fb) {
+                        fb.time = 1;
+                    }
+                } else {
+                    player.getPersistentData().remove("GenesisGrabbedEntity");
                 }
             }
         }
@@ -405,9 +444,7 @@ public class GenesisForgeEvents {
                     }
                 });
             });
-        }
 
-        if (event.isWasDeath()) {
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);
                 if (!stack.isEmpty() && stack.getItem() instanceof DivineGrailItem grail) {
@@ -553,7 +590,7 @@ public class GenesisForgeEvents {
     @SubscribeEvent
     public static void onItemToss(ItemTossEvent event) {
         ItemStack thrown = event.getEntity().getItem();
-        if (!thrown.isEmpty() && thrown.hasTag() && thrown.getTag().getBoolean(com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
+        if (!thrown.isEmpty() && thrown.hasTag() && thrown.getTag().getBoolean(FlameHammerMiracle.TAG_SUMMONED_WEAPON)) {
             event.getEntity().discard();
         }
     }

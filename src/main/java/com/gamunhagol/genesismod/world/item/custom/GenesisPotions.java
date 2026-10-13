@@ -39,6 +39,11 @@ public class GenesisPotions {
     public static final RegistryObject<Potion> LONG_COLD_RESISTANCE = POTIONS.register("long_cold_resistance",
             () -> new Potion(new MobEffectInstance(GenesisEffects.COLD_RESISTANCE.get(), 9600, 0)));
 
+    public static final RegistryObject<Potion> STAND_ON_ICE = POTIONS.register("stand_on_ice",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.STAND_ON_ICE.get(), 3600, 0)));
+    public static final RegistryObject<Potion> LONG_STAND_ON_ICE = POTIONS.register("long_stand_on_ice",
+            () -> new Potion(new MobEffectInstance(GenesisEffects.STAND_ON_ICE.get(), 9600, 0)));
+
     public static final RegistryObject<Potion> SOUL_SCREAM = POTIONS.register("soul_scream",
             () -> new Potion(new MobEffectInstance(GenesisEffects.SOUL_SCREAM.get(), 9600, 0)));
 }

@@ -565,6 +565,28 @@ public class GenesisCreativeTabs {
 
                 output.accept(GenesisItems.ROOT_STRIKE.get());
                 output.accept(GenesisItems.ENTANGLING_FOREST.get());
+
+                output.accept(GenesisItems.ICE_WALL.get());
+                output.accept(GenesisItems.FROST_ARMOR.get());
+                output.accept(GenesisItems.FROST_FIELD.get());
+                output.accept(GenesisItems.STAND_ON_ICE.get());
+
+                output.accept(GenesisItems.ICE_BLADE.get());
+                output.accept(GenesisItems.ICE_SHIELD.get());
+                output.accept(GenesisItems.ICE_SPEAR.get());
+
+                output.accept(GenesisItems.FROZEN_STAR.get());
+                output.accept(GenesisItems.ATONEMENT_FOR_SIN.get());
+
+                output.accept(GenesisItems.COLD_HEAL.get());
+                output.accept(GenesisItems.COLD_TOUCH.get());
+                output.accept(GenesisItems.COLD_PROTECTION.get());
+                output.accept(GenesisItems.FREEZING_WALKER.get());
+
+                output.accept(GenesisItems.FROST_DOMAIN.get());
+                output.accept(GenesisItems.BLIZZARD.get());
+
+                output.accept(GenesisItems.STOP_THE_TEARS.get());
             })
 
             .title(Component.translatable("itemGroup.genesis_spell.spell"))

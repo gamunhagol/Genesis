@@ -31,6 +31,9 @@ public class GenesisEffects {
     public static final RegistryObject<MobEffect> COLD_RESISTANCE = MOB_EFFECTS.register("cold_resistance",
             ColdResistanceEffect::new);
 
+    public static final RegistryObject<MobEffect> STAND_ON_ICE = MOB_EFFECTS.register("stand_on_ice",
+            StandOnIceEffect::new);
+
 
     public static final RegistryObject<MobEffect> SOUL_SCREAM = MOB_EFFECTS.register("soul_scream",
             SoulScreamEffect::new);

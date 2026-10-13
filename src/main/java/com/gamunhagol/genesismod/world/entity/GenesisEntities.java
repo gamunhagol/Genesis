@@ -103,6 +103,10 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<RootStrikeEntity>> ROOT_STRIKE;
 
+    public static final RegistryObject<EntityType<FrozenStarEntity>> FROZEN_STAR;
+
+    public static final RegistryObject<EntityType<BlizzardEntity>> BLIZZARD;
+
 
 
     //
@@ -415,6 +419,16 @@ public class GenesisEntities {
                 EntityType.Builder.<RootStrikeEntity>of(RootStrikeEntity::new, MobCategory.MISC)
                         .sized(1.0F, 2.0F).clientTrackingRange(8).updateInterval(10)
                         .build("root_strike"));
+
+        FROZEN_STAR = ENTITY_TYPES.register("frozen_star", () ->
+                EntityType.Builder.<FrozenStarEntity>of(FrozenStarEntity::new, MobCategory.MISC)
+                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .build("frozen_star"));
+
+        BLIZZARD = ENTITY_TYPES.register("blizzard_zone", () ->
+                EntityType.Builder.<BlizzardEntity>of(BlizzardEntity::new, MobCategory.MISC)
+                        .sized(0.1f, 0.1f).clientTrackingRange(8).updateInterval(20)
+                        .build("blizzard_zone"));
 
 
 

@@ -415,6 +415,29 @@
   "item.genesis.root_strike": "Uproot",
   "item.genesis.entangling_forest": "Entangling Forest",
 
+  "item.genesis.ice_wall": "Ice Bulwark",
+  "item.genesis.frost_armor": "Frost Armor",
+  "item.genesis.frost_field": "Sheet Ice",
+  "item.genesis.stand_on_ice": "One Who Stands on Ice",
+
+  "item.genesis.ice_blade": "Ice Blade",
+  "item.genesis.ice_shield": "Ice Shield",
+  "item.genesis.ice_spear": "Ice Spear",
+
+  "item.genesis.frozen_star": "Frozen Meteor",
+  "item.genesis.atonement_for_sin": "Sin Payable in Death",
+
+  "item.genesis.cold_heal": "Frost Mend",
+  "item.genesis.cold_touch": "Touch of Frost",
+  "item.genesis.cold_protection": "Frost Ward",
+  "item.genesis.freezing_walker": "He Who Freezes",
+
+  "item.genesis.frost_domain": "Domain of Frost",
+  "item.genesis.blizzard": "Blizzard",
+
+  "item.genesis.stop_the_tears": "Lest Tears Fall",
+
+
 
 
   "item.genesis.intact_amethyst_heart": "Intact Amethyst Heart",
@@ -547,10 +570,6 @@
   "item.minecraft.lingering_potion.effect.paralysis": "Lingering Potion of Paralysis",
   "item.minecraft.tipped_arrow.effect.paralysis": "Arrow of Paralysis",
 
-  "item.minecraft.potion.effect.deep_freeze": "Potion of Deep Freeze",
-  "item.minecraft.splash_potion.effect.deep_freeze": "Splash Potion of Deep Freeze",
-  "item.minecraft.lingering_potion.effect.deep_freeze": "Lingering Potion of Deep Freeze",
-  "item.minecraft.tipped_arrow.effect.deep_freeze": "Arrow of Deep Freeze",
 
   "item.minecraft.potion.effect.lightning_resistance": "Potion of Lightning Resistance",
   "item.minecraft.splash_potion.effect.lightning_resistance": "Splash Potion of Lightning Resistance",
@@ -569,6 +588,15 @@
   "item.minecraft.splash_potion.effect.long_cold_resistance": "Splash Potion of Cold Resistance",
   "item.minecraft.lingering_potion.effect.long_cold_resistance": "Lingering Potion of Cold Resistance",
   "item.minecraft.tipped_arrow.effect.long_cold_resistance": "Arrow of Cold Resistance",
+
+  "item.minecraft.potion.effect.stand_on_ice": "Potion of Stand on Ice",
+  "item.minecraft.splash_potion.effect.stand_on_ice": "Splash Potion of Stand on Ice",
+  "item.minecraft.lingering_potion.effect.stand_on_ice": "Lingering Potion of Stand on Ice",
+  "item.minecraft.tipped_arrow.effect.stand_on_ice": "Arrow of Stand on Ice",
+  "item.minecraft.potion.effect.long_stand_on_ice": "Potion of Stand on Ice",
+  "item.minecraft.splash_potion.effect.long_stand_on_ice": "Splash Potion of Stand on Ice",
+  "item.minecraft.lingering_potion.effect.long_stand_on_ice": "Lingering Potion of Stand on Ice",
+  "item.minecraft.tipped_arrow.effect.long_stand_on_ice": "Arrow of Stand on Ice",
 
 
   "item.minecraft.potion.effect.soul_scream": "Potion of Soul Scream",
@@ -727,6 +755,8 @@
 
   "effect.genesis.lightning_resistance": "Lightning Resistance",
   "effect.genesis.cold_resistance": "Cold Resistance",
+
+  "effect.genesis.stand_on_ice": "Stand on Ice",
 
   "effect.genesis.soul_scream": "Soul Scream",
 
@@ -1139,6 +1169,45 @@
   "spell.genesis.root_strike.desc": "A miracle that uproots a colossal root and smites with it. The root is the foundation of the tree; the tree is the limb of god.",
   "spell.genesis.entangling_forest": "Entangling Forest",
   "spell.genesis.entangling_forest.desc": "In the distant past, the forest swallowed men whole. A miracle patterned after that memory.",
+
+  "spell.genesis.ice_wall": "Ice Bulwark",
+  "spell.genesis.ice_wall.desc": "A miracle that raises a wall of ice. A wall is a protector.",
+  "spell.genesis.frost_armor": "Frost Armor",
+  "spell.genesis.frost_armor.desc": "A miracle that fashions armor from ice. Clotted fists became an aegis.",
+  "spell.genesis.frost_field": "Sheet Ice",
+  "spell.genesis.frost_field.desc": "A miracle that freezes the ground fast.",
+  "spell.genesis.stand_on_ice": "One Who Stands on Ice",
+  "spell.genesis.stand_on_ice.desc": "A miracle that keeps one from slipping upon ice. Children despise it.",
+
+  "spell.genesis.ice_blade": "Ice Blade",
+  "spell.genesis.ice_blade.desc": "A miracle that forms a frozen blade.",
+  "spell.genesis.ice_shield": "Ice Shield",
+  "spell.genesis.ice_shield.desc": "A miracle that summons a frozen shield.",
+  "spell.genesis.ice_spear": "Ice Spear",
+  "spell.genesis.ice_spear.desc": "A miracle that summons a frozen spear.",
+
+  "spell.genesis.frozen_star": "Frozen Meteor",
+  "spell.genesis.frozen_star.desc": "A miracle that brings down a frozen star.",
+  "spell.genesis.atonement_for_sin": "Sin Payable in Death",
+  "spell.genesis.atonement_for_sin.desc": "The sin of bringing tears to a sister; it is only fitting to pay it in death.",
+
+  "spell.genesis.cold_heal": "Frost Mend",
+  "spell.genesis.cold_heal.desc": "A miracle that heals from wounds, and from the cold.",
+  "spell.genesis.cold_touch": "Touch of Frost",
+  "spell.genesis.cold_touch.desc": "A miracle that soothes internal wounds, though the touch of the chilled hand brings pain.",
+  "spell.genesis.cold_protection": "Frost Ward",
+  "spell.genesis.cold_protection.desc": "A miracle that prays unto god, granting protection from the cold.",
+  "spell.genesis.freezing_walker": "He Who Freezes",
+  "spell.genesis.freezing_walker.desc": "A miracle that freezes the waters to tread upon them.",
+
+  "spell.genesis.frost_domain": "Domain of Frost",
+  "spell.genesis.frost_domain.desc": "A miracle that freezes the air and encompasses with ice, granting protection and mending.",
+  "spell.genesis.blizzard": "Blizzard",
+  "spell.genesis.blizzard.desc": "The weeping of god, a freezing wind.",
+
+  "spell.genesis.stop_the_tears": "Lest Tears Fall",
+  "spell.genesis.stop_the_tears.desc": "A vow unto god, built upon a duty never forgotten, a miracle wrought by the faithful.",
+
 
 
 

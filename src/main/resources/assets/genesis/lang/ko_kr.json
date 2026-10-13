@@ -418,6 +418,30 @@
   "item.genesis.root_strike": "뿌리 뽑기",
   "item.genesis.entangling_forest": "얽혀드는 숲",
 
+  "item.genesis.ice_wall": "얼음 방벽",
+  "item.genesis.frost_armor": "얼음 갑옷",
+  "item.genesis.frost_field": "빙판",
+  "item.genesis.stand_on_ice": "얼음 위에 선 자",
+
+  "item.genesis.ice_blade": "얼음 칼날",
+  "item.genesis.ice_shield": "얼음 방패",
+  "item.genesis.ice_spear": "얼음 창",
+
+  "item.genesis.frozen_star": "얼음 유성",
+  "item.genesis.atonement_for_sin": "죽음으로 속죄할 죄",
+
+  "item.genesis.cold_heal": "냉기 치유",
+  "item.genesis.cold_touch": "냉기 손길",
+  "item.genesis.cold_protection": "냉기 보호",
+  "item.genesis.freezing_walker": "얼리는 자",
+
+  "item.genesis.frost_domain": "냉기 영역",
+  "item.genesis.blizzard": "눈폭풍",
+
+  "item.genesis.stop_the_tears": "눈물이 흐르지 않도록",
+
+
+
 
   "item.genesis.intact_amethyst_heart": "온전한 자수정 심장",
   "item.genesis.star_of_domination": "지배의 별",
@@ -546,10 +570,7 @@
   "item.minecraft.lingering_potion.effect.paralysis": "잔류형 마비 포션",
   "item.minecraft.tipped_arrow.effect.paralysis": "마비 화살",
 
-  "item.minecraft.potion.effect.deep_freeze": "얼어붙음 포션",
-  "item.minecraft.splash_potion.effect.deep_freeze": "투척용 얼어붙음 포션",
-  "item.minecraft.lingering_potion.effect.deep_freeze": "잔류형 얼어붙음 포션",
-  "item.minecraft.tipped_arrow.effect.deep_freeze": "얼어붙음 화살",
+
 
   "item.minecraft.potion.effect.lightning_resistance": "번개 저항 포션",
   "item.minecraft.splash_potion.effect.lightning_resistance": "투척용 번개 저항 포션",
@@ -568,6 +589,15 @@
   "item.minecraft.splash_potion.effect.long_cold_resistance": "투척용 냉기 저항 포션",
   "item.minecraft.lingering_potion.effect.long_cold_resistance": "잔류형 냉기 저항 포션",
   "item.minecraft.tipped_arrow.effect.long_cold_resistance": "냉기 저항 화살",
+
+  "item.minecraft.potion.effect.stand_on_ice": "얼음 위에 선 자의 물약",
+  "item.minecraft.splash_potion.effect.stand_on_ice": "투척용 얼음 위에 선 자의 물약",
+  "item.minecraft.lingering_potion.effect.stand_on_ice": "잔류형 얼음 위에 선 자의 물약",
+  "item.minecraft.tipped_arrow.effect.stand_on_ice": "얼음 위에 선 자의 화살",
+  "item.minecraft.potion.effect.long_stand_on_ice": "얼음 위에 선 자의 물약",
+  "item.minecraft.splash_potion.effect.long_stand_on_ice": "투척용 얼음 위에 선 자의 물약",
+  "item.minecraft.lingering_potion.effect.long_stand_on_ice": "잔류형 얼음 위에 선 자의 물약",
+  "item.minecraft.tipped_arrow.effect.long_stand_on_ice": "얼음 위에 선 자의 화살",
 
 
   "item.minecraft.potion.effect.soul_scream": "영혼 비명 포션",
@@ -725,6 +755,8 @@
 
   "effect.genesis.lightning_resistance": "번개 저항",
   "effect.genesis.cold_resistance": "냉기 저항",
+
+  "effect.genesis.stand_on_ice": "얼음 위에 선 자",
 
   "effect.genesis.soul_scream": "영혼비명",
 
@@ -1140,6 +1172,45 @@
   "spell.genesis.root_strike.desc": "거대한 뿌리를 뽑아 들고 내리치게 하는 기적. 뿌리는 나무의 기반, 나무는 신의 수족.",
   "spell.genesis.entangling_forest": "얽혀드는 숲",
   "spell.genesis.entangling_forest.desc": "먼 과거, 숲은 사람을 삼켰었다. 그것을 본뜬 기적.",
+
+  "spell.genesis.ice_wall": "얼음 방벽",
+  "spell.genesis.ice_wall.desc": "얼음의 벽을 세우는 기적. 벽은 보호자다.",
+  "spell.genesis.frost_armor": "얼음 갑옷",
+  "spell.genesis.frost_armor.desc": "얼음으로 갑옷을 만드는 기적. 엉겨 붙은 주먹은 방어구가 되었다.",
+  "spell.genesis.frost_field": "빙판",
+  "spell.genesis.frost_field.desc": "바닥을 얼려 버리는 기적.",
+  "spell.genesis.stand_on_ice": "얼음 위에 선 자",
+  "spell.genesis.stand_on_ice.desc": "얼음 위에서 미끄러지지 않는 기적. 아이들은 싫어한다.",
+
+  "spell.genesis.ice_blade": "얼음 칼날",
+  "spell.genesis.ice_blade.desc": "얼어붙은 칼날을 형성하는 기적.",
+  "spell.genesis.ice_shield": "얼음 방패",
+  "spell.genesis.ice_shield.desc": "얼어붙은 방패를 불러오는 기적.",
+  "spell.genesis.ice_spear": "얼음 창",
+  "spell.genesis.ice_spear.desc": "얼어붙은 창을 불러오는 기적.",
+
+  "spell.genesis.frozen_star": "얼음 유성",
+  "spell.genesis.frozen_star.desc": "얼어붙은 별을 떨구는 기적.",
+  "spell.genesis.atonement_for_sin": "죽음으로 속죄할 죄",
+  "spell.genesis.atonement_for_sin.desc": "누이를 울린 죄, 죽어서 갚아야만 마땅하다.",
+
+  "spell.genesis.cold_heal": "냉기 치유",
+  "spell.genesis.cold_heal.desc": "상처로부터, 냉기로부터 치유하는 기적.",
+  "spell.genesis.cold_touch": "냉기 손길",
+  "spell.genesis.cold_touch.desc": "차가운 손이 닿아 아프나, 내상을 치유하는 기적.",
+  "spell.genesis.cold_protection": "냉기 보호",
+  "spell.genesis.cold_protection.desc": "신에게 빌어, 냉기로부터 보호받는 기적.",
+  "spell.genesis.freezing_walker": "얼리는 자",
+  "spell.genesis.freezing_walker.desc": "물을 얼려 물 위를 걸어가는 기적.",
+
+  "spell.genesis.frost_domain": "냉기 영역",
+  "spell.genesis.frost_domain.desc": "공기를 얼리고 얼음으로 둘러 보호하고 치유하는 기적.",
+  "spell.genesis.blizzard": "눈폭풍",
+  "spell.genesis.blizzard.desc": "신의 울음소리, 얼어붙는 바람.",
+
+  "spell.genesis.stop_the_tears": "눈물이 흐르지 않도록",
+  "spell.genesis.stop_the_tears.desc": "신에 대한 맹세, 그 잊지 말아야 할 의무로 쌓아 올려진, 믿는 이에 의한 기적.",
+
 
 
 

@@ -28,7 +28,7 @@ public class HealMiracle extends MiracleSpell {
         float efficiency = 0.3f;
 
         float baseHeal = healAmount + (catalyst.holy() * efficiency);
-        float multiplier = getDedicationMultiplier(caster); // NONE 속성이므로 무조건 1.0 반환
+        float multiplier = getDedicationMultiplier(caster);
         float finalHeal = baseHeal * multiplier;
 
         return new DamageSnapshot(0, 0, 0, 0, 0, finalHeal, 0);

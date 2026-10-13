@@ -8,7 +8,8 @@
     "MixinAnvilMenu",
     "GuardianInvoker",
     "EntityCollisionMixin",
-    "ProjectileMixin"
+    "ProjectileMixin",
+    "LivingEntityMixin"
   ],
   "client": [
   ],

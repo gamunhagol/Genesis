@@ -811,6 +811,44 @@ public class GenesisItems {
     public static final RegistryObject<Item> ENTANGLING_FOREST = ITEMS.register("entangling_forest",
             () -> new SpellBookItem("entangling_forest", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> ICE_WALL = ITEMS.register("ice_wall",
+            () -> new SpellBookItem("ice_wall", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FROST_ARMOR = ITEMS.register("frost_armor",
+            () -> new SpellBookItem("frost_armor", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> FROST_FIELD = ITEMS.register("frost_field",
+            () -> new SpellBookItem("frost_field", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> STAND_ON_ICE = ITEMS.register("stand_on_ice",
+            () -> new SpellBookItem("stand_on_ice", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> ICE_BLADE = ITEMS.register("ice_blade",
+            () -> new SpellBookItem("ice_blade", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ICE_SHIELD = ITEMS.register("ice_shield",
+            () -> new SpellBookItem("ice_shield", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> ICE_SPEAR = ITEMS.register("ice_spear",
+            () -> new SpellBookItem("ice_spear", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> FROZEN_STAR = ITEMS.register("frozen_star",
+            () -> new SpellBookItem("frozen_star", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+    public static final RegistryObject<Item> ATONEMENT_FOR_SIN = ITEMS.register("atonement_for_sin",
+            () -> new SpellBookItem("atonement_for_sin", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> COLD_HEAL = ITEMS.register("cold_heal",
+            () -> new SpellBookItem("cold_heal", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> COLD_TOUCH = ITEMS.register("cold_touch",
+            () -> new SpellBookItem("cold_touch", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> COLD_PROTECTION = ITEMS.register("cold_protection",
+            () -> new SpellBookItem("cold_protection", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> FREEZING_WALKER = ITEMS.register("freezing_walker",
+            () -> new SpellBookItem("freezing_walker", new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> FROST_DOMAIN = ITEMS.register("frost_domain",
+            () -> new SpellBookItem("frost_domain", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> BLIZZARD = ITEMS.register("blizzard",
+            () -> new SpellBookItem("blizzard", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> STOP_THE_TEARS = ITEMS.register("stop_the_tears",
+            () -> new SpellBookItem("stop_the_tears", new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
 
     //armor
 
