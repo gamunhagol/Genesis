@@ -3,6 +3,8 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
@@ -20,7 +22,7 @@ public class HealMiracle extends MiracleSpell {
     public float getMentalCost() { return 3.0f; }
 
     @Override
-    public int getMemoryCost() {return 1;}
+    public int getMemoryCost() { return 1; }
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
@@ -36,6 +38,9 @@ public class HealMiracle extends MiracleSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        caster.heal(spellSnapshot.holy());
+        if (level.isClientSide) return;
+
+        int amplifier = Math.max(0, Math.round(spellSnapshot.holy() / 4.0f) - 1);
+        caster.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, amplifier, false, false, true));
     }
 }

@@ -489,6 +489,11 @@ public class GenesisCreativeTabs {
 
 
                 output.accept(GenesisItems.LITTLE_HEAL.get());
+                output.accept(GenesisItems.AREA_HEAL.get());
+                output.accept(GenesisItems.GREAT_HEAL.get());
+                output.accept(GenesisItems.AREA_GREAT_HEAL.get());
+
+                output.accept(GenesisItems.RESISTANCE_BLESSING.get());
 
                 output.accept(GenesisItems.CONJURE_STONE.get());
                 output.accept(GenesisItems.CONJURE_STONE_WALL.get());

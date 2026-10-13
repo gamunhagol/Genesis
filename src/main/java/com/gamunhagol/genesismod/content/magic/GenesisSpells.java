@@ -2,7 +2,7 @@ package com.gamunhagol.genesismod.content.magic;
 
 
 import com.gamunhagol.genesismod.content.magic.miracles.cold.*;
-import com.gamunhagol.genesismod.content.magic.miracles.cure.HealMiracle;
+import com.gamunhagol.genesismod.content.magic.miracles.cure.*;
 import com.gamunhagol.genesismod.content.magic.miracles.earth.*;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.*;
 import com.gamunhagol.genesismod.content.magic.miracles.ice.*;
@@ -88,6 +88,11 @@ public class GenesisSpells {
     public static final AbstractSpell SUMMON_MASS_VEX = register(new SummonMassVexSpell());
 
     public static final AbstractSpell LITTLE_HEAL = register(new HealMiracle());
+    public static final AbstractSpell AREA_HEAL = register(new AreaHealMiracle());
+    public static final AbstractSpell GREAT_HEAL = register(new GreatHealMiracle());
+    public static final AbstractSpell AREA_GREAT_HEAL = register(new AreaGreatHealMiracle());
+
+    public static final AbstractSpell RESISTANCE_BLESSING = register(new ResistanceBlessingMiracle());
 
     public static final AbstractSpell CONJURE_STONE = register(new ConjureStoneMiracle());
     public static final AbstractSpell CONJURE_STONE_WALL = register(new ConjureStoneWallMiracle());

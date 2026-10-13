@@ -676,6 +676,15 @@ public class GenesisItems {
 
     public static final RegistryObject<Item> LITTLE_HEAL = ITEMS.register("little_heal",
             () -> new SpellBookItem("little_heal", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> AREA_HEAL = ITEMS.register("area_heal",
+            () -> new SpellBookItem("area_heal", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> GREAT_HEAL = ITEMS.register("great_heal",
+            () -> new SpellBookItem("great_heal", new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> AREA_GREAT_HEAL = ITEMS.register("area_great_heal",
+            () -> new SpellBookItem("area_great_heal", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> RESISTANCE_BLESSING = ITEMS.register("resistance_blessing",
+            () -> new SpellBookItem("resistance_blessing", new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> CONJURE_STONE = ITEMS.register("conjure_stone",
             () -> new SpellBookItem("conjure_stone", new Item.Properties().stacksTo(1)));

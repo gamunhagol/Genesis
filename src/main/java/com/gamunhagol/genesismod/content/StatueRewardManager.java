@@ -215,7 +215,7 @@ public class StatueRewardManager {
             nodes.add(new NodeInfo(21, 1000, 700, cost, 1, new ItemStack(Items.DIAMOND, 1),20));
         }
         else if ("god_h".equals(statueId)) {
-            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, new ItemStack(GenesisItems.LITTLE_HEAL.get(), 1)));
+            nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, new ItemStack(GenesisItems.COLD_HEAL.get(), 1)));
             nodes.add(new NodeInfo(2, 1000, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
             nodes.add(new NodeInfo(3, 1100, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
             nodes.add(new NodeInfo(4, 1200, 900, cost, 1, new ItemStack(Items.DIAMOND, 1),3));

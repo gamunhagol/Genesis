@@ -337,7 +337,12 @@
   "item.genesis.summon_mass_vex": "Summon Vex Swarm",
 
 
-  "item.genesis.little_heal": "Little Heal",
+  "item.genesis.little_heal": "Minor Heal",
+  "item.genesis.area_heal": "Heal",
+  "item.genesis.great_heal": "Great Heal",
+  "item.genesis.area_great_heal": "Vast Heal",
+
+  "item.genesis.resistance_blessing": "Blessing of Resistance",
 
   "item.genesis.conjure_stone": "Create Stone",
   "item.genesis.conjure_stone_wall": "Create Stone Wall",
@@ -1034,7 +1039,16 @@
 
 
   "spell.genesis.little_heal": "Minor Heal",
-  "spell.genesis.little_heal.desc": "A primal miracle that invokes healing through faith.",
+  "spell.genesis.little_heal.desc": "A primordial miracle that prays for mending by way of faith.",
+  "spell.genesis.area_heal": "Heal",
+  "spell.genesis.area_heal.desc": "A miracle that shares mending with others by way of faith.",
+  "spell.genesis.great_heal": "Great Heal",
+  "spell.genesis.great_heal.desc": "A miracle that prays for great mending by way of faith.",
+  "spell.genesis.area_great_heal": "Vast Heal",
+  "spell.genesis.area_great_heal.desc": "A miracle that prays for mending over a broad expanse.",
+
+  "spell.genesis.resistance_blessing": "Blessing of Resistance",
+  "spell.genesis.resistance_blessing.desc": "A miracle that beseeches god for grace, receiving divine protection.",
 
   "spell.genesis.conjure_stone": "Conjure Stone",
   "spell.genesis.conjure_stone.desc": "A simple miracle that creates stone where you look.",
@@ -1206,7 +1220,9 @@
   "spell.genesis.blizzard.desc": "The weeping of god, a freezing wind.",
 
   "spell.genesis.stop_the_tears": "Lest Tears Fall",
-  "spell.genesis.stop_the_tears.desc": "A vow unto god, built upon a duty never forgotten, a miracle wrought by the faithful.",
+  "spell.genesis.stop_the_tears.desc": "A vow unto god, built upon a duty never to be forgotten. A miracle wrought by the faithful.",
+
+
 
 
 
