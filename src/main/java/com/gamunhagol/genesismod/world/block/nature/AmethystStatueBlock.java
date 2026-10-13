@@ -59,7 +59,6 @@ public class AmethystStatueBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        // 서버 사이드에서만 틱을 돌리도록 설정
         if (pLevel.isClientSide()) {
             return null;
         }

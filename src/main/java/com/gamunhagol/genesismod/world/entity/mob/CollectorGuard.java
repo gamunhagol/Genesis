@@ -63,11 +63,9 @@ public class CollectorGuard extends AbstractWanderer {
 
     @Override
     public boolean isAlliedTo(Entity pEntity) {
-        // 부모 클래스(AbstractWanderer)에서 이미 플레이어, 골렘, 주민을 아군으로 설정함
         return super.isAlliedTo(pEntity) || pEntity instanceof Collector;
     }
 
-    // --- 호위병 전용: 징수원 부재 시 소멸 로직 ---
     @Override
     public void aiStep() {
         super.aiStep();

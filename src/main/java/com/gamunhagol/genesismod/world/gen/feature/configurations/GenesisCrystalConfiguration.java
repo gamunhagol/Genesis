@@ -23,4 +23,3 @@ public record GenesisCrystalConfiguration
                 Codec.INT.fieldOf("y_offset").forGetter(GenesisCrystalConfiguration::yOffset)
         ).apply(instance, GenesisCrystalConfiguration::new));
 }
-

@@ -166,4 +166,3 @@ public class ArrowBarrageSpawnerEntity extends Entity {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
 }
-

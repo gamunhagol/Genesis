@@ -27,4 +27,3 @@ public class GenesisFluidTypes {
                             .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
                     ));
 }
-

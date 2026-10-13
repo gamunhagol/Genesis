@@ -25,4 +25,3 @@ public class GenesisRecipeSerializers {
             SERIALIZERS.register("divine_grail_crafting",
                     () -> new SimpleCraftingRecipeSerializer<>(DivineGrailRecipe::new));
 }
-

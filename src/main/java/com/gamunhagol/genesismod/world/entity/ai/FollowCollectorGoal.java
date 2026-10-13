@@ -26,7 +26,6 @@ public class FollowCollectorGoal extends Goal {
 
     @Override
     public boolean canUse() {
-        // 단순히 리스트를 가져오는 게 아니라, '가장 가까운' 녀석을 찾습니다.
         List<Collector> list = this.guard.level().getEntitiesOfClass(
                 Collector.class,
                 this.guard.getBoundingBox().inflate(16.0D),
@@ -34,8 +33,7 @@ public class FollowCollectorGoal extends Goal {
         );
 
         if (list.isEmpty()) return false;
-
-        // 거리순으로 정렬하여 가장 가까운 징수원을 주인으로 삼음
+        
         list.sort((e1, e2) -> Double.compare(this.guard.distanceToSqr(e1), this.guard.distanceToSqr(e2)));
 
         this.owner = list.get(0);

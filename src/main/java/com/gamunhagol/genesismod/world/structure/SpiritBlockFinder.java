@@ -16,10 +16,6 @@ import java.util.Objects;
 
 public class SpiritBlockFinder {
 
-    /**
-     * 플레이어 주변 로드된 청크 반경 내에서 타겟 블록을 최대 maxCount 개수만큼 찾습니다.
-     * @return 발견된 블록들의 위치 리스트 (발견하지 못하면 빈 리스트 반환)
-     */
     public static List<BlockPos> findNearestBlocksByChunk(ServerLevel level, List<String> blockKeys, BlockPos origin, int chunkRadius, int minY, int maxY, int maxCount) {
         List<Block> targetBlocks = blockKeys.stream()
                 .map(ResourceLocation::tryParse)

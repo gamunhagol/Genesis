@@ -33,4 +33,3 @@ public class SOGStatueWNModel extends Model {
         this.root.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }
-

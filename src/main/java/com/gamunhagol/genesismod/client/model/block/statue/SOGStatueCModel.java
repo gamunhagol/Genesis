@@ -28,7 +28,6 @@ public class SOGStatueCModel extends Model {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        // statue_of_god_c의 큐브 빌더 코드 이식
         PartDefinition horn = partdefinition.addOrReplaceChild("horn", CubeListBuilder.create(), PartPose.offset(0.0F, 23.0F, 0.0F));
 
         PartDefinition horn_5_r_r1 = horn.addOrReplaceChild("horn_5_r_r1", CubeListBuilder.create().texOffs(0, 34).mirror().addBox(-1.0F, -2.0F, -1.0F, 4.0F, 2.0F, 2.0F, new CubeDeformation(-0.15F)).mirror(false), PartPose.offsetAndRotation(-4.3F, -14.1F, 2.2F, -1.5708F, 1.0559F, -1.5708F));

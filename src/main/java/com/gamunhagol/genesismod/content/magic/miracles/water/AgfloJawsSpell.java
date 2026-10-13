@@ -51,10 +51,8 @@ public class AgfloJawsSpell extends MiracleSpell {
 
         Vec3 look = caster.getLookAngle();
 
-        // 시전자 전방 2.5블록, 눈높이 부근 허공 위치[cite: 2]
         Vec3 spawnPos = caster.position().add(0, caster.getEyeHeight() * 0.8D, 0).add(look.scale(2.5D));
 
-        // 시선 방향 기준으로 90도 틀어 가로 방향으로 회전[cite: 2]
         float yaw = (float) Mth.atan2(look.z, look.x) + (float) (Math.PI / 2.0);
 
         EvokerFangs jaw = new EvokerFangs(level, spawnPos.x, spawnPos.y, spawnPos.z, yaw, 0, caster);

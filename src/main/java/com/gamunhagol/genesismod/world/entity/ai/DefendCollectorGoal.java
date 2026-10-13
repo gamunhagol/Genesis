@@ -29,7 +29,6 @@ public class DefendCollectorGoal extends TargetGoal {
             int i = collector.getLastHurtByMobTimestamp();
             LivingEntity attacker = collector.getLastHurtByMob();
 
-            // 공격자가 있고 + 타임스탬프가 다르고 + "최근 200틱(10초) 이내에 맞았을 때만" 반응
             if (i != this.lastTimestamp && attacker != null) {
                 if (this.guard.tickCount - i < 200) {
                     this.attacker = attacker;

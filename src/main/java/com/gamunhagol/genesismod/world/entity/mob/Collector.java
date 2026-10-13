@@ -110,10 +110,8 @@ public class Collector extends WanderingTrader {
     public void aiStep() {
         super.aiStep();
         if (!this.level().isClientSide) {
-            // 먼저 주변 가드 수를 체크
             List<CollectorGuard> guards = this.level().getEntitiesOfClass(CollectorGuard.class, this.getBoundingBox().inflate(16));
 
-            // 가드가 4마리 미만일 때만 쿨타임을 깎습니다.
             if (guards.size() < 4) {
                 if (--this.spawnGuardCooldown <= 0) {
                     this.spawnGuardCooldown = 4800;

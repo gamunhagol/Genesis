@@ -38,8 +38,6 @@ public class ChargeStoneItem extends Item {
             int maxCharge = chargeableSkill.getAllowedMaxChargingTicks();
 
             if (currentCharge < maxCharge) {
-                // 매 틱 +1틱 추가 누적 (기본 1틱 + 추가 1틱 = 2배속 / 약 50% 시간 단축)
-                // 만약 정확히 1.5배(50% 가속)를 원하면 (player.tickCount % 2 == 0) 조건 추가 가능
                 playerPatch.setChargingAmount(Math.min(currentCharge + 1, maxCharge));
             }
         }

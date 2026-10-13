@@ -41,9 +41,6 @@ public class GenesisDimensions {
         registerFlatDimension(context, APERTURE_LEVEL_STEM, dimTypeGetter,
                 biomeGetter.getOrThrow(GenesisBiomes.APERTURE_BIOME), GenesisBlocks.PRECIPITATE.get());
 
-        // 2번 차원 등록 (나중에 추가할 때 이런 식)
-        // registerFlatDimension(context, ABYSS_LEVEL_STEM, dimTypeGetter,
-        //         biomeGetter.getOrThrow(GenesisBiomes.ABYSS_BIOME), Blocks.OBSIDIAN);
     }
 
     private static void registerFlatDimension(BootstapContext<LevelStem> context,

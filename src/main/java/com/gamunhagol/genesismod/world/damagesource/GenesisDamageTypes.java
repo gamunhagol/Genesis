@@ -26,4 +26,3 @@ public class GenesisDamageTypes {
         return new DamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(type), attacker);
     }
 }
-

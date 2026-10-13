@@ -74,4 +74,3 @@ public class SpiritCompassRemoveRecipe extends CustomRecipe {
         return GenesisRecipeSerializers.SPIRIT_COMPASS_REMOVE.get();
     }
 }
-

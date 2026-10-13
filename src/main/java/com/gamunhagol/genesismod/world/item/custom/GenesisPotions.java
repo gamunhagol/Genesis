@@ -47,3 +47,4 @@ public class GenesisPotions {
     public static final RegistryObject<Potion> SOUL_SCREAM = POTIONS.register("soul_scream",
             () -> new Potion(new MobEffectInstance(GenesisEffects.SOUL_SCREAM.get(), 9600, 0)));
 }
+
