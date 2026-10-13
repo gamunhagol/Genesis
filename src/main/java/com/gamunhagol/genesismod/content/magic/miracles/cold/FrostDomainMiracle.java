@@ -6,10 +6,9 @@ import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import net.minecraft.core.BlockPos;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -70,6 +69,7 @@ public class FrostDomainMiracle extends MiracleSpell {
         double innerRadius = 5.0D;
         double innerRadiusSq = innerRadius * innerRadius;
         float healAmount = spellSnapshot.holy();
+        int amplifier = Math.max(0, Math.round(healAmount / 4.0f) - 1);
 
         AABB innerBox = new AABB(
                 cx - innerRadius, cy - innerRadius, cz - innerRadius,
@@ -93,7 +93,7 @@ public class FrostDomainMiracle extends MiracleSpell {
                 target.removeEffect(effect.getEffect());
             }
 
-            target.heal(healAmount);
+            target.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, amplifier, false, false, true));
         }
 
         BlockPos center = caster.blockPosition();

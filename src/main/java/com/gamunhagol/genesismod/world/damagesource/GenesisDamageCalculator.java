@@ -97,7 +97,6 @@ public class GenesisDamageCalculator {
 
     private static float calculateMagicDamage(LivingEntity target, float damage) {
         float result = damage;
-        if (target.isInvertedHealAndHarm()) return 0;
         if (target.getType() == net.minecraft.world.entity.EntityType.WITCH) result *= 0.15f;
 
         int prot = EnchantmentHelper.getEnchantmentLevel(com.gamunhagol.genesismod.world.enchantment.GenesisEnchantments.MAGIC_PROTECTION.get(), target);
