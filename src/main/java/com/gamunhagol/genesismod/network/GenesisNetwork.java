@@ -95,6 +95,10 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketCastChargedSpell.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketCastChargedSpell::new).encoder(PacketCastChargedSpell::toBytes)
                 .consumerMainThread(PacketCastChargedSpell::handle).add();
+
+        INSTANCE.messageBuilder(PacketTriggerHoldBlessing.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketTriggerHoldBlessing::new).encoder(PacketTriggerHoldBlessing::toBytes)
+                .consumerMainThread(PacketTriggerHoldBlessing::handle).add();
     }
 
     public static void sendToPlayer(Object message, ServerPlayer player) {

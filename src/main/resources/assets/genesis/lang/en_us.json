@@ -842,7 +842,9 @@
   "gui.genesis.blessing.cost" : "Cost: %s",
 
   "blessing.genesis.god_a.1": "Fall Damage Reduction(Hold Left Shift).",
+  "blessing.genesis.god_a.10": "The Stacker (Spawns a tower when you hold 4+ stacks of stone-type blocks).",
   "blessing.genesis.god_b.1": "Anvil Cost Reduction.",
+  "blessing.genesis.god_b.2": "Hot Hands (Hold right-click on stone-type blocks for 3+ seconds to turn them into lava).",
   "blessing.genesis.god_c.1": "Deep Sea Fortune.",
   "blessing.genesis.god_d.1": "Wind Sprint (Double-tap Left Shift to activate).",
   "blessing.genesis.god_e.1": "Mob Detection Reduction.",

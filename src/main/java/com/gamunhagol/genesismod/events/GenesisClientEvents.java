@@ -2,30 +2,31 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.gui.hud.SpellHudOverlay;
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
-import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
-import com.gamunhagol.genesismod.network.server.PacketChangeSelectedSlot;
 import com.gamunhagol.genesismod.network.server.PacketActivateWindBlessing;
-import com.gamunhagol.genesismod.skill.MagicChargeSkill;
+import com.gamunhagol.genesismod.network.server.PacketChangeSelectedSlot;
+import com.gamunhagol.genesismod.network.server.PacketTriggerHoldBlessing;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import com.gamunhagol.genesismod.world.item.GenesisItems;
-import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import com.gamunhagol.genesismod.world.item.weapon.GreatBowItem;
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.item.ItemProperties;
+import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
@@ -34,10 +35,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.RegistryObject;
-import yesman.epicfight.client.ClientEngine;
-import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
-import yesman.epicfight.skill.SkillContainer;
-import yesman.epicfight.skill.SkillSlots;
 
 @Mod.EventBusSubscriber(modid = GenesisMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class GenesisClientEvents {
@@ -98,6 +95,9 @@ public class GenesisClientEvents {
         private static boolean wasSneaking = false;
         private static long lastSneakTime = 0;
 
+        private static BlockPos fireHoldingTargetPos = null;
+        private static int fireHoldTicks = 0;
+
         @SubscribeEvent
         public static void onComputeFovModifier(ComputeFovModifierEvent event) {
             if (event.getPlayer().isUsingItem() && event.getPlayer().getUseItem().getItem() instanceof GreatBowItem) {
@@ -143,6 +143,38 @@ public class GenesisClientEvents {
                     }
                 }
                 wasSneaking = isSneaking;
+
+                // 불 축복: 조약돌, 돌, 흑요석 맨손 우클릭 3초(60틱) 유지 감지
+                if (mc.options.keyUse.isDown() && mc.player.getMainHandItem().isEmpty() && mc.screen == null) {
+                    if (mc.hitResult != null && mc.hitResult.getType() == HitResult.Type.BLOCK) {
+                        BlockHitResult blockHit = (BlockHitResult) mc.hitResult;
+                        BlockPos currentPos = blockHit.getBlockPos();
+                        BlockState state = mc.level.getBlockState(currentPos);
+
+                        if (state.is(Blocks.COBBLESTONE) || state.is(Blocks.STONE) || state.is(Blocks.OBSIDIAN)) {
+                            if (currentPos.equals(fireHoldingTargetPos)) {
+                                fireHoldTicks++;
+                                if (fireHoldTicks == 60) {
+                                    GenesisNetwork.sendToServer(new PacketTriggerHoldBlessing(currentPos));
+                                    fireHoldingTargetPos = null;
+                                    fireHoldTicks = 0;
+                                }
+                            } else {
+                                fireHoldingTargetPos = currentPos;
+                                fireHoldTicks = 1;
+                            }
+                        } else {
+                            fireHoldingTargetPos = null;
+                            fireHoldTicks = 0;
+                        }
+                    } else {
+                        fireHoldingTargetPos = null;
+                        fireHoldTicks = 0;
+                    }
+                } else {
+                    fireHoldingTargetPos = null;
+                    fireHoldTicks = 0;
+                }
             }
         }
 

@@ -57,7 +57,7 @@ public class StatueRewardManager {
             nodes.add(new NodeInfo(7, 900, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),2));
             nodes.add(new NodeInfo(8, 900, 900, cost, 1, new ItemStack(Items.DIAMOND, 1),7));
             nodes.add(new NodeInfo(9, 1100, 1100, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
-            nodes.add(new NodeInfo(10, 1200, 1100, cost, 1, new ItemStack(Items.DIAMOND, 1),9));
+            nodes.add(new NodeInfo(10, 1200, 1100, cost, 1, ItemStack.EMPTY, 9));
             nodes.add(new NodeInfo(11, 1200, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),10));
             nodes.add(new NodeInfo(12, 1100, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),9));
             nodes.add(new NodeInfo(13, 1100, 900, cost, 1, new ItemStack(Items.DIAMOND, 1),12));
@@ -74,7 +74,7 @@ public class StatueRewardManager {
         }
         else if ("god_b".equals(statueId)) {
             nodes.add(new NodeInfo(1, 1000, 1100, cost, 1, ItemStack.EMPTY));
-            nodes.add(new NodeInfo(2, 900, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
+            nodes.add(new NodeInfo(2, 900, 1000, cost, 1, ItemStack.EMPTY, 1));
             nodes.add(new NodeInfo(3, 1100, 1000, cost, 1, new ItemStack(Items.DIAMOND, 1),1));
             nodes.add(new NodeInfo(4, 1000, 900, cost, 1, new ItemStack(Items.DIAMOND, 1),2));
             nodes.add(new NodeInfo(5, 800, 900, cost, 1, new ItemStack(Items.DIAMOND, 1),2));
