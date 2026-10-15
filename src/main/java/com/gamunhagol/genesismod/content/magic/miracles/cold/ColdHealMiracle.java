@@ -4,7 +4,6 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -41,15 +40,12 @@ public class ColdHealMiracle extends MiracleSpell {
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        float baseHeal = 8.0f;
-        float holyScaling = catalyst.holy() * 0.25f;
+        float healAmount = 8.0f;
+        float efficiency = 0.25f;
 
-        int faith = WeaponRequirementHelper.getEntityStat(caster, StatType.FAITH);
-
-        float faithBonusMultiplier = 1.0f + (faith * 0.015f);
-        float dedicationMultiplier = getDedicationMultiplier(caster);
-
-        float finalHeal = (baseHeal + holyScaling) * faithBonusMultiplier * dedicationMultiplier;
+        float baseHeal = healAmount + (catalyst.holy() * efficiency);
+        float multiplier = getDedicationMultiplier(caster);
+        float finalHeal = baseHeal * multiplier;
 
         return new DamageSnapshot(0, 0, 0, 0, 0, finalHeal, 0);
     }
