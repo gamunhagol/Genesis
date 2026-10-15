@@ -60,7 +60,6 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
         this.goalSelector.addGoal(6, new LookAtPlayerGoal(this, Player.class, 8.0F));
         this.goalSelector.addGoal(7, new RandomLookAroundGoal(this));
 
-        // 타겟팅: 모든 몬스터를 공격하되, 방랑자 세력은 서로 공격하지 않음
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this).setAlertOthers());
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, Monster.class, 10, true, false,
                 (target) -> !(target instanceof AbstractWanderer)));
@@ -118,7 +117,6 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
 
     @Override
     public boolean isAlliedTo(Entity pEntity) {
-        // 만약 지금 나를 때린 놈이 pEntity라면, 더 이상 아군이 아니다! (복수 모드)
         if (pEntity == this.getLastHurtByMob()) {
             return false;
         }
@@ -151,7 +149,7 @@ public abstract class AbstractWanderer extends PathfinderMob implements RangedAt
 
     @Override
     public boolean canPickUpLoot() {
-        return true; // 아이템을 주울 수 있게 설정
+        return true;
     }
 
     @Override

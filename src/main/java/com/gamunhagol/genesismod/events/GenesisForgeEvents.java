@@ -14,6 +14,7 @@ import com.gamunhagol.genesismod.network.client.PacketSyncStats;
 import com.gamunhagol.genesismod.stats.StatApplier;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.util.GenesisTags;
+import com.gamunhagol.genesismod.util.ZombieInfectionHandler;
 import com.gamunhagol.genesismod.world.block.GenesisBlocks;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
 import com.gamunhagol.genesismod.world.capability.spell.SpellSlotProvider;
@@ -63,6 +64,7 @@ import net.minecraftforge.event.entity.EntityJoinLevelEvent;
 import net.minecraftforge.event.entity.EntityMountEvent;
 import net.minecraftforge.event.entity.item.ItemTossEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -118,6 +120,31 @@ public class GenesisForgeEvents {
             if (hasFullPaddedChainSet(entity)) {
                 entity.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 200, 0, false, false, true));
             }
+        }
+
+        ZombieInfectionHandler.tickInfection(entity);
+    }
+
+    @SubscribeEvent
+    public static void onEntityInteractSpecific(PlayerInteractEvent.EntityInteract event) {
+        if (event.getTarget() instanceof LivingEntity target && ZombieInfectionHandler.isCureItem(event.getItemStack())) {
+            if (target.getPersistentData().getBoolean(ZombieInfectionHandler.TAG_INFECTED)) {
+                if (!event.getLevel().isClientSide()) {
+                    ZombieInfectionHandler.cure(target);
+                    if (!event.getEntity().getAbilities().instabuild) {
+                        event.getItemStack().shrink(1);
+                    }
+                }
+                event.setCancellationResult(InteractionResult.sidedSuccess(event.getLevel().isClientSide()));
+                event.setCanceled(true);
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onUseItemFinish(LivingEntityUseItemEvent.Finish event) {
+        if (!event.getEntity().level().isClientSide() && ZombieInfectionHandler.isCureItem(event.getItem())) {
+            ZombieInfectionHandler.cure(event.getEntity());
         }
     }
 
