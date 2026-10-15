@@ -4,8 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import com.gamunhagol.genesismod.stats.StatCapability;
-import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -25,9 +24,7 @@ public class FireGodBlessingMiracle extends MiracleSpell {
 
     @Override
     public Map<StatType, Integer> getRequiredStats() {
-        return Map.of(
-                StatType.FAITH, 15
-        );
+        return Map.of(StatType.FAITH, 15);
     }
 
     @Override
@@ -55,10 +52,7 @@ public class FireGodBlessingMiracle extends MiracleSpell {
         if (level.isClientSide) return;
 
         int baseDurationTicks = 1800;
-
-        int faith = caster.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
-                .map(StatCapability::getFaith)
-                .orElse(0);
+        int faith = WeaponRequirementHelper.getEntityStat(caster, StatType.FAITH);
 
         float faithBonusMultiplier = 1.0f + (faith * 0.01f);
         float dedicationMultiplier = getDedicationMultiplier(caster);

@@ -6,7 +6,9 @@ import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.DividedEntity;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -45,7 +47,11 @@ public class DividedSpell extends MagicSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, caster.getMainHandItem(), 0f);
+        ItemStack catalystStack = caster.getMainHandItem().getItem() instanceof CatalystItem
+                ? caster.getMainHandItem()
+                : caster.getOffhandItem();
+
+        DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, catalystStack, 0f);
         DamageSnapshot childSnapshot = calculateChildSnapshot(caster, catalyst);
 
         Vec3 look = caster.getLookAngle();

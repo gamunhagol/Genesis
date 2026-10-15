@@ -10,9 +10,11 @@ import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LargeRockEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
@@ -86,7 +88,6 @@ public class EarthExtractMiracle extends MiracleSpell {
         return new DamageSnapshot(finalPhysical, 0, 0, 0, 0, 0, 0);
     }
 
-
     @Override
     protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
         if (level.isClientSide) return;
@@ -120,7 +121,12 @@ public class EarthExtractMiracle extends MiracleSpell {
             }
 
             Vec3 look = caster.getLookAngle();
-            DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, caster.getMainHandItem(), 0f);
+
+            ItemStack catalystStack = caster.getMainHandItem().getItem() instanceof CatalystItem
+                    ? caster.getMainHandItem()
+                    : caster.getOffhandItem();
+
+            DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, catalystStack, 0f);
 
             if (isLarge) {
                 DamageSnapshot largeSnapshot = calculateLargeRockSnapshot(caster, catalyst);

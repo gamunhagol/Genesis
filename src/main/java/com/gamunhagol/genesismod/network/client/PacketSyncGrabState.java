@@ -1,8 +1,8 @@
 package com.gamunhagol.genesismod.network.client;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.UUID;
@@ -29,14 +29,9 @@ public class PacketSyncGrabState {
 
     public void handle(Supplier<NetworkEvent.Context> ctx) {
         ctx.get().enqueueWork(() -> {
-            Player player = Minecraft.getInstance().player;
-            if (player != null) {
-                if (this.isGrabbed) {
-                    player.getPersistentData().putUUID("GenesisGrabbedEntity", this.entityId);
-                } else {
-                    player.getPersistentData().remove("GenesisGrabbedEntity");
-                }
-            }
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                ClientPayloadHandler.handleGrabStateSync(this.isGrabbed, this.entityId);
+            });
         });
         ctx.get().setPacketHandled(true);
     }

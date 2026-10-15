@@ -1,11 +1,9 @@
 package com.gamunhagol.genesismod.network.client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -32,19 +30,9 @@ public class PacketActivateCustomTotem {
     public boolean handle(Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
         context.enqueueWork(() -> {
-            Minecraft mc = Minecraft.getInstance();
-            if (mc.level != null) {
-                Entity entity = mc.level.getEntity(this.entityId);
-                if (entity != null) {
-                    if (entity == mc.player) {
-                        mc.gameRenderer.displayItemActivation(this.totemStack);
-                    }
-
-                    mc.particleEngine.createTrackingEmitter(entity, ParticleTypes.TOTEM_OF_UNDYING);
-                    mc.level.playLocalSound(entity.getX(), entity.getY(), entity.getZ(),
-                            SoundEvents.TOTEM_USE, entity.getSoundSource(), 1.0F, 1.0F, false);
-                }
-            }
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                ClientPayloadHandler.handleTotemActivation(this.entityId, this.totemStack);
+            });
         });
         context.setPacketHandled(true);
         return true;

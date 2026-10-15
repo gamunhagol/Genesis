@@ -1,6 +1,8 @@
 package com.gamunhagol.genesismod.network.client;
 
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.ArrayList;
@@ -33,7 +35,11 @@ public class PacketSyncSpellSlot {
 
     public static void handle(PacketSyncSpellSlot msg, Supplier<NetworkEvent.Context> contextSupplier) {
         NetworkEvent.Context context = contextSupplier.get();
-        context.enqueueWork(() -> ClientPayloadHandler.handleSpellSlotSync(msg.maxSlots, msg.selectedSlot, msg.equippedSpells));
+        context.enqueueWork(() -> {
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                ClientPayloadHandler.handleSpellSlotSync(msg.maxSlots, msg.selectedSlot, msg.equippedSpells);
+            });
+        });
         context.setPacketHandled(true);
     }
 }

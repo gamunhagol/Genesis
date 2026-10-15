@@ -1,10 +1,9 @@
 package com.gamunhagol.genesismod.network.client;
 
 import com.gamunhagol.genesismod.stats.StatCapability;
-import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.FriendlyByteBuf;
-import net.minecraft.world.entity.player.Player;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.HashSet;
@@ -56,22 +55,13 @@ public class PacketSyncStats {
     public boolean handle(Supplier<NetworkEvent.Context> supplier) {
         NetworkEvent.Context context = supplier.get();
         context.enqueueWork(() -> {
-            Player player = Minecraft.getInstance().player;
-            if (player != null) {
-                player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
-                    stats.setVigor(this.vigor); stats.setMind(this.mind); stats.setEndurance(this.endurance);
-                    stats.setStrength(this.strength); stats.setDexterity(this.dexterity);
-                    stats.setIntelligence(this.intelligence); stats.setFaith(this.faith); stats.setArcane(this.arcane);
-                    stats.setMental(this.mental); stats.setMaxMental(this.maxMental);
-                    stats.setLevelUpUnlocked(this.isLevelUpUnlocked);
-
-                    stats.getLearnedSpells().clear();
-                    stats.getLearnedSpells().addAll(this.learnedSpells);
-
-                    stats.getUnlockedNodes().clear();
-                    stats.getUnlockedNodes().addAll(this.unlockedNodes);
-                });
-            }
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                ClientPayloadHandler.handleStatsSync(
+                        this.vigor, this.mind, this.endurance, this.strength, this.dexterity,
+                        this.intelligence, this.faith, this.arcane, this.mental, this.maxMental,
+                        this.isLevelUpUnlocked, this.learnedSpells, this.unlockedNodes
+                );
+            });
         });
         context.setPacketHandled(true);
         return true;

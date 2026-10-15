@@ -47,7 +47,7 @@ public class GreatHealMiracle extends MiracleSpell {
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        float healAmount = 14.0f + catalyst.holy();
+        float healAmount = 14.0f;
         float efficiency = 0.6f;
 
         float baseHeal = healAmount + (catalyst.holy() * efficiency);

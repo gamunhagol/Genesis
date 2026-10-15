@@ -4,8 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import com.gamunhagol.genesismod.stats.StatCapability;
-import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -45,9 +44,7 @@ public class ColdHealMiracle extends MiracleSpell {
         float baseHeal = 8.0f;
         float holyScaling = catalyst.holy() * 0.25f;
 
-        int faith = caster.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
-                .map(StatCapability::getFaith)
-                .orElse(10);
+        int faith = WeaponRequirementHelper.getEntityStat(caster, StatType.FAITH);
 
         float faithBonusMultiplier = 1.0f + (faith * 0.015f);
         float dedicationMultiplier = getDedicationMultiplier(caster);

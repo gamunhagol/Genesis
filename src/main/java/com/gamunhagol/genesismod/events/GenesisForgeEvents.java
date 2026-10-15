@@ -422,28 +422,29 @@ public class GenesisForgeEvents {
             });
         });
 
-        if (event.isWasDeath()) {
-            original.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(oldStore -> {
-                newPlayer.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(newStore -> {
-                    newStore.copyFrom(oldStore);
+        original.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(oldStore -> {
+            newPlayer.getCapability(SpellSlotProvider.SPELL_SLOT).ifPresent(newStore -> {
+                newStore.copyFrom(oldStore);
 
-                    if (newPlayer instanceof ServerPlayer serverPlayer) {
-                        newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
-                            GenesisNetwork.sendToPlayer(
-                                    new PacketSyncSpellSlot(
-                                            newStore.getMemoryCapacity() + newStats.getSpellCapacityBonus(),
-                                            newStore.getSelectedSlot(),
-                                            newStore.getEquippedSpells()
-                                    ),
-                                    serverPlayer
-                            );
-                        });
-                    }
-                    if (newPlayer.getPersistentData().contains("GenesisStatueHealReadyTick")) {
-                        newPlayer.getPersistentData().remove("GenesisStatueHealReadyTick");
-                    }
-                });
+                if (newPlayer instanceof ServerPlayer serverPlayer) {
+                    newPlayer.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(newStats -> {
+                        GenesisNetwork.sendToPlayer(
+                                new PacketSyncSpellSlot(
+                                        newStore.getMemoryCapacity() + newStats.getSpellCapacityBonus(),
+                                        newStore.getSelectedSlot(),
+                                        newStore.getEquippedSpells()
+                                ),
+                                serverPlayer
+                        );
+                    });
+                }
             });
+        });
+
+        if (event.isWasDeath()) {
+            if (newPlayer.getPersistentData().contains("GenesisStatueHealReadyTick")) {
+                newPlayer.getPersistentData().remove("GenesisStatueHealReadyTick");
+            }
 
             for (int i = 0; i < newPlayer.getInventory().getContainerSize(); i++) {
                 ItemStack stack = newPlayer.getInventory().getItem(i);

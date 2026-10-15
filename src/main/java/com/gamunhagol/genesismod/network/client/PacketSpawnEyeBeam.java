@@ -1,8 +1,9 @@
 package com.gamunhagol.genesismod.network.client;
 
-import com.gamunhagol.genesismod.events.client.GenesisClientRenderEvents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.network.NetworkEvent;
 
 import java.util.function.Supplier;
@@ -24,11 +25,12 @@ public class PacketSpawnEyeBeam {
         buf.writeDouble(targetPos.z);
     }
 
-
     public static void handle(PacketSpawnEyeBeam msg, Supplier<NetworkEvent.Context> ctxSupplier) {
         NetworkEvent.Context ctx = ctxSupplier.get();
         ctx.enqueueWork(() -> {
-            GenesisClientRenderEvents.spawnBeam(msg.targetPos);
+            DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+                ClientPayloadHandler.handleSpawnEyeBeam(msg.targetPos);
+            });
         });
         ctx.setPacketHandled(true);
     }
