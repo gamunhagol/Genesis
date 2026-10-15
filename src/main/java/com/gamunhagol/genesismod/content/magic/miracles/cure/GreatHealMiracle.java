@@ -3,8 +3,7 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 
@@ -61,7 +60,7 @@ public class GreatHealMiracle extends MiracleSpell {
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         if (level.isClientSide) return;
-        applyInstantHeal(caster, spellSnapshot.holy());
+        applyEffect(level, caster, spellSnapshot.holy());
     }
 
     @Override
@@ -71,11 +70,14 @@ public class GreatHealMiracle extends MiracleSpell {
         float ratio = Math.min(1.0f, (float) chargeTicks / (float) getMaxChargeTicks());
         float multiplier = (ratio > 0.70f) ? 1.25f : 1.0f;
 
-        applyInstantHeal(caster, spellSnapshot.holy() * multiplier);
+        applyEffect(level, caster, spellSnapshot.holy() * multiplier);
     }
 
-    private void applyInstantHeal(LivingEntity target, float healAmount) {
-        int amplifier = Math.max(0, Math.round(healAmount / 4.0f) - 1);
-        target.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, amplifier, false, false, true));
+    private void applyEffect(Level level, LivingEntity caster, float healAmount) {
+        if (caster.isInvertedHealAndHarm()) {
+            caster.hurt(GenesisDamageTypes.getSource(level, GenesisDamageTypes.HOLY, caster), healAmount);
+        } else {
+            caster.heal(healAmount);
+        }
     }
 }

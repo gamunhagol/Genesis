@@ -3,8 +3,7 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -54,9 +53,13 @@ public class AreaHealMiracle extends MiracleSpell {
         AABB area = caster.getBoundingBox().inflate(radius);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, Entity::isAlive);
 
-        int amplifier = Math.max(0, Math.round(spellSnapshot.holy() / 4.0f) - 1);
+        float amount = spellSnapshot.holy();
         for (LivingEntity target : targets) {
-            target.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, amplifier, false, false, true));
+            if (target.isInvertedHealAndHarm()) {
+                target.hurt(GenesisDamageTypes.getSource(level, GenesisDamageTypes.HOLY, caster), amount);
+            } else {
+                target.heal(amount);
+            }
         }
     }
 }

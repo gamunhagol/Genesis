@@ -3,8 +3,7 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -63,7 +62,7 @@ public class AreaGreatHealMiracle extends MiracleSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        applyAreaInstantHeal(level, caster, spellSnapshot.holy());
+        applyAreaEffect(level, caster, spellSnapshot.holy());
     }
 
     @Override
@@ -71,19 +70,22 @@ public class AreaGreatHealMiracle extends MiracleSpell {
         float ratio = Math.min(1.0f, (float) chargeTicks / (float) getMaxChargeTicks());
         float multiplier = (ratio > 0.70f) ? 1.25f : 1.0f;
 
-        applyAreaInstantHeal(level, caster, spellSnapshot.holy() * multiplier);
+        applyAreaEffect(level, caster, spellSnapshot.holy() * multiplier);
     }
 
-    private void applyAreaInstantHeal(Level level, LivingEntity caster, float finalHealAmount) {
+    private void applyAreaEffect(Level level, LivingEntity caster, float finalHealAmount) {
         if (level.isClientSide) return;
 
         double radius = 6.0D;
         AABB area = caster.getBoundingBox().inflate(radius);
         List<LivingEntity> targets = level.getEntitiesOfClass(LivingEntity.class, area, Entity::isAlive);
 
-        int amplifier = Math.max(0, Math.round(finalHealAmount / 4.0f) - 1);
         for (LivingEntity target : targets) {
-            target.addEffect(new MobEffectInstance(MobEffects.HEAL, 1, amplifier, false, false, true));
+            if (target.isInvertedHealAndHarm()) {
+                target.hurt(GenesisDamageTypes.getSource(level, GenesisDamageTypes.HOLY, caster), finalHealAmount);
+            } else {
+                target.heal(finalHealAmount);
+            }
         }
     }
 }

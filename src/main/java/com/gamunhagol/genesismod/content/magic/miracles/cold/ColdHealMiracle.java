@@ -6,11 +6,8 @@ import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.stats.StatCapability;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import com.gamunhagol.genesismod.world.effect.GenesisEffects;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -64,7 +61,13 @@ public class ColdHealMiracle extends MiracleSpell {
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         if (level.isClientSide) return;
 
-        caster.heal(spellSnapshot.holy());
+        float amount = spellSnapshot.holy();
+        if (caster.isInvertedHealAndHarm()) {
+            caster.hurt(GenesisDamageTypes.getSource(level, GenesisDamageTypes.HOLY, caster), amount);
+        } else {
+            caster.heal(amount);
+        }
+
         caster.addEffect(new MobEffectInstance(GenesisEffects.COLD_RESISTANCE.get(), 100, 0));
     }
 }
