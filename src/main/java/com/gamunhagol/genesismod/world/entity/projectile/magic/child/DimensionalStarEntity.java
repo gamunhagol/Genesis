@@ -21,7 +21,7 @@ public class DimensionalStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 180;
         this.pullRadius = 15.0D;
         this.maxPullStrength = 0.15D;
-        this.explosionPower = 10.0F;
+        this.explosionPower = 9.0F;
     }
 
     public DimensionalStarEntity(Level level, LivingEntity owner, DamageSnapshot snapshot) {
@@ -29,7 +29,7 @@ public class DimensionalStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 180;
         this.pullRadius = 15.0D;
         this.maxPullStrength = 0.15D;
-        this.explosionPower = 10.0F;
+        this.explosionPower = 9.0F;
     }
 
     @Override

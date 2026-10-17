@@ -11,14 +11,13 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.ProjectileUtil;
 import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.ForgeMod;
@@ -26,6 +25,7 @@ import net.minecraftforge.common.ForgeMod;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class ColdTouchMiracle extends MiracleSpell {
 
@@ -55,7 +55,7 @@ public class ColdTouchMiracle extends MiracleSpell {
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        return new DamageSnapshot(0, 0, 0, 0, 1.0f, 0, 0); // 1의 동상 피해
+        return new DamageSnapshot(0, 0, 0, 0, 1.0f, 0, 0);
     }
 
     @Override
@@ -134,24 +134,32 @@ public class ColdTouchMiracle extends MiracleSpell {
                 caster
         ));
 
+        double maxDistSqr = reach * reach;
         if (blockHit.getType() != HitResult.Type.MISS) {
             endPos = blockHit.getLocation();
+            maxDistSqr = eyePos.distanceToSqr(endPos);
         }
 
-        AABB box = caster.getBoundingBox().expandTowards(lookVec.scale(reach)).inflate(1.0D);
-        EntityHitResult entityHit = ProjectileUtil.getEntityHitResult(
-                level,
-                caster,
-                eyePos,
-                endPos,
-                box,
-                entity -> entity instanceof LivingEntity && entity.isAlive() && !entity.isSpectator()
-        );
+        AABB searchBox = caster.getBoundingBox().expandTowards(lookVec.scale(reach)).inflate(1.0D);
+        List<Entity> candidates = level.getEntities(caster, searchBox,
+                e -> e instanceof LivingEntity && e.isAlive() && !e.isSpectator());
 
-        if (entityHit != null && entityHit.getEntity() instanceof LivingEntity livingTarget) {
-            return livingTarget;
+        LivingEntity closestTarget = null;
+        double closestDistSqr = maxDistSqr;
+
+        for (Entity candidate : candidates) {
+            AABB targetBox = candidate.getBoundingBox();
+            Optional<Vec3> hitOpt = targetBox.clip(eyePos, endPos);
+
+            if (hitOpt.isPresent()) {
+                double distSqr = eyePos.distanceToSqr(hitOpt.get());
+                if (distSqr < closestDistSqr) {
+                    closestDistSqr = distSqr;
+                    closestTarget = (LivingEntity) candidate;
+                }
+            }
         }
 
-        return null;
+        return closestTarget;
     }
 }

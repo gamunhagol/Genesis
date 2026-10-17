@@ -19,7 +19,7 @@ public class FrostArmorMiracle extends MiracleSpell {
     public static final String NBT_KEY_END_TICK = "GenesisFrostArmorEndTick";
     public static final UUID FROST_ARMOR_MOD_UUID = UUID.fromString("C1D2E3F4-1111-2222-3333-AABBCCDDEEFF");
     public static final double ARMOR_BONUS = 15.0D;
-    public static final long DURATION_TICKS = 2400L;
+    public static final long DURATION_TICKS = 1800L;
 
     public FrostArmorMiracle() {
         super("frost_armor");

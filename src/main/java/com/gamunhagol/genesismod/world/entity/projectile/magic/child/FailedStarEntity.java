@@ -13,7 +13,7 @@ public class FailedStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 110;
         this.pullRadius = 5.0D;
         this.maxPullStrength = 0.06D;
-        this.explosionPower = 6.0F;
+        this.explosionPower = 5.0F;
     }
 
     public FailedStarEntity(Level level, LivingEntity owner, DamageSnapshot snapshot) {
@@ -21,6 +21,6 @@ public class FailedStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 110;
         this.pullRadius = 5.0D;
         this.maxPullStrength = 0.06D;
-        this.explosionPower = 6.0F;
+        this.explosionPower = 5.0F;
     }
 }

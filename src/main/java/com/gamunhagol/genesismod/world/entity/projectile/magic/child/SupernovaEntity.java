@@ -25,8 +25,8 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
     protected int decelerateTicks = 200;
     protected int maxLifespanTicks = 300;
 
-    protected float contactExplosionPower = 3.0F;
-    protected float apexExplosionPower = 10.0F;
+    protected float contactExplosionPower = 2.0F;
+    protected float apexExplosionPower = 90.0F;
 
     private double baseSpeed = 0.19D;
 
@@ -66,7 +66,7 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
             if (this.isRemoved()) return;
 
             if (this.tickCount >= this.maxLifespanTicks) {
-                detonate(this.apexExplosionPower, 35.0F);
+                detonate(this.apexExplosionPower);
                 this.discard();
                 return;
             }
@@ -135,11 +135,11 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
             target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
         }
 
-        detonate(this.contactExplosionPower, 10.0F);
+        detonate(this.contactExplosionPower);
         this.discard();
     }
 
-    protected void detonate(float explosionPower, float baseVoidDamage) {
+    protected void detonate(float explosionPower) {
         Entity owner = this.getOwner();
 
         this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
@@ -163,15 +163,8 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
 
         double rSqr = range * range;
         for (LivingEntity target : targets) {
-            double distSqr = target.distanceToSqr(this);
-            if (distSqr <= rSqr) {
-                double dist = Math.sqrt(distSqr);
-                float falloff = (float) Math.max(0.0D, 1.0D - (dist / range));
-                float finalVoidDamage = baseVoidDamage * falloff;
-
-                if (finalVoidDamage > 0.0F) {
-                    target.hurt(this.damageSources().fellOutOfWorld(), finalVoidDamage);
-                }
+            if (target.distanceToSqr(this) <= rSqr) {
+                target.hurt(this.damageSources().fellOutOfWorld(), 30.0F);
             }
         }
     }

@@ -13,7 +13,7 @@ public class FaintStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 60;
         this.pullRadius = 3.0D;
         this.maxPullStrength = 0.02D;
-        this.explosionPower = 4.0F;
+        this.explosionPower = 3.0F;
     }
 
     public FaintStarEntity(Level level, LivingEntity owner, DamageSnapshot snapshot) {
@@ -21,6 +21,6 @@ public class FaintStarEntity extends AbstractStarAnomaly {
         this.maxLifespanTicks = 60;
         this.pullRadius = 3.0D;
         this.maxPullStrength = 0.02D;
-        this.explosionPower = 4.0F;
+        this.explosionPower = 3.0F;
     }
 }

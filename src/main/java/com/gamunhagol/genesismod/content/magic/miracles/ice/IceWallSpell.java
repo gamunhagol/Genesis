@@ -55,9 +55,14 @@ public class IceWallSpell extends MiracleSpell {
             BlockHitResult blockHit = (BlockHitResult) hitResult;
             Direction hitFace = blockHit.getDirection();
             BlockPos targetBasePos = blockHit.getBlockPos().relative(hitFace);
+            BlockPos targetAbovePos = targetBasePos.above();
 
-            level.setBlock(targetBasePos, Blocks.PACKED_ICE.defaultBlockState(), 3);
-            level.setBlock(targetBasePos.above(), Blocks.PACKED_ICE.defaultBlockState(), 3);
+            if (level.getBlockState(targetBasePos).canBeReplaced()) {
+                level.setBlock(targetBasePos, Blocks.PACKED_ICE.defaultBlockState(), 3);
+            }
+            if (level.getBlockState(targetAbovePos).canBeReplaced()) {
+                level.setBlock(targetAbovePos, Blocks.PACKED_ICE.defaultBlockState(), 3);
+            }
         }
     }
 }
