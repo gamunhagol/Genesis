@@ -273,12 +273,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         //food
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.SCORPION_MEAT.get(), 2)
                 .requires(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get())
-                .requires(Items.FLINT)
+                .requires(GenesisItems.HARDENED_GLASS_PIECES.get())
                 .unlockedBy(getHasName(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get()), has(GenesisItems.LAGER_DESERT_SCORPION_TAIL.get()))
                 .save(pWriter, "scorpion_meat_from_tail");
         ShapelessRecipeBuilder.shapeless(RecipeCategory.FOOD, GenesisItems.SCORPION_MEAT.get(), 3)
                 .requires(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get())
-                .requires(Items.FLINT)
+                .requires(GenesisItems.HARDENED_GLASS_PIECES.get())
                 .unlockedBy(getHasName(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get()), has(GenesisItems.LAGER_DESERT_SCORPION_PINCERS.get()))
                 .save(pWriter, "scorpion_meat_from_pincers");
 
