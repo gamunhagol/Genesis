@@ -58,6 +58,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
         blockWithItem(GenesisBlocks.UNDEAD_SHARD);
 
+        simpleBlock(GenesisBlocks.HARDENED_GLASS.get(),
+                models().cubeAll("hardened_glass", modLoc("block/hardened_glass"))
+                        .renderType("translucent")
+        );
         simpleBlock(GenesisBlocks.HARDENED_RED_GLASS.get(),
                 models().cubeAll("hardened_red_glass", modLoc("block/hardened_red_glass"))
                         .renderType("translucent")

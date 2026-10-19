@@ -67,6 +67,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(GenesisBlocks.GIANT_STONE.get());
         this.dropSelf(GenesisBlocks.ACTIVATED_GIANT_STONE.get());
         this.dropSelf(GenesisBlocks.RED_PEARL_OF_THE_DESERT.get());
+        this.dropSelf(GenesisBlocks.HARDENED_GLASS.get());
         this.dropSelf(GenesisBlocks.HARDENED_RED_GLASS.get());
         this.dropSelf(GenesisBlocks.EYE_OF_THE_EARTH.get());
         this.dropSelf(GenesisBlocks.UNDEAD_SHARD.get());

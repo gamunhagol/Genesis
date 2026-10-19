@@ -467,6 +467,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         pillarItem(GenesisBlocks.FADED_PILLAR);
 
         withExistingParent("mist_vault_1", modLoc("block/mist_vault_1"));
+        withExistingParent("hardened_glass", modLoc("block/hardened_glass"));
         withExistingParent("hardened_red_glass", modLoc("block/hardened_red_glass"));
         withExistingParent("eye_of_the_earth", modLoc("block/eye_of_the_earth"));
 

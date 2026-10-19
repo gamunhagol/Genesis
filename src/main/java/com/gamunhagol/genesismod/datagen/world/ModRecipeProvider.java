@@ -23,7 +23,6 @@ import java.util.Map;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final List<ItemLike> HARDENED_RED_SMELTING = List.of(GenesisItems.HARDENED_RED_MASS.get());
     private static final List<ItemLike> PEWRIESE_SMELTING = List.of(GenesisItems.PEWRIESE_ORE_PIECE.get());
     private static final List<ItemLike> ANCIENT_ELVENIA_SMELTING = List.of(GenesisItems.SMALL_BELL_OF_OBLIVION.get()
     );
@@ -147,7 +146,6 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD), has(Items.AMETHYST_SHARD))
                 .save(pWriter);
 
-        oreSmelting(pWriter, HARDENED_RED_SMELTING, RecipeCategory.MISC, GenesisItems.HARDENED_RED_GLASS.get(), 0.2f, 250, "hardened_red_glass");
 
 
         oreSmelting(pWriter, PEWRIESE_SMELTING, RecipeCategory.MISC, GenesisItems.PEWRIESE_PIECE.get(), 2.4f, 20000, "pewriese");
@@ -372,6 +370,19 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         paddedArmorRecipe(pWriter, Items.CHAINMAIL_LEGGINGS, GenesisItems.PADDED_CHAIN_LEGGINGS.get(), "aba", "a a");
 
 
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.HARDENED_RED_MASS.get())
+                .requires(GenesisItems.HARDENED_RED_GLASS_PIECES.get(),3)
+                .unlockedBy(getHasName(GenesisItems.HARDENED_RED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_RED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.HARDENED_GLASS.get())
+                .requires(Items.GLASS)
+                .requires(GenesisItems.HARDENED_GLASS_PIECES.get(),8)
+                .unlockedBy(getHasName(GenesisItems.HARDENED_GLASS_PIECES.get()), has(GenesisItems.HARDENED_GLASS_PIECES.get()))
+                .save(pWriter);
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, GenesisItems.HARDENED_RED_GLASS.get())
+                .requires(GenesisItems.HARDENED_RED_MASS.get(),4)
+                .unlockedBy(getHasName(GenesisItems.HARDENED_RED_MASS.get()), has(GenesisItems.HARDENED_RED_MASS.get()))
+                .save(pWriter);
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, Items.STONE)
                 .requires(Items.COBBLESTONE)

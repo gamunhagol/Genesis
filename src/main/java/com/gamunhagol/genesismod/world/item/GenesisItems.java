@@ -108,6 +108,8 @@ public class GenesisItems {
     public static final RegistryObject<BlockItem> UNDEAD_SHARD = ITEMS.register("undead_shard",
             () -> new BlockItem(GenesisBlocks.UNDEAD_SHARD.get(), new Item.Properties()));
 
+    public static final RegistryObject<BlockItem> HARDENED_GLASS = ITEMS.register("hardened_glass",
+            () -> new BlockItem(GenesisBlocks.HARDENED_GLASS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> HARDENED_RED_GLASS = ITEMS.register("hardened_red_glass",
             () -> new BlockItem(GenesisBlocks.HARDENED_RED_GLASS.get(), new Item.Properties()));
     public static final RegistryObject<BlockItem> RED_PEARL_OF_THE_DESERT = ITEMS.register("red_pearl_of_the_desert",

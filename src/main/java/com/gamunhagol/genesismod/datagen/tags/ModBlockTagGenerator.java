@@ -74,7 +74,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                     ,GenesisBlocks.EYE_OF_THE_EARTH.get()
                     ,GenesisBlocks.AMETHYST_STATUE.get()
                     ,GenesisBlocks.AMETHYST_HEART.get()
-                    ,GenesisBlocks.HARDENED_RED_GLASS.get());
+                    ,GenesisBlocks.HARDENED_RED_GLASS.get()
+                    ,GenesisBlocks.HARDENED_GLASS.get());
 
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL)
@@ -94,6 +95,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
                 ,GenesisBlocks.AMETHYST_STATUE.get()
                 ,GenesisBlocks.AMETHYST_HEART.get()
+                ,GenesisBlocks.HARDENED_GLASS.get()
                 ,GenesisBlocks.HARDENED_RED_GLASS.get());
 
         this.tag(BlockTags.NEEDS_STONE_TOOL)
