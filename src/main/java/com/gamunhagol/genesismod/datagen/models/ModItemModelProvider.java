@@ -381,7 +381,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(GenesisItems.FABRICATED_STAR);
         simpleItem(GenesisItems.CELESTIAL_STAR);
-        simpleItem(GenesisItems.EPONYMOUS_STAR);
+        basicItem(GenesisItems.EPONYMOUS_STAR.get());
 
 
 
@@ -432,7 +432,7 @@ public class ModItemModelProvider extends ItemModelProvider {
 
 
         ItemModelBuilder grailBuilder = withExistingParent("divine_grail", new ResourceLocation("item/handheld"))
-                .texture("layer0", modLoc("item/divine_grail_full")); // 기본 이미지
+                .texture("layer0", modLoc("item/divine_grail_full"));
 
 
         grailBuilder.override()
