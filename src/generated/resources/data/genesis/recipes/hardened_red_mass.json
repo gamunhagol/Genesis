@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "genesis:hardened_red_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_red_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_red_glass_pieces"
+    }
+  ],
+  "result": {
+    "item": "genesis:hardened_red_mass"
+  }
+}

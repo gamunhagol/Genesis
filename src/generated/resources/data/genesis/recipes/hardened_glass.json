@@ -1,0 +1,36 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "minecraft:glass"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    },
+    {
+      "item": "genesis:hardened_glass_pieces"
+    }
+  ],
+  "result": {
+    "item": "genesis:hardened_glass"
+  }
+}
