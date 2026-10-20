@@ -17,7 +17,7 @@ public class ElveniaChestplateModel<T extends LivingEntity> extends HumanoidMode
     }
 
     public static LayerDefinition createArmorLayer() {
-        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         PartDefinition body = partDefinition.getChild("body");
@@ -25,17 +25,17 @@ public class ElveniaChestplateModel<T extends LivingEntity> extends HumanoidMode
         PartDefinition right_arm = partDefinition.getChild("right_arm");
 
         body.addOrReplaceChild("body_layer", CubeListBuilder.create()
-                        .texOffs(16, 80).addBox(-4.0F, -1.5F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
+                        .texOffs(16, 80).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(1.0F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
         left_arm.addOrReplaceChild("left_arm_layer", CubeListBuilder.create()
-                        .texOffs(40, 80).mirror().addBox(-1.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false)
-                        .texOffs(56, 80).mirror().addBox(-1.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
+                        .texOffs(40, 80).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(1.0F)).mirror(false)
+                        .texOffs(56, 80).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
         right_arm.addOrReplaceChild("right_arm_layer", CubeListBuilder.create()
-                        .texOffs(40, 80).addBox(-3.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
-                        .texOffs(56, 80).addBox(-3.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
+                        .texOffs(40, 80).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(1.0F))
+                        .texOffs(56, 80).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
