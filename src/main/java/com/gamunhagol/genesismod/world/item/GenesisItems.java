@@ -881,6 +881,15 @@ public class GenesisItems {
     public static final RegistryObject<Item> SCORPION_BOOTS = ITEMS.register("scorpion_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.SCORPION,
             ArmorItem.Type.BOOTS,new Item.Properties()));
 
+    public static final RegistryObject<Item> ELVENIREN_HELMET = ITEMS.register("elbeniren_helmet", () -> new GenesisArmorItem(GenesisArmorMaterials.ELVENIREN,
+            ArmorItem.Type.HELMET,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIREN_CHESTPLATE = ITEMS.register("elbeniren_chestplate", () -> new GenesisArmorItem(GenesisArmorMaterials.ELVENIREN,
+            ArmorItem.Type.CHESTPLATE,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIREN_LEGGINGS = ITEMS.register("elbeniren_leggings", () -> new GenesisArmorItem(GenesisArmorMaterials.ELVENIREN,
+            ArmorItem.Type.LEGGINGS,new Item.Properties()));
+    public static final RegistryObject<Item> ELVENIREN_BOOTS = ITEMS.register("elbeniren_boots", () -> new GenesisArmorItem(GenesisArmorMaterials.ELVENIREN,
+            ArmorItem.Type.BOOTS,new Item.Properties()));
+
     public static final RegistryObject<Item> ELVENIA_HELMET = ITEMS.register("elvenia_helmet", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,
             ArmorItem.Type.HELMET,new Item.Properties()));
     public static final RegistryObject<Item> ELVENIA_CHESTPLATE = ITEMS.register("elvenia_chestplate", () -> new ElveniaArmor(GenesisArmorMaterials.ELVENIA,

@@ -487,6 +487,11 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.SCORPION_LEGGINGS);
         trimmedArmorItem(GenesisItems.SCORPION_BOOTS);
 
+        simpleItem(GenesisItems.ELVENIREN_HELMET);
+        simpleItem(GenesisItems.ELVENIREN_CHESTPLATE);
+        simpleItem(GenesisItems.ELVENIREN_LEGGINGS);
+        simpleItem(GenesisItems.ELVENIREN_BOOTS);
+
         simpleItem(GenesisItems.ELVENIA_HELMET);
         simpleItem(GenesisItems.ELVENIA_CHESTPLATE);
         simpleItem(GenesisItems.ELVENIA_LEGGINGS);

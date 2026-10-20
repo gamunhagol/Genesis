@@ -35,6 +35,12 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(GenesisItems.HARDENED_GLASS_LONGSWORD.get(), GenesisItems.HARDENED_RED_GLASS_LONGSWORD.get()),
             Map.entry(GenesisItems.HARDENED_GLASS_DAGGER.get(), GenesisItems.HARDENED_RED_GLASS_DAGGER.get())
     );
+    private static final Map<Item, Item> ELVENIREN_SMITHING_MAP = Map.ofEntries(
+            Map.entry(Items.GOLDEN_HELMET, GenesisItems.ELVENIREN_HELMET.get()),
+            Map.entry(Items.GOLDEN_CHESTPLATE, GenesisItems.ELVENIREN_CHESTPLATE.get()),
+            Map.entry(Items.GOLDEN_LEGGINGS, GenesisItems.ELVENIREN_LEGGINGS.get()),
+            Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIREN_BOOTS.get())
+    );
     private static final Map<Item, Item> ELVENIA_SMITHING_MAP = Map.ofEntries(
             Map.entry(Items.GOLDEN_SWORD, GenesisItems.ELVENIA_SWORD.get()),
             Map.entry(Items.GOLDEN_SHOVEL, GenesisItems.ELVENIA_SHOVEL.get()),
@@ -46,10 +52,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
             Map.entry(EpicFightItems.GOLDEN_TACHI.get(), GenesisItems.ELVENIA_TACHI.get()),
             Map.entry(EpicFightItems.GOLDEN_LONGSWORD.get(), GenesisItems.ELVENIA_LONGSWORD.get()),
             Map.entry(EpicFightItems.GOLDEN_DAGGER.get(), GenesisItems.ELVENIA_DAGGER.get()),
-            Map.entry(Items.GOLDEN_HELMET, GenesisItems.ELVENIA_HELMET.get()),
-            Map.entry(Items.GOLDEN_CHESTPLATE, GenesisItems.ELVENIA_CHESTPLATE.get()),
-            Map.entry(Items.GOLDEN_LEGGINGS, GenesisItems.ELVENIA_LEGGINGS.get()),
-            Map.entry(Items.GOLDEN_BOOTS, GenesisItems.ELVENIA_BOOTS.get()),
+            Map.entry(GenesisItems.ELVENIREN_HELMET.get(), GenesisItems.ELVENIA_HELMET.get()),
+            Map.entry(GenesisItems.ELVENIREN_CHESTPLATE.get(), GenesisItems.ELVENIA_CHESTPLATE.get()),
+            Map.entry(GenesisItems.ELVENIREN_LEGGINGS.get(), GenesisItems.ELVENIA_LEGGINGS.get()),
+            Map.entry(GenesisItems.ELVENIREN_BOOTS.get(), GenesisItems.ELVENIA_BOOTS.get()),
             Map.entry(GenesisItems.GREAT_BOW.get(), GenesisItems.ELVENIA_GREAT_BOW.get())
     );
 
@@ -944,6 +950,15 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                     GenesisItems.HARDENED_RED_GLASS.get(),
                     entry.getKey(),
                     GenesisItems.HARDENED_RED_GLASS_PIECES.get(),
+                    entry.getValue(),
+                    getItemName(entry.getValue()) + "_smithing");
+        }
+
+        for (var entry : ELVENIREN_SMITHING_MAP.entrySet()) {
+            smithingUpgrade(pWriter,
+                    GenesisItems.ELVENIA_UPGRADE_SMITHING_TEMPLATE.get(),
+                    entry.getKey(),
+                    GenesisItems.ELVENIA_INGOT.get(),
                     entry.getValue(),
                     getItemName(entry.getValue()) + "_smithing");
         }

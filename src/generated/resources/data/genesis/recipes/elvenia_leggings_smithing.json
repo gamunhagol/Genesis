@@ -4,7 +4,7 @@
     "item": "genesis:elvenia_ingot"
   },
   "base": {
-    "item": "minecraft:golden_leggings"
+    "item": "genesis:elbeniren_leggings"
   },
   "result": {
     "item": "genesis:elvenia_leggings"

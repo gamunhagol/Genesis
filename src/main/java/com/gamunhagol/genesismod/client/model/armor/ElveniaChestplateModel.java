@@ -9,7 +9,7 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 
-public class ElveniaChestplateModel <T extends LivingEntity> extends HumanoidModel<T>{
+public class ElveniaChestplateModel<T extends LivingEntity> extends HumanoidModel<T> {
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(GenesisMod.MODID, "elvenia_chestplate"), "main");
 
     public ElveniaChestplateModel(ModelPart root) {
@@ -24,17 +24,19 @@ public class ElveniaChestplateModel <T extends LivingEntity> extends HumanoidMod
         PartDefinition left_arm = partDefinition.getChild("left_arm");
         PartDefinition right_arm = partDefinition.getChild("right_arm");
 
-        PartDefinition body_armor = body.addOrReplaceChild("body_armor", CubeListBuilder.create()
-                        .texOffs(16, 80).addBox(-4.0F, -2.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
-                PartPose.ZERO);
+        body.addOrReplaceChild("body_layer", CubeListBuilder.create()
+                        .texOffs(16, 80).addBox(-4.0F, -1.5F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition left_arm_armor = left_arm.addOrReplaceChild("left_arm_armor", CubeListBuilder.create()
-                        .texOffs(40, 80).mirror().addBox(-1.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false),
-                PartPose.ZERO);
+        left_arm.addOrReplaceChild("left_arm_layer", CubeListBuilder.create()
+                        .texOffs(40, 80).mirror().addBox(-1.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false)
+                        .texOffs(56, 80).mirror().addBox(-1.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition right_arm_armor = right_arm.addOrReplaceChild("right_arm_armor", CubeListBuilder.create()
-                        .texOffs(40, 80).addBox(-3.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
-                PartPose.ZERO);
+        right_arm.addOrReplaceChild("right_arm_layer", CubeListBuilder.create()
+                        .texOffs(40, 80).addBox(-3.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
+                        .texOffs(56, 80).addBox(-3.0F, -3.5F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }

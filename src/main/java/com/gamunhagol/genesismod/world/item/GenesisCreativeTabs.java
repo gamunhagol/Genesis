@@ -185,6 +185,11 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.SCORPION_LEGGINGS.get());
                 output.accept(GenesisItems.SCORPION_BOOTS.get());
 
+                output.accept(GenesisItems.ELVENIREN_HELMET.get());
+                output.accept(GenesisItems.ELVENIREN_CHESTPLATE.get());
+                output.accept(GenesisItems.ELVENIREN_LEGGINGS.get());
+                output.accept(GenesisItems.ELVENIREN_BOOTS.get());
+
                 output.accept(GenesisItems.ELVENIA_HELMET.get());
                 output.accept(GenesisItems.ELVENIA_CHESTPLATE.get());
                 output.accept(GenesisItems.ELVENIA_LEGGINGS.get());

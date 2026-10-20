@@ -18,8 +18,11 @@ public enum GenesisArmorMaterials implements ArmorMaterial {
     SCORPION("scorpion", 29, new int[]{2, 5, 6, 2}, 11, SoundEvents.ARMOR_EQUIP_LEATHER,
             1.0F, 0.0F, 0.7f, 0.0f, 0.0f, 0.0f, 0.0f, () -> {return Ingredient.of(GenesisItems.SCORPION_CARAPACE.get());
     }),
-    ELVENIA("elvenia", 30, new int[]{2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_IRON,
+    ELVENIREN("elbeniren", 30, new int[]{2, 5, 6, 2}, 25, SoundEvents.ARMOR_EQUIP_IRON,
             1.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.5f, 0.0f, () -> {return Ingredient.of(GenesisItems.ELVENIA_INGOT.get());
+    }),
+    ELVENIA("elvenia", 30, new int[]{3, 6, 8, 3}, 25, SoundEvents.ARMOR_EQUIP_IRON,
+            2.0F, 0.0F, 0.0f, 0.0f, 0.0f, 0.85f, 0.0f, () -> {return Ingredient.of(GenesisItems.ELVENIA_INGOT.get());
     }),
     AMETHYST("amethyst", 48, new int[]{3, 6, 8, 3}, 30, SoundEvents.ARMOR_EQUIP_DIAMOND,
             2.0F, 0.0F, 0.0f, 0.0f, 1.0f, 3.0f, 0.0f, () -> {return Ingredient.of(Items.AMETHYST_SHARD);

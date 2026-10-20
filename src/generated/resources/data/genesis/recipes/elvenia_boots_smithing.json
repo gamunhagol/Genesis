@@ -4,7 +4,7 @@
     "item": "genesis:elvenia_ingot"
   },
   "base": {
-    "item": "minecraft:golden_boots"
+    "item": "genesis:elbeniren_boots"
   },
   "result": {
     "item": "genesis:elvenia_boots"

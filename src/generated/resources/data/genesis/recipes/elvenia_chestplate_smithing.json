@@ -4,7 +4,7 @@
     "item": "genesis:elvenia_ingot"
   },
   "base": {
-    "item": "minecraft:golden_chestplate"
+    "item": "genesis:elbeniren_chestplate"
   },
   "result": {
     "item": "genesis:elvenia_chestplate"
