@@ -26,7 +26,7 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
         if (!state.getValue(AEKStatueBlock.LOCKED)) {
 
             if (level.isClientSide) {
-                double height = 1.26D;
+                double height = 1.36D;
                 double forward = 0.4375D;
 
                 Direction facing = state.getValue(AEKStatueBlock.FACING);

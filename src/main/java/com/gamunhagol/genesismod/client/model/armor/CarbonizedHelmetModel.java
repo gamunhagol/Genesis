@@ -17,19 +17,25 @@ public class CarbonizedHelmetModel<T extends LivingEntity> extends HumanoidModel
     }
 
     public static LayerDefinition createArmorLayer() {
-        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         PartDefinition head = partDefinition.getChild("head");
 
-        PartDefinition helmet_main = head.addOrReplaceChild("helmet_main", CubeListBuilder.create()
-                        .texOffs(0, 96).addBox(-4.0F, -8.5F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F))
-                        .texOffs(32, 96).addBox(-4.0F, -8.5F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(1.0F)),
+        head.addOrReplaceChild("head_layer", CubeListBuilder.create()
+                        .texOffs(0, 96).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F))
+                        .texOffs(32, 96).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(1.0F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition ear_r1 = head.addOrReplaceChild("ear_r1", CubeListBuilder.create()
-                        .texOffs(56, 106).addBox(-4.0F, -33.5F, -4.0F, 8.0F, 9.0F, 13.0F, new CubeDeformation(1.25F)),
-                PartPose.offsetAndRotation(0.0F, 23.0F, 4.0F, 0.2182F, 0.0F, 0.0F));
+        PartDefinition ear = head.addOrReplaceChild("ear", CubeListBuilder.create(), PartPose.offset(0.0F, 23.0F, 0.0F));
+
+        ear.addOrReplaceChild("right_ear_r1", CubeListBuilder.create()
+                        .texOffs(72, 120).mirror().addBox(-1.0F, -7.0F, -1.0F, 13.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)).mirror(false),
+                PartPose.offsetAndRotation(3.4F, -23.1F, -5.3F, 0.9798F, -1.2563F, -0.9875F));
+
+        ear.addOrReplaceChild("left_ear_r1", CubeListBuilder.create()
+                        .texOffs(72, 120).addBox(-12.0F, -7.0F, -1.0F, 13.0F, 7.0F, 1.0F, new CubeDeformation(0.0F)),
+                PartPose.offsetAndRotation(-3.4F, -23.1F, -5.3F, 0.9798F, 1.2563F, 0.9875F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }

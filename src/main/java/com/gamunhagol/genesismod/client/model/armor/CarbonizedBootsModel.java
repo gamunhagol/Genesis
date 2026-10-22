@@ -23,11 +23,11 @@ public class CarbonizedBootsModel<T extends LivingEntity> extends HumanoidModel<
         PartDefinition left_leg = partDefinition.getChild("left_leg");
         PartDefinition right_leg = partDefinition.getChild("right_leg");
 
-        PartDefinition left_boot = left_leg.addOrReplaceChild("left_boot", CubeListBuilder.create()
+        left_leg.addOrReplaceChild("left_shoe", CubeListBuilder.create()
                         .texOffs(0, 112).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition right_boot = right_leg.addOrReplaceChild("right_boot", CubeListBuilder.create()
+        right_leg.addOrReplaceChild("right_shoe", CubeListBuilder.create()
                         .texOffs(0, 112).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 

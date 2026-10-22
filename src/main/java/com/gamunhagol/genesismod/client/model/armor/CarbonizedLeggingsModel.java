@@ -24,17 +24,17 @@ public class CarbonizedLeggingsModel<T extends LivingEntity> extends HumanoidMod
         PartDefinition left_leg = partDefinition.getChild("left_leg");
         PartDefinition right_leg = partDefinition.getChild("right_leg");
 
-        PartDefinition waist_armor = body.addOrReplaceChild("waist_armor", CubeListBuilder.create()
+        body.addOrReplaceChild("waist", CubeListBuilder.create()
                         .texOffs(16, 112).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
-                PartPose.ZERO);
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition left_leg_armor = left_leg.addOrReplaceChild("left_leg_armor", CubeListBuilder.create()
+        left_leg.addOrReplaceChild("left_leg_layer", CubeListBuilder.create()
                         .texOffs(0, 112).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
-                PartPose.ZERO);
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition right_leg_armor = right_leg.addOrReplaceChild("right_leg_armor", CubeListBuilder.create()
+        right_leg.addOrReplaceChild("right_leg_layer", CubeListBuilder.create()
                         .texOffs(0, 112).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
-                PartPose.ZERO);
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }
