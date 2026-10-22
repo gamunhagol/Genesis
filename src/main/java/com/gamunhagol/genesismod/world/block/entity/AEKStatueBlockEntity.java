@@ -26,32 +26,27 @@ public class AEKStatueBlockEntity extends BlockEntity implements IFadedDungeonEl
         if (!state.getValue(AEKStatueBlock.LOCKED)) {
 
             if (level.isClientSide) {
-                double sideOffset = 0.15;
-                double height = 2.15;
-                double forward = 0.32;
+                double height = 1.26D;
+                double forward = 0.4375D;
 
                 Direction facing = state.getValue(AEKStatueBlock.FACING);
+                double offsetX = 0.0D;
+                double offsetZ = 0.0D;
 
-                for (int i = 0; i < 2; i++) {
-                    double currentSide = (i == 0) ? -sideOffset : sideOffset;
-                    double offsetX = 0;
-                    double offsetZ = 0;
+                switch (facing) {
+                    case NORTH -> offsetZ = -forward;
+                    case SOUTH -> offsetZ = forward;
+                    case WEST  -> offsetX = -forward;
+                    case EAST  -> offsetX = forward;
+                    default -> { }
+                }
 
-                    switch (facing) {
-                        case NORTH -> { offsetX = currentSide; offsetZ = -forward; }
-                        case SOUTH -> { offsetX = -currentSide; offsetZ = forward; }
-                        case WEST  -> { offsetX = -forward; offsetZ = -currentSide; }
-                        case EAST  -> { offsetX = forward; offsetZ = currentSide; }
-                        default -> { }
-                    }
-
-                    if (level.random.nextFloat() < 0.085f) {
-                        level.addParticle(GenesisParticles.GREEN_FLAME.get(),
-                                pos.getX() + 0.5 + offsetX,
-                                pos.getY() + height,
-                                pos.getZ() + 0.5 + offsetZ,
-                                0.0, 0.001, 0.0);
-                    }
+                if (level.random.nextFloat() < 0.025F) {
+                    level.addParticle(GenesisParticles.GREEN_FLAME.get(),
+                            pos.getX() + 0.5D + offsetX,
+                            pos.getY() + height,
+                            pos.getZ() + 0.5D + offsetZ,
+                            0.0D, 0.003D, 0.0D);
                 }
             }
             else {
