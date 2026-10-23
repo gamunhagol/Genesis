@@ -1113,14 +1113,10 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
         }
     }
     protected static void pewrieseSmithing(Consumer<FinishedRecipe> pFinishedRecipeConsumer, Item pIngredientItem, RecipeCategory pCategory, Item pResultItem) {
-        SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()),
-                        Ingredient.of(pIngredientItem),
-                        Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get()),
-                        pCategory,
-                        pResultItem)
-                .unlocks("has_pewriese_crystal", has(GenesisItems.PEWRIESE_CRYSTAL.get()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(GenesisMod.MODID, getItemName(pResultItem) + "_smithing"));
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(GenesisItems.PEWRIESE_UPGRADE_SMITHING_TEMPLATE.get()), Ingredient.of(pIngredientItem),
+                Ingredient.of(GenesisItems.PEWRIESE_CRYSTAL.get()), pCategory, pResultItem).unlocks("has_pewriese_crystal", has(GenesisItems.PEWRIESE_CRYSTAL.get()))
+                .save(pFinishedRecipeConsumer, new ResourceLocation(GenesisMod.MODID, getItemName(pResultItem)));
+
     }
     protected static void pewrieseAdvancedSmithing(Consumer<FinishedRecipe> consumer,
                                                    Item baseItem, Item additionItem,
