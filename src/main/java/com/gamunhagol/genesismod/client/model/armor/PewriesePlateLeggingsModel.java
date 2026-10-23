@@ -18,28 +18,24 @@ public class PewriesePlateLeggingsModel<T extends LivingEntity> extends Humanoid
     }
 
     public static LayerDefinition createArmorLayer() {
-        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0f), 1.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         PartDefinition body = partDefinition.getChild("body");
         PartDefinition right_leg = partDefinition.getChild("right_leg");
         PartDefinition left_leg = partDefinition.getChild("left_leg");
 
-        PartDefinition waist_armor = body.addOrReplaceChild("waist_armor", CubeListBuilder.create()
-                .texOffs(16,80).addBox(-4.0F,-24.0F,-2.0F,8.0F,12.0F,4.0F, new CubeDeformation(0.7F))
-                , PartPose.offset(0.0F,23.5F,0.0F));
+        body.addOrReplaceChild("waist", CubeListBuilder.create()
+                        .texOffs(16, 80).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
+        right_leg.addOrReplaceChild("right_legging", CubeListBuilder.create()
+                        .texOffs(0, 80).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        PartDefinition right_legging = right_leg.addOrReplaceChild("right_legging", CubeListBuilder.create()
-                .texOffs(0,80).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
-                .texOffs(24,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
-                , PartPose.offset(0.0F,0.0F,0.0F));
-
-        PartDefinition left_legging = left_leg.addOrReplaceChild("left_legging", CubeListBuilder.create()
-                .texOffs(0,80).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.55F))
-                .texOffs(24,112).mirror().addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(0.65F))
-                , PartPose.offset(0.0F,0.0F,0.0F));
-
+        left_leg.addOrReplaceChild("left_legging", CubeListBuilder.create()
+                        .texOffs(0, 80).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }

@@ -18,19 +18,25 @@ public class PewriesePlateHelmetModel<T extends LivingEntity> extends HumanoidMo
     }
 
     public static LayerDefinition createArmorLayer() {
-        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0f) ,1.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         PartDefinition head = partDefinition.getChild("head");
 
-        PartDefinition head_armor = head.addOrReplaceChild("head_armor", CubeListBuilder.create()
-                .texOffs(0,64).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(0.8F))
-                .texOffs(32,64).addBox(-4.0F,-8.5F,-4.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.0F))
-                        .texOffs(0,96).addBox(-4.0F,-11.50F,-1.0F,8.0F,8.0F,8.0F, new CubeDeformation(1.1F))
-                , PartPose.offset(0.0F,0.0F,0.0F));
+        head.addOrReplaceChild("head_armor", CubeListBuilder.create()
+                        .texOffs(0, 64).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.75F))
+                        .texOffs(32, 64).addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(1.0F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
+        PartDefinition wing = head.addOrReplaceChild("wing", CubeListBuilder.create(), PartPose.offset(0.0F, 0.0F, 0.0F));
 
+        wing.addOrReplaceChild("wing_left_r1", CubeListBuilder.create()
+                        .texOffs(0, 96).mirror().addBox(-1.0F, -5.0F, -1.0F, 1.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)).mirror(false),
+                PartPose.offsetAndRotation(5.0F, -5.0F, 2.0F, 0.0F, 0.2618F, 0.0F));
 
+        wing.addOrReplaceChild("wing_right_r1", CubeListBuilder.create()
+                        .texOffs(0, 96).addBox(0.0F, -5.0F, -1.0F, 1.0F, 5.0F, 5.0F, new CubeDeformation(0.0F)),
+                PartPose.offsetAndRotation(-5.0F, -5.0F, 2.0F, 0.0F, -0.2618F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }
