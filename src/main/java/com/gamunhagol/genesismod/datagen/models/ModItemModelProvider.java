@@ -508,10 +508,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.AMETHYST_LEGGINGS);
         trimmedArmorItem(GenesisItems.AMETHYST_BOOTS);
 
-        simpleItem(GenesisItems.PEWRIESE_HELMET);
-        simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
-        simpleItem(GenesisItems.PEWRIESE_LEGGINGS);
-        simpleItem(GenesisItems.PEWRIESE_BOOTS);
+        trimmedArmorItem(GenesisItems.PEWRIESE_HELMET);
+        trimmedArmorItem(GenesisItems.PEWRIESE_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.PEWRIESE_LEGGINGS);
+        trimmedArmorItem(GenesisItems.PEWRIESE_BOOTS);
 
         simpleItem(GenesisItems.PEWRIESE_PLATE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_PLATE_CHESTPLATE);
