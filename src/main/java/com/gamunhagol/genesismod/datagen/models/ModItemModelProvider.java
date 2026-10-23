@@ -487,10 +487,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.SCORPION_LEGGINGS);
         trimmedArmorItem(GenesisItems.SCORPION_BOOTS);
 
-        simpleItem(GenesisItems.ELVENIREN_HELMET);
-        simpleItem(GenesisItems.ELVENIREN_CHESTPLATE);
-        simpleItem(GenesisItems.ELVENIREN_LEGGINGS);
-        simpleItem(GenesisItems.ELVENIREN_BOOTS);
+        trimmedArmorItem(GenesisItems.ELVENIREN_HELMET);
+        trimmedArmorItem(GenesisItems.ELVENIREN_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.ELVENIREN_LEGGINGS);
+        trimmedArmorItem(GenesisItems.ELVENIREN_BOOTS);
 
         simpleItem(GenesisItems.ELVENIA_HELMET);
         simpleItem(GenesisItems.ELVENIA_CHESTPLATE);
@@ -508,10 +508,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(GenesisItems.AMETHYST_LEGGINGS);
         trimmedArmorItem(GenesisItems.AMETHYST_BOOTS);
 
-        simpleItem(GenesisItems.PEWRIESE_HELMET);
-        simpleItem(GenesisItems.PEWRIESE_CHESTPLATE);
-        simpleItem(GenesisItems.PEWRIESE_LEGGINGS);
-        simpleItem(GenesisItems.PEWRIESE_BOOTS);
+        trimmedArmorItem(GenesisItems.PEWRIESE_HELMET);
+        trimmedArmorItem(GenesisItems.PEWRIESE_CHESTPLATE);
+        trimmedArmorItem(GenesisItems.PEWRIESE_LEGGINGS);
+        trimmedArmorItem(GenesisItems.PEWRIESE_BOOTS);
 
         simpleItem(GenesisItems.PEWRIESE_PLATE_HELMET);
         simpleItem(GenesisItems.PEWRIESE_PLATE_CHESTPLATE);

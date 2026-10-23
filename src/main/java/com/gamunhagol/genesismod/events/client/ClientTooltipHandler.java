@@ -42,6 +42,8 @@ public class ClientTooltipHandler {
         register(GenesisItems.ENCHANTED_GLOWING_HEART.get(), "tooltip.genesis.enchanted_glowing_heart.info");
         register(GenesisItems.OPAQUE_JELLY.get(), "tooltip.genesis.opaque_jelly.info");
 
+        register(GenesisItems.ELVENIA_INGOT.get(), "tooltip.genesis.elvenia_ingot.info");
+
         register(GenesisItems.GREAT_BOW.get(), "tooltip.genesis.great_bow.info");
         register(GenesisItems.ROOT_WOVEN_BOW.get(), "tooltip.genesis.root_woven_bow.info");
         register(GenesisItems.ELVENIA_GREAT_BOW.get(), "tooltip.genesis.elvenia_great_bow.info");

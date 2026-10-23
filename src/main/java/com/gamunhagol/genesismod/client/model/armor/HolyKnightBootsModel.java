@@ -11,7 +11,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class HolyKnightBootsModel<T extends LivingEntity> extends HumanoidModel<T> {
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(GenesisMod.MODID,"pewriese_holy_knight_boots"),"main");
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(GenesisMod.MODID, "pewriese_holy_knight_boots"), "main");
 
     public HolyKnightBootsModel(ModelPart pRoot) {
         super(pRoot);
@@ -21,21 +21,17 @@ public class HolyKnightBootsModel<T extends LivingEntity> extends HumanoidModel<
         MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
-        PartDefinition right_leg = partDefinition.getChild("right_leg");
         PartDefinition left_leg = partDefinition.getChild("left_leg");
+        PartDefinition right_leg = partDefinition.getChild("right_leg");
 
-        PartDefinition right_boot = right_leg.addOrReplaceChild("right_boot", CubeListBuilder.create()
-                        .texOffs(0,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F))
-                , PartPose.offset(0.0F,0.0F,0.0F));
+        left_leg.addOrReplaceChild("left_shoe", CubeListBuilder.create()
+                        .texOffs(0, 80).mirror().addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
-
-
-        PartDefinition left_boot = left_leg.addOrReplaceChild("left_boot", CubeListBuilder.create()
-                        .texOffs(0,112).addBox(-2.0F,0.0F,-2.0F,4.0F,12.0F,4.0F, new CubeDeformation(1.0F)).mirror(false)
-                , PartPose.offset(0.0F,0.0F,0.0F));
-
+        right_leg.addOrReplaceChild("right_shoe", CubeListBuilder.create()
+                        .texOffs(0, 80).addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)),
+                PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);
     }
-
 }

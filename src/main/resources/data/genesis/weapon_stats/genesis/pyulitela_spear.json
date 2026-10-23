@@ -3,12 +3,12 @@
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 9.0,
+    "physical": 8.0,
     "magic": 0.0,
     "fire": 0.0,
     "lightning": 0.0,
     "frost": 0.0,
-    "holy": 3.0,
+    "holy": 3.7,
     "destruction": 0.0
   },
   "requirements": {

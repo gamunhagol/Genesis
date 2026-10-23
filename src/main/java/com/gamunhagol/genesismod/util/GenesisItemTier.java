@@ -50,7 +50,7 @@ public class GenesisItemTier {
             GenesisMod.prefix("holy_knight"), List.of(GenesisItemTier.PEWRIESE), List.of());
 
     public static final Tier PYULITELA = TierSortingRegistry.registerTier(
-            new ForgeTier(6, 6463, 13f, 5F, 15, BlockTags.create(GenesisMod.prefix("need_pyulitela_tool")),
+            new ForgeTier(6, 6463, 13f, 4F, 15, BlockTags.create(GenesisMod.prefix("need_pyulitela_tool")),
                     () -> Ingredient.of(GenesisItems.PYULITELA.get())),
             GenesisMod.prefix("pyulitela"), List.of(GenesisItemTier.PEWRIESE), List.of());
 }
