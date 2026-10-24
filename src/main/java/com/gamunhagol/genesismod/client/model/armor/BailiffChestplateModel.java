@@ -18,32 +18,28 @@ public class BailiffChestplateModel<T extends LivingEntity> extends HumanoidMode
     }
 
     public static LayerDefinition createArmorLayer() {
-        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 1.0F);
+        MeshDefinition meshDefinition = HumanoidModel.createMesh(new CubeDeformation(0.0f), 0.0F);
         PartDefinition partDefinition = meshDefinition.getRoot();
 
         PartDefinition body = partDefinition.getChild("body");
-        PartDefinition right_arm = partDefinition.getChild("right_arm");
         PartDefinition left_arm = partDefinition.getChild("left_arm");
+        PartDefinition right_arm = partDefinition.getChild("right_arm");
 
-        body.addOrReplaceChild("body_armor", CubeListBuilder.create()
-                        .texOffs(16, 112).addBox(-4.0F, -1.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
-                        .texOffs(82, 112).addBox(-4.0F, -1.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.9F)),
+        body.addOrReplaceChild("chest_layer", CubeListBuilder.create()
+                        .texOffs(16, 80).addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
+                        .texOffs(32, 98).addBox(-1.0F, 0.0F, 2.0F, 2.0F, 12.0F, 2.0F, new CubeDeformation(0.0F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        body.addOrReplaceChild("bone", CubeListBuilder.create()
-                        .texOffs(106, 116).addBox(-4.0F, -14.0F, -2.85F, 8.0F, 12.0F, 0.0F, new CubeDeformation(0.0F)),
-                PartPose.offset(0.0F, 24.0F, 0.0F));
-
-        right_arm.addOrReplaceChild("right_armor", CubeListBuilder.create()
-                        .texOffs(40, 112).addBox(-3.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
-                        .texOffs(84, 88).addBox(-3.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(1.0F))
-                        .texOffs(68, 88).addBox(-5.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.8F)),
+        left_arm.addOrReplaceChild("left_arm_layer", CubeListBuilder.create()
+                        .texOffs(40, 80).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false)
+                        .texOffs(56, 96).mirror().addBox(0.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false)
+                        .texOffs(40, 96).mirror().addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)).mirror(false),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
-        left_arm.addOrReplaceChild("left_armor", CubeListBuilder.create()
-                        .texOffs(40, 112).mirror().addBox(-1.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F)).mirror(false)
-                        .texOffs(84, 88).mirror().addBox(-1.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(1.0F)).mirror(false)
-                        .texOffs(68, 88).mirror().addBox(1.0F, -3.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.8F)).mirror(false),
+        right_arm.addOrReplaceChild("right_arm_layer", CubeListBuilder.create()
+                        .texOffs(40, 80).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
+                        .texOffs(56, 96).addBox(-4.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.75F))
+                        .texOffs(40, 96).addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, new CubeDeformation(0.5F)),
                 PartPose.offset(0.0F, 0.0F, 0.0F));
 
         return LayerDefinition.create(meshDefinition, 128, 128);

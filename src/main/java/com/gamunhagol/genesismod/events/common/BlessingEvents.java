@@ -37,7 +37,7 @@ import java.util.*;
 public class BlessingEvents {
 
     public static final int EARTH_PILLAR_NODE = 10;
-    public static final int FIRE_LAVA_NODE = 2;
+    public static final int FIRE_LAVA_NODE = 5;
 
     private static final List<PillarBuildTask> ACTIVE_PILLARS = new ArrayList<>();
 
