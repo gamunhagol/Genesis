@@ -24,7 +24,7 @@ public class PacketActivateWindBlessing {
             if (player == null) return;
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-                if (cap.isNodeUnlocked("god_d", 1) && cap.getWindDashCooldown() <= 0) {
+                if (cap.isNodeActive("god_d", 1) && cap.getWindDashCooldown() <= 0) {
                     player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 1800, 1, false, false, true));
                     cap.setWindDashCooldown(6000);
                 }

@@ -139,7 +139,7 @@ public class BlessingEvents {
         BlockState state = level.getBlockState(pos);
 
         player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-            if (cap.isNodeUnlocked("god_a", EARTH_PILLAR_NODE)) {
+            if (cap.isNodeActive("god_a", EARTH_PILLAR_NODE)) {
                 if (isDirtOrStoneVariant(state)) {
                     int availableStones = countStoneMaterials(player);
                     int minRequired = 256;
@@ -170,7 +170,7 @@ public class BlessingEvents {
         if (state.isAir()) return;
 
         player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-            if (cap.isNodeUnlocked("god_b", FIRE_LAVA_NODE)) {
+            if (cap.isNodeActive("god_b", FIRE_LAVA_NODE)) {
                 if (state.is(Blocks.COBBLESTONE) || state.is(Blocks.STONE) || state.is(Blocks.OBSIDIAN)) {
                     level.setBlock(pos, Blocks.LAVA.defaultBlockState(), 3);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY_LAVA, SoundSource.BLOCKS, 1.0F, 1.0F);
@@ -220,7 +220,7 @@ public class BlessingEvents {
     public static void onPlayerFall(LivingFallEvent event) {
         if (event.getEntity() instanceof Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-                if (cap.isNodeUnlocked("god_a", 1) && player.isCrouching()) {
+                if (cap.isNodeActive("god_a", 1) && player.isCrouching()) {
                     event.setDistance(event.getDistance() * 0.3F);
                 }
             });
@@ -231,7 +231,7 @@ public class BlessingEvents {
     public static void onLivingVisibility(LivingEvent.LivingVisibilityEvent event) {
         if (event.getEntity() instanceof Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-                if (cap.isNodeUnlocked("god_e", 1)) {
+                if (cap.isNodeActive("god_e", 1)) {
                     event.modifyVisibility(0.65D);
                 }
             });
@@ -245,7 +245,7 @@ public class BlessingEvents {
 
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
 
-                if (stats.isNodeUnlocked("god_g", 1)) {
+                if (stats.isNodeActive("god_g", 1)) {
                     Vec3 delta = player.getDeltaMovement();
                     boolean isStationary = delta.horizontalDistanceSqr() < 0.001D && player.onGround() && !player.isUsingItem();
 
@@ -263,7 +263,7 @@ public class BlessingEvents {
                     }
                 }
 
-                if (stats.isNodeUnlocked("god_f", 1)) {
+                if (stats.isNodeActive("god_f", 1)) {
                     if (player.isCrouching()) {
                         stats.setForestSneakTicks(stats.getForestSneakTicks() + 1);
                         if (stats.getForestSneakTicks() >= 200) {

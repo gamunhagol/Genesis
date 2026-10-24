@@ -34,7 +34,7 @@ public abstract class MixinAnvilMenu extends ItemCombinerMenu {
         if (player == null) return;
 
         player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
-            if (cap.isNodeUnlocked("god_b", 1)) {
+            if (cap.isNodeActive("god_b", 1)) {
                 int currentCost = this.cost.get();
                 if (currentCost > 0) {
                     int discounted = Math.max(1, (int) Math.ceil(currentCost * 0.65D));

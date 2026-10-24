@@ -41,7 +41,8 @@ public class ClientPayloadHandler {
 
     public static void handleStatsSync(int vigor, int mind, int endurance, int strength, int dexterity,
                                        int intelligence, int faith, int arcane, float mental, float maxMental,
-                                       boolean isLevelUpUnlocked, Set<String> learnedSpells, Set<String> unlockedNodes) {
+                                       boolean isLevelUpUnlocked, Set<String> learnedSpells, Set<String> unlockedNodes,
+                                       Set<String> disabledNodes) {
         Player player = Minecraft.getInstance().player;
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
@@ -56,6 +57,9 @@ public class ClientPayloadHandler {
 
                 stats.getUnlockedNodes().clear();
                 stats.getUnlockedNodes().addAll(unlockedNodes);
+
+                stats.getDisabledNodes().clear();
+                stats.getDisabledNodes().addAll(disabledNodes);
             });
         }
     }

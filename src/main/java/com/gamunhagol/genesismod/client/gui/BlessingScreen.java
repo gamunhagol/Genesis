@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.content.StatueRewardManager;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.server.PacketStatueUnlockNode;
+import com.gamunhagol.genesismod.network.server.PacketTogglePassiveNode;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -35,6 +36,8 @@ public class BlessingScreen extends Screen {
 
     private static final ResourceLocation NODE_LOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/blank_constellation.png");
     private static final ResourceLocation NODE_UNLOCKED = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/constellation.png");
+    private static final ResourceLocation NODE_CLOCK = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/constellation_clock.png");
+    private static final ResourceLocation NODE_COUNTERCLOCK = new ResourceLocation(GenesisMod.MODID, "textures/gui/screen/constellation_counterclockwise.png");
 
     private static final ResourceLocation END_SKY_LOCATION = new ResourceLocation("textures/environment/end_sky.png");
     private static final ResourceLocation END_PORTAL_LOCATION = new ResourceLocation("textures/entity/end_portal.png");
@@ -114,6 +117,7 @@ public class BlessingScreen extends Screen {
             graphics.pose().pushPose();
 
             float scale = 2.0F / (18 - i);
+
             float panOffsetX = (this.panX * scale) / 200.0F;
             float panOffsetY = (this.panY * scale) / 200.0F;
             float offsetU = (float)(-(time * i * 0.2F)) + panOffsetX;
@@ -228,6 +232,13 @@ public class BlessingScreen extends Screen {
         double worldMouseX = ((mouseX - (this.width / 2.0) - this.panX) / zoom) + (BG_WIDTH / 2.0);
         double worldMouseY = ((mouseY - (this.height / 2.0) - this.panY) / zoom) + (BG_HEIGHT / 2.0);
 
+        float timeSec = Util.getMillis() / 1000.0F;
+        float speedClock = 60.0F;
+        float speedCounterClock = 35.0F;
+
+        float angleClock = (timeSec * speedClock) % 360.0F;
+        float angleCounterClock = (timeSec * speedCounterClock) % 360.0F;
+
         var player = Minecraft.getInstance().player;
         if (player != null) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(cap -> {
@@ -259,15 +270,85 @@ public class BlessingScreen extends Screen {
 
                 for (StatueRewardManager.NodeInfo node : nodes) {
                     boolean isUnlocked = cap.isNodeUnlocked(this.statueId, node.id);
-                    ResourceLocation icon = isUnlocked ? NODE_UNLOCKED : NODE_LOCKED;
+                    boolean isActive = cap.isNodeActive(this.statueId, node.id);
 
                     int renderX = (-BG_WIDTH / 2) + node.x;
                     int renderY = (-BG_HEIGHT / 2) + node.y;
 
-                    graphics.blit(icon, renderX - nodeSize / 2, renderY - nodeSize / 2, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+                    RenderSystem.enableBlend();
+                    RenderSystem.defaultBlendFunc();
 
-                    if (worldMouseX >= node.x - halfSize && worldMouseX <= node.x + halfSize &&
-                            worldMouseY >= node.y - halfSize && worldMouseY <= node.y + halfSize) {
+                    int currentHalf = isUnlocked ? halfSize * 2 : halfSize;
+
+                    if (isUnlocked) {
+                        graphics.pose().pushPose();
+                        graphics.pose().translate(renderX, renderY, 0);
+                        graphics.pose().scale(2.0f, 2.0f, 1.0f);
+
+                        if (isActive) {
+                            graphics.blit(NODE_UNLOCKED, -halfSize, -halfSize, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+
+                            graphics.pose().pushPose();
+                            graphics.pose().mulPose(Axis.ZP.rotationDegrees(angleClock));
+                            graphics.blit(NODE_CLOCK, -halfSize, -halfSize, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+                            graphics.pose().popPose();
+
+                            graphics.pose().pushPose();
+                            graphics.pose().mulPose(Axis.ZP.rotationDegrees(-angleCounterClock));
+                            graphics.blit(NODE_COUNTERCLOCK, -halfSize, -halfSize, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+                            graphics.pose().popPose();
+                        } else {
+                            RenderSystem.setShaderColor(0.25F, 0.25F, 0.25F, 0.7F);
+                            graphics.blit(NODE_UNLOCKED, -halfSize, -halfSize, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+                            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                        }
+
+                        graphics.pose().popPose();
+                    } else {
+                        graphics.blit(NODE_LOCKED, renderX - halfSize, renderY - halfSize, 0, 0, nodeSize, nodeSize, nodeSize, nodeSize);
+                    }
+
+                    RenderSystem.disableBlend();
+
+                    if (node.isPassive()) {
+                        String onText = (!isUnlocked) ? "ON" : (isActive ? "[ON]" : "ON");
+                        String offText = (!isUnlocked) ? "OFF" : (!isActive ? "[OFF]" : "OFF");
+
+                        int onColor = (!isUnlocked) ? 0xFF666666 : (isActive ? 0xFFFFFF55 : 0xFFFFFFFF);
+                        int offColor = (!isUnlocked) ? 0xFF666666 : (!isActive ? 0xFFFFFF55 : 0xFFFFFFFF);
+
+                        float textScaleOn = (isUnlocked && isActive) ? 0.9F : 0.75F;
+                        float textScaleOff = (isUnlocked && !isActive) ? 0.9F : 0.75F;
+
+                        int textBaseX = renderX + 16;
+                        int textBaseY = renderY + 8;
+
+                        graphics.pose().pushPose();
+                        graphics.pose().translate(textBaseX, textBaseY, 10.0F);
+                        graphics.pose().scale(textScaleOn, textScaleOn, 1.0F);
+                        graphics.drawString(this.font, onText, 0, 0, onColor, false);
+                        graphics.pose().popPose();
+
+                        int onWidth = (int) (this.font.width(onText) * textScaleOn);
+                        int slashOffset = onWidth + 2;
+
+                        graphics.pose().pushPose();
+                        graphics.pose().translate(textBaseX + slashOffset, textBaseY, 10.0F);
+                        graphics.pose().scale(0.75F, 0.75F, 1.0F);
+                        graphics.drawString(this.font, "/", 0, 0, 0xFF666666, false);
+                        graphics.pose().popPose();
+
+                        int offOffset = slashOffset + (int)(this.font.width("/") * 0.75F) + 2;
+
+                        graphics.pose().pushPose();
+                        graphics.pose().translate(textBaseX + offOffset, textBaseY, 10.0F);
+                        graphics.pose().scale(textScaleOff, textScaleOff, 1.0F);
+                        graphics.drawString(this.font, offText, 0, 0, offColor, false);
+                        graphics.pose().popPose();
+                    }
+
+                    if (worldMouseX >= node.x - currentHalf && worldMouseX <= node.x + currentHalf &&
+                            worldMouseY >= node.y - currentHalf && worldMouseY <= node.y + currentHalf) {
                         hoveredNode.set(node);
                         isHoveredUnlocked.set(isUnlocked);
                     }
@@ -340,13 +421,56 @@ public class BlessingScreen extends Screen {
             double clickedWorldX = ((mouseX - (this.width / 2.0) - this.panX) / zoom) + (BG_WIDTH / 2.0);
             double clickedWorldY = ((mouseY - (this.height / 2.0) - this.panY) / zoom) + (BG_HEIGHT / 2.0);
 
-            int halfSize = 8;
-            for (StatueRewardManager.NodeInfo node : nodes) {
-                if (clickedWorldX >= node.x - halfSize && clickedWorldX <= node.x + halfSize &&
-                        clickedWorldY >= node.y - halfSize && clickedWorldY <= node.y + halfSize) {
+            var player = Minecraft.getInstance().player;
+            if (player != null) {
+                var capOpt = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).resolve();
+                int halfSize = 8;
+                for (StatueRewardManager.NodeInfo node : nodes) {
+                    boolean isUnlocked = capOpt.isPresent() && capOpt.get().isNodeUnlocked(this.statueId, node.id);
+                    boolean isActive = capOpt.isPresent() && capOpt.get().isNodeActive(this.statueId, node.id);
 
-                    GenesisNetwork.sendToServer(new PacketStatueUnlockNode(this.statueId, node.id));
-                    return true;
+                    if (isUnlocked && node.isPassive()) {
+                        String onText = isActive ? "[ON]" : "ON";
+                        String offText = !isActive ? "[OFF]" : "OFF";
+                        float textScaleOn = isActive ? 0.9F : 0.75F;
+                        float textScaleOff = !isActive ? 0.9F : 0.75F;
+
+                        int textBaseX = node.x + 16;
+                        int textBaseY = node.y + 8;
+
+                        int onWidth = (int) (this.font.width(onText) * textScaleOn);
+                        int onHeight = (int) (this.font.lineHeight * textScaleOn);
+                        int slashOffset = onWidth + 2;
+                        int offOffset = slashOffset + (int)(this.font.width("/") * 0.75F) + 2;
+                        int offWidth = (int) (this.font.width(offText) * textScaleOff);
+                        int offHeight = (int) (this.font.lineHeight * textScaleOff);
+
+                        if (clickedWorldX >= textBaseX && clickedWorldX <= textBaseX + onWidth &&
+                                clickedWorldY >= textBaseY && clickedWorldY <= textBaseY + onHeight) {
+                            if (!isActive) {
+                                GenesisNetwork.sendToServer(new PacketTogglePassiveNode(this.statueId, node.id));
+                            }
+                            return true;
+                        }
+
+                        if (clickedWorldX >= textBaseX + offOffset && clickedWorldX <= textBaseX + offOffset + offWidth &&
+                                clickedWorldY >= textBaseY && clickedWorldY <= textBaseY + offHeight) {
+                            if (isActive) {
+                                GenesisNetwork.sendToServer(new PacketTogglePassiveNode(this.statueId, node.id));
+                            }
+                            return true;
+                        }
+                    }
+
+                    int currentHalf = isUnlocked ? halfSize * 2 : halfSize;
+                    if (clickedWorldX >= node.x - currentHalf && clickedWorldX <= node.x + currentHalf &&
+                            clickedWorldY >= node.y - currentHalf && clickedWorldY <= node.y + currentHalf) {
+
+                        if (!isUnlocked) {
+                            GenesisNetwork.sendToServer(new PacketStatueUnlockNode(this.statueId, node.id));
+                            return true;
+                        }
+                    }
                 }
             }
         }

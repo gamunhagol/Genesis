@@ -52,7 +52,7 @@ public class GenesisAnvilEvents {
 
             if (player != null) {
                 var statCap = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).orElse(null);
-                if (statCap != null && statCap.isNodeUnlocked("god_b", 1)) {
+                if (statCap != null && statCap.isNodeActive("god_b", 1)) {
                     finalCost = Math.max(1, (int) Math.ceil(finalCost * 0.65D));
                 }
             }

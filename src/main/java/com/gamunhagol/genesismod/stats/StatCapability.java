@@ -31,14 +31,14 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     private boolean isDirty = false;
 
-    // Blessing 패시브 상태 추적 변수
     private int windDashCooldown = 0;
     private int iceIdleTicks = 0;
     private int forestSneakTicks = 0;
-    private int deathEvasionCooldown = 0; // 사망 회피 쿨타임 (18해금 보상)
+    private int deathEvasionCooldown = 0;
 
     private final Set<String> learnedSpells = new LinkedHashSet<>();
     private final Set<String> unlockedNodes = new LinkedHashSet<>();
+    private final Set<String> disabledNodes = new LinkedHashSet<>();
 
     private final Map<UUID, Float> activeSummons = new HashMap<>();
 
@@ -90,23 +90,44 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         return unlockedNodes.contains(statueId + "_" + nodeId);
     }
 
+    public boolean isNodeActive(String statueId, int nodeId) {
+        String key = statueId + "_" + nodeId;
+        return unlockedNodes.contains(key) && !disabledNodes.contains(key);
+    }
+
+    public void toggleNodeActive(String statueId, int nodeId) {
+        String key = statueId + "_" + nodeId;
+        if (!unlockedNodes.contains(key)) return;
+
+        if (disabledNodes.contains(key)) {
+            disabledNodes.remove(key);
+        } else {
+            disabledNodes.add(key);
+        }
+        this.setDirty(true);
+    }
+
     public void resetNode(String statueId, int nodeId) {
         String key = statueId + "_" + nodeId;
-        if (unlockedNodes.remove(key)) {
+        boolean removedUnlocked = unlockedNodes.remove(key);
+        boolean removedDisabled = disabledNodes.remove(key);
+        if (removedUnlocked || removedDisabled) {
             this.setDirty(true);
         }
     }
 
     public void resetStatueAllNodes(String statueId) {
         boolean removedAny = unlockedNodes.removeIf(key -> key.startsWith(statueId + "_"));
-        if (removedAny) {
+        boolean removedDisabled = disabledNodes.removeIf(key -> key.startsWith(statueId + "_"));
+        if (removedAny || removedDisabled) {
             this.setDirty(true);
         }
     }
 
     public void resetAllNodes() {
-        if (!unlockedNodes.isEmpty()) {
+        if (!unlockedNodes.isEmpty() || !disabledNodes.isEmpty()) {
             unlockedNodes.clear();
+            disabledNodes.clear();
             this.setDirty(true);
         }
     }
@@ -196,7 +217,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         return total;
     }
 
-    // Getter & Setter
     public int getVigor() { return vigor + getBonusStat(); }
     public int getRawVigor() { return vigor; }
     public void setVigor(int v) { if(vigor != v) { vigor = v; isDirty = true; } }
@@ -245,7 +265,6 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
     public boolean isDirty() { return isDirty; }
     public void setDirty(boolean d) { this.isDirty = d; }
 
-    // 축복 상태 Getter & Setter
     public int getWindDashCooldown() { return windDashCooldown; }
     public void setWindDashCooldown(int ticks) {
         this.windDashCooldown = ticks;
@@ -274,6 +293,8 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
         this.learnedSpells.addAll(source.learnedSpells);
         this.unlockedNodes.clear();
         this.unlockedNodes.addAll(source.unlockedNodes);
+        this.disabledNodes.clear();
+        this.disabledNodes.addAll(source.disabledNodes);
         this.activeSummons.clear();
         this.activeSummons.putAll(source.activeSummons);
 
@@ -314,6 +335,12 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
             nodesTag.add(StringTag.valueOf(key));
         }
         nbt.put("unlockedNodes", nodesTag);
+
+        ListTag disabledTag = new ListTag();
+        for (String key : disabledNodes) {
+            disabledTag.add(StringTag.valueOf(key));
+        }
+        nbt.put("disabledNodes", disabledTag);
 
         ListTag summonsTag = new ListTag();
         for (Map.Entry<UUID, Float> entry : activeSummons.entrySet()) {
@@ -364,6 +391,14 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
             }
         }
 
+        disabledNodes.clear();
+        if (nbt.contains("disabledNodes", Tag.TAG_LIST)) {
+            ListTag disabledTag = nbt.getList("disabledNodes", Tag.TAG_STRING);
+            for (int i = 0; i < disabledTag.size(); i++) {
+                disabledNodes.add(disabledTag.getString(i));
+            }
+        }
+
         activeSummons.clear();
         if (nbt.contains("activeSummons", Tag.TAG_LIST)) {
             ListTag summonsTag = nbt.getList("activeSummons", Tag.TAG_COMPOUND);
@@ -376,5 +411,9 @@ public class StatCapability implements INBTSerializable<CompoundTag> {
 
     public Set<String> getUnlockedNodes() {
         return unlockedNodes;
+    }
+
+    public Set<String> getDisabledNodes() {
+        return disabledNodes;
     }
 }

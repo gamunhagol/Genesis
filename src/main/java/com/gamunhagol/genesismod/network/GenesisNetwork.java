@@ -99,6 +99,10 @@ public class GenesisNetwork {
         INSTANCE.messageBuilder(PacketTriggerHoldBlessing.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(PacketTriggerHoldBlessing::new).encoder(PacketTriggerHoldBlessing::toBytes)
                 .consumerMainThread(PacketTriggerHoldBlessing::handle).add();
+
+        INSTANCE.messageBuilder(PacketTogglePassiveNode.class, id(), NetworkDirection.PLAY_TO_SERVER)
+                .decoder(PacketTogglePassiveNode::new).encoder(PacketTogglePassiveNode::toBytes)
+                .consumerMainThread(PacketTogglePassiveNode::handle).add();
     }
 
     public static void sendToPlayer(Object message, ServerPlayer player) {
