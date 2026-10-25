@@ -292,6 +292,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), NoopRenderer::new);
 
+        event.registerEntityRenderer(GenesisEntities.LIGHTNING_ARROW.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.LIGHTNING_SPEAR.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.LIGHTNING_STAKE.get(), ThrownItemRenderer::new);
 

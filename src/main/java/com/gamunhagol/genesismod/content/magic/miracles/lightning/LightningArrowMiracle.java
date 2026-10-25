@@ -4,30 +4,41 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.InteractionHand;
+import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
+import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LightningArrowEntity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
 public class LightningArrowMiracle extends MiracleSpell {
-    public static final int DURATION_TICKS = 600;
 
     public LightningArrowMiracle() {
         super("lightning_arrow");
     }
 
     @Override
+    public int getMaxChargeTicks() {
+        return 70;
+    }
+
+    @Override
+    public boolean isChargeable(LivingEntity caster) {
+        return true;
+    }
+
+    @Override
+    public boolean isChargePhase(LivingEntity caster) {
+        return true;
+    }
+
+    @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(
                 StatType.FAITH, 15,
-                StatType.STRENGTH, 12);
+                StatType.STRENGTH, 12
+        );
     }
 
     @Override
@@ -46,37 +57,55 @@ public class LightningArrowMiracle extends MiracleSpell {
     }
 
     @Override
-    public boolean canCast(LivingEntity caster) {
-        if (!super.canCast(caster)) return false;
-
-        if (caster instanceof Player player) {
-            return player.getInventory().getFreeSlot() != -1;
-        }
-        return true;
-    }
-
-    @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        return DamageSnapshot.EMPTY;
+        float baseLightning = 14.0f;
+        float finalLightning = (baseLightning + (catalyst.physical() * 0.7f) + (catalyst.lightning() * 0.6f)) * getDedicationMultiplier(caster);
+        return new DamageSnapshot(0, 0, 0, finalLightning, 0, 0, 0);
     }
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        if (level.isClientSide || !(caster instanceof Player player)) return;
+        DamageSnapshot snapshot = new DamageSnapshot(
+                0, 0, 0, spellSnapshot.lightning() * 0.75f, 0, 0, 0
+        );
+        shootArrow(level, caster, snapshot, 1.0D);
+    }
 
-        ItemStack summonedBow = new ItemStack(Items.BOW);
-        long expireTick = level.getGameTime() + DURATION_TICKS;
+    @Override
+    protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
+        float ratio = Math.min(1.0f, (float) chargeTicks / (float) getMaxChargeTicks());
 
-        summonedBow.getOrCreateTag().putBoolean(FlameHammerMiracle.TAG_SUMMONED_WEAPON, true);
-        summonedBow.getOrCreateTag().putLong(FlameHammerMiracle.NBT_KEY_EXPIRE_TICK, expireTick);
-
-        if (player.getMainHandItem().isEmpty()) {
-            player.setItemInHand(InteractionHand.MAIN_HAND, summonedBow);
+        float damageMultiplier;
+        if (ratio >= 1.0f) {
+            damageMultiplier = 1.35f;
+        } else if (ratio >= 0.8f) {
+            damageMultiplier = 1.25f;
+        } else if (ratio >= 0.55f) {
+            damageMultiplier = 1.0f;
+        } else if (ratio > 0.25f) {
+            damageMultiplier = 1.0f;
         } else {
-            int freeSlot = player.getInventory().getFreeSlot();
-            if (freeSlot != -1) {
-                player.getInventory().setItem(freeSlot, summonedBow);
-            }
+            damageMultiplier = 0.75f;
         }
+
+        double speed = 1.0D + (ratio * 2.3D);
+
+        DamageSnapshot chargedSnapshot = new DamageSnapshot(
+                0, 0, 0, spellSnapshot.lightning() * damageMultiplier, 0, 0, 0
+        );
+
+        shootArrow(level, caster, chargedSnapshot, speed);
+    }
+
+    private void shootArrow(Level level, LivingEntity caster, DamageSnapshot snapshot, double speed) {
+        if (level.isClientSide) return;
+
+        Vec3 look = caster.getLookAngle();
+        Vec3 motion = look.normalize().scale(speed);
+
+        LightningArrowEntity arrow = new LightningArrowEntity(level, caster, snapshot, motion);
+        arrow.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
+        arrow.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+        level.addFreshEntity(arrow);
     }
 }

@@ -91,6 +91,7 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<StormSegment4Entity>> STORM_SEGMENT_4;
     public static final RegistryObject<EntityType<BladeStormEntity>> BLADE_STORM;
 
+    public static final RegistryObject<EntityType<LightningArrowEntity>> LIGHTNING_ARROW;
     public static final RegistryObject<EntityType<LightningSpearEntity>> LIGHTNING_SPEAR;
     public static final RegistryObject<EntityType<LightningStakeEntity>> LIGHTNING_STAKE;
 
@@ -383,6 +384,13 @@ public class GenesisEntities {
                 EntityType.Builder.<BladeStormEntity>of(BladeStormEntity::new, MobCategory.MISC)
                         .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(1)
                         .build("blade_storm"));
+
+        LIGHTNING_ARROW = ENTITY_TYPES.register("lightning_arrow", () ->
+                EntityType.Builder.<LightningArrowEntity>of(LightningArrowEntity::new, MobCategory.MISC)
+                        .sized(0.5F, 0.5F)
+                        .clientTrackingRange(8)
+                        .updateInterval(10)
+                        .build("lightning_arrow"));
 
         LIGHTNING_SPEAR = ENTITY_TYPES.register("lightning_spear", () ->
                 EntityType.Builder.<LightningSpearEntity>of(LightningSpearEntity::new, MobCategory.MISC)

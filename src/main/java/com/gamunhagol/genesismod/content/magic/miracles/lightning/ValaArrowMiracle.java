@@ -57,7 +57,7 @@ public class ValaArrowMiracle extends MiracleSpell {
 
     @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
-        float baseLightning = 22.0f;
+        float baseLightning = 28.0f;
         float finalLightning = (baseLightning + (catalyst.physical() * 0.9f) + (catalyst.lightning() * 0.7f)) * getDedicationMultiplier(caster);
         return new DamageSnapshot(0, 0, 0, finalLightning, 0, 0, 0);
     }
