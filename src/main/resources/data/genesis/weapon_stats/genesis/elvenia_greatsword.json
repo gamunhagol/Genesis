@@ -3,8 +3,8 @@
   "is_special": false,
   "damage_growth": 0.01,
   "base_stats": {
-    "physical": 14.0,
-    "magic": 0.3,
+    "physical": 15.0,
+    "magic": 1.15,
     "fire": 0.0,
     "lightning": 0.0,
     "frost": 0.0,

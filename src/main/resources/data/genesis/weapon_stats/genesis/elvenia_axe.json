@@ -4,7 +4,7 @@
   "damage_growth": 0.01,
   "base_stats": {
     "physical": 9.0,
-    "magic": 0.3,
+    "magic": 0.5,
     "fire": 0.0,
     "lightning": 0.0,
     "frost": 0.0,

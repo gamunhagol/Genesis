@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.content.magic.miracles.fire.FlameHammerMiracle;
+import com.gamunhagol.genesismod.world.item.GenesisItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -63,7 +64,7 @@ public class IceBladeMiracle extends MiracleSpell {
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         if (level.isClientSide || !(caster instanceof Player player)) return;
 
-        ItemStack summonedWeapon = new ItemStack(Items.IRON_SWORD);
+        ItemStack summonedWeapon = new ItemStack(GenesisItems.ICE_SWORD.get());
         long expireTick = level.getGameTime() + DURATION_TICKS;
 
         summonedWeapon.getOrCreateTag().putBoolean(FlameHammerMiracle.TAG_SUMMONED_WEAPON, true);

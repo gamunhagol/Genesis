@@ -337,6 +337,10 @@ public class GenesisItems {
     public static final RegistryObject<Item> SPIRIT_COMPASS = ITEMS.register("spirit_compass", () -> new SpiritCompassItem(new Item.Properties().stacksTo(1).fireResistant().rarity(Rarity.UNCOMMON)));
 
 
+    public static final RegistryObject<Item> ICE_SWORD = ITEMS.register("ice_sword", () -> new SwordItem(Tiers.DIAMOND, 3, -2.4f,
+            new Item.Properties()));
+    public static final RegistryObject<Item> ICES_SPEAR = ITEMS.register("ices_spear", () -> new SpearItem(new Item.Properties(), Tiers.DIAMOND));
+
     public static final RegistryObject<Item> HARDENED_GLASS_SWORD = ITEMS.register("hardened_glass_sword", () -> new SwordItem(GenesisItemTier.HARDENED_GLASS, 3, -2.4f,
             new Item.Properties()));
     public static final RegistryObject<Item> HARDENED_GLASS_GREATSWORD = ITEMS.register("hardened_glass_greatsword", () -> new GreatswordItem(new Item.Properties()

@@ -60,6 +60,8 @@ public class GenesisCreativeTabs {
                 output.accept(GenesisItems.SPIRIT_COMPASS.get());
 
 
+
+
                 output.accept(GenesisItems.HARDENED_GLASS_SWORD.get());
                 output.accept(GenesisItems.HARDENED_GLASS_GREATSWORD.get());
                 output.accept(GenesisItems.HARDENED_GLASS_SPEAR.get());

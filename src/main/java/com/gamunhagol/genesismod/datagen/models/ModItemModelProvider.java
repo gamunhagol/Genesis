@@ -262,6 +262,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(GenesisItems.BLIZZARD);
         simpleItem(GenesisItems.STOP_THE_TEARS);
 
+        handheldItem(GenesisItems.ICE_SWORD);
+
         handheldItem(GenesisItems.HARDENED_GLASS_SWORD);
         handheldItem(GenesisItems.HARDENED_RED_GLASS_SWORD);
 
