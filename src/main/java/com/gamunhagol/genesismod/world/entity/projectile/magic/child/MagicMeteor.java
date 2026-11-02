@@ -1,8 +1,8 @@
 package com.gamunhagol.genesismod.world.entity.projectile.magic.child;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
-import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
+import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.HomingMeteorBullet;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
@@ -19,16 +19,19 @@ public class MagicMeteor extends HomingMeteorBullet {
 
     public MagicMeteor(EntityType<? extends MagicMeteor> entityType, Level level) {
         super(entityType, level);
-        this.homingStrength = 0.18f;
-        this.dotLimit = 0.15D;
-        this.closeCutoffDistance = 0.8D;
+        initSettings();
     }
 
     public MagicMeteor(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.MAGIC_METEOR.get(), level, owner, snapshot);
-        this.homingStrength = 0.18f;
-        this.dotLimit = 0.15D;
-        this.closeCutoffDistance = 0.8D;
+        initSettings();
+    }
+
+    private void initSettings() {
+        this.maxTurnRate = 0.15D;
+        this.homingRadius = 32.0D;
+        this.homingDelayTicks = 8;
+        this.maxSpeed = 1.15D;
     }
 
     public MagicMeteor setSplitting(boolean split, int delayTicks) {

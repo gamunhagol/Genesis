@@ -17,7 +17,7 @@ import java.util.List;
 
 public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSupplier {
     protected int maxLifespanTicks = 60;
-    protected double pullRadius = 3.0D;
+    protected double pullRadius = 4.0D;
     protected double maxPullStrength = 0.08D;
     protected float explosionPower = 4.0F;
 
@@ -46,7 +46,7 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
         } else {
             applyGravitationalPull();
 
-            if (this.tickCount >= this.maxLifespanTicks) {
+            if (this.lifeTicks >= this.maxLifespanTicks) {
                 this.detonate();
                 this.discard();
             }
@@ -60,7 +60,6 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
     protected void applyGravitationalPull() {
         AABB box = this.getBoundingBox().inflate(this.pullRadius);
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, box, Entity::isAlive);
-
         Vec3 center = this.position();
 
         for (LivingEntity target : targets) {
@@ -72,7 +71,6 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
                 double currentPull = this.maxPullStrength * falloff;
 
                 Vec3 pullVector = toCenter.normalize().scale(currentPull);
-
                 target.setDeltaMovement(target.getDeltaMovement().add(pullVector));
                 target.hurtMarked = true;
             }
@@ -80,9 +78,7 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
     }
 
     protected void detonate() {
-        this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
-            cap.setSnapshot(this.damageSnapshot);
-        });
+        this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
 
         this.level().explode(
                 this,

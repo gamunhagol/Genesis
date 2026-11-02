@@ -103,7 +103,6 @@ public class StarGaspEntity extends MagicEntity implements ItemSupplier {
                 double currentPull = this.maxPullStrength * falloff;
 
                 Vec3 pullVector = toCenter.normalize().scale(currentPull);
-
                 target.setDeltaMovement(target.getDeltaMovement().add(pullVector));
                 target.hurtMarked = true;
             }

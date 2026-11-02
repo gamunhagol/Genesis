@@ -197,7 +197,7 @@ public class GenesisEntities {
 
         MAGIC_GLINT = ENTITY_TYPES.register("magic_glint", () ->
                 EntityType.Builder.<MagicGlint>of(MagicGlint::new, MobCategory.MISC)
-                        .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.2F, 0.2F).clientTrackingRange(4).updateInterval(10)
                         .build("magic_glint"));
 
         MAGIC_MIST = ENTITY_TYPES.register("magic_mist", () ->

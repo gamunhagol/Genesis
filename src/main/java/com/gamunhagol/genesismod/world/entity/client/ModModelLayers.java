@@ -12,6 +12,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation LARGE_ARROW_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "large_arrow"), "main");
 
+    public static final ModelLayerLocation MAGIC_GLINT_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "magic_glint"), "main");
+
     public static final ModelLayerLocation SENTINEL_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_of_sentinel"), "main");
     public static final ModelLayerLocation HERALD_LAYER = new ModelLayerLocation(

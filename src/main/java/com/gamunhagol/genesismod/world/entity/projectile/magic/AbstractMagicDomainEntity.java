@@ -40,23 +40,13 @@ public abstract class AbstractMagicDomainEntity extends MagicEntity implements I
     }
 
     @Override
-    public boolean canBeCollidedWith() {
-        return false;
-    }
-
+    public boolean canBeCollidedWith() { return false; }
     @Override
-    public boolean isPickable() {
-        return false;
-    }
-
+    public boolean isPickable() { return false; }
     @Override
-    public boolean isPushable() {
-        return false;
-    }
-
+    public boolean isPushable() { return false; }
     @Override
-    public void push(Entity entity) {
-    }
+    public void push(Entity entity) {}
 
     @Override
     public void tick() {

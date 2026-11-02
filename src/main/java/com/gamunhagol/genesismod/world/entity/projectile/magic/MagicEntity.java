@@ -40,18 +40,16 @@ public abstract class MagicEntity extends Projectile {
     }
 
     @Override
-    protected void defineSynchedData() {
-    }
+    protected void defineSynchedData() {}
 
     @Override
     public void tick() {
         super.tick();
+        this.lifeTicks++;
 
         if (!this.level().isClientSide) {
-            this.lifeTicks++;
             if (this.lifeTicks >= this.maxLifeTicks) {
                 this.discard();
-                return;
             }
         }
     }

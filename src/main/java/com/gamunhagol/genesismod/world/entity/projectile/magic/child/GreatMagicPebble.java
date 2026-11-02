@@ -11,14 +11,14 @@ import net.minecraft.world.level.Level;
 public class GreatMagicPebble extends MagicBullet {
     public GreatMagicPebble(EntityType<? extends GreatMagicPebble> type, Level level) {
         super(type, level);
-        this.homingStrength = 0.09f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.09D;
+        this.homingRadius = 32.0D;
     }
 
     public GreatMagicPebble(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), level, owner, snapshot);
-        this.homingStrength = 0.09f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.09D;
+        this.homingRadius = 32.0D;
     }
 
     @Override

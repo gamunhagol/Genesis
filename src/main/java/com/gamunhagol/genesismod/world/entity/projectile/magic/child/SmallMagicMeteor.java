@@ -11,20 +11,19 @@ import net.minecraft.world.level.Level;
 public class SmallMagicMeteor extends HomingMeteorBullet {
     public SmallMagicMeteor(EntityType<? extends SmallMagicMeteor> entityType, Level level) {
         super(entityType, level);
-        this.homingStrength = 0.24f;
-        this.dotLimit = -0.1D;
-        this.closeCutoffDistance = 0.2D;
-        this.weakGravity = 0.0D;
-        this.maxSpeed = 0.33D;
+        initSettings();
     }
 
     public SmallMagicMeteor(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.SMALL_MAGIC_METEOR.get(), level, owner, snapshot);
-        this.homingStrength = 0.24f;
-        this.dotLimit = -0.1D;
-        this.closeCutoffDistance = 0.2D;
-        this.weakGravity = 0.0D;
+        initSettings();
+    }
+
+    private void initSettings() {
+        this.maxTurnRate = 0.24D;
         this.maxSpeed = 0.33D;
+        this.homingRadius = 24.0D;
+        this.homingDelayTicks = 4;
     }
 
     @Override

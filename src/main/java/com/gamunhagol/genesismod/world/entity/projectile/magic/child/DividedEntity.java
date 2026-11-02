@@ -27,12 +27,8 @@ public class DividedEntity extends HomingMeteorBullet {
 
     private void initSettings() {
         this.maxSpeed = 0.32D;
-        this.homingStrength = 0.04f;
+        this.maxTurnRate = 0.04D;
         this.homingDelayTicks = 10;
-        this.weakGravity = 0.0005D;
-        this.dotLimit = -1.0D;
-        this.closeCutoffDistance = 0.0D;
-
         this.nextSpawnDelay = 5 + this.random.nextInt(8);
     }
 
@@ -64,7 +60,6 @@ public class DividedEntity extends HomingMeteorBullet {
         }
         forward = forward.normalize();
 
-        // 최종 분열체인 SmallMagicMeteor를 직접 생성
         SmallMagicMeteor child = new SmallMagicMeteor(this.level(), owner, this.childSnapshot);
         child.setPos(this.getX(), this.getY(), this.getZ());
 

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.world.entity.projectile.magic;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,9 +22,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
-    protected float homingStrength = 0.08f;
-    protected double homingRadius = 40.0D;
-    protected double weakGravity = 0.006D;
+    protected double maxTurnRate = 0.08D;
+    protected double homingRadius = 32.0D;
+    protected double weakGravity = 0.0D;
 
     protected LivingEntity lockedTarget = null;
 
@@ -42,25 +43,41 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
     @Override
     public void tick() {
+        this.xRotO = this.getXRot();
+        this.yRotO = this.getYRot();
+
         super.tick();
 
         Vec3 motion = this.getDeltaMovement();
 
-        if (!this.isNoGravity()) {
-            motion = new Vec3(motion.x, motion.y - this.weakGravity, motion.z);
+        if (!this.isNoGravity() && this.weakGravity > 0.0D) {
+            motion = motion.subtract(0.0D, this.weakGravity, 0.0D);
         }
 
         motion = applyHoming(motion);
         this.setDeltaMovement(motion);
+
+        if (motion.lengthSqr() > 1.0E-7D) {
+            double hDist = motion.horizontalDistance();
+
+            float targetYRot = (float)(Mth.atan2(motion.x, motion.z) * (180.0F / (float)Math.PI));
+            float targetXRot = (float)(-(Mth.atan2(motion.y, hDist) * (180.0F / (float)Math.PI)));
+
+            this.setYRot(targetYRot);
+            this.setXRot(targetXRot);
+
+            if (this.lifeTicks <= 1) {
+                this.yRotO = targetYRot;
+                this.xRotO = targetXRot;
+            }
+        }
 
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
             this.onHit(hitresult);
         }
 
-        if (this.isRemoved()) {
-            return;
-        }
+        if (this.isRemoved()) return;
 
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
         this.checkInsideBlocks();
@@ -85,40 +102,37 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
         if (this.lockedTarget != null) {
             Vec3 toTarget = this.lockedTarget.getBoundingBox().getCenter().subtract(this.position());
-            double distance = toTarget.length();
+            double distSqr = toTarget.lengthSqr();
 
-            if (distance < 3.5D) {
+            if (distSqr < 0.01D) {
                 return currentMotion;
             }
 
             Vec3 motionDir = currentMotion.normalize();
             Vec3 targetDir = toTarget.normalize();
-            double currentSpeed = currentMotion.length();
+            double speed = currentMotion.length();
 
-            double dot = motionDir.dot(targetDir);
-
-            if (dot > 0.0D) {
-                Vec3 newDir = motionDir.lerp(targetDir, this.homingStrength).normalize();
-                return newDir.scale(currentSpeed);
-            } else {
+            if (motionDir.dot(targetDir) < -0.2D) {
                 this.lockedTarget = null;
+                return currentMotion;
             }
+
+            Vec3 newDir = rotateTowards(motionDir, targetDir, this.maxTurnRate);
+            return newDir.scale(speed);
         }
 
         return currentMotion;
     }
 
     protected Vec3 rotateTowards(Vec3 from, Vec3 to, double maxAngleRadians) {
-        double dot = from.dot(to);
-        dot = Math.max(-1.0D, Math.min(1.0D, dot));
+        double dot = Mth.clamp(from.dot(to), -1.0D, 1.0D);
         double angle = Math.acos(dot);
 
         if (angle <= maxAngleRadians) {
             return to;
         }
 
-        double t = maxAngleRadians / angle;
-        return from.lerp(to, t).normalize();
+        return from.lerp(to, maxAngleRadians / angle).normalize();
     }
 
     protected void spawnFlightParticles() {
@@ -132,10 +146,7 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
             Entity target = result.getEntity();
             Entity owner = this.getOwner();
 
-            this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
-                cap.setSnapshot(this.damageSnapshot);
-            });
-
+            this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
             target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
             this.discard();
         }

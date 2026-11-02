@@ -35,24 +35,19 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
 
     private double sideOffset = 0.0D;
     private double heightOffset = 0.8D;
-
     protected double maxSpeed = 1.3D;
-    protected double dotLimit = -0.3D;
-    protected double closeCutoffDistance = 0.8D;
 
     public MagicSwordEntity(EntityType<? extends MagicSwordEntity> entityType, Level level) {
         super(entityType, level);
-        this.homingStrength = 0.22f;
+        this.maxTurnRate = 0.18D;
         this.homingRadius = 24.0D;
-        this.weakGravity = 0.0D;
         this.setNoGravity(true);
     }
 
     public MagicSwordEntity(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.MAGIC_SWORD.get(), level, owner, snapshot);
-        this.homingStrength = 0.22f;
+        this.maxTurnRate = 0.18D;
         this.homingRadius = 24.0D;
-        this.weakGravity = 0.0D;
         this.setNoGravity(true);
         this.launchDelayTicks = 5 + this.random.nextInt(21);
     }
@@ -87,7 +82,6 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
                 handleLaunchedState();
             }
         }
-
         super.tick();
     }
 
@@ -168,9 +162,7 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         }
 
         Vec3 toTarget = this.lockedTarget.getBoundingBox().getCenter().subtract(this.position());
-        double distance = toTarget.length();
-
-        if (distance < this.closeCutoffDistance) {
+        if (toTarget.lengthSqr() < 0.01D) {
             return currentMotion;
         }
 
@@ -178,15 +170,13 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         Vec3 targetDir = toTarget.normalize();
         double speed = currentMotion.length();
 
-        double dot = motionDir.dot(targetDir);
-        if (dot > this.dotLimit) {
-            Vec3 newDir = motionDir.lerp(targetDir, this.homingStrength).normalize();
-            return newDir.scale(speed);
-        } else {
+        if (motionDir.dot(targetDir) < -0.2D) {
             this.lockedTarget = null;
+            return currentMotion;
         }
 
-        return currentMotion;
+        Vec3 newDir = rotateTowards(motionDir, targetDir, this.maxTurnRate);
+        return newDir.scale(speed);
     }
 
     @Override
@@ -202,8 +192,7 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
     }
 
     @Override
-    protected void spawnFlightParticles() {
-    }
+    protected void spawnFlightParticles() {}
 
     @Override
     public void addAdditionalSaveData(CompoundTag tag) {

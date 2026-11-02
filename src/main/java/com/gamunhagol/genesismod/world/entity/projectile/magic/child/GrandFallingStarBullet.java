@@ -13,12 +13,10 @@ public class GrandFallingStarBullet extends MagicBullet {
 
     public GrandFallingStarBullet(EntityType<? extends GrandFallingStarBullet> entityType, Level level) {
         super(entityType, level);
-        this.weakGravity = 0.035D;
     }
 
     public GrandFallingStarBullet(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.GRAND_FALLING_STAR_BULLET.get(), level, owner, snapshot);
-        this.weakGravity = 0.035D;
     }
 
     @Override

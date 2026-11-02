@@ -11,14 +11,14 @@ import net.minecraft.world.level.Level;
 public class ShootingStar extends MagicBullet {
     public ShootingStar(EntityType<? extends ShootingStar> type, Level level) {
         super(type, level);
-        this.homingStrength = 0.025f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.03D;
+        this.homingRadius = 32.0D;
     }
 
     public ShootingStar(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.SHOOTING_STAR.get(), level, owner, snapshot);
-        this.homingStrength = 0.025f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.03D;
+        this.homingRadius = 32.0D;
     }
 
     @Override

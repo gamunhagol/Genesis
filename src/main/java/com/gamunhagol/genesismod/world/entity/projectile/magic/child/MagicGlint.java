@@ -10,13 +10,13 @@ import net.minecraft.world.level.Level;
 public class MagicGlint extends MagicBullet {
     public MagicGlint(EntityType<? extends MagicGlint> type, Level level) {
         super(type, level);
-        this.homingStrength = 0.15f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.15D;
+        this.homingRadius = 32.0D;
     }
 
     public MagicGlint(Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(GenesisEntities.MAGIC_GLINT.get(), level, owner, snapshot);
-        this.homingStrength = 0.15f;
-        this.homingRadius = 40.0D;
+        this.maxTurnRate = 0.15D;
+        this.homingRadius = 32.0D;
     }
 }
