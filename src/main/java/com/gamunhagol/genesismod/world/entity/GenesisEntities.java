@@ -212,12 +212,12 @@ public class GenesisEntities {
 
         GREAT_MAGIC_PEBBLE = ENTITY_TYPES.register("great_magic_pebble", () ->
                 EntityType.Builder.<GreatMagicPebble>of(GreatMagicPebble::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.4F, 0.4F).clientTrackingRange(4).updateInterval(10)
                         .build("great_magic_pebble"));
 
         MAGIC_COMET = ENTITY_TYPES.register("magic_comet", () ->
                 EntityType.Builder.<MagicComet>of(MagicComet::new, MobCategory.MISC)
-                        .sized(0.7F, 0.7F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
                         .build("magic_comet"));
 
         SHOOTING_STAR = ENTITY_TYPES.register("shooting_star", () ->
