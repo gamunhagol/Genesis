@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.gui.hud.SpellHudOverlay;
 import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
+import com.gamunhagol.genesismod.client.particle.MagicMistParticle;
 import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
@@ -42,6 +43,7 @@ public class GenesisClientEvents {
     @SubscribeEvent
     public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
         event.registerSpriteSet(GenesisParticles.GREEN_FLAME.get(), GreenFlameParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.MAGIC_MIST.get(), MagicMistParticle.Provider::new);
     }
 
     @SubscribeEvent

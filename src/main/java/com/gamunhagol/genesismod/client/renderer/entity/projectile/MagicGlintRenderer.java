@@ -27,6 +27,8 @@ public class MagicGlintRenderer extends EntityRenderer<MagicGlint> {
     public void render(MagicGlint entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
+        poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
+
         float yaw = Mth.rotLerp(partialTicks, entity.yRotO, entity.getYRot());
         float pitch = Mth.lerp(partialTicks, entity.xRotO, entity.getXRot());
 

@@ -15,6 +15,9 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> GREEN_FLAME =
             PARTICLE_TYPES.register("oblivion_fire_flame", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> MAGIC_MIST =
+            PARTICLE_TYPES.register("magic_mist", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

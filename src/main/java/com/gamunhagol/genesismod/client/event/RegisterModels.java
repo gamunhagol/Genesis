@@ -250,7 +250,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.LARGE_ARROW.get(), LargeArrowRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.MAGIC_GLINT.get(), MagicGlintRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.MAGIC_MIST.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_MIST.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_COMET.get(), ThrownItemRenderer::new);
