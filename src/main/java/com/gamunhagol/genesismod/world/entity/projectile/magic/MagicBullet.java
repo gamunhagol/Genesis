@@ -54,14 +54,16 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
             motion = motion.subtract(0.0D, this.weakGravity, 0.0D);
         }
 
-        motion = applyHoming(motion);
-        this.setDeltaMovement(motion);
+        if (!this.level().isClientSide) {
+            motion = applyHoming(motion);
+            this.setDeltaMovement(motion);
+        }
 
         if (motion.lengthSqr() > 1.0E-7D) {
             double hDist = motion.horizontalDistance();
 
             float targetYRot = (float)(Mth.atan2(motion.x, motion.z) * (180.0F / (float)Math.PI));
-            float targetXRot = (float)(-(Mth.atan2(motion.y, hDist) * (180.0F / (float)Math.PI)));
+            float targetXRot = (float)(Mth.atan2(motion.y, hDist) * (180.0F / (float)Math.PI));
 
             this.setYRot(targetYRot);
             this.setXRot(targetXRot);
@@ -136,7 +138,13 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
     }
 
     protected void spawnFlightParticles() {
-        this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        this.level().addParticle(
+                ParticleTypes.SOUL_FIRE_FLAME,
+                this.getX(),
+                this.getY() + (this.getBbHeight() * 0.5D),
+                this.getZ(),
+                0.0D, 0.0D, 0.0D
+        );
     }
 
     @Override

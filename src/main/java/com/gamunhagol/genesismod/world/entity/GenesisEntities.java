@@ -202,12 +202,12 @@ public class GenesisEntities {
 
         MAGIC_MIST = ENTITY_TYPES.register("magic_mist", () ->
                 EntityType.Builder.<MagicMist>of(MagicMist::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.15F, 0.15F).clientTrackingRange(4).updateInterval(10)
                         .build("magic_mist"));
 
         MAGIC_PEBBLE = ENTITY_TYPES.register("magic_pebble", () ->
                 EntityType.Builder.<MagicPebble>of(MagicPebble::new, MobCategory.MISC)
-                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
                         .build("magic_pebble"));
 
         GREAT_MAGIC_PEBBLE = ENTITY_TYPES.register("great_magic_pebble", () ->

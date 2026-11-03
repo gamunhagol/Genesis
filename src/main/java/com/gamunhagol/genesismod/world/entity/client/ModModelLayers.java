@@ -14,6 +14,10 @@ public class ModModelLayers {
 
     public static final ModelLayerLocation MAGIC_GLINT_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "magic_glint"), "main");
+    public static final ModelLayerLocation MAGIC_PEBBLE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "magic_pebble"), "main");
+    public static final ModelLayerLocation GREAT_MAGIC_PEBBLE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "great_magic_pebble"), "main");
 
     public static final ModelLayerLocation SENTINEL_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_of_sentinel"), "main");

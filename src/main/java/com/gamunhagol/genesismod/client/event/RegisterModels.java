@@ -4,12 +4,16 @@ import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.block.*;
 import com.gamunhagol.genesismod.client.model.block.statue.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
+import com.gamunhagol.genesismod.client.model.entity.projectile.GreatMagicPebbleModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.LargeArrowModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.MagicGlintModel;
+import com.gamunhagol.genesismod.client.model.entity.projectile.MagicPebbleModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
 import com.gamunhagol.genesismod.client.renderer.blockentity.statue.*;
+import com.gamunhagol.genesismod.client.renderer.entity.projectile.GreatMagicPebbleRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.LargeArrowRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.MagicGlintRenderer;
+import com.gamunhagol.genesismod.client.renderer.entity.projectile.MagicPebbleRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
 import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
@@ -221,6 +225,8 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.LARGE_ARROW_LAYER, LargeArrowModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.MAGIC_GLINT_LAYER, MagicGlintModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.MAGIC_PEBBLE_LAYER, MagicPebbleModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.GREAT_MAGIC_PEBBLE_LAYER, GreatMagicPebbleModel::createBodyLayer);
 
 
     }
@@ -251,8 +257,8 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.MAGIC_GLINT.get(), MagicGlintRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_MIST.get(), NoopRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_PEBBLE.get(), MagicPebbleRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), GreatMagicPebbleRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_COMET.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SHOOTING_STAR.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_METEOR.get(), ThrownItemRenderer::new);
