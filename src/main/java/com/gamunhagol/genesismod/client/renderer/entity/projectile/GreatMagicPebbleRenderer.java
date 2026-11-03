@@ -14,7 +14,13 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class GreatMagicPebbleRenderer extends EntityRenderer<GreatMagicPebble> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation("genesis", "textures/entity/projectiles/great_magic_pebble.png");
+
+    private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {
+            new ResourceLocation("genesis", "textures/entity/projectiles/great_magic_pebble_0.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/great_magic_pebble_1.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/great_magic_pebble_2.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/great_magic_pebble_3.png")
+    };
 
     private final GreatMagicPebbleModel<GreatMagicPebble> model;
 
@@ -27,7 +33,9 @@ public class GreatMagicPebbleRenderer extends EntityRenderer<GreatMagicPebble> {
     public void render(GreatMagicPebble entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
+        float scale = entity.getScale();
         poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
+        poseStack.scale(scale, scale, scale);
 
         float yaw = Mth.rotLerp(partialTicks, entity.yRotO, entity.getYRot());
         float pitch = Mth.lerp(partialTicks, entity.xRotO, entity.getXRot());
@@ -44,6 +52,8 @@ public class GreatMagicPebbleRenderer extends EntityRenderer<GreatMagicPebble> {
 
     @Override
     public ResourceLocation getTextureLocation(GreatMagicPebble entity) {
-        return TEXTURE;
+        int ticksPerFrame = 3;
+        int frameIndex = (entity.tickCount / ticksPerFrame) % TEXTURES.length;
+        return TEXTURES[frameIndex];
     }
 }

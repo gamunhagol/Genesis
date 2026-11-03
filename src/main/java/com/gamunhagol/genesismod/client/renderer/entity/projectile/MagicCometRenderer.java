@@ -14,7 +14,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class MagicCometRenderer extends EntityRenderer<MagicComet> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet.png");
+
+    // 5프레임 애니메이션 텍스처 배열 (0 ~ 4)
+    private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {
+            new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_0.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_1.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_2.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_3.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_4.png")
+    };
 
     private final MagicCometModel<MagicComet> model;
 
@@ -27,7 +35,9 @@ public class MagicCometRenderer extends EntityRenderer<MagicComet> {
     public void render(MagicComet entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
+        float scale = entity.getScale();
         poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
+        poseStack.scale(scale, scale, scale);
 
         float yaw = Mth.rotLerp(partialTicks, entity.yRotO, entity.getYRot());
         float pitch = Mth.lerp(partialTicks, entity.xRotO, entity.getXRot());
@@ -44,6 +54,8 @@ public class MagicCometRenderer extends EntityRenderer<MagicComet> {
 
     @Override
     public ResourceLocation getTextureLocation(MagicComet entity) {
-        return TEXTURE;
+        int ticksPerFrame = 3;
+        int frameIndex = (entity.tickCount / ticksPerFrame) % TEXTURES.length;
+        return TEXTURES[frameIndex];
     }
 }

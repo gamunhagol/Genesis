@@ -43,28 +43,33 @@ public class GreatMagicPebbleSpell extends MagicSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        shootPebble(level, caster, spellSnapshot);
+        shootPebble(level, caster, spellSnapshot, 1.0f);
     }
 
     @Override
     protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
         float ratio = Math.min(1.0f, (float) chargeTicks / (float) getMaxChargeTicks());
         float damageMultiplier = 1.0f;
+        float scale = 1.0f;
 
         if (ratio >= 0.75f) {
             damageMultiplier = 1.5f;
+            scale = 2.0f;
         } else if (ratio >= 0.5f) {
             damageMultiplier = 1.25f;
+            scale = 1.5f;
         }
 
         DamageSnapshot chargedSnapshot = new DamageSnapshot(
                 0, spellSnapshot.magic() * damageMultiplier, 0, 0, 0, 0, 0
         );
-        shootPebble(level, caster, chargedSnapshot);
+        shootPebble(level, caster, chargedSnapshot, scale);
     }
 
-    private void shootPebble(Level level, LivingEntity caster, DamageSnapshot snapshot) {
+    private void shootPebble(Level level, LivingEntity caster, DamageSnapshot snapshot, float scale) {
         GreatMagicPebble pebble = new GreatMagicPebble(level, caster, snapshot);
+        pebble.setScale(scale);
+
         Vec3 look = caster.getLookAngle();
         pebble.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
         pebble.setDeltaMovement(look.scale(0.52D));

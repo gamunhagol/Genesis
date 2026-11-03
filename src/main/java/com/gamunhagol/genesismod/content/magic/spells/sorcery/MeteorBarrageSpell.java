@@ -41,9 +41,11 @@ public class MeteorBarrageSpell extends MagicSpell {
     protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
         float ratio = Math.min(1.0f, (float) chargeTicks / (float) getMaxChargeTicks());
         float damageMultiplier = 1.0f;
+        int meteorCount = 7;
 
         if (ratio >= 0.75f) {
-            damageMultiplier = 1.30f;
+            damageMultiplier = 1.25f;
+            meteorCount += 3;
         } else if (ratio >= 0.5f) {
             damageMultiplier = 1.15f;
         }
@@ -51,7 +53,7 @@ public class MeteorBarrageSpell extends MagicSpell {
         DamageSnapshot chargedSnapshot = new DamageSnapshot(
                 0, spellSnapshot.magic() * damageMultiplier, 0, 0, 0, 0, 0
         );
-        fireMeteors(level, caster, chargedSnapshot, 7, 0.45D);
+        fireMeteors(level, caster, chargedSnapshot, meteorCount, 0.45D);
     }
 
     private void fireMeteors(Level level, LivingEntity caster, DamageSnapshot snapshot, int count, double spread) {

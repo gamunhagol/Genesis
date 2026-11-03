@@ -14,7 +14,15 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 
 public class ShootingStarRenderer extends EntityRenderer<ShootingStar> {
-    public static final ResourceLocation TEXTURE = new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star.png");
+
+    private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_0.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_1.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_2.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_3.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_4.png"),
+            new ResourceLocation("genesis", "textures/entity/projectiles/shooting_star_5.png")
+    };
 
     private final ShootingStarModel<ShootingStar> model;
 
@@ -27,7 +35,9 @@ public class ShootingStarRenderer extends EntityRenderer<ShootingStar> {
     public void render(ShootingStar entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
+        float scale = entity.getScale();
         poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
+        poseStack.scale(scale, scale, scale);
 
         float yaw = Mth.rotLerp(partialTicks, entity.yRotO, entity.getYRot());
         float pitch = Mth.lerp(partialTicks, entity.xRotO, entity.getXRot());
@@ -44,6 +54,8 @@ public class ShootingStarRenderer extends EntityRenderer<ShootingStar> {
 
     @Override
     public ResourceLocation getTextureLocation(ShootingStar entity) {
-        return TEXTURE;
+        int ticksPerFrame = 3;
+        int frameIndex = (entity.tickCount / ticksPerFrame) % TEXTURES.length;
+        return TEXTURES[frameIndex];
     }
 }
