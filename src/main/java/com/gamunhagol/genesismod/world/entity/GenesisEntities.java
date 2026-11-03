@@ -228,12 +228,12 @@ public class GenesisEntities {
 
         MAGIC_METEOR = ENTITY_TYPES.register("magic_meteor", () ->
                 EntityType.Builder.<MagicMeteor>of(MagicMeteor::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(10)
                         .build("magic_meteor"));
 
         SMALL_MAGIC_METEOR = ENTITY_TYPES.register("small_magic_meteor", () ->
                 EntityType.Builder.<SmallMagicMeteor>of(SmallMagicMeteor::new, MobCategory.MISC)
-                        .sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.15F, 0.15F).clientTrackingRange(4).updateInterval(10)
                         .build("small_magic_meteor"));
 
 

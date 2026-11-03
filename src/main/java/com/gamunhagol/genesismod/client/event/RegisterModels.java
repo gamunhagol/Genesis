@@ -223,6 +223,7 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.GREAT_MAGIC_PEBBLE_LAYER, GreatMagicPebbleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.MAGIC_COMET_LAYER, MagicCometModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.SHOOTING_STAR_LAYER, ShootingStarModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.MAGIC_METEOR_LAYER, MagicMeteorModel::createBodyLayer);
 
 
     }
@@ -257,8 +258,8 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.GREAT_MAGIC_PEBBLE.get(), GreatMagicPebbleRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_COMET.get(), MagicCometRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SHOOTING_STAR.get(), ShootingStarRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.MAGIC_METEOR.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.SMALL_MAGIC_METEOR.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_METEOR.get(), MagicMeteorRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SMALL_MAGIC_METEOR.get(), SmallMagicMeteorRenderer::new);
         event.registerEntityRenderer(GenesisEntities.FAINT_STAR.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.FAILED_STAR.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.DIMENSIONAL_STAR.get(), ThrownItemRenderer::new);
