@@ -16,7 +16,7 @@ import net.minecraftforge.network.NetworkHooks;
 public abstract class MagicEntity extends Projectile {
     protected DamageSnapshot damageSnapshot = DamageSnapshot.EMPTY;
     protected int lifeTicks = 0;
-    protected int maxLifeTicks = 200;
+    protected int maxLifeTicks = 300;
 
     public MagicEntity(EntityType<? extends MagicEntity> entityType, Level level) {
         super(entityType, level);

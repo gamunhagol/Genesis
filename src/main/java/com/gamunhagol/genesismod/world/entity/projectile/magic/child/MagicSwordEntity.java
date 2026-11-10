@@ -113,15 +113,17 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         double targetY = owner.getY() + owner.getBbHeight() + this.heightOffset;
         double targetZ = owner.getZ() + (rightZ * this.sideOffset);
 
-        this.setPos(targetX, targetY, targetZ);
-        this.xo = targetX;
-        this.yo = targetY;
-        this.zo = targetZ;
+        double smoothX = Mth.lerp(0.3D, this.getX(), targetX);
+        double smoothY = Mth.lerp(0.3D, this.getY(), targetY);
+        double smoothZ = Mth.lerp(0.3D, this.getZ(), targetZ);
+
+        this.setPos(smoothX, smoothY, smoothZ);
 
         float targetYaw = -currentYaw;
-        this.setYRot(targetYaw);
+        float smoothedYaw = Mth.rotLerp(0.25F, this.getYRot(), targetYaw);
+
+        this.setYRot(smoothedYaw);
         this.setXRot(0.0F);
-        this.yRotO = targetYaw;
         this.xRotO = 0.0F;
         this.setDeltaMovement(Vec3.ZERO);
 
