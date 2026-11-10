@@ -49,7 +49,7 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         this.maxTurnRate = 0.18D;
         this.homingRadius = 24.0D;
         this.setNoGravity(true);
-        this.launchDelayTicks = 5 + this.random.nextInt(21);
+        this.launchDelayTicks = 5 + this.random.nextInt(39);
 
         float initialYaw = -owner.getYRot();
         this.setYRot(initialYaw);
