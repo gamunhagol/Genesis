@@ -10,7 +10,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class MagicMistParticle extends TextureSheetParticle {
     private final SpriteSet sprites;
     private static final int[] FRAME_SEQUENCE = {0, 1, 2, 1};
-    private final int ticksPerFrame = 4;
+    private final int ticksPerFrame = 6;
 
     protected MagicMistParticle(ClientLevel level, double x, double y, double z,
                                 double xSpeed, double ySpeed, double zSpeed, SpriteSet sprites) {
