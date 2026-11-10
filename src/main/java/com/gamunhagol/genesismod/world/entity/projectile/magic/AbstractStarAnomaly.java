@@ -35,14 +35,23 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
     protected double maxPullStrength = 0.08D;
     protected float explosionPower = 4.0F;
 
+    protected float pullPeakProgress = 0.50F;
+
+    protected float jitterBaseChance = 0.04F;
+    protected float jitterMaxChance = 0.50F;
+    protected double baseMaxJitter = 0.09D;
+    protected double jitterPerTick = 0.0D;
+
     public AbstractStarAnomaly(EntityType<? extends AbstractStarAnomaly> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
+        this.maxLifeTicks = Integer.MAX_VALUE;
     }
 
     public AbstractStarAnomaly(EntityType<? extends AbstractStarAnomaly> entityType, Level level, LivingEntity owner, DamageSnapshot snapshot) {
         super(entityType, level, owner, snapshot);
         this.setNoGravity(true);
+        this.maxLifeTicks = Integer.MAX_VALUE;
     }
 
     @Override
@@ -70,8 +79,8 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
     @OnlyIn(Dist.CLIENT)
     protected void spawnIdleParticles() {
         Vec3 entityCenter = this.getBoundingBox().getCenter();
-        double pullSpeed = 0.16D;
-        int rayCount = 4;
+
+        int rayCount = Math.max(3, (int) Math.round(this.pullRadius * 0.65D));
 
         for (int i = 0; i < rayCount; i++) {
             double theta = this.random.nextDouble() * 2.0D * Math.PI;
@@ -115,11 +124,12 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
             Vec3 toCenter = entityCenter.subtract(spawnPos);
             double dist = toCenter.length();
 
-            if (dist < 0.2D) {
+            if (dist < 0.25D) {
                 continue;
             }
 
-            Vec3 pullDir = toCenter.normalize().scale(pullSpeed);
+            double dynamicSpeed = Math.max(0.18D, (dist / 14.0D) + (this.maxPullStrength * 3.5D));
+            Vec3 pullDir = toCenter.normalize().scale(dynamicSpeed);
 
             Particle particle = Minecraft.getInstance().particleEngine.createParticle(
                     targetParticle,
@@ -127,8 +137,13 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
                     pullDir.x, pullDir.y, pullDir.z
             );
 
-            if (particle != null && targetParticle == ParticleTypes.SMOKE) {
-                applySmokeTint(particle, hitBlockPos);
+            if (particle != null) {
+                int expectedLifetime = Math.max(2, (int) Math.round(dist / dynamicSpeed));
+                particle.setLifetime(expectedLifetime);
+
+                if (targetParticle == ParticleTypes.SMOKE) {
+                    applySmokeTint(particle, hitBlockPos);
+                }
             }
         }
     }
@@ -180,6 +195,24 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
         return (progress - startThreshold) / (1.0F - startThreshold);
     }
 
+    public Vec3 getGlitchJitterOffset() {
+        float progress = (float) this.lifeTicks / (float) this.maxLifespanTicks;
+        float currentChance = this.jitterBaseChance + (this.jitterMaxChance - this.jitterBaseChance) * (progress * progress);
+
+        if (this.random.nextFloat() > currentChance) {
+            return Vec3.ZERO;
+        }
+
+        double effectiveMaxJitter = this.baseMaxJitter + (this.lifeTicks * this.jitterPerTick);
+        double strength = effectiveMaxJitter * (0.3D + 0.7D * progress);
+
+        double ox = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
+        double oy = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
+        double oz = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
+
+        return new Vec3(ox, oy, oz);
+    }
+
     public Vec3 getGlitchJitterOffset(float baseChance, float maxChance, double maxJitter) {
         float progress = (float) this.lifeTicks / (float) this.maxLifespanTicks;
         float currentChance = baseChance + (maxChance - baseChance) * (progress * progress);
@@ -189,6 +222,7 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
         }
 
         double strength = maxJitter * (0.3D + 0.7D * progress);
+
         double ox = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
         double oy = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
         double oz = (this.random.nextDouble() - 0.5D) * 2.0D * strength;
@@ -201,13 +235,18 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
         List<LivingEntity> targets = this.level().getEntitiesOfClass(LivingEntity.class, box, Entity::isAlive);
         Vec3 center = this.position();
 
+        float progress = Math.min(1.0F, (float) this.lifeTicks / (float) this.maxLifespanTicks);
+        float rampProgress = Math.min(1.0F, progress / this.pullPeakProgress);
+        double timeFactor = 0.30D + (0.70D * (rampProgress * rampProgress));
+        double effectivePullStrength = this.maxPullStrength * timeFactor;
+
         for (LivingEntity target : targets) {
             Vec3 toCenter = center.subtract(target.position());
             double dist = toCenter.length();
 
             if (dist > 0.1D && dist <= this.pullRadius) {
                 double falloff = 1.0D - (dist / this.pullRadius);
-                double currentPull = this.maxPullStrength * falloff;
+                double currentPull = effectivePullStrength * falloff;
 
                 Vec3 pullVector = toCenter.normalize().scale(currentPull);
                 target.setDeltaMovement(target.getDeltaMovement().add(pullVector));

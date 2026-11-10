@@ -21,6 +21,18 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> LITTLE_STAR =
             PARTICLE_TYPES.register("little_star", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> FAILED_STAR =
+            PARTICLE_TYPES.register("failed_star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> BLUE_STAR =
+            PARTICLE_TYPES.register("blue_star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> DIMENSION_STAR =
+            PARTICLE_TYPES.register("dimension_star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> MAGIC_LIGHTNING =
+            PARTICLE_TYPES.register("magic_lightning", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

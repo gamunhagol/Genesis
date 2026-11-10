@@ -1,9 +1,7 @@
 package com.gamunhagol.genesismod.events;
 
 import com.gamunhagol.genesismod.client.gui.hud.SpellHudOverlay;
-import com.gamunhagol.genesismod.client.particle.GreenFlameParticle;
-import com.gamunhagol.genesismod.client.particle.LittleStarParticle;
-import com.gamunhagol.genesismod.client.particle.MagicMistParticle;
+import com.gamunhagol.genesismod.client.particle.*;
 import com.gamunhagol.genesismod.events.client.ClientTooltipHandler;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.init.ModKeyBindings;
@@ -46,6 +44,10 @@ public class GenesisClientEvents {
         event.registerSpriteSet(GenesisParticles.GREEN_FLAME.get(), GreenFlameParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.MAGIC_MIST.get(), MagicMistParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.LITTLE_STAR.get(), LittleStarParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.FAILED_STAR.get(), FailedStarParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.BLUE_STAR.get(), BlueStarParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.DIMENSION_STAR.get(), DimensionStarParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.MAGIC_LIGHTNING.get(), MagicLightningParticle.Provider::new);
     }
 
     @SubscribeEvent
