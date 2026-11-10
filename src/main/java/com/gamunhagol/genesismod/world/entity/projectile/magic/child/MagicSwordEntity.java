@@ -35,7 +35,7 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
 
     private double sideOffset = 0.0D;
     private double heightOffset = 0.8D;
-    protected double maxSpeed = 1.3D;
+    protected double maxSpeed = 1.8D;
 
     public MagicSwordEntity(EntityType<? extends MagicSwordEntity> entityType, Level level) {
         super(entityType, level);
