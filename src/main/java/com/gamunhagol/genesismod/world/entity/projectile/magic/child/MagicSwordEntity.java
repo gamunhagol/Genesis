@@ -50,6 +50,12 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         this.homingRadius = 24.0D;
         this.setNoGravity(true);
         this.launchDelayTicks = 5 + this.random.nextInt(21);
+
+        float initialYaw = -owner.getYRot();
+        this.setYRot(initialYaw);
+        this.setXRot(0.0F);
+        this.yRotO = initialYaw;
+        this.xRotO = 0.0F;
     }
 
     public MagicSwordEntity setOrbit(double sideOffset, double heightOffset) {
@@ -112,10 +118,11 @@ public class MagicSwordEntity extends MagicBullet implements ItemSupplier {
         this.yo = targetY;
         this.zo = targetZ;
 
-        this.setYRot(currentYaw);
-        this.setXRot(owner.getXRot());
-        this.yRotO = this.getYRot();
-        this.xRotO = this.getXRot();
+        float targetYaw = -currentYaw;
+        this.setYRot(targetYaw);
+        this.setXRot(0.0F);
+        this.yRotO = targetYaw;
+        this.xRotO = 0.0F;
         this.setDeltaMovement(Vec3.ZERO);
 
         if (this.lockedTarget == null || !this.lockedTarget.isAlive() || this.lockedTarget.isRemoved()) {

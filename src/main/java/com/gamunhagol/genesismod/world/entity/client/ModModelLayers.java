@@ -25,6 +25,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation MAGIC_METEOR_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "magic_meteor"), "main");
 
+    public static final ModelLayerLocation MAGIC_SWORD_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "magic_sword"), "main");
+
     public static final ModelLayerLocation SENTINEL_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "statue_of_sentinel"), "main");
     public static final ModelLayerLocation HERALD_LAYER = new ModelLayerLocation(

@@ -225,6 +225,8 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.SHOOTING_STAR_LAYER, ShootingStarModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.MAGIC_METEOR_LAYER, MagicMeteorModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.MAGIC_SWORD_LAYER, MagicSwordModel::createBodyLayer);
+
 
     }
 
@@ -263,7 +265,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.FAINT_STAR.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.FAILED_STAR.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.DIMENSIONAL_STAR.get(), NoopRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.MAGIC_SWORD.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_SWORD.get(), MagicSwordRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_DOMAIN.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SEA_OF_STARS.get(), ThrownItemRenderer::new);
 
