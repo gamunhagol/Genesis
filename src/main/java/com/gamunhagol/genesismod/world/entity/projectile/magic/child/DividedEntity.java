@@ -4,7 +4,6 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.HomingMeteorBullet;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
@@ -83,12 +82,5 @@ public class DividedEntity extends HomingMeteorBullet {
 
     @Override
     protected void spawnFlightParticles() {
-        for (int i = 0; i < 3; i++) {
-            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME,
-                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.5D,
-                    this.getY() + (this.random.nextDouble() - 0.5D) * 0.5D,
-                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.5D,
-                    0, 0.01D, 0);
-        }
     }
 }
