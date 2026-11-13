@@ -48,6 +48,8 @@ public class GenesisClientEvents {
         event.registerSpriteSet(GenesisParticles.BLUE_STAR.get(), BlueStarParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.DIMENSION_STAR.get(), DimensionStarParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.MAGIC_LIGHTNING.get(), MagicLightningParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.DIVINE_LIGHT.get(), LightBeamParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.MAGICAL_LIGHT.get(), LightBeamParticle.Provider::new);
     }
 
     @SubscribeEvent

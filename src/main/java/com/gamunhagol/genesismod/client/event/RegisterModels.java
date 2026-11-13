@@ -5,14 +5,20 @@ import com.gamunhagol.genesismod.client.model.block.*;
 import com.gamunhagol.genesismod.client.model.block.statue.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.*;
+import com.gamunhagol.genesismod.client.model.entity.rune.FloorRuneAModel;
+import com.gamunhagol.genesismod.client.model.entity.rune.FloorRuneBModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
 import com.gamunhagol.genesismod.client.renderer.blockentity.statue.*;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.*;
+import com.gamunhagol.genesismod.client.renderer.entity.rune.MagicDomainRenderer;
+import com.gamunhagol.genesismod.client.renderer.entity.rune.SeaOfStarsRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRenderer;
 import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicDomainEntity;
+import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicPebble;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.SkeletonModel;
 import net.minecraft.client.model.geom.EntityModelSet;
@@ -227,6 +233,9 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.MAGIC_SWORD_LAYER, MagicSwordModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
+
 
     }
 
@@ -266,12 +275,12 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.FAILED_STAR.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.DIMENSIONAL_STAR.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.MAGIC_SWORD.get(), MagicSwordRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.MAGIC_DOMAIN.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.SEA_OF_STARS.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.MAGIC_DOMAIN.get(), MagicDomainRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SEA_OF_STARS.get(), SeaOfStarsRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.STAR_SEA_SPAWNER.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.GRAND_FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.FALLING_STAR_BULLET.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.FALLING_STAR_BULLET.get(), MagicPebbleRenderer::new);
         event.registerEntityRenderer(GenesisEntities.DIVIDED.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STAR_GASP.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SUPERNOVA.get(), ThrownItemRenderer::new);

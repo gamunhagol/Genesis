@@ -2,7 +2,6 @@ package com.gamunhagol.genesismod.client.renderer.entity.projectile;
 
 import com.gamunhagol.genesismod.client.model.entity.projectile.MagicPebbleModel;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicPebble;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
@@ -12,11 +11,12 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.Entity;
 
-public class MagicPebbleRenderer extends EntityRenderer<MagicPebble> {
+public class MagicPebbleRenderer<T extends Entity> extends EntityRenderer<T> {
     public static final ResourceLocation TEXTURE = new ResourceLocation("genesis", "textures/entity/projectiles/magic_pebble.png");
 
-    private final MagicPebbleModel<MagicPebble> model;
+    private final MagicPebbleModel<T> model;
 
     public MagicPebbleRenderer(EntityRendererProvider.Context context) {
         super(context);
@@ -24,7 +24,7 @@ public class MagicPebbleRenderer extends EntityRenderer<MagicPebble> {
     }
 
     @Override
-    public void render(MagicPebble entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
+    public void render(T entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
 
         poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
@@ -43,7 +43,7 @@ public class MagicPebbleRenderer extends EntityRenderer<MagicPebble> {
     }
 
     @Override
-    public ResourceLocation getTextureLocation(MagicPebble entity) {
+    public ResourceLocation getTextureLocation(T entity) {
         return TEXTURE;
     }
 }

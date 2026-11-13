@@ -261,7 +261,7 @@ public class GenesisEntities {
 
         MAGIC_DOMAIN = ENTITY_TYPES.register("magic_domain", () ->
                 EntityType.Builder.<MagicDomainEntity>of(MagicDomainEntity::new, MobCategory.MISC)
-                        .sized(3.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
+                        .sized(2.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
                         .build("magic_domain"));
 
         SEA_OF_STARS = ENTITY_TYPES.register("sea_of_stars", () ->
@@ -276,7 +276,7 @@ public class GenesisEntities {
 
         FALLING_STAR_BULLET = ENTITY_TYPES.register("falling_star_bullet", () ->
                 EntityType.Builder.<FallingStarBullet>of(FallingStarBullet::new, MobCategory.MISC)
-                        .sized(0.35F, 0.35F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(10)
                         .build("falling_star_bullet"));
 
         GRAND_FALLING_STAR_BULLET = ENTITY_TYPES.register("grand_falling_star_bullet", () ->
