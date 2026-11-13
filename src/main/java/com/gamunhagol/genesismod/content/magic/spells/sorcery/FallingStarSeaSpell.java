@@ -56,12 +56,20 @@ public class FallingStarSeaSpell extends MagicSpell {
 
             Vec3 centerPos = caster.position().add(0, 12.0D, 0);
 
-            Vec3 look2D = new Vec3(caster.getLookAngle().x, 0, caster.getLookAngle().z).normalize();
+            Vec3 look = caster.getLookAngle();
+            Vec3 look2D = new Vec3(look.x, 0, look.z);
+            if (look2D.lengthSqr() < 1.0E-4D) {
+                float yawRad = (float) Math.toRadians(caster.getYRot());
+                look2D = new Vec3(-Math.sin(yawRad), 0, Math.cos(yawRad));
+            } else {
+                look2D = look2D.normalize();
+            }
             Vec3 right2D = new Vec3(-look2D.z, 0, look2D.x);
 
-            double distance = 4.5D;
+            double distance = 9.0D;
 
             Vec3[] diamondOffsets = new Vec3[]{
+                    Vec3.ZERO,
                     look2D.scale(distance),
                     look2D.scale(-distance),
                     right2D.scale(-distance),

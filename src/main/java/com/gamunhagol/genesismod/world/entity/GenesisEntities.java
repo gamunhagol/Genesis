@@ -281,7 +281,7 @@ public class GenesisEntities {
 
         GRAND_FALLING_STAR_BULLET = ENTITY_TYPES.register("grand_falling_star_bullet", () ->
                 EntityType.Builder.<GrandFallingStarBullet>of(GrandFallingStarBullet::new, MobCategory.MISC)
-                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("grand_falling_star_bullet"));
 
         DIVIDED = ENTITY_TYPES.register("divided", () ->
