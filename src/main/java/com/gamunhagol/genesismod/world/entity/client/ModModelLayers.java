@@ -28,6 +28,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation MAGIC_SWORD_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "magic_sword"), "main");
 
+    public static final ModelLayerLocation STAR_GASP_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "star_gasp"), "main");
+
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");
     public static final ModelLayerLocation FLOOR_RUNE_B_LAYER = new ModelLayerLocation(

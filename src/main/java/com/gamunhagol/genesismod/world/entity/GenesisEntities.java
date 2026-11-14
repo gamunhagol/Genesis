@@ -291,7 +291,7 @@ public class GenesisEntities {
 
         STAR_GASP = ENTITY_TYPES.register("star_gasp", () ->
                 EntityType.Builder.<StarGaspEntity>of(StarGaspEntity::new, MobCategory.MISC)
-                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("star_gasp"));
 
         SUPERNOVA = ENTITY_TYPES.register("supernova", () ->

@@ -15,7 +15,6 @@ import net.minecraft.util.Mth;
 
 public class MagicCometRenderer extends EntityRenderer<MagicComet> {
 
-    // 5프레임 애니메이션 텍스처 배열 (0 ~ 4)
     private static final ResourceLocation[] TEXTURES = new ResourceLocation[] {
             new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_0.png"),
             new ResourceLocation("genesis", "textures/entity/projectiles/magic_comet_1.png"),
