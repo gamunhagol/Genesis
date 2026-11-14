@@ -1,34 +1,49 @@
 package com.gamunhagol.genesismod.world.entity.projectile.magic.child;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ItemSupplier;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class SupernovaEntity extends MagicEntity implements ItemSupplier {
+public class SupernovaEntity extends MagicEntity {
     protected int flightTicks = 140;
     protected int decelerateTicks = 200;
-    protected int maxLifespanTicks = 300;
+    protected int maxLifespanTicks = 400;
+
+    protected int gapDuration = 10;
+    protected int lightingDuration = 6;
+    protected int disruptionDuration = 40;
+
+    protected float twinklingScale = 1.8F;
+    protected float disruptionScale = 2.5F;
 
     protected float contactExplosionPower = 2.0F;
     protected float apexExplosionPower = 90.0F;
 
     private double baseSpeed = 0.19D;
+
+    @OnlyIn(Dist.CLIENT)
+    private Particle boundParticle;
+
+    @OnlyIn(Dist.CLIENT)
+    private int currentParticlePhase = 0;
 
     public SupernovaEntity(EntityType<? extends SupernovaEntity> entityType, Level level) {
         super(entityType, level);
@@ -45,17 +60,14 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
     }
 
     @Override
-    public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
-    }
-
-    @Override
     public void tick() {
         super.tick();
 
         handleMovementPhases();
 
-        if (!this.level().isClientSide) {
+        if (this.level().isClientSide) {
+            handleParticles();
+        } else {
             HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
             if (hitresult.getType() != HitResult.Type.MISS) {
                 this.onHit(hitresult);
@@ -71,9 +83,112 @@ public class SupernovaEntity extends MagicEntity implements ItemSupplier {
                 return;
             }
         }
+
         Vec3 motion = this.getDeltaMovement();
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
         this.checkInsideBlocks();
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private void handleParticles() {
+        int disruptionStart = this.maxLifespanTicks - this.disruptionDuration;
+        int lightingStart = disruptionStart - this.lightingDuration;
+        int twinklingEnd = lightingStart - this.gapDuration;
+
+        Vec3 jitter = Vec3.ZERO;
+
+        if (this.tickCount < twinklingEnd) {
+            if (this.currentParticlePhase != 1) {
+                removeBoundParticle();
+                this.currentParticlePhase = 1;
+                this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
+                        GenesisParticles.TWINKLING_STAR.get(),
+                        this.getX(), this.getY(), this.getZ(),
+                        0.0D, 0.0D, 0.0D
+                );
+                if (this.boundParticle != null) {
+                    this.boundParticle.setLifetime(twinklingEnd - this.tickCount);
+                    this.boundParticle.scale(this.twinklingScale);
+                }
+            }
+
+            if (this.tickCount >= this.flightTicks) {
+                float progress = (float) (this.tickCount - this.flightTicks) / (float) (twinklingEnd - this.flightTicks);
+                jitter = calculatePhaseJitter(progress, 0.10F, 0.95F, 0.05D, 0.35D);
+            }
+        } else if (this.tickCount < lightingStart) {
+            if (this.currentParticlePhase != 2) {
+                removeBoundParticle();
+                this.currentParticlePhase = 2;
+            }
+            return;
+        } else if (this.tickCount < disruptionStart) {
+            if (this.currentParticlePhase != 3) {
+                removeBoundParticle();
+                this.currentParticlePhase = 3;
+                this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
+                        GenesisParticles.LIGHTING_STAR.get(),
+                        this.getX(), this.getY(), this.getZ(),
+                        0.0D, 0.0D, 0.0D
+                );
+                if (this.boundParticle != null) {
+                    this.boundParticle.setLifetime(this.lightingDuration);
+                }
+            }
+        } else {
+            if (this.currentParticlePhase != 4) {
+                removeBoundParticle();
+                this.currentParticlePhase = 4;
+                this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
+                        GenesisParticles.DISRUPTION.get(),
+                        this.getX(), this.getY(), this.getZ(),
+                        0.0D, 0.0D, 0.0D
+                );
+                if (this.boundParticle != null) {
+                    this.boundParticle.setLifetime(this.disruptionDuration);
+                    this.boundParticle.scale(this.disruptionScale);
+                }
+            }
+        }
+
+        if (this.boundParticle != null && this.boundParticle.isAlive()) {
+            this.boundParticle.setPos(
+                    this.getX() + jitter.x,
+                    this.getY() + jitter.y,
+                    this.getZ() + jitter.z
+            );
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private Vec3 calculatePhaseJitter(float progress, float minChance, float maxChance, double minRadius, double maxRadius) {
+        float currentChance = minChance + (maxChance - minChance) * (progress * progress);
+        if (this.random.nextFloat() > currentChance) {
+            return Vec3.ZERO;
+        }
+
+        double currentRadius = minRadius + (maxRadius - minRadius) * progress;
+        double ox = (this.random.nextDouble() - 0.5D) * 2.0D * currentRadius;
+        double oy = (this.random.nextDouble() - 0.5D) * 2.0D * currentRadius;
+        double oz = (this.random.nextDouble() - 0.5D) * 2.0D * currentRadius;
+
+        return new Vec3(ox, oy, oz);
+    }
+
+    @Override
+    public void remove(RemovalReason reason) {
+        if (this.level().isClientSide()) {
+            removeBoundParticle();
+        }
+        super.remove(reason);
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private void removeBoundParticle() {
+        if (this.boundParticle != null) {
+            this.boundParticle.remove();
+            this.boundParticle = null;
+        }
     }
 
     private void handleMovementPhases() {

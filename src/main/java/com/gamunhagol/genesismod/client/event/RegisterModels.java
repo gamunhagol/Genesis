@@ -285,7 +285,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.FALLING_STAR_BULLET.get(), MagicPebbleRenderer::new);
         event.registerEntityRenderer(GenesisEntities.DIVIDED.get(), DividedRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STAR_GASP.get(), StarGaspRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.SUPERNOVA.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.SUPERNOVA.get(), NoopRenderer::new);
 
 
         event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), ThrownItemRenderer::new);

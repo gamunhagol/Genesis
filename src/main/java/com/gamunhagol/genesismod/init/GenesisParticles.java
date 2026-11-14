@@ -39,6 +39,15 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> MAGICAL_LIGHT =
             PARTICLE_TYPES.register("magical_light", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> TWINKLING_STAR =
+            PARTICLE_TYPES.register("twinkling_star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> LIGHTING_STAR =
+            PARTICLE_TYPES.register("lighting_star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> DISRUPTION =
+            PARTICLE_TYPES.register("disruption", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }
