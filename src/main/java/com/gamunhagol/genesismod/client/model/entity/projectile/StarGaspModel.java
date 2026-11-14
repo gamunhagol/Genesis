@@ -36,7 +36,7 @@ public class StarGaspModel<T extends StarGaspEntity> extends EntityModel<T> {
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.ring.yRot = ageInTicks * 3.0F * ((float) Math.PI / 180F);
+        this.ring.yRot = ageInTicks * 10.0F * ((float) Math.PI / 180F);
     }
 
     @Override
