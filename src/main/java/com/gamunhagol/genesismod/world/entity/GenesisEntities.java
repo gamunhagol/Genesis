@@ -296,7 +296,7 @@ public class GenesisEntities {
 
         SUPERNOVA = ENTITY_TYPES.register("supernova", () ->
                 EntityType.Builder.<SupernovaEntity>of(SupernovaEntity::new, MobCategory.MISC)
-                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.6F, 0.6F).clientTrackingRange(8).updateInterval(10)
                         .build("supernova"));
 
         //

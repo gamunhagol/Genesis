@@ -61,6 +61,13 @@ public class SupernovaEntity extends MagicEntity {
 
     @Override
     public void tick() {
+        if (this.isRemoved()) {
+            if (this.level().isClientSide) {
+                removeBoundParticle();
+            }
+            return;
+        }
+
         super.tick();
 
         handleMovementPhases();
@@ -95,6 +102,7 @@ public class SupernovaEntity extends MagicEntity {
         int lightingStart = disruptionStart - this.lightingDuration;
         int twinklingEnd = lightingStart - this.gapDuration;
 
+        double centerY = this.getY() + (this.getBbHeight() * 0.5D);
         Vec3 jitter = Vec3.ZERO;
 
         if (this.tickCount < twinklingEnd) {
@@ -103,7 +111,7 @@ public class SupernovaEntity extends MagicEntity {
                 this.currentParticlePhase = 1;
                 this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
                         GenesisParticles.TWINKLING_STAR.get(),
-                        this.getX(), this.getY(), this.getZ(),
+                        this.getX(), centerY, this.getZ(),
                         0.0D, 0.0D, 0.0D
                 );
                 if (this.boundParticle != null) {
@@ -128,7 +136,7 @@ public class SupernovaEntity extends MagicEntity {
                 this.currentParticlePhase = 3;
                 this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
                         GenesisParticles.LIGHTING_STAR.get(),
-                        this.getX(), this.getY(), this.getZ(),
+                        this.getX(), centerY, this.getZ(),
                         0.0D, 0.0D, 0.0D
                 );
                 if (this.boundParticle != null) {
@@ -141,7 +149,7 @@ public class SupernovaEntity extends MagicEntity {
                 this.currentParticlePhase = 4;
                 this.boundParticle = Minecraft.getInstance().particleEngine.createParticle(
                         GenesisParticles.DISRUPTION.get(),
-                        this.getX(), this.getY(), this.getZ(),
+                        this.getX(), centerY, this.getZ(),
                         0.0D, 0.0D, 0.0D
                 );
                 if (this.boundParticle != null) {
@@ -154,7 +162,7 @@ public class SupernovaEntity extends MagicEntity {
         if (this.boundParticle != null && this.boundParticle.isAlive()) {
             this.boundParticle.setPos(
                     this.getX() + jitter.x,
-                    this.getY() + jitter.y,
+                    centerY + jitter.y,
                     this.getZ() + jitter.z
             );
         }
@@ -181,6 +189,12 @@ public class SupernovaEntity extends MagicEntity {
             removeBoundParticle();
         }
         super.remove(reason);
+    }
+
+    @Override
+    public void onClientRemoval() {
+        removeBoundParticle();
+        super.onClientRemoval();
     }
 
     @OnlyIn(Dist.CLIENT)
