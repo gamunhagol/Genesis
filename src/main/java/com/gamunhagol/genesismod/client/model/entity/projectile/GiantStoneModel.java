@@ -27,7 +27,7 @@ public class GiantStoneModel<T extends StoneProjectile> extends EntityModel<T> {
 
         PartDefinition under = partdefinition.addOrReplaceChild("under", CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-15.0F, -16.0F, -1.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
-                PartPose.offset(7.0F, 24.0F, -7.0F));
+                PartPose.offset(7.0F, 20.0F, -7.0F));
 
         under.addOrReplaceChild("under_rock_9_r1", CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-16.0F, -16.0F, 0.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
@@ -63,7 +63,7 @@ public class GiantStoneModel<T extends StoneProjectile> extends EntityModel<T> {
 
         PartDefinition upper = partdefinition.addOrReplaceChild("upper", CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-15.0F, -15.0F, -1.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
-                PartPose.offset(7.0F, 0.0F, -7.0F));
+                PartPose.offset(7.0F, -4.0F, -7.0F));
 
         upper.addOrReplaceChild("upper_rock_9_r1", CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-15.0F, -16.0F, -1.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
@@ -102,7 +102,7 @@ public class GiantStoneModel<T extends StoneProjectile> extends EntityModel<T> {
                         .texOffs(0, 0).addBox(-28.0F, -16.0F, -17.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F))
                         .texOffs(0, 0).addBox(-15.0F, -15.0F, -32.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F))
                         .texOffs(0, 0).addBox(-2.0F, -17.0F, -17.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),
-                PartPose.offset(7.0F, 12.0F, 9.0F));
+                PartPose.offset(7.0F, 8.0F, 9.0F));
 
         wide.addOrReplaceChild("wide_rock_8_r1", CubeListBuilder.create().texOffs(0, 0)
                         .addBox(-15.0F, -16.0F, -1.0F, 16.0F, 16.0F, 16.0F, new CubeDeformation(0.0F)),

@@ -312,17 +312,17 @@ public class GenesisEntities {
 
         PEBBLE = ENTITY_TYPES.register("pebble", () ->
                 EntityType.Builder.<PebbleEntity>of(PebbleEntity::new, MobCategory.MISC)
-                        .sized(0.3F, 0.3F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.35F, 0.35F).clientTrackingRange(8).updateInterval(10)
                         .build("pebble"));
 
         ROCK = ENTITY_TYPES.register("rock", () ->
                 EntityType.Builder.<RockEntity>of(RockEntity::new, MobCategory.MISC)
-                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("rock"));
 
         LARGE_ROCK = ENTITY_TYPES.register("large_rock", () ->
                 EntityType.Builder.<LargeRockEntity>of(LargeRockEntity::new, MobCategory.MISC)
-                        .sized(1.2F, 1.2F).clientTrackingRange(6).updateInterval(10)
+                        .sized(2.4F, 2.4F).clientTrackingRange(6).updateInterval(10)
                         .build("large_rock"));
 
         PATAMU_WRATH = ENTITY_TYPES.register("patamu_wrath", () ->

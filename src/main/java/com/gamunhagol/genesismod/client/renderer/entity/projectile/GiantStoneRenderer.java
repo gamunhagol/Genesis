@@ -24,6 +24,7 @@ public class GiantStoneRenderer extends EntityRenderer<LargeRockEntity> {
     @Override
     public void render(LargeRockEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource buffer, int packedLight) {
         poseStack.pushPose();
+        poseStack.translate(0.0D, entity.getBbHeight() * 0.5D, 0.0D);
 
         VertexConsumer vertexconsumer = buffer.getBuffer(this.model.renderType(this.getTextureLocation(entity)));
         this.model.renderToBuffer(poseStack, vertexconsumer, packedLight, OverlayTexture.NO_OVERLAY, 1.0F, 1.0F, 1.0F, 1.0F);
