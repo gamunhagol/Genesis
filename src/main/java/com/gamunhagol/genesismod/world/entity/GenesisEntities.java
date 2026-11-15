@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.world.entity.etc.*;
 import com.gamunhagol.genesismod.world.entity.etc.child.PoisonRootEntity;
 import com.gamunhagol.genesismod.world.entity.etc.child.RootEntangleEntity;
 import com.gamunhagol.genesismod.world.entity.etc.child.RootSpearEntity;
+import com.gamunhagol.genesismod.world.entity.etc.rune.HealRuneEntity;
 import com.gamunhagol.genesismod.world.entity.mob.*;
 import com.gamunhagol.genesismod.world.entity.mob.summon.*;
 import com.gamunhagol.genesismod.world.entity.projectile.LargeArrowEntity;
@@ -67,6 +68,8 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<StarGaspEntity>> STAR_GASP;
     public static final RegistryObject<EntityType<SupernovaEntity>> SUPERNOVA;
 
+
+    public static final RegistryObject<EntityType<HealRuneEntity>> HEAL_RUNE;
 
     public static final RegistryObject<EntityType<PebbleEntity>> PEBBLE;
     public static final RegistryObject<EntityType<RockEntity>> ROCK;
@@ -300,6 +303,11 @@ public class GenesisEntities {
                         .build("supernova"));
 
         //
+
+        HEAL_RUNE = ENTITY_TYPES.register("heal_rune", () ->
+                EntityType.Builder.<HealRuneEntity>of(HealRuneEntity::new, MobCategory.MISC)
+                        .sized(1.0F, 0.1F).clientTrackingRange(8).updateInterval(10)
+                        .build("heal_rune"));
 
 
         PEBBLE = ENTITY_TYPES.register("pebble", () ->

@@ -10,6 +10,7 @@ import com.gamunhagol.genesismod.client.model.entity.rune.FloorRuneBModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
 import com.gamunhagol.genesismod.client.renderer.blockentity.statue.*;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.*;
+import com.gamunhagol.genesismod.client.renderer.entity.rune.HealRuneRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.rune.MagicDomainRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.rune.SeaOfStarsRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorGuardRenderer;
@@ -287,6 +288,8 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.STAR_GASP.get(), StarGaspRenderer::new);
         event.registerEntityRenderer(GenesisEntities.SUPERNOVA.get(), NoopRenderer::new);
 
+
+        event.registerEntityRenderer(GenesisEntities.HEAL_RUNE.get(), HealRuneRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.ROCK.get(), ThrownItemRenderer::new);
