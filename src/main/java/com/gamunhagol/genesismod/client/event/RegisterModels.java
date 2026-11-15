@@ -236,6 +236,12 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.STAR_GASP_LAYER, StarGaspModel::createBodyLayer);
 
+
+
+        event.registerLayerDefinition(ModModelLayers.SMALL_STONE_LAYER, SmallStoneModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.BIG_STONE_LAYER, BigStoneModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.GIANT_STONE_LAYER, GiantStoneModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -291,9 +297,9 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.HEAL_RUNE.get(), HealRuneRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.ROCK.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.LARGE_ROCK.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.PEBBLE.get(), SmallStoneRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.ROCK.get(), BigStoneRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.LARGE_ROCK.get(), GiantStoneRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.PATAMU_WRATH.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.PATAMU_ROAR.get(), ThrownItemRenderer::new);

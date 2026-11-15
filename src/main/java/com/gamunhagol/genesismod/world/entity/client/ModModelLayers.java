@@ -31,6 +31,15 @@ public class ModModelLayers {
     public static final ModelLayerLocation STAR_GASP_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "star_gasp"), "main");
 
+
+    public static final ModelLayerLocation SMALL_STONE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "small_stone"), "main");
+    public static final ModelLayerLocation BIG_STONE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "big_stone"), "main");
+    public static final ModelLayerLocation GIANT_STONE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "giant_stone"), "main");
+
+
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");
     public static final ModelLayerLocation FLOOR_RUNE_B_LAYER = new ModelLayerLocation(

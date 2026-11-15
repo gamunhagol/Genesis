@@ -4,11 +4,16 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.StoneProjectile;
+import net.minecraft.core.particles.BlockParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.Vec3;
 import yesman.epicfight.api.utils.LevelUtil;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
@@ -57,8 +62,25 @@ public class RockEntity extends StoneProjectile {
                     }
                 });
             }
+
+            spawnRockParticles(18);
         }
 
         super.onHitBlock(result);
+    }
+
+    @Override
+    protected void onHitEntity(EntityHitResult result) {
+        if (!this.level().isClientSide) {
+            spawnRockParticles(18);
+        }
+        super.onHitEntity(result);
+    }
+
+    private void spawnRockParticles(int count) {
+        if (this.level() instanceof ServerLevel serverLevel) {
+            BlockParticleOption particle = new BlockParticleOption(ParticleTypes.BLOCK, Blocks.STONE.defaultBlockState());
+            serverLevel.sendParticles(particle, this.getX(), this.getY(), this.getZ(), count, 0.12D, 0.12D, 0.12D, 0.04D);
+        }
     }
 }
