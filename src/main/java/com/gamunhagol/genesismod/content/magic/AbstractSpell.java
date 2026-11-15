@@ -3,9 +3,14 @@ package com.gamunhagol.genesismod.content.magic;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
+import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
@@ -78,7 +83,7 @@ public abstract class AbstractSpell {
     public void consumeContinuousMental(LivingEntity caster) {
         if (getContinuousMentalCost() <= 0) return;
 
-        if (caster instanceof net.minecraft.world.entity.player.Player player) {
+        if (caster instanceof Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.setMental(Math.max(0, stats.getMental() - getContinuousMentalCost()));
             });
@@ -110,10 +115,39 @@ public abstract class AbstractSpell {
     }
 
     public void consumeMental(LivingEntity caster) {
-        if (caster instanceof net.minecraft.world.entity.player.Player player) {
+        if (caster instanceof Player player) {
             player.getCapability(StatCapabilityProvider.STAT_CAPABILITY).ifPresent(stats -> {
                 stats.setMental(Math.max(0, stats.getMental() - getMentalCost()));
             });
         }
+    }
+
+    protected Vec3 getCatalystHandPosition(LivingEntity caster, double forwardDist, double sideOffset, double heightOffset) {
+        Vec3 lookVec = caster.getLookAngle();
+        Vec3 rightVec = lookVec.cross(new Vec3(0, 1, 0));
+        if (rightVec.lengthSqr() < 1.0E-4D) {
+            rightVec = Vec3.directionFromRotation(0.0F, caster.getYRot() + 90.0F);
+        } else {
+            rightVec = rightVec.normalize();
+        }
+
+        boolean isMainHand = caster.getMainHandItem().getItem() instanceof CatalystItem
+                || !(caster.getOffhandItem().getItem() instanceof CatalystItem);
+        if (caster.isUsingItem()) {
+            isMainHand = caster.getUsedItemHand() == InteractionHand.MAIN_HAND;
+        }
+
+        boolean isRightHand = isMainHand;
+        if (caster instanceof Player player && player.getMainArm() == HumanoidArm.LEFT) {
+            isRightHand = !isRightHand;
+        }
+
+        double sideMultiplier = isRightHand ? 1.0D : -1.0D;
+
+        return new Vec3(
+                caster.getX() + lookVec.x * forwardDist + rightVec.x * sideOffset * sideMultiplier,
+                caster.getEyeY() + heightOffset + lookVec.y * forwardDist,
+                caster.getZ() + lookVec.z * forwardDist + rightVec.z * sideOffset * sideMultiplier
+        );
     }
 }

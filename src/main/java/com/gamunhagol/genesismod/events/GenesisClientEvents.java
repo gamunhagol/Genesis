@@ -53,6 +53,7 @@ public class GenesisClientEvents {
         event.registerSpriteSet(GenesisParticles.TWINKLING_STAR.get(), TwinklingStarParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.LIGHTING_STAR.get(), LightingStarParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.DISRUPTION.get(), DisruptionParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.RESISTANCE_BLESSING.get(), ResistanceBlessingParticle.Provider::new);
     }
 
     @SubscribeEvent

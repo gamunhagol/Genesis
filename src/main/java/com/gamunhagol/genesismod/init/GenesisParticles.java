@@ -48,6 +48,9 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> DISRUPTION =
             PARTICLE_TYPES.register("disruption", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> RESISTANCE_BLESSING =
+            PARTICLE_TYPES.register("resistance_blessing", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

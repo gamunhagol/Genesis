@@ -3,11 +3,14 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
@@ -47,7 +50,18 @@ public class ResistanceBlessingMiracle extends MiracleSpell {
         float totalMultiplier = faithBonusMultiplier * dedicationMultiplier;
 
         int duration = Math.round(1200 * totalMultiplier);
-
         caster.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, duration, 1));
+
+        if (level instanceof ServerLevel serverLevel) {
+            Vec3 spawnPos = getCatalystHandPosition(caster, 0.7D, 0.35D, -0.25D);
+
+            serverLevel.sendParticles(
+                    GenesisParticles.RESISTANCE_BLESSING.get(),
+                    spawnPos.x, spawnPos.y, spawnPos.z,
+                    1,
+                    0.0D, 0.0D, 0.0D,
+                    0.0D
+            );
+        }
     }
 }
