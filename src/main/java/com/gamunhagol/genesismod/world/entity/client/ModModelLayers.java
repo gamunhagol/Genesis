@@ -45,6 +45,15 @@ public class ModModelLayers {
     public static final ModelLayerLocation WIND_FEATHER_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "wind_feather"), "main");
 
+    public static final ModelLayerLocation STORM_SEGMENT_1_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "storm_segment_1"), "main");
+    public static final ModelLayerLocation STORM_SEGMENT_2_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "storm_segment_2"), "main");
+    public static final ModelLayerLocation STORM_SEGMENT_3_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "storm_segment_3"), "main");
+    public static final ModelLayerLocation STORM_SEGMENT_4_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "storm_segment_4"), "main");
+
 
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");

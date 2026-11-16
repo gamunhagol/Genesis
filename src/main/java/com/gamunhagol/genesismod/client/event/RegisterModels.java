@@ -246,6 +246,11 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.WIND_FEATHER_LAYER, WindFeatherModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_1_LAYER, StormSegment1Model::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_2_LAYER, StormSegment2Model::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_3_LAYER, StormSegment3Model::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_4_LAYER, StormSegment4Model::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -318,10 +323,10 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WIND_FEATHER.get(), WindFeatherRenderer::new);
         event.registerEntityRenderer(GenesisEntities.REJECTION_STORM.get(), NoopRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_1.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_2.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_3.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_1.get(), StormSegment1Renderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_2.get(), StormSegment2Renderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_3.get(), StormSegment3Renderer::new);
+        event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), StormSegment4Renderer::new);
         event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), WindFeatherRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.LIGHTNING_ARROW.get(), ThrownItemRenderer::new);

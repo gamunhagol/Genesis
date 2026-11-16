@@ -375,17 +375,17 @@ public class GenesisEntities {
 
         STORM_SEGMENT_2 = ENTITY_TYPES.register("storm_segment_2", () ->
                 EntityType.Builder.<StormSegment2Entity>of(StormSegment2Entity::new, MobCategory.MISC)
-                        .sized(1.2F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.2F, 1.5F).clientTrackingRange(8).updateInterval(1)
                         .build("storm_segment_2"));
 
         STORM_SEGMENT_3 = ENTITY_TYPES.register("storm_segment_3", () ->
                 EntityType.Builder.<StormSegment3Entity>of(StormSegment3Entity::new, MobCategory.MISC)
-                        .sized(1.6F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.6F, 1.5F).clientTrackingRange(8).updateInterval(1)
                         .build("storm_segment_3"));
 
         STORM_SEGMENT_4 = ENTITY_TYPES.register("storm_segment_4", () ->
                 EntityType.Builder.<StormSegment4Entity>of(StormSegment4Entity::new, MobCategory.MISC)
-                        .sized(2.2F, 1.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(2.2F, 1.5F).clientTrackingRange(8).updateInterval(1)
                         .build("storm_segment_4"));
 
         BLADE_STORM = ENTITY_TYPES.register("blade_storm", () ->

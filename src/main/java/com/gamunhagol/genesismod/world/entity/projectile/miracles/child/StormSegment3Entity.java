@@ -23,6 +23,11 @@ public class StormSegment3Entity extends AbstractStormSegment {
     }
 
     @Override
+    public int getSegmentIndex() {
+        return 2;
+    }
+
+    @Override
     public double getVerticalSpacing() {
         return 1.5D;
     }
