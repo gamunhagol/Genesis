@@ -1,9 +1,9 @@
 package com.gamunhagol.genesismod.world.entity.projectile.miracles.child;
 
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Enemy;
@@ -19,9 +19,9 @@ import java.util.List;
 
 public class BladeStormEntity extends AbstractArrow {
 
-    protected float homingStrength = 0.09f;
-    protected double homingRadius = 24.0D;
-    protected int homingDelayTicks = 4;
+    protected double maxTurnRate = 0.16D;
+    protected double homingRadius = 28.0D;
+    protected int homingDelayTicks = 2;
     protected LivingEntity lockedTarget = null;
 
     public BladeStormEntity(EntityType<? extends BladeStormEntity> type, Level level) {
@@ -48,14 +48,6 @@ public class BladeStormEntity extends AbstractArrow {
         }
 
         super.tick();
-
-        if (this.level().isClientSide && !this.inGround) {
-            this.level().addParticle(
-                    ParticleTypes.SWEEP_ATTACK,
-                    this.getX(), this.getY(), this.getZ(),
-                    0.0D, 0.0D, 0.0D
-            );
-        }
     }
 
     protected Vec3 applyHoming(Vec3 currentMotion) {
@@ -73,9 +65,9 @@ public class BladeStormEntity extends AbstractArrow {
 
         if (this.lockedTarget != null) {
             Vec3 toTarget = this.lockedTarget.getBoundingBox().getCenter().subtract(this.position());
-            double distance = toTarget.length();
+            double distSqr = toTarget.lengthSqr();
 
-            if (distance < 0.5D) {
+            if (distSqr < 0.04D) {
                 return currentMotion;
             }
 
@@ -83,15 +75,27 @@ public class BladeStormEntity extends AbstractArrow {
             Vec3 targetDir = toTarget.normalize();
             double speed = currentMotion.length();
 
-            if (motionDir.dot(targetDir) > 0.0D) {
-                Vec3 newDir = motionDir.lerp(targetDir, this.homingStrength).normalize();
-                return newDir.scale(speed);
-            } else {
+            if (motionDir.dot(targetDir) < -0.25D) {
                 this.lockedTarget = null;
+                return currentMotion;
             }
+
+            Vec3 newDir = rotateTowards(motionDir, targetDir, this.maxTurnRate);
+            return newDir.scale(speed);
         }
 
         return currentMotion;
+    }
+
+    protected Vec3 rotateTowards(Vec3 from, Vec3 to, double maxAngleRadians) {
+        double dot = Mth.clamp(from.dot(to), -1.0D, 1.0D);
+        double angle = Math.acos(dot);
+
+        if (angle <= maxAngleRadians) {
+            return to;
+        }
+
+        return from.lerp(to, maxAngleRadians / angle).normalize();
     }
 
     @Override

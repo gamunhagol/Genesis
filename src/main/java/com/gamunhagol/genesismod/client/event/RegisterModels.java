@@ -244,6 +244,8 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.WATERSPOUT_LAYER, WaterspoutModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.WIND_FEATHER_LAYER, WindFeatherModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -314,13 +316,13 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WIND_WALL.get(), NoopRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.WIND_FEATHER.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.WIND_FEATHER.get(), WindFeatherRenderer::new);
         event.registerEntityRenderer(GenesisEntities.REJECTION_STORM.get(), NoopRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_1.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_2.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_3.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), WindFeatherRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.LIGHTNING_ARROW.get(), ThrownItemRenderer::new);
         event.registerEntityRenderer(GenesisEntities.LIGHTNING_SPEAR.get(), ThrownItemRenderer::new);

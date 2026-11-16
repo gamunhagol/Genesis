@@ -360,7 +360,7 @@ public class GenesisEntities {
 
         WIND_FEATHER = ENTITY_TYPES.register("wind_feather", () ->
                 EntityType.Builder.<WindFeatherEntity>of(WindFeatherEntity::new, MobCategory.MISC)
-                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(1)
+                        .sized(0.35F, 0.35F).clientTrackingRange(4).updateInterval(10)
                         .build("wind_feather"));
 
         REJECTION_STORM = ENTITY_TYPES.register("rejection_storm", () ->

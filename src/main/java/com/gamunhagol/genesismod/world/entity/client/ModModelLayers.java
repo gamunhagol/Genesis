@@ -42,6 +42,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation WATERSPOUT_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "waterspout"), "main");
 
+    public static final ModelLayerLocation WIND_FEATHER_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "wind_feather"), "main");
+
 
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");
