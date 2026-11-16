@@ -3,20 +3,23 @@ package com.gamunhagol.genesismod.world.entity.projectile.miracles.child;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.particle.Particle;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MoverType;
-import net.minecraft.world.entity.projectile.ItemSupplier;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -24,10 +27,12 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.List;
 
-public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
+public class WaterspoutEntity extends MagicEntity {
 
     private static final EntityDataAccessor<Integer> DATA_SEGMENT_INDEX =
             SynchedEntityData.defineId(WaterspoutEntity.class, EntityDataSerializers.INT);
@@ -35,22 +40,35 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
             SynchedEntityData.defineId(WaterspoutEntity.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Boolean> DATA_EMPOWERED_WATER =
             SynchedEntityData.defineId(WaterspoutEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Integer> DATA_LIFE_TICKS =
+            SynchedEntityData.defineId(WaterspoutEntity.class, EntityDataSerializers.INT);
 
     protected double basePullRadius = 6.5D;
     protected double basePullStrength = 0.15D;
-    protected int wanderChangeInterval = 40;
-    protected Vec3 wanderVelocity = Vec3.ZERO;
+
+    protected int nextWanderChangeTick = 0;
+    protected int movementMode = 0;
+    protected float moveAngle = 0.0F;
+    protected float angularVelocity = 0.0F;
+    protected double moveSpeed = 0.15D;
+
+    protected Vec3 segmentVelocity = Vec3.ZERO;
+    protected float lateralBias = 0.0F;
 
     public WaterspoutEntity(EntityType<? extends WaterspoutEntity> entityType, Level level) {
         super(entityType, level);
         this.maxLifeTicks = 600;
+        this.setMaxUpStep(1.1F);
     }
 
     public WaterspoutEntity(EntityType<? extends WaterspoutEntity> entityType, Level level, LivingEntity owner, DamageSnapshot snapshot, int segmentIndex, int parentId) {
         super(entityType, level, owner, snapshot);
         this.maxLifeTicks = 600;
+        this.setMaxUpStep(1.1F);
         this.setSegmentIndex(segmentIndex);
         this.setParentId(parentId);
+        this.lateralBias = (this.random.nextFloat() - 0.5F) * 2.0F;
+        this.moveAngle = this.random.nextFloat() * ((float) Math.PI * 2F);
 
         if (segmentIndex == 0) {
             this.setNoGravity(false);
@@ -67,6 +85,7 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
         this.entityData.define(DATA_SEGMENT_INDEX, 0);
         this.entityData.define(DATA_PARENT_ID, -1);
         this.entityData.define(DATA_EMPOWERED_WATER, false);
+        this.entityData.define(DATA_LIFE_TICKS, 0);
     }
 
     public int getSegmentIndex() {
@@ -100,9 +119,14 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
         this.entityData.set(DATA_EMPOWERED_WATER, empowered);
     }
 
-    @Override
-    public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+    public float getVisualScale() {
+        WaterspoutEntity root = (getSegmentIndex() == 0) ? this : findRootSpout();
+        int currentLife = (root != null) ? root.entityData.get(DATA_LIFE_TICKS) : this.entityData.get(DATA_LIFE_TICKS);
+        int maxLife = (root != null && root.maxLifeTicks > 0) ? root.maxLifeTicks : 600;
+
+        float lifeRatio = Math.max(0.2F, 1.0F - ((float) currentLife / (float) maxLife));
+        float waterMultiplier = this.isEmpoweredByWater() ? 2.0F : 1.0F;
+        return lifeRatio * waterMultiplier;
     }
 
     @Override
@@ -121,15 +145,96 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
 
         super.tick();
 
-        if (!this.level().isClientSide) {
+        if (this.level().isClientSide) {
+            spawnSpiralParticles(index);
+        } else {
             if (index == 0) {
                 handleRootMovementAndFluids();
+                this.entityData.set(DATA_LIFE_TICKS, this.lifeTicks);
             } else {
                 handleFollowParent(index);
             }
 
             applyVortexPull();
             applyContactEffects();
+        }
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    private void spawnSpiralParticles(int index) {
+        WaterspoutEntity root = (index == 0) ? this : findRootSpout();
+        if (root == null) return;
+
+        float scale = this.getVisualScale();
+        double baseRadius = (0.65D + (index * 0.22D)) * scale;
+        double segmentHeight = (this.getBbHeight() * 0.85D) * scale;
+
+        Vec3 tiltOffset = Vec3.ZERO;
+        if (index > 0) {
+            Entity parent = this.level().getEntity(getParentId());
+            if (parent != null) {
+                tiltOffset = new Vec3(
+                        (this.getX() - parent.getX()) * 0.08D,
+                        0.0D,
+                        (this.getZ() - parent.getZ()) * 0.08D
+                );
+            }
+        }
+
+        BlockPos rootPos = root.blockPosition();
+        BlockPos belowPos = rootPos.below();
+        BlockState stateAt = this.level().getBlockState(rootPos);
+        FluidState fluidAt = this.level().getFluidState(rootPos);
+        BlockState stateBelow = this.level().getBlockState(belowPos);
+        FluidState fluidBelow = this.level().getFluidState(belowPos);
+
+        boolean isFireOrLava = fluidAt.is(FluidTags.LAVA) || stateAt.is(Blocks.LAVA) || stateAt.is(BlockTags.FIRE) || stateAt.is(Blocks.CAMPFIRE)
+                || fluidBelow.is(FluidTags.LAVA) || stateBelow.is(Blocks.LAVA) || stateBelow.is(BlockTags.FIRE) || stateBelow.is(Blocks.CAMPFIRE);
+
+        boolean isWater = !isFireOrLava && (root.isEmpoweredByWater()
+                || fluidAt.is(FluidTags.WATER) || stateAt.is(Blocks.WATER)
+                || fluidBelow.is(FluidTags.WATER) || stateBelow.is(Blocks.WATER));
+
+        ParticleOptions particleType = isFireOrLava ? ParticleTypes.SMALL_FLAME : ParticleTypes.SMOKE;
+
+        double baseAngle = (this.tickCount * 0.24D) + (index * 1.15D);
+        double verticalStep = (this.tickCount % 4) * 0.25D;
+
+        for (int arm = 0; arm < 4; arm++) {
+            double armAngle = baseAngle + (arm * (Math.PI * 0.5D)) + (verticalStep * 0.9D);
+            double spawnYOffset = verticalStep * segmentHeight;
+
+            double rx = Math.cos(armAngle) * baseRadius;
+            double rz = Math.sin(armAngle) * baseRadius;
+
+            double px = this.getX() + rx;
+            double py = this.getY() + spawnYOffset;
+            double pz = this.getZ() + rz;
+
+            double tangentSpeed = 0.06D * scale;
+            double vx = (-Math.sin(armAngle) * tangentSpeed) + tiltOffset.x;
+            double vy = (0.09D + (this.random.nextDouble() * 0.03D)) * scale;
+            double vz = (Math.cos(armAngle) * tangentSpeed) + tiltOffset.z;
+
+            Particle particle = Minecraft.getInstance().particleEngine.createParticle(
+                    particleType,
+                    px, py, pz,
+                    vx, vy, vz
+            );
+
+            if (particle != null) {
+                int life = Math.max(4, (int) (12 * Math.min(scale, 1.5F)));
+                particle.setLifetime(life);
+                particle.scale(Math.max(0.45F, 0.95F * scale));
+
+                if (!isFireOrLava) {
+                    if (isWater) {
+                        particle.setColor(0.22F, 0.62F, 0.96F);
+                    } else {
+                        particle.setColor(0.92F, 0.94F, 0.96F);
+                    }
+                }
+            }
         }
     }
 
@@ -145,8 +250,7 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
 
             this.lifeTicks += 4;
             this.setEmpoweredByWater(false);
-        }
-        else if (fluid.getType() == Fluids.WATER || fluid.getType() == Fluids.FLOWING_WATER || this.isInWater()) {
+        } else if (fluid.getType() == Fluids.WATER || fluid.getType() == Fluids.FLOWING_WATER || this.isInWater()) {
             this.setEmpoweredByWater(true);
             if (this.tickCount % 2 == 0 && this.lifeTicks > 0) {
                 this.lifeTicks--;
@@ -155,11 +259,45 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
             this.setEmpoweredByWater(false);
         }
 
-        if (this.tickCount % this.wanderChangeInterval == 0 || this.wanderVelocity.lengthSqr() < 1.0E-4D) {
-            float angle = this.random.nextFloat() * ((float) Math.PI * 2F);
-            double speed = 0.08D + (this.random.nextDouble() * 0.04D);
-            this.wanderVelocity = new Vec3(Math.cos(angle) * speed, 0.0D, Math.sin(angle) * speed);
+        if (this.tickCount >= this.nextWanderChangeTick) {
+            this.movementMode = this.random.nextInt(4);
+            this.nextWanderChangeTick = this.tickCount + 10 + this.random.nextInt(25);
+
+            switch (this.movementMode) {
+                case 0 -> {
+                    this.moveAngle = this.random.nextFloat() * ((float) Math.PI * 2F);
+                    this.angularVelocity = 0.0F;
+                    this.moveSpeed = 0.22D + (this.random.nextDouble() * 0.14D);
+                }
+                case 1 -> {
+                    float dir = this.random.nextBoolean() ? 1.0F : -1.0F;
+                    this.angularVelocity = dir * (0.14F + this.random.nextFloat() * 0.14F);
+                    this.moveSpeed = 0.18D + (this.random.nextDouble() * 0.10D);
+                }
+                case 2 -> {
+                    this.moveAngle += ((this.random.nextFloat() - 0.5F) * 2.5F);
+                    this.angularVelocity = 0.0F;
+                    this.moveSpeed = 0.20D + (this.random.nextDouble() * 0.12D);
+                }
+                case 3 -> {
+                    this.moveAngle += (float) Math.PI * (0.6F + this.random.nextFloat() * 0.8F);
+                    this.angularVelocity = (this.random.nextFloat() - 0.5F) * 0.1F;
+                    this.moveSpeed = 0.03D;
+                }
+            }
         }
+
+        if (this.movementMode == 2) {
+            this.moveAngle += (float) Math.sin(this.tickCount * 0.45D) * 0.28F;
+        } else if (this.movementMode == 3) {
+            this.moveSpeed = Math.min(0.28D, this.moveSpeed + 0.025D);
+            this.moveAngle += this.angularVelocity;
+        } else {
+            this.moveAngle += this.angularVelocity;
+        }
+
+        double vx = Math.cos(this.moveAngle) * this.moveSpeed;
+        double vz = Math.sin(this.moveAngle) * this.moveSpeed;
 
         Vec3 motion = this.getDeltaMovement();
         double nextYMotion;
@@ -177,8 +315,12 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
             nextYMotion = 0.0D;
         }
 
-        this.setDeltaMovement(this.wanderVelocity.x, nextYMotion, this.wanderVelocity.z);
+        this.setDeltaMovement(vx, nextYMotion, vz);
         this.move(MoverType.SELF, this.getDeltaMovement());
+
+        if (this.horizontalCollision) {
+            this.moveAngle += (float) Math.PI * (0.5F + this.random.nextFloat());
+        }
     }
 
     private void handleFollowParent(int index) {
@@ -219,17 +361,34 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
         float finalScale = lifeRatio * waterMultiplier;
 
         double heightSpacing = 2.2D * Math.min(finalScale, 1.6D);
-        double targetY = parent.getY() + heightSpacing;
+        Vec3 targetPos = new Vec3(parent.getX(), parent.getY() + heightSpacing, parent.getZ());
+        Vec3 displacement = targetPos.subtract(this.position());
 
-        double swayRadius = (0.45D * index) * finalScale;
-        float angle = (this.tickCount * 0.2F) + (index * 1.5F);
-        double offsetX = Math.cos(angle) * swayRadius;
-        double offsetZ = Math.sin(angle) * swayRadius;
+        double stiffness = Math.max(0.11D, 0.22D - (index * 0.018D));
+        double damping = Math.min(0.76D, 0.64D + (index * 0.022D));
 
-        Vec3 targetPos = new Vec3(parent.getX() + offsetX, targetY, parent.getZ() + offsetZ);
-        Vec3 nextPos = this.position().lerp(targetPos, 0.35D);
+        double twistAngle = Math.sin((this.tickCount * 0.10D) + (index * 1.8D) + this.lateralBias) * (0.14D * index);
+        double cosT = Math.cos(twistAngle);
+        double sinT = Math.sin(twistAngle);
 
-        this.setPos(nextPos.x, nextPos.y, nextPos.z);
+        double pulledX = displacement.x * cosT - displacement.z * sinT;
+        double pulledZ = displacement.x * sinT + displacement.z * cosT;
+
+        Vec3 springForce = new Vec3(
+                pulledX * stiffness,
+                displacement.y * 0.32D,
+                pulledZ * stiffness
+        );
+
+        this.segmentVelocity = this.segmentVelocity.add(springForce);
+        this.segmentVelocity = new Vec3(
+                this.segmentVelocity.x * damping,
+                this.segmentVelocity.y * 0.65D,
+                this.segmentVelocity.z * damping
+        );
+
+        this.setDeltaMovement(this.segmentVelocity);
+        this.move(MoverType.SELF, this.getDeltaMovement());
     }
 
     private WaterspoutEntity findRootSpout() {
@@ -319,8 +478,10 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
         tag.putInt("SegmentIndex", getSegmentIndex());
         tag.putInt("ParentId", getParentId());
         tag.putBoolean("EmpoweredWater", isEmpoweredByWater());
-        tag.putDouble("WanderX", this.wanderVelocity.x);
-        tag.putDouble("WanderZ", this.wanderVelocity.z);
+        tag.putInt("MovementMode", this.movementMode);
+        tag.putFloat("MoveAngle", this.moveAngle);
+        tag.putFloat("AngularVelocity", this.angularVelocity);
+        tag.putDouble("MoveSpeed", this.moveSpeed);
     }
 
     @Override
@@ -329,6 +490,9 @@ public class WaterspoutEntity extends MagicEntity implements ItemSupplier {
         setSegmentIndex(tag.getInt("SegmentIndex"));
         setParentId(tag.getInt("ParentId"));
         setEmpoweredByWater(tag.getBoolean("EmpoweredWater"));
-        this.wanderVelocity = new Vec3(tag.getDouble("WanderX"), 0.0D, tag.getDouble("WanderZ"));
+        this.movementMode = tag.getInt("MovementMode");
+        this.moveAngle = tag.getFloat("MoveAngle");
+        this.angularVelocity = tag.getFloat("AngularVelocity");
+        this.moveSpeed = tag.getDouble("MoveSpeed");
     }
 }

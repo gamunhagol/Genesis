@@ -14,8 +14,8 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
 
-public class WaterspoutSpell extends MiracleSpell {
-    public WaterspoutSpell() {
+public class WaterspoutMiracle extends MiracleSpell {
+    public WaterspoutMiracle() {
         super("waterspout");
     }
 
@@ -68,7 +68,7 @@ public class WaterspoutSpell extends MiracleSpell {
         int previousParentId = root.getId();
         double heightSpacing = 1.8D;
 
-        for (int i = 1; i <= 3; i++) {
+        for (int i = 1; i <= 4; i++) {
             WaterspoutEntity segment = new WaterspoutEntity(
                     GenesisEntities.WATERSPOUT.get(),
                     level,

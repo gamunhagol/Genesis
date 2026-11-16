@@ -200,7 +200,7 @@ public class GenesisEntities {
 
         MAGIC_GLINT = ENTITY_TYPES.register("magic_glint", () ->
                 EntityType.Builder.<MagicGlint>of(MagicGlint::new, MobCategory.MISC)
-                        .sized(0.2F, 0.2F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.2F, 0.2F).clientTrackingRange(4).updateInterval(2)
                         .build("magic_glint"));
 
         MAGIC_MIST = ENTITY_TYPES.register("magic_mist", () ->
@@ -210,33 +210,33 @@ public class GenesisEntities {
 
         MAGIC_PEBBLE = ENTITY_TYPES.register("magic_pebble", () ->
                 EntityType.Builder.<MagicPebble>of(MagicPebble::new, MobCategory.MISC)
-                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(1)
                         .build("magic_pebble"));
 
         GREAT_MAGIC_PEBBLE = ENTITY_TYPES.register("great_magic_pebble", () ->
                 EntityType.Builder.<GreatMagicPebble>of(GreatMagicPebble::new, MobCategory.MISC)
-                        .sized(0.4F, 0.4F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.4F, 0.4F).clientTrackingRange(4).updateInterval(1)
                         .build("great_magic_pebble"));
 
         MAGIC_COMET = ENTITY_TYPES.register("magic_comet", () ->
                 EntityType.Builder.<MagicComet>of(MagicComet::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.5F, 0.5F).clientTrackingRange(6).updateInterval(1)
                         .build("magic_comet"));
 
         SHOOTING_STAR = ENTITY_TYPES.register("shooting_star", () ->
                 EntityType.Builder.<ShootingStar>of(ShootingStar::new, MobCategory.MISC)
-                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(1)
                         .build("shooting_star"));
 
 
         MAGIC_METEOR = ENTITY_TYPES.register("magic_meteor", () ->
                 EntityType.Builder.<MagicMeteor>of(MagicMeteor::new, MobCategory.MISC)
-                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(1)
                         .build("magic_meteor"));
 
         SMALL_MAGIC_METEOR = ENTITY_TYPES.register("small_magic_meteor", () ->
                 EntityType.Builder.<SmallMagicMeteor>of(SmallMagicMeteor::new, MobCategory.MISC)
-                        .sized(0.15F, 0.15F).clientTrackingRange(4).updateInterval(10)
+                        .sized(0.15F, 0.15F).clientTrackingRange(4).updateInterval(1)
                         .build("small_magic_meteor"));
 
 
@@ -279,17 +279,17 @@ public class GenesisEntities {
 
         FALLING_STAR_BULLET = ENTITY_TYPES.register("falling_star_bullet", () ->
                 EntityType.Builder.<FallingStarBullet>of(FallingStarBullet::new, MobCategory.MISC)
-                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.3F, 0.3F).clientTrackingRange(6).updateInterval(8)
                         .build("falling_star_bullet"));
 
         GRAND_FALLING_STAR_BULLET = ENTITY_TYPES.register("grand_falling_star_bullet", () ->
                 EntityType.Builder.<GrandFallingStarBullet>of(GrandFallingStarBullet::new, MobCategory.MISC)
-                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(8)
                         .build("grand_falling_star_bullet"));
 
         DIVIDED = ENTITY_TYPES.register("divided", () ->
                 EntityType.Builder.<DividedEntity>of(DividedEntity::new, MobCategory.MISC)
-                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(1)
                         .build("divided"));
 
         STAR_GASP = ENTITY_TYPES.register("star_gasp", () ->
@@ -337,7 +337,7 @@ public class GenesisEntities {
 
         WATER_DROP = ENTITY_TYPES.register("water_drop", () ->
                 EntityType.Builder.<WaterDropEntity>of(WaterDropEntity::new, MobCategory.MISC)
-                        .sized(0.25F, 0.25F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.25F, 0.25F).clientTrackingRange(6).updateInterval(6)
                         .build("water_drop"));
 
         WATERSPOUT = ENTITY_TYPES.register("waterspout", () ->
@@ -345,7 +345,7 @@ public class GenesisEntities {
                         .sized(0.8F, 1.8F)
                         .fireImmune()
                         .clientTrackingRange(8)
-                        .updateInterval(10)
+                        .updateInterval(1)
                         .build("waterspout"));
 
         EMBER = ENTITY_TYPES.register("ember", () ->

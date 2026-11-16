@@ -242,6 +242,8 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.BIG_STONE_LAYER, BigStoneModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.GIANT_STONE_LAYER, GiantStoneModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.WATERSPOUT_LAYER, WaterspoutModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -306,7 +308,7 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WATER_DROP.get(), NoopRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.WATERSPOUT.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.WATERSPOUT.get(), WaterspoutRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.EMBER.get(), ThrownItemRenderer::new);
 

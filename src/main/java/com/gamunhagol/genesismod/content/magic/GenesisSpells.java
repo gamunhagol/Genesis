@@ -115,8 +115,8 @@ public class GenesisSpells {
     public static final AbstractSpell SEA_SERPENT_SCALE = register(new SeaSerpentScaleMiracle());
     public static final AbstractSpell SEA_CURSE = register(new SeaCurseMiracle());
 
-    public static final AbstractSpell AGFLO_JAWS = register(new AgfloJawsSpell());
-    public static final AbstractSpell WATERSPOUT = register(new WaterspoutSpell());
+    public static final AbstractSpell AGFLO_JAWS = register(new AgfloJawsMiracle());
+    public static final AbstractSpell WATERSPOUT = register(new WaterspoutMiracle());
 
     public static final AbstractSpell BIO_SMELTER = register(new BioSmelterMiracle());
     public static final AbstractSpell TINDER = register(new TinderMiracle());
