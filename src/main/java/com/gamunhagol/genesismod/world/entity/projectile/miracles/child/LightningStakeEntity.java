@@ -36,6 +36,7 @@ public class LightningStakeEntity extends MagicEntity implements ItemSupplier {
         this.maxLifeTicks = 100;
         this.setDeltaMovement(shootDir.normalize().scale(STAKE_SPEED));
         this.hasImpulse = true;
+        this.updateRotation();
     }
 
     @Override
@@ -46,21 +47,24 @@ public class LightningStakeEntity extends MagicEntity implements ItemSupplier {
     @Override
     public void tick() {
         super.tick();
+        if (this.isHit()) return;
 
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
             this.onHit(hitresult);
         }
 
-        if (this.isRemoved()) return;
+        if (this.isRemoved() || this.isHit()) return;
 
         Vec3 motion = this.getDeltaMovement();
+        this.updateRotation();
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
         this.checkInsideBlocks();
     }
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
+        if (this.isHit()) return;
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             Entity target = result.getEntity();
@@ -70,16 +74,17 @@ public class LightningStakeEntity extends MagicEntity implements ItemSupplier {
             target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
 
             applyAreaDamage(result.getLocation(), target);
-            this.discard();
+            this.triggerHit(result.getLocation());
         }
     }
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
+        if (this.isHit()) return;
         super.onHitBlock(result);
         if (!this.level().isClientSide) {
             applyAreaDamage(result.getLocation(), null);
-            this.discard();
+            this.triggerHit(result.getLocation());
         }
     }
 

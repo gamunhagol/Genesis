@@ -4,19 +4,29 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
 
 public abstract class MagicEntity extends Projectile {
+    private static final EntityDataAccessor<Boolean> DATA_HIT = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.BOOLEAN);
+    private static final EntityDataAccessor<Float> DATA_HIT_YAW = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Float> DATA_HIT_PITCH = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.FLOAT);
+
     protected DamageSnapshot damageSnapshot = DamageSnapshot.EMPTY;
     protected int lifeTicks = 0;
     protected int maxLifeTicks = 1200;
+    protected int hitTicks = 0;
+    protected int maxHitTicks = 8;
 
     public MagicEntity(EntityType<? extends MagicEntity> entityType, Level level) {
         super(entityType, level);
@@ -41,13 +51,62 @@ public abstract class MagicEntity extends Projectile {
         this.maxLifeTicks = ticks;
     }
 
+    public void setMaxHitTicks(int ticks) {
+        this.maxHitTicks = ticks;
+    }
+
+    public boolean isHit() {
+        return this.entityData.get(DATA_HIT);
+    }
+
+    public float getHitYaw() {
+        return this.entityData.get(DATA_HIT_YAW);
+    }
+
+    public float getHitPitch() {
+        return this.entityData.get(DATA_HIT_PITCH);
+    }
+
+    public int getHitTicks() {
+        return this.hitTicks;
+    }
+
+    protected void triggerHit(Vec3 hitPos) {
+        this.updateRotation();
+        float yaw = this.getYRot();
+        float pitch = this.getXRot();
+
+        this.setPos(hitPos.x, hitPos.y, hitPos.z);
+        this.entityData.set(DATA_HIT_YAW, yaw);
+        this.entityData.set(DATA_HIT_PITCH, pitch);
+        this.entityData.set(DATA_HIT, true);
+        this.setDeltaMovement(Vec3.ZERO);
+    }
+
     @Override
-    protected void defineSynchedData() {}
+    protected void defineSynchedData() {
+        this.entityData.define(DATA_HIT, false);
+        this.entityData.define(DATA_HIT_YAW, 0.0F);
+        this.entityData.define(DATA_HIT_PITCH, 0.0F);
+    }
 
     @Override
     public void tick() {
         super.tick();
         this.lifeTicks++;
+
+        if (this.isHit()) {
+            this.setYRot(this.getHitYaw());
+            this.setXRot(this.getHitPitch());
+            this.yRotO = this.getHitYaw();
+            this.xRotO = this.getHitPitch();
+
+            this.hitTicks++;
+            if (!this.level().isClientSide && this.hitTicks >= this.maxHitTicks) {
+                this.discard();
+            }
+            return;
+        }
 
         if (!this.level().isClientSide) {
             if (this.lifeTicks >= this.maxLifeTicks) {
@@ -68,6 +127,10 @@ public abstract class MagicEntity extends Projectile {
         super.addAdditionalSaveData(tag);
         tag.putInt("LifeTicks", this.lifeTicks);
         tag.putInt("MaxLifeTicks", this.maxLifeTicks);
+        tag.putBoolean("IsHit", this.isHit());
+        tag.putFloat("HitYaw", this.getHitYaw());
+        tag.putFloat("HitPitch", this.getHitPitch());
+        tag.putInt("HitTicks", this.hitTicks);
     }
 
     @Override
@@ -75,6 +138,10 @@ public abstract class MagicEntity extends Projectile {
         super.readAdditionalSaveData(tag);
         this.lifeTicks = tag.getInt("LifeTicks");
         this.maxLifeTicks = tag.getInt("MaxLifeTicks");
+        this.entityData.set(DATA_HIT, tag.getBoolean("IsHit"));
+        this.entityData.set(DATA_HIT_YAW, tag.getFloat("HitYaw"));
+        this.entityData.set(DATA_HIT_PITCH, tag.getFloat("HitPitch"));
+        this.hitTicks = tag.getInt("HitTicks");
     }
 
     @Override

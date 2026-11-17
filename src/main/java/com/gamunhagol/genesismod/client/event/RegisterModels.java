@@ -251,6 +251,11 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_3_LAYER, StormSegment3Model::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.STORM_SEGMENT_4_LAYER, StormSegment4Model::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.LIGHTNING_ARROW_LAYER, LightningArrowModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.LIGHTNING_SPEAR_LAYER, LightningSpearModel::createBodyLayer);
+
+        event.registerLayerDefinition(ModModelLayers.VALA_ARROW_LAYER, ValaArrowModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -329,11 +334,11 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.STORM_SEGMENT_4.get(), StormSegment4Renderer::new);
         event.registerEntityRenderer(GenesisEntities.BLADE_STORM.get(), WindFeatherRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.LIGHTNING_ARROW.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.LIGHTNING_SPEAR.get(), ThrownItemRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.LIGHTNING_STAKE.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.LIGHTNING_ARROW.get(), LightningArrowRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.LIGHTNING_SPEAR.get(), LightningSpearRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.LIGHTNING_STAKE.get(), LightningSpearRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.VALA_ARROW.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.VALA_ARROW.get(), ValaArrowRenderer::new);
 
 
         event.registerEntityRenderer(GenesisEntities.ROOT_ENTANGLE.get(), NoopRenderer::new);

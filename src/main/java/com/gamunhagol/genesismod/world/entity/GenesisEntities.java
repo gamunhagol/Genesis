@@ -402,17 +402,17 @@ public class GenesisEntities {
 
         LIGHTNING_SPEAR = ENTITY_TYPES.register("lightning_spear", () ->
                 EntityType.Builder.<LightningSpearEntity>of(LightningSpearEntity::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
                         .build("lightning_spear"));
 
         LIGHTNING_STAKE = ENTITY_TYPES.register("lightning_stake", () ->
                 EntityType.Builder.<LightningStakeEntity>of(LightningStakeEntity::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
                         .build("lightning_stake"));
 
         VALA_ARROW = ENTITY_TYPES.register("vala_arrow", () ->
                 EntityType.Builder.<ValaArrowEntity>of(ValaArrowEntity::new, MobCategory.MISC)
-                        .sized(0.5F, 0.5F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
                         .build("vala_arrow"));
 
 

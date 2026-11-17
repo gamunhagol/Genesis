@@ -54,6 +54,14 @@ public class ModModelLayers {
     public static final ModelLayerLocation STORM_SEGMENT_4_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "storm_segment_4"), "main");
 
+    public static final ModelLayerLocation LIGHTNING_ARROW_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "lightning_arrow"), "main");
+    public static final ModelLayerLocation LIGHTNING_SPEAR_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "lightning_spear"), "main");
+
+    public static final ModelLayerLocation VALA_ARROW_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "vala_arrow"), "main");
+
 
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");
