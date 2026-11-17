@@ -67,6 +67,9 @@ public class ModModelLayers {
     public static final ModelLayerLocation ROOT_ENTANGLE_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "root_entangle"), "main");
 
+    public static final ModelLayerLocation FROZEN_STAR_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "frozen_star"), "main");
+
 
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");

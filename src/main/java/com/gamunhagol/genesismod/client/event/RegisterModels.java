@@ -260,6 +260,8 @@ public class RegisterModels {
         event.registerLayerDefinition(ModModelLayers.ROOT_ENTANGLE_LAYER, RootEntangleModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.ROOT_SPEAR_LAYER, RootSpearModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.FROZEN_STAR_LAYER, FrozenStarModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -351,7 +353,7 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.ROOT_STRIKE.get(), ThrownItemRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.FROZEN_STAR.get(), ThrownItemRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.FROZEN_STAR.get(), FrozenStarRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.BLIZZARD.get(), NoopRenderer::new);
 

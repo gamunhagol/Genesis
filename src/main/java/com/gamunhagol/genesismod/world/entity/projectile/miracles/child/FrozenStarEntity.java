@@ -5,6 +5,7 @@ import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProv
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -40,7 +41,7 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
     public FrozenStarEntity(EntityType<? extends FrozenStarEntity> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.maxLifeTicks = 100;
+        this.maxLifeTicks = 400;
     }
 
     public FrozenStarEntity(Level level, LivingEntity owner, DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, float shockwaveDamage) {
@@ -48,7 +49,7 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
         this.aoeSnapshot = aoeSnapshot;
         this.shockwaveDamage = shockwaveDamage;
         this.setNoGravity(true);
-        this.maxLifeTicks = 100;
+        this.maxLifeTicks = 400;
     }
 
     public void setSnapshots(DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, float shockwaveDamage) {
@@ -66,7 +67,11 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
     public void tick() {
         super.tick();
 
-        if (!this.level().isClientSide) {
+        Vec3 motion = this.getDeltaMovement();
+
+        if (this.level().isClientSide) {
+            spawnTrailParticles(motion);
+        } else {
             HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
             if (hitresult.getType() != HitResult.Type.MISS) {
                 this.onHit(hitresult);
@@ -80,9 +85,28 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
             }
         }
 
-        Vec3 motion = this.getDeltaMovement();
         this.setPos(this.getX() + motion.x, this.getY() + motion.y, this.getZ() + motion.z);
         this.checkInsideBlocks();
+    }
+
+    private void spawnTrailParticles(Vec3 motion) {
+        double centerX = this.getX();
+        double centerY = this.getY() + this.getBbHeight() * 0.5D;
+        double centerZ = this.getZ();
+
+        int count = 4;
+        for (int i = 0; i < count; i++) {
+            double step = (double) i / (double) count;
+            double px = centerX - motion.x * step + (this.random.nextDouble() - 0.5D) * 0.35D;
+            double py = centerY - motion.y * step + (this.random.nextDouble() - 0.5D) * 0.35D;
+            double pz = centerZ - motion.z * step + (this.random.nextDouble() - 0.5D) * 0.35D;
+
+            double vx = (this.random.nextDouble() - 0.5D) * 0.03D;
+            double vy = (this.random.nextDouble() - 0.5D) * 0.03D;
+            double vz = (this.random.nextDouble() - 0.5D) * 0.03D;
+
+            this.level().addParticle(ParticleTypes.SNOWFLAKE, px, py, pz, vx, vy, vz);
+        }
     }
 
     @Override

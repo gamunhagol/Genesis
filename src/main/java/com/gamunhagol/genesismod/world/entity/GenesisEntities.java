@@ -437,7 +437,7 @@ public class GenesisEntities {
 
         FROZEN_STAR = ENTITY_TYPES.register("frozen_star", () ->
                 EntityType.Builder.<FrozenStarEntity>of(FrozenStarEntity::new, MobCategory.MISC)
-                        .sized(0.8F, 0.8F).clientTrackingRange(8).updateInterval(10)
+                        .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("frozen_star"));
 
         BLIZZARD = ENTITY_TYPES.register("blizzard_zone", () ->
