@@ -12,17 +12,21 @@ import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LargeRoc
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.RockEntity;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class EarthExtractMiracle extends MiracleSpell {
     private static final String TAG_HAS_ROCK = "GenesisHasPulledRock";
     private static final String TAG_IS_LARGE = "GenesisIsLargeRock";
+    private static final String TAG_ROCK_UUID = "GenesisPulledRockUUID";
     private static final int MAX_CHARGE_TICKS = 70;
 
     public EarthExtractMiracle() {
@@ -90,7 +94,7 @@ public class EarthExtractMiracle extends MiracleSpell {
 
     @Override
     protected void onExecuteCharged(Level level, LivingEntity caster, DamageSnapshot spellSnapshot, int chargeTicks) {
-        if (level.isClientSide) return;
+        if (!(level instanceof ServerLevel serverLevel)) return;
 
         CompoundTag tag = caster.getPersistentData();
         float ratio = (float) chargeTicks / (float) getMaxChargeTicks();
@@ -102,19 +106,48 @@ public class EarthExtractMiracle extends MiracleSpell {
         if (caster instanceof ServerPlayer serverPlayer) {
             GenesisNetwork.sendToPlayer(new PacketSyncPulledRockState(true, isLarge), serverPlayer);
         }
+
+        ItemStack catalystStack = caster.getMainHandItem().getItem() instanceof CatalystItem
+                ? caster.getMainHandItem()
+                : caster.getOffhandItem();
+        DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, catalystStack, 0f);
+
+        Entity oldEntity = getHeldRockEntity(serverLevel, tag);
+        if (oldEntity != null) {
+            oldEntity.discard();
+        }
+
+        if (isLarge) {
+            DamageSnapshot largeSnapshot = calculateLargeRockSnapshot(caster, catalyst);
+            LargeRockEntity largeRock = new LargeRockEntity(level, caster, largeSnapshot);
+            largeRock.setHeld(true);
+            largeRock.setPos(caster.getX(), caster.getY() + 2.2D, caster.getZ());
+            largeRock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(largeSnapshot));
+            level.addFreshEntity(largeRock);
+            tag.putUUID(TAG_ROCK_UUID, largeRock.getUUID());
+        } else {
+            RockEntity rock = new RockEntity(level, caster, spellSnapshot);
+            rock.setHeld(true);
+            rock.setPos(caster.getX(), caster.getY() + 1.8D, caster.getZ());
+            rock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
+            level.addFreshEntity(rock);
+            tag.putUUID(TAG_ROCK_UUID, rock.getUUID());
+        }
     }
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        if (level.isClientSide) return;
+        if (!(level instanceof ServerLevel serverLevel)) return;
 
         CompoundTag tag = caster.getPersistentData();
 
         if (tag.getBoolean(TAG_HAS_ROCK)) {
             boolean isLarge = tag.getBoolean(TAG_IS_LARGE);
+            Entity heldEntity = getHeldRockEntity(serverLevel, tag);
 
             tag.remove(TAG_HAS_ROCK);
             tag.remove(TAG_IS_LARGE);
+            tag.remove(TAG_ROCK_UUID);
 
             if (caster instanceof ServerPlayer serverPlayer) {
                 GenesisNetwork.sendToPlayer(new PacketSyncPulledRockState(false, false), serverPlayer);
@@ -129,21 +162,33 @@ public class EarthExtractMiracle extends MiracleSpell {
             DamageSnapshot catalyst = WeaponRequirementHelper.calculateTotalDamage(caster, catalystStack, 0f);
 
             if (isLarge) {
-                DamageSnapshot largeSnapshot = calculateLargeRockSnapshot(caster, catalyst);
-                LargeRockEntity largeRock = new LargeRockEntity(level, caster, largeSnapshot);
-                largeRock.setPos(caster.getX(), caster.getEyeY() + 0.3D, caster.getZ());
-                largeRock.setDeltaMovement(look.scale(0.85D));
-
-                largeRock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(largeSnapshot));
-                level.addFreshEntity(largeRock);
+                if (heldEntity instanceof LargeRockEntity largeRock && largeRock.isAlive()) {
+                    largeRock.releaseRock(look.scale(0.85D));
+                } else {
+                    DamageSnapshot largeSnapshot = calculateLargeRockSnapshot(caster, catalyst);
+                    LargeRockEntity largeRock = new LargeRockEntity(level, caster, largeSnapshot);
+                    largeRock.setPos(caster.getX(), caster.getEyeY() + 0.3D, caster.getZ());
+                    largeRock.setDeltaMovement(look.scale(0.85D));
+                    largeRock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(largeSnapshot));
+                    level.addFreshEntity(largeRock);
+                }
             } else {
-                RockEntity rock = new RockEntity(level, caster, spellSnapshot);
-                rock.setPos(caster.getX(), caster.getEyeY() + 0.2D, caster.getZ());
-                rock.setDeltaMovement(look.scale(0.9D));
-
-                rock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
-                level.addFreshEntity(rock);
+                if (heldEntity instanceof RockEntity rock && rock.isAlive()) {
+                    rock.releaseRock(look.scale(0.9D));
+                } else {
+                    RockEntity rock = new RockEntity(level, caster, spellSnapshot);
+                    rock.setPos(caster.getX(), caster.getEyeY() + 0.2D, caster.getZ());
+                    rock.setDeltaMovement(look.scale(0.9D));
+                    rock.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
+                    level.addFreshEntity(rock);
+                }
             }
         }
+    }
+
+    private Entity getHeldRockEntity(ServerLevel level, CompoundTag tag) {
+        if (!tag.hasUUID(TAG_ROCK_UUID)) return null;
+        UUID uuid = tag.getUUID(TAG_ROCK_UUID);
+        return level.getEntity(uuid);
     }
 }

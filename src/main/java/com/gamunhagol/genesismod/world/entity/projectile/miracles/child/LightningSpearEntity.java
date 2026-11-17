@@ -23,18 +23,31 @@ public class LightningSpearEntity extends MagicEntity implements ItemSupplier {
     public LightningSpearEntity(EntityType<? extends LightningSpearEntity> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.maxLifeTicks = 200;
+        this.maxLifeTicks = 600;
     }
 
     public LightningSpearEntity(Level level, LivingEntity owner, DamageSnapshot snapshot, Vec3 shootDir) {
         super(GenesisEntities.LIGHTNING_SPEAR.get(), level, owner, snapshot);
         this.setNoGravity(true);
-        this.maxLifeTicks = 200;
-        this.setDeltaMovement(shootDir.normalize().scale(SPEAR_SPEED));
+        this.maxLifeTicks = 600;
+        if (shootDir.lengthSqr() > 1.0E-7D) {
+            this.setDeltaMovement(shootDir.normalize().scale(SPEAR_SPEED));
+        } else {
+            this.setDeltaMovement(Vec3.ZERO);
+        }
         this.hasImpulse = true;
         this.updateRotation();
 
         this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+    }
+
+    public void releaseSpear(DamageSnapshot snapshot, Vec3 shootDir) {
+        this.damageSnapshot = snapshot;
+        this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+        this.setDeltaMovement(shootDir.normalize().scale(SPEAR_SPEED));
+        this.hasImpulse = true;
+        this.updateRotation();
+        this.setCharging(false);
     }
 
     @Override
@@ -46,6 +59,16 @@ public class LightningSpearEntity extends MagicEntity implements ItemSupplier {
     public void tick() {
         super.tick();
         if (this.isHit()) return;
+
+        if (this.isCharging()) {
+            if (this.getOwner() instanceof LivingEntity owner) {
+                this.setYRot(-owner.getYRot());
+                this.setXRot(-owner.getXRot());
+                this.yRotO = this.getYRot();
+                this.xRotO = this.getXRot();
+            }
+            return;
+        }
 
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
@@ -62,7 +85,7 @@ public class LightningSpearEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        if (this.isHit()) return;
+        if (this.isHit() || this.isCharging()) return;
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             Entity target = result.getEntity();
@@ -79,7 +102,7 @@ public class LightningSpearEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        if (this.isHit()) return;
+        if (this.isHit() || this.isCharging()) return;
         super.onHitBlock(result);
         if (!this.level().isClientSide) {
             this.triggerHit(result.getLocation());

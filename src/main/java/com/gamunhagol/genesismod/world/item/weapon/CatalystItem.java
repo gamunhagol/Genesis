@@ -5,7 +5,6 @@ import com.gamunhagol.genesismod.content.magic.AbstractSpell;
 import com.gamunhagol.genesismod.content.magic.GenesisSpells;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
-import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.server.PacketCastChargedSpell;
 import com.gamunhagol.genesismod.skill.GenesisSkills;
@@ -32,7 +31,6 @@ import yesman.epicfight.client.ClientEngine;
 import yesman.epicfight.client.world.capabilites.entitypatch.player.LocalPlayerPatch;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.SkillSlots;
-import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 
 import java.util.List;
 
@@ -139,22 +137,27 @@ public class CatalystItem extends Item {
     public void onUseTick(Level level, LivingEntity entity, ItemStack stack, int timeLeft) {
         if (entity instanceof Player player) {
             AbstractSpell currentSpell = getSelectedSpell(player);
-
-            if (currentSpell != null && currentSpell.isContinuous(player)) {
+            if (currentSpell != null) {
                 int ticksUsing = this.getUseDuration(stack) - timeLeft;
 
-                boolean canMaintain = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
-                        .map(stats -> stats.getMental() >= currentSpell.getContinuousMentalCost())
-                        .orElse(false);
+                if (currentSpell.isChargePhase(player)) {
+                    if (!level.isClientSide && currentSpell.canCast(player)) {
+                        currentSpell.executeChargeTick(level, player, ticksUsing);
+                    }
+                } else if (currentSpell.isContinuous(player)) {
+                    boolean canMaintain = player.getCapability(StatCapabilityProvider.STAT_CAPABILITY)
+                            .map(stats -> stats.getMental() >= currentSpell.getContinuousMentalCost())
+                            .orElse(false);
 
-                if (!canMaintain) {
-                    player.releaseUsingItem();
-                    return;
-                }
+                    if (!canMaintain) {
+                        player.releaseUsingItem();
+                        return;
+                    }
 
-                if (!level.isClientSide) {
-                    DamageSnapshot catalystPower = WeaponRequirementHelper.calculateTotalDamage(player, stack, 0f);
-                    currentSpell.executeContinuousTick(level, player, catalystPower, ticksUsing);
+                    if (!level.isClientSide) {
+                        DamageSnapshot catalystPower = WeaponRequirementHelper.calculateTotalDamage(player, stack, 0f);
+                        currentSpell.executeContinuousTick(level, player, catalystPower, ticksUsing);
+                    }
                 }
             }
         }

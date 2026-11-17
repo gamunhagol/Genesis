@@ -67,6 +67,15 @@ public abstract class AbstractSpell {
         return 0.0f;
     }
 
+    public void executeChargeTick(Level level, LivingEntity caster, int chargeTicks) {
+        if (!level.isClientSide) {
+            onChargeTick(level, caster, chargeTicks);
+        }
+    }
+
+    protected void onChargeTick(Level level, LivingEntity caster, int chargeTicks) {
+    }
+
     public void executeContinuousTick(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot, int ticksUsing) {
         if (!level.isClientSide) {
             if (ticksUsing % getContinuousTickInterval() == 0) {

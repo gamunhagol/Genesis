@@ -6,13 +6,18 @@ import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LightningSpearEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class LightningSpearMiracle extends MiracleSpell {
+    private static final String CHARGING_SPEAR_UUID_KEY = "GenesisChargingSpearUUID";
 
     public LightningSpearMiracle() {
         super("lightning_spear");
@@ -61,6 +66,24 @@ public class LightningSpearMiracle extends MiracleSpell {
     }
 
     @Override
+    protected void onChargeTick(Level level, LivingEntity caster, int chargeTicks) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+
+        Vec3 holdPos = getCatalystHandPosition(caster, 0.8D, 0.35D, -0.15D);
+        LightningSpearEntity spear = getChargingSpear(serverLevel, caster);
+
+        if (spear == null || !spear.isAlive() || !spear.isCharging()) {
+            spear = new LightningSpearEntity(level, caster, DamageSnapshot.EMPTY, Vec3.ZERO);
+            spear.setCharging(true);
+            spear.setPos(holdPos.x, holdPos.y, holdPos.z);
+            level.addFreshEntity(spear);
+            caster.getPersistentData().putUUID(CHARGING_SPEAR_UUID_KEY, spear.getUUID());
+        } else {
+            spear.setPos(holdPos.x, holdPos.y, holdPos.z);
+        }
+    }
+
+    @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         shootSpear(level, caster, spellSnapshot);
     }
@@ -77,10 +100,34 @@ public class LightningSpearMiracle extends MiracleSpell {
     }
 
     private void shootSpear(Level level, LivingEntity caster, DamageSnapshot snapshot) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+
         Vec3 look = caster.getLookAngle();
-        LightningSpearEntity spear = new LightningSpearEntity(level, caster, snapshot, look);
-        spear.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        spear.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
-        level.addFreshEntity(spear);
+        Vec3 releasePos = getCatalystHandPosition(caster, 0.8D, 0.35D, -0.15D);
+
+        LightningSpearEntity spear = getChargingSpear(serverLevel, caster);
+        caster.getPersistentData().remove(CHARGING_SPEAR_UUID_KEY);
+
+        if (spear != null && spear.isAlive() && spear.isCharging()) {
+            spear.setPos(releasePos.x, releasePos.y, releasePos.z);
+            spear.releaseSpear(snapshot, look);
+        } else {
+            LightningSpearEntity newSpear = new LightningSpearEntity(level, caster, snapshot, look);
+            newSpear.setPos(releasePos.x, releasePos.y, releasePos.z);
+            newSpear.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+            level.addFreshEntity(newSpear);
+        }
+    }
+
+    private LightningSpearEntity getChargingSpear(ServerLevel level, LivingEntity caster) {
+        CompoundTag data = caster.getPersistentData();
+        if (!data.hasUUID(CHARGING_SPEAR_UUID_KEY)) return null;
+
+        UUID uuid = data.getUUID(CHARGING_SPEAR_UUID_KEY);
+        Entity entity = level.getEntity(uuid);
+        if (entity instanceof LightningSpearEntity spear) {
+            return spear;
+        }
+        return null;
     }
 }

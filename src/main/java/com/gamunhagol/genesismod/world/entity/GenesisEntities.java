@@ -396,13 +396,12 @@ public class GenesisEntities {
         LIGHTNING_ARROW = ENTITY_TYPES.register("lightning_arrow", () ->
                 EntityType.Builder.<LightningArrowEntity>of(LightningArrowEntity::new, MobCategory.MISC)
                         .sized(0.5F, 0.5F)
-                        .clientTrackingRange(8)
-                        .updateInterval(10)
+                        .clientTrackingRange(8).updateInterval(2)
                         .build("lightning_arrow"));
 
         LIGHTNING_SPEAR = ENTITY_TYPES.register("lightning_spear", () ->
                 EntityType.Builder.<LightningSpearEntity>of(LightningSpearEntity::new, MobCategory.MISC)
-                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(2)
                         .build("lightning_spear"));
 
         LIGHTNING_STAKE = ENTITY_TYPES.register("lightning_stake", () ->
@@ -412,7 +411,7 @@ public class GenesisEntities {
 
         VALA_ARROW = ENTITY_TYPES.register("vala_arrow", () ->
                 EntityType.Builder.<ValaArrowEntity>of(ValaArrowEntity::new, MobCategory.MISC)
-                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(10)
+                        .sized(0.9F, 0.9F).clientTrackingRange(8).updateInterval(2)
                         .build("vala_arrow"));
 
 

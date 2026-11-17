@@ -6,9 +6,16 @@ import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.StoneProjectile;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
@@ -24,6 +31,7 @@ import java.util.List;
 public class LargeRockEntity extends StoneProjectile {
     private static final int MAX_PEBBLE_COUNT = 8;
     private static final int MAX_ROCK_COUNT = 4;
+    private static final EntityDataAccessor<Boolean> DATA_HELD = SynchedEntityData.defineId(LargeRockEntity.class, EntityDataSerializers.BOOLEAN);
 
     protected double slamRadius = 5.5D;
     protected float shockwaveMultiplier = 0.45F;
@@ -38,6 +46,30 @@ public class LargeRockEntity extends StoneProjectile {
         this.gravity = 0.06D;
     }
 
+    @Override
+    protected void defineSynchedData() {
+        super.defineSynchedData();
+        this.entityData.define(DATA_HELD, false);
+    }
+
+    public boolean isHeld() {
+        return this.entityData.get(DATA_HELD);
+    }
+
+    public void setHeld(boolean held) {
+        this.entityData.set(DATA_HELD, held);
+        if (held) {
+            this.setDeltaMovement(Vec3.ZERO);
+        }
+    }
+
+    public void releaseRock(Vec3 motion) {
+        this.setHeld(false);
+        this.setDeltaMovement(motion);
+        this.hasImpulse = true;
+        this.updateRotation();
+    }
+
     public void setSlamRadius(double radius) {
         this.slamRadius = radius;
     }
@@ -47,7 +79,55 @@ public class LargeRockEntity extends StoneProjectile {
     }
 
     @Override
+    protected boolean canHitEntity(Entity entity) {
+        if (this.isHeld()) return false;
+        return super.canHitEntity(entity);
+    }
+
+    @Override
+    public void tick() {
+        if (this.isHeld()) {
+            this.setDeltaMovement(Vec3.ZERO);
+            if (this.getOwner() instanceof LivingEntity owner) {
+                if (!owner.isAlive()) {
+                    if (!this.level().isClientSide) this.discard();
+                    return;
+                }
+                Vec3 holdPos = calculateHeldPosition(owner);
+                this.setPos(holdPos.x, holdPos.y, holdPos.z);
+                this.setYRot(-owner.getYRot());
+                this.setXRot(-owner.getXRot());
+                this.yRotO = this.getYRot();
+                this.xRotO = this.getXRot();
+            }
+            return;
+        }
+
+        super.tick();
+    }
+
+    private Vec3 calculateHeldPosition(LivingEntity caster) {
+        Vec3 forward = Vec3.directionFromRotation(0.0F, caster.getYRot());
+        Vec3 right = Vec3.directionFromRotation(0.0F, caster.getYRot() + 90.0F);
+
+        boolean isRightHand = true;
+        if (caster instanceof Player player) {
+            boolean isMainHand = caster.getUsedItemHand() == InteractionHand.MAIN_HAND;
+            isRightHand = (player.getMainArm() == HumanoidArm.RIGHT) == isMainHand;
+        }
+        double sideMult = isRightHand ? 1.0D : -1.0D;
+
+        return new Vec3(
+                caster.getX() + forward.x * 0.3D + right.x * 0.9D * sideMult,
+                caster.getY() + 2.2D,
+                caster.getZ() + forward.z * 0.3D + right.z * 0.9D * sideMult
+        );
+    }
+
+    @Override
     protected void onHitBlock(BlockHitResult result) {
+        if (this.isHeld()) return;
+
         if (!this.level().isClientSide) {
             LivingEntity owner = (LivingEntity) this.getOwner();
 
@@ -89,6 +169,8 @@ public class LargeRockEntity extends StoneProjectile {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
+        if (this.isHeld()) return;
+
         if (!this.level().isClientSide) {
             shatter(result.getLocation());
         }

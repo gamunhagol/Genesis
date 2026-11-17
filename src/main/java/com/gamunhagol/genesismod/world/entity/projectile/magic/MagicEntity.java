@@ -21,6 +21,7 @@ public abstract class MagicEntity extends Projectile {
     private static final EntityDataAccessor<Boolean> DATA_HIT = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.BOOLEAN);
     private static final EntityDataAccessor<Float> DATA_HIT_YAW = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Float> DATA_HIT_PITCH = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Boolean> DATA_CHARGING = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.BOOLEAN);
 
     protected DamageSnapshot damageSnapshot = DamageSnapshot.EMPTY;
     protected int lifeTicks = 0;
@@ -71,6 +72,14 @@ public abstract class MagicEntity extends Projectile {
         return this.hitTicks;
     }
 
+    public boolean isCharging() {
+        return this.entityData.get(DATA_CHARGING);
+    }
+
+    public void setCharging(boolean charging) {
+        this.entityData.set(DATA_CHARGING, charging);
+    }
+
     protected void triggerHit(Vec3 hitPos) {
         this.updateRotation();
         float yaw = this.getYRot();
@@ -88,11 +97,23 @@ public abstract class MagicEntity extends Projectile {
         this.entityData.define(DATA_HIT, false);
         this.entityData.define(DATA_HIT_YAW, 0.0F);
         this.entityData.define(DATA_HIT_PITCH, 0.0F);
+        this.entityData.define(DATA_CHARGING, false);
     }
 
     @Override
     public void tick() {
         super.tick();
+
+        if (this.isCharging()) {
+            if (!this.level().isClientSide) {
+                Entity owner = this.getOwner();
+                if (!(owner instanceof LivingEntity livingOwner) || !livingOwner.isAlive() || !livingOwner.isUsingItem()) {
+                    this.discard();
+                }
+            }
+            return;
+        }
+
         this.lifeTicks++;
 
         if (this.isHit()) {
@@ -117,6 +138,7 @@ public abstract class MagicEntity extends Projectile {
 
     @Override
     protected boolean canHitEntity(Entity entity) {
+        if (this.isCharging()) return false;
         if (!super.canHitEntity(entity)) return false;
         if (entity == this.getOwner()) return false;
         return entity instanceof LivingEntity;
@@ -131,6 +153,7 @@ public abstract class MagicEntity extends Projectile {
         tag.putFloat("HitYaw", this.getHitYaw());
         tag.putFloat("HitPitch", this.getHitPitch());
         tag.putInt("HitTicks", this.hitTicks);
+        tag.putBoolean("IsCharging", this.isCharging());
     }
 
     @Override
@@ -142,6 +165,7 @@ public abstract class MagicEntity extends Projectile {
         this.entityData.set(DATA_HIT_YAW, tag.getFloat("HitYaw"));
         this.entityData.set(DATA_HIT_PITCH, tag.getFloat("HitPitch"));
         this.hitTicks = tag.getInt("HitTicks");
+        this.entityData.set(DATA_CHARGING, tag.getBoolean("IsCharging"));
     }
 
     @Override

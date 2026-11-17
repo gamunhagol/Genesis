@@ -29,16 +29,25 @@ public class ValaArrowEntity extends MagicEntity implements ItemSupplier {
     public ValaArrowEntity(EntityType<? extends ValaArrowEntity> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.maxLifeTicks = 200;
+        this.maxLifeTicks = 600;
     }
 
     public ValaArrowEntity(Level level, LivingEntity owner, DamageSnapshot snapshot, Vec3 motion) {
         super(GenesisEntities.VALA_ARROW.get(), level, owner, snapshot);
         this.setNoGravity(true);
-        this.maxLifeTicks = 200;
+        this.maxLifeTicks = 600;
         this.setDeltaMovement(motion);
         this.hasImpulse = true;
         this.updateRotation();
+    }
+
+    public void releaseArrow(DamageSnapshot snapshot, Vec3 motion) {
+        this.damageSnapshot = snapshot;
+        this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+        this.setDeltaMovement(motion);
+        this.hasImpulse = true;
+        this.updateRotation();
+        this.setCharging(false);
     }
 
     @Override
@@ -50,6 +59,16 @@ public class ValaArrowEntity extends MagicEntity implements ItemSupplier {
     public void tick() {
         super.tick();
         if (this.isHit()) return;
+
+        if (this.isCharging()) {
+            if (this.getOwner() instanceof LivingEntity owner) {
+                this.setYRot(-owner.getYRot());
+                this.setXRot(-owner.getXRot());
+                this.yRotO = this.getYRot();
+                this.xRotO = this.getXRot();
+            }
+            return;
+        }
 
         HitResult hitresult = ProjectileUtil.getHitResultOnMoveVector(this, this::canHitEntity);
         if (hitresult.getType() != HitResult.Type.MISS) {
@@ -66,7 +85,7 @@ public class ValaArrowEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
-        if (this.isHit()) return;
+        if (this.isHit() || this.isCharging()) return;
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             Entity target = result.getEntity();
@@ -82,7 +101,7 @@ public class ValaArrowEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     protected void onHitBlock(BlockHitResult result) {
-        if (this.isHit()) return;
+        if (this.isHit() || this.isCharging()) return;
         super.onHitBlock(result);
         if (!this.level().isClientSide) {
             triggerImpactEffects(result.getLocation(), null);

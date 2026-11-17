@@ -6,13 +6,18 @@ import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.miracles.child.LightningArrowEntity;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.Map;
+import java.util.UUID;
 
 public class LightningArrowMiracle extends MiracleSpell {
+    private static final String CHARGING_ARROW_UUID_KEY = "GenesisChargingArrowUUID";
 
     public LightningArrowMiracle() {
         super("lightning_arrow");
@@ -64,6 +69,24 @@ public class LightningArrowMiracle extends MiracleSpell {
     }
 
     @Override
+    protected void onChargeTick(Level level, LivingEntity caster, int chargeTicks) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+
+        Vec3 holdPos = getCatalystHandPosition(caster, 0.8D, 0.35D, -0.15D);
+        LightningArrowEntity arrow = getChargingArrow(serverLevel, caster);
+
+        if (arrow == null || !arrow.isAlive() || !arrow.isCharging()) {
+            arrow = new LightningArrowEntity(level, caster, DamageSnapshot.EMPTY, Vec3.ZERO);
+            arrow.setCharging(true);
+            arrow.setPos(holdPos.x, holdPos.y, holdPos.z);
+            level.addFreshEntity(arrow);
+            caster.getPersistentData().putUUID(CHARGING_ARROW_UUID_KEY, arrow.getUUID());
+        } else {
+            arrow.setPos(holdPos.x, holdPos.y, holdPos.z);
+        }
+    }
+
+    @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         DamageSnapshot snapshot = new DamageSnapshot(
                 0, 0, 0, spellSnapshot.lightning() * 0.75f, 0, 0, 0
@@ -98,14 +121,35 @@ public class LightningArrowMiracle extends MiracleSpell {
     }
 
     private void shootArrow(Level level, LivingEntity caster, DamageSnapshot snapshot, double speed) {
-        if (level.isClientSide) return;
+        if (!(level instanceof ServerLevel serverLevel)) return;
 
         Vec3 look = caster.getLookAngle();
         Vec3 motion = look.normalize().scale(speed);
+        Vec3 releasePos = getCatalystHandPosition(caster, 0.8D, 0.35D, -0.15D);
 
-        LightningArrowEntity arrow = new LightningArrowEntity(level, caster, snapshot, motion);
-        arrow.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());
-        arrow.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
-        level.addFreshEntity(arrow);
+        LightningArrowEntity arrow = getChargingArrow(serverLevel, caster);
+        caster.getPersistentData().remove(CHARGING_ARROW_UUID_KEY);
+
+        if (arrow != null && arrow.isAlive() && arrow.isCharging()) {
+            arrow.setPos(releasePos.x, releasePos.y, releasePos.z);
+            arrow.releaseArrow(snapshot, motion);
+        } else {
+            LightningArrowEntity newArrow = new LightningArrowEntity(level, caster, snapshot, motion);
+            newArrow.setPos(releasePos.x, releasePos.y, releasePos.z);
+            newArrow.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
+            level.addFreshEntity(newArrow);
+        }
+    }
+
+    private LightningArrowEntity getChargingArrow(ServerLevel level, LivingEntity caster) {
+        CompoundTag data = caster.getPersistentData();
+        if (!data.hasUUID(CHARGING_ARROW_UUID_KEY)) return null;
+
+        UUID uuid = data.getUUID(CHARGING_ARROW_UUID_KEY);
+        Entity entity = level.getEntity(uuid);
+        if (entity instanceof LightningArrowEntity arrow) {
+            return arrow;
+        }
+        return null;
     }
 }

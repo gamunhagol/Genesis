@@ -48,9 +48,9 @@ public class LightningStakeMiracle extends MiracleSpell {
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
         Vec3 downwardDir = new Vec3(0, -1, 0);
+        int holdTicks = 12;
 
-        LightningStakeEntity stake = new LightningStakeEntity(level, caster, spellSnapshot, downwardDir);
-        stake.setPos(caster.getX(), caster.getY() + 1.2D, caster.getZ());
+        LightningStakeEntity stake = new LightningStakeEntity(level, caster, spellSnapshot, downwardDir, holdTicks);
         stake.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(spellSnapshot));
         level.addFreshEntity(stake);
     }
