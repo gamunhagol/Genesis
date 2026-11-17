@@ -8,5 +8,7 @@ public enum MiracleElement {
     LIGHTNING,
     FOREST,
     COLD,
+    LIFE,
+    CREATION,
     NONE
 }
