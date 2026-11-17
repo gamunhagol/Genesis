@@ -74,15 +74,26 @@ public class FrozenStarMiracle extends MiracleSpell {
 
         DamageSnapshot catalyst = caster.getMainHandItem().isEmpty() ? DamageSnapshot.EMPTY : calculateSpellSnapshot(caster, DamageSnapshot.EMPTY);
         DamageSnapshot aoeSnapshot = calculateAoeColdSnapshot(caster, catalyst);
+        DamageSnapshot fogSnapshot = new DamageSnapshot(0, 0, 0, 0, spellSnapshot.frost() * 0.1F, 0, 0);
         float shockwaveDamage = calculateShockwaveDamage(spellSnapshot);
 
         Vec3 look = caster.getLookAngle();
-        Vec3 spawnPos = targetPos.subtract(look.scale(5.0D)).add(0.0D, 11.0D, 0.0D);
+        Vec3 horizontalForward = new Vec3(look.x, 0.0D, look.z);
+        if (horizontalForward.lengthSqr() < 1.0E-4D) {
+            horizontalForward = Vec3.directionFromRotation(0.0F, caster.getYRot());
+        } else {
+            horizontalForward = horizontalForward.normalize();
+        }
+
+        double distanceOffset = 60.0D;
+        Vec3 spawnPos = targetPos
+                .subtract(horizontalForward.scale(distanceOffset))
+                .add(0.0D, distanceOffset, 0.0D);
 
         Vec3 fallDir = targetPos.subtract(spawnPos).normalize();
-        double speed = 1.35D;
+        double speed = 2.35D;
 
-        FrozenStarEntity star = new FrozenStarEntity(level, caster, spellSnapshot, aoeSnapshot, shockwaveDamage);
+        FrozenStarEntity star = new FrozenStarEntity(level, caster, spellSnapshot, aoeSnapshot, fogSnapshot, shockwaveDamage);
         star.setPos(spawnPos.x, spawnPos.y, spawnPos.z);
         star.setDeltaMovement(fallDir.scale(speed));
 

@@ -108,6 +108,7 @@ public class GenesisEntities {
     public static final RegistryObject<EntityType<RootStrikeEntity>> ROOT_STRIKE;
 
     public static final RegistryObject<EntityType<FrozenStarEntity>> FROZEN_STAR;
+    public static final RegistryObject<EntityType<FrostFogEntity>> FROST_FOG;
 
     public static final RegistryObject<EntityType<BlizzardEntity>> BLIZZARD;
 
@@ -349,9 +350,9 @@ public class GenesisEntities {
                         .build("waterspout"));
 
         EMBER = ENTITY_TYPES.register("ember", () ->
-                        EntityType.Builder.<EmberEntity>of(EmberEntity::new, MobCategory.MISC)
-                                .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
-                                .build("ember"));
+                EntityType.Builder.<EmberEntity>of(EmberEntity::new, MobCategory.MISC)
+                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
+                        .build("ember"));
 
         WIND_WALL = ENTITY_TYPES.register("wind_wall", () ->
                 EntityType.Builder.<WindWallEntity>of(WindWallEntity::new, MobCategory.MISC)
@@ -439,6 +440,11 @@ public class GenesisEntities {
                 EntityType.Builder.<FrozenStarEntity>of(FrozenStarEntity::new, MobCategory.MISC)
                         .sized(1.0F, 1.0F).clientTrackingRange(8).updateInterval(10)
                         .build("frozen_star"));
+
+        FROST_FOG = ENTITY_TYPES.register("frost_fog", () ->
+                EntityType.Builder.<FrostFogEntity>of(FrostFogEntity::new, MobCategory.MISC)
+                        .sized(5.0F, 0.1F).clientTrackingRange(8).updateInterval(20)
+                        .build("frost_fog"));
 
         BLIZZARD = ENTITY_TYPES.register("blizzard_zone", () ->
                 EntityType.Builder.<BlizzardEntity>of(BlizzardEntity::new, MobCategory.MISC)

@@ -354,6 +354,7 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.ROOT_STRIKE.get(), ThrownItemRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.FROZEN_STAR.get(), FrozenStarRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.FROST_FOG.get(), NoopRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.BLIZZARD.get(), NoopRenderer::new);
 

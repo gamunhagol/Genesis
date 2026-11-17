@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
+import com.gamunhagol.genesismod.world.entity.etc.FrostFogEntity;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
@@ -34,27 +35,31 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
     private double slamRadius = 6.0D;
 
     private DamageSnapshot aoeSnapshot = DamageSnapshot.EMPTY;
+    private DamageSnapshot fogSnapshot = DamageSnapshot.EMPTY;
     private float shockwaveDamage = 0.0F;
 
     private boolean detonated = false;
+    private boolean fogSpawned = false;
 
     public FrozenStarEntity(EntityType<? extends FrozenStarEntity> entityType, Level level) {
         super(entityType, level);
         this.setNoGravity(true);
-        this.maxLifeTicks = 400;
+        this.maxLifeTicks = 600;
     }
 
-    public FrozenStarEntity(Level level, LivingEntity owner, DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, float shockwaveDamage) {
+    public FrozenStarEntity(Level level, LivingEntity owner, DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, DamageSnapshot fogSnapshot, float shockwaveDamage) {
         super(GenesisEntities.FROZEN_STAR.get(), level, owner, directSnapshot);
         this.aoeSnapshot = aoeSnapshot;
+        this.fogSnapshot = fogSnapshot;
         this.shockwaveDamage = shockwaveDamage;
         this.setNoGravity(true);
-        this.maxLifeTicks = 400;
+        this.maxLifeTicks = 600;
     }
 
-    public void setSnapshots(DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, float shockwaveDamage) {
+    public void setSnapshots(DamageSnapshot directSnapshot, DamageSnapshot aoeSnapshot, DamageSnapshot fogSnapshot, float shockwaveDamage) {
         this.damageSnapshot = directSnapshot;
         this.aoeSnapshot = aoeSnapshot;
+        this.fogSnapshot = fogSnapshot;
         this.shockwaveDamage = shockwaveDamage;
     }
 
@@ -65,7 +70,15 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     public void tick() {
+        if (!this.level().isClientSide && !this.isCharging() && !this.isHit() && (this.lifeTicks + 1) >= this.maxLifeTicks) {
+            spawnFrostFog(this.position());
+        }
+
         super.tick();
+
+        if (this.isHit() || this.isRemoved()) {
+            return;
+        }
 
         Vec3 motion = this.getDeltaMovement();
 
@@ -77,10 +90,10 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
                 this.onHit(hitresult);
             }
 
-            if (this.isRemoved()) return;
+            if (this.isRemoved() || this.isHit()) return;
 
             if (this.onGround()) {
-                explode(null);
+                explode(this.position(), null);
                 return;
             }
         }
@@ -113,7 +126,7 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
     protected void onHitEntity(EntityHitResult result) {
         super.onHitEntity(result);
         if (!this.level().isClientSide && !this.detonated) {
-            explode(result.getEntity());
+            explode(result.getLocation(), result.getEntity());
         }
     }
 
@@ -121,18 +134,17 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
     protected void onHitBlock(BlockHitResult result) {
         super.onHitBlock(result);
         if (!this.level().isClientSide && !this.detonated) {
-            explode(null);
+            explode(result.getLocation(), null);
         }
     }
 
-    private void explode(@Nullable Entity hitTarget) {
+    private void explode(Vec3 impactPos, @Nullable Entity hitTarget) {
         if (this.detonated) return;
         this.detonated = true;
 
         if (this.level() instanceof ServerLevel serverLevel) {
             Entity owner = this.getOwner();
             LivingEntity caster = owner instanceof LivingEntity livingOwner ? livingOwner : null;
-            Vec3 impactPos = this.position();
 
             this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> {
                 cap.setSnapshot(this.damageSnapshot);
@@ -177,7 +189,10 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
                 }
             }
 
-            AABB aoeBox = this.getBoundingBox().inflate(this.aoeRadius);
+            AABB aoeBox = new AABB(
+                    impactPos.x - this.aoeRadius, impactPos.y - this.aoeRadius, impactPos.z - this.aoeRadius,
+                    impactPos.x + this.aoeRadius, impactPos.y + this.aoeRadius, impactPos.z + this.aoeRadius
+            );
             List<LivingEntity> aoeTargets = serverLevel.getEntitiesOfClass(
                     LivingEntity.class, aoeBox, e -> e.isAlive() && e != caster && !directTargets.contains(e)
             );
@@ -187,8 +202,20 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
                     GenesisDamageCalculator.applySnapshotDamage(aoeTarget, caster, this.aoeSnapshot);
                 }
             }
+
+            spawnFrostFog(impactPos);
         }
 
-        this.discard();
+        this.triggerHit(impactPos);
+    }
+
+    private void spawnFrostFog(Vec3 pos) {
+        if (this.fogSpawned || this.level().isClientSide) return;
+        this.fogSpawned = true;
+
+        LivingEntity caster = this.getOwner() instanceof LivingEntity livingOwner ? livingOwner : null;
+        FrostFogEntity fog = new FrostFogEntity(this.level(), caster, this.fogSnapshot);
+        fog.setPos(pos.x, pos.y, pos.z);
+        this.level().addFreshEntity(fog);
     }
 }
