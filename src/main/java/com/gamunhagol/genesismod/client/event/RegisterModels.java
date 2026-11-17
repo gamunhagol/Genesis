@@ -4,11 +4,15 @@ import com.gamunhagol.genesismod.client.model.armor.*;
 import com.gamunhagol.genesismod.client.model.block.*;
 import com.gamunhagol.genesismod.client.model.block.statue.*;
 import com.gamunhagol.genesismod.client.model.entity.CollectorModel;
+import com.gamunhagol.genesismod.client.model.entity.etc.RootEntangleModel;
+import com.gamunhagol.genesismod.client.model.entity.etc.RootSpearModel;
 import com.gamunhagol.genesismod.client.model.entity.projectile.*;
 import com.gamunhagol.genesismod.client.model.entity.rune.FloorRuneAModel;
 import com.gamunhagol.genesismod.client.model.entity.rune.FloorRuneBModel;
 import com.gamunhagol.genesismod.client.renderer.blockentity.*;
 import com.gamunhagol.genesismod.client.renderer.blockentity.statue.*;
+import com.gamunhagol.genesismod.client.renderer.entity.etc.RootEntangleRenderer;
+import com.gamunhagol.genesismod.client.renderer.entity.etc.RootSpearRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.projectile.*;
 import com.gamunhagol.genesismod.client.renderer.entity.rune.HealRuneRenderer;
 import com.gamunhagol.genesismod.client.renderer.entity.rune.MagicDomainRenderer;
@@ -18,10 +22,7 @@ import com.gamunhagol.genesismod.client.renderer.entity.vanilla.CollectorRendere
 import com.gamunhagol.genesismod.world.block.GenesisBlockEntities;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.client.ModModelLayers;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicDomainEntity;
-import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicPebble;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.model.SkeletonModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.entity.*;
 import net.minecraft.server.packs.resources.ResourceManagerReloadListener;
@@ -256,6 +257,9 @@ public class RegisterModels {
 
         event.registerLayerDefinition(ModModelLayers.VALA_ARROW_LAYER, ValaArrowModel::createBodyLayer);
 
+        event.registerLayerDefinition(ModModelLayers.ROOT_ENTANGLE_LAYER, RootEntangleModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.ROOT_SPEAR_LAYER, RootSpearModel::createBodyLayer);
+
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_A_LAYER, FloorRuneAModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.FLOOR_RUNE_B_LAYER, FloorRuneBModel::createBodyLayer);
 
@@ -341,9 +345,9 @@ public class RegisterModels {
         event.registerEntityRenderer(GenesisEntities.VALA_ARROW.get(), ValaArrowRenderer::new);
 
 
-        event.registerEntityRenderer(GenesisEntities.ROOT_ENTANGLE.get(), NoopRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.POISON_ROOT.get(), NoopRenderer::new);
-        event.registerEntityRenderer(GenesisEntities.ROOT_SPEAR.get(), NoopRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.ROOT_ENTANGLE.get(), RootEntangleRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.POISON_ROOT.get(), RootEntangleRenderer::new);
+        event.registerEntityRenderer(GenesisEntities.ROOT_SPEAR.get(), RootSpearRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.ROOT_STRIKE.get(), ThrownItemRenderer::new);
 

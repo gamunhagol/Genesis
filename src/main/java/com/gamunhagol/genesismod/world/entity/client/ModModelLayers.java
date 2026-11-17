@@ -62,6 +62,11 @@ public class ModModelLayers {
     public static final ModelLayerLocation VALA_ARROW_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "vala_arrow"), "main");
 
+    public static final ModelLayerLocation ROOT_SPEAR_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "root_spear"), "main");
+    public static final ModelLayerLocation ROOT_ENTANGLE_LAYER = new ModelLayerLocation(
+            new ResourceLocation("genesis", "root_entangle"), "main");
+
 
     public static final ModelLayerLocation FLOOR_RUNE_A_LAYER = new ModelLayerLocation(
             new ResourceLocation("genesis", "floor_rune_a_layer"), "main");

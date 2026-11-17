@@ -4,15 +4,19 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.etc.AbstractRootEntity;
-import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 public class RootSpearEntity extends AbstractRootEntity {
@@ -33,17 +37,58 @@ public class RootSpearEntity extends AbstractRootEntity {
     }
 
     @Override
-    public void tick() {
-        super.tick();
+    public int getRiseDuration() {
+        return 5;
+    }
 
-        if (this.level().isClientSide && this.random.nextFloat() < 0.35F) {
-            this.level().addParticle(
-                    ParticleTypes.CAMPFIRE_COSY_SMOKE,
-                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.4D,
-                    this.getY() + (this.random.nextDouble() * this.getBbHeight()),
-                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.4D,
-                    0.0D, 0.05D, 0.0D
+    @Override
+    public float getModelHeight() {
+        return 2.0F;
+    }
+
+    @Override
+    public float getMaxExposureRatio() {
+        return 0.8F;
+    }
+
+    @Override
+    protected void checkEntityContacts() {
+        float progress = Mth.clamp((float) this.tickCount / (float) getRiseDuration(), 0.0F, 1.0F);
+        float currentLength = getModelHeight() * getMaxExposureRatio() * progress;
+        if (currentLength <= 0.05F) return;
+
+        float yawRad = getRootYaw() * Mth.DEG_TO_RAD;
+        float tiltRad = getRootTilt() * Mth.DEG_TO_RAD;
+
+        double dirX = Mth.sin(tiltRad) * Mth.sin(yawRad);
+        double dirY = Mth.cos(tiltRad);
+        double dirZ = Mth.sin(tiltRad) * Mth.cos(yawRad);
+
+        Set<LivingEntity> hitTargets = new HashSet<>();
+        int segments = 4;
+        double radius = 0.35D;
+
+        for (int i = 1; i <= segments; i++) {
+            double dist = currentLength * ((double) i / (double) segments);
+            double px = this.getX() + dirX * dist;
+            double py = this.getY() + dirY * dist;
+            double pz = this.getZ() + dirZ * dist;
+
+            AABB segmentBox = new AABB(
+                    px - radius, py - radius, pz - radius,
+                    px + radius, py + radius, pz + radius
             );
+
+            List<LivingEntity> found = this.level().getEntitiesOfClass(
+                    LivingEntity.class,
+                    segmentBox,
+                    this::isValidTarget
+            );
+            hitTargets.addAll(found);
+        }
+
+        for (LivingEntity target : hitTargets) {
+            onEntityContact(target);
         }
     }
 

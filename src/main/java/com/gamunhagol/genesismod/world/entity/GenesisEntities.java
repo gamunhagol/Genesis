@@ -427,7 +427,7 @@ public class GenesisEntities {
 
         ROOT_SPEAR = ENTITY_TYPES.register("root_spear", () ->
                 EntityType.Builder.<RootSpearEntity>of(RootSpearEntity::new, MobCategory.MISC)
-                        .sized(0.5F, 1.8F).clientTrackingRange(6).updateInterval(10)
+                        .sized(0.8F, 0.8F).clientTrackingRange(6).updateInterval(10)
                         .build("root_spear"));
 
         ROOT_STRIKE = ENTITY_TYPES.register("root_strike", () ->
