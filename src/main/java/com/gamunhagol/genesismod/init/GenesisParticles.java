@@ -51,6 +51,69 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> RESISTANCE_BLESSING =
             PARTICLE_TYPES.register("resistance_blessing", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> EVOLUTION_MIMICRY =
+            PARTICLE_TYPES.register("evolution_mimicry", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> TWISTED_MIMICRY =
+            PARTICLE_TYPES.register("twisted_mimicry", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> AMBIENT_MIMICRY =
+            PARTICLE_TYPES.register("ambient_mimicry", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> NECROMANCY =
+            PARTICLE_TYPES.register("necromancy", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> ELEMENTALISM =
+            PARTICLE_TYPES.register("elementalism", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> CREATION =
+            PARTICLE_TYPES.register("creation", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> OTHERWORLD =
+            PARTICLE_TYPES.register("otherworld", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> COMET =
+            PARTICLE_TYPES.register("comet", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> METEOR =
+            PARTICLE_TYPES.register("meteor", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> STAR =
+            PARTICLE_TYPES.register("star", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> OATH =
+            PARTICLE_TYPES.register("oath", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> GALAXY =
+            PARTICLE_TYPES.register("galaxy", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> EARTH =
+            PARTICLE_TYPES.register("earth", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> WATER =
+            PARTICLE_TYPES.register("water", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> FIRE =
+            PARTICLE_TYPES.register("fire", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> WIND =
+            PARTICLE_TYPES.register("wind", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> LIGHTNING =
+            PARTICLE_TYPES.register("lightning", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> FOREST =
+            PARTICLE_TYPES.register("forest", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> ICE =
+            PARTICLE_TYPES.register("ice", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> FROST =
+            PARTICLE_TYPES.register("frost", () -> new SimpleParticleType(false));
+
+    public static final RegistryObject<SimpleParticleType> LIFE =
+            PARTICLE_TYPES.register("life", () -> new SimpleParticleType(false));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

@@ -54,6 +54,27 @@ public class GenesisClientEvents {
         event.registerSpriteSet(GenesisParticles.LIGHTING_STAR.get(), LightingStarParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.DISRUPTION.get(), DisruptionParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.RESISTANCE_BLESSING.get(), ResistanceBlessingParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.EVOLUTION_MIMICRY.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.TWISTED_MIMICRY.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.AMBIENT_MIMICRY.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.NECROMANCY.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.ELEMENTALISM.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.CREATION.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.OTHERWORLD.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.COMET.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.METEOR.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.STAR.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.OATH.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.GALAXY.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.EARTH.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.WATER.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.FIRE.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.WIND.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.LIGHTNING.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.FOREST.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.ICE.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.FROST.get(), EmblemParticle.Provider::new);
+        event.registerSpriteSet(GenesisParticles.LIFE.get(), EmblemParticle.Provider::new);
     }
 
     @SubscribeEvent
