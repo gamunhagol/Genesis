@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
 
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SpellElderGuardianEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +18,11 @@ public class HeavyGuardianBeamSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 19);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.EVOLUTION_IMITATION;
     }
 
     @Override

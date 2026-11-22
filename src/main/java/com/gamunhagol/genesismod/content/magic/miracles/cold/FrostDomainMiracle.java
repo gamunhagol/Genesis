@@ -4,9 +4,11 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageCalculator;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
@@ -44,6 +46,11 @@ public class FrostDomainMiracle extends MiracleSpell {
     @Override
     public MiracleElement getElement() {
         return MiracleElement.COLD;
+    }
+
+    @Override
+    public SimpleParticleType getEmblemParticle() {
+        return GenesisParticles.FROST.get();
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.sorcery;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicSwordEntity;
 import net.minecraft.util.Mth;
@@ -18,6 +19,11 @@ public class SLMSSwordsSpell extends MagicSpell {
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 19,
                 StatType.ARCANE, 11);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.STAR_BLADE_FAITH;
     }
 
     @Override public float getMentalCost() { return 4.9f; }

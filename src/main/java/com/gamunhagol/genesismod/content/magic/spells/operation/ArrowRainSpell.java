@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.etc.ArrowBarrageSpawnerEntity;
 import net.minecraft.server.level.ServerLevel;
@@ -26,6 +27,11 @@ public class ArrowRainSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 24);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.CREATION;
     }
 
     @Override

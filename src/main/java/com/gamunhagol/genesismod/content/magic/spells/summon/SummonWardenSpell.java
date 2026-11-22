@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.summon;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedWardenEntity;
 import net.minecraft.server.level.ServerLevel;
@@ -24,6 +25,11 @@ public class SummonWardenSpell extends AbstractSummonSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 24);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.NECROMANCY;
     }
 
     @Override

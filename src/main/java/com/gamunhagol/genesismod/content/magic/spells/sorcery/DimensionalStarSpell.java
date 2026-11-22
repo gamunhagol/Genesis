@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.sorcery;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.DimensionalStarEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,11 @@ public class DimensionalStarSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 66);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.STELLAR;
     }
 
     @Override public float getMentalCost() { return 44.4f; }

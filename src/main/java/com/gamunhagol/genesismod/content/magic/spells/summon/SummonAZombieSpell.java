@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.content.magic.spells.summon;
 
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedZombieEntity;
 import net.minecraft.server.level.ServerLevel;
@@ -23,6 +24,11 @@ public class SummonAZombieSpell extends AbstractSummonSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 17);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.NECROMANCY;
     }
 
     @Override

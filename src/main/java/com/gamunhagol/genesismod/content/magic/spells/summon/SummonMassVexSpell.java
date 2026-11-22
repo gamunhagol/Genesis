@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.summon;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.AbstractSummonSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.mob.summon.SummonedVexEntity;
 import net.minecraft.server.level.ServerLevel;
@@ -27,6 +28,11 @@ public class SummonMassVexSpell extends AbstractSummonSpell {
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 26,
                 StatType.ARCANE, 15);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.OTHERWORLD_LINK;
     }
 
     @Override

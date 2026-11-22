@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.HitResult;
@@ -16,6 +17,11 @@ public class ExplosionSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 15);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.CREATION;
     }
 
     @Override

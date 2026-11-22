@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.sorcery;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicComet;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,6 +27,11 @@ public class MagicCometSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 23);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.STAR_SLING;
     }
 
     @Override

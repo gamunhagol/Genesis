@@ -35,7 +35,7 @@ public class SupernovaEntity extends MagicEntity {
     protected float disruptionScale = 2.5F;
 
     protected float contactExplosionPower = 2.0F;
-    protected float apexExplosionPower = 90.0F;
+    protected float apexExplosionPower = 12.0F;
 
     private double baseSpeed = 0.19D;
 

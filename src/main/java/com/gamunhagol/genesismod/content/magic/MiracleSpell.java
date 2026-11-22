@@ -3,9 +3,11 @@ package com.gamunhagol.genesismod.content.magic;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 import java.util.Set;
 
@@ -32,6 +34,12 @@ public abstract class MiracleSpell extends AbstractSpell {
 
     public MiracleElement getElement() {
         return MiracleElement.NONE;
+    }
+
+    @Nullable
+    @Override
+    public SimpleParticleType getEmblemParticle() {
+        return getElement().getEmblemParticle();
     }
 
     protected float getDedicationMultiplier(LivingEntity caster) {

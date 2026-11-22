@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.nature;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.LargeFireball;
@@ -17,6 +18,11 @@ public class LargeFireballSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 15);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.BACKGROUND_IMITATION;
     }
 
     @Override

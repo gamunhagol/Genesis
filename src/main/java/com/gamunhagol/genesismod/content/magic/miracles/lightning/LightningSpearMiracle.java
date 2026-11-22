@@ -59,6 +59,11 @@ public class LightningSpearMiracle extends MiracleSpell {
     }
 
     @Override
+    protected boolean spawnEmblemOnChargeStart() {
+        return true;
+    }
+
+    @Override
     protected DamageSnapshot calculateSpellSnapshot(LivingEntity caster, DamageSnapshot catalyst) {
         float baseLightning = 12.0f;
         float finalLightning = (baseLightning + (catalyst.lightning() * 0.4f)) * getDedicationMultiplier(caster);

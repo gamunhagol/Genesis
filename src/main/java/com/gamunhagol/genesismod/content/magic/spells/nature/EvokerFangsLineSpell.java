@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.nature;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
@@ -20,6 +21,11 @@ public class EvokerFangsLineSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 14);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.DISTORTED_IMITATION;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.sorcery;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.child.MagicMeteor;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,12 @@ public class ClusterMeteorSpell extends MagicSpell {
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 19);
     }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.METEOR;
+    }
+
 
     @Override public float getMentalCost() { return 4.4f; }
     @Override public int getMemoryCost() { return 1; }

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -22,6 +23,11 @@ public class BlinkSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 7);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.GALAXY_ORIGIN;
     }
 
     @Override

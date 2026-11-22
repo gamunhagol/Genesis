@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.sorcery;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.etc.StarSeaSpawnerEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,6 +22,11 @@ public class FallingStarSeaSpell extends MagicSpell {
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(
                 StatType.INTELLIGENCE, 46);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.GALAXY_ORIGIN;
     }
 
     @Override

@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
@@ -20,6 +21,11 @@ public class MiningSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 10);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.BACKGROUND_IMITATION;
     }
 
     @Override

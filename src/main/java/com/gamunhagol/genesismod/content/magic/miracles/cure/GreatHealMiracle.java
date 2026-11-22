@@ -2,6 +2,7 @@ package com.gamunhagol.genesismod.content.magic.miracles.cure;
 
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
+import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
 import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.world.damagesource.GenesisDamageTypes;
@@ -43,6 +44,11 @@ public class GreatHealMiracle extends MiracleSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.FAITH, 18);
+    }
+
+    @Override
+    public MiracleElement getElement() {
+        return MiracleElement.CREATION;
     }
 
     @Override

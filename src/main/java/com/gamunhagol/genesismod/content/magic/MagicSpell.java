@@ -3,13 +3,25 @@ package com.gamunhagol.genesismod.content.magic;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.stats.WeaponRequirementHelper;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public abstract class MagicSpell extends AbstractSpell {
     public MagicSpell(String id) { super(id); }
 
+    public SorcerySchool getSchool() {
+        return SorcerySchool.NONE;
+    }
+
+    @Nullable
+    @Override
+    public SimpleParticleType getEmblemParticle() {
+        return getSchool().getEmblemParticle();
+    }
 
     @Override
     public boolean canCast(LivingEntity caster) {

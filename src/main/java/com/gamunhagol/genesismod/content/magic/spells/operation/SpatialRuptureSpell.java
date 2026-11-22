@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketSyncSpatialRupture;
 import com.gamunhagol.genesismod.world.border.SpatialRuptureManager;
@@ -24,6 +25,11 @@ public class SpatialRuptureSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 30);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.GALAXY_ORIGIN;
     }
 
     @Override

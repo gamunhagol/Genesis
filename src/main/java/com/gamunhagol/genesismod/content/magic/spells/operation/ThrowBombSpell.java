@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.operation;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.network.GenesisNetwork;
 import com.gamunhagol.genesismod.network.client.PacketSyncGrabState;
 import net.minecraft.core.BlockPos;
@@ -36,6 +37,11 @@ public class ThrowBombSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 15);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.CREATION;
     }
 
     @Override

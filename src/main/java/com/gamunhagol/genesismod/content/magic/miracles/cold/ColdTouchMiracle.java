@@ -4,8 +4,10 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MiracleElement;
 import com.gamunhagol.genesismod.content.magic.MiracleSpell;
+import com.gamunhagol.genesismod.init.GenesisParticles;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -51,6 +53,11 @@ public class ColdTouchMiracle extends MiracleSpell {
     @Override
     public MiracleElement getElement() {
         return MiracleElement.COLD;
+    }
+
+    @Override
+    public SimpleParticleType getEmblemParticle() {
+        return GenesisParticles.FROST.get();
     }
 
     @Override

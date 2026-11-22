@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.content.magic.spells.nature;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.content.magic.MagicSpell;
+import com.gamunhagol.genesismod.content.magic.SorcerySchool;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities; // 엔티티 레지스트리 경로에 맞게 수정
 import com.gamunhagol.genesismod.world.entity.mob.summon.SpellGuardianEntity;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,11 @@ public class GuardianBeamSpell extends MagicSpell {
     @Override
     public Map<StatType, Integer> getRequiredStats() {
         return Map.of(StatType.INTELLIGENCE, 13);
+    }
+
+    @Override
+    public SorcerySchool getSchool() {
+        return SorcerySchool.EVOLUTION_IMITATION;
     }
 
     @Override

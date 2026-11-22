@@ -4,7 +4,9 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.api.StatType;
 import com.gamunhagol.genesismod.stats.StatCapabilityProvider;
 import com.gamunhagol.genesismod.world.item.weapon.CatalystItem;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.HumanoidArm;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,6 +14,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
 import java.util.Map;
 
 public abstract class AbstractSpell {
@@ -47,6 +50,37 @@ public abstract class AbstractSpell {
     public abstract boolean canCast(LivingEntity caster);
     public abstract int getMemoryCost();
 
+    @Nullable
+    public SimpleParticleType getEmblemParticle() {
+        return null;
+    }
+
+    protected Vec3 getEmblemOffset() {
+        return new Vec3(0.7D, 0.35D, -0.25D);
+    }
+
+    protected boolean spawnEmblemOnChargeStart() {
+        return false;
+    }
+
+    protected void spawnEmblemParticle(Level level, LivingEntity caster) {
+        if (!(level instanceof ServerLevel serverLevel)) return;
+
+        SimpleParticleType emblem = getEmblemParticle();
+        if (emblem == null) return;
+
+        Vec3 offset = getEmblemOffset();
+        Vec3 spawnPos = getCatalystHandPosition(caster, offset.x, offset.y, offset.z);
+
+        serverLevel.sendParticles(
+                emblem,
+                spawnPos.x, spawnPos.y, spawnPos.z,
+                1,
+                0.0D, 0.0D, 0.0D,
+                0.0D
+        );
+    }
+
     public boolean isChargeable(LivingEntity caster) {
         return getMaxChargeTicks() > 0;
     }
@@ -69,6 +103,9 @@ public abstract class AbstractSpell {
 
     public void executeChargeTick(Level level, LivingEntity caster, int chargeTicks) {
         if (!level.isClientSide) {
+            if (spawnEmblemOnChargeStart() && chargeTicks == 1) {
+                spawnEmblemParticle(level, caster);
+            }
             onChargeTick(level, caster, chargeTicks);
         }
     }
@@ -79,6 +116,9 @@ public abstract class AbstractSpell {
     public void executeContinuousTick(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot, int ticksUsing) {
         if (!level.isClientSide) {
             if (ticksUsing % getContinuousTickInterval() == 0) {
+                if (ticksUsing <= getContinuousTickInterval()) {
+                    spawnEmblemParticle(level, caster);
+                }
                 DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
                 onExecuteContinuous(level, caster, spellSnapshot, ticksUsing);
                 consumeContinuousMental(caster);
@@ -101,6 +141,7 @@ public abstract class AbstractSpell {
 
     public void executeCast(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot) {
         if (!level.isClientSide) {
+            spawnEmblemParticle(level, caster);
             DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
             onExecute(level, caster, spellSnapshot);
             consumeMental(caster);
@@ -109,6 +150,9 @@ public abstract class AbstractSpell {
 
     public void executeCastCharged(Level level, LivingEntity caster, DamageSnapshot catalystSnapshot, int chargeTicks) {
         if (!level.isClientSide) {
+            if (!spawnEmblemOnChargeStart()) {
+                spawnEmblemParticle(level, caster);
+            }
             DamageSnapshot spellSnapshot = calculateSpellSnapshot(caster, catalystSnapshot);
             onExecuteCharged(level, caster, spellSnapshot, chargeTicks);
             consumeMental(caster);
