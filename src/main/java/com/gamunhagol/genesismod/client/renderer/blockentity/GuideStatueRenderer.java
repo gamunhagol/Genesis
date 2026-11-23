@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class GuideStatueRenderer implements BlockEntityRenderer<StatueBlockEntity> {
     private final GuideStatueModel model;
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_guide_to_oblivion.png"); // Herald 텍스처 경로
+            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_guide_to_oblivion.png");
 
     public GuideStatueRenderer(BlockEntityRendererProvider.Context context) {
         this.model = new GuideStatueModel(context.bakeLayer(ModModelLayers.GUIDE_LAYER));

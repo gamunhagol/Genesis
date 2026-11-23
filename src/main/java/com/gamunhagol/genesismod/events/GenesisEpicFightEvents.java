@@ -45,5 +45,6 @@ public class GenesisEpicFightEvents {
     @SubscribeEvent
     public static void onEntityPatchRegistry(EntityPatchRegistryEvent event) {
         event.getTypeEntry().put(GenesisEntities.LARGE_ARROW.get(), (entity) -> GenesisArrowPatch::new);
+
     }
 }

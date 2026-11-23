@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class HeraldStatueRenderer implements BlockEntityRenderer<StatueBlockEntity> {
     private final HeraldStatueModel model;
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_herald_of_oblivion.png"); // Herald 텍스처 경로
+            new ResourceLocation(GenesisMod.MODID, "textures/block/statue_of_herald_of_oblivion.png");
 
     public HeraldStatueRenderer(BlockEntityRendererProvider.Context context) {
         this.model = new HeraldStatueModel(context.bakeLayer(ModModelLayers.HERALD_LAYER));
