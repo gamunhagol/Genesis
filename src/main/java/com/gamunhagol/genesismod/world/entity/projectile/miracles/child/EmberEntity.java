@@ -22,7 +22,7 @@ import java.util.List;
 
 public class EmberEntity extends MagicEntity implements ItemSupplier {
 
-    protected float explosionPower = 1.2F; // 낮은 강도의 폭발력
+    protected float explosionPower = 1.2F;
 
     public EmberEntity(EntityType<? extends EmberEntity> entityType, Level level) {
         super(entityType, level);

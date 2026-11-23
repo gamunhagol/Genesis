@@ -49,7 +49,7 @@ public class ShootingStarSpell extends MagicSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        shootStar(level, caster, spellSnapshot, 1.0f);
+        shootStar(level, caster, spellSnapshot, 1.0f, 0.0f);
     }
 
     @Override
@@ -69,12 +69,13 @@ public class ShootingStarSpell extends MagicSpell {
         DamageSnapshot chargedSnapshot = new DamageSnapshot(
                 0, spellSnapshot.magic() * damageMultiplier, 0, 0, 0, 0, 0
         );
-        shootStar(level, caster, chargedSnapshot, scale);
+        shootStar(level, caster, chargedSnapshot, scale, ratio);
     }
 
-    private void shootStar(Level level, LivingEntity caster, DamageSnapshot snapshot, float scale) {
+    private void shootStar(Level level, LivingEntity caster, DamageSnapshot snapshot, float scale, float ratio) {
         ShootingStar star = new ShootingStar(level, caster, snapshot);
         star.setScale(scale);
+        star.setChargeRatio(ratio);
 
         Vec3 look = caster.getLookAngle();
         star.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());

@@ -49,7 +49,7 @@ public class MagicCometSpell extends MagicSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        shootComet(level, caster, spellSnapshot, 1.0f);
+        shootComet(level, caster, spellSnapshot, 1.0f,0.0F);
     }
 
     @Override
@@ -69,12 +69,13 @@ public class MagicCometSpell extends MagicSpell {
         DamageSnapshot chargedSnapshot = new DamageSnapshot(
                 0, spellSnapshot.magic() * damageMultiplier, 0, 0, 0, 0, 0
         );
-        shootComet(level, caster, chargedSnapshot, scale);
+        shootComet(level, caster, chargedSnapshot, scale, ratio);
     }
 
-    private void shootComet(Level level, LivingEntity caster, DamageSnapshot snapshot, float scale) {
+    private void shootComet(Level level, LivingEntity caster, DamageSnapshot snapshot, float scale, float ratio) {
         MagicComet comet = new MagicComet(level, caster, snapshot);
         comet.setScale(scale);
+        comet.setChargeRatio(ratio);
 
         Vec3 look = caster.getLookAngle();
         comet.setPos(caster.getX(), caster.getEyeY() - 0.1D, caster.getZ());

@@ -7,6 +7,7 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,8 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
 
 public abstract class MagicEntity extends Projectile {
     private static final EntityDataAccessor<Boolean> DATA_HIT = SynchedEntityData.defineId(MagicEntity.class, EntityDataSerializers.BOOLEAN);
@@ -136,6 +139,16 @@ public abstract class MagicEntity extends Projectile {
         }
     }
 
+    protected float chargeRatio = 0.0F;
+
+    public void setChargeRatio(float ratio) {
+        this.chargeRatio = ratio;
+    }
+
+    public float getChargeRatio() {
+        return this.chargeRatio;
+    }
+
     @Override
     protected boolean canHitEntity(Entity entity) {
         if (this.isCharging()) return false;
@@ -166,6 +179,13 @@ public abstract class MagicEntity extends Projectile {
         this.entityData.set(DATA_HIT_PITCH, tag.getFloat("HitPitch"));
         this.hitTicks = tag.getInt("HitTicks");
         this.entityData.set(DATA_CHARGING, tag.getBoolean("IsCharging"));
+    }
+
+    protected DamageSource createMagicDamageSource(Entity owner) {
+        return this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                .filter(patch -> patch instanceof ProjectilePatch<?>)
+                .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
     }
 
     @Override

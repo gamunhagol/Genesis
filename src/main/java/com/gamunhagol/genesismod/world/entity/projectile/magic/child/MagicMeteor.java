@@ -78,10 +78,11 @@ public class MagicMeteor extends HomingMeteorBullet {
 
     @Override
     protected void onHitEntity(EntityHitResult result) {
+        super.onHitEntity(result);
+
         if (!this.level().isClientSide && this.canSplit && !this.hasSplit) {
             splitIntoChildren();
         }
-        super.onHitEntity(result);
     }
 
     @Override

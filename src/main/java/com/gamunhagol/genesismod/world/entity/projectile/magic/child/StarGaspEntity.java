@@ -7,6 +7,7 @@ import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
+import yesman.epicfight.world.damagesource.EpicFightDamageSource;
+import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.List;
 
@@ -124,9 +129,19 @@ public class StarGaspEntity extends MagicEntity implements ItemSupplier {
                 cap.setSnapshot(this.damageSnapshot);
             });
 
+            DamageSource magicSource = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                    .filter(patch -> patch instanceof ProjectilePatch<?>)
+                    .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                    .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
+            EpicFightDamageSource voidSource = new EpicFightDamageSource(this.damageSources().fellOutOfWorld());
+            voidSource.setStunType(StunType.NONE);
+            voidSource.setBaseImpact(0.0F);
+
             for (LivingEntity target : targets) {
-                target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
-                target.hurt(this.damageSources().fellOutOfWorld(), 1.5F);
+                target.hurt(magicSource, 1.0F);
+                target.invulnerableTime = 0;
+                target.hurt(voidSource, 1.5F);
             }
         }
     }

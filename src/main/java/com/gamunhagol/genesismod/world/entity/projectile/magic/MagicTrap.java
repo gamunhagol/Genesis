@@ -6,6 +6,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
 
 import java.util.List;
 
@@ -73,8 +76,13 @@ public abstract class MagicTrap extends MagicEntity {
         Entity owner = this.getOwner();
         this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
 
+        DamageSource source = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                .filter(patch -> patch instanceof ProjectilePatch<?>)
+                .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
         float damage = this.damageSnapshot.magic();
-        target.hurt(this.damageSources().indirectMagic(this, owner), damage);
+        target.hurt(source, damage);
 
         this.discard();
     }

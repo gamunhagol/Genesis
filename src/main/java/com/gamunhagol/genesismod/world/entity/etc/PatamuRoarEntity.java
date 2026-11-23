@@ -16,6 +16,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.network.NetworkHooks;
+import yesman.epicfight.world.damagesource.EpicFightDamageSource;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -75,6 +77,12 @@ public class PatamuRoarEntity extends Entity implements ItemSupplier {
 
         float dotDamage = this.snapshot.physical() > 0 ? this.snapshot.physical() * 0.2F : 2.0F;
 
+        EpicFightDamageSource pulseSource = new EpicFightDamageSource(
+                level.damageSources().indirectMagic(this, owner)
+        );
+        pulseSource.setBaseImpact(0.35F);
+        pulseSource.setStunType(StunType.SHORT);
+
         for (LivingEntity target : targets) {
             Vec3 toTarget = target.position().subtract(center);
             double dist = toTarget.length();
@@ -84,7 +92,7 @@ public class PatamuRoarEntity extends Entity implements ItemSupplier {
                 target.setDeltaMovement(target.getDeltaMovement().add(pushDir.x, 0.1D, pushDir.z));
                 target.hurtMarked = true;
 
-                target.hurt(level.damageSources().indirectMagic(this, owner), dotDamage);
+                target.hurt(pulseSource, dotDamage);
             }
         }
     }

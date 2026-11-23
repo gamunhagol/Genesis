@@ -21,6 +21,7 @@ import net.minecraftforge.network.NetworkHooks;
 import yesman.epicfight.api.utils.LevelUtil;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 import yesman.epicfight.world.damagesource.EpicFightDamageSources;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -72,7 +73,10 @@ public class PatamuWrathEntity extends Entity implements ItemSupplier {
         LevelUtil.circleSlamFracture(owner, level, slamPos, this.slamRadius, false, false, false);
 
         float basePhysical = this.snapshot.physical() > 0 ? this.snapshot.physical() : 24.0F;
-        EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner); //[cite: 1]
+
+        EpicFightDamageSource directSource = EpicFightDamageSources.shockwave(owner);
+        directSource.setBaseImpact(33.3F);
+        directSource.setStunType(StunType.KNOCKDOWN);
 
         AABB directHitBox = new AABB(
                 slamPos.x - this.hitRadius, slamPos.y - 1.0D, slamPos.z - this.hitRadius,
@@ -80,11 +84,13 @@ public class PatamuWrathEntity extends Entity implements ItemSupplier {
         );
         List<LivingEntity> directTargets = level.getEntitiesOfClass(LivingEntity.class, directHitBox, e -> e.isAlive() && e != owner);
         for (LivingEntity target : directTargets) {
-            target.hurt(shockwaveSource, basePhysical);
+            target.hurt(directSource, basePhysical);
         }
 
-
         float shockwaveDamage = basePhysical * 0.4F;
+        EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner);
+        shockwaveSource.setBaseImpact(5.0F);
+        shockwaveSource.setStunType(StunType.LONG);
 
         AABB shockwaveBox = new AABB(
                 slamPos.x - this.slamRadius, slamPos.y - 1.5D, slamPos.z - this.slamRadius,

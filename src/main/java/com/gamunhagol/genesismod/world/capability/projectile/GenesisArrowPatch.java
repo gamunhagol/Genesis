@@ -8,8 +8,8 @@ import yesman.epicfight.world.damagesource.StunType;
 
 public class GenesisArrowPatch extends ArrowPatch {
 
-    private static final float BASE_IMPACT = 6.0F;
-    private static final float EMPOWERED_IMPACT = 15.0F;
+    private static final float BASE_IMPACT = 8.95F;
+    private static final float EMPOWERED_IMPACT = 22.1F;
 
     public float getImpact() {
         if (this.original instanceof LargeArrowEntity largeArrow && largeArrow.isEmpowered()) {

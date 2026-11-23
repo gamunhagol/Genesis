@@ -3,6 +3,7 @@ package com.gamunhagol.genesismod.world.entity.projectile.miracles;
 import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -15,6 +16,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
 
 public abstract class StoneProjectile extends MagicEntity implements ItemSupplier {
     protected double gravity = 0.03D;
@@ -64,7 +67,12 @@ public abstract class StoneProjectile extends MagicEntity implements ItemSupplie
                 cap.setSnapshot(this.damageSnapshot);
             });
 
-            target.hurt(this.damageSources().thrown(this, owner), 1.0F);
+            DamageSource source = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                    .filter(patch -> patch instanceof ProjectilePatch<?>)
+                    .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                    .orElseGet(() -> this.damageSources().thrown(this, owner));
+
+            target.hurt(source, 1.0F);
             this.discard();
         }
     }
