@@ -56,16 +56,4 @@ public class ShootingStar extends MagicBullet {
         }
     }
 
-    @Override
-    protected void spawnFlightParticles() {
-        for (int i = 0; i < 3; i++) {
-            this.level().addParticle(
-                    ParticleTypes.SOUL_FIRE_FLAME,
-                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.4D,
-                    this.getY(),
-                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.4D,
-                    0, 0, 0
-            );
-        }
-    }
 }

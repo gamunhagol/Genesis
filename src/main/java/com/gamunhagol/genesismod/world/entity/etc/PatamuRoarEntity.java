@@ -44,7 +44,7 @@ public class PatamuRoarEntity extends Entity implements ItemSupplier {
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+        return ItemStack.EMPTY;
     }
 
     @Override

@@ -50,7 +50,7 @@ public class LightningArrowEntity extends MagicEntity implements ItemSupplier {
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+        return ItemStack.EMPTY;
     }
 
     @Override

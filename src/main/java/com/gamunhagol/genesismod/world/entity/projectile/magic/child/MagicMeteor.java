@@ -93,14 +93,4 @@ public class MagicMeteor extends HomingMeteorBullet {
         super.onHitBlock(result);
     }
 
-    @Override
-    protected void spawnFlightParticles() {
-        for (int i = 0; i < 2; i++) {
-            this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME,
-                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.2D,
-                    this.getY() + 0.1D,
-                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.2D,
-                    0, 0.01D, 0);
-        }
-    }
 }

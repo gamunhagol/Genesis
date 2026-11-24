@@ -51,7 +51,7 @@ public class RootStrikeEntity extends Entity implements ItemSupplier {
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.OAK_LOG);
+        return ItemStack.EMPTY;
     }
 
     @Override

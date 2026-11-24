@@ -56,16 +56,4 @@ public class MagicComet extends MagicBullet {
         }
     }
 
-    @Override
-    protected void spawnFlightParticles() {
-        for (int i = 0; i < 2; i++) {
-            this.level().addParticle(
-                    ParticleTypes.SOUL_FIRE_FLAME,
-                    this.getX() + (this.random.nextDouble() - 0.5D) * 0.3D,
-                    this.getY(),
-                    this.getZ() + (this.random.nextDouble() - 0.5D) * 0.3D,
-                    0, 0, 0
-            );
-        }
-    }
 }

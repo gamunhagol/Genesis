@@ -32,7 +32,7 @@ public abstract class StoneProjectile extends MagicEntity implements ItemSupplie
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+        return ItemStack.EMPTY;
     }
 
     @Override

@@ -56,7 +56,7 @@ public abstract class AbstractStarAnomaly extends MagicEntity implements ItemSup
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+        return ItemStack.EMPTY;
     }
 
     @Override

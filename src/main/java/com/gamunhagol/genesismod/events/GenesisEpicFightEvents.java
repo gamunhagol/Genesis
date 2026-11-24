@@ -54,44 +54,44 @@ public class GenesisEpicFightEvents {
                 (entity) -> () -> new GenesisArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.MAGIC_GLINT.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(0.8F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_TRAIL));
+                (entity) -> () -> new GenesisProjectilePatch<>(0.8F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_GLINT_TRAIL));
         event.getTypeEntry().put(GenesisEntities.MAGIC_MIST.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.55F, 0.0F, StunType.SHORT));
         event.getTypeEntry().put(GenesisEntities.MAGIC_PEBBLE.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_PEBBLE_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.GREAT_MAGIC_PEBBLE.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(2.4F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new ChargedProjectilePatch<>(2.4F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.GREAT_MAGIC_PEBBLE_TRAIL));
         event.getTypeEntry().put(GenesisEntities.MAGIC_COMET.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(3.6F, 0.0F, StunType.LONG));
+                (entity) -> () -> new ChargedProjectilePatch<>(3.6F, 0.0F, StunType.LONG).setTrail(GenesisTrails.MAGIC_COMET_TRAIL));
         event.getTypeEntry().put(GenesisEntities.SHOOTING_STAR.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(5.1F, 0.0F, StunType.LONG));
+                (entity) -> () -> new ChargedProjectilePatch<>(5.1F, 0.0F, StunType.LONG).setTrail(GenesisTrails.SHOOTING_STAR_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.MAGIC_METEOR.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_METEOR_TRAIL));
         event.getTypeEntry().put(GenesisEntities.SMALL_MAGIC_METEOR.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(0.16F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(0.16F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.SMALL_MAGIC_METEOR_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.MAGIC_SWORD.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(1.95F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(1.95F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_SWORD_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.FALLING_STAR_BULLET.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(0.16F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(0.16F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_PEBBLE_TRAIL));
         event.getTypeEntry().put(GenesisEntities.GRAND_FALLING_STAR_BULLET.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(2.1F, 0.0F, StunType.LONG));
+                (entity) -> () -> new GenesisProjectilePatch<>(2.1F, 0.0F, StunType.LONG).setTrail(GenesisTrails.GRAND_FALLING_STAR_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.DIVIDED.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(8.9F, 0.0F, StunType.LONG));
+                (entity) -> () -> new GenesisProjectilePatch<>(8.9F, 0.0F, StunType.LONG).setTrail(GenesisTrails.DIVIDED_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.STAR_GASP.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.5F, 0.0F, StunType.SHORT));
 
         event.getTypeEntry().put(GenesisEntities.PEBBLE.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(1.1F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.PEBBLE_TRAIL));
         event.getTypeEntry().put(GenesisEntities.ROCK.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(8.45F, 0.0F, StunType.LONG));
+                (entity) -> () -> new GenesisProjectilePatch<>(8.45F, 0.0F, StunType.LONG).setTrail(GenesisTrails.ROCK_TRAIL));
         event.getTypeEntry().put(GenesisEntities.LARGE_ROCK.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(27.3F, 0.0F, StunType.KNOCKDOWN));
+                (entity) -> () -> new GenesisProjectilePatch<>(27.3F, 0.0F, StunType.KNOCKDOWN).setTrail(GenesisTrails.LARGE_ROCK_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.WATER_DROP.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.03F, 0.0F, StunType.NONE));
@@ -100,24 +100,24 @@ public class GenesisEpicFightEvents {
                 (entity) -> () -> new GenesisProjectilePatch<>(0.3F, 0.0F, StunType.SHORT));
 
         event.getTypeEntry().put(GenesisEntities.WIND_FEATHER.get(),
-                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
+                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.WIND_FEATHER_TRAIL));
         event.getTypeEntry().put(GenesisEntities.BLADE_STORM.get(),
-                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
+                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.WIND_FEATHER_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.STORM_SEGMENT_1.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.3F, 0.0F, StunType.SHORT));
 
         event.getTypeEntry().put(GenesisEntities.LIGHTNING_ARROW.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(2.2F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new ChargedProjectilePatch<>(2.2F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.LIGHTNING_ARROW_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.LIGHTNING_SPEAR.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(5.1F, 0.0F, StunType.LONG));
+                (entity) -> () -> new ChargedProjectilePatch<>(5.1F, 0.0F, StunType.LONG).setTrail(GenesisTrails.LIGHTNING_SPEAR_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.LIGHTNING_STAKE.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(7.01F, 0.0F, StunType.KNOCKDOWN));
+                (entity) -> () -> new GenesisProjectilePatch<>(7.01F, 0.0F, StunType.KNOCKDOWN).setTrail(GenesisTrails.LIGHTNING_SPEAR_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.VALA_ARROW.get(),
-                (entity) -> () -> new ChargedProjectilePatch<>(5.9F, 0.0F, StunType.LONG));
+                (entity) -> () -> new ChargedProjectilePatch<>(5.9F, 0.0F, StunType.LONG).setTrail(GenesisTrails.VALA_ARROW_TRAIL));
 
     }
 }

@@ -26,12 +26,4 @@ public class SmallMagicMeteor extends HomingMeteorBullet {
         this.homingDelayTicks = 4;
     }
 
-    @Override
-    protected void spawnFlightParticles() {
-        this.level().addParticle(ParticleTypes.SOUL_FIRE_FLAME,
-                this.getX(),
-                this.getY() + 0.05D,
-                this.getZ(),
-                0, 0.01D, 0);
-    }
 }

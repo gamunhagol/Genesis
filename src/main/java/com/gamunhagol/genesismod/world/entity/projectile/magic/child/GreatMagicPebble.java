@@ -56,15 +56,4 @@ public class GreatMagicPebble extends MagicBullet {
         }
     }
 
-    @Override
-    protected void spawnFlightParticles() {
-        super.spawnFlightParticles();
-        this.level().addParticle(
-                ParticleTypes.SOUL_FIRE_FLAME,
-                this.getX() + (this.random.nextDouble() - 0.5D) * 0.2D,
-                this.getY(),
-                this.getZ() + (this.random.nextDouble() - 0.5D) * 0.2D,
-                0, 0, 0
-        );
-    }
 }

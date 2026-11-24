@@ -41,7 +41,7 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
 
     @Override
     public ItemStack getItem() {
-        return new ItemStack(Items.SNOWBALL);
+        return ItemStack.EMPTY;
     }
 
     @Override
@@ -88,7 +88,6 @@ public abstract class MagicBullet extends MagicEntity implements ItemSupplier {
         this.checkInsideBlocks();
 
         if (this.level().isClientSide) {
-            spawnFlightParticles();
         }
     }
 
