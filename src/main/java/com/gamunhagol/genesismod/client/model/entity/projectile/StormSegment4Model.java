@@ -10,31 +10,47 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.entity.Entity;
 
 public class StormSegment4Model<T extends Entity> extends EntityModel<T> {
-    private final ModelPart bb_main;
+    private final ModelPart inner;
+    private final ModelPart middle;
+    private final ModelPart outer;
 
     public StormSegment4Model(ModelPart root) {
         super(RenderType::entityCutout);
-        this.bb_main = root.getChild("bb_main");
+        this.inner = root.getChild("inner");
+        this.middle = root.getChild("middle");
+        this.outer = root.getChild("outer");
     }
 
     public static LayerDefinition createBodyLayer() {
         MeshDefinition meshdefinition = new MeshDefinition();
         PartDefinition partdefinition = meshdefinition.getRoot();
 
-        partdefinition.addOrReplaceChild("bb_main", CubeListBuilder.create()
+        partdefinition.addOrReplaceChild("inner", CubeListBuilder.create()
                         .texOffs(0, 0).addBox(-18.0F, -12.0F, -18.0F, 36.0F, 24.0F, 36.0F, new CubeDeformation(0.0F)),
                 PartPose.ZERO);
 
-        return LayerDefinition.create(meshdefinition, 144, 144);
+        partdefinition.addOrReplaceChild("middle", CubeListBuilder.create()
+                        .texOffs(0, 60).addBox(-18.0F, -12.0F, -18.0F, 36.0F, 24.0F, 36.0F, new CubeDeformation(1.0F)),
+                PartPose.ZERO);
+
+        partdefinition.addOrReplaceChild("outer", CubeListBuilder.create()
+                        .texOffs(0, 120).addBox(-18.0F, -12.0F, -18.0F, 36.0F, 24.0F, 36.0F, new CubeDeformation(1.2F)),
+                PartPose.ZERO);
+
+        return LayerDefinition.create(meshdefinition, 180, 180);
     }
 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
-        this.bb_main.yRot = ageInTicks * 20.0F * ((float) Math.PI / 180F);
+        this.inner.yRot = ageInTicks * 10.0F * ((float) Math.PI / 180F);
+        this.middle.yRot = ageInTicks * 15.0F * ((float) Math.PI / 180F);
+        this.outer.yRot = -ageInTicks * 20.0F * ((float) Math.PI / 180F);
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
-        this.bb_main.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.middle.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

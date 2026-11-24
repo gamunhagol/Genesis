@@ -11,11 +11,13 @@ import net.minecraft.client.renderer.RenderType;
 
 public class WaterspoutModel<T extends WaterspoutEntity> extends EntityModel<T> {
     private final ModelPart inner;
+    private final ModelPart middle;
     private final ModelPart outer;
 
     public WaterspoutModel(ModelPart root) {
         super(RenderType::entityCutout);
         this.inner = root.getChild("inner");
+        this.middle = root.getChild("middle");
         this.outer = root.getChild("outer");
     }
 
@@ -27,8 +29,12 @@ public class WaterspoutModel<T extends WaterspoutEntity> extends EntityModel<T> 
                         .texOffs(0, 0).addBox(-5.0F, -13.0F, -5.0F, 10.0F, 26.0F, 10.0F, new CubeDeformation(1.0F)),
                 PartPose.ZERO);
 
+        partdefinition.addOrReplaceChild("middle", CubeListBuilder.create()
+                        .texOffs(40, 0).addBox(-5.0F, -13.0F, -5.0F, 10.0F, 26.0F, 10.0F, new CubeDeformation(1.7F)),
+                PartPose.ZERO);
+
         partdefinition.addOrReplaceChild("outer", CubeListBuilder.create()
-                        .texOffs(40, 0).addBox(-5.0F, -13.0F, -5.0F, 10.0F, 26.0F, 10.0F, new CubeDeformation(2.0F)),
+                        .texOffs(0, 36).addBox(-5.0F, -13.0F, -5.0F, 10.0F, 26.0F, 10.0F, new CubeDeformation(2.0F)),
                 PartPose.ZERO);
 
         return LayerDefinition.create(meshdefinition, 80, 80);
@@ -37,12 +43,14 @@ public class WaterspoutModel<T extends WaterspoutEntity> extends EntityModel<T> 
     @Override
     public void setupAnim(T entity, float limbSwing, float limbSwingAmount, float ageInTicks, float netHeadYaw, float headPitch) {
         this.inner.yRot = ageInTicks * 10.0F * ((float) Math.PI / 180F);
+        this.middle.yRot = ageInTicks * 15.0F * ((float) Math.PI / 180F);
         this.outer.yRot = -ageInTicks * 20.0F * ((float) Math.PI / 180F);
     }
 
     @Override
     public void renderToBuffer(PoseStack poseStack, VertexConsumer vertexConsumer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha) {
         this.inner.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
+        this.middle.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
         this.outer.render(poseStack, vertexConsumer, packedLight, packedOverlay, red, green, blue, alpha);
     }
 }

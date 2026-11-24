@@ -363,7 +363,7 @@ public class WaterspoutEntity extends MagicEntity {
         float waterMultiplier = this.isEmpoweredByWater() ? 2.0F : 1.0F;
         float finalScale = lifeRatio * waterMultiplier;
 
-        double heightSpacing = 2.2D * Math.min(finalScale, 1.6D);
+        double heightSpacing = 1.5D * Math.min(finalScale, 1.6D);
         Vec3 targetPos = new Vec3(parent.getX(), parent.getY() + heightSpacing, parent.getZ());
         Vec3 displacement = targetPos.subtract(this.position());
 

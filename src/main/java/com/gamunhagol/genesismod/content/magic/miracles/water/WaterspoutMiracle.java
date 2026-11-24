@@ -66,7 +66,7 @@ public class WaterspoutMiracle extends MiracleSpell {
         level.addFreshEntity(root);
 
         int previousParentId = root.getId();
-        double heightSpacing = 1.8D;
+        double heightSpacing = 1.5D;
 
         for (int i = 1; i <= 4; i++) {
             WaterspoutEntity segment = new WaterspoutEntity(
