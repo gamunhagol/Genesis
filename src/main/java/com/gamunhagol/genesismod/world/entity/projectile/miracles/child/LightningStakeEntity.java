@@ -8,6 +8,7 @@ import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.HumanoidArm;
@@ -23,6 +24,9 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
+import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 
 import java.util.List;
 
@@ -156,7 +160,11 @@ public class LightningStakeEntity extends MagicEntity implements ItemSupplier {
             Entity owner = this.getOwner();
 
             this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
-            target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
+            DamageSource source = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                    .filter(patch -> patch instanceof ProjectilePatch<?>)
+                    .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                    .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+            target.hurt(source, 1.0F);
 
             applyAreaDamage(result.getLocation(), target);
             this.triggerHit(result.getLocation());
@@ -190,7 +198,17 @@ public class LightningStakeEntity extends MagicEntity implements ItemSupplier {
         for (LivingEntity target : targets) {
             if (target.distanceToSqr(center) <= radiusSqr) {
                 this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
-                target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
+
+                DamageSource aoeSource = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                        .filter(patch -> patch instanceof ProjectilePatch<?>)
+                        .map(patch -> {
+                            EpicFightDamageSource ef = ((ProjectilePatch<?>) patch).createEpicFightDamageSource();
+                            ef.setBaseImpact(ef.getBaseImpact() * 0.5F);
+                            return (DamageSource) ef;
+                        })
+                        .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
+                target.hurt(aoeSource, 1.0F);
             }
         }
     }

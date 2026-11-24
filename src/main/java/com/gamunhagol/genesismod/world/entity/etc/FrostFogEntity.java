@@ -23,6 +23,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.network.NetworkHooks;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -191,7 +192,7 @@ public class FrostFogEntity extends Entity implements TraceableEntity {
             if ((dx * dx + dz * dz) > radiusSq) continue;
 
             if (caster != null) {
-                GenesisDamageCalculator.applySnapshotDamage(target, caster, this.fogSnapshot);
+                GenesisDamageCalculator.applySnapshotDamage(target, caster, this.fogSnapshot, 0.0F, StunType.NONE);
             } else {
                 target.hurt(this.damageSources().freeze(), this.fogSnapshot.frost());
             }

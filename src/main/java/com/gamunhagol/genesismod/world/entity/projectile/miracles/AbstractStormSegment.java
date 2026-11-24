@@ -12,6 +12,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,6 +26,10 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
+import yesman.epicfight.world.damagesource.EpicFightDamageSource;
+import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.List;
 
@@ -397,10 +402,19 @@ public abstract class AbstractStormSegment extends MagicEntity {
 
         boolean fireState = this.isOnFireSource();
 
+        DamageSource stormSource = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                .filter(patch -> patch instanceof ProjectilePatch<?>)
+                .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
+        EpicFightDamageSource fireSource = new EpicFightDamageSource(this.damageSources().inFire());
+        fireSource.setStunType(StunType.NONE);
+        fireSource.setBaseImpact(0.0F);
+
         for (LivingEntity target : targets) {
             if (fireState) {
                 target.setSecondsOnFire(2);
-                target.hurt(this.damageSources().inFire(), 1.0F);
+                target.hurt(fireSource, 1.0F);
             }
 
             if (this.tickCount % 10 == 0) {
@@ -409,7 +423,8 @@ public abstract class AbstractStormSegment extends MagicEntity {
                 if (this.isEmpoweredByWater()) {
                     damage *= 1.5F;
                 }
-                target.hurt(this.damageSources().indirectMagic(this, owner), damage);
+                target.invulnerableTime = 0;
+                target.hurt(stormSource, damage);
             }
         }
     }

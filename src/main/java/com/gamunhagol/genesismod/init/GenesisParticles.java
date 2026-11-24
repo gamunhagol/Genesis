@@ -114,6 +114,9 @@ public class GenesisParticles {
     public static final RegistryObject<SimpleParticleType> LIFE =
             PARTICLE_TYPES.register("life", () -> new SimpleParticleType(false));
 
+    public static final RegistryObject<SimpleParticleType> PROJECTILE_TRAIL =
+            PARTICLE_TYPES.register("projectile_trail", () -> new SimpleParticleType(true));
+
     public static void register(IEventBus eventBus) {
         PARTICLE_TYPES.register(eventBus);
     }

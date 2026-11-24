@@ -11,6 +11,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import org.jetbrains.annotations.Nullable;
+import yesman.epicfight.world.damagesource.StunType;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -102,7 +103,7 @@ public class RootSpearEntity extends AbstractRootEntity {
 
             LivingEntity owner = getOwnerEntity();
             if (this.damageSnapshot != null && !this.damageSnapshot.isEmpty() && owner != null) {
-                GenesisDamageCalculator.applySnapshotDamage(target, owner, this.damageSnapshot);
+                GenesisDamageCalculator.applySnapshotDamage(target, owner, this.damageSnapshot, 1.75F, StunType.LONG);
             } else {
                 target.hurt(this.damageSources().mobAttack(owner != null ? owner : this), 8.0F);
             }

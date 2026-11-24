@@ -75,6 +75,7 @@ public class GenesisClientEvents {
         event.registerSpriteSet(GenesisParticles.ICE.get(), EmblemParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.FROST.get(), EmblemParticle.Provider::new);
         event.registerSpriteSet(GenesisParticles.LIFE.get(), EmblemParticle.Provider::new);
+        event.registerSpecial(GenesisParticles.PROJECTILE_TRAIL.get(), new GenesisProjectileTrailParticle.Provider());
     }
 
     @SubscribeEvent

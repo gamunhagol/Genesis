@@ -90,7 +90,7 @@ public class LightningSpearMiracle extends MiracleSpell {
 
     @Override
     protected void onExecute(Level level, LivingEntity caster, DamageSnapshot spellSnapshot) {
-        shootSpear(level, caster, spellSnapshot);
+        shootSpear(level, caster, spellSnapshot, 0.0F);
     }
 
     @Override
@@ -101,10 +101,10 @@ public class LightningSpearMiracle extends MiracleSpell {
         DamageSnapshot chargedSnapshot = new DamageSnapshot(
                 0, 0, 0, spellSnapshot.lightning() * multiplier, 0, 0, 0
         );
-        shootSpear(level, caster, chargedSnapshot);
+        shootSpear(level, caster, chargedSnapshot, ratio);
     }
 
-    private void shootSpear(Level level, LivingEntity caster, DamageSnapshot snapshot) {
+    private void shootSpear(Level level, LivingEntity caster, DamageSnapshot snapshot, float ratio) {
         if (!(level instanceof ServerLevel serverLevel)) return;
 
         Vec3 look = caster.getLookAngle();
@@ -115,10 +115,12 @@ public class LightningSpearMiracle extends MiracleSpell {
 
         if (spear != null && spear.isAlive() && spear.isCharging()) {
             spear.setPos(releasePos.x, releasePos.y, releasePos.z);
+            spear.setChargeRatio(ratio);
             spear.releaseSpear(snapshot, look);
         } else {
             LightningSpearEntity newSpear = new LightningSpearEntity(level, caster, snapshot, look);
             newSpear.setPos(releasePos.x, releasePos.y, releasePos.z);
+            newSpear.setChargeRatio(ratio);
             newSpear.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
             level.addFreshEntity(newSpear);
         }

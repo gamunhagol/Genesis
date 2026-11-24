@@ -95,7 +95,7 @@ public class ValaArrowMiracle extends MiracleSpell {
         DamageSnapshot snapshot = new DamageSnapshot(
                 0, 0, 0, spellSnapshot.lightning() * 0.75f, 0, 0, 0
         );
-        shootArrow(level, caster, snapshot, 1.0D);
+        shootArrow(level, caster, snapshot, 1.0D, 0.0F);
     }
 
     @Override
@@ -121,10 +121,10 @@ public class ValaArrowMiracle extends MiracleSpell {
                 0, 0, 0, spellSnapshot.lightning() * damageMultiplier, 0, 0, 0
         );
 
-        shootArrow(level, caster, chargedSnapshot, speed);
+        shootArrow(level, caster, chargedSnapshot, speed, ratio);
     }
 
-    private void shootArrow(Level level, LivingEntity caster, DamageSnapshot snapshot, double speed) {
+    private void shootArrow(Level level, LivingEntity caster, DamageSnapshot snapshot, double speed, float ratio) {
         if (!(level instanceof ServerLevel serverLevel)) return;
 
         Vec3 look = caster.getLookAngle();
@@ -136,10 +136,12 @@ public class ValaArrowMiracle extends MiracleSpell {
 
         if (arrow != null && arrow.isAlive() && arrow.isCharging()) {
             arrow.setPos(releasePos.x, releasePos.y, releasePos.z);
+            arrow.setChargeRatio(ratio);
             arrow.releaseArrow(snapshot, motion);
         } else {
             ValaArrowEntity newArrow = new ValaArrowEntity(level, caster, snapshot, motion);
             newArrow.setPos(releasePos.x, releasePos.y, releasePos.z);
+            newArrow.setChargeRatio(ratio);
             newArrow.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(snapshot));
             level.addFreshEntity(newArrow);
         }

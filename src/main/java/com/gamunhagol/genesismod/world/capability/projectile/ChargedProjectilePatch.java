@@ -1,6 +1,7 @@
 package com.gamunhagol.genesismod.world.capability.projectile;
 
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import yesman.epicfight.api.client.animation.property.TrailInfo;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 import yesman.epicfight.world.damagesource.StunType;
 
@@ -8,6 +9,12 @@ public class ChargedProjectilePatch<T extends MagicEntity> extends GenesisProjec
 
     public ChargedProjectilePatch(float baseImpact, float armorNegation, StunType stunType) {
         super(baseImpact, armorNegation, stunType);
+    }
+
+    @Override
+    public ChargedProjectilePatch<T> setTrail(TrailInfo trailInfo) {
+        this.trailInfo = trailInfo;
+        return this;
     }
 
     @Override

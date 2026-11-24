@@ -1,11 +1,13 @@
 package com.gamunhagol.genesismod.events;
 
+import com.gamunhagol.genesismod.client.particle.GenesisTrails;
 import com.gamunhagol.genesismod.main.GenesisMod;
 import com.gamunhagol.genesismod.skill.GenesisSkills;
 import com.gamunhagol.genesismod.world.capability.projectile.ChargedProjectilePatch;
 import com.gamunhagol.genesismod.world.capability.projectile.GenesisArrowPatch;
 import com.gamunhagol.genesismod.world.capability.item.GenesisGreatBowCapability;
 import com.gamunhagol.genesismod.world.capability.projectile.GenesisProjectilePatch;
+import com.gamunhagol.genesismod.world.capability.projectile.TrailArrowPatch;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -15,6 +17,7 @@ import yesman.epicfight.api.forgeevent.EntityPatchRegistryEvent;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
+import yesman.epicfight.world.capabilities.projectile.ArrowPatch;
 import yesman.epicfight.world.damagesource.StunType;
 import yesman.epicfight.world.entity.ai.attribute.EpicFightAttributes;
 
@@ -47,10 +50,11 @@ public class GenesisEpicFightEvents {
 
     @SubscribeEvent
     public static void onEntityPatchRegistry(EntityPatchRegistryEvent event) {
-        event.getTypeEntry().put(GenesisEntities.LARGE_ARROW.get(), (entity) -> GenesisArrowPatch::new);
+        event.getTypeEntry().put(GenesisEntities.LARGE_ARROW.get(),
+                (entity) -> () -> new GenesisArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
 
         event.getTypeEntry().put(GenesisEntities.MAGIC_GLINT.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(0.8F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(0.8F, 0.0F, StunType.SHORT).setTrail(GenesisTrails.MAGIC_TRAIL));
         event.getTypeEntry().put(GenesisEntities.MAGIC_MIST.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.55F, 0.0F, StunType.SHORT));
         event.getTypeEntry().put(GenesisEntities.MAGIC_PEBBLE.get(),
@@ -90,10 +94,30 @@ public class GenesisEpicFightEvents {
                 (entity) -> () -> new GenesisProjectilePatch<>(27.3F, 0.0F, StunType.KNOCKDOWN));
 
         event.getTypeEntry().put(GenesisEntities.WATER_DROP.get(),
-                (entity) -> () -> new GenesisProjectilePatch<>(0.1F, 0.0F, StunType.SHORT));
+                (entity) -> () -> new GenesisProjectilePatch<>(0.03F, 0.0F, StunType.NONE));
 
         event.getTypeEntry().put(GenesisEntities.WATERSPOUT.get(),
                 (entity) -> () -> new GenesisProjectilePatch<>(0.3F, 0.0F, StunType.SHORT));
+
+        event.getTypeEntry().put(GenesisEntities.WIND_FEATHER.get(),
+                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
+        event.getTypeEntry().put(GenesisEntities.BLADE_STORM.get(),
+                (entity) -> () -> new TrailArrowPatch().setTrail(GenesisTrails.LARGE_ARROW_TRAIL));
+
+        event.getTypeEntry().put(GenesisEntities.STORM_SEGMENT_1.get(),
+                (entity) -> () -> new GenesisProjectilePatch<>(0.3F, 0.0F, StunType.SHORT));
+
+        event.getTypeEntry().put(GenesisEntities.LIGHTNING_ARROW.get(),
+                (entity) -> () -> new ChargedProjectilePatch<>(2.2F, 0.0F, StunType.SHORT));
+
+        event.getTypeEntry().put(GenesisEntities.LIGHTNING_SPEAR.get(),
+                (entity) -> () -> new ChargedProjectilePatch<>(5.1F, 0.0F, StunType.LONG));
+
+        event.getTypeEntry().put(GenesisEntities.LIGHTNING_STAKE.get(),
+                (entity) -> () -> new GenesisProjectilePatch<>(7.01F, 0.0F, StunType.KNOCKDOWN));
+
+        event.getTypeEntry().put(GenesisEntities.VALA_ARROW.get(),
+                (entity) -> () -> new ChargedProjectilePatch<>(5.9F, 0.0F, StunType.LONG));
 
     }
 }

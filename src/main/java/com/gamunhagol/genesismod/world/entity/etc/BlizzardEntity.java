@@ -18,6 +18,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.network.NetworkHooks;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -85,7 +86,7 @@ public class BlizzardEntity extends Entity {
                 }
 
                 if (this.tickCount % 20 == 0 && owner != null && !this.frostSnapshot.isEmpty()) {
-                    GenesisDamageCalculator.applySnapshotDamage(target, owner, this.frostSnapshot);
+                    GenesisDamageCalculator.applySnapshotDamage(target, owner, this.frostSnapshot, 0.3F, StunType.NONE);
                 }
             }
         }
@@ -93,6 +94,8 @@ public class BlizzardEntity extends Entity {
         if (this.level().isClientSide) {
             spawnBlizzardParticles(halfWidth, currentSize);
         }
+
+
     }
 
     private void spawnBlizzardParticles(double maxRadius, float currentSize) {

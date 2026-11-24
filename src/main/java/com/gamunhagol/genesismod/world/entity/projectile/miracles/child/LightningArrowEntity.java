@@ -4,6 +4,7 @@ import com.gamunhagol.genesismod.api.DamageSnapshot;
 import com.gamunhagol.genesismod.world.capability.projectile.ProjectileStatsProvider;
 import com.gamunhagol.genesismod.world.entity.GenesisEntities;
 import com.gamunhagol.genesismod.world.entity.projectile.magic.MagicEntity;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -16,6 +17,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
 
 public class LightningArrowEntity extends MagicEntity implements ItemSupplier {
 
@@ -87,7 +90,12 @@ public class LightningArrowEntity extends MagicEntity implements ItemSupplier {
             Entity owner = this.getOwner();
 
             this.getCapability(ProjectileStatsProvider.CAPABILITY).ifPresent(cap -> cap.setSnapshot(this.damageSnapshot));
-            target.hurt(this.damageSources().indirectMagic(this, owner), 1.0F);
+            DamageSource source = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                    .filter(patch -> patch instanceof ProjectilePatch<?>)
+                    .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                    .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
+            target.hurt(source, 1.0F);
 
             this.triggerHit(result.getLocation());
         }

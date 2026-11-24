@@ -16,6 +16,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -29,6 +30,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import yesman.epicfight.world.capabilities.EpicFightCapabilities;
+import yesman.epicfight.world.capabilities.projectile.ProjectilePatch;
 
 import java.util.List;
 
@@ -467,7 +470,12 @@ public class WaterspoutEntity extends MagicEntity {
                     baseDamage *= 2.0F;
                 }
 
-                target.hurt(this.damageSources().indirectMagic(this, owner), baseDamage);
+                DamageSource source = this.getCapability(EpicFightCapabilities.CAPABILITY_ENTITY)
+                        .filter(patch -> patch instanceof ProjectilePatch<?>)
+                        .map(patch -> (DamageSource) ((ProjectilePatch<?>) patch).createEpicFightDamageSource())
+                        .orElseGet(() -> this.damageSources().indirectMagic(this, owner));
+
+                target.hurt(source, baseDamage);
             }
         }
     }

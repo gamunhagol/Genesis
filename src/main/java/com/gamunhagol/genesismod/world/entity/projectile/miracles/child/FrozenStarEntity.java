@@ -24,6 +24,7 @@ import net.minecraft.world.phys.Vec3;
 import yesman.epicfight.api.utils.LevelUtil;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 import yesman.epicfight.world.damagesource.EpicFightDamageSources;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -183,7 +184,7 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
 
             for (LivingEntity directTarget : directTargets) {
                 if (caster != null) {
-                    GenesisDamageCalculator.applySnapshotDamage(directTarget, caster, this.damageSnapshot);
+                    GenesisDamageCalculator.applySnapshotDamage(directTarget, caster, this.damageSnapshot, 9.2F, StunType.LONG);
                 } else {
                     directTarget.hurt(this.damageSources().thrown(this, owner), this.damageSnapshot.physical());
                 }
@@ -199,7 +200,7 @@ public class FrozenStarEntity extends MagicEntity implements ItemSupplier {
 
             for (LivingEntity aoeTarget : aoeTargets) {
                 if (caster != null) {
-                    GenesisDamageCalculator.applySnapshotDamage(aoeTarget, caster, this.aoeSnapshot);
+                    GenesisDamageCalculator.applySnapshotDamage(aoeTarget, caster, this.aoeSnapshot, 1.5F, StunType.SHORT);
                 }
             }
 

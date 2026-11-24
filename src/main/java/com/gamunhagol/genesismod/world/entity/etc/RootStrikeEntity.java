@@ -21,6 +21,7 @@ import net.minecraftforge.network.NetworkHooks;
 import yesman.epicfight.api.utils.LevelUtil;
 import yesman.epicfight.world.damagesource.EpicFightDamageSource;
 import yesman.epicfight.world.damagesource.EpicFightDamageSources;
+import yesman.epicfight.world.damagesource.StunType;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -81,6 +82,10 @@ public class RootStrikeEntity extends Entity implements ItemSupplier {
         float basePhysical = this.snapshot.physical() > 0 ? this.snapshot.physical() : 20.0F;
         EpicFightDamageSource shockwaveSource = EpicFightDamageSources.shockwave(owner);
 
+        EpicFightDamageSource directSource = EpicFightDamageSources.shockwave(owner);
+        directSource.setBaseImpact(12.0F);
+        directSource.setStunType(StunType.KNOCKDOWN);
+
         AABB directHitBox = new AABB(
                 slamPos.x - this.hitRadius, slamPos.y - 1.0D, slamPos.z - this.hitRadius,
                 slamPos.x + this.hitRadius, slamPos.y + 2.5D, slamPos.z + this.hitRadius
@@ -89,7 +94,7 @@ public class RootStrikeEntity extends Entity implements ItemSupplier {
                 LivingEntity.class, directHitBox, e -> e.isAlive() && e != owner
         );
         for (LivingEntity target : directTargets) {
-            target.hurt(shockwaveSource, basePhysical);
+            target.hurt(directSource, basePhysical);
         }
 
         float shockwaveDamage = basePhysical * 0.45F;

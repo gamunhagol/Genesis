@@ -188,4 +188,39 @@ public class GenesisDamageCalculator {
         if (maxHealthAttr != null) maxHealthAttr.removeModifier(DESTRUCTION_HP_MOD_UUID);
         entity.getPersistentData().remove("GenesisDestructionEndTick");
     }
+
+    public static void applySnapshotDamage(LivingEntity target, LivingEntity caster, DamageSnapshot snapshot, float impact, yesman.epicfight.world.damagesource.StunType stunType) {
+        if (target == null || caster == null || snapshot == null || snapshot.isEmpty()) return;
+
+        target.getPersistentData().putBoolean("GenesisSkipSnapshot", true);
+
+        float magicMultiplier = AbstractMagicDomainEntity.getMultiplierAt(caster);
+        if (caster.getPersistentData().contains("GenesisStarSeaBuffEndTick")) {
+            if (target.level().getGameTime() <= caster.getPersistentData().getLong("GenesisStarSeaBuffEndTick")) {
+                magicMultiplier *= 1.5F;
+            }
+        }
+
+        float summonMultiplier = 1.0f;
+        if (caster instanceof Mob mob && mob instanceof ISummonable) {
+            if (mob.getPersistentData().contains("GenesisSummonDamageMultiplier")) {
+                summonMultiplier += (float) mob.getPersistentData().getDouble("GenesisSummonDamageMultiplier");
+            }
+        }
+
+        float elementalTotal = calculateElementalDamageAndApplyEffects(target, caster, snapshot, magicMultiplier, summonMultiplier);
+        float physicalTotal = snapshot.physical() * summonMultiplier;
+        float grandTotal = physicalTotal + elementalTotal;
+
+        if (grandTotal > 0) {
+            yesman.epicfight.world.damagesource.EpicFightDamageSource source =
+                    new yesman.epicfight.world.damagesource.EpicFightDamageSource(caster.damageSources().indirectMagic(caster, caster));
+            source.setBaseImpact(impact);
+            source.setStunType(stunType);
+
+            target.hurt(source, grandTotal);
+        }
+
+        target.getPersistentData().remove("GenesisSkipSnapshot");
+    }
 }
