@@ -151,6 +151,11 @@ public class GenesisBlockEntities {
                                     new GodStatueGenericBlockEntity(GenesisBlockEntities.GOD_STATUE_Z_BE.get(), pos, state, "god_z"),
                             GenesisBlocks.GOD_STATUE_Z.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<LightStoneBlockEntity>> LIGHT_STONE_BE =
+            BLOCK_ENTITIES.register("light_stone_be", () ->
+                    BlockEntityType.Builder.of(LightStoneBlockEntity::new,
+                            GenesisBlocks.LIGHT_STONE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

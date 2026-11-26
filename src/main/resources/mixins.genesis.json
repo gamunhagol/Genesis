@@ -9,7 +9,8 @@
     "GuardianInvoker",
     "EntityCollisionMixin",
     "ProjectileMixin",
-    "LivingEntityMixin"
+    "LivingEntityMixin",
+    "ConduitBlockEntityMixin"
   ],
   "client": [
   ],

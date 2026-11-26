@@ -648,6 +648,7 @@
   "block.genesis.pyulitela_block": "Pyulitela Block",
 
   "block.genesis.fusion_stone_block": "Fusion Stone Block",
+  "block.genesis.eye_of_the_sea": "Eye of the Sea",
 
   "block.genesis.giant_stone": "Giant Stone",
   "block.genesis.activated_giant_stone": "Activated Giant Stone",
@@ -694,6 +695,7 @@
   "block.genesis.precipitate": "Precipitate",
 
   "block.genesis.undead_shard": "Undead Shard",
+  "block.genesis.light_stone": "Light Stone",
 
   "block.genesis.hardened_glass": "Hardened Glass",
   "block.genesis.hardened_red_glass": "Hardened Red Glass",

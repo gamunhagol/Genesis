@@ -25,6 +25,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ,GenesisBlocks.PYULITELA_ORE.get()
                 ,GenesisBlocks.PYULITELA_BLOCK.get()
                 ,GenesisBlocks.FUSION_STONE_BLOCK.get()
+                ,GenesisBlocks.EYE_OF_THE_SEA.get()
                         ,GenesisBlocks.ELVENIA_BLOCK.get()
                         ,GenesisBlocks.AMETHYST_APPLE_BLOCK.get()
                         ,GenesisBlocks.GIANT_STONE.get()
@@ -69,6 +70,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                     ,GenesisBlocks.COPPER_COIN_PILE.get()
                     ,GenesisBlocks.SILVER_COIN_PILE.get()
                     ,GenesisBlocks.GOLD_COIN_PILE.get()
+                    ,GenesisBlocks.LIGHT_STONE.get()
                     ,GenesisBlocks.PLATINUM_COIN_PILE.get()
                     ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
                     ,GenesisBlocks.EYE_OF_THE_EARTH.get()
@@ -88,6 +90,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                         ,GenesisBlocks.ANCIENT_DRAGON_ROCK.get()
                         ,GenesisBlocks.ACTIVATED_GIANT_STONE.get()
                         ,GenesisBlocks.FUSION_STONE_BLOCK.get()
+                        ,GenesisBlocks.EYE_OF_THE_SEA.get()
                         ,GenesisBlocks.EYE_OF_THE_EARTH.get());
 
         this.tag(BlockTags.NEEDS_IRON_TOOL)
@@ -95,6 +98,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 ,GenesisBlocks.RED_PEARL_OF_THE_DESERT.get()
                 ,GenesisBlocks.AMETHYST_STATUE.get()
                 ,GenesisBlocks.AMETHYST_HEART.get()
+                ,GenesisBlocks.LIGHT_STONE.get()
                 ,GenesisBlocks.HARDENED_GLASS.get()
                 ,GenesisBlocks.HARDENED_RED_GLASS.get());
 

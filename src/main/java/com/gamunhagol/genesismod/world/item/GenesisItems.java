@@ -53,6 +53,8 @@ public class GenesisItems {
 
     public static final RegistryObject<BlockItem> FUSION_STONE_BLOCK = ITEMS.register("fusion_stone_block",
             () -> new BlockItem(GenesisBlocks.FUSION_STONE_BLOCK.get(), new Item.Properties()));
+    public static final RegistryObject<BlockItem> EYE_OF_THE_SEA = ITEMS.register("eye_of_the_sea",
+            () -> new BlockItem(GenesisBlocks.EYE_OF_THE_SEA.get(), new Item.Properties()));
 
     public static final RegistryObject<BlockItem> GIANT_STONE = ITEMS.register("giant_stone",
             () -> new BlockItem(GenesisBlocks.GIANT_STONE.get(), new Item.Properties()));
@@ -152,6 +154,9 @@ public class GenesisItems {
 
     public static final RegistryObject<BlockItem> MIST_VAULT_1 = ITEMS.register("mist_vault_1",
             () -> new BlockItem(GenesisBlocks.MIST_VAULT_1.get(), new Item.Properties().fireResistant()));
+
+    public static final RegistryObject<BlockItem> LIGHT_STONE = ITEMS.register("light_stone",
+            () -> new BlockItem(GenesisBlocks.LIGHT_STONE.get(), new Item.Properties().fireResistant()));
 
 
 

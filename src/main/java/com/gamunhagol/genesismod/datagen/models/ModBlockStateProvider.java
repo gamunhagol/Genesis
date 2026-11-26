@@ -36,6 +36,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.PYULITELA_ORE);
         blockWithItem(GenesisBlocks.PYULITELA_BLOCK);
         blockWithItem(GenesisBlocks.FUSION_STONE_BLOCK);
+        blockWithItem(GenesisBlocks.EYE_OF_THE_SEA);
 
         blockWithItem(GenesisBlocks.GIANT_STONE);
         blockWithItem(GenesisBlocks.ACTIVATED_GIANT_STONE);
@@ -57,6 +58,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(GenesisBlocks.ANCIENT_DRAGON_ROCK);
 
         blockWithItem(GenesisBlocks.UNDEAD_SHARD);
+        blockWithItem(GenesisBlocks.LIGHT_STONE);
 
         simpleBlock(GenesisBlocks.HARDENED_GLASS.get(),
                 models().cubeAll("hardened_glass", modLoc("block/hardened_glass"))

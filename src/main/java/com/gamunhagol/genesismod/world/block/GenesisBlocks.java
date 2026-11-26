@@ -48,6 +48,9 @@ public class GenesisBlocks {
     public static final RegistryObject<Block> FUSION_STONE_BLOCK = register("fusion_stone_block",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 1500.0F)
                     .lightLevel(state -> 5)));
+    public static final RegistryObject<Block> EYE_OF_THE_SEA = register("eye_of_the_sea",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.SEA_LANTERN).strength(3.0F, 400.0F)
+                    .sound(SoundType.SLIME_BLOCK).lightLevel(state -> 7)));
 
     public static final RegistryObject<Block> GIANT_STONE = register("giant_stone",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(15.0F, 15000.0F)));
@@ -177,7 +180,11 @@ public class GenesisBlocks {
             () -> new Block(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.SAND).strength(0.1f,0.1f).noLootTable()));
 
     public static final RegistryObject<Block> UNDEAD_SHARD = register("undead_shard",
-            () -> new UndeadBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.BONE_BLOCK).strength(10.0f,100.0f)));
+            () -> new UndeadBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).sound(SoundType.BONE_BLOCK).strength(4.5f,12.0f)));
+
+    public static final RegistryObject<Block> LIGHT_STONE = register("light_stone",
+            () -> new LightStoneBlock(BlockBehaviour.Properties.copy(Blocks.GLOWSTONE)
+                    .strength(6.0F, 18.0F).noLootTable().lightLevel(state -> 15)));
 
     //Unobtainable
     public static final RegistryObject<Block> FADED_STONE = register("faded_stone",

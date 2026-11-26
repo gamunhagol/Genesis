@@ -648,6 +648,7 @@
   "block.genesis.pyulitela_block": "땅의 순수 블럭",
 
   "block.genesis.fusion_stone_block": "융합석 블럭",
+  "block.genesis.eye_of_the_sea": "바다의 눈",
 
   "block.genesis.giant_stone": "거인석",
   "block.genesis.activated_giant_stone": "활성화된 거인석",
@@ -695,6 +696,7 @@
 
 
   "block.genesis.undead_shard": "불사의 조각",
+  "block.genesis.light_stone": "빛의 돌",
 
   "block.genesis.hardened_glass": "경화된 유리",
   "block.genesis.hardened_red_glass": "경화된 붉은 유리",
