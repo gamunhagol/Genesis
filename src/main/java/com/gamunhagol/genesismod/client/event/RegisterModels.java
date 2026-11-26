@@ -328,8 +328,6 @@ public class RegisterModels {
 
         event.registerEntityRenderer(GenesisEntities.WATERSPOUT.get(), WaterspoutRenderer::new);
 
-        event.registerEntityRenderer(GenesisEntities.EMBER.get(), ThrownItemRenderer::new);
-
         event.registerEntityRenderer(GenesisEntities.WIND_WALL.get(), NoopRenderer::new);
 
         event.registerEntityRenderer(GenesisEntities.WIND_FEATHER.get(), WindFeatherRenderer::new);

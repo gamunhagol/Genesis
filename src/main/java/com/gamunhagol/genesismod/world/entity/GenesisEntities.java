@@ -82,8 +82,6 @@ public class GenesisEntities {
 
     public static final RegistryObject<EntityType<WaterspoutEntity>> WATERSPOUT;
 
-    public static final RegistryObject<EntityType<EmberEntity>> EMBER;
-
     public static final RegistryObject<EntityType<WindWallEntity>> WIND_WALL;
 
     public static final RegistryObject<EntityType<WindFeatherEntity>> WIND_FEATHER;
@@ -348,11 +346,6 @@ public class GenesisEntities {
                         .clientTrackingRange(8)
                         .updateInterval(1)
                         .build("waterspout"));
-
-        EMBER = ENTITY_TYPES.register("ember", () ->
-                EntityType.Builder.<EmberEntity>of(EmberEntity::new, MobCategory.MISC)
-                        .sized(0.3F, 0.3F).clientTrackingRange(4).updateInterval(10)
-                        .build("ember"));
 
         WIND_WALL = ENTITY_TYPES.register("wind_wall", () ->
                 EntityType.Builder.<WindWallEntity>of(WindWallEntity::new, MobCategory.MISC)
